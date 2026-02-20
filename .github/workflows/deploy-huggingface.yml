@@ -1,0 +1,73 @@
+name: Deploy To Hugging Face
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      HF_REPO_ID: ${{ vars.HF_REPO_ID }}
+      HF_REPO_TYPE: ${{ vars.HF_REPO_TYPE }}
+    steps:
+      - name: Validate required settings
+        shell: bash
+        run: |
+          if [[ -z "${HF_TOKEN}" ]]; then
+            echo "Missing secret HF_TOKEN"
+            exit 1
+          fi
+          if [[ -z "${HF_REPO_ID}" ]]; then
+            echo "Missing variable HF_REPO_ID"
+            exit 1
+          fi
+          if [[ -z "${HF_REPO_TYPE}" ]]; then
+            echo "HF_REPO_TYPE not set. Defaulting to 'space'."
+            echo "HF_REPO_TYPE=space" >> "$GITHUB_ENV"
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure repo exists on Hugging Face
+        shell: bash
+        run: |
+          python -m pip install --upgrade huggingface_hub
+          python - <<'PY'
+          import os
+          from huggingface_hub import HfApi
+
+          token = os.environ["HF_TOKEN"]
+          repo_id = os.environ["HF_REPO_ID"]
+          repo_type = os.environ.get("HF_REPO_TYPE", "space")
+          HfApi().create_repo(repo_id=repo_id, repo_type=repo_type, token=token, exist_ok=True)
+          print(f"Ensured HF repo exists: {repo_type}/{repo_id}")
+          PY
+
+      - name: Push to Hugging Face
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          case "${HF_REPO_TYPE}" in
+            model) hf_url="https://huggingface.co/${HF_REPO_ID}" ;;
+            dataset) hf_url="https://huggingface.co/datasets/${HF_REPO_ID}" ;;
+            space) hf_url="https://huggingface.co/spaces/${HF_REPO_ID}" ;;
+            *)
+              echo "Invalid HF_REPO_TYPE: ${HF_REPO_TYPE}"
+              exit 1
+              ;;
+          esac
+
+          auth_url="$(echo "${hf_url}" | sed "s#https://#https://user:${HF_TOKEN}@#")"
+          git remote remove hf 2>/dev/null || true
+          git remote add hf "${auth_url}"
+          git push hf HEAD:main --force
