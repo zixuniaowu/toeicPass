@@ -1,0 +1,984 @@
+{
+  "questions": [
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 1,
+      "stem": "What time does the meeting start?",
+      "explanation": "对话中男士明确说会议在下午两点开始，属于直接信息题。",
+      "options": [
+        { "key": "A", "text": "At 1:00 p.m." },
+        { "key": "B", "text": "At 2:00 p.m." },
+        { "key": "C", "text": "At 3:00 p.m." },
+        { "key": "D", "text": "At 4:00 p.m." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 1,
+      "stem": "Where does the woman want to go?",
+      "explanation": "女士直接表示她要去三楼的人力资源部门，是明确的细节信息。",
+      "options": [
+        { "key": "A", "text": "To the cafeteria" },
+        { "key": "B", "text": "To the parking garage" },
+        { "key": "C", "text": "To the human resources department" },
+        { "key": "D", "text": "To the conference room" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 1,
+      "stem": "How many copies does the man need?",
+      "explanation": "男士清楚地说他需要五十份报告的复印件，直接听取数字即可。",
+      "options": [
+        { "key": "A", "text": "Twenty" },
+        { "key": "B", "text": "Thirty" },
+        { "key": "C", "text": "Forty" },
+        { "key": "D", "text": "Fifty" }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 1,
+      "stem": "Why is the man calling?",
+      "explanation": "男士在对话开头就说明了他打电话是为了确认明天的预约时间。",
+      "options": [
+        { "key": "A", "text": "To cancel an appointment" },
+        { "key": "B", "text": "To confirm an appointment" },
+        { "key": "C", "text": "To reschedule a meeting" },
+        { "key": "D", "text": "To place an order" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 1,
+      "stem": "What did the woman order for lunch?",
+      "explanation": "女士明确说她点了一份鸡肉沙拉，是直接的细节信息。",
+      "options": [
+        { "key": "A", "text": "A chicken salad" },
+        { "key": "B", "text": "A tuna sandwich" },
+        { "key": "C", "text": "A bowl of soup" },
+        { "key": "D", "text": "A pasta dish" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 2,
+      "stem": "What does the woman say about the project deadline?",
+      "explanation": "女士提到项目截止日期被提前到了本周五，需要理解上下文中时间的变更。",
+      "options": [
+        { "key": "A", "text": "It has been extended by a week." },
+        { "key": "B", "text": "It has been moved up to Friday." },
+        { "key": "C", "text": "It remains unchanged." },
+        { "key": "D", "text": "It has been canceled." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 2,
+      "stem": "What are the speakers mainly discussing?",
+      "explanation": "两位说话者主要在讨论新办公室的装修安排，需要综合理解对话内容。",
+      "options": [
+        { "key": "A", "text": "A company merger" },
+        { "key": "B", "text": "An office renovation plan" },
+        { "key": "C", "text": "A staff recruitment drive" },
+        { "key": "D", "text": "A budget reduction" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 2,
+      "stem": "What problem does the man mention?",
+      "explanation": "男士提到打印机又坏了，需要尽快找人修理，是关于设备故障的问题。",
+      "options": [
+        { "key": "A", "text": "The printer is broken again." },
+        { "key": "B", "text": "The computer system crashed." },
+        { "key": "C", "text": "The air conditioning is not working." },
+        { "key": "D", "text": "The phone lines are down." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 2,
+      "stem": "Why does the woman suggest postponing the event?",
+      "explanation": "女士建议推迟活动是因为天气预报说周末会有大雨，需要理解原因关系。",
+      "options": [
+        { "key": "A", "text": "The venue is not available." },
+        { "key": "B", "text": "The budget has not been approved." },
+        { "key": "C", "text": "Heavy rain is expected on the weekend." },
+        { "key": "D", "text": "Several key speakers have canceled." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 2,
+      "stem": "What does the man ask the woman to do?",
+      "explanation": "男士请女士帮忙把会议纪要发给所有部门经理，需要理解请求的具体内容。",
+      "options": [
+        { "key": "A", "text": "Prepare a presentation" },
+        { "key": "B", "text": "Send the meeting minutes to all department managers" },
+        { "key": "C", "text": "Book a conference room" },
+        { "key": "D", "text": "Update the company website" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 2,
+      "stem": "Where does this conversation most likely take place?",
+      "explanation": "根据对话中提到的菜单、点餐和服务员，可以判断对话发生在餐厅。",
+      "options": [
+        { "key": "A", "text": "At a hotel front desk" },
+        { "key": "B", "text": "At a restaurant" },
+        { "key": "C", "text": "At a supermarket" },
+        { "key": "D", "text": "At a bank" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 2,
+      "stem": "How will the woman travel to the conference?",
+      "explanation": "女士说她会坐高铁去参加会议，因为比开车更方便，需要抓住交通方式的细节。",
+      "options": [
+        { "key": "A", "text": "By airplane" },
+        { "key": "B", "text": "By car" },
+        { "key": "C", "text": "By high-speed train" },
+        { "key": "D", "text": "By bus" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 2,
+      "stem": "What does the woman want to know about the new policy?",
+      "explanation": "女士想了解新政策对远程办公安排的影响，需要理解她提问的目的。",
+      "options": [
+        { "key": "A", "text": "How it affects remote work arrangements" },
+        { "key": "B", "text": "When it will take effect" },
+        { "key": "C", "text": "Who proposed the policy" },
+        { "key": "D", "text": "How much it will cost to implement" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 2,
+      "stem": "What does the man say about the training session?",
+      "explanation": "男士提到培训课程已经从周三改到了周四，需要注意时间变更的细节。",
+      "options": [
+        { "key": "A", "text": "It has been rescheduled to Thursday." },
+        { "key": "B", "text": "It will be held online." },
+        { "key": "C", "text": "It has been shortened to two hours." },
+        { "key": "D", "text": "It is only for new employees." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 2,
+      "stem": "Why is the man unable to attend the workshop?",
+      "explanation": "男士说他不能参加研讨会是因为他那天有一个重要的客户会议，需要理解原因。",
+      "options": [
+        { "key": "A", "text": "He has a doctor's appointment." },
+        { "key": "B", "text": "He will be on vacation." },
+        { "key": "C", "text": "He has an important client meeting." },
+        { "key": "D", "text": "He is not interested in the topic." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 2,
+      "stem": "What does the woman offer to do?",
+      "explanation": "女士主动提出帮忙审核合同草稿，需要听出她提供帮助的具体内容。",
+      "options": [
+        { "key": "A", "text": "Drive the man to the airport" },
+        { "key": "B", "text": "Review the contract draft" },
+        { "key": "C", "text": "Contact the supplier" },
+        { "key": "D", "text": "Organize the team dinner" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 2,
+      "stem": "What department does the man work in?",
+      "explanation": "根据对话中男士提到他负责市场推广的相关内容，可以判断他在市场部工作。",
+      "options": [
+        { "key": "A", "text": "Accounting" },
+        { "key": "B", "text": "Marketing" },
+        { "key": "C", "text": "Information Technology" },
+        { "key": "D", "text": "Legal" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about the woman's attitude toward the proposal?",
+      "explanation": "虽然女士没有直接说反对，但她提出了很多问题和顾虑，可以推断她对提案持保留态度。",
+      "options": [
+        { "key": "A", "text": "She is fully supportive." },
+        { "key": "B", "text": "She is indifferent." },
+        { "key": "C", "text": "She has some reservations." },
+        { "key": "D", "text": "She is completely opposed." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "What does the man imply when he says, 'We might want to reconsider our timeline'?",
+      "explanation": "男士暗示目前的时间表不太现实，可能需要延长项目周期，需要理解言外之意。",
+      "options": [
+        { "key": "A", "text": "The project should be completed sooner." },
+        { "key": "B", "text": "The current schedule may not be realistic." },
+        { "key": "C", "text": "They should hire more staff." },
+        { "key": "D", "text": "The project should be canceled." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "What will the woman probably do next?",
+      "explanation": "根据对话结尾女士说她会去查看一下库存情况，可以推断她接下来会去仓库。",
+      "options": [
+        { "key": "A", "text": "Call a client" },
+        { "key": "B", "text": "Check the inventory in the warehouse" },
+        { "key": "C", "text": "Submit a resignation letter" },
+        { "key": "D", "text": "Attend a board meeting" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about the company's current situation?",
+      "explanation": "从两人讨论削减开支和冻结招聘的内容来看，可以推断公司正面临财务困难。",
+      "options": [
+        { "key": "A", "text": "It is expanding rapidly." },
+        { "key": "B", "text": "It is experiencing financial difficulties." },
+        { "key": "C", "text": "It recently went public." },
+        { "key": "D", "text": "It is relocating to a new city." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 3,
+      "stem": "What does the woman mean when she says, 'I think we should sleep on it'?",
+      "explanation": "女士说'sleep on it'是一个固定表达，意思是不要急于做决定，应该再考虑一下。",
+      "options": [
+        { "key": "A", "text": "They should take a nap." },
+        { "key": "B", "text": "They should make a decision immediately." },
+        { "key": "C", "text": "They should wait and think about it before deciding." },
+        { "key": "D", "text": "They should ask someone else to decide." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "What does the man suggest about the new hire?",
+      "explanation": "男士提到新员工虽然经验不足但学习能力很强，暗示他对新员工的表现持乐观态度。",
+      "options": [
+        { "key": "A", "text": "The new hire should be let go." },
+        { "key": "B", "text": "The new hire is a quick learner despite lacking experience." },
+        { "key": "C", "text": "The new hire has too much experience for the role." },
+        { "key": "D", "text": "The new hire should be transferred to another department." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "Why does the woman mention the quarterly report?",
+      "explanation": "女士提到季度报告是为了说明目前没有时间处理其他任务，暗示她工作量很大。",
+      "options": [
+        { "key": "A", "text": "To explain why she cannot take on additional tasks" },
+        { "key": "B", "text": "To ask the man to help write it" },
+        { "key": "C", "text": "To complain about her supervisor" },
+        { "key": "D", "text": "To request a deadline extension for another project" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 3,
+      "stem": "What is the main purpose of the conversation?",
+      "explanation": "整个对话围绕解决客户投诉展开，两人在讨论如何妥善处理这个问题。",
+      "options": [
+        { "key": "A", "text": "To plan a marketing campaign" },
+        { "key": "B", "text": "To resolve a customer complaint" },
+        { "key": "C", "text": "To discuss a pay raise" },
+        { "key": "D", "text": "To organize a company outing" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about the relationship between the speakers?",
+      "explanation": "从对话语气和内容来看，男士似乎在向女士汇报工作，可以推断女士是男士的上司。",
+      "options": [
+        { "key": "A", "text": "They are classmates." },
+        { "key": "B", "text": "The woman is the man's supervisor." },
+        { "key": "C", "text": "They are competitors from different companies." },
+        { "key": "D", "text": "The man is the woman's client." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "What does the man imply about the vendor?",
+      "explanation": "男士说供应商最近几次交货都延迟了，暗示他们可能需要考虑更换供应商。",
+      "options": [
+        { "key": "A", "text": "The vendor offers the best prices." },
+        { "key": "B", "text": "The vendor has been unreliable with deliveries." },
+        { "key": "C", "text": "The vendor is a new business partner." },
+        { "key": "D", "text": "The vendor is closing down." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "What does the woman suggest the man do before the presentation?",
+      "explanation": "女士建议男士在演示之前先和技术团队确认一下数据，暗示数据可能有误。",
+      "options": [
+        { "key": "A", "text": "Buy new clothes" },
+        { "key": "B", "text": "Verify the data with the technical team" },
+        { "key": "C", "text": "Cancel the presentation" },
+        { "key": "D", "text": "Invite more attendees" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 3,
+      "stem": "What does the man mean when he says, 'That's easier said than done'?",
+      "explanation": "男士说'说起来容易做起来难'，表示他认为女士的建议在实际执行中会遇到困难。",
+      "options": [
+        { "key": "A", "text": "He agrees with the suggestion completely." },
+        { "key": "B", "text": "He thinks the task is simple." },
+        { "key": "C", "text": "He believes the suggestion will be difficult to implement." },
+        { "key": "D", "text": "He wants the woman to do it instead." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "According to the conversation, what is the main reason for the delay in the product launch?",
+      "explanation": "对话中提到了多个可能的原因，但主要原因是质量检测未通过，需要仔细区分主次原因。",
+      "options": [
+        { "key": "A", "text": "The marketing materials are not ready." },
+        { "key": "B", "text": "The product failed quality testing." },
+        { "key": "C", "text": "The packaging design needs revision." },
+        { "key": "D", "text": "The distribution channels are not set up." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 4,
+      "stem": "What can be inferred about the woman's previous experience with the software system?",
+      "explanation": "女士提到了几个具体的技术问题和解决方案，说明她之前使用过类似的系统，有相关经验。",
+      "options": [
+        { "key": "A", "text": "She has never used any software system before." },
+        { "key": "B", "text": "She designed the current system." },
+        { "key": "C", "text": "She has worked with a similar system at a previous job." },
+        { "key": "D", "text": "She only learned about it from a manual." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 4,
+      "stem": "Why does the man bring up the competitor's recent announcement?",
+      "explanation": "男士提到竞争对手的公告是为了说明他们公司需要加快产品开发速度以保持竞争力，而非其他原因。",
+      "options": [
+        { "key": "A", "text": "To suggest they copy the competitor's strategy" },
+        { "key": "B", "text": "To emphasize the need to accelerate their own product development" },
+        { "key": "C", "text": "To recommend forming a partnership with the competitor" },
+        { "key": "D", "text": "To argue that their own product is already superior" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 4,
+      "stem": "What does the woman imply when she says, 'We have been down this road before'?",
+      "explanation": "女士说'我们以前走过这条路'，暗示之前尝试过类似的方案但没有成功，需要理解深层含义。",
+      "options": [
+        { "key": "A", "text": "She enjoys traveling on familiar routes." },
+        { "key": "B", "text": "A similar approach was attempted previously without success." },
+        { "key": "C", "text": "She wants to visit the same client again." },
+        { "key": "D", "text": "The company has relocated before." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-inference",
+      "difficulty": 4,
+      "stem": "Based on the conversation, what will most likely happen at the next board meeting?",
+      "explanation": "根据对话中双方讨论的内容和语气，可以推断下次董事会会议上将讨论是否批准新的投资计划。",
+      "options": [
+        { "key": "A", "text": "The CEO will announce a resignation." },
+        { "key": "B", "text": "A new investment proposal will be reviewed." },
+        { "key": "C", "text": "The company will merge with a competitor." },
+        { "key": "D", "text": "All employees will receive bonuses." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-purpose",
+      "difficulty": 4,
+      "stem": "What is the underlying concern that both speakers share?",
+      "explanation": "虽然两人讨论了不同的话题，但他们的共同担忧是团队人手不足可能影响项目进度，需要综合理解。",
+      "options": [
+        { "key": "A", "text": "The office temperature is too cold." },
+        { "key": "B", "text": "The team is understaffed and it may affect project progress." },
+        { "key": "C", "text": "They disagree on the team leader." },
+        { "key": "D", "text": "The company cafeteria food has declined in quality." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 1,
+      "stem": "What time does the store close today?",
+      "explanation": "广播中明确提到商店今天将在晚上九点关门，是直接的时间信息。",
+      "options": [
+        { "key": "A", "text": "At 7:00 p.m." },
+        { "key": "B", "text": "At 8:00 p.m." },
+        { "key": "C", "text": "At 9:00 p.m." },
+        { "key": "D", "text": "At 10:00 p.m." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 1,
+      "stem": "Where should passengers go to collect their luggage?",
+      "explanation": "机场广播清楚地指示乘客到三号行李转盘领取行李，是直接的地点信息。",
+      "options": [
+        { "key": "A", "text": "Baggage carousel 1" },
+        { "key": "B", "text": "Baggage carousel 2" },
+        { "key": "C", "text": "Baggage carousel 3" },
+        { "key": "D", "text": "Baggage carousel 4" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 1,
+      "stem": "What is the main purpose of this announcement?",
+      "explanation": "公告的主要目的是通知员工下周一开始停车场将进行维修，非常直接明了。",
+      "options": [
+        { "key": "A", "text": "To announce a holiday schedule" },
+        { "key": "B", "text": "To notify employees about parking lot maintenance" },
+        { "key": "C", "text": "To introduce a new manager" },
+        { "key": "D", "text": "To promote a company product" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 1,
+      "stem": "What is being offered at a discount?",
+      "explanation": "广告中明确说所有冬季外套打五折，是直接的促销信息。",
+      "options": [
+        { "key": "A", "text": "Electronics" },
+        { "key": "B", "text": "Winter coats" },
+        { "key": "C", "text": "Office supplies" },
+        { "key": "D", "text": "Furniture" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 1,
+      "stem": "Who should listeners contact for more information?",
+      "explanation": "讲话者明确说如需了解更多信息请联系前台的张女士，是直接的联系人信息。",
+      "options": [
+        { "key": "A", "text": "The IT department" },
+        { "key": "B", "text": "Ms. Zhang at the front desk" },
+        { "key": "C", "text": "The building manager" },
+        { "key": "D", "text": "The security office" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "What change is being announced regarding the cafeteria?",
+      "explanation": "公告说公司餐厅将从下个月开始延长午餐时间，从11点半到下午2点，需要理解变更内容。",
+      "options": [
+        { "key": "A", "text": "It will be permanently closed." },
+        { "key": "B", "text": "Lunch hours will be extended." },
+        { "key": "C", "text": "Menu prices will increase." },
+        { "key": "D", "text": "A new chef has been hired." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "What is the speaker asking employees to do?",
+      "explanation": "讲话者要求所有员工在本周五之前完成年度安全培训的在线课程，需要理解具体要求。",
+      "options": [
+        { "key": "A", "text": "Submit their vacation requests" },
+        { "key": "B", "text": "Complete the annual safety training online course by Friday" },
+        { "key": "C", "text": "Update their emergency contact information" },
+        { "key": "D", "text": "Attend a team-building event" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "According to the announcement, what will happen on March 15th?",
+      "explanation": "公告中提到三月十五日公司将举办年度慈善义卖活动，需要抓住日期和事件的对应。",
+      "options": [
+        { "key": "A", "text": "The office will be closed for renovations." },
+        { "key": "B", "text": "A charity sale will be held." },
+        { "key": "C", "text": "New employees will start their orientation." },
+        { "key": "D", "text": "The annual budget review will take place." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "Who is the intended audience for this talk?",
+      "explanation": "根据讲话中提到的教学计划和课程安排等内容，可以判断听众是学校的教职人员。",
+      "options": [
+        { "key": "A", "text": "Hospital patients" },
+        { "key": "B", "text": "School faculty members" },
+        { "key": "C", "text": "Construction workers" },
+        { "key": "D", "text": "Restaurant customers" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "What does the speaker say about the new parking policy?",
+      "explanation": "讲话者说新停车政策要求所有员工必须在车内放置新的停车许可证，否则会被罚款。",
+      "options": [
+        { "key": "A", "text": "Parking will be free for all employees." },
+        { "key": "B", "text": "Employees must display a new parking permit." },
+        { "key": "C", "text": "The parking lot will be expanded." },
+        { "key": "D", "text": "Visitors will no longer be allowed to park." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "What is the speaker mainly talking about?",
+      "explanation": "讲话者主要在介绍公司新推出的员工健康福利计划，包括健身房会员和健康检查。",
+      "options": [
+        { "key": "A", "text": "A new employee wellness program" },
+        { "key": "B", "text": "Changes to the company dress code" },
+        { "key": "C", "text": "A plan to reduce office space" },
+        { "key": "D", "text": "Updates to the company logo" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "What should listeners do if they have questions about the new system?",
+      "explanation": "讲话者说如果对新系统有疑问，可以参加下周二举办的培训讲座或查看内部网站的常见问题页面。",
+      "options": [
+        { "key": "A", "text": "Send a letter to headquarters" },
+        { "key": "B", "text": "Attend a training session next Tuesday or check the FAQ page" },
+        { "key": "C", "text": "Call the external helpline" },
+        { "key": "D", "text": "Wait for a follow-up email" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "How long will the building renovation take?",
+      "explanation": "公告中提到大楼装修预计持续六周，从四月一日到五月中旬，需要抓住时间跨度信息。",
+      "options": [
+        { "key": "A", "text": "Two weeks" },
+        { "key": "B", "text": "Four weeks" },
+        { "key": "C", "text": "Six weeks" },
+        { "key": "D", "text": "Eight weeks" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "Why is the speaker making this announcement?",
+      "explanation": "讲话者做这个公告是为了通知大家电梯将在周末进行例行维护，届时需要使用楼梯。",
+      "options": [
+        { "key": "A", "text": "To warn about a fire drill" },
+        { "key": "B", "text": "To inform about elevator maintenance over the weekend" },
+        { "key": "C", "text": "To announce a power outage" },
+        { "key": "D", "text": "To introduce a new security system" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "What benefit does the speaker mention for early registration?",
+      "explanation": "讲话者提到提前报名可以享受百分之二十的折扣，需要抓住优惠信息。",
+      "options": [
+        { "key": "A", "text": "A free meal" },
+        { "key": "B", "text": "A twenty percent discount" },
+        { "key": "C", "text": "Priority seating" },
+        { "key": "D", "text": "A complimentary gift bag" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "What is the voicemail message mainly about?",
+      "explanation": "留言主要是通知收件人他们预订的会议室时间有变更，需要确认新的时间。",
+      "options": [
+        { "key": "A", "text": "A change in the reserved meeting room schedule" },
+        { "key": "B", "text": "An invitation to a birthday party" },
+        { "key": "C", "text": "A request to borrow equipment" },
+        { "key": "D", "text": "A complaint about noise levels" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "What does the speaker say about the dress code for the company event?",
+      "explanation": "讲话者提到公司活动的着装要求是商务休闲装，不需要穿正式西装，需要抓住着装细节。",
+      "options": [
+        { "key": "A", "text": "Formal business attire is required." },
+        { "key": "B", "text": "Business casual is recommended." },
+        { "key": "C", "text": "There is no dress code." },
+        { "key": "D", "text": "Uniforms will be provided." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "What does the announcement say about the shuttle bus service?",
+      "explanation": "公告提到班车服务将增加一班早上七点的班次以满足早班员工的需求，需要理解服务变更。",
+      "options": [
+        { "key": "A", "text": "It will be discontinued next month." },
+        { "key": "B", "text": "An additional 7:00 a.m. route will be added." },
+        { "key": "C", "text": "The fare will be doubled." },
+        { "key": "D", "text": "It is only available to managers." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about the company from the announcement?",
+      "explanation": "从公告中提到扩大办公空间、增加招聘名额等内容，可以推断公司正在快速发展。",
+      "options": [
+        { "key": "A", "text": "It is downsizing its operations." },
+        { "key": "B", "text": "It is experiencing rapid growth." },
+        { "key": "C", "text": "It is filing for bankruptcy." },
+        { "key": "D", "text": "It is merging with a foreign company." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 3,
+      "stem": "What does the speaker imply about the previous system?",
+      "explanation": "讲话者反复强调新系统的高效和便捷，暗示之前的系统存在效率低下的问题。",
+      "options": [
+        { "key": "A", "text": "It was the best available option." },
+        { "key": "B", "text": "It was inefficient and needed replacement." },
+        { "key": "C", "text": "It was recently upgraded." },
+        { "key": "D", "text": "It cost less than the new system." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 3,
+      "stem": "Why does the speaker mention the company's environmental goals?",
+      "explanation": "讲话者提到环保目标是为了解释为什么公司要推行新的无纸化办公政策，需要理解因果关系。",
+      "options": [
+        { "key": "A", "text": "To justify the new paperless office policy" },
+        { "key": "B", "text": "To announce a recycling contest" },
+        { "key": "C", "text": "To promote a new product line" },
+        { "key": "D", "text": "To request donations for an environmental charity" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 3,
+      "stem": "What does the speaker suggest about the upcoming industry conference?",
+      "explanation": "讲话者建议尽早预订酒店因为往年都很快就订满了，暗示这个会议规模大且受欢迎。",
+      "options": [
+        { "key": "A", "text": "It is not worth attending this year." },
+        { "key": "B", "text": "It is expected to be well-attended and hotels will fill up quickly." },
+        { "key": "C", "text": "It has been moved to a smaller venue." },
+        { "key": "D", "text": "It will be held virtually this year." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 3,
+      "stem": "What can listeners infer about the speaker's role in the company?",
+      "explanation": "讲话者提到了公司战略规划和人事决策等内容，可以推断他是公司的高层管理人员。",
+      "options": [
+        { "key": "A", "text": "The speaker is an intern." },
+        { "key": "B", "text": "The speaker is a senior executive." },
+        { "key": "C", "text": "The speaker is an external consultant." },
+        { "key": "D", "text": "The speaker is a customer." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 3,
+      "stem": "What is the speaker's main concern about the new regulation?",
+      "explanation": "讲话者主要担心新法规会增加公司的运营成本并影响产品定价策略，需要理解核心问题。",
+      "options": [
+        { "key": "A", "text": "It will improve product quality." },
+        { "key": "B", "text": "It will increase operational costs and affect pricing." },
+        { "key": "C", "text": "It will make hiring easier." },
+        { "key": "D", "text": "It will reduce competition in the market." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 3,
+      "stem": "What does the speaker imply when mentioning last quarter's sales figures?",
+      "explanation": "讲话者提到上季度销售数据时语气严肃，暗示销售业绩未达到预期目标，需要改进。",
+      "options": [
+        { "key": "A", "text": "Sales exceeded all expectations." },
+        { "key": "B", "text": "Sales performance fell short of targets and needs improvement." },
+        { "key": "C", "text": "The sales team will receive bonuses." },
+        { "key": "D", "text": "The company will stop selling that product." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 3,
+      "stem": "Why does the speaker recommend attending the workshop?",
+      "explanation": "讲话者推荐参加研讨会是因为新软件系统下个月就要上线，提前培训可以避免工作中断。",
+      "options": [
+        { "key": "A", "text": "It is mandatory for all employees." },
+        { "key": "B", "text": "It will help employees prepare for the new software launch next month." },
+        { "key": "C", "text": "Refreshments will be provided." },
+        { "key": "D", "text": "It counts toward a professional certification." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 3,
+      "stem": "What is the speaker trying to persuade listeners to do?",
+      "explanation": "讲话者通过列举各种好处来说服员工自愿参加社区服务活动，需要理解说服的意图。",
+      "options": [
+        { "key": "A", "text": "Invest in company stock" },
+        { "key": "B", "text": "Volunteer for a community service project" },
+        { "key": "C", "text": "Apply for a promotion" },
+        { "key": "D", "text": "Switch to a different department" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about the company's expansion plans?",
+      "explanation": "从讲话中提到在亚洲市场招聘和设立办事处的内容，可以推断公司计划向亚洲市场扩展。",
+      "options": [
+        { "key": "A", "text": "The company plans to enter the Asian market." },
+        { "key": "B", "text": "The company is closing its overseas offices." },
+        { "key": "C", "text": "The company will focus only on domestic sales." },
+        { "key": "D", "text": "The company has no plans for growth." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 3,
+      "stem": "What does the speaker suggest will happen if the deadline is not met?",
+      "explanation": "讲话者暗示如果不能按时完成，公司可能会失去这个重要客户的合同，后果严重。",
+      "options": [
+        { "key": "A", "text": "Everyone will get extra vacation days." },
+        { "key": "B", "text": "The company may lose an important client contract." },
+        { "key": "C", "text": "The project will be given to another team." },
+        { "key": "D", "text": "Nothing significant will change." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 4,
+      "stem": "According to the talk, which department will be most affected by the restructuring?",
+      "explanation": "讲话中提到了多个部门的变化，但仔细听可以发现客户服务部的变动最大，包括人员调整和职能重组。",
+      "options": [
+        { "key": "A", "text": "The research and development department" },
+        { "key": "B", "text": "The customer service department" },
+        { "key": "C", "text": "The finance department" },
+        { "key": "D", "text": "The sales department" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 4,
+      "stem": "What does the speaker's tone suggest about the company's future direction?",
+      "explanation": "讲话者虽然提到了挑战，但整体语气积极并强调创新机会，暗示公司将采取更积极的发展策略。",
+      "options": [
+        { "key": "A", "text": "The company will maintain the status quo." },
+        { "key": "B", "text": "The company is preparing for a more aggressive growth strategy." },
+        { "key": "C", "text": "The company will reduce its workforce significantly." },
+        { "key": "D", "text": "The company is considering closing several branches." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 4,
+      "stem": "Why does the speaker reference industry statistics in this talk?",
+      "explanation": "讲话者引用行业统计数据是为了增强他关于公司需要数字化转型论点的说服力，而不是其他目的。",
+      "options": [
+        { "key": "A", "text": "To show that the industry is declining" },
+        { "key": "B", "text": "To strengthen the argument for digital transformation" },
+        { "key": "C", "text": "To criticize competitors' performance" },
+        { "key": "D", "text": "To justify reducing employee benefits" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 4,
+      "stem": "What can be inferred about the relationship between the two projects mentioned in the talk?",
+      "explanation": "讲话者提到两个项目时强调了资源分配的问题，暗示这两个项目在竞争有限的公司资源。",
+      "options": [
+        { "key": "A", "text": "They are completely unrelated." },
+        { "key": "B", "text": "They are competing for the same limited company resources." },
+        { "key": "C", "text": "One project is a subset of the other." },
+        { "key": "D", "text": "Both projects have already been completed." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 4,
+      "stem": "What is the speaker's underlying message to the management team?",
+      "explanation": "讲话者表面上在汇报季度业绩，但深层信息是建议管理层重新评估现有的市场战略，需要综合理解。",
+      "options": [
+        { "key": "A", "text": "The current marketing strategy should be reassessed." },
+        { "key": "B", "text": "The management team should take a vacation." },
+        { "key": "C", "text": "Employee salaries should be increased immediately." },
+        { "key": "D", "text": "The company should stop all ongoing projects." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-inference",
+      "difficulty": 4,
+      "stem": "Based on the speaker's comments, what is the most likely outcome of the proposed merger?",
+      "explanation": "根据讲话者对合并方案优缺点的详细分析以及最后的谨慎措辞，可以推断合并可能会被推迟以做进一步评估。",
+      "options": [
+        { "key": "A", "text": "It will proceed immediately as planned." },
+        { "key": "B", "text": "It will likely be delayed for further evaluation." },
+        { "key": "C", "text": "It has already been completed." },
+        { "key": "D", "text": "It will be replaced by an acquisition." }
+      ],
+      "correctKey": "B"
+    }
+  ]
+}

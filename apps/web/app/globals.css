@@ -1,0 +1,4 @@
+/* Import design tokens */
+@import "../styles/tokens.css";
+
+/* Legacy styles removed - now using CSS Modules and design tokens */

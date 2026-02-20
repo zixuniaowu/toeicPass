@@ -1,0 +1,213 @@
+import {
+  ArrayMinSize,
+  IsArray,
+  IsDateString,
+  IsEmail,
+  IsIn,
+  IsInt,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+  MinLength,
+  ValidateNested,
+} from "class-validator";
+import { Type } from "class-transformer";
+
+export class RegisterDto {
+  @IsEmail()
+  email!: string;
+
+  @IsString()
+  @MinLength(6)
+  password!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  displayName!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  tenantCode!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  tenantName!: string;
+}
+
+export class LoginDto {
+  @IsEmail()
+  email!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  password!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  tenantCode!: string;
+}
+
+export class GoalDto {
+  @IsInt()
+  @Min(10)
+  @Max(990)
+  targetScore!: number;
+
+  @IsDateString()
+  targetExamDate!: string;
+}
+
+export class AnswerDto {
+  @IsString()
+  questionId!: string;
+
+  @IsIn(["A", "B", "C", "D"])
+  selectedKey!: "A" | "B" | "C" | "D";
+
+  @IsOptional()
+  @IsInt()
+  @Min(0)
+  durationMs?: number;
+}
+
+export class SubmitAttemptDto {
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => AnswerDto)
+  answers!: AnswerDto[];
+}
+
+export class MistakeNoteDto {
+  @IsString()
+  @IsNotEmpty()
+  note!: string;
+
+  @IsOptional()
+  @IsString()
+  rootCause?: string;
+}
+
+export class GradeCardDto {
+  @IsInt()
+  @Min(0)
+  @Max(5)
+  grade!: number;
+}
+
+export class CreateQuestionDto {
+  @IsInt()
+  @Min(1)
+  @Max(7)
+  partNo!: number;
+
+  @IsString()
+  skillTag!: string;
+
+  @IsInt()
+  @Min(1)
+  @Max(5)
+  difficulty!: number;
+
+  @IsString()
+  stem!: string;
+
+  @IsString()
+  explanation!: string;
+
+  @IsArray()
+  @ArrayMinSize(4)
+  @ValidateNested({ each: true })
+  @Type(() => QuestionOptionDto)
+  options!: QuestionOptionDto[];
+}
+
+export class QuestionOptionDto {
+  @IsIn(["A", "B", "C", "D"])
+  key!: "A" | "B" | "C" | "D";
+
+  @IsString()
+  text!: string;
+
+  @IsInt()
+  @Min(0)
+  @Max(1)
+  isCorrect!: number;
+}
+
+export class CreateIpCampaignDto {
+  @IsString()
+  name!: string;
+
+  @IsIn(["official", "simulation"])
+  mode!: "official" | "simulation";
+
+  @IsDateString()
+  plannedDate!: string;
+}
+
+export class ImportCandidatesDto {
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => CandidateRowDto)
+  candidates!: CandidateRowDto[];
+}
+
+export class CandidateRowDto {
+  @IsOptional()
+  @IsString()
+  employeeNo?: string;
+
+  @IsString()
+  fullName!: string;
+
+  @IsOptional()
+  @IsEmail()
+  email?: string;
+}
+
+export class CreateIpSessionDto {
+  @IsString()
+  sessionCode!: string;
+
+  @IsDateString()
+  startsAt!: string;
+
+  @IsDateString()
+  endsAt!: string;
+
+  @IsInt()
+  @Min(1)
+  seatCapacity!: number;
+}
+
+export class CheckInDto {
+  @IsString()
+  candidateId!: string;
+}
+
+export class ImportIpResultsDto {
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => IpResultRowDto)
+  rows!: IpResultRowDto[];
+}
+
+export class IpResultRowDto {
+  @IsString()
+  candidateId!: string;
+
+  @IsInt()
+  @Min(5)
+  @Max(495)
+  scoreL!: number;
+
+  @IsInt()
+  @Min(5)
+  @Max(495)
+  scoreR!: number;
+}

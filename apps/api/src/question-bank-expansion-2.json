@@ -1,0 +1,4464 @@
+{
+  "questions": [
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Where should I leave the invoice?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the reception desk."
+        },
+        {
+          "key": "B",
+          "text": "The invoice was updated yesterday."
+        },
+        {
+          "key": "C",
+          "text": "At the reception desk."
+        },
+        {
+          "key": "D",
+          "text": "Yes, the finance team is busy this week."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Where should I leave the vendor list?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, the operations team is busy this week."
+        },
+        {
+          "key": "B",
+          "text": "At the loading dock."
+        },
+        {
+          "key": "C",
+          "text": "The vendor list was updated yesterday."
+        },
+        {
+          "key": "D",
+          "text": "At the loading dock."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Where should I leave the weekly report?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the north warehouse."
+        },
+        {
+          "key": "B",
+          "text": "Yes, the marketing team is busy this week."
+        },
+        {
+          "key": "C",
+          "text": "At the north warehouse."
+        },
+        {
+          "key": "D",
+          "text": "The weekly report was updated yesterday."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Where should I leave the draft contract?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The draft contract was updated yesterday."
+        },
+        {
+          "key": "B",
+          "text": "At the reception desk."
+        },
+        {
+          "key": "C",
+          "text": "Yes, the human resources team is busy this week."
+        },
+        {
+          "key": "D",
+          "text": "At the reception desk."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "When will the revised file be shared?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "This afternoon."
+        },
+        {
+          "key": "B",
+          "text": "The weekly report was updated yesterday."
+        },
+        {
+          "key": "C",
+          "text": "At the second-floor office."
+        },
+        {
+          "key": "D",
+          "text": "Yes, the operations team is busy this week."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "When will the revised file be shared?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, the marketing team is busy this week."
+        },
+        {
+          "key": "B",
+          "text": "After lunch."
+        },
+        {
+          "key": "C",
+          "text": "The draft contract was updated yesterday."
+        },
+        {
+          "key": "D",
+          "text": "At the training room."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "When will the revised file be shared?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the client portal."
+        },
+        {
+          "key": "B",
+          "text": "Yes, the human resources team is busy this week."
+        },
+        {
+          "key": "C",
+          "text": "This afternoon."
+        },
+        {
+          "key": "D",
+          "text": "The training schedule was updated yesterday."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "When will the revised file be shared?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The shipment tracker was updated yesterday."
+        },
+        {
+          "key": "B",
+          "text": "At the second-floor office."
+        },
+        {
+          "key": "C",
+          "text": "Yes, the procurement team is busy this week."
+        },
+        {
+          "key": "D",
+          "text": "After lunch."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Who can approve this request?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The marketing manager can approve it."
+        },
+        {
+          "key": "B",
+          "text": "The training schedule was updated yesterday."
+        },
+        {
+          "key": "C",
+          "text": "At the loading dock."
+        },
+        {
+          "key": "D",
+          "text": "Yes, the marketing team is busy this week."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Who can approve this request?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, the human resources team is busy this week."
+        },
+        {
+          "key": "B",
+          "text": "The human resources manager can approve it."
+        },
+        {
+          "key": "C",
+          "text": "The shipment tracker was updated yesterday."
+        },
+        {
+          "key": "D",
+          "text": "At the north warehouse."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Who can approve this request?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the reception desk."
+        },
+        {
+          "key": "B",
+          "text": "Yes, the procurement team is busy this week."
+        },
+        {
+          "key": "C",
+          "text": "The procurement manager can approve it."
+        },
+        {
+          "key": "D",
+          "text": "The budget summary was updated yesterday."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Who can approve this request?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The maintenance checklist was updated yesterday."
+        },
+        {
+          "key": "B",
+          "text": "At the loading dock."
+        },
+        {
+          "key": "C",
+          "text": "Yes, the IT team is busy this week."
+        },
+        {
+          "key": "D",
+          "text": "The IT manager can approve it."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Why was the order delayed?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the supplier requested an extra inspection."
+        },
+        {
+          "key": "B",
+          "text": "The budget summary was updated yesterday."
+        },
+        {
+          "key": "C",
+          "text": "At the training room."
+        },
+        {
+          "key": "D",
+          "text": "Yes, the human resources team is busy this week."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Why was the order delayed?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, the procurement team is busy this week."
+        },
+        {
+          "key": "B",
+          "text": "Because the supplier requested an extra inspection."
+        },
+        {
+          "key": "C",
+          "text": "The maintenance checklist was updated yesterday."
+        },
+        {
+          "key": "D",
+          "text": "At the client portal."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Why was the order delayed?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the second-floor office."
+        },
+        {
+          "key": "B",
+          "text": "Yes, the IT team is busy this week."
+        },
+        {
+          "key": "C",
+          "text": "Because the supplier requested an extra inspection."
+        },
+        {
+          "key": "D",
+          "text": "The invoice was updated yesterday."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Why was the order delayed?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The vendor list was updated yesterday."
+        },
+        {
+          "key": "B",
+          "text": "At the training room."
+        },
+        {
+          "key": "C",
+          "text": "Yes, the finance team is busy this week."
+        },
+        {
+          "key": "D",
+          "text": "Because the supplier requested an extra inspection."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Could you send me the latest version?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sure, I will send the invoice after lunch."
+        },
+        {
+          "key": "B",
+          "text": "The invoice was updated yesterday."
+        },
+        {
+          "key": "C",
+          "text": "At the north warehouse."
+        },
+        {
+          "key": "D",
+          "text": "Yes, the procurement team is busy this week."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Could you send me the latest version?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, the IT team is busy this week."
+        },
+        {
+          "key": "B",
+          "text": "Sure, I will send the vendor list this afternoon."
+        },
+        {
+          "key": "C",
+          "text": "The vendor list was updated yesterday."
+        },
+        {
+          "key": "D",
+          "text": "At the reception desk."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Could you send me the latest version?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the loading dock."
+        },
+        {
+          "key": "B",
+          "text": "Yes, the finance team is busy this week."
+        },
+        {
+          "key": "C",
+          "text": "Sure, I will send the weekly report after lunch."
+        },
+        {
+          "key": "D",
+          "text": "The weekly report was updated yesterday."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Could you send me the latest version?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The draft contract was updated yesterday."
+        },
+        {
+          "key": "B",
+          "text": "At the north warehouse."
+        },
+        {
+          "key": "C",
+          "text": "Yes, the operations team is busy this week."
+        },
+        {
+          "key": "D",
+          "text": "Sure, I will send the draft contract this afternoon."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Do we need to confirm the booking now?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, we should confirm it tomorrow morning."
+        },
+        {
+          "key": "B",
+          "text": "The weekly report was updated yesterday."
+        },
+        {
+          "key": "C",
+          "text": "At the client portal."
+        },
+        {
+          "key": "D",
+          "text": "Yes, the IT team is busy this week."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Do we need to confirm the booking now?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, the finance team is busy this week."
+        },
+        {
+          "key": "B",
+          "text": "Yes, we should confirm it by Friday."
+        },
+        {
+          "key": "C",
+          "text": "The draft contract was updated yesterday."
+        },
+        {
+          "key": "D",
+          "text": "At the second-floor office."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Do we need to confirm the booking now?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the training room."
+        },
+        {
+          "key": "B",
+          "text": "Yes, the operations team is busy this week."
+        },
+        {
+          "key": "C",
+          "text": "Yes, we should confirm it tomorrow morning."
+        },
+        {
+          "key": "D",
+          "text": "The training schedule was updated yesterday."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Do we need to confirm the booking now?",
+      "explanation": "Match the response to the question type and workplace context.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The shipment tracker was updated yesterday."
+        },
+        {
+          "key": "B",
+          "text": "At the client portal."
+        },
+        {
+          "key": "C",
+          "text": "Yes, the marketing team is busy this week."
+        },
+        {
+          "key": "D",
+          "text": "Yes, we should confirm it by Friday."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What are the speakers mainly discussing regarding the project launch?",
+      "explanation": "Identify the main topic and concrete detail from the conversation.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are reviewing the action plan for the project launch."
+        },
+        {
+          "key": "B",
+          "text": "They are canceling the project launch entirely."
+        },
+        {
+          "key": "C",
+          "text": "They are requesting a salary review."
+        },
+        {
+          "key": "D",
+          "text": "They are planning a holiday event."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What problem does the man mention about the project launch?",
+      "explanation": "Look for the obstacle the speaker explicitly describes.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The budget has doubled unexpectedly."
+        },
+        {
+          "key": "B",
+          "text": "A key document has not been finalized yet."
+        },
+        {
+          "key": "C",
+          "text": "The office building is closed permanently."
+        },
+        {
+          "key": "D",
+          "text": "All stakeholders already approved the plan."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What will the woman most likely do next?",
+      "explanation": "Infer the next action from commitment language in the dialogue.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "She will request a vendor refund immediately."
+        },
+        {
+          "key": "B",
+          "text": "She will resign from the team."
+        },
+        {
+          "key": "C",
+          "text": "She will send a revised checklist to the team."
+        },
+        {
+          "key": "D",
+          "text": "She will postpone the project for a quarter."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What are the speakers mainly discussing regarding the vendor onboarding?",
+      "explanation": "Identify the main topic and concrete detail from the conversation.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are canceling the vendor onboarding entirely."
+        },
+        {
+          "key": "B",
+          "text": "They are requesting a salary review."
+        },
+        {
+          "key": "C",
+          "text": "They are planning a holiday event."
+        },
+        {
+          "key": "D",
+          "text": "They are reviewing the action plan for the vendor onboarding."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What problem does the man mention about the vendor onboarding?",
+      "explanation": "Look for the obstacle the speaker explicitly describes.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "A key document has not been finalized yet."
+        },
+        {
+          "key": "B",
+          "text": "The office building is closed permanently."
+        },
+        {
+          "key": "C",
+          "text": "All stakeholders already approved the plan."
+        },
+        {
+          "key": "D",
+          "text": "The budget has doubled unexpectedly."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What will the woman most likely do next?",
+      "explanation": "Infer the next action from commitment language in the dialogue.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "She will resign from the team."
+        },
+        {
+          "key": "B",
+          "text": "She will send a revised checklist to the team."
+        },
+        {
+          "key": "C",
+          "text": "She will postpone the project for a quarter."
+        },
+        {
+          "key": "D",
+          "text": "She will request a vendor refund immediately."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What are the speakers mainly discussing regarding the office relocation?",
+      "explanation": "Identify the main topic and concrete detail from the conversation.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are requesting a salary review."
+        },
+        {
+          "key": "B",
+          "text": "They are planning a holiday event."
+        },
+        {
+          "key": "C",
+          "text": "They are reviewing the action plan for the office relocation."
+        },
+        {
+          "key": "D",
+          "text": "They are canceling the office relocation entirely."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What problem does the man mention about the office relocation?",
+      "explanation": "Look for the obstacle the speaker explicitly describes.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office building is closed permanently."
+        },
+        {
+          "key": "B",
+          "text": "All stakeholders already approved the plan."
+        },
+        {
+          "key": "C",
+          "text": "The budget has doubled unexpectedly."
+        },
+        {
+          "key": "D",
+          "text": "A key document has not been finalized yet."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What will the woman most likely do next?",
+      "explanation": "Infer the next action from commitment language in the dialogue.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "She will send a revised checklist to the team."
+        },
+        {
+          "key": "B",
+          "text": "She will postpone the project for a quarter."
+        },
+        {
+          "key": "C",
+          "text": "She will request a vendor refund immediately."
+        },
+        {
+          "key": "D",
+          "text": "She will resign from the team."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What are the speakers mainly discussing regarding the client proposal?",
+      "explanation": "Identify the main topic and concrete detail from the conversation.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are planning a holiday event."
+        },
+        {
+          "key": "B",
+          "text": "They are reviewing the action plan for the client proposal."
+        },
+        {
+          "key": "C",
+          "text": "They are canceling the client proposal entirely."
+        },
+        {
+          "key": "D",
+          "text": "They are requesting a salary review."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What problem does the man mention about the client proposal?",
+      "explanation": "Look for the obstacle the speaker explicitly describes.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "All stakeholders already approved the plan."
+        },
+        {
+          "key": "B",
+          "text": "The budget has doubled unexpectedly."
+        },
+        {
+          "key": "C",
+          "text": "A key document has not been finalized yet."
+        },
+        {
+          "key": "D",
+          "text": "The office building is closed permanently."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What will the woman most likely do next?",
+      "explanation": "Infer the next action from commitment language in the dialogue.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "She will postpone the project for a quarter."
+        },
+        {
+          "key": "B",
+          "text": "She will request a vendor refund immediately."
+        },
+        {
+          "key": "C",
+          "text": "She will resign from the team."
+        },
+        {
+          "key": "D",
+          "text": "She will send a revised checklist to the team."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What are the speakers mainly discussing regarding the system upgrade?",
+      "explanation": "Identify the main topic and concrete detail from the conversation.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are reviewing the action plan for the system upgrade."
+        },
+        {
+          "key": "B",
+          "text": "They are canceling the system upgrade entirely."
+        },
+        {
+          "key": "C",
+          "text": "They are requesting a salary review."
+        },
+        {
+          "key": "D",
+          "text": "They are planning a holiday event."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What problem does the man mention about the system upgrade?",
+      "explanation": "Look for the obstacle the speaker explicitly describes.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The budget has doubled unexpectedly."
+        },
+        {
+          "key": "B",
+          "text": "A key document has not been finalized yet."
+        },
+        {
+          "key": "C",
+          "text": "The office building is closed permanently."
+        },
+        {
+          "key": "D",
+          "text": "All stakeholders already approved the plan."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What will the woman most likely do next?",
+      "explanation": "Infer the next action from commitment language in the dialogue.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "She will request a vendor refund immediately."
+        },
+        {
+          "key": "B",
+          "text": "She will resign from the team."
+        },
+        {
+          "key": "C",
+          "text": "She will send a revised checklist to the team."
+        },
+        {
+          "key": "D",
+          "text": "She will postpone the project for a quarter."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What are the speakers mainly discussing regarding the inventory shortage?",
+      "explanation": "Identify the main topic and concrete detail from the conversation.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are canceling the inventory shortage entirely."
+        },
+        {
+          "key": "B",
+          "text": "They are requesting a salary review."
+        },
+        {
+          "key": "C",
+          "text": "They are planning a holiday event."
+        },
+        {
+          "key": "D",
+          "text": "They are reviewing the action plan for the inventory shortage."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What problem does the man mention about the inventory shortage?",
+      "explanation": "Look for the obstacle the speaker explicitly describes.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "A key document has not been finalized yet."
+        },
+        {
+          "key": "B",
+          "text": "The office building is closed permanently."
+        },
+        {
+          "key": "C",
+          "text": "All stakeholders already approved the plan."
+        },
+        {
+          "key": "D",
+          "text": "The budget has doubled unexpectedly."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What will the woman most likely do next?",
+      "explanation": "Infer the next action from commitment language in the dialogue.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "She will resign from the team."
+        },
+        {
+          "key": "B",
+          "text": "She will send a revised checklist to the team."
+        },
+        {
+          "key": "C",
+          "text": "She will postpone the project for a quarter."
+        },
+        {
+          "key": "D",
+          "text": "She will request a vendor refund immediately."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "What is the main purpose of the announcement about security policy?",
+      "explanation": "Identify the speaker's primary objective in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "To recruit new department managers."
+        },
+        {
+          "key": "B",
+          "text": "To compare competing vendors."
+        },
+        {
+          "key": "C",
+          "text": "To explain updated procedures that employees must follow."
+        },
+        {
+          "key": "D",
+          "text": "To announce annual bonus payments."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "According to the speaker, what should listeners do by Friday?",
+      "explanation": "Focus on deadline and required action in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Return all office keys to reception."
+        },
+        {
+          "key": "B",
+          "text": "Submit travel receipts for reimbursement."
+        },
+        {
+          "key": "C",
+          "text": "Attend an external workshop downtown."
+        },
+        {
+          "key": "D",
+          "text": "Complete the required online form before end of day."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "Who should employees contact if they need help with this process?",
+      "explanation": "Identify the support contact mentioned by the speaker.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The internal support desk."
+        },
+        {
+          "key": "B",
+          "text": "The cafeteria supervisor."
+        },
+        {
+          "key": "C",
+          "text": "The external shipping vendor."
+        },
+        {
+          "key": "D",
+          "text": "The security guard at the entrance."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "What is the main purpose of the announcement about staff training?",
+      "explanation": "Identify the speaker's primary objective in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "To compare competing vendors."
+        },
+        {
+          "key": "B",
+          "text": "To explain updated procedures that employees must follow."
+        },
+        {
+          "key": "C",
+          "text": "To announce annual bonus payments."
+        },
+        {
+          "key": "D",
+          "text": "To recruit new department managers."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "According to the speaker, what should listeners do by Friday?",
+      "explanation": "Focus on deadline and required action in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Submit travel receipts for reimbursement."
+        },
+        {
+          "key": "B",
+          "text": "Attend an external workshop downtown."
+        },
+        {
+          "key": "C",
+          "text": "Complete the required online form before end of day."
+        },
+        {
+          "key": "D",
+          "text": "Return all office keys to reception."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "Who should employees contact if they need help with this process?",
+      "explanation": "Identify the support contact mentioned by the speaker.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The cafeteria supervisor."
+        },
+        {
+          "key": "B",
+          "text": "The external shipping vendor."
+        },
+        {
+          "key": "C",
+          "text": "The security guard at the entrance."
+        },
+        {
+          "key": "D",
+          "text": "The internal support desk."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "What is the main purpose of the announcement about maintenance schedule?",
+      "explanation": "Identify the speaker's primary objective in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "To explain updated procedures that employees must follow."
+        },
+        {
+          "key": "B",
+          "text": "To announce annual bonus payments."
+        },
+        {
+          "key": "C",
+          "text": "To recruit new department managers."
+        },
+        {
+          "key": "D",
+          "text": "To compare competing vendors."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "According to the speaker, what should listeners do by Friday?",
+      "explanation": "Focus on deadline and required action in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Attend an external workshop downtown."
+        },
+        {
+          "key": "B",
+          "text": "Complete the required online form before end of day."
+        },
+        {
+          "key": "C",
+          "text": "Return all office keys to reception."
+        },
+        {
+          "key": "D",
+          "text": "Submit travel receipts for reimbursement."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "Who should employees contact if they need help with this process?",
+      "explanation": "Identify the support contact mentioned by the speaker.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The external shipping vendor."
+        },
+        {
+          "key": "B",
+          "text": "The security guard at the entrance."
+        },
+        {
+          "key": "C",
+          "text": "The internal support desk."
+        },
+        {
+          "key": "D",
+          "text": "The cafeteria supervisor."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "What is the main purpose of the announcement about customer support workflow?",
+      "explanation": "Identify the speaker's primary objective in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "To announce annual bonus payments."
+        },
+        {
+          "key": "B",
+          "text": "To recruit new department managers."
+        },
+        {
+          "key": "C",
+          "text": "To compare competing vendors."
+        },
+        {
+          "key": "D",
+          "text": "To explain updated procedures that employees must follow."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "According to the speaker, what should listeners do by Friday?",
+      "explanation": "Focus on deadline and required action in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Complete the required online form before end of day."
+        },
+        {
+          "key": "B",
+          "text": "Return all office keys to reception."
+        },
+        {
+          "key": "C",
+          "text": "Submit travel receipts for reimbursement."
+        },
+        {
+          "key": "D",
+          "text": "Attend an external workshop downtown."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "Who should employees contact if they need help with this process?",
+      "explanation": "Identify the support contact mentioned by the speaker.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The security guard at the entrance."
+        },
+        {
+          "key": "B",
+          "text": "The internal support desk."
+        },
+        {
+          "key": "C",
+          "text": "The cafeteria supervisor."
+        },
+        {
+          "key": "D",
+          "text": "The external shipping vendor."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "What is the main purpose of the announcement about warehouse safety?",
+      "explanation": "Identify the speaker's primary objective in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "To recruit new department managers."
+        },
+        {
+          "key": "B",
+          "text": "To compare competing vendors."
+        },
+        {
+          "key": "C",
+          "text": "To explain updated procedures that employees must follow."
+        },
+        {
+          "key": "D",
+          "text": "To announce annual bonus payments."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "According to the speaker, what should listeners do by Friday?",
+      "explanation": "Focus on deadline and required action in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Return all office keys to reception."
+        },
+        {
+          "key": "B",
+          "text": "Submit travel receipts for reimbursement."
+        },
+        {
+          "key": "C",
+          "text": "Attend an external workshop downtown."
+        },
+        {
+          "key": "D",
+          "text": "Complete the required online form before end of day."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "Who should employees contact if they need help with this process?",
+      "explanation": "Identify the support contact mentioned by the speaker.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The internal support desk."
+        },
+        {
+          "key": "B",
+          "text": "The cafeteria supervisor."
+        },
+        {
+          "key": "C",
+          "text": "The external shipping vendor."
+        },
+        {
+          "key": "D",
+          "text": "The security guard at the entrance."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "What is the main purpose of the announcement about visitor registration?",
+      "explanation": "Identify the speaker's primary objective in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "To compare competing vendors."
+        },
+        {
+          "key": "B",
+          "text": "To explain updated procedures that employees must follow."
+        },
+        {
+          "key": "C",
+          "text": "To announce annual bonus payments."
+        },
+        {
+          "key": "D",
+          "text": "To recruit new department managers."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "According to the speaker, what should listeners do by Friday?",
+      "explanation": "Focus on deadline and required action in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Submit travel receipts for reimbursement."
+        },
+        {
+          "key": "B",
+          "text": "Attend an external workshop downtown."
+        },
+        {
+          "key": "C",
+          "text": "Complete the required online form before end of day."
+        },
+        {
+          "key": "D",
+          "text": "Return all office keys to reception."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "Who should employees contact if they need help with this process?",
+      "explanation": "Identify the support contact mentioned by the speaker.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The cafeteria supervisor."
+        },
+        {
+          "key": "B",
+          "text": "The external shipping vendor."
+        },
+        {
+          "key": "C",
+          "text": "The security guard at the entrance."
+        },
+        {
+          "key": "D",
+          "text": "The internal support desk."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "The report must be submitted ___ Friday.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "by"
+        },
+        {
+          "key": "B",
+          "text": "during"
+        },
+        {
+          "key": "C",
+          "text": "across"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Our team responded quickly and solved the issue ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "efficiencies"
+        },
+        {
+          "key": "B",
+          "text": "efficiently"
+        },
+        {
+          "key": "C",
+          "text": "efficient"
+        },
+        {
+          "key": "D",
+          "text": "efficiency"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "Please notify the client as soon as the package ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrival"
+        },
+        {
+          "key": "B",
+          "text": "arrivedly"
+        },
+        {
+          "key": "C",
+          "text": "arrives"
+        },
+        {
+          "key": "D",
+          "text": "arrive"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The manager asked each employee to update ___ profile.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "there"
+        },
+        {
+          "key": "B",
+          "text": "them"
+        },
+        {
+          "key": "C",
+          "text": "they"
+        },
+        {
+          "key": "D",
+          "text": "their"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "Because demand increased, the company hired ___ staff.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "additional"
+        },
+        {
+          "key": "B",
+          "text": "addition"
+        },
+        {
+          "key": "C",
+          "text": "additionally"
+        },
+        {
+          "key": "D",
+          "text": "add"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "The proposal was clear; ___, it needed cost details.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "instead"
+        },
+        {
+          "key": "B",
+          "text": "however"
+        },
+        {
+          "key": "C",
+          "text": "therefore"
+        },
+        {
+          "key": "D",
+          "text": "moreover"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "All visitors must wear badges ___ they are in the building.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "because"
+        },
+        {
+          "key": "B",
+          "text": "although"
+        },
+        {
+          "key": "C",
+          "text": "while"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "The supplier confirmed that the replacement parts are ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "availability"
+        },
+        {
+          "key": "B",
+          "text": "avail"
+        },
+        {
+          "key": "C",
+          "text": "availably"
+        },
+        {
+          "key": "D",
+          "text": "available"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "The report must be submitted ___ Friday.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "by"
+        },
+        {
+          "key": "B",
+          "text": "during"
+        },
+        {
+          "key": "C",
+          "text": "across"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "Our team responded quickly and solved the issue ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "efficiencies"
+        },
+        {
+          "key": "B",
+          "text": "efficiently"
+        },
+        {
+          "key": "C",
+          "text": "efficient"
+        },
+        {
+          "key": "D",
+          "text": "efficiency"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "Please notify the client as soon as the package ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrival"
+        },
+        {
+          "key": "B",
+          "text": "arrivedly"
+        },
+        {
+          "key": "C",
+          "text": "arrives"
+        },
+        {
+          "key": "D",
+          "text": "arrive"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "The manager asked each employee to update ___ profile.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "there"
+        },
+        {
+          "key": "B",
+          "text": "them"
+        },
+        {
+          "key": "C",
+          "text": "they"
+        },
+        {
+          "key": "D",
+          "text": "their"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "Because demand increased, the company hired ___ staff.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "additional"
+        },
+        {
+          "key": "B",
+          "text": "addition"
+        },
+        {
+          "key": "C",
+          "text": "additionally"
+        },
+        {
+          "key": "D",
+          "text": "add"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "The proposal was clear; ___, it needed cost details.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "instead"
+        },
+        {
+          "key": "B",
+          "text": "however"
+        },
+        {
+          "key": "C",
+          "text": "therefore"
+        },
+        {
+          "key": "D",
+          "text": "moreover"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "All visitors must wear badges ___ they are in the building.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "because"
+        },
+        {
+          "key": "B",
+          "text": "although"
+        },
+        {
+          "key": "C",
+          "text": "while"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The supplier confirmed that the replacement parts are ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "availability"
+        },
+        {
+          "key": "B",
+          "text": "avail"
+        },
+        {
+          "key": "C",
+          "text": "availably"
+        },
+        {
+          "key": "D",
+          "text": "available"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "The report must be submitted ___ Friday.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "by"
+        },
+        {
+          "key": "B",
+          "text": "during"
+        },
+        {
+          "key": "C",
+          "text": "across"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "Our team responded quickly and solved the issue ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "efficiencies"
+        },
+        {
+          "key": "B",
+          "text": "efficiently"
+        },
+        {
+          "key": "C",
+          "text": "efficient"
+        },
+        {
+          "key": "D",
+          "text": "efficiency"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "Please notify the client as soon as the package ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrival"
+        },
+        {
+          "key": "B",
+          "text": "arrivedly"
+        },
+        {
+          "key": "C",
+          "text": "arrives"
+        },
+        {
+          "key": "D",
+          "text": "arrive"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "The manager asked each employee to update ___ profile.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "there"
+        },
+        {
+          "key": "B",
+          "text": "them"
+        },
+        {
+          "key": "C",
+          "text": "they"
+        },
+        {
+          "key": "D",
+          "text": "their"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "Because demand increased, the company hired ___ staff.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "additional"
+        },
+        {
+          "key": "B",
+          "text": "addition"
+        },
+        {
+          "key": "C",
+          "text": "additionally"
+        },
+        {
+          "key": "D",
+          "text": "add"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The proposal was clear; ___, it needed cost details.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "instead"
+        },
+        {
+          "key": "B",
+          "text": "however"
+        },
+        {
+          "key": "C",
+          "text": "therefore"
+        },
+        {
+          "key": "D",
+          "text": "moreover"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "All visitors must wear badges ___ they are in the building.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "because"
+        },
+        {
+          "key": "B",
+          "text": "although"
+        },
+        {
+          "key": "C",
+          "text": "while"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "The supplier confirmed that the replacement parts are ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "availability"
+        },
+        {
+          "key": "B",
+          "text": "avail"
+        },
+        {
+          "key": "C",
+          "text": "availably"
+        },
+        {
+          "key": "D",
+          "text": "available"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "The report must be submitted ___ Friday.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "by"
+        },
+        {
+          "key": "B",
+          "text": "during"
+        },
+        {
+          "key": "C",
+          "text": "across"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Our team responded quickly and solved the issue ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "efficiencies"
+        },
+        {
+          "key": "B",
+          "text": "efficiently"
+        },
+        {
+          "key": "C",
+          "text": "efficient"
+        },
+        {
+          "key": "D",
+          "text": "efficiency"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "Please notify the client as soon as the package ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrival"
+        },
+        {
+          "key": "B",
+          "text": "arrivedly"
+        },
+        {
+          "key": "C",
+          "text": "arrives"
+        },
+        {
+          "key": "D",
+          "text": "arrive"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The manager asked each employee to update ___ profile.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "there"
+        },
+        {
+          "key": "B",
+          "text": "them"
+        },
+        {
+          "key": "C",
+          "text": "they"
+        },
+        {
+          "key": "D",
+          "text": "their"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "Because demand increased, the company hired ___ staff.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "additional"
+        },
+        {
+          "key": "B",
+          "text": "addition"
+        },
+        {
+          "key": "C",
+          "text": "additionally"
+        },
+        {
+          "key": "D",
+          "text": "add"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "The proposal was clear; ___, it needed cost details.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "instead"
+        },
+        {
+          "key": "B",
+          "text": "however"
+        },
+        {
+          "key": "C",
+          "text": "therefore"
+        },
+        {
+          "key": "D",
+          "text": "moreover"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "All visitors must wear badges ___ they are in the building.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "because"
+        },
+        {
+          "key": "B",
+          "text": "although"
+        },
+        {
+          "key": "C",
+          "text": "while"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "The supplier confirmed that the replacement parts are ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "availability"
+        },
+        {
+          "key": "B",
+          "text": "avail"
+        },
+        {
+          "key": "C",
+          "text": "availably"
+        },
+        {
+          "key": "D",
+          "text": "available"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "The report must be submitted ___ Friday.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "by"
+        },
+        {
+          "key": "B",
+          "text": "during"
+        },
+        {
+          "key": "C",
+          "text": "across"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "Our team responded quickly and solved the issue ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "efficiencies"
+        },
+        {
+          "key": "B",
+          "text": "efficiently"
+        },
+        {
+          "key": "C",
+          "text": "efficient"
+        },
+        {
+          "key": "D",
+          "text": "efficiency"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "Please notify the client as soon as the package ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrival"
+        },
+        {
+          "key": "B",
+          "text": "arrivedly"
+        },
+        {
+          "key": "C",
+          "text": "arrives"
+        },
+        {
+          "key": "D",
+          "text": "arrive"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "The manager asked each employee to update ___ profile.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "there"
+        },
+        {
+          "key": "B",
+          "text": "them"
+        },
+        {
+          "key": "C",
+          "text": "they"
+        },
+        {
+          "key": "D",
+          "text": "their"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "Because demand increased, the company hired ___ staff.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "additional"
+        },
+        {
+          "key": "B",
+          "text": "addition"
+        },
+        {
+          "key": "C",
+          "text": "additionally"
+        },
+        {
+          "key": "D",
+          "text": "add"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "The proposal was clear; ___, it needed cost details.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "instead"
+        },
+        {
+          "key": "B",
+          "text": "however"
+        },
+        {
+          "key": "C",
+          "text": "therefore"
+        },
+        {
+          "key": "D",
+          "text": "moreover"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "All visitors must wear badges ___ they are in the building.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "because"
+        },
+        {
+          "key": "B",
+          "text": "although"
+        },
+        {
+          "key": "C",
+          "text": "while"
+        },
+        {
+          "key": "D",
+          "text": "unless"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The supplier confirmed that the replacement parts are ___.",
+      "explanation": "Choose the word that fits grammar and business usage.",
+      "options": [
+        {
+          "key": "A",
+          "text": "availability"
+        },
+        {
+          "key": "B",
+          "text": "avail"
+        },
+        {
+          "key": "C",
+          "text": "availably"
+        },
+        {
+          "key": "D",
+          "text": "available"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: The procurement portal will be offline tonight for maintenance. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please complete urgent requests before 6 p.m."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "C",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "D",
+          "text": "The annual survey includes twelve questions."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: Visitor parking is limited this week due to construction. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "B",
+          "text": "Guests should use public transit when possible."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "D",
+          "text": "Most employees prefer remote meetings."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: Team leaders must submit quarterly review notes. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "B",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "C",
+          "text": "Signed summaries are due by Friday."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby was repainted last month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: The customer database will be upgraded this evening. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "B",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "C",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "D",
+          "text": "Avoid editing records after 8 p.m."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: The warehouse will run inventory checks every Tuesday. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Update stock logs before Wednesday noon."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "C",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "D",
+          "text": "The annual survey includes twelve questions."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: The design team has finished the draft brochure. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "B",
+          "text": "Send copy edits by tomorrow afternoon."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "D",
+          "text": "Most employees prefer remote meetings."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: The help desk received higher call volume this month. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "B",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "C",
+          "text": "Additional agents will cover evening shifts."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby was repainted last month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: The procurement portal will be offline tonight for maintenance. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "B",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "C",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "D",
+          "text": "Please complete urgent requests before 6 p.m."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: Visitor parking is limited this week due to construction. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Guests should use public transit when possible."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "C",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "D",
+          "text": "The annual survey includes twelve questions."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: Team leaders must submit quarterly review notes. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "B",
+          "text": "Signed summaries are due by Friday."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "D",
+          "text": "Most employees prefer remote meetings."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: The customer database will be upgraded this evening. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "B",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "C",
+          "text": "Avoid editing records after 8 p.m."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby was repainted last month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: The warehouse will run inventory checks every Tuesday. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "B",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "C",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "D",
+          "text": "Update stock logs before Wednesday noon."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: The design team has finished the draft brochure. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Send copy edits by tomorrow afternoon."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "C",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "D",
+          "text": "The annual survey includes twelve questions."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: The help desk received higher call volume this month. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "B",
+          "text": "Additional agents will cover evening shifts."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "D",
+          "text": "Most employees prefer remote meetings."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: The procurement portal will be offline tonight for maintenance. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "B",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "C",
+          "text": "Please complete urgent requests before 6 p.m."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby was repainted last month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: Visitor parking is limited this week due to construction. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "B",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "C",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "D",
+          "text": "Guests should use public transit when possible."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: Team leaders must submit quarterly review notes. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Signed summaries are due by Friday."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "C",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "D",
+          "text": "The annual survey includes twelve questions."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: The customer database will be upgraded this evening. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "B",
+          "text": "Avoid editing records after 8 p.m."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "D",
+          "text": "Most employees prefer remote meetings."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: The warehouse will run inventory checks every Tuesday. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "B",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "C",
+          "text": "Update stock logs before Wednesday noon."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby was repainted last month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: The design team has finished the draft brochure. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "B",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "C",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "D",
+          "text": "Send copy edits by tomorrow afternoon."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: The help desk received higher call volume this month. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Additional agents will cover evening shifts."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "C",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "D",
+          "text": "The annual survey includes twelve questions."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: The procurement portal will be offline tonight for maintenance. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "B",
+          "text": "Please complete urgent requests before 6 p.m."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "D",
+          "text": "Most employees prefer remote meetings."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: Visitor parking is limited this week due to construction. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "B",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "C",
+          "text": "Guests should use public transit when possible."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby was repainted last month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: Team leaders must submit quarterly review notes. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "B",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "C",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "D",
+          "text": "Signed summaries are due by Friday."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: The customer database will be upgraded this evening. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Avoid editing records after 8 p.m."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "C",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "D",
+          "text": "The annual survey includes twelve questions."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: The warehouse will run inventory checks every Tuesday. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "B",
+          "text": "Update stock logs before Wednesday noon."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "D",
+          "text": "Most employees prefer remote meetings."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: The design team has finished the draft brochure. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "B",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "C",
+          "text": "Send copy edits by tomorrow afternoon."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby was repainted last month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: The help desk received higher call volume this month. ___",
+      "explanation": "Choose the sentence that logically completes the message.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby was repainted last month."
+        },
+        {
+          "key": "B",
+          "text": "Most employees prefer remote meetings."
+        },
+        {
+          "key": "C",
+          "text": "The annual survey includes twelve questions."
+        },
+        {
+          "key": "D",
+          "text": "Additional agents will cover evening shifts."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Email excerpt: \"Please submit reimbursement forms within five business days after travel.\" What can be inferred?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Late submissions may be processed in a later cycle."
+        },
+        {
+          "key": "B",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "C",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "D",
+          "text": "The company is closing this department."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Notice excerpt: \"All vendor contracts now require updated data-security clauses.\" Why was this notice issued?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "B",
+          "text": "To communicate a new compliance requirement."
+        },
+        {
+          "key": "C",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "D",
+          "text": "Only managers are affected by this change."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Article excerpt: \"Support hours were extended from 6 p.m. to 10 p.m.\" What benefit is most likely?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "B",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "C",
+          "text": "Customers can receive help later in the day."
+        },
+        {
+          "key": "D",
+          "text": "The policy has been canceled immediately."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Memo excerpt: \"Unresolved tickets must be escalated after 48 hours.\" What action is required?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "B",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "C",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "D",
+          "text": "Forward unresolved cases after two days."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Update excerpt: \"Shipment 271A will arrive one day earlier than expected.\" What is true according to the update?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The shipment is expected ahead of schedule."
+        },
+        {
+          "key": "B",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "C",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "D",
+          "text": "The company is closing this department."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Policy excerpt: \"Visitors must be accompanied in restricted areas.\" What is the policy focused on?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "B",
+          "text": "Controlled access for safety and security."
+        },
+        {
+          "key": "C",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "D",
+          "text": "Only managers are affected by this change."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Email excerpt: \"Please submit reimbursement forms within five business days after travel.\" What can be inferred?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "B",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "C",
+          "text": "Late submissions may be processed in a later cycle."
+        },
+        {
+          "key": "D",
+          "text": "The policy has been canceled immediately."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Notice excerpt: \"All vendor contracts now require updated data-security clauses.\" Why was this notice issued?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "B",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "C",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "D",
+          "text": "To communicate a new compliance requirement."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Article excerpt: \"Support hours were extended from 6 p.m. to 10 p.m.\" What benefit is most likely?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Customers can receive help later in the day."
+        },
+        {
+          "key": "B",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "C",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "D",
+          "text": "The company is closing this department."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Memo excerpt: \"Unresolved tickets must be escalated after 48 hours.\" What action is required?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "B",
+          "text": "Forward unresolved cases after two days."
+        },
+        {
+          "key": "C",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "D",
+          "text": "Only managers are affected by this change."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Update excerpt: \"Shipment 271A will arrive one day earlier than expected.\" What is true according to the update?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "B",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "C",
+          "text": "The shipment is expected ahead of schedule."
+        },
+        {
+          "key": "D",
+          "text": "The policy has been canceled immediately."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Policy excerpt: \"Visitors must be accompanied in restricted areas.\" What is the policy focused on?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "B",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "C",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "D",
+          "text": "Controlled access for safety and security."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Email excerpt: \"Please submit reimbursement forms within five business days after travel.\" What can be inferred?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Late submissions may be processed in a later cycle."
+        },
+        {
+          "key": "B",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "C",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "D",
+          "text": "The company is closing this department."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Notice excerpt: \"All vendor contracts now require updated data-security clauses.\" Why was this notice issued?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "B",
+          "text": "To communicate a new compliance requirement."
+        },
+        {
+          "key": "C",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "D",
+          "text": "Only managers are affected by this change."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Article excerpt: \"Support hours were extended from 6 p.m. to 10 p.m.\" What benefit is most likely?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "B",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "C",
+          "text": "Customers can receive help later in the day."
+        },
+        {
+          "key": "D",
+          "text": "The policy has been canceled immediately."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Memo excerpt: \"Unresolved tickets must be escalated after 48 hours.\" What action is required?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "B",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "C",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "D",
+          "text": "Forward unresolved cases after two days."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Update excerpt: \"Shipment 271A will arrive one day earlier than expected.\" What is true according to the update?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The shipment is expected ahead of schedule."
+        },
+        {
+          "key": "B",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "C",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "D",
+          "text": "The company is closing this department."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Policy excerpt: \"Visitors must be accompanied in restricted areas.\" What is the policy focused on?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "B",
+          "text": "Controlled access for safety and security."
+        },
+        {
+          "key": "C",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "D",
+          "text": "Only managers are affected by this change."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Email excerpt: \"Please submit reimbursement forms within five business days after travel.\" What can be inferred?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "B",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "C",
+          "text": "Late submissions may be processed in a later cycle."
+        },
+        {
+          "key": "D",
+          "text": "The policy has been canceled immediately."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Notice excerpt: \"All vendor contracts now require updated data-security clauses.\" Why was this notice issued?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "B",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "C",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "D",
+          "text": "To communicate a new compliance requirement."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Article excerpt: \"Support hours were extended from 6 p.m. to 10 p.m.\" What benefit is most likely?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Customers can receive help later in the day."
+        },
+        {
+          "key": "B",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "C",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "D",
+          "text": "The company is closing this department."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Memo excerpt: \"Unresolved tickets must be escalated after 48 hours.\" What action is required?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "B",
+          "text": "Forward unresolved cases after two days."
+        },
+        {
+          "key": "C",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "D",
+          "text": "Only managers are affected by this change."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Update excerpt: \"Shipment 271A will arrive one day earlier than expected.\" What is true according to the update?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "B",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "C",
+          "text": "The shipment is expected ahead of schedule."
+        },
+        {
+          "key": "D",
+          "text": "The policy has been canceled immediately."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Policy excerpt: \"Visitors must be accompanied in restricted areas.\" What is the policy focused on?",
+      "explanation": "Select the option best supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The policy has been canceled immediately."
+        },
+        {
+          "key": "B",
+          "text": "Only managers are affected by this change."
+        },
+        {
+          "key": "C",
+          "text": "The company is closing this department."
+        },
+        {
+          "key": "D",
+          "text": "Controlled access for safety and security."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, staff members are organizing invoice near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Workers are arranging invoice on shelves."
+        },
+        {
+          "key": "B",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "C",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "D",
+          "text": "People are swimming at the beach."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, staff members are organizing vendor list near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "B",
+          "text": "Workers are arranging vendor list on shelves."
+        },
+        {
+          "key": "C",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "D",
+          "text": "A driver is repairing a motorcycle."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, staff members are organizing weekly report near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "B",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "C",
+          "text": "Workers are arranging weekly report on shelves."
+        },
+        {
+          "key": "D",
+          "text": "Customers are waiting outside the building."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, staff members are organizing draft contract near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "B",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "C",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "D",
+          "text": "Workers are arranging draft contract on shelves."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, staff members are organizing training schedule near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Workers are arranging training schedule on shelves."
+        },
+        {
+          "key": "B",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "C",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "D",
+          "text": "People are swimming at the beach."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, staff members are organizing shipment tracker near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "B",
+          "text": "Workers are arranging shipment tracker on shelves."
+        },
+        {
+          "key": "C",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "D",
+          "text": "A driver is repairing a motorcycle."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, staff members are organizing budget summary near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "B",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "C",
+          "text": "Workers are arranging budget summary on shelves."
+        },
+        {
+          "key": "D",
+          "text": "Customers are waiting outside the building."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, staff members are organizing maintenance checklist near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "B",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "C",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "D",
+          "text": "Workers are arranging maintenance checklist on shelves."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, staff members are organizing invoice near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Workers are arranging invoice on shelves."
+        },
+        {
+          "key": "B",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "C",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "D",
+          "text": "People are swimming at the beach."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, staff members are organizing vendor list near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "B",
+          "text": "Workers are arranging vendor list on shelves."
+        },
+        {
+          "key": "C",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "D",
+          "text": "A driver is repairing a motorcycle."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, staff members are organizing weekly report near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "B",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "C",
+          "text": "Workers are arranging weekly report on shelves."
+        },
+        {
+          "key": "D",
+          "text": "Customers are waiting outside the building."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, staff members are organizing draft contract near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "B",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "C",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "D",
+          "text": "Workers are arranging draft contract on shelves."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, staff members are organizing training schedule near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Workers are arranging training schedule on shelves."
+        },
+        {
+          "key": "B",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "C",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "D",
+          "text": "People are swimming at the beach."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, staff members are organizing shipment tracker near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "B",
+          "text": "Workers are arranging shipment tracker on shelves."
+        },
+        {
+          "key": "C",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "D",
+          "text": "A driver is repairing a motorcycle."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, staff members are organizing budget summary near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "B",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "C",
+          "text": "Workers are arranging budget summary on shelves."
+        },
+        {
+          "key": "D",
+          "text": "Customers are waiting outside the building."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, staff members are organizing maintenance checklist near the storage area.",
+      "explanation": "Choose the option that best matches the visible action/state.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Customers are waiting outside the building."
+        },
+        {
+          "key": "B",
+          "text": "A driver is repairing a motorcycle."
+        },
+        {
+          "key": "C",
+          "text": "People are swimming at the beach."
+        },
+        {
+          "key": "D",
+          "text": "Workers are arranging maintenance checklist on shelves."
+        }
+      ],
+      "correctKey": "D"
+    }
+  ]
+}

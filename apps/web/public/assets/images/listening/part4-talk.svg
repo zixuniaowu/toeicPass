@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" fill="none">
+  <rect width="960" height="540" fill="#FFF3EA"/>
+  <rect x="140" y="90" width="680" height="360" rx="20" fill="#FFE2CC"/>
+  <rect x="220" y="150" width="520" height="80" rx="12" fill="#FFFFFF"/>
+  <rect x="220" y="250" width="520" height="80" rx="12" fill="#FFFFFF"/>
+  <circle cx="200" cy="190" r="26" fill="#F39B62"/>
+  <circle cx="200" cy="290" r="26" fill="#F39B62"/>
+  <path d="M300 190H660" stroke="#E2A77A" stroke-width="10" stroke-linecap="round"/>
+  <path d="M300 290H660" stroke="#E2A77A" stroke-width="10" stroke-linecap="round"/>
+  <text x="80" y="505" fill="#9A5A2F" font-family="Arial" font-size="34" font-weight="700">Part 4 Listening: Short talk / announcement</text>
+</svg>

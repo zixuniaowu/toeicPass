@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" fill="none">
+  <rect width="960" height="540" fill="#EAF2FF"/>
+  <rect x="80" y="90" width="520" height="370" rx="18" fill="#D5E4FF"/>
+  <rect x="640" y="70" width="240" height="420" rx="16" fill="#BFD6FF"/>
+  <rect x="670" y="110" width="180" height="70" rx="8" fill="#FFFFFF"/>
+  <rect x="670" y="200" width="180" height="70" rx="8" fill="#FFFFFF"/>
+  <rect x="670" y="290" width="180" height="70" rx="8" fill="#FFFFFF"/>
+  <circle cx="250" cy="280" r="64" fill="#FFC7A3"/>
+  <rect x="200" y="340" width="170" height="90" rx="14" fill="#3A65B8"/>
+  <rect x="350" y="340" width="130" height="38" rx="8" fill="#6E92D9"/>
+  <rect x="350" y="392" width="130" height="38" rx="8" fill="#6E92D9"/>
+  <text x="80" y="505" fill="#29477E" font-family="Arial" font-size="34" font-weight="700">Part 1 Photo: Organizing files</text>
+</svg>

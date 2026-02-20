@@ -1,0 +1,1460 @@
+{
+  "questions": [
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Could you send me the final invoice today?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sure, I will email it before noon."
+        },
+        {
+          "key": "B",
+          "text": "The invoice number is 4821."
+        },
+        {
+          "key": "C",
+          "text": "At the accounting desk on level three."
+        },
+        {
+          "key": "D",
+          "text": "Yes, the meeting was productive."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Where should we place these packages?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, they arrived this morning."
+        },
+        {
+          "key": "B",
+          "text": "Please leave them near the loading dock."
+        },
+        {
+          "key": "C",
+          "text": "Around 5 p.m. each day."
+        },
+        {
+          "key": "D",
+          "text": "The packages are very heavy."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Who approved the updated travel policy?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "By reducing transportation costs."
+        },
+        {
+          "key": "B",
+          "text": "On the company intranet."
+        },
+        {
+          "key": "C",
+          "text": "The operations director signed it yesterday."
+        },
+        {
+          "key": "D",
+          "text": "It takes effect next month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "When does the onboarding workshop begin?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The trainer is very experienced."
+        },
+        {
+          "key": "B",
+          "text": "In the large conference room."
+        },
+        {
+          "key": "C",
+          "text": "Yes, I completed the workshop."
+        },
+        {
+          "key": "D",
+          "text": "It starts at nine thirty in the morning."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Why was the shipment delayed?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because customs inspection took longer than expected."
+        },
+        {
+          "key": "B",
+          "text": "At warehouse gate number four."
+        },
+        {
+          "key": "C",
+          "text": "By the evening delivery team."
+        },
+        {
+          "key": "D",
+          "text": "The shipment includes office chairs."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Have you reviewed the contract revisions yet?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the client headquarters."
+        },
+        {
+          "key": "B",
+          "text": "Not yet, but I will finish this afternoon."
+        },
+        {
+          "key": "C",
+          "text": "The legal team revised section five."
+        },
+        {
+          "key": "D",
+          "text": "Yes, the contract is on your desk."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Do you know where the nearest printer is?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The printer model is outdated."
+        },
+        {
+          "key": "B",
+          "text": "Yes, I can scan the file."
+        },
+        {
+          "key": "C",
+          "text": "There is one beside the reception area."
+        },
+        {
+          "key": "D",
+          "text": "I printed twelve pages already."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Should we confirm the catering order now?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The meal was delicious."
+        },
+        {
+          "key": "B",
+          "text": "At the downtown banquet hall."
+        },
+        {
+          "key": "C",
+          "text": "By credit card only."
+        },
+        {
+          "key": "D",
+          "text": "Yes, let us call them before lunch."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Would you mind covering my shift on Friday?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "No problem, I can take your afternoon shift."
+        },
+        {
+          "key": "B",
+          "text": "My shift ended at six."
+        },
+        {
+          "key": "C",
+          "text": "Friday is usually very busy."
+        },
+        {
+          "key": "D",
+          "text": "Yes, the schedule was posted."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "How often do we update the sales dashboard?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the regional office."
+        },
+        {
+          "key": "B",
+          "text": "We refresh it every Monday morning."
+        },
+        {
+          "key": "C",
+          "text": "The dashboard is easy to read."
+        },
+        {
+          "key": "D",
+          "text": "With a team of five analysts."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Did the client accept our proposal?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "By courier service yesterday."
+        },
+        {
+          "key": "B",
+          "text": "In the design department."
+        },
+        {
+          "key": "C",
+          "text": "Yes, they approved it without changes."
+        },
+        {
+          "key": "D",
+          "text": "The proposal was 20 pages long."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Can I reserve the meeting room for 2 p.m.?",
+      "explanation": "Choose the response that directly matches the question type and intent.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The room has a new projector."
+        },
+        {
+          "key": "B",
+          "text": "At the reception desk only."
+        },
+        {
+          "key": "C",
+          "text": "The meeting lasted two hours."
+        },
+        {
+          "key": "D",
+          "text": "Yes, it is available after one thirty."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "In a conversation, the speakers discuss vendor selection. What concern does the woman raise?",
+      "explanation": "Use conversation context to identify the specific detail, action, or implication.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The finance team rejected all bids."
+        },
+        {
+          "key": "B",
+          "text": "The vendor catalog is outdated."
+        },
+        {
+          "key": "C",
+          "text": "The project has already been canceled."
+        },
+        {
+          "key": "D",
+          "text": "The lowest-price vendor has weak delivery reliability."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What does the man suggest doing before Friday?",
+      "explanation": "Use conversation context to identify the specific detail, action, or implication.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Running a short pilot with the top two options."
+        },
+        {
+          "key": "B",
+          "text": "Hiring a new procurement manager."
+        },
+        {
+          "key": "C",
+          "text": "Extending the budget period by six months."
+        },
+        {
+          "key": "D",
+          "text": "Moving all orders to a local supplier."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "Why are the speakers meeting this afternoon?",
+      "explanation": "Use conversation context to identify the specific detail, action, or implication.",
+      "options": [
+        {
+          "key": "A",
+          "text": "To review a customer complaint letter."
+        },
+        {
+          "key": "B",
+          "text": "To finalize the launch checklist for next week."
+        },
+        {
+          "key": "C",
+          "text": "To train newly hired interns."
+        },
+        {
+          "key": "D",
+          "text": "To discuss annual salary adjustments."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What problem do the speakers mention about the report?",
+      "explanation": "Use conversation context to identify the specific detail, action, or implication.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The printer is out of paper."
+        },
+        {
+          "key": "B",
+          "text": "The marketing section is too short."
+        },
+        {
+          "key": "C",
+          "text": "Several data tables are missing updated figures."
+        },
+        {
+          "key": "D",
+          "text": "The report file was deleted permanently."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What will the woman probably do next?",
+      "explanation": "Use conversation context to identify the specific detail, action, or implication.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Book a flight for the client visit."
+        },
+        {
+          "key": "B",
+          "text": "Call the IT help desk immediately."
+        },
+        {
+          "key": "C",
+          "text": "Cancel tomorrow's planning meeting."
+        },
+        {
+          "key": "D",
+          "text": "Email a revised draft to the team lead."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "Why does the man say, \"That matches our timeline\"?",
+      "explanation": "Use conversation context to identify the specific detail, action, or implication.",
+      "options": [
+        {
+          "key": "A",
+          "text": "He agrees that the proposed date is feasible."
+        },
+        {
+          "key": "B",
+          "text": "He wants to delay the project."
+        },
+        {
+          "key": "C",
+          "text": "He is unsure about the budget."
+        },
+        {
+          "key": "D",
+          "text": "He prefers to outsource the work."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "A recorded announcement describes changes to office entry procedures. What is the main purpose?",
+      "explanation": "Identify purpose, required action, or key detail from a short talk.",
+      "options": [
+        {
+          "key": "A",
+          "text": "To invite staff to a social gathering."
+        },
+        {
+          "key": "B",
+          "text": "To advertise a security software product."
+        },
+        {
+          "key": "C",
+          "text": "To report quarterly performance results."
+        },
+        {
+          "key": "D",
+          "text": "To explain a new badge-scanning requirement."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "According to the speaker, what must employees do before Monday?",
+      "explanation": "Identify purpose, required action, or key detail from a short talk.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Complete the online safety acknowledgement form."
+        },
+        {
+          "key": "B",
+          "text": "Return company laptops to IT."
+        },
+        {
+          "key": "C",
+          "text": "Attend a client meeting downtown."
+        },
+        {
+          "key": "D",
+          "text": "Submit travel expense claims."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "Where will the training session be held?",
+      "explanation": "Identify purpose, required action, or key detail from a short talk.",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the cafeteria after lunch."
+        },
+        {
+          "key": "B",
+          "text": "In the auditorium on the first floor."
+        },
+        {
+          "key": "C",
+          "text": "At the off-site conference center."
+        },
+        {
+          "key": "D",
+          "text": "Inside the warehouse loading area."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "What benefit does the speaker mention for participants?",
+      "explanation": "Identify purpose, required action, or key detail from a short talk.",
+      "options": [
+        {
+          "key": "A",
+          "text": "They get one month of paid leave."
+        },
+        {
+          "key": "B",
+          "text": "They may skip mandatory orientation."
+        },
+        {
+          "key": "C",
+          "text": "They will receive a digital certificate after completion."
+        },
+        {
+          "key": "D",
+          "text": "They can choose their own manager."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "Who should employees contact if they cannot access the portal?",
+      "explanation": "Identify purpose, required action, or key detail from a short talk.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The catering coordinator."
+        },
+        {
+          "key": "B",
+          "text": "The external shipping vendor."
+        },
+        {
+          "key": "C",
+          "text": "The recruitment agency."
+        },
+        {
+          "key": "D",
+          "text": "The internal IT support desk."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "What has changed since the previous policy?",
+      "explanation": "Identify purpose, required action, or key detail from a short talk.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Visitors must now register one day in advance."
+        },
+        {
+          "key": "B",
+          "text": "Employees may park anywhere for free."
+        },
+        {
+          "key": "C",
+          "text": "Weekly meetings are no longer required."
+        },
+        {
+          "key": "D",
+          "text": "Office hours start one hour later."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Email: The maintenance team will inspect all air-conditioning units this weekend. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The cafeteria menu changed on Tuesday."
+        },
+        {
+          "key": "B",
+          "text": "Our hiring process takes two weeks."
+        },
+        {
+          "key": "C",
+          "text": "The annual bonus was announced yesterday."
+        },
+        {
+          "key": "D",
+          "text": "Please switch off your office equipment before leaving on Friday."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Notice: Visitor badges are now printed at the reception kiosk. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Guests should arrive ten minutes early for check-in."
+        },
+        {
+          "key": "B",
+          "text": "The shipping dock closes at midnight."
+        },
+        {
+          "key": "C",
+          "text": "Our accounting software was upgraded."
+        },
+        {
+          "key": "D",
+          "text": "The legal team reviewed the contract."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: The client presentation has been moved to Thursday afternoon. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Parking validation is available downstairs."
+        },
+        {
+          "key": "B",
+          "text": "All final slides must be uploaded by Wednesday noon."
+        },
+        {
+          "key": "C",
+          "text": "The meeting room carpet was replaced."
+        },
+        {
+          "key": "D",
+          "text": "Most interns work three days a week."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Announcement: The warehouse inventory count starts tomorrow. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our company opened a new branch in May."
+        },
+        {
+          "key": "B",
+          "text": "The office plants need more sunlight."
+        },
+        {
+          "key": "C",
+          "text": "Temporary signs will guide staff through each zone."
+        },
+        {
+          "key": "D",
+          "text": "The marketing budget will increase next quarter."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Reminder: Expense reports submitted after the deadline will be processed next cycle. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The printer toner was replaced this morning."
+        },
+        {
+          "key": "B",
+          "text": "The conference call lasted ninety minutes."
+        },
+        {
+          "key": "C",
+          "text": "Two suppliers lowered their prices."
+        },
+        {
+          "key": "D",
+          "text": "Please attach itemized receipts to avoid delays."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Update: The software patch has resolved the login issue. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Users should restart their devices before signing in again."
+        },
+        {
+          "key": "B",
+          "text": "The finance seminar starts in room B4."
+        },
+        {
+          "key": "C",
+          "text": "Our website design was updated last month."
+        },
+        {
+          "key": "D",
+          "text": "The sales team exceeded its annual target."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Email: We will host a client workshop on June 18. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The elevator will be repaired on Sunday."
+        },
+        {
+          "key": "B",
+          "text": "Please confirm attendance by replying to this message."
+        },
+        {
+          "key": "C",
+          "text": "The workshop room has blue chairs."
+        },
+        {
+          "key": "D",
+          "text": "Our procurement policy changed last year."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Bulletin: Due to construction, the west entrance will be closed this week. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Team leaders submitted monthly forecasts."
+        },
+        {
+          "key": "B",
+          "text": "New interns joined the design department."
+        },
+        {
+          "key": "C",
+          "text": "Employees should use the north entrance instead."
+        },
+        {
+          "key": "D",
+          "text": "The cafeteria serves breakfast at seven."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo: Quarterly training records must be reviewed by all supervisors. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office Wi-Fi password has not changed."
+        },
+        {
+          "key": "B",
+          "text": "Company uniforms arrive every Tuesday."
+        },
+        {
+          "key": "C",
+          "text": "The shuttle bus leaves every two hours."
+        },
+        {
+          "key": "D",
+          "text": "A summary template is available on the HR portal."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Email: Our partner requested revised delivery dates for the next shipment. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please update the logistics sheet before 3 p.m."
+        },
+        {
+          "key": "B",
+          "text": "The customer lounge was recently renovated."
+        },
+        {
+          "key": "C",
+          "text": "All invoices are filed alphabetically."
+        },
+        {
+          "key": "D",
+          "text": "The reception desk closes at six o'clock."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Notice: To improve security, shared passwords are no longer permitted. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The vending machine accepts cards now."
+        },
+        {
+          "key": "B",
+          "text": "Each employee must set up individual credentials."
+        },
+        {
+          "key": "C",
+          "text": "The annual picnic is scheduled for August."
+        },
+        {
+          "key": "D",
+          "text": "Three candidates completed their interviews."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: The quality audit found inconsistent labeling on outgoing packages. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The legal office moved to the fifth floor."
+        },
+        {
+          "key": "B",
+          "text": "Our printer lease expires in December."
+        },
+        {
+          "key": "C",
+          "text": "Supervisors should verify labels before dispatch."
+        },
+        {
+          "key": "D",
+          "text": "Most meetings are held virtually now."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Announcement: New employees will attend orientation in Conference Room 2. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office gym is open until nine."
+        },
+        {
+          "key": "B",
+          "text": "Our vendor contract renewed automatically."
+        },
+        {
+          "key": "C",
+          "text": "The parking lot has 120 spaces."
+        },
+        {
+          "key": "D",
+          "text": "Department heads are asked to provide welcome materials."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Email: Please review the draft policy attached below. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Send your comments by end of day Wednesday."
+        },
+        {
+          "key": "B",
+          "text": "The policy has twelve sections in total."
+        },
+        {
+          "key": "C",
+          "text": "Our largest customer is visiting tomorrow."
+        },
+        {
+          "key": "D",
+          "text": "Two printers are currently unavailable."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Notice: Elevator maintenance will occur between 1 p.m. and 3 p.m. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our branch office is near the station."
+        },
+        {
+          "key": "B",
+          "text": "Use the stairs if you need to move between floors."
+        },
+        {
+          "key": "C",
+          "text": "The cafeteria line is usually short."
+        },
+        {
+          "key": "D",
+          "text": "The monthly report includes three charts."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: Customer support calls have increased by 18% this month. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our legal review process takes one week."
+        },
+        {
+          "key": "B",
+          "text": "The training room seats twenty people."
+        },
+        {
+          "key": "C",
+          "text": "Additional agents will be scheduled during peak hours."
+        },
+        {
+          "key": "D",
+          "text": "The office thermostat is set to 22 degrees."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Email: The marketing team finalized the campaign timeline. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The campaign budget was approved in April."
+        },
+        {
+          "key": "B",
+          "text": "Our warehouse is near the airport."
+        },
+        {
+          "key": "C",
+          "text": "Most customers prefer email notifications."
+        },
+        {
+          "key": "D",
+          "text": "Design assets should be submitted by Friday morning."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Reminder: Please check your department's inventory levels today. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Orders for low-stock items must be placed before noon."
+        },
+        {
+          "key": "B",
+          "text": "The inventory file has six tabs."
+        },
+        {
+          "key": "C",
+          "text": "Our supplier changed its logo recently."
+        },
+        {
+          "key": "D",
+          "text": "The loading dock is painted yellow."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Bulletin: The company intranet will be offline tonight for upgrades. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our printer warranty ends this month."
+        },
+        {
+          "key": "B",
+          "text": "Download any files you need before leaving work."
+        },
+        {
+          "key": "C",
+          "text": "The intranet homepage was redesigned."
+        },
+        {
+          "key": "D",
+          "text": "Three applicants accepted job offers."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Email: A client requested bilingual versions of the brochure. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our design software is subscription-based."
+        },
+        {
+          "key": "B",
+          "text": "The reception phone rang all morning."
+        },
+        {
+          "key": "C",
+          "text": "Please coordinate with the translation team this afternoon."
+        },
+        {
+          "key": "D",
+          "text": "The brochure has a blue cover."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo: Safety drills will be conducted on each floor this Thursday. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The drill schedule uses color codes."
+        },
+        {
+          "key": "B",
+          "text": "The cafeteria introduced a salad bar."
+        },
+        {
+          "key": "C",
+          "text": "Our invoice format changed last year."
+        },
+        {
+          "key": "D",
+          "text": "Managers should brief their teams at morning meetings."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Announcement: The procurement portal now requires two-step verification. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please register your mobile device by Friday."
+        },
+        {
+          "key": "B",
+          "text": "The portal has a new blue icon."
+        },
+        {
+          "key": "C",
+          "text": "Team members worked overtime yesterday."
+        },
+        {
+          "key": "D",
+          "text": "Our partner office is in Busan."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Notice: Company ID cards must be visible while on-site. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The quarterly survey has ten questions."
+        },
+        {
+          "key": "B",
+          "text": "Security staff may ask for verification at any time."
+        },
+        {
+          "key": "C",
+          "text": "Most ID cards are printed in color."
+        },
+        {
+          "key": "D",
+          "text": "The lunch break starts at noon."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Email: We received confirmation for booth space at the trade fair. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our booth design used recycled materials."
+        },
+        {
+          "key": "B",
+          "text": "Three banners were delivered this morning."
+        },
+        {
+          "key": "C",
+          "text": "Please send your staffing availability by Tuesday."
+        },
+        {
+          "key": "D",
+          "text": "The fair venue has free Wi-Fi."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: The legal team approved the revised supplier agreement. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The agreement contains twelve pages."
+        },
+        {
+          "key": "B",
+          "text": "Our support desk opens at eight."
+        },
+        {
+          "key": "C",
+          "text": "The break room was repainted last month."
+        },
+        {
+          "key": "D",
+          "text": "Procurement may proceed with the final signature process."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Notice: Due to heavy rain, deliveries may arrive later than scheduled. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please inform customers if estimated times change."
+        },
+        {
+          "key": "B",
+          "text": "Raincoats are sold in the lobby shop."
+        },
+        {
+          "key": "C",
+          "text": "Our monthly newsletter was published today."
+        },
+        {
+          "key": "D",
+          "text": "The office windows were cleaned recently."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Email: A temporary network outage affected remote access this morning. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The outage lasted longer last year."
+        },
+        {
+          "key": "B",
+          "text": "IT has restored service and is monitoring performance."
+        },
+        {
+          "key": "C",
+          "text": "Remote access requires annual training."
+        },
+        {
+          "key": "D",
+          "text": "Our office uses cloud-based storage."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo: Team leaders should review next quarter's hiring requests. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our office has two interview rooms."
+        },
+        {
+          "key": "B",
+          "text": "Hiring increased in all departments."
+        },
+        {
+          "key": "C",
+          "text": "Submit approved headcount forms by next Monday."
+        },
+        {
+          "key": "D",
+          "text": "The HR portal is easy to navigate."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Announcement: The customer database will migrate to a new system tonight. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Database licenses renew annually."
+        },
+        {
+          "key": "B",
+          "text": "The migration team has six members."
+        },
+        {
+          "key": "C",
+          "text": "Customer records include purchase history."
+        },
+        {
+          "key": "D",
+          "text": "Please avoid editing records after 8 p.m."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Notice: Building access cards must be reactivated this month. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Visit the facilities desk with your employee ID."
+        },
+        {
+          "key": "B",
+          "text": "The facilities desk moved last year."
+        },
+        {
+          "key": "C",
+          "text": "Most cards are made of plastic."
+        },
+        {
+          "key": "D",
+          "text": "Our building has 14 floors."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Email: The executive summary is ready for final review. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The review team sits near reception."
+        },
+        {
+          "key": "B",
+          "text": "Please check the figures on page three carefully."
+        },
+        {
+          "key": "C",
+          "text": "The summary is shorter than last year."
+        },
+        {
+          "key": "D",
+          "text": "Our annual meeting is in July."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Bulletin: New recycling bins have been installed on every floor. ___",
+      "explanation": "Choose the sentence that best completes the business context logically and grammatically.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our office lease ends next spring."
+        },
+        {
+          "key": "B",
+          "text": "The maintenance team arrived early."
+        },
+        {
+          "key": "C",
+          "text": "Follow the posted signs to sort waste correctly."
+        },
+        {
+          "key": "D",
+          "text": "The bins are green and gray."
+        }
+      ],
+      "correctKey": "C"
+    }
+  ]
+}

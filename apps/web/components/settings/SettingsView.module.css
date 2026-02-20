@@ -1,0 +1,72 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.box {
+  padding: var(--space-6);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.box h3 {
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.statusList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.statusList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.statusList span {
+  font-size: var(--text-base);
+  color: var(--color-muted);
+}
+
+.statusList strong,
+.statusList a {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.statusList a:hover {
+  text-decoration: underline;
+}
+
+.mono {
+  font-family: ui-monospace, "SF Mono", monospace;
+}
+
+@media (max-width: 1020px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

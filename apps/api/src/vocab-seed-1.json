@@ -1,0 +1,604 @@
+{
+  "cards": [
+    {
+      "term": "accomplish",
+      "pos": "verb",
+      "definition": "to succeed in completing a task",
+      "example": "The team accomplished all of its quarterly goals ahead of schedule.",
+      "sourcePart": 2,
+      "tags": ["office"]
+    },
+    {
+      "term": "accommodate",
+      "pos": "verb",
+      "definition": "to provide what is needed or requested",
+      "example": "The hotel can accommodate up to 200 guests.",
+      "sourcePart": 4,
+      "tags": ["hospitality"]
+    },
+    {
+      "term": "accumulate",
+      "pos": "verb",
+      "definition": "to gather or build up over time",
+      "example": "Interest will accumulate on the outstanding balance each month.",
+      "sourcePart": 1,
+      "tags": ["finance"]
+    },
+    {
+      "term": "acquire",
+      "pos": "verb",
+      "definition": "to buy or obtain something",
+      "example": "The firm plans to acquire a smaller competitor next quarter.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "adjacent",
+      "pos": "adjective",
+      "definition": "next to or near something",
+      "example": "The new parking lot is adjacent to the main office building.",
+      "sourcePart": 6,
+      "tags": ["real-estate"]
+    },
+    {
+      "term": "adequately",
+      "pos": "adverb",
+      "definition": "in a sufficient or satisfactory manner",
+      "example": "Please ensure that all staff members are adequately trained.",
+      "sourcePart": 2,
+      "tags": ["training", "hr"]
+    },
+    {
+      "term": "affordable",
+      "pos": "adjective",
+      "definition": "reasonably priced; not too expensive",
+      "example": "We are looking for affordable office space downtown.",
+      "sourcePart": 3,
+      "tags": ["real-estate", "finance"]
+    },
+    {
+      "term": "ample",
+      "pos": "adjective",
+      "definition": "more than enough in quantity",
+      "example": "There is ample parking available for conference attendees.",
+      "sourcePart": 6,
+      "tags": ["event"]
+    },
+    {
+      "term": "annual",
+      "pos": "adjective",
+      "definition": "happening once every year",
+      "example": "The annual shareholder meeting is scheduled for March.",
+      "sourcePart": 1,
+      "tags": ["finance"]
+    },
+    {
+      "term": "anticipate",
+      "pos": "verb",
+      "definition": "to expect or predict something will happen",
+      "example": "We anticipate a significant increase in demand this summer.",
+      "sourcePart": 3,
+      "tags": ["marketing"]
+    },
+    {
+      "term": "appraisal",
+      "pos": "noun",
+      "definition": "a formal assessment of value or performance",
+      "example": "Each employee receives an annual performance appraisal.",
+      "sourcePart": 7,
+      "tags": ["hr"]
+    },
+    {
+      "term": "apprentice",
+      "pos": "noun",
+      "definition": "a person learning a trade under supervision",
+      "example": "The apprentice is training under the lead electrician.",
+      "sourcePart": 6,
+      "tags": ["training", "manufacturing"]
+    },
+    {
+      "term": "assemble",
+      "pos": "verb",
+      "definition": "to put parts together or gather people",
+      "example": "Workers assemble the components on the factory floor.",
+      "sourcePart": 1,
+      "tags": ["manufacturing"]
+    },
+    {
+      "term": "assess",
+      "pos": "verb",
+      "definition": "to evaluate or estimate the nature of something",
+      "example": "The inspector will assess the building for safety compliance.",
+      "sourcePart": 4,
+      "tags": ["legal"]
+    },
+    {
+      "term": "asset",
+      "pos": "noun",
+      "definition": "a valuable item or resource owned by a company",
+      "example": "The company listed all of its assets in the financial report.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "assign",
+      "pos": "verb",
+      "definition": "to give someone a particular task or role",
+      "example": "The manager will assign each team member a specific project.",
+      "sourcePart": 2,
+      "tags": ["office", "hr"]
+    },
+    {
+      "term": "attain",
+      "pos": "verb",
+      "definition": "to succeed in reaching a goal",
+      "example": "She attained the highest sales record in the region.",
+      "sourcePart": 3,
+      "tags": ["marketing"]
+    },
+    {
+      "term": "attorney",
+      "pos": "noun",
+      "definition": "a person qualified to practice law",
+      "example": "Our attorney reviewed the terms of the merger agreement.",
+      "sourcePart": 7,
+      "tags": ["legal"]
+    },
+    {
+      "term": "audit",
+      "pos": "noun",
+      "definition": "an official examination of financial records",
+      "example": "The external audit confirmed that all accounts were accurate.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "authorize",
+      "pos": "verb",
+      "definition": "to give official permission for something",
+      "example": "Only the director can authorize expenses over ten thousand dollars.",
+      "sourcePart": 5,
+      "tags": ["finance", "legal"]
+    },
+    {
+      "term": "automate",
+      "pos": "verb",
+      "definition": "to make a process operate without human intervention",
+      "example": "The company decided to automate its inventory tracking system.",
+      "sourcePart": 4,
+      "tags": ["technology", "manufacturing"]
+    },
+    {
+      "term": "attire",
+      "pos": "noun",
+      "definition": "clothing, especially for a particular occasion",
+      "example": "Business attire is required for the client presentation.",
+      "sourcePart": 6,
+      "tags": ["office"]
+    },
+    {
+      "term": "adjourn",
+      "pos": "verb",
+      "definition": "to suspend a meeting until a later time",
+      "example": "The chairperson decided to adjourn the meeting until Friday.",
+      "sourcePart": 3,
+      "tags": ["office", "communication"]
+    },
+    {
+      "term": "apprenticeship",
+      "pos": "noun",
+      "definition": "a period of training under a skilled worker",
+      "example": "He completed a two-year apprenticeship in graphic design.",
+      "sourcePart": 5,
+      "tags": ["training"]
+    },
+    {
+      "term": "assembly",
+      "pos": "noun",
+      "definition": "the process of putting parts together",
+      "example": "The assembly of the new product line begins next week.",
+      "sourcePart": 4,
+      "tags": ["manufacturing"]
+    },
+    {
+      "term": "bankrupt",
+      "pos": "adjective",
+      "definition": "unable to pay outstanding debts",
+      "example": "The retailer went bankrupt after three consecutive years of losses.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "banquet",
+      "pos": "noun",
+      "definition": "a formal large meal for many people",
+      "example": "The awards banquet will be held at the Grand Hotel.",
+      "sourcePart": 4,
+      "tags": ["event", "hospitality"]
+    },
+    {
+      "term": "bargain",
+      "pos": "noun",
+      "definition": "something bought at a lower price than usual",
+      "example": "Shoppers found great bargains during the clearance sale.",
+      "sourcePart": 3,
+      "tags": ["retail"]
+    },
+    {
+      "term": "benchmark",
+      "pos": "noun",
+      "definition": "a standard used for comparison or measurement",
+      "example": "Customer satisfaction scores serve as a benchmark for success.",
+      "sourcePart": 7,
+      "tags": ["marketing"]
+    },
+    {
+      "term": "beverage",
+      "pos": "noun",
+      "definition": "a drink of any type",
+      "example": "Complimentary beverages will be served during the reception.",
+      "sourcePart": 1,
+      "tags": ["hospitality"]
+    },
+    {
+      "term": "blueprint",
+      "pos": "noun",
+      "definition": "a detailed plan or technical drawing",
+      "example": "The architect presented the blueprint for the new office tower.",
+      "sourcePart": 7,
+      "tags": ["real-estate", "manufacturing"]
+    },
+    {
+      "term": "board",
+      "pos": "noun",
+      "definition": "a group of directors managing a company",
+      "example": "The board approved the proposal for international expansion.",
+      "sourcePart": 6,
+      "tags": ["finance"]
+    },
+    {
+      "term": "booklet",
+      "pos": "noun",
+      "definition": "a small thin book with information or instructions",
+      "example": "Each participant received a booklet describing the training modules.",
+      "sourcePart": 6,
+      "tags": ["training", "communication"]
+    },
+    {
+      "term": "boost",
+      "pos": "verb",
+      "definition": "to increase or improve something",
+      "example": "The promotional campaign helped boost sales by fifteen percent.",
+      "sourcePart": 2,
+      "tags": ["marketing"]
+    },
+    {
+      "term": "branch",
+      "pos": "noun",
+      "definition": "a local office of a larger organization",
+      "example": "The bank is opening a new branch in the suburbs.",
+      "sourcePart": 3,
+      "tags": ["finance", "retail"]
+    },
+    {
+      "term": "brochure",
+      "pos": "noun",
+      "definition": "a printed pamphlet with product or service information",
+      "example": "Please pick up a brochure at the information desk.",
+      "sourcePart": 1,
+      "tags": ["marketing", "travel"]
+    },
+    {
+      "term": "broker",
+      "pos": "noun",
+      "definition": "a person who arranges business deals for others",
+      "example": "The real estate broker negotiated a favorable lease for us.",
+      "sourcePart": 7,
+      "tags": ["finance", "real-estate"]
+    },
+    {
+      "term": "briefly",
+      "pos": "adverb",
+      "definition": "for a short time or in few words",
+      "example": "The director briefly outlined the changes to the travel policy.",
+      "sourcePart": 2,
+      "tags": ["communication"]
+    },
+    {
+      "term": "bulk",
+      "pos": "noun",
+      "definition": "a large quantity of goods",
+      "example": "Ordering supplies in bulk reduces the overall cost.",
+      "sourcePart": 4,
+      "tags": ["logistics", "retail"]
+    },
+    {
+      "term": "burden",
+      "pos": "noun",
+      "definition": "a heavy load or difficult responsibility",
+      "example": "New regulations placed an additional burden on small businesses.",
+      "sourcePart": 5,
+      "tags": ["legal", "finance"]
+    },
+    {
+      "term": "bilateral",
+      "pos": "adjective",
+      "definition": "involving two parties or countries",
+      "example": "The two nations signed a bilateral trade agreement.",
+      "sourcePart": 6,
+      "tags": ["legal"]
+    },
+    {
+      "term": "bid",
+      "pos": "noun",
+      "definition": "an offer to do work or supply goods at a price",
+      "example": "Three construction firms submitted bids for the renovation project.",
+      "sourcePart": 5,
+      "tags": ["finance", "manufacturing"]
+    },
+    {
+      "term": "briefing",
+      "pos": "noun",
+      "definition": "a meeting to give information or instructions",
+      "example": "The morning briefing covered updates on the product launch.",
+      "sourcePart": 4,
+      "tags": ["communication", "office"]
+    },
+    {
+      "term": "billing",
+      "pos": "noun",
+      "definition": "the process of sending invoices for payment",
+      "example": "Please contact the billing department if you have questions.",
+      "sourcePart": 3,
+      "tags": ["finance"]
+    },
+    {
+      "term": "boarding",
+      "pos": "noun",
+      "definition": "the process of getting on a plane or ship",
+      "example": "Boarding will begin at gate twelve in thirty minutes.",
+      "sourcePart": 1,
+      "tags": ["travel"]
+    },
+    {
+      "term": "botanical",
+      "pos": "adjective",
+      "definition": "relating to plants or plant science",
+      "example": "The company retreat will include a tour of the botanical garden.",
+      "sourcePart": 1,
+      "tags": ["event"]
+    },
+    {
+      "term": "bypass",
+      "pos": "verb",
+      "definition": "to go around or avoid something",
+      "example": "The new highway will bypass the congested downtown area.",
+      "sourcePart": 1,
+      "tags": ["logistics"]
+    },
+    {
+      "term": "breakeven",
+      "pos": "noun",
+      "definition": "the point where revenue equals costs",
+      "example": "The startup expects to reach breakeven by the end of the year.",
+      "sourcePart": 5,
+      "tags": ["finance"]
+    },
+    {
+      "term": "backordered",
+      "pos": "adjective",
+      "definition": "ordered but not yet available for delivery",
+      "example": "The item is currently backordered and will ship next month.",
+      "sourcePart": 3,
+      "tags": ["logistics", "retail"]
+    },
+    {
+      "term": "broadband",
+      "pos": "noun",
+      "definition": "high-speed internet connection",
+      "example": "The office upgraded to broadband for faster data transfers.",
+      "sourcePart": 2,
+      "tags": ["technology"]
+    },
+    {
+      "term": "consistently",
+      "pos": "adverb",
+      "definition": "in a steady and unchanging manner",
+      "example": "The branch has consistently exceeded its monthly sales targets.",
+      "sourcePart": 4,
+      "tags": ["marketing"]
+    },
+    {
+      "term": "certificate",
+      "pos": "noun",
+      "definition": "an official document proving a qualification or fact",
+      "example": "She earned a certificate in project management last year.",
+      "sourcePart": 6,
+      "tags": ["training", "hr"]
+    },
+    {
+      "term": "clarify",
+      "pos": "verb",
+      "definition": "to make something easier to understand",
+      "example": "Could you clarify the terms of the warranty agreement?",
+      "sourcePart": 2,
+      "tags": ["communication"]
+    },
+    {
+      "term": "clause",
+      "pos": "noun",
+      "definition": "a specific section in a legal document",
+      "example": "The penalty clause states the consequences for late delivery.",
+      "sourcePart": 7,
+      "tags": ["legal"]
+    },
+    {
+      "term": "clientele",
+      "pos": "noun",
+      "definition": "the regular customers of a business",
+      "example": "The restaurant attracts a loyal clientele from the business district.",
+      "sourcePart": 7,
+      "tags": ["hospitality", "retail"]
+    },
+    {
+      "term": "collaborate",
+      "pos": "verb",
+      "definition": "to work jointly with others on a project",
+      "example": "The two departments will collaborate on the marketing campaign.",
+      "sourcePart": 5,
+      "tags": ["office", "communication"]
+    },
+    {
+      "term": "collateral",
+      "pos": "noun",
+      "definition": "property pledged as security for a loan",
+      "example": "The bank required collateral before approving the business loan.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "commemorate",
+      "pos": "verb",
+      "definition": "to honor the memory of a person or event",
+      "example": "The company held a ceremony to commemorate its fiftieth anniversary.",
+      "sourcePart": 5,
+      "tags": ["event"]
+    },
+    {
+      "term": "commute",
+      "pos": "noun",
+      "definition": "a regular journey between home and work",
+      "example": "His daily commute takes about forty-five minutes by train.",
+      "sourcePart": 3,
+      "tags": ["travel", "office"]
+    },
+    {
+      "term": "compensate",
+      "pos": "verb",
+      "definition": "to pay someone for work or loss",
+      "example": "The company will compensate employees for overtime hours worked.",
+      "sourcePart": 5,
+      "tags": ["hr", "finance"]
+    },
+    {
+      "term": "competent",
+      "pos": "adjective",
+      "definition": "having sufficient skill or knowledge",
+      "example": "She is a highly competent manager with ten years of experience.",
+      "sourcePart": 5,
+      "tags": ["hr"]
+    },
+    {
+      "term": "comply",
+      "pos": "verb",
+      "definition": "to act in accordance with rules or requests",
+      "example": "All employees must comply with the safety regulations.",
+      "sourcePart": 5,
+      "tags": ["legal"]
+    },
+    {
+      "term": "comprehensive",
+      "pos": "adjective",
+      "definition": "including all or nearly all aspects of something",
+      "example": "The report provides a comprehensive analysis of market trends.",
+      "sourcePart": 6,
+      "tags": ["communication"]
+    },
+    {
+      "term": "confidential",
+      "pos": "adjective",
+      "definition": "intended to be kept secret",
+      "example": "All salary information is strictly confidential.",
+      "sourcePart": 5,
+      "tags": ["hr", "legal"]
+    },
+    {
+      "term": "congestion",
+      "pos": "noun",
+      "definition": "overcrowding that slows movement or progress",
+      "example": "Traffic congestion caused many employees to arrive late.",
+      "sourcePart": 4,
+      "tags": ["logistics", "travel"]
+    },
+    {
+      "term": "consecutive",
+      "pos": "adjective",
+      "definition": "following each other without interruption",
+      "example": "Sales have increased for five consecutive quarters.",
+      "sourcePart": 3,
+      "tags": ["finance"]
+    },
+    {
+      "term": "consolidate",
+      "pos": "verb",
+      "definition": "to combine several things into a single unit",
+      "example": "The company plans to consolidate its three warehouses into one.",
+      "sourcePart": 1,
+      "tags": ["logistics", "finance"]
+    },
+    {
+      "term": "consultant",
+      "pos": "noun",
+      "definition": "an expert who gives professional advice",
+      "example": "We hired a consultant to improve our supply chain efficiency.",
+      "sourcePart": 7,
+      "tags": ["office"]
+    },
+    {
+      "term": "contractor",
+      "pos": "noun",
+      "definition": "a person or firm hired to do specific work",
+      "example": "The contractor finished the office renovation on schedule.",
+      "sourcePart": 6,
+      "tags": ["manufacturing", "real-estate"]
+    },
+    {
+      "term": "considerably",
+      "pos": "adverb",
+      "definition": "by a notably large amount or degree",
+      "example": "Operating costs have decreased considerably since the restructuring.",
+      "sourcePart": 5,
+      "tags": ["finance"]
+    },
+    {
+      "term": "courier",
+      "pos": "noun",
+      "definition": "a person or company that delivers packages",
+      "example": "The documents were sent by courier for overnight delivery.",
+      "sourcePart": 3,
+      "tags": ["logistics"]
+    },
+    {
+      "term": "credentials",
+      "pos": "noun",
+      "definition": "qualifications or achievements that prove ability",
+      "example": "Her impressive credentials made her the top choice for the role.",
+      "sourcePart": 7,
+      "tags": ["hr", "training"]
+    },
+    {
+      "term": "curtail",
+      "pos": "verb",
+      "definition": "to reduce or limit something",
+      "example": "Management decided to curtail spending on non-essential travel.",
+      "sourcePart": 2,
+      "tags": ["finance"]
+    },
+    {
+      "term": "customary",
+      "pos": "adjective",
+      "definition": "usual or typical in a particular situation",
+      "example": "It is customary to provide two weeks of notice before resigning.",
+      "sourcePart": 6,
+      "tags": ["hr", "office"]
+    },
+    {
+      "term": "compliance",
+      "pos": "noun",
+      "definition": "the act of following rules or standards",
+      "example": "The factory passed the compliance inspection without any issues.",
+      "sourcePart": 4,
+      "tags": ["legal", "manufacturing"]
+    }
+  ]
+}

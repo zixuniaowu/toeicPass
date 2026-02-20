@@ -1,0 +1,3077 @@
+[
+  {
+    "id": "breaking-bad-danger",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "I am not in danger, Skyler. I am the danger.",
+        "translation": "我没有身处危险之中，斯凯勒。我就是危险本身。"
+      },
+      {
+        "id": 2,
+        "text": "A guy opens his door and gets shot, and you think that of me? No.",
+        "translation": "一个人打开门就被射杀了，你觉得那会是我？不。"
+      },
+      {
+        "id": 3,
+        "text": "I am the one who knocks.",
+        "translation": "敲门的人是我。"
+      },
+      {
+        "id": 4,
+        "text": "Do you know how much I make a year? Even if I told you, you wouldn't believe it.",
+        "translation": "你知道我一年赚多少吗？就算我告诉你，你也不会相信。"
+      },
+      {
+        "id": 5,
+        "text": "You clearly don't know who you're talking to, so let me clue you in.",
+        "translation": "你显然不知道你在跟谁说话，所以让我给你提个醒。"
+      },
+      {
+        "id": 6,
+        "text": "I have spent my whole life being afraid. Afraid of things that could happen, might happen, might not happen.",
+        "translation": "我一辈子都在恐惧中度过。害怕可能发生的事，也许会发生的事，也许不会发生的事。"
+      },
+      {
+        "id": 7,
+        "text": "Fifty years I spent like that. Finding myself awake at three in the morning.",
+        "translation": "我这样过了五十年。发现自己凌晨三点还醒着。"
+      },
+      {
+        "id": 8,
+        "text": "But you know what? Ever since my diagnosis, I sleep just fine.",
+        "translation": "但你知道吗？自从确诊以来，我睡得很好。"
+      },
+      {
+        "id": 9,
+        "text": "What I came to realize is that fear is the worst of it. That's the real enemy.",
+        "translation": "我逐渐意识到恐惧才是最糟糕的。那才是真正的敌人。"
+      },
+      {
+        "id": 10,
+        "text": "Say my name. You know exactly who I am.",
+        "translation": "说出我的名字。你很清楚我是谁。"
+      },
+      {
+        "id": 11,
+        "text": "You're goddamn right.",
+        "translation": "你说得太对了。"
+      },
+      {
+        "id": 12,
+        "text": "I did it for me. I liked it. I was good at it. And I was really alive.",
+        "translation": "我是为自己做的。我喜欢。我擅长。我真正地活着。"
+      },
+      {
+        "id": 13,
+        "text": "If you don't know who I am, then maybe your best course would be to tread lightly.",
+        "translation": "如果你不知道我是谁，那么你最好小心行事。"
+      },
+      {
+        "id": 14,
+        "text": "I have made a series of very bad decisions, and I cannot make another one.",
+        "translation": "我已经做了一系列非常糟糕的决定，我不能再犯了。"
+      },
+      {
+        "id": 15,
+        "text": "Chemistry is the study of change. It is growth, then decay, then transformation.",
+        "translation": "化学是研究变化的学科。是生长，然后衰变，然后转化。"
+      },
+      {
+        "id": 16,
+        "text": "You need to stop focusing on what I have done wrong and start focusing on what I am going to do right.",
+        "translation": "你需要停止关注我做错了什么，开始关注我将要做对的事。"
+      },
+      {
+        "id": 17,
+        "text": "There is nothing left for me except to make sure that everyone who is supposed to get what they deserve, gets it.",
+        "translation": "对我来说已经没有别的了，除了确保每个该得到应有回报的人都得到它。"
+      },
+      {
+        "id": 18,
+        "text": "I want to make sure my family is taken care of after I'm gone.",
+        "translation": "我想确保在我走后，我的家人能得到妥善照顾。"
+      },
+      {
+        "id": 19,
+        "text": "We're done when I say we're done.",
+        "translation": "我说结束才算结束。"
+      },
+      {
+        "id": 20,
+        "text": "No more half measures, Walter.",
+        "translation": "不要再半途而废了，沃尔特。"
+      },
+      {
+        "id": 21,
+        "text": "Stay out of my territory.",
+        "translation": "离开我的地盘。"
+      },
+      {
+        "id": 22,
+        "text": "Jesse, you asked me if I was in the meth business or the money business. Neither. I'm in the empire business.",
+        "translation": "杰西，你问我是做冰毒生意还是做钱的生意。都不是。我做的是帝国的生意。"
+      },
+      {
+        "id": 23,
+        "text": "I have lived under the threat of death for a year now. And because of that, I have made choices.",
+        "translation": "我在死亡的威胁下生活了一年了。正因如此，我做出了选择。"
+      },
+      {
+        "id": 24,
+        "text": "I alone should suffer the consequences of those choices, no one else.",
+        "translation": "我一个人应该承受这些选择的后果，不是其他人。"
+      },
+      {
+        "id": 25,
+        "text": "What I do, I do for my family. Every decision I have ever made has been for this family.",
+        "translation": "我所做的一切都是为了我的家人。我做过的每一个决定都是为了这个家。"
+      },
+      {
+        "id": 26,
+        "text": "Nothing stops this train. Nothing.",
+        "translation": "没有什么能阻止这列火车。什么都不能。"
+      },
+      {
+        "id": 27,
+        "text": "I am awake. For the first time in my life, I am truly awake.",
+        "translation": "我清醒了。我人生中第一次，真正地清醒了。"
+      },
+      {
+        "id": 28,
+        "text": "The chemistry must be respected. It is an art as much as a science.",
+        "translation": "化学必须被尊重。它既是一门艺术也是一门科学。"
+      },
+      {
+        "id": 29,
+        "text": "Every life comes with a death sentence. So every few months I come in here for a test, and I hold my breath waiting.",
+        "translation": "每一条生命都伴随着死刑判决。所以每隔几个月我就来这里做检查，屏住呼吸等待结果。"
+      },
+      {
+        "id": 30,
+        "text": "There are two kinds of people in this world: those who run and those who stay and fight.",
+        "translation": "这个世界上有两种人：逃跑的人和留下来战斗的人。"
+      },
+      {
+        "id": 31,
+        "text": "I have been the best student, the best teacher, and now I'm going to be the best at this.",
+        "translation": "我曾是最好的学生、最好的老师，现在我要在这件事上也做到最好。"
+      },
+      {
+        "id": 32,
+        "text": "Skyler, all the things that I have done, you need to understand. I did them to protect this family.",
+        "translation": "斯凯勒，我所做的一切，你需要理解。我做这些都是为了保护这个家。"
+      },
+      {
+        "id": 33,
+        "text": "You asked me to be a provider for this family, and I have provided beyond your wildest expectations.",
+        "translation": "你要求我做这个家的供养者，而我提供的已经超出了你最疯狂的期望。"
+      },
+      {
+        "id": 34,
+        "text": "Everyone sounds like Meryl Streep with a gun to their head.",
+        "translation": "当枪指着脑袋时，每个人都像梅丽尔·斯特里普一样会演戏。"
+      },
+      {
+        "id": 35,
+        "text": "The moral of the story is: I chose a half measure when I should have gone all the way.",
+        "translation": "故事的寓意是：当我应该全力以赴的时候，我选择了半途而废。"
+      },
+      {
+        "id": 36,
+        "text": "I am in a position where I have nothing to lose. And that makes me very dangerous.",
+        "translation": "我处在一个无所失去的位置。这让我变得非常危险。"
+      },
+      {
+        "id": 37,
+        "text": "Maybe I should have just accepted my fate and not tried to fight it.",
+        "translation": "也许我当初应该接受命运，不去试图反抗。"
+      },
+      {
+        "id": 38,
+        "text": "This is my own private domination. Do you understand that? My own.",
+        "translation": "这是我自己的统治。你明白吗？是我自己的。"
+      },
+      {
+        "id": 39,
+        "text": "You want to cook crystal meth? You need a steady hand, a good eye, and basic knowledge of chemistry.",
+        "translation": "你想制造冰毒？你需要一双稳定的手，好的眼力，和基本的化学知识。"
+      },
+      {
+        "id": 40,
+        "text": "I won. I won because I was smarter, and I was willing to do what others would not.",
+        "translation": "我赢了。我赢了因为我更聪明，而且我愿意做别人不愿意做的事。"
+      }
+    ]
+  },
+  {
+    "id": "got-tyrion-trial",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "I did not do it. I did not kill the king. But I wish that I had.",
+        "translation": "我没有做。我没有杀国王。但我希望我做了。"
+      },
+      {
+        "id": 2,
+        "text": "Watching your vicious bastard die gave me more relief than a thousand lying whores.",
+        "translation": "看着你那恶毒的私生子死去，比一千个说谎的人带给我的慰藉都多。"
+      },
+      {
+        "id": 3,
+        "text": "I wish I was the monster you think I am. I wish I had enough poison for the whole pack of you.",
+        "translation": "我希望我是你们以为的那个怪物。我希望我有足够的毒药毒死你们所有人。"
+      },
+      {
+        "id": 4,
+        "text": "I have been on trial for being a dwarf my entire life.",
+        "translation": "我一辈子都在因为自己是个侏儒而受审。"
+      },
+      {
+        "id": 5,
+        "text": "I saved you. I saved this city. All your worthless lives.",
+        "translation": "我救了你们。我救了这座城市。救了你们所有毫无价值的性命。"
+      },
+      {
+        "id": 6,
+        "text": "I demand a trial by combat. I would rather trust my fate to the gods.",
+        "translation": "我要求以决斗审判。我宁愿把命运交给诸神。"
+      },
+      {
+        "id": 7,
+        "text": "I am guilty. Guilty of being a dwarf. Is that not a crime enough?",
+        "translation": "我有罪。我犯了身为侏儒的罪。难道这还不够吗？"
+      },
+      {
+        "id": 8,
+        "text": "A Lannister always pays his debts. Remember that.",
+        "translation": "兰尼斯特有债必偿。记住这句话。"
+      },
+      {
+        "id": 9,
+        "text": "Never forget what you are. The rest of the world will not. Wear it like armor, and it can never be used to hurt you.",
+        "translation": "永远不要忘记你是什么。世界上其他人不会忘记。把它当作盔甲穿上，它就永远不能被用来伤害你。"
+      },
+      {
+        "id": 10,
+        "text": "I drink and I know things. That's what I do.",
+        "translation": "我喝酒，我知道很多事。这就是我做的。"
+      },
+      {
+        "id": 11,
+        "text": "It's not easy being drunk all the time. If it were easy, everyone would do it.",
+        "translation": "一直喝醉并不容易。如果容易的话，每个人都会这样做。"
+      },
+      {
+        "id": 12,
+        "text": "A mind needs books like a sword needs a whetstone, if it is to keep its edge.",
+        "translation": "头脑需要书籍就像剑需要磨刀石一样，这样才能保持锋利。"
+      },
+      {
+        "id": 13,
+        "text": "The powerful have always preyed on the powerless. That is how they became powerful in the first place.",
+        "translation": "强者总是欺压弱者。他们当初就是这样变得强大的。"
+      },
+      {
+        "id": 14,
+        "text": "Death is so terribly final, while life is full of possibilities.",
+        "translation": "死亡是如此可怕的终结，而生命充满了可能性。"
+      },
+      {
+        "id": 15,
+        "text": "Every time we deal with an enemy, we create two more.",
+        "translation": "每次我们对付一个敌人，就会多出两个。"
+      },
+      {
+        "id": 16,
+        "text": "Sometimes duty is the death of love.",
+        "translation": "有时候责任就是爱的坟墓。"
+      },
+      {
+        "id": 17,
+        "text": "In my experience, eloquent men are right every bit as often as imbeciles.",
+        "translation": "以我的经验，能言善辩的人和蠢人正确的概率一样大。"
+      },
+      {
+        "id": 18,
+        "text": "You want to know the secret to surviving this place? You need friends. Powerful friends.",
+        "translation": "你想知道在这个地方生存的秘诀吗？你需要朋友。有权势的朋友。"
+      },
+      {
+        "id": 19,
+        "text": "I'm not questioning your honor. I'm denying its existence.",
+        "translation": "我不是在质疑你的荣誉。我是在否认它的存在。"
+      },
+      {
+        "id": 20,
+        "text": "When you tear out a man's tongue, you are not proving him a liar. You're only telling the world that you fear what he might say.",
+        "translation": "当你割掉一个人的舌头时，你并没有证明他是骗子。你只是在告诉世界你害怕他可能说的话。"
+      },
+      {
+        "id": 21,
+        "text": "When you play the game of thrones, you win or you die. There is no middle ground.",
+        "translation": "当你玩权力的游戏时，你要么赢要么死。没有中间地带。"
+      },
+      {
+        "id": 22,
+        "text": "Chaos isn't a pit. Chaos is a ladder.",
+        "translation": "混乱不是深渊。混乱是一架梯子。"
+      },
+      {
+        "id": 23,
+        "text": "Any man who must say 'I am the king' is no true king.",
+        "translation": "任何必须说'我是国王'的人都不是真正的国王。"
+      },
+      {
+        "id": 24,
+        "text": "The man who passes the sentence should swing the sword.",
+        "translation": "判刑的人应该亲自挥剑。"
+      },
+      {
+        "id": 25,
+        "text": "Winter is coming. Those are the words of my house, and they carry a warning.",
+        "translation": "凛冬将至。这是我家族的箴言，它们带着警告。"
+      },
+      {
+        "id": 26,
+        "text": "There is only one god, and his name is Death. And there is only one thing we say to Death: not today.",
+        "translation": "只有一个神，他的名字是死亡。我们对死亡只说一句话：今天不行。"
+      },
+      {
+        "id": 27,
+        "text": "Power resides where men believe it resides. It is a trick, a shadow on the wall.",
+        "translation": "权力存在于人们相信它存在的地方。它是一个把戏，墙上的一个影子。"
+      },
+      {
+        "id": 28,
+        "text": "A lion does not concern himself with the opinion of sheep.",
+        "translation": "狮子不会在意绵羊的看法。"
+      },
+      {
+        "id": 29,
+        "text": "The night is dark and full of terrors.",
+        "translation": "黑夜漫长，处处险恶。"
+      },
+      {
+        "id": 30,
+        "text": "A ruler who kills those devoted to her is not a ruler who inspires devotion.",
+        "translation": "一个杀死忠于自己的人的统治者，不会是一个能激发忠诚的统治者。"
+      },
+      {
+        "id": 31,
+        "text": "What unites people? Armies? Gold? Flags? No. Stories. There's nothing more powerful than a good story.",
+        "translation": "什么能团结人们？军队？黄金？旗帜？不。是故事。没有什么比一个好故事更有力量的了。"
+      },
+      {
+        "id": 32,
+        "text": "Everything before the word 'but' is meaningless.",
+        "translation": "'但是'这个词之前的一切都毫无意义。"
+      },
+      {
+        "id": 33,
+        "text": "The things I do for love.",
+        "translation": "我为爱做的那些事。"
+      },
+      {
+        "id": 34,
+        "text": "My brother has his sword, and I have my mind. And a mind needs books the way a sword needs a whetstone.",
+        "translation": "我哥哥有他的剑，而我有我的头脑。头脑需要书籍，就像剑需要磨刀石一样。"
+      },
+      {
+        "id": 35,
+        "text": "Knowledge is power. No, power is power.",
+        "translation": "知识就是力量。不，权力就是力量。"
+      },
+      {
+        "id": 36,
+        "text": "It is not the strength of the body that matters, but the strength of the spirit.",
+        "translation": "重要的不是身体的力量，而是精神的力量。"
+      },
+      {
+        "id": 37,
+        "text": "We can be heroes. The world needs heroes, not more clever men.",
+        "translation": "我们可以成为英雄。世界需要英雄，而不是更多聪明人。"
+      },
+      {
+        "id": 38,
+        "text": "I will not become a page in someone else's history book. I will write my own story.",
+        "translation": "我不会成为别人历史书中的一页。我要书写自己的故事。"
+      },
+      {
+        "id": 39,
+        "text": "The true enemy doesn't wait out the storm. He brings the storm.",
+        "translation": "真正的敌人不会等待风暴过去。他带来风暴。"
+      },
+      {
+        "id": 40,
+        "text": "Once you have accepted your flaws, no one can use them against you.",
+        "translation": "一旦你接受了自己的缺陷，就没有人能用它们来对付你了。"
+      }
+    ]
+  },
+  {
+    "id": "sherlock-sociopath",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "I'm not a psychopath, Anderson. I'm a high-functioning sociopath. Do your research.",
+        "translation": "我不是精神病患者，安德森。我是一个高功能反社会者。做好你的功课。"
+      },
+      {
+        "id": 2,
+        "text": "The name is Sherlock Holmes, and the address is two hundred and twenty-one B Baker Street.",
+        "translation": "我叫夏洛克·福尔摩斯，地址是贝克街221B号。"
+      },
+      {
+        "id": 3,
+        "text": "When you have eliminated the impossible, whatever remains, however improbable, must be the truth.",
+        "translation": "当你排除了所有不可能的情况后，剩下的无论多么不可思议，都一定是真相。"
+      },
+      {
+        "id": 4,
+        "text": "I'm not a hero. I'm a high-functioning sociopath. Merry Christmas.",
+        "translation": "我不是英雄。我是一个高功能反社会者。圣诞快乐。"
+      },
+      {
+        "id": 5,
+        "text": "Bored! I need a case. Something challenging. The ordinary ones are so tedious.",
+        "translation": "无聊！我需要一个案子。有挑战性的。普通的案子太无聊了。"
+      },
+      {
+        "id": 6,
+        "text": "You see, but you do not observe. The distinction is clear.",
+        "translation": "你看到了，但你没有观察。区别很明显。"
+      },
+      {
+        "id": 7,
+        "text": "Every fairy tale needs a good old-fashioned villain.",
+        "translation": "每个童话故事都需要一个传统的反派。"
+      },
+      {
+        "id": 8,
+        "text": "Dear God, what is it like in your funny little brains? It must be so boring.",
+        "translation": "天哪，你们那有趣的小脑袋里是什么样的？一定很无聊吧。"
+      },
+      {
+        "id": 9,
+        "text": "I consider that a woman's brain is not comparable to a man's. It is something far superior.",
+        "translation": "我认为女人的大脑不能和男人的相提并论。它要高级得多。"
+      },
+      {
+        "id": 10,
+        "text": "Sentiment is a chemical defect found in the losing side.",
+        "translation": "感情是失败者身上发现的化学缺陷。"
+      },
+      {
+        "id": 11,
+        "text": "The game is on. I need to think. Everyone shut up and let me think.",
+        "translation": "游戏开始了。我需要思考。所有人闭嘴让我想想。"
+      },
+      {
+        "id": 12,
+        "text": "Once you've ruled out the impossible, whatever remains, however improbable, must be true.",
+        "translation": "一旦你排除了不可能的，剩下的无论多么不可能，都一定是真的。"
+      },
+      {
+        "id": 13,
+        "text": "I always hear 'punch me in the face' when you're speaking, but it's usually subtext.",
+        "translation": "你说话的时候我总是听到'打我的脸'，不过通常那只是潜台词。"
+      },
+      {
+        "id": 14,
+        "text": "There is nothing more deceptive than an obvious fact.",
+        "translation": "没有比显而易见的事实更具欺骗性的东西了。"
+      },
+      {
+        "id": 15,
+        "text": "I don't have friends. I've just got one.",
+        "translation": "我没有朋友们。我只有一个朋友。"
+      },
+      {
+        "id": 16,
+        "text": "Alone is what I have. Alone protects me.",
+        "translation": "孤独是我所拥有的。孤独保护着我。"
+      },
+      {
+        "id": 17,
+        "text": "People have died. That's what people do. They die.",
+        "translation": "人死了。人就是这样的。他们会死。"
+      },
+      {
+        "id": 18,
+        "text": "The world is full of obvious things which nobody by any chance ever observes.",
+        "translation": "这个世界充满了显而易见的事物，却没有人碰巧去观察。"
+      },
+      {
+        "id": 19,
+        "text": "I'm a consulting detective. The only one in the world. I invented the job.",
+        "translation": "我是一名咨询侦探。世界上唯一的一个。这个职业是我发明的。"
+      },
+      {
+        "id": 20,
+        "text": "Do you know the big problem with a disguise? However hard you try, it's always a self-portrait.",
+        "translation": "你知道伪装最大的问题是什么吗？无论你多努力，它总是一幅自画像。"
+      },
+      {
+        "id": 21,
+        "text": "Anderson, don't talk out loud. You lower the IQ of the whole street.",
+        "translation": "安德森，不要大声说话。你拉低了整条街的智商。"
+      },
+      {
+        "id": 22,
+        "text": "The body is just transport for the brain. That's all that matters to me.",
+        "translation": "身体只是大脑的运输工具。那才是对我唯一重要的。"
+      },
+      {
+        "id": 23,
+        "text": "I'm in shock. Look, I've got a blanket.",
+        "translation": "我受到了惊吓。看，我有一条毯子。"
+      },
+      {
+        "id": 24,
+        "text": "Brainy is the new sexy.",
+        "translation": "聪明是新的性感。"
+      },
+      {
+        "id": 25,
+        "text": "Taking your own life. Interesting expression. Taking it from whom? It was yours all along.",
+        "translation": "结束自己的生命。有趣的说法。从谁手中夺走？它一直都是你的。"
+      },
+      {
+        "id": 26,
+        "text": "Heroes don't exist, and if they did, I wouldn't be one of them.",
+        "translation": "英雄不存在，就算存在，我也不会是其中之一。"
+      },
+      {
+        "id": 27,
+        "text": "I may be on the side of the angels, but don't think for one second that I am one of them.",
+        "translation": "我也许站在天使那边，但不要以为我是他们中的一员。"
+      },
+      {
+        "id": 28,
+        "text": "Every great cause has martyrs. Every war has suicide missions, and make no mistake, this is war.",
+        "translation": "每个伟大的事业都有殉道者。每场战争都有自杀式任务，别搞错了，这就是战争。"
+      },
+      {
+        "id": 29,
+        "text": "Falling is just like flying, except there's a more permanent destination.",
+        "translation": "坠落就像飞翔一样，只是有一个更永久的目的地。"
+      },
+      {
+        "id": 30,
+        "text": "There is nothing more dangerous than a person with nothing left to lose.",
+        "translation": "没有什么比一个再也没有什么可以失去的人更危险的了。"
+      },
+      {
+        "id": 31,
+        "text": "I've always assumed that love is a dangerous disadvantage. Thank you for the final proof.",
+        "translation": "我一直认为爱情是一种危险的弱点。谢谢你提供了最后的证明。"
+      },
+      {
+        "id": 32,
+        "text": "The problems of your past are your business. The problems of your future are my privilege.",
+        "translation": "你过去的问题是你的事。你未来的问题是我的荣幸。"
+      },
+      {
+        "id": 33,
+        "text": "To the best of times, John.",
+        "translation": "为了最好的时光干杯，约翰。"
+      },
+      {
+        "id": 34,
+        "text": "My mind rebels at stagnation. Give me problems, give me work.",
+        "translation": "我的头脑抗拒停滞。给我问题，给我工作。"
+      },
+      {
+        "id": 35,
+        "text": "London. It's always London. Everybody's so busy, nobody ever stops to think.",
+        "translation": "伦敦。总是伦敦。每个人都忙得不可开交，没有人停下来思考。"
+      },
+      {
+        "id": 36,
+        "text": "A good detective knows a criminal has to come back to the scene of the crime. A great detective waits there for him.",
+        "translation": "一个好侦探知道罪犯必须回到犯罪现场。一个伟大的侦探在那里等着他。"
+      },
+      {
+        "id": 37,
+        "text": "The universe is rarely so lazy as to repeat itself.",
+        "translation": "宇宙很少懒到重复自己。"
+      },
+      {
+        "id": 38,
+        "text": "I'm not lonely, Molly. I just enjoy the silence. There's a difference.",
+        "translation": "我不孤独，莫莉。我只是享受安静。这是有区别的。"
+      },
+      {
+        "id": 39,
+        "text": "The emotional context of a situation is irrelevant. Only the facts matter. Always the facts.",
+        "translation": "一种情况的情感背景是无关紧要的。只有事实才重要。永远是事实。"
+      },
+      {
+        "id": 40,
+        "text": "It is a capital mistake to theorize before one has data.",
+        "translation": "在没有数据之前就进行推理是一个致命的错误。"
+      }
+    ]
+  },
+  {
+    "id": "crown-queen",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "The crown must always win. It must always be seen to win.",
+        "translation": "王冠必须永远获胜。必须永远看起来是获胜的。"
+      },
+      {
+        "id": 2,
+        "text": "To do nothing is often the best course of action. But history is full of people who were not content to do nothing.",
+        "translation": "什么都不做往往是最好的行动方针。但历史上充满了不甘于什么都不做的人。"
+      },
+      {
+        "id": 3,
+        "text": "I have to be seen to be believed. That has always been my motto.",
+        "translation": "我必须被看到才能被相信。这一直是我的座右铭。"
+      },
+      {
+        "id": 4,
+        "text": "Duty comes before everything, even the people we love.",
+        "translation": "责任重于一切，甚至重于我们所爱的人。"
+      },
+      {
+        "id": 5,
+        "text": "A queen's first obligation is to endure, and to do so with grace and dignity.",
+        "translation": "女王的首要义务是忍耐，并且要优雅而有尊严地忍耐。"
+      },
+      {
+        "id": 6,
+        "text": "The monarchy is a living thing. It evolves, but it must never appear to be weak.",
+        "translation": "君主制是一个活的事物。它在进化，但绝不能显得软弱。"
+      },
+      {
+        "id": 7,
+        "text": "I have learned that one must maintain composure even when the world around us is falling apart.",
+        "translation": "我学到了即使周围的世界正在崩塌，也必须保持镇定。"
+      },
+      {
+        "id": 8,
+        "text": "A sovereign's word is their bond. If you make a promise, you keep it.",
+        "translation": "君主的话就是契约。如果你做出了承诺，就要遵守。"
+      },
+      {
+        "id": 9,
+        "text": "The institution must come before the individual. That is the price of the crown.",
+        "translation": "制度必须凌驾于个人之上。这就是王冠的代价。"
+      },
+      {
+        "id": 10,
+        "text": "We are not supposed to show our emotions in public. We are the symbol of stability.",
+        "translation": "我们不应该在公众面前表露情感。我们是稳定的象征。"
+      },
+      {
+        "id": 11,
+        "text": "I declare before you all that my whole life, whether it be long or short, shall be devoted to your service.",
+        "translation": "我在你们所有人面前宣誓，我的一生，无论长短，都将奉献于为你们服务。"
+      },
+      {
+        "id": 12,
+        "text": "In a world that is constantly changing, the people need something that stays the same.",
+        "translation": "在一个不断变化的世界中，人们需要一些不变的东西。"
+      },
+      {
+        "id": 13,
+        "text": "One must not let personal feelings interfere with the responsibilities of the office.",
+        "translation": "一个人不能让个人感情干扰职务上的责任。"
+      },
+      {
+        "id": 14,
+        "text": "There is a difference between what one feels and what one must do. The gap between them is called duty.",
+        "translation": "一个人的感受和必须做的事情之间是有区别的。它们之间的距离叫做责任。"
+      },
+      {
+        "id": 15,
+        "text": "I have been trained since childhood to place the needs of the nation before my own.",
+        "translation": "我从小就被训练要把国家的需要放在自己的需要之前。"
+      },
+      {
+        "id": 16,
+        "text": "History will judge us not by what we said, but by what we did.",
+        "translation": "历史不会根据我们说了什么来评判我们，而是根据我们做了什么。"
+      },
+      {
+        "id": 17,
+        "text": "One can never be too careful about the impression one gives to the public.",
+        "translation": "一个人对给公众留下的印象怎么小心都不为过。"
+      },
+      {
+        "id": 18,
+        "text": "The greatest leaders are those who serve others without expecting anything in return.",
+        "translation": "最伟大的领导者是那些不求回报地服务他人的人。"
+      },
+      {
+        "id": 19,
+        "text": "Grief is the price we pay for love. And I have paid it gladly.",
+        "translation": "悲伤是我们为爱付出的代价。而我心甘情愿地付出了。"
+      },
+      {
+        "id": 20,
+        "text": "The true measure of a leader is not how they behave in times of comfort, but how they stand in times of challenge.",
+        "translation": "衡量一个领导者的真正标准不是他们在舒适时期的表现，而是他们在挑战时期如何站立。"
+      },
+      {
+        "id": 21,
+        "text": "A queen cannot afford the luxury of being ordinary. Every moment is observed and judged.",
+        "translation": "女王不能享有普通人的奢侈。每一刻都被观察和评判。"
+      },
+      {
+        "id": 22,
+        "text": "One does not wear the crown. The crown wears you.",
+        "translation": "不是你戴着王冠。是王冠戴着你。"
+      },
+      {
+        "id": 23,
+        "text": "Silence is sometimes the most powerful statement a monarch can make.",
+        "translation": "沉默有时是君主能做出的最有力的声明。"
+      },
+      {
+        "id": 24,
+        "text": "We must be constant. In an ever-changing world, the monarchy must remain the fixed point.",
+        "translation": "我们必须始终如一。在一个不断变化的世界中，君主制必须保持不变的基点。"
+      },
+      {
+        "id": 25,
+        "text": "I have seen prime ministers come and go. The crown endures.",
+        "translation": "我见过首相们来来去去。王冠经久不衰。"
+      },
+      {
+        "id": 26,
+        "text": "The weight of the crown is not in its gold, but in the responsibility it represents.",
+        "translation": "王冠的重量不在于它的黄金，而在于它所代表的责任。"
+      },
+      {
+        "id": 27,
+        "text": "To be queen is to be alone. That is the reality no one prepares you for.",
+        "translation": "成为女王就是孤独。这是没有人让你准备好的现实。"
+      },
+      {
+        "id": 28,
+        "text": "One cannot govern with one's heart. One must govern with one's head.",
+        "translation": "一个人不能用心去治理。必须用头脑去治理。"
+      },
+      {
+        "id": 29,
+        "text": "The people do not want to see their monarch crumble. They want to see strength.",
+        "translation": "人们不想看到他们的君主崩溃。他们想看到力量。"
+      },
+      {
+        "id": 30,
+        "text": "Every generation faces its own crisis. It is how we respond that defines us.",
+        "translation": "每一代人都面临自己的危机。定义我们的是我们如何应对。"
+      },
+      {
+        "id": 31,
+        "text": "I was not born to be queen. I was trained to be one. There is a profound difference.",
+        "translation": "我不是生来就是女王的。我是被训练成女王的。这有着深刻的区别。"
+      },
+      {
+        "id": 32,
+        "text": "The family behind the crown is just as flawed as any other. We simply cannot show it.",
+        "translation": "王冠背后的家庭和其他任何家庭一样有缺陷。我们只是不能表现出来。"
+      },
+      {
+        "id": 33,
+        "text": "Tradition is not something to be discarded simply because it is old. It is old because it has value.",
+        "translation": "传统不应该仅仅因为它古老就被抛弃。它之所以古老是因为它有价值。"
+      },
+      {
+        "id": 34,
+        "text": "The world may change around us, but the principles we hold dear must remain unchanged.",
+        "translation": "世界可能在我们周围改变，但我们珍视的原则必须保持不变。"
+      },
+      {
+        "id": 35,
+        "text": "A monarch must learn the difference between what is popular and what is right.",
+        "translation": "君主必须学会区分什么是受欢迎的和什么是正确的。"
+      },
+      {
+        "id": 36,
+        "text": "I have given my life to this country. I have no regrets, only responsibilities.",
+        "translation": "我把一生献给了这个国家。我没有遗憾，只有责任。"
+      },
+      {
+        "id": 37,
+        "text": "The crown demands sacrifice. It always has, and it always will.",
+        "translation": "王冠要求牺牲。一直如此，将来也会如此。"
+      },
+      {
+        "id": 38,
+        "text": "In moments of doubt, I remind myself that I serve something greater than myself.",
+        "translation": "在怀疑的时刻，我提醒自己我在服务于比自己更伟大的事物。"
+      },
+      {
+        "id": 39,
+        "text": "One must never complain and never explain. That is the royal way.",
+        "translation": "一个人绝不能抱怨也绝不能解释。这就是皇室的方式。"
+      },
+      {
+        "id": 40,
+        "text": "The purpose of the monarchy is to unite, not to divide. We must always remember that.",
+        "translation": "君主制的目的是团结，而不是分裂。我们必须永远记住这一点。"
+      }
+    ]
+  },
+  {
+    "id": "madmen-carousel",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "Technology is a glittering lure. But there is the rare occasion when the public can be engaged on a level beyond flash.",
+        "translation": "技术是一种闪亮的诱惑。但偶尔，公众会被更深层次的东西打动。"
+      },
+      {
+        "id": 2,
+        "text": "If you don't like what's being said, change the conversation.",
+        "translation": "如果你不喜欢别人说的话，就改变对话。"
+      },
+      {
+        "id": 3,
+        "text": "Advertising is based on one thing: happiness.",
+        "translation": "广告基于一样东西：幸福。"
+      },
+      {
+        "id": 4,
+        "text": "And you know what happiness is? Happiness is the smell of a new car. It's freedom from fear.",
+        "translation": "你知道幸福是什么吗？幸福是新车的味道。是摆脱恐惧。"
+      },
+      {
+        "id": 5,
+        "text": "It's a billboard on the side of the road that screams that whatever you're doing is okay. You are okay.",
+        "translation": "是路边一块大声告诉你无论你在做什么都没问题的广告牌。你没问题。"
+      },
+      {
+        "id": 6,
+        "text": "This device isn't a spaceship. It's a time machine.",
+        "translation": "这个装置不是太空船。它是一台时光机。"
+      },
+      {
+        "id": 7,
+        "text": "It goes backwards, and forwards. It takes us to a place where we ache to go again.",
+        "translation": "它可以向前也可以向后。它带我们去一个我们渴望再次回到的地方。"
+      },
+      {
+        "id": 8,
+        "text": "It's not called the wheel. It's called the carousel.",
+        "translation": "它不叫转轮。它叫旋转木马。"
+      },
+      {
+        "id": 9,
+        "text": "It lets us travel the way a child travels — around and around and back home again, to a place where we know we are loved.",
+        "translation": "它让我们像孩子一样旅行——转了又转，回到家，回到一个我们知道自己被爱着的地方。"
+      },
+      {
+        "id": 10,
+        "text": "In Greek, nostalgia literally means the pain from an old wound.",
+        "translation": "在希腊语中，怀旧字面意思是来自旧伤口的疼痛。"
+      },
+      {
+        "id": 11,
+        "text": "It's a twinge in your heart far more powerful than memory alone.",
+        "translation": "那是你心中的一阵刺痛，远比单纯的记忆更有力量。"
+      },
+      {
+        "id": 12,
+        "text": "People tell you who they are, but we ignore it because we want them to be who we want them to be.",
+        "translation": "人们会告诉你他们是什么样的人，但我们忽视了，因为我们想让他们成为我们希望他们成为的样子。"
+      },
+      {
+        "id": 13,
+        "text": "The day you sign a client is the day you start losing them.",
+        "translation": "你签下客户的那天就是你开始失去他们的那天。"
+      },
+      {
+        "id": 14,
+        "text": "You want some respect? Go out there and get it for yourself.",
+        "translation": "你想要尊重？自己出去争取。"
+      },
+      {
+        "id": 15,
+        "text": "I keep going to a lot of places and ending up somewhere I've already been.",
+        "translation": "我不断去很多地方，最后却总是到了我已经去过的地方。"
+      },
+      {
+        "id": 16,
+        "text": "Success comes from standing out, not fitting in.",
+        "translation": "成功来自于脱颖而出，而不是随波逐流。"
+      },
+      {
+        "id": 17,
+        "text": "The reason you haven't felt it is because it doesn't exist. What you call love was invented by guys like me to sell nylons.",
+        "translation": "你之所以没感受到它，是因为它根本不存在。你所谓的爱情是像我这样的人为了卖丝袜而发明的。"
+      },
+      {
+        "id": 18,
+        "text": "Make it simple, but significant.",
+        "translation": "让它简单，但有意义。"
+      },
+      {
+        "id": 19,
+        "text": "I have a life, and it only goes in one direction: forward.",
+        "translation": "我有一段人生，它只朝一个方向走：前方。"
+      },
+      {
+        "id": 20,
+        "text": "Just think about it deeply, then forget it. And an idea will jump up in your face.",
+        "translation": "深入思考它，然后忘掉它。一个想法就会跳到你面前。"
+      },
+      {
+        "id": 21,
+        "text": "Change is neither good nor bad. It simply is. It can be greeted with terror or joy.",
+        "translation": "改变既不好也不坏。它只是存在。它可以被恐惧或喜悦迎接。"
+      },
+      {
+        "id": 22,
+        "text": "We're flawed because we want so much more. We're ruined because we get these things and wish for what we had.",
+        "translation": "我们有缺陷是因为我们想要的太多。我们被毁了是因为我们得到了这些东西却又怀念从前拥有的。"
+      },
+      {
+        "id": 23,
+        "text": "You are the product. You feeling something. That's what sells.",
+        "translation": "你就是产品。你的感受。这才是卖点。"
+      },
+      {
+        "id": 24,
+        "text": "The most important thing in advertising is new. It creates an itch.",
+        "translation": "广告中最重要的东西是新鲜感。它制造一种渴望。"
+      },
+      {
+        "id": 25,
+        "text": "Even though success is a reality, its effects are temporary.",
+        "translation": "尽管成功是真实的，但它的效果是暂时的。"
+      },
+      {
+        "id": 26,
+        "text": "Our deepest fear is not that we are inadequate. It's that we have no idea who we really are.",
+        "translation": "我们最深的恐惧不是我们不够好。而是我们不知道自己到底是谁。"
+      },
+      {
+        "id": 27,
+        "text": "In this business, the weights and measures of accomplishment are well defined.",
+        "translation": "在这个行业里，衡量成就的标准是明确的。"
+      },
+      {
+        "id": 28,
+        "text": "When you hit a wall, sometimes you have to go around it. Other times, you have to tear it down.",
+        "translation": "当你碰壁时，有时你得绕过去。其他时候，你得把它推倒。"
+      },
+      {
+        "id": 29,
+        "text": "There is no big lie. There is no system. The universe is indifferent.",
+        "translation": "没有什么弥天大谎。没有什么体系。宇宙是无情的。"
+      },
+      {
+        "id": 30,
+        "text": "Every person in this room has experienced a moment that fundamentally changed who they were.",
+        "translation": "这个房间里的每个人都经历过一个从根本上改变了自己的时刻。"
+      },
+      {
+        "id": 31,
+        "text": "What is happiness? It's a moment before you need more happiness.",
+        "translation": "什么是幸福？它是你需要更多幸福之前的那一刻。"
+      },
+      {
+        "id": 32,
+        "text": "You only live twice: once when you are born, and once when you look death in the face.",
+        "translation": "人只活两次：一次是出生时，一次是直面死亡时。"
+      },
+      {
+        "id": 33,
+        "text": "The best things in life are free. The second best things are very, very expensive.",
+        "translation": "生活中最好的东西是免费的。第二好的东西非常、非常贵。"
+      },
+      {
+        "id": 34,
+        "text": "People want to be told what to do so badly that they'll listen to anyone.",
+        "translation": "人们太想被告知该做什么了，以至于他们会听从任何人的话。"
+      },
+      {
+        "id": 35,
+        "text": "Nostalgia is delicate, but potent. It is the most personal of all human emotions.",
+        "translation": "怀旧是微妙的，但也是有力的。它是所有人类情感中最私人的。"
+      },
+      {
+        "id": 36,
+        "text": "You have to let things go so they can come back better.",
+        "translation": "你必须放手，这样它们才能以更好的姿态回来。"
+      },
+      {
+        "id": 37,
+        "text": "A thing like that. It changes everything, doesn't it? Or nothing at all.",
+        "translation": "这样的事情。它改变了一切，不是吗？或者什么也没改变。"
+      },
+      {
+        "id": 38,
+        "text": "I'm not going to let fear dictate the terms of my life.",
+        "translation": "我不会让恐惧来决定我生活的条件。"
+      },
+      {
+        "id": 39,
+        "text": "People do things. Wonderful, horrible things. And that's what makes them who they are.",
+        "translation": "人们做事。美好的事，可怕的事。这就是使他们成为自己的东西。"
+      },
+      {
+        "id": 40,
+        "text": "The truth is, people buy things to feel something. Our job is to help them feel it.",
+        "translation": "事实是，人们买东西是为了有所感受。我们的工作就是帮助他们感受到它。"
+      }
+    ]
+  },
+  {
+    "id": "greys-voiceover",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "A couple of hundred years ago, Benjamin Franklin shared with the world the secret of his success.",
+        "translation": "几百年前，本杰明·富兰克林与世界分享了他成功的秘诀。"
+      },
+      {
+        "id": 2,
+        "text": "Never leave that till tomorrow which you can do today.",
+        "translation": "今日事今日毕。"
+      },
+      {
+        "id": 3,
+        "text": "At some point, you have to make a decision. Boundaries don't keep other people out. They fence you in.",
+        "translation": "在某个时刻，你必须做出决定。界限并不能把别人挡在外面。它们把你围在里面。"
+      },
+      {
+        "id": 4,
+        "text": "Life goes on, whether you choose to move on and take a chance in the unknown, or stay behind locked in the past.",
+        "translation": "生活会继续，不管你选择向前走去迎接未知，还是留在后面锁在过去里。"
+      },
+      {
+        "id": 5,
+        "text": "The human body is made up of systems that keep it alive. The key to survival is balance.",
+        "translation": "人体由维持生命的系统组成。生存的关键是平衡。"
+      },
+      {
+        "id": 6,
+        "text": "We're all damaged. We have all been hurt. The question is whether we choose to let it define us.",
+        "translation": "我们都受过伤害。我们都被伤害过。问题是我们是否选择让它定义我们。"
+      },
+      {
+        "id": 7,
+        "text": "Sometimes the future changes quickly and completely, and we're left with only the choice of what to do next.",
+        "translation": "有时候未来变化得又快又彻底，我们只剩下选择接下来做什么。"
+      },
+      {
+        "id": 8,
+        "text": "Pain comes in all forms. The small twinge, a bit of soreness, the random pain that we can't find a source for.",
+        "translation": "疼痛有各种形式。轻微的刺痛，一点点酸痛，我们找不到来源的随机疼痛。"
+      },
+      {
+        "id": 9,
+        "text": "Change is a good thing. People always say that. But all they really mean is that something you didn't want to happen has happened.",
+        "translation": "改变是好事。人们总这么说。但他们真正的意思是你不希望发生的事情已经发生了。"
+      },
+      {
+        "id": 10,
+        "text": "The early bird catches the worm. A stitch in time saves nine. But what do those old sayings really mean?",
+        "translation": "早起的鸟儿有虫吃。及时一针省九针。但这些老话到底是什么意思？"
+      },
+      {
+        "id": 11,
+        "text": "It turns out sometimes you have to do the wrong thing. Sometimes you have to make a big mistake to figure out how to make things right.",
+        "translation": "事实证明有时候你必须做错事。有时候你必须犯一个大错误才能弄清楚如何把事情做对。"
+      },
+      {
+        "id": 12,
+        "text": "Just when you think you've figured it all out, life throws you a curveball.",
+        "translation": "就在你以为一切都想通了的时候，生活给你来了一个变化球。"
+      },
+      {
+        "id": 13,
+        "text": "There's a reason I said I would be happy alone. It wasn't because I thought I would be happy alone.",
+        "translation": "我说我一个人会很开心是有原因的。不是因为我觉得我一个人会开心。"
+      },
+      {
+        "id": 14,
+        "text": "It was because I thought if I loved someone, and then it fell apart, I might not make it.",
+        "translation": "而是因为我觉得如果我爱上某个人，然后一切崩塌了，我可能撑不过去。"
+      },
+      {
+        "id": 15,
+        "text": "We have to keep reinventing ourselves almost every minute because the world can change in an instant.",
+        "translation": "我们几乎每分钟都要重新塑造自己，因为世界可以在一瞬间改变。"
+      },
+      {
+        "id": 16,
+        "text": "If you aren't willing to keep looking for light in the darkest of places, you will never succeed.",
+        "translation": "如果你不愿意在最黑暗的地方继续寻找光明，你就永远不会成功。"
+      },
+      {
+        "id": 17,
+        "text": "We are born with certain instincts. They are there to protect us. The trick is knowing when to listen to them.",
+        "translation": "我们天生具有某些本能。它们存在是为了保护我们。诀窍是知道什么时候该听从它们。"
+      },
+      {
+        "id": 18,
+        "text": "The truth is, we are all fighting some kind of battle. The question is whether we fight it alone or together.",
+        "translation": "事实是，我们都在与某种东西战斗。问题是我们是独自战斗还是一起战斗。"
+      },
+      {
+        "id": 19,
+        "text": "In surgery, there's a moment when you have to decide to either keep cutting or stop. In life, it's the same.",
+        "translation": "在手术中，有一个时刻你必须决定是继续切还是停下来。在生活中也是如此。"
+      },
+      {
+        "id": 20,
+        "text": "The practice of medicine is an art, not a trade. It requires the whole person, not just their skills.",
+        "translation": "医学实践是一门艺术，不是一门手艺。它需要一个完整的人，而不仅仅是他们的技能。"
+      },
+      {
+        "id": 21,
+        "text": "We spend our whole lives worrying about the future, planning for the future, trying to predict the future.",
+        "translation": "我们一生都在为未来担忧，为未来规划，试图预测未来。"
+      },
+      {
+        "id": 22,
+        "text": "But the future is always changing. The future is the home of our deepest fears and wildest hopes.",
+        "translation": "但未来总是在变化的。未来是我们最深恐惧和最狂野希望的家园。"
+      },
+      {
+        "id": 23,
+        "text": "Sometimes the best way to heal is to let yourself feel everything. Every last bit of it.",
+        "translation": "有时候最好的治愈方式就是让自己感受一切。每一点一滴。"
+      },
+      {
+        "id": 24,
+        "text": "Not everybody has to be happy all the time. That isn't mental health. That's a social media post.",
+        "translation": "不是每个人都必须一直快乐。那不是心理健康。那是一条社交媒体帖子。"
+      },
+      {
+        "id": 25,
+        "text": "The body is designed to heal itself. Sometimes the best thing a doctor can do is get out of the way.",
+        "translation": "身体天生就有自我修复的能力。有时候医生能做的最好的事就是不碍事。"
+      },
+      {
+        "id": 26,
+        "text": "There comes a point where it all becomes too much. When we get too tired to fight anymore.",
+        "translation": "总有一个时刻一切变得太多了。当我们累得再也无法战斗的时候。"
+      },
+      {
+        "id": 27,
+        "text": "So we give in. And that's not giving up. That's growing up.",
+        "translation": "所以我们让步了。但那不是放弃。那是成长。"
+      },
+      {
+        "id": 28,
+        "text": "The scars you carry tell the story of your survival. Wear them with pride.",
+        "translation": "你身上的伤疤讲述了你生存的故事。骄傲地带着它们。"
+      },
+      {
+        "id": 29,
+        "text": "Healing doesn't mean the damage never existed. It means the damage no longer controls our lives.",
+        "translation": "治愈并不意味着伤害从未存在过。它意味着伤害不再控制我们的生活。"
+      },
+      {
+        "id": 30,
+        "text": "Every patient who walks through that door is someone's whole world.",
+        "translation": "每一个走进那扇门的病人都是某个人的整个世界。"
+      },
+      {
+        "id": 31,
+        "text": "We can't help everyone. But everyone can help someone. That's why we became doctors.",
+        "translation": "我们不能帮助每个人。但每个人都能帮助某个人。这就是我们成为医生的原因。"
+      },
+      {
+        "id": 32,
+        "text": "Sometimes the hardest part of a surgery isn't the procedure. It's telling the family what happened.",
+        "translation": "有时候手术中最难的部分不是手术本身。而是告诉家属发生了什么。"
+      },
+      {
+        "id": 33,
+        "text": "You can build a life with someone, share everything, and still not know what they carry inside.",
+        "translation": "你可以和某个人共同建立一段生活，分享一切，但仍然不知道他们内心承载着什么。"
+      },
+      {
+        "id": 34,
+        "text": "Strength isn't about how much you can handle before you break. It's about how much you can handle after you break.",
+        "translation": "坚强不是关于你在崩溃之前能承受多少。而是关于你在崩溃之后还能承受多少。"
+      },
+      {
+        "id": 35,
+        "text": "In medicine, we have a saying: Do no harm. But sometimes not acting is the greatest harm of all.",
+        "translation": "在医学中，我们有一句话：不伤害。但有时候不作为才是最大的伤害。"
+      },
+      {
+        "id": 36,
+        "text": "Love is patient. Love is kind. But love can also tear you apart if you let it.",
+        "translation": "爱是耐心的。爱是善良的。但如果你放任它，爱也能把你撕碎。"
+      },
+      {
+        "id": 37,
+        "text": "We spend so much time looking for the extraordinary that we forget the beauty in the ordinary.",
+        "translation": "我们花了太多时间寻找非凡的东西，以至于忘记了平凡中的美丽。"
+      },
+      {
+        "id": 38,
+        "text": "The people who are still with you at the end of the day, those are the ones worth keeping.",
+        "translation": "那些在一天结束时仍然陪在你身边的人，才是值得珍惜的人。"
+      },
+      {
+        "id": 39,
+        "text": "Every ending is also a beginning. We just don't know it at the time.",
+        "translation": "每一个结束也是一个开始。我们只是在当时不知道。"
+      },
+      {
+        "id": 40,
+        "text": "We are who we are when things fall apart. That is when the truth comes out.",
+        "translation": "当一切崩塌的时候，我们才真正展现出我们是谁。那才是真相浮现的时刻。"
+      }
+    ]
+  },
+  {
+    "id": "himym-ted",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "Kids, I'm going to tell you an incredible story. The story of how I met your mother.",
+        "translation": "孩子们，我要给你们讲一个不可思议的故事。我是怎么遇见你们妈妈的故事。"
+      },
+      {
+        "id": 2,
+        "text": "Because sometimes even if you know how something's going to end, that doesn't mean you can't enjoy the ride.",
+        "translation": "因为有时候即使你知道事情会怎么结束，也不意味着你不能享受过程。"
+      },
+      {
+        "id": 3,
+        "text": "The great moments of your life won't necessarily be the things you do. They'll also be the things that happen to you.",
+        "translation": "你人生中最美好的时刻不一定是你做的事情。也可能是发生在你身上的事情。"
+      },
+      {
+        "id": 4,
+        "text": "You can't just skip ahead to where you think your life should be.",
+        "translation": "你不能直接跳到你认为生活应该到达的阶段。"
+      },
+      {
+        "id": 5,
+        "text": "Whatever you do in this life, it's not legendary unless your friends are there to see it.",
+        "translation": "不管你在这辈子做了什么，如果你的朋友不在场见证，那就不算传奇。"
+      },
+      {
+        "id": 6,
+        "text": "The future is scary, but you can't just run back to the past because it's familiar.",
+        "translation": "未来是可怕的，但你不能仅仅因为过去是熟悉的就跑回去。"
+      },
+      {
+        "id": 7,
+        "text": "If you're not scared, then you're not taking a chance. And if you're not taking a chance, then what the hell are you doing?",
+        "translation": "如果你不害怕，那你就没有在冒险。如果你没有在冒险，那你到底在干什么？"
+      },
+      {
+        "id": 8,
+        "text": "Look, you can't design your life like a building. It doesn't work that way.",
+        "translation": "你看，你不能像设计建筑一样设计你的人生。生活不是那样的。"
+      },
+      {
+        "id": 9,
+        "text": "You just have to live it, and it will design itself.",
+        "translation": "你只需要过好它，它会自己设计好的。"
+      },
+      {
+        "id": 10,
+        "text": "That's the thing about destiny. I think it's just the universe's way of telling you that your life is about to change.",
+        "translation": "命运就是这样的。我觉得这只是宇宙在告诉你，你的生活即将改变。"
+      },
+      {
+        "id": 11,
+        "text": "Sometimes things have to fall apart to make way for better things.",
+        "translation": "有时候事情必须先崩溃，才能为更好的事物让路。"
+      },
+      {
+        "id": 12,
+        "text": "Every night can't be legendary. If every night is legendary, no nights are legendary.",
+        "translation": "每个夜晚都不可能是传奇。如果每个夜晚都是传奇，那就没有夜晚是传奇了。"
+      },
+      {
+        "id": 13,
+        "text": "The biggest risk in life is not taking any risks at all.",
+        "translation": "人生中最大的风险就是完全不冒任何风险。"
+      },
+      {
+        "id": 14,
+        "text": "Here's the secret, kids. None of us can see the future. All we can do is keep moving forward.",
+        "translation": "孩子们，这就是秘密。我们谁都看不到未来。我们能做的就是继续前进。"
+      },
+      {
+        "id": 15,
+        "text": "Love is the best thing we do. It's worth the risk every single time.",
+        "translation": "爱是我们做的最好的事情。每一次都值得冒险。"
+      },
+      {
+        "id": 16,
+        "text": "You will be shocked, kids, when you discover how easy it is in life to part ways with people forever.",
+        "translation": "孩子们，当你们发现在生活中与人永远分别是多么容易时，你们会震惊的。"
+      },
+      {
+        "id": 17,
+        "text": "I would have stolen you a whole orchestra.",
+        "translation": "我会为你偷一整个管弦乐队。"
+      },
+      {
+        "id": 18,
+        "text": "When you believe in people, people come through.",
+        "translation": "当你相信人的时候，人们不会让你失望。"
+      },
+      {
+        "id": 19,
+        "text": "Nothing good happens after two in the morning. Just go home and go to sleep.",
+        "translation": "凌晨两点以后不会有什么好事发生。回家睡觉吧。"
+      },
+      {
+        "id": 20,
+        "text": "Whenever I'm sad, I stop being sad and be awesome instead. True story.",
+        "translation": "每当我难过的时候，我就不再难过了，转而变得很棒。真实故事。"
+      },
+      {
+        "id": 21,
+        "text": "It's going to be legen— wait for it — dary. Legendary!",
+        "translation": "这将会是传——等一下——奇。传奇！"
+      },
+      {
+        "id": 22,
+        "text": "A lie is just a great story that someone ruined with the truth.",
+        "translation": "谎言只是一个被某人用真相毁掉的好故事。"
+      },
+      {
+        "id": 23,
+        "text": "The littlest thing can change everything about the course of your life.",
+        "translation": "最微小的事情可以改变你人生轨迹的一切。"
+      },
+      {
+        "id": 24,
+        "text": "Suit up! Because nothing suits me like a suit.",
+        "translation": "穿上西装！因为没有什么比西装更适合我了。"
+      },
+      {
+        "id": 25,
+        "text": "That's life, you know? We never end up where we thought we wanted to be.",
+        "translation": "这就是生活，你知道吗？我们永远不会到达我们以为我们想去的地方。"
+      },
+      {
+        "id": 26,
+        "text": "The best I can give you is a single moment in time where everything felt right.",
+        "translation": "我能给你的最好的东西就是时间中一切都感觉对了的那个瞬间。"
+      },
+      {
+        "id": 27,
+        "text": "Every new beginning comes from some other beginning's end.",
+        "translation": "每一个新的开始都来自于另一个开始的结束。"
+      },
+      {
+        "id": 28,
+        "text": "Kids, every story in your life has a before and after. This was my after.",
+        "translation": "孩子们，你们生活中的每个故事都有之前和之后。这是我的之后。"
+      },
+      {
+        "id": 29,
+        "text": "When you love someone, you don't stop. Ever. Even when people roll their eyes or call you crazy.",
+        "translation": "当你爱一个人的时候，你不会停下来。永远不会。即使人们翻白眼或叫你疯子。"
+      },
+      {
+        "id": 30,
+        "text": "The only reason to wait a month for something is if you are waiting for it to age, like wine or cheese.",
+        "translation": "等一个月才做某事的唯一理由是如果你在等它变陈，就像酒或奶酪一样。"
+      },
+      {
+        "id": 31,
+        "text": "We struggle so hard to hold on to these things that we know are going to disappear eventually.",
+        "translation": "我们拼命挣扎着去抓住那些我们知道最终会消失的东西。"
+      },
+      {
+        "id": 32,
+        "text": "And that's the most human thing about us: we cling to what we love, even when we know it can't last.",
+        "translation": "这就是我们最人性化的地方：即使我们知道它不能持续，我们也紧紧抓住我们所爱的。"
+      },
+      {
+        "id": 33,
+        "text": "It's not about the destination. It's about the journey, and who you travel with.",
+        "translation": "重要的不是目的地。重要的是旅程，以及和你一起旅行的人。"
+      },
+      {
+        "id": 34,
+        "text": "If you're ever feeling down, just remember that somewhere in the world, someone is having the best day of their life.",
+        "translation": "如果你感到沮丧，只要记住在世界的某个地方，有人正在度过他们生命中最美好的一天。"
+      },
+      {
+        "id": 35,
+        "text": "Here is the truth about the truth: it hurts. So we lie.",
+        "translation": "关于真相的真相是：它会伤害人。所以我们撒谎。"
+      },
+      {
+        "id": 36,
+        "text": "We all make choices in life. Every choice closes a door and opens another one.",
+        "translation": "我们在生活中都会做出选择。每个选择都会关上一扇门，打开另一扇门。"
+      },
+      {
+        "id": 37,
+        "text": "Look around you. All of these people are here because of decisions they made. Good or bad.",
+        "translation": "看看你周围。所有这些人在这里都是因为他们做出的决定。好的或坏的。"
+      },
+      {
+        "id": 38,
+        "text": "Being in a couple is hard. And committing, making sacrifices, it's hard. But if it's the right person, then it's easy.",
+        "translation": "作为一对伴侣很难。承诺，做出牺牲，很难。但如果是对的人，那就很容易。"
+      },
+      {
+        "id": 39,
+        "text": "You may think your only choices are to swallow your anger or throw it in someone's face. But there's a third option: you can just let it go.",
+        "translation": "你可能觉得你唯一的选择是吞下怒气或者把它扔到别人脸上。但还有第三个选择：你可以放下它。"
+      },
+      {
+        "id": 40,
+        "text": "In the end, we only regret the chances we didn't take.",
+        "translation": "最终，我们只会后悔那些我们没有抓住的机会。"
+      }
+    ]
+  },
+  {
+    "id": "modern-family-phil",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "The most amazing things that can happen to a human being will happen to you if you just lower your expectations.",
+        "translation": "如果你降低你的期望，人生中最美好的事情就会发生在你身上。"
+      },
+      {
+        "id": 2,
+        "text": "I'm a cool dad. That's my thing. I surf the web. I text. LOL, laugh out loud. OMG, oh my God.",
+        "translation": "我是一个酷爸爸。这是我的特点。我上网。我发短信。LOL，大笑。OMG，天哪。"
+      },
+      {
+        "id": 3,
+        "text": "If you love something, set it free. Unless it's a tiger.",
+        "translation": "如果你爱一样东西，就放它自由。除非它是一只老虎。"
+      },
+      {
+        "id": 4,
+        "text": "When life gives you lemonade, make lemons. Life will be all like, what?",
+        "translation": "当生活给你柠檬水的时候，做柠檬。生活会一脸困惑。"
+      },
+      {
+        "id": 5,
+        "text": "The key to a good marriage is to let the little things go. And the big things too.",
+        "translation": "美好婚姻的关键是放下小事。还有大事也是。"
+      },
+      {
+        "id": 6,
+        "text": "A good father always finds a way to make his family laugh, even on the worst days.",
+        "translation": "一个好父亲总能找到方法让家人笑起来，即使在最糟糕的日子里。"
+      },
+      {
+        "id": 7,
+        "text": "You can't be afraid of the future. You have to embrace it and make the best of it.",
+        "translation": "你不能害怕未来。你必须拥抱它，并充分利用它。"
+      },
+      {
+        "id": 8,
+        "text": "I've always said that if my son thinks of me as one of his idiot friends, then I've succeeded as a dad.",
+        "translation": "我一直说，如果我儿子把我当成他的一个损友，那我作为父亲就成功了。"
+      },
+      {
+        "id": 9,
+        "text": "If you're ever in a jam, just think: what would Phil Dunphy do?",
+        "translation": "如果你遇到困难，就想想：菲尔·邓菲会怎么做？"
+      },
+      {
+        "id": 10,
+        "text": "Family is family. No matter how many times you get mad at each other, you always come back together.",
+        "translation": "家人就是家人。不管你们互相生多少次气，你们总会重归于好。"
+      },
+      {
+        "id": 11,
+        "text": "The best things in life aren't things. They are the people we love and the memories we make.",
+        "translation": "生活中最好的东西不是物品。是我们爱的人和我们创造的回忆。"
+      },
+      {
+        "id": 12,
+        "text": "I believe that children are our future. Unless we stop them now.",
+        "translation": "我相信孩子们是我们的未来。除非我们现在阻止他们。"
+      },
+      {
+        "id": 13,
+        "text": "There's nothing wrong with being scared. Just don't let it stop you from doing what you want.",
+        "translation": "害怕没有什么不对的。只是不要让它阻止你做你想做的事。"
+      },
+      {
+        "id": 14,
+        "text": "In real estate, you learn to read people. And right now, I'm reading that you need a hug.",
+        "translation": "在房地产行业，你学会了看人。而现在，我看出你需要一个拥抱。"
+      },
+      {
+        "id": 15,
+        "text": "Every day is a chance to be a better version of yourself. I keep telling myself that.",
+        "translation": "每一天都是成为更好的自己的机会。我一直这样告诉自己。"
+      },
+      {
+        "id": 16,
+        "text": "The secret to happiness is simple: low expectations and a trampoline.",
+        "translation": "幸福的秘诀很简单：低期望和一张蹦床。"
+      },
+      {
+        "id": 17,
+        "text": "You can try to control your kids, but eventually they're going to do what they want to do. And that's terrifying.",
+        "translation": "你可以试着控制你的孩子，但最终他们会做他们想做的事。这太可怕了。"
+      },
+      {
+        "id": 18,
+        "text": "I'm the father of three. I know how to handle chaos. I live in chaos. I thrive in chaos.",
+        "translation": "我是三个孩子的父亲。我知道如何应对混乱。我生活在混乱中。我在混乱中茁壮成长。"
+      },
+      {
+        "id": 19,
+        "text": "Never be too old to learn something new. That's my motto. Also, never turn down free food.",
+        "translation": "永远不要太老而不能学新东西。那是我的座右铭。还有，永远不要拒绝免费的食物。"
+      },
+      {
+        "id": 20,
+        "text": "Life is unpredictable. Sometimes the person who makes you the craziest is also the person you can't live without.",
+        "translation": "生活是不可预测的。有时候让你最抓狂的人也是你不能没有的人。"
+      },
+      {
+        "id": 21,
+        "text": "I learned long ago that the key to a happy family isn't perfection. It's forgiveness.",
+        "translation": "我很早就学到，幸福家庭的关键不是完美。是原谅。"
+      },
+      {
+        "id": 22,
+        "text": "Being a parent means being prepared for anything. And when I say anything, I mean literally everything.",
+        "translation": "做父母意味着对任何事情都有准备。当我说任何事情时，我是指字面意义上的一切。"
+      },
+      {
+        "id": 23,
+        "text": "You know what makes a great salesman? Honesty. And also the ability to pretend that everything is fine.",
+        "translation": "你知道什么造就了一个好销售员吗？诚实。还有假装一切都好的能力。"
+      },
+      {
+        "id": 24,
+        "text": "Marriage is like a roller coaster. You just have to hold on tight and try not to scream too loud.",
+        "translation": "婚姻就像过山车。你只需要紧紧抓住，尽量不要叫得太大声。"
+      },
+      {
+        "id": 25,
+        "text": "I'm not saying I'm the best husband in the world. But I'm definitely in the top one.",
+        "translation": "我不是说我是世界上最好的丈夫。但我绝对排在前一名。"
+      },
+      {
+        "id": 26,
+        "text": "The thing about kids is that they grow up so fast. One day they need you for everything, and the next they don't need you at all.",
+        "translation": "关于孩子的事就是他们长得太快了。一天他们什么都需要你，第二天他们根本不需要你了。"
+      },
+      {
+        "id": 27,
+        "text": "Home is where the heart is. And also where the Wi-Fi connects automatically.",
+        "translation": "家是心所在的地方。也是Wi-Fi自动连接的地方。"
+      },
+      {
+        "id": 28,
+        "text": "Sometimes being a good parent means letting your kids fail. It's the hardest thing you'll ever do.",
+        "translation": "有时候做一个好父母意味着让你的孩子失败。这是你做过的最难的事。"
+      },
+      {
+        "id": 29,
+        "text": "A real man isn't afraid to show his emotions. He cries at movies, and he hugs his kids every chance he gets.",
+        "translation": "真正的男人不害怕表达自己的情感。他看电影时会哭，每次有机会就拥抱孩子。"
+      },
+      {
+        "id": 30,
+        "text": "My dad always said: work hard, play hard, and never miss a family dinner. I've tried to live by that.",
+        "translation": "我爸爸总是说：努力工作，尽情玩乐，永远不要错过家庭晚餐。我一直试着按照这个来生活。"
+      },
+      {
+        "id": 31,
+        "text": "People say parenthood is the toughest job in the world. Those people clearly never had to assemble a crib.",
+        "translation": "人们说养育孩子是世界上最难的工作。这些人显然从没自己组装过婴儿床。"
+      },
+      {
+        "id": 32,
+        "text": "The trick to surviving family gatherings? Smile, nod, and pretend you didn't hear the passive-aggressive comment.",
+        "translation": "在家庭聚会中生存下来的诀窍？微笑，点头，假装你没听到那些阴阳怪气的评论。"
+      },
+      {
+        "id": 33,
+        "text": "At the end of the day, all that matters is that your family knows you love them. Everything else is just noise.",
+        "translation": "在一天结束时，重要的是你的家人知道你爱他们。其他一切都只是噪音。"
+      },
+      {
+        "id": 34,
+        "text": "Raising kids is like trying to nail jelly to a wall. You never quite get it right, but you keep trying.",
+        "translation": "养孩子就像试图把果冻钉在墙上。你永远不会做得完全对，但你一直在尝试。"
+      },
+      {
+        "id": 35,
+        "text": "A family that laughs together stays together. That's not science, that's just common sense.",
+        "translation": "一起笑的家庭会在一起。这不是科学，这只是常识。"
+      },
+      {
+        "id": 36,
+        "text": "Sometimes the best family moments are the ones you never planned. They just happen, and they're perfect.",
+        "translation": "有时候最好的家庭时刻是你从未计划过的。它们就这样发生了，而且很完美。"
+      },
+      {
+        "id": 37,
+        "text": "I may not be a perfect father, but I am a present one. And that counts for something.",
+        "translation": "我可能不是一个完美的父亲，但我是一个在场的父亲。这也算数。"
+      },
+      {
+        "id": 38,
+        "text": "Love isn't about grand gestures. It's about showing up, day after day, even when it's hard.",
+        "translation": "爱不是关于宏大的举动。它是关于日复一日地出现，即使这很难。"
+      },
+      {
+        "id": 39,
+        "text": "A wise man once said: happy wife, happy life. That wise man was me. I said that.",
+        "translation": "一位智者曾经说过：妻子快乐，生活快乐。那位智者就是我。是我说的。"
+      },
+      {
+        "id": 40,
+        "text": "The beauty of family is that no matter how weird you are, they have to keep you.",
+        "translation": "家庭的美妙之处在于，无论你多奇怪，他们都必须留着你。"
+      }
+    ]
+  },
+  {
+    "id": "downton-maggie",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "What is a weekend? I'm afraid I don't quite understand the concept.",
+        "translation": "什么是周末？恐怕我不太理解这个概念。"
+      },
+      {
+        "id": 2,
+        "text": "I am a woman of principle, and my principle is that I must always get what I want.",
+        "translation": "我是一个有原则的女人，而我的原则就是我必须总是得到我想要的。"
+      },
+      {
+        "id": 3,
+        "text": "Vulgarity is no substitute for wit. I suggest you try harder.",
+        "translation": "粗俗不能代替机智。我建议你再努力一些。"
+      },
+      {
+        "id": 4,
+        "text": "One must always be prepared to face adversity with dignity and a sharp tongue.",
+        "translation": "一个人必须时刻准备好以尊严和犀利的言辞面对逆境。"
+      },
+      {
+        "id": 5,
+        "text": "An aristocrat with no servants is as useful as a glass hammer.",
+        "translation": "一个没有仆人的贵族就像一把玻璃锤子一样没用。"
+      },
+      {
+        "id": 6,
+        "text": "All my life, I've been told what to think and what to feel. Well, not anymore.",
+        "translation": "我一辈子都被告知该怎么想、该怎么感受。好吧，不会再这样了。"
+      },
+      {
+        "id": 7,
+        "text": "I was right about my maid. She's as honest as the day is long. But is she capable? That is the question.",
+        "translation": "我对我的女仆判断是对的。她非常诚实。但她能干吗？这才是问题所在。"
+      },
+      {
+        "id": 8,
+        "text": "There is nothing simpler than avoiding people you don't like. Avoiding those you do like, that's the real test.",
+        "translation": "没有什么比避开你不喜欢的人更简单的了。避开你喜欢的人，那才是真正的考验。"
+      },
+      {
+        "id": 9,
+        "text": "The world is changing, and not necessarily for the better. We must hold on to what we know to be true.",
+        "translation": "世界在变，不一定是变得更好。我们必须坚持我们所知道的真理。"
+      },
+      {
+        "id": 10,
+        "text": "I do not argue. I simply explain why I am right.",
+        "translation": "我不争论。我只是解释为什么我是对的。"
+      },
+      {
+        "id": 11,
+        "text": "One should never underestimate the power of a well-placed remark at the dinner table.",
+        "translation": "永远不要低估餐桌上一句恰到好处的评论的力量。"
+      },
+      {
+        "id": 12,
+        "text": "Manners are the outward expression of an inner grace. Some people clearly have neither.",
+        "translation": "礼仪是内在优雅的外在表现。有些人显然两者都没有。"
+      },
+      {
+        "id": 13,
+        "text": "If I were to search for logic, I should not look for it among the English upper class.",
+        "translation": "如果我要寻找逻辑，我不会在英国上层阶级中寻找。"
+      },
+      {
+        "id": 14,
+        "text": "The truth is that one must learn to accept change, even when every fiber of one's being resists it.",
+        "translation": "事实是一个人必须学会接受变化，即使每一根纤维都在抗拒它。"
+      },
+      {
+        "id": 15,
+        "text": "I never quarrel with tradition. It's served the family well for generations.",
+        "translation": "我从不与传统争论。它世世代代都很好地服务了这个家族。"
+      },
+      {
+        "id": 16,
+        "text": "The young are always convinced they know better than their elders. How refreshingly naive.",
+        "translation": "年轻人总是确信他们比长辈更懂。多么清新的天真啊。"
+      },
+      {
+        "id": 17,
+        "text": "Don't be defeatist, dear. It is very middle class.",
+        "translation": "不要那么悲观，亲爱的。那是很中产阶级的做法。"
+      },
+      {
+        "id": 18,
+        "text": "In my experience, the people who talk the most about progress are usually the least progressive.",
+        "translation": "根据我的经验，最爱谈论进步的人通常是最不进步的。"
+      },
+      {
+        "id": 19,
+        "text": "I wonder your halo doesn't grow heavy. It must be tiring being so very good all the time.",
+        "translation": "我想你的光环不会变重吧。一直这么善良一定很累吧。"
+      },
+      {
+        "id": 20,
+        "text": "Hope is a tease, designed to prevent us from accepting reality.",
+        "translation": "希望是个玩笑，旨在阻止我们接受现实。"
+      },
+      {
+        "id": 21,
+        "text": "No one wants to kiss a girl in black. You should put on something more cheerful.",
+        "translation": "没有人想亲吻一个穿黑衣服的女孩。你应该穿些更鲜艳的衣服。"
+      },
+      {
+        "id": 22,
+        "text": "I'm a woman, Mary. I can be as contrary as I choose.",
+        "translation": "我是一个女人，玛丽。我可以随心所欲地固执。"
+      },
+      {
+        "id": 23,
+        "text": "The servants are our greatest asset. Without them, we'd have to open our own doors.",
+        "translation": "仆人是我们最大的资产。没有他们，我们就得自己开门了。"
+      },
+      {
+        "id": 24,
+        "text": "All this talk of rights and equality. Where does it end? Next they'll want us to cook our own food.",
+        "translation": "所有这些关于权利和平等的谈论。到哪里才是尽头？接下来他们会要我们自己做饭。"
+      },
+      {
+        "id": 25,
+        "text": "A lack of compassion can be as vulgar as an excess of tears.",
+        "translation": "缺乏同情心和过度哭泣一样粗俗。"
+      },
+      {
+        "id": 26,
+        "text": "Every mountain is unclimbable until someone climbs it. So every ship is unsinkable until it sinks.",
+        "translation": "每座山在有人攀登之前都是不可攀登的。所以每艘船在沉没之前都是不沉的。"
+      },
+      {
+        "id": 27,
+        "text": "There's nothing wrong with being afraid of change. There's everything wrong with letting fear stop you from living.",
+        "translation": "害怕变化没有错。让恐惧阻止你生活才是完全错误的。"
+      },
+      {
+        "id": 28,
+        "text": "A good reputation is more valuable than money. Although money is also quite nice.",
+        "translation": "好名声比金钱更有价值。虽然金钱也相当不错。"
+      },
+      {
+        "id": 29,
+        "text": "One should always maintain appearances. It is the first duty of an aristocrat.",
+        "translation": "一个人应该始终维持体面。这是贵族的首要责任。"
+      },
+      {
+        "id": 30,
+        "text": "We all have secrets, my dear. The question is whether we choose to share them or take them to the grave.",
+        "translation": "我们都有秘密，亲爱的。问题是我们选择分享它们还是把它们带进坟墓。"
+      },
+      {
+        "id": 31,
+        "text": "Principles are like prayers. Noble, of course, but awkward at a party.",
+        "translation": "原则就像祈祷。当然很高尚，但在聚会上很尴尬。"
+      },
+      {
+        "id": 32,
+        "text": "There is nothing so tiresome as a person who is always right. Except for a person who is always wrong.",
+        "translation": "没有什么比一个总是对的人更令人厌烦的了。除了一个总是错的人。"
+      },
+      {
+        "id": 33,
+        "text": "Snobbery is not a crime. If it were, we'd all be behind bars.",
+        "translation": "势利不是犯罪。如果是的话，我们都得坐牢。"
+      },
+      {
+        "id": 34,
+        "text": "The aristocracy has survived many things, including democracy. We shall survive this too.",
+        "translation": "贵族阶层经历了很多事情，包括民主。我们也会挺过这一关。"
+      },
+      {
+        "id": 35,
+        "text": "I never apologize. It sets a dangerous precedent.",
+        "translation": "我从不道歉。这会开一个危险的先例。"
+      },
+      {
+        "id": 36,
+        "text": "One should never confuse good manners with weakness. They are quite different things.",
+        "translation": "一个人永远不应该把好礼仪和软弱混为一谈。它们是完全不同的东西。"
+      },
+      {
+        "id": 37,
+        "text": "The English way is to stand firm, say nothing, and hope the problem resolves itself.",
+        "translation": "英国人的方式是坚定地站着，什么也不说，希望问题自己解决。"
+      },
+      {
+        "id": 38,
+        "text": "Life is a game in which the player must appear ridiculous. The trick is not to mind.",
+        "translation": "生活是一场玩家必须显得可笑的游戏。诀窍是不要在意。"
+      },
+      {
+        "id": 39,
+        "text": "A good house is like a good family. It needs a firm hand at the top and loyal people at the bottom.",
+        "translation": "一个好的家庭就像一个好的府邸。顶部需要一只坚定的手，底部需要忠诚的人。"
+      },
+      {
+        "id": 40,
+        "text": "At my age, one must ration one's excitement. I shall save mine for something more worthy.",
+        "translation": "在我这个年纪，一个人必须节制自己的兴奋。我要把我的兴奋留给更值得的事情。"
+      }
+    ]
+  },
+  {
+    "id": "westwing-bartlet",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "Every time we think we have measured our capacity to meet a challenge, we look up and we're reminded that that capacity may well be limitless.",
+        "translation": "每次我们以为已经衡量了自己应对挑战的能力时，一抬头就会发现那种能力可能是无限的。"
+      },
+      {
+        "id": 2,
+        "text": "Decisions are made by those who show up. That's the first rule of democracy.",
+        "translation": "决定由到场的人做出。这是民主的第一条规则。"
+      },
+      {
+        "id": 3,
+        "text": "What's next? That's the only question that matters when there is work to be done.",
+        "translation": "接下来是什么？当有工作要做的时候，这是唯一重要的问题。"
+      },
+      {
+        "id": 4,
+        "text": "We don't need martyrs right now. We need heroes. A hero would die for his country, but he'd much rather live for it.",
+        "translation": "我们现在不需要殉道者。我们需要英雄。英雄会为国捐躯，但他更愿意为国而活。"
+      },
+      {
+        "id": 5,
+        "text": "We hold these truths to be self-evident, that all men are created equal. Those words are not just a promise, they are a challenge.",
+        "translation": "我们认为这些真理是不言而喻的，人人生而平等。这些话不仅是承诺，更是挑战。"
+      },
+      {
+        "id": 6,
+        "text": "The streets of heaven are too crowded with angels tonight. But every time we think we've seen the worst of it, more angels appear.",
+        "translation": "今夜天堂的街道上挤满了天使。但每次我们以为已经看到了最糟糕的情况，更多的天使出现了。"
+      },
+      {
+        "id": 7,
+        "text": "This is a time for American heroes. We will do what is hard. We will achieve what is great.",
+        "translation": "这是需要美国英雄的时刻。我们将做困难的事。我们将成就伟大的事。"
+      },
+      {
+        "id": 8,
+        "text": "I serve at the pleasure of the President of the United States. And I will continue to do so as long as he'll have me.",
+        "translation": "我听从美国总统的调遣。只要他需要我，我就会继续这样做。"
+      },
+      {
+        "id": 9,
+        "text": "There is no such thing as too smart. The problem is almost always that people are too uninformed.",
+        "translation": "没有太聪明这回事。问题几乎总是人们了解得太少。"
+      },
+      {
+        "id": 10,
+        "text": "You know what? Break's over. Let's get back to work. We have a country to run.",
+        "translation": "你知道吗？休息结束了。让我们回去工作。我们有一个国家要管理。"
+      },
+      {
+        "id": 11,
+        "text": "If our children are the leaders of tomorrow, then it is our responsibility to prepare them today.",
+        "translation": "如果我们的孩子是明天的领导者，那么今天准备好他们就是我们的责任。"
+      },
+      {
+        "id": 12,
+        "text": "I refuse to believe that the future of this country depends on the ability to be combative. It depends on our ability to be compassionate.",
+        "translation": "我拒绝相信这个国家的未来取决于好斗的能力。它取决于我们同情的能力。"
+      },
+      {
+        "id": 13,
+        "text": "You want to see me lose my temper? I lose my temper every time I hear about a child going hungry in this country.",
+        "translation": "你想看我发火？每次我听到这个国家有孩子挨饿，我就会发火。"
+      },
+      {
+        "id": 14,
+        "text": "A leader must be willing to make unpopular decisions when the stakes are high enough.",
+        "translation": "一个领导者必须愿意在利害关系足够大时做出不受欢迎的决定。"
+      },
+      {
+        "id": 15,
+        "text": "Public service is not about power. It is about the privilege of being able to make a difference in people's lives.",
+        "translation": "公共服务不是关于权力。而是关于能够改变人们生活这一特权。"
+      },
+      {
+        "id": 16,
+        "text": "The era of big government is over, but the era of big challenges has just begun.",
+        "translation": "大政府的时代已经结束了，但大挑战的时代才刚刚开始。"
+      },
+      {
+        "id": 17,
+        "text": "In the midst of all the noise, we must find the courage to listen to our conscience.",
+        "translation": "在所有嘈杂声中，我们必须找到倾听良知的勇气。"
+      },
+      {
+        "id": 18,
+        "text": "This isn't about politics. This is about doing what is right, even when no one is watching.",
+        "translation": "这不是关于政治。这是关于做正确的事，即使没有人在看着。"
+      },
+      {
+        "id": 19,
+        "text": "Act as if ye have faith, and faith shall be given to you. Put another way: fake it till you make it.",
+        "translation": "表现得好像你有信念，信念就会赐予你。换一种说法：假装直到成功。"
+      },
+      {
+        "id": 20,
+        "text": "There are two things in the world you never want to let people see how you make them: laws and sausages.",
+        "translation": "世界上有两样东西你永远不想让人看到它们是怎么做出来的：法律和香肠。"
+      },
+      {
+        "id": 21,
+        "text": "The test of our progress is not whether we add more to the abundance of those who have much. It is whether we provide enough for those who have too little.",
+        "translation": "检验我们进步的标准不是我们是否为富人增加了更多的财富。而是我们是否为穷人提供了足够的帮助。"
+      },
+      {
+        "id": 22,
+        "text": "We are not combatants. We are public servants. We serve the American people, all of them.",
+        "translation": "我们不是斗士。我们是公务员。我们服务于美国人民，所有美国人。"
+      },
+      {
+        "id": 23,
+        "text": "Words matter. When the President speaks, the world listens. Every syllable must be chosen with care.",
+        "translation": "言语很重要。当总统说话时，全世界都在听。每一个音节都必须精心选择。"
+      },
+      {
+        "id": 24,
+        "text": "The thing about democracy is that it's messy. It's loud, it's chaotic, and it's the best system we've got.",
+        "translation": "民主的特点就是它很混乱。它很吵，很混乱，但它是我们拥有的最好的制度。"
+      },
+      {
+        "id": 25,
+        "text": "Never doubt that a small group of thoughtful, committed citizens can change the world. It's the only thing that ever has.",
+        "translation": "永远不要怀疑一小群深思熟虑、坚定不移的公民能改变世界。这是唯一曾经改变世界的力量。"
+      },
+      {
+        "id": 26,
+        "text": "Education is the silver bullet. Education is everything. We don't need little changes. We need gigantic revolutionary changes.",
+        "translation": "教育是灵丹妙药。教育就是一切。我们不需要小的改变。我们需要巨大的革命性变革。"
+      },
+      {
+        "id": 27,
+        "text": "The true mark of leadership is not in having all the answers but in asking the right questions.",
+        "translation": "真正的领导力标志不在于拥有所有答案，而在于提出正确的问题。"
+      },
+      {
+        "id": 28,
+        "text": "In a democracy, the people get the government they deserve. So let's make sure they deserve the best.",
+        "translation": "在民主制度中，人民得到他们应得的政府。所以让我们确保他们配得上最好的。"
+      },
+      {
+        "id": 29,
+        "text": "Every person who walks into this building is someone who wants to make a difference. That's why we're here.",
+        "translation": "走进这座大楼的每一个人都是想要做出改变的人。这就是我们在这里的原因。"
+      },
+      {
+        "id": 30,
+        "text": "We do not get to choose the times we live in. But we do get to choose how we respond to them.",
+        "translation": "我们无法选择我们生活的时代。但我们可以选择如何回应它们。"
+      },
+      {
+        "id": 31,
+        "text": "The Constitution is not a suggestion. It is the supreme law of the land, and we will defend it.",
+        "translation": "宪法不是一个建议。它是国家的最高法律，我们会捍卫它。"
+      },
+      {
+        "id": 32,
+        "text": "I don't want a government that does everything for you. I want a government that empowers you to do everything for yourself.",
+        "translation": "我不想要一个为你做一切的政府。我想要一个赋予你力量让你自己做一切的政府。"
+      },
+      {
+        "id": 33,
+        "text": "Courage is not the absence of fear. Courage is the judgment that something else is more important than fear.",
+        "translation": "勇气不是没有恐惧。勇气是判断有些事比恐惧更重要。"
+      },
+      {
+        "id": 34,
+        "text": "The American dream is not about what you have. It's about what you can become.",
+        "translation": "美国梦不是关于你拥有什么。而是关于你能成为什么。"
+      },
+      {
+        "id": 35,
+        "text": "We have a sacred duty to leave this country better than we found it. That's not rhetoric. That's a promise.",
+        "translation": "我们有神圣的责任把这个国家变得比我们发现它时更好。这不是修辞。这是一个承诺。"
+      },
+      {
+        "id": 36,
+        "text": "Leadership is not about popularity. It's about doing the right thing, even when it costs you.",
+        "translation": "领导力不是关于受欢迎。而是关于做正确的事，即使这会让你付出代价。"
+      },
+      {
+        "id": 37,
+        "text": "The strength of a nation lies not in its military might, but in the character of its people.",
+        "translation": "一个国家的力量不在于它的军事实力，而在于它人民的品格。"
+      },
+      {
+        "id": 38,
+        "text": "Every crisis is also an opportunity. It depends on how we choose to see it.",
+        "translation": "每一次危机也是一次机遇。这取决于我们选择如何看待它。"
+      },
+      {
+        "id": 39,
+        "text": "The hardest thing about this job is knowing that every decision you make affects millions of lives.",
+        "translation": "这份工作最难的地方在于知道你做的每一个决定都会影响数百万人的生活。"
+      },
+      {
+        "id": 40,
+        "text": "We are going to raise the level of public debate in this country. And we are going to do it by being smart, not loud.",
+        "translation": "我们将提升这个国家的公共辩论水平。我们将通过聪明而不是大声来做到这一点。"
+      }
+    ]
+  },
+  {
+    "id": "ted-brene-vulnerability",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "So I'll start with this: a couple years ago, an event planner called me because I was going to do a speaking event.",
+        "translation": "我先从这件事说起：几年前，一位活动策划人打电话给我，因为我要去做一个演讲。"
+      },
+      {
+        "id": 2,
+        "text": "I'm a researcher, so I study vulnerability, shame, and empathy for a living.",
+        "translation": "我是一名研究者，所以我以研究脆弱、羞耻和共情为生。"
+      },
+      {
+        "id": 3,
+        "text": "And the way I see connection is that connection is why we're here.",
+        "translation": "在我看来，连接就是我们存在的意义。"
+      },
+      {
+        "id": 4,
+        "text": "It's what gives purpose and meaning to our lives.",
+        "translation": "它赋予了我们生活的目标和意义。"
+      },
+      {
+        "id": 5,
+        "text": "The thing that underpinned shame was this idea of excruciating vulnerability.",
+        "translation": "羞耻感的根源在于这种极度脆弱的感觉。"
+      },
+      {
+        "id": 6,
+        "text": "In order for connection to happen, we have to allow ourselves to be seen. Really seen.",
+        "translation": "为了让连接发生，我们必须允许自己被看见。真正地被看见。"
+      },
+      {
+        "id": 7,
+        "text": "There was only one variable that separated the people who have a strong sense of love and belonging and the people who struggle for it.",
+        "translation": "只有一个变量区分了那些有强烈爱和归属感的人和为此挣扎的人。"
+      },
+      {
+        "id": 8,
+        "text": "And that was: the people who have a strong sense of love and belonging believe they're worthy of love and belonging.",
+        "translation": "那就是：那些有强烈爱和归属感的人相信自己值得被爱和拥有归属感。"
+      },
+      {
+        "id": 9,
+        "text": "They fully embraced vulnerability. They believed that what made them vulnerable made them beautiful.",
+        "translation": "他们完全拥抱了脆弱。他们相信让他们脆弱的东西使他们变得美丽。"
+      },
+      {
+        "id": 10,
+        "text": "They talked about the willingness to say I love you first.",
+        "translation": "他们谈到了愿意先说出我爱你。"
+      },
+      {
+        "id": 11,
+        "text": "The willingness to do something where there are no guarantees.",
+        "translation": "愿意去做一些没有保证的事情。"
+      },
+      {
+        "id": 12,
+        "text": "We numb vulnerability. But you cannot selectively numb emotion.",
+        "translation": "我们麻痹脆弱感。但你不能选择性地麻痹情感。"
+      },
+      {
+        "id": 13,
+        "text": "When we numb the painful emotions, we also numb joy, gratitude, and happiness.",
+        "translation": "当我们麻痹痛苦的情感时，我们也麻痹了快乐、感恩和幸福。"
+      },
+      {
+        "id": 14,
+        "text": "We pretend that what we do doesn't have an effect on other people.",
+        "translation": "我们假装我们所做的事对其他人没有影响。"
+      },
+      {
+        "id": 15,
+        "text": "To let ourselves be seen, deeply seen, vulnerably seen, is the key to meaningful connection.",
+        "translation": "让我们被看见，被深深地看见，脆弱地被看见，是建立有意义连接的关键。"
+      },
+      {
+        "id": 16,
+        "text": "To love with our whole hearts even though there's no guarantee is one of the bravest things we can do.",
+        "translation": "全心全意去爱，即使没有保证，是我们能做的最勇敢的事情之一。"
+      },
+      {
+        "id": 17,
+        "text": "To practice gratitude and joy in those moments of terror when we wonder if we can love this much.",
+        "translation": "在那些恐惧的时刻练习感恩和快乐，当我们怀疑自己是否能爱得这么深的时候。"
+      },
+      {
+        "id": 18,
+        "text": "I believe that vulnerability is the birthplace of innovation, creativity, and change.",
+        "translation": "我相信脆弱是创新、创造力和变革的发源地。"
+      },
+      {
+        "id": 19,
+        "text": "Vulnerability is not weakness. It is our greatest measure of courage.",
+        "translation": "脆弱不是软弱。它是我们衡量勇气的最大标准。"
+      },
+      {
+        "id": 20,
+        "text": "Courage starts with showing up and letting ourselves be seen.",
+        "translation": "勇气始于出现并让自己被看见。"
+      },
+      {
+        "id": 21,
+        "text": "We are hardwired to connect with others. It's what gives purpose and meaning to our lives.",
+        "translation": "我们天生就需要与他人连接。这赋予了我们生活的目标和意义。"
+      },
+      {
+        "id": 22,
+        "text": "Shame is really easily understood as the fear of disconnection.",
+        "translation": "羞耻感其实很容易理解为对断开连接的恐惧。"
+      },
+      {
+        "id": 23,
+        "text": "Is there something about me that, if other people know it or see it, I won't be worthy of connection?",
+        "translation": "我身上是否有什么东西，如果别人知道了或看到了，我就不值得被连接了？"
+      },
+      {
+        "id": 24,
+        "text": "What we know matters, but who we are matters more.",
+        "translation": "我们知道什么很重要，但我们是谁更重要。"
+      },
+      {
+        "id": 25,
+        "text": "The people who had a strong sense of belonging had the courage to be imperfect.",
+        "translation": "那些有强烈归属感的人有勇气去不完美。"
+      },
+      {
+        "id": 26,
+        "text": "They had the compassion to be kind to themselves first, and then to others.",
+        "translation": "他们有同情心，先对自己好，然后再对别人好。"
+      },
+      {
+        "id": 27,
+        "text": "They had connection as a result of authenticity. They were willing to let go of who they should be to become who they were.",
+        "translation": "他们因为真实而获得了连接。他们愿意放下应该成为的样子，成为真正的自己。"
+      },
+      {
+        "id": 28,
+        "text": "You can't get to courage without walking through vulnerability. Period.",
+        "translation": "你不经历脆弱就无法获得勇气。就这样。"
+      },
+      {
+        "id": 29,
+        "text": "We make everything that's uncertain certain. Religion has gone from faith and mystery to certainty.",
+        "translation": "我们把所有不确定的事情变得确定。宗教已经从信仰和神秘变成了确定性。"
+      },
+      {
+        "id": 30,
+        "text": "The more afraid we are, the more vulnerable we are, the more afraid we are. It's a vicious cycle.",
+        "translation": "我们越害怕，我们就越脆弱，我们就越害怕。这是一个恶性循环。"
+      },
+      {
+        "id": 31,
+        "text": "We perfect. We over-exercise. We over-eat. We try to manage and control everything around us.",
+        "translation": "我们追求完美。我们过度锻炼。我们过度饮食。我们试图管理和控制我们周围的一切。"
+      },
+      {
+        "id": 32,
+        "text": "There's another way, and I'll leave you with this. This is what I have found.",
+        "translation": "还有另一种方式，我最后告诉你们。这是我发现的。"
+      },
+      {
+        "id": 33,
+        "text": "To let ourselves be seen. Deeply seen. Vulnerably seen.",
+        "translation": "让我们被看见。深深地被看见。脆弱地被看见。"
+      },
+      {
+        "id": 34,
+        "text": "To love with our whole hearts, even though there's no guarantee.",
+        "translation": "全心全意地去爱，即使没有保证。"
+      },
+      {
+        "id": 35,
+        "text": "To practice gratitude and joy in those moments of terror.",
+        "translation": "在那些恐惧的时刻练习感恩和快乐。"
+      },
+      {
+        "id": 36,
+        "text": "To believe that we're enough. Because when we work from a place that says I'm enough, we stop screaming and start listening.",
+        "translation": "相信我们足够好。因为当我们从一个说'我够好了'的地方出发时，我们停止了尖叫，开始了倾听。"
+      },
+      {
+        "id": 37,
+        "text": "Staying vulnerable is a risk we have to take if we want to experience connection.",
+        "translation": "保持脆弱是我们如果想要体验连接就必须承担的风险。"
+      },
+      {
+        "id": 38,
+        "text": "Shame cannot survive being spoken. It cannot survive empathy.",
+        "translation": "羞耻感无法在被说出来后继续存在。它无法在共情中存活。"
+      },
+      {
+        "id": 39,
+        "text": "Owning our story and loving ourselves through that process is the bravest thing we will ever do.",
+        "translation": "拥抱我们自己的故事，并在这个过程中爱自己，是我们将做的最勇敢的事情。"
+      },
+      {
+        "id": 40,
+        "text": "We are imperfect, and we are wired for struggle. But we are also worthy of love and belonging.",
+        "translation": "我们不完美，我们注定要挣扎。但我们也值得被爱和拥有归属感。"
+      }
+    ]
+  },
+  {
+    "id": "ted-cuddy-bodylanguage",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "So I want to start by offering you a free, no-tech life hack, and all it requires of you is this: that you change your posture for two minutes.",
+        "translation": "我想先给大家提供一个免费的、无需科技的生活窍门，它只需要你做一件事：改变你的姿势两分钟。"
+      },
+      {
+        "id": 2,
+        "text": "We make sweeping judgments and inferences from body language.",
+        "translation": "我们会根据肢体语言做出广泛的判断和推断。"
+      },
+      {
+        "id": 3,
+        "text": "And those judgments can predict really meaningful life outcomes, like who we hire or promote.",
+        "translation": "这些判断能预测非常重要的人生结果，比如我们会雇佣谁或提拔谁。"
+      },
+      {
+        "id": 4,
+        "text": "When we think of nonverbals, we think of how we judge others.",
+        "translation": "当我们想到非语言交流时，我们想到的是如何判断别人。"
+      },
+      {
+        "id": 5,
+        "text": "But we tend to forget the other audience that's influenced by our nonverbals, and that's ourselves.",
+        "translation": "但我们往往忘记了另一个受我们非语言行为影响的受众，那就是我们自己。"
+      },
+      {
+        "id": 6,
+        "text": "Our bodies change our minds, and our minds can change our behavior, and our behavior can change our outcomes.",
+        "translation": "我们的身体改变我们的心态，我们的心态改变我们的行为，我们的行为改变我们的结果。"
+      },
+      {
+        "id": 7,
+        "text": "When you pretend to be powerful, you are more likely to actually feel powerful.",
+        "translation": "当你假装自己很强大时，你更有可能真的感觉到强大。"
+      },
+      {
+        "id": 8,
+        "text": "Power is about how you react to stress. Do you shut down or do you rise to the challenge?",
+        "translation": "力量在于你如何应对压力。你是退缩还是迎接挑战？"
+      },
+      {
+        "id": 9,
+        "text": "Two minutes of power posing can significantly change the way your life unfolds.",
+        "translation": "两分钟的力量姿势可以显著改变你生活的走向。"
+      },
+      {
+        "id": 10,
+        "text": "Don't fake it till you make it. Fake it till you become it.",
+        "translation": "不要假装直到你成功。假装直到你真正成为那样的人。"
+      },
+      {
+        "id": 11,
+        "text": "Tiny tweaks can lead to big changes.",
+        "translation": "微小的调整可以带来巨大的改变。"
+      },
+      {
+        "id": 12,
+        "text": "Before you go into the next stressful evaluative situation, try to configure your brain to cope the best in that situation.",
+        "translation": "在你进入下一个有压力的评估场景之前，试着调整你的大脑以最好地应对那种情况。"
+      },
+      {
+        "id": 13,
+        "text": "Go into the elevator. Go into the bathroom stall. Do the power pose for two minutes.",
+        "translation": "走进电梯。走进洗手间的隔间。做两分钟的力量姿势。"
+      },
+      {
+        "id": 14,
+        "text": "People are bringing their best, most confident selves to the situations that matter most.",
+        "translation": "人们在最重要的场合展现出最好、最自信的自己。"
+      },
+      {
+        "id": 15,
+        "text": "I had been told I was not supposed to be here. But I kept going because I knew I belonged.",
+        "translation": "有人告诉我我不应该出现在这里。但我继续前进，因为我知道我属于这里。"
+      },
+      {
+        "id": 16,
+        "text": "Share this science with people, because the people who can use it the most are the ones with no resources.",
+        "translation": "把这门科学分享给其他人，因为最需要它的人是那些没有资源的人。"
+      },
+      {
+        "id": 17,
+        "text": "We know that our nonverbals govern how other people think and feel about us.",
+        "translation": "我们知道我们的非语言行为决定了其他人如何看待和感受我们。"
+      },
+      {
+        "id": 18,
+        "text": "So the question is: do our nonverbals govern how we think and feel about ourselves?",
+        "translation": "所以问题是：我们的非语言行为是否也决定了我们如何看待和感受自己？"
+      },
+      {
+        "id": 19,
+        "text": "There's some evidence that they do. For example, we smile when we feel happy.",
+        "translation": "有一些证据表明它们确实如此。例如，我们在感到快乐时会微笑。"
+      },
+      {
+        "id": 20,
+        "text": "But also, when we're forced to smile by holding a pen in our teeth, it makes us feel happy.",
+        "translation": "但同样，当我们被迫用牙齿咬住笔来微笑时，这也会让我们感到快乐。"
+      },
+      {
+        "id": 21,
+        "text": "So it goes both ways. When it comes to power, it also goes both ways.",
+        "translation": "所以这是双向的。当涉及到力量时，这也是双向的。"
+      },
+      {
+        "id": 22,
+        "text": "When you feel powerful, you're more likely to spread out and take up space. You make yourself bigger.",
+        "translation": "当你感觉强大时，你更有可能伸展开来占据空间。你让自己变得更大。"
+      },
+      {
+        "id": 23,
+        "text": "When you feel powerless, you do exactly the opposite. You close up. You wrap yourself up. You make yourself small.",
+        "translation": "当你感觉无力时，你做的恰恰相反。你缩起来。你把自己裹起来。你让自己变小。"
+      },
+      {
+        "id": 24,
+        "text": "High-power people tend to be more assertive, more confident, and more optimistic.",
+        "translation": "有力量的人往往更有主见、更自信、更乐观。"
+      },
+      {
+        "id": 25,
+        "text": "They actually feel that they are going to win even in games of chance. They tend to take more risks.",
+        "translation": "他们实际上觉得即使在赌运气的游戏中也会赢。他们倾向于承担更多风险。"
+      },
+      {
+        "id": 26,
+        "text": "So we did an experiment. People came into a room and did either high-power or low-power poses for two minutes.",
+        "translation": "所以我们做了一个实验。人们走进一个房间，做两分钟的高权力或低权力姿势。"
+      },
+      {
+        "id": 27,
+        "text": "Here's what we found. Risk tolerance: when you're in the high-power pose, eighty-six percent will gamble.",
+        "translation": "这是我们的发现。风险容忍度：当你做高权力姿势时，百分之八十六的人会赌博。"
+      },
+      {
+        "id": 28,
+        "text": "When you're in the low-power pose condition, only sixty percent. That's a significant difference.",
+        "translation": "当你做低权力姿势时，只有百分之六十。这是一个显著的差异。"
+      },
+      {
+        "id": 29,
+        "text": "We found that high-power posers experienced a significant increase in testosterone and a decrease in cortisol.",
+        "translation": "我们发现高权力姿势者的睾酮素显著增加，皮质醇显著减少。"
+      },
+      {
+        "id": 30,
+        "text": "So two minutes lead to these hormonal changes that configure your brain to be either assertive or stress-reactive.",
+        "translation": "所以两分钟导致了这些荷尔蒙变化，使你的大脑变得要么自信要么对压力产生反应。"
+      },
+      {
+        "id": 31,
+        "text": "So it seems like our nonverbals do govern how we think and feel about ourselves.",
+        "translation": "所以看起来我们的非语言行为确实决定了我们如何看待和感受自己。"
+      },
+      {
+        "id": 32,
+        "text": "I had a really bad car accident. I was thrown out of a car, and I woke up in a head injury rehab ward.",
+        "translation": "我出了一场严重的车祸。我被甩出了车外，醒来时在一个脑损伤康复病房。"
+      },
+      {
+        "id": 33,
+        "text": "I was told that my IQ had dropped by two standard deviations. I felt entirely powerless.",
+        "translation": "有人告诉我我的智商下降了两个标准差。我感到完全无力。"
+      },
+      {
+        "id": 34,
+        "text": "I worked and worked and worked, and eventually I got into Princeton.",
+        "translation": "我不断努力、努力、再努力，最终我进入了普林斯顿大学。"
+      },
+      {
+        "id": 35,
+        "text": "I was convinced I was not supposed to be there. And the night before my first-year talk, I was so afraid of being found out.",
+        "translation": "我确信我不应该在那里。在我第一年演讲的前一晚，我非常害怕被发现。"
+      },
+      {
+        "id": 36,
+        "text": "I told my advisor I was going to quit. And she said: you are not quitting. You are going to fake it.",
+        "translation": "我告诉我的导师我要放弃。她说：你不能放弃。你要假装下去。"
+      },
+      {
+        "id": 37,
+        "text": "You are going to do every talk that you're asked to do. You're going to fake it until you actually become it.",
+        "translation": "你要做每一个被要求做的演讲。你要假装直到你真正成为它。"
+      },
+      {
+        "id": 38,
+        "text": "And so I did that. And at the end of my first year at Harvard, a student came to my office who hadn't participated.",
+        "translation": "所以我这样做了。在我在哈佛的第一年结束时，一个从未参与过的学生来到了我的办公室。"
+      },
+      {
+        "id": 39,
+        "text": "And she said: I feel like I don't belong here. And I realized: I don't feel like that anymore.",
+        "translation": "她说：我觉得我不属于这里。而我意识到：我已经不再有那种感觉了。"
+      },
+      {
+        "id": 40,
+        "text": "So I want to say to you: don't fake it till you make it. Fake it till you become it. Do it enough until you actually become it and internalize it.",
+        "translation": "所以我想对你们说：不要假装直到你成功。假装直到你成为它。做得足够多，直到你真正成为它并将它内化。"
+      }
+    ]
+  },
+  {
+    "id": "ted-robinson-schools",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "I heard a great story recently about a little girl who was in a drawing lesson.",
+        "translation": "我最近听到了一个关于一个小女孩在上绘画课的精彩故事。"
+      },
+      {
+        "id": 2,
+        "text": "The teacher said this little girl hardly ever paid attention, but in this drawing lesson she did.",
+        "translation": "老师说这个小女孩几乎从不认真听讲，但在这节绘画课上她认真了。"
+      },
+      {
+        "id": 3,
+        "text": "The teacher was fascinated and went over to her and said, what are you drawing?",
+        "translation": "老师很好奇，走过去问她，你在画什么？"
+      },
+      {
+        "id": 4,
+        "text": "And the girl said, I'm drawing a picture of God. And the teacher said, but nobody knows what God looks like.",
+        "translation": "女孩说，我在画上帝。老师说，但没有人知道上帝长什么样。"
+      },
+      {
+        "id": 5,
+        "text": "And the girl said, they will in a minute.",
+        "translation": "女孩说，他们马上就会知道了。"
+      },
+      {
+        "id": 6,
+        "text": "All children have tremendous talents, and we squander them pretty ruthlessly.",
+        "translation": "所有的孩子都有巨大的才能，而我们无情地浪费了它们。"
+      },
+      {
+        "id": 7,
+        "text": "Creativity is as important in education as literacy, and we should treat it with the same status.",
+        "translation": "创造力在教育中与读写能力同等重要，我们应该给予它同等的地位。"
+      },
+      {
+        "id": 8,
+        "text": "If you're not prepared to be wrong, you'll never come up with anything original.",
+        "translation": "如果你不准备犯错，你永远不会想出任何原创的东西。"
+      },
+      {
+        "id": 9,
+        "text": "By the time they get to be adults, most kids have lost the capacity to take a chance.",
+        "translation": "到了成年的时候，大多数孩子已经失去了冒险尝试的能力。"
+      },
+      {
+        "id": 10,
+        "text": "We are educating people out of their creative capacities. We have to think differently about human talent.",
+        "translation": "我们正在通过教育消除人们的创造力。我们必须重新思考人类的才能。"
+      },
+      {
+        "id": 11,
+        "text": "The whole purpose of public education throughout the world is to produce university professors. That's the top of it.",
+        "translation": "全世界公共教育的全部目的是培养大学教授。这就是它的顶端。"
+      },
+      {
+        "id": 12,
+        "text": "Our education system has mined our minds in the way that we strip-mine the earth for a particular commodity.",
+        "translation": "我们的教育体系开采我们的头脑，就像我们为了某种商品而露天开采地球一样。"
+      },
+      {
+        "id": 13,
+        "text": "Human talent is tremendously diverse. People have very different aptitudes.",
+        "translation": "人类的才能极其多样。人们有着非常不同的天赋。"
+      },
+      {
+        "id": 14,
+        "text": "We have to recognize that human flourishing is not a mechanical process. It's an organic process.",
+        "translation": "我们必须认识到，人类的蓬勃发展不是一个机械过程。它是一个有机过程。"
+      },
+      {
+        "id": 15,
+        "text": "You cannot predict the outcome of human development. All you can do is like a farmer create the conditions under which they will begin to flourish.",
+        "translation": "你无法预测人类发展的结果。你能做的就是像农民一样创造条件让他们开始茁壮成长。"
+      },
+      {
+        "id": 16,
+        "text": "We have built our education systems on the model of fast food, where everything is standardized.",
+        "translation": "我们按照快餐模式建立了我们的教育体系，一切都被标准化了。"
+      },
+      {
+        "id": 17,
+        "text": "We have to go from an industrial model of education to an agricultural model, where we recognize that human flourishing depends on many conditions.",
+        "translation": "我们必须从工业化的教育模式转向农业化的教育模式，认识到人类的繁荣取决于多种条件。"
+      },
+      {
+        "id": 18,
+        "text": "The role of a teacher is to facilitate learning. That's it. And part of the problem is that the dominant culture of education has come to focus not on teaching and learning but on testing.",
+        "translation": "教师的角色是促进学习。仅此而已。问题的一部分在于，教育的主流文化已经不再关注教与学，而是关注考试。"
+      },
+      {
+        "id": 19,
+        "text": "Kids will take a chance. If they don't know, they'll have a go. They're not frightened of being wrong.",
+        "translation": "孩子们会去尝试。如果他们不知道，他们会试一试。他们不害怕犯错。"
+      },
+      {
+        "id": 20,
+        "text": "I don't mean to say that being wrong is the same thing as being creative. But if you're not prepared to be wrong, you'll never come up with anything original.",
+        "translation": "我不是说犯错和有创造力是一回事。但如果你不准备犯错，你永远不会想出任何原创的东西。"
+      },
+      {
+        "id": 21,
+        "text": "By the time they get to be adults, most kids have lost that capacity. They have become frightened of being wrong.",
+        "translation": "到了成年的时候，大多数孩子已经失去了那种能力。他们已经变得害怕犯错。"
+      },
+      {
+        "id": 22,
+        "text": "We run our companies like this. We stigmatize mistakes. And we're now running national education systems where mistakes are the worst thing you can make.",
+        "translation": "我们就这样经营我们的公司。我们把错误污名化。我们现在运行的国家教育体系中，错误是你能犯的最糟糕的事。"
+      },
+      {
+        "id": 23,
+        "text": "And the result is that we are educating people out of their creative capacities.",
+        "translation": "结果就是我们正在通过教育消除人们的创造力。"
+      },
+      {
+        "id": 24,
+        "text": "Picasso once said: all children are born artists. The problem is to remain an artist as we grow up.",
+        "translation": "毕加索曾经说过：所有的孩子生来就是艺术家。问题是如何在长大后继续做一个艺术家。"
+      },
+      {
+        "id": 25,
+        "text": "I believe this passionately: we don't grow into creativity, we grow out of it. Or rather, we get educated out of it.",
+        "translation": "我对此深信不疑：我们不是长大后变得有创造力，我们是长大后失去了创造力。或者更确切地说，我们被教育得失去了创造力。"
+      },
+      {
+        "id": 26,
+        "text": "There were no public education systems before the nineteenth century. They all came into being to meet the needs of industrialism.",
+        "translation": "十九世纪之前没有公共教育体系。它们都是为了满足工业化的需要而产生的。"
+      },
+      {
+        "id": 27,
+        "text": "So the hierarchy is rooted in two ideas. Number one, the most useful subjects for work are at the top.",
+        "translation": "所以这个等级制度根植于两个观念。第一，对工作最有用的科目排在最前面。"
+      },
+      {
+        "id": 28,
+        "text": "And the second is academic ability, which has really come to dominate our view of intelligence.",
+        "translation": "第二是学术能力，它真的已经主导了我们对智力的看法。"
+      },
+      {
+        "id": 29,
+        "text": "Suddenly, degrees aren't worth anything. When I was a student, if you had a degree, you had a job. If you didn't have a job, it's because you didn't want one.",
+        "translation": "突然之间，学位不值钱了。当我还是学生的时候，如果你有学位，你就有工作。如果你没有工作，那是因为你不想要。"
+      },
+      {
+        "id": 30,
+        "text": "And I knew a couple of people who didn't want jobs. That was unusual. But now kids with degrees are often heading home to carry on playing video games.",
+        "translation": "我认识几个不想工作的人。那时候很不寻常。但现在有学位的孩子们经常回家继续打电子游戏。"
+      },
+      {
+        "id": 31,
+        "text": "Because you need an MA where the previous job required a BA, and now you need a PhD for the other. It's a process of academic inflation.",
+        "translation": "因为以前需要学士学位的工作现在需要硕士学位，现在你需要博士学位来做另一份工作。这是一个学历膨胀的过程。"
+      },
+      {
+        "id": 32,
+        "text": "Intelligence is diverse. We think about the world in all the ways that we experience it. We think visually, in sound, kinesthetically.",
+        "translation": "智力是多样的。我们用所有我们体验世界的方式来思考世界。我们用视觉思考，用声音思考，用动觉思考。"
+      },
+      {
+        "id": 33,
+        "text": "Intelligence is dynamic. The brain is wonderfully interactive. Intelligence is distinct.",
+        "translation": "智力是动态的。大脑具有奇妙的互动性。智力是独特的。"
+      },
+      {
+        "id": 34,
+        "text": "Our task is to educate their whole being, so they can face this future. We may not see this future, but they will. And our job is to help them make something of it.",
+        "translation": "我们的任务是教育他们的全部存在，让他们能面对未来。我们可能看不到这个未来，但他们会。我们的工作是帮助他们从中创造出一些东西。"
+      },
+      {
+        "id": 35,
+        "text": "What TED celebrates is the gift of the human imagination. We have to be careful now that we use this gift wisely.",
+        "translation": "TED所颂扬的是人类想象力的天赋。我们现在必须小心明智地使用这份天赋。"
+      },
+      {
+        "id": 36,
+        "text": "Our only hope for the future is to adopt a new conception of human ecology.",
+        "translation": "我们未来唯一的希望是采用一种新的人类生态学概念。"
+      },
+      {
+        "id": 37,
+        "text": "We have to rethink the fundamental principles on which we are educating our children.",
+        "translation": "我们必须重新思考我们教育孩子所依据的基本原则。"
+      },
+      {
+        "id": 38,
+        "text": "Our education system is predicated on the idea of academic ability. And there's a reason. Around the world, there were no public systems of education before the nineteenth century.",
+        "translation": "我们的教育体系基于学术能力的概念。这是有原因的。在十九世纪之前，世界各地没有公共教育体系。"
+      },
+      {
+        "id": 39,
+        "text": "Every education system on Earth has the same hierarchy of subjects. Every one. Doesn't matter where you go.",
+        "translation": "地球上每一个教育体系都有相同的学科等级制度。每一个。不管你去哪里。"
+      },
+      {
+        "id": 40,
+        "text": "And the consequence is that many highly talented, brilliant, creative people think they're not. Because the thing they were good at wasn't valued at school.",
+        "translation": "后果就是许多极其有才华、杰出、有创造力的人认为自己不行。因为他们擅长的东西在学校里不被重视。"
+      }
+    ]
+  },
+  {
+    "id": "ted-pink-motivation",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "I need to make a confession at the start. A little over twenty years ago, I did something that I regret.",
+        "translation": "在开始之前我需要坦白一件事。二十多年前，我做了一件让我后悔的事。"
+      },
+      {
+        "id": 2,
+        "text": "I went to law school. It was a bad decision.",
+        "translation": "我去读了法学院。那是一个糟糕的决定。"
+      },
+      {
+        "id": 3,
+        "text": "There is a mismatch between what science knows and what business does.",
+        "translation": "科学所了解的和商业所做的之间存在着不匹配。"
+      },
+      {
+        "id": 4,
+        "text": "The surprising truth about what motivates us is that traditional rewards aren't always effective.",
+        "translation": "关于什么激励我们的惊人真相是，传统奖励并非总是有效的。"
+      },
+      {
+        "id": 5,
+        "text": "Higher incentives led to worse performance. This finding has been replicated over and over again.",
+        "translation": "更高的激励导致了更差的表现。这个发现已经被反复验证。"
+      },
+      {
+        "id": 6,
+        "text": "If-then rewards often destroy creativity because people narrow their focus.",
+        "translation": "如果-那么式的奖励常常扼杀创造力，因为人们会缩小自己的关注范围。"
+      },
+      {
+        "id": 7,
+        "text": "The secret to high performance isn't rewards and punishments, but that unseen intrinsic drive.",
+        "translation": "高绩效的秘密不在于奖惩，而在于那看不见的内在驱动力。"
+      },
+      {
+        "id": 8,
+        "text": "The drive to do things for their own sake. The drive to do things because they matter.",
+        "translation": "为了事情本身而做的驱动力。因为它们重要而去做的驱动力。"
+      },
+      {
+        "id": 9,
+        "text": "Autonomy is our desire to be self-directed, to direct our own lives.",
+        "translation": "自主性是我们想要自我引导、掌控自己生活的渴望。"
+      },
+      {
+        "id": 10,
+        "text": "Mastery is the urge to get better and better at something that matters.",
+        "translation": "精通是想要在重要的事情上越来越好的冲动。"
+      },
+      {
+        "id": 11,
+        "text": "Purpose is the yearning to do what we do in the service of something larger than ourselves.",
+        "translation": "目的是渴望让我们所做的事服务于比自身更大的事物。"
+      },
+      {
+        "id": 12,
+        "text": "Management is great if you want compliance. But if you want engagement, self-direction works better.",
+        "translation": "如果你想要服从，管理很有效。但如果你想要参与感，自我引导效果更好。"
+      },
+      {
+        "id": 13,
+        "text": "Too many organizations are making their decisions based on assumptions that are outdated and unexamined.",
+        "translation": "太多的组织正在基于过时的、未经检验的假设来做决策。"
+      },
+      {
+        "id": 14,
+        "text": "When the profit motive gets unmoored from the purpose motive, bad things happen.",
+        "translation": "当利润动机脱离了目标动机时，坏事就会发生。"
+      },
+      {
+        "id": 15,
+        "text": "We can build organizations and work lives that are less about compliance and more about engagement.",
+        "translation": "我们可以建立更少关于服从、更多关于参与的组织和工作生活。"
+      },
+      {
+        "id": 16,
+        "text": "The good news is that science confirms what we already know in our hearts.",
+        "translation": "好消息是科学证实了我们内心深处早已知道的事情。"
+      },
+      {
+        "id": 17,
+        "text": "If we get past the lazy and dangerous ideology of carrots and sticks, we can strengthen our businesses.",
+        "translation": "如果我们超越胡萝卜加大棒这种懒惰而危险的意识形态，我们可以加强我们的企业。"
+      },
+      {
+        "id": 18,
+        "text": "We can solve a lot of problems and maybe change the world.",
+        "translation": "我们可以解决很多问题，也许还能改变世界。"
+      },
+      {
+        "id": 19,
+        "text": "Let me tell you about an experiment. It's called the candle problem. Here's how it works.",
+        "translation": "让我给你们讲一个实验。这叫做蜡烛问题。是这样的。"
+      },
+      {
+        "id": 20,
+        "text": "You bring someone into a room. You give them a candle, some tacks, and a box of matches.",
+        "translation": "你把一个人带进房间。给他们一根蜡烛、一些图钉和一盒火柴。"
+      },
+      {
+        "id": 21,
+        "text": "You say: your job is to attach the candle to the wall so the wax doesn't drip onto the table.",
+        "translation": "你说：你的任务是把蜡烛固定在墙上，这样蜡油就不会滴到桌子上。"
+      },
+      {
+        "id": 22,
+        "text": "Eventually, after five or ten minutes, most people figure out the solution.",
+        "translation": "最终，经过五到十分钟，大多数人想出了解决方案。"
+      },
+      {
+        "id": 23,
+        "text": "You empty the box of tacks, tack the box to the wall, put the candle in the box. It works.",
+        "translation": "你把图钉倒出来，把盒子钉在墙上，把蜡烛放在盒子里。成功了。"
+      },
+      {
+        "id": 24,
+        "text": "Scientists tested this. They told one group: we're timing you to establish norms. They told the other group: if you're in the top twenty-five percent, you get five dollars.",
+        "translation": "科学家们测试了这个。他们告诉一组：我们给你们计时来建立规范。他们告诉另一组：如果你们在前百分之二十五，你们会得到五美元。"
+      },
+      {
+        "id": 25,
+        "text": "The incentivized group took on average three and a half minutes longer. Incentives sharpened thinking? No. They dulled it.",
+        "translation": "有激励的那组平均多花了三分半钟。激励让思维更敏锐了吗？不。它让思维变迟钝了。"
+      },
+      {
+        "id": 26,
+        "text": "This is not a feeling. This is not a philosophy. This is a fact.",
+        "translation": "这不是一种感觉。这不是一种哲学。这是一个事实。"
+      },
+      {
+        "id": 27,
+        "text": "Rewards, by their very nature, narrow our focus. That's why they work for routine tasks.",
+        "translation": "奖励，就其本质而言，缩小了我们的关注范围。这就是为什么它们对常规任务有效。"
+      },
+      {
+        "id": 28,
+        "text": "But for creative, conceptual tasks, that mechanical approach doesn't work. The evidence is overwhelming.",
+        "translation": "但对于创造性的、概念性的任务，那种机械方法不起作用。证据是压倒性的。"
+      },
+      {
+        "id": 29,
+        "text": "There's a mismatch between what science knows and what business does. And what worries me is that too few businesses have caught up.",
+        "translation": "科学知道的和商业做的之间存在不匹配。让我担心的是太少的企业跟上了。"
+      },
+      {
+        "id": 30,
+        "text": "The new operating system for business revolves around three elements: autonomy, mastery, and purpose.",
+        "translation": "商业的新操作系统围绕三个要素：自主性、精通和目的。"
+      },
+      {
+        "id": 31,
+        "text": "Autonomy: the desire to direct our own lives. Mastery: the desire to get better at something that matters.",
+        "translation": "自主性：掌控自己生活的渴望。精通：在重要的事情上越来越好的渴望。"
+      },
+      {
+        "id": 32,
+        "text": "Purpose: the yearning to do what we do in the service of something larger than ourselves.",
+        "translation": "目的：渴望让我们所做的事服务于比自身更大的事物。"
+      },
+      {
+        "id": 33,
+        "text": "These are the building blocks of an entirely new operating system for our businesses.",
+        "translation": "这些是我们企业全新操作系统的基石。"
+      },
+      {
+        "id": 34,
+        "text": "The old approach: reward what you want and punish what you don't want. The new approach: make the work itself more engaging.",
+        "translation": "旧方法：奖励你想要的，惩罚你不想要的。新方法：让工作本身更有吸引力。"
+      },
+      {
+        "id": 35,
+        "text": "Some companies are already doing this. They give their employees time to work on anything they want.",
+        "translation": "一些公司已经在这样做了。他们给员工时间去做任何他们想做的事情。"
+      },
+      {
+        "id": 36,
+        "text": "About half of the new products at that company are born during those periods of pure, undiluted autonomy.",
+        "translation": "那家公司大约一半的新产品是在那些纯粹的、不受约束的自主时间里诞生的。"
+      },
+      {
+        "id": 37,
+        "text": "Management isn't about walking around and seeing if people are sitting at their desks.",
+        "translation": "管理不是关于到处走走看看人们是否坐在他们的桌子前。"
+      },
+      {
+        "id": 38,
+        "text": "If you want people engaged, you have to let them be autonomous. Self-direction matters.",
+        "translation": "如果你想让人们投入，你必须让他们自主。自我引导很重要。"
+      },
+      {
+        "id": 39,
+        "text": "Pay people adequately and fairly. Then get the issue of money off the table. Let people focus on the work.",
+        "translation": "给人们足够和公平的报酬。然后把钱的问题搁置一边。让人们专注于工作。"
+      },
+      {
+        "id": 40,
+        "text": "The science shows clearly that for twenty-first century tasks, the old approach doesn't work. The new approach works much better.",
+        "translation": "科学清楚地表明，对于二十一世纪的任务，旧方法不起作用。新方法效果好得多。"
+      }
+    ]
+  },
+  {
+    "id": "ted-cain-introverts",
+    "sentences": [
+      {
+        "id": 1,
+        "text": "When I was nine years old, I went off to summer camp for the first time.",
+        "translation": "当我九岁的时候，我第一次去了夏令营。"
+      },
+      {
+        "id": 2,
+        "text": "My mom packed me a suitcase full of books, which to me seemed like a perfectly natural thing to do.",
+        "translation": "我妈妈给我装了一箱子书，在我看来这是完全自然的事情。"
+      },
+      {
+        "id": 3,
+        "text": "The counselor came up to me with a concerned look on her face and said we should all be more outgoing.",
+        "translation": "辅导员走到我面前，脸上带着担忧的表情，说我们都应该更外向一些。"
+      },
+      {
+        "id": 4,
+        "text": "Introversion is different from being shy. Shyness is about fear of social judgment.",
+        "translation": "内向与害羞不同。害羞是关于对社会评判的恐惧。"
+      },
+      {
+        "id": 5,
+        "text": "Introversion is more about how you respond to stimulation, including social stimulation.",
+        "translation": "内向更多的是关于你如何回应刺激，包括社交刺激。"
+      },
+      {
+        "id": 6,
+        "text": "Introverts feel at their most alive and energized when they're in quieter, more low-key environments.",
+        "translation": "内向者在更安静、更低调的环境中感觉最有活力和精力。"
+      },
+      {
+        "id": 7,
+        "text": "The key to maximizing our talents is to put ourselves in the zone of stimulation that is right for us.",
+        "translation": "最大化我们才能的关键是让自己处于适合我们的刺激区域。"
+      },
+      {
+        "id": 8,
+        "text": "There's zero correlation between being the best talker and having the best ideas.",
+        "translation": "最会说话的人和拥有最好想法的人之间没有任何相关性。"
+      },
+      {
+        "id": 9,
+        "text": "Some of the most transformative leaders in history were introverts.",
+        "translation": "历史上一些最具变革力的领导者都是内向者。"
+      },
+      {
+        "id": 10,
+        "text": "Solitude matters, and for some people it is the air that they breathe.",
+        "translation": "独处很重要，对有些人来说，它就像他们呼吸的空气。"
+      },
+      {
+        "id": 11,
+        "text": "Our most important institutions, our schools and our workplaces, are designed mostly for extroverts.",
+        "translation": "我们最重要的机构，我们的学校和工作场所，大多是为外向者设计的。"
+      },
+      {
+        "id": 12,
+        "text": "We have this belief system that says that creativity and productivity come from a peculiarly social place.",
+        "translation": "我们有一个信念体系，认为创造力和生产力来自一个特别社交化的地方。"
+      },
+      {
+        "id": 13,
+        "text": "Most of us work in open plan offices without walls, where we are subject to the constant noise and gaze of our coworkers.",
+        "translation": "我们大多数人在没有墙壁的开放式办公室工作，不断受到同事的噪音和注视。"
+      },
+      {
+        "id": 14,
+        "text": "Solitude is a crucial ingredient often to creativity.",
+        "translation": "独处往往是创造力的关键要素。"
+      },
+      {
+        "id": 15,
+        "text": "I'm not saying that social skills are unimportant. But I am saying that solitude is equally valuable.",
+        "translation": "我不是说社交技能不重要。但我要说的是独处同样有价值。"
+      },
+      {
+        "id": 16,
+        "text": "Stop the madness for constant group work. Just stop it.",
+        "translation": "停止对持续小组工作的疯狂吧。就此打住。"
+      },
+      {
+        "id": 17,
+        "text": "The world needs you and it needs the things you carry inside.",
+        "translation": "世界需要你，需要你内心承载的东西。"
+      },
+      {
+        "id": 18,
+        "text": "I wish you the best of all possible journeys, and the courage to speak softly.",
+        "translation": "我祝你拥有最好的旅程，以及温柔发言的勇气。"
+      },
+      {
+        "id": 19,
+        "text": "Now, introversion is different from being shy. Shy is about fear of social judgment. Introversion is about how you respond to stimulation.",
+        "translation": "内向与害羞不同。害羞是关于对社会评判的恐惧。内向是关于你如何回应刺激。"
+      },
+      {
+        "id": 20,
+        "text": "And extroverts really crave large amounts of stimulation, whereas introverts feel at their most alive when things are quieter and more low-key.",
+        "translation": "外向者真的渴望大量的刺激，而内向者在事物更安静、更低调的时候感觉最有活力。"
+      },
+      {
+        "id": 21,
+        "text": "Not all the time. These things aren't absolute. But a lot of the time.",
+        "translation": "不是所有时候。这些事情不是绝对的。但很多时候是这样的。"
+      },
+      {
+        "id": 22,
+        "text": "So the key then to maximizing our talents is for us all to put ourselves in the zone of stimulation that is right for us.",
+        "translation": "所以最大化我们才能的关键是让我们所有人都置身于适合自己的刺激区域。"
+      },
+      {
+        "id": 23,
+        "text": "And this is where bias comes in. Because our most important institutions are designed for extroverts and for extroverts' need for lots of stimulation.",
+        "translation": "而这就是偏见所在。因为我们最重要的机构是为外向者设计的，是为了满足外向者对大量刺激的需求。"
+      },
+      {
+        "id": 24,
+        "text": "When it comes to creativity and to leadership, we need introverts doing what they do best.",
+        "translation": "当涉及到创造力和领导力时，我们需要内向者做他们最擅长的事情。"
+      },
+      {
+        "id": 25,
+        "text": "A third to a half of the population are introverts. A third to a half. That is one out of every two or three people you know.",
+        "translation": "三分之一到一半的人口是内向者。三分之一到一半。也就是你认识的每两到三个人中就有一个。"
+      },
+      {
+        "id": 26,
+        "text": "So even if you are an extrovert yourself, I'm talking about your coworkers and your spouses and your children and the person sitting next to you right now.",
+        "translation": "所以即使你自己是外向者，我说的也包括你的同事、你的配偶、你的孩子以及现在坐在你旁边的人。"
+      },
+      {
+        "id": 27,
+        "text": "All of them are subject to a bias that is pretty deep and real in our society.",
+        "translation": "他们所有人都受到一种在我们社会中相当深刻和真实的偏见的影响。"
+      },
+      {
+        "id": 28,
+        "text": "And to see the bias clearly, you need to understand what introversion is. It's not about being antisocial. It's not about being unfriendly.",
+        "translation": "要清楚地看到这种偏见，你需要了解什么是内向。它不是关于反社会。不是关于不友好。"
+      },
+      {
+        "id": 29,
+        "text": "Darwin took long walks alone in the woods and emphatically turned down dinner party invitations.",
+        "translation": "达尔文独自在树林里长时间散步，并坚决拒绝晚宴邀请。"
+      },
+      {
+        "id": 30,
+        "text": "Dr. Seuss dreamed up many of his amazing creations in a lonely bell tower office that he had in his house.",
+        "translation": "苏斯博士在他家里一个孤独的钟楼办公室里构思了他许多令人惊叹的创作。"
+      },
+      {
+        "id": 31,
+        "text": "Steve Wozniak invented the first Apple computer sitting alone in his cubicle at Hewlett-Packard.",
+        "translation": "史蒂夫·沃兹尼亚克独自坐在惠普的小隔间里发明了第一台苹果电脑。"
+      },
+      {
+        "id": 32,
+        "text": "And he says he never would have become such an expert in the first place had he not been too introverted to leave the house when he was growing up.",
+        "translation": "他说如果他在成长过程中不是因为太内向而不出门的话，他一开始根本不会成为这样的专家。"
+      },
+      {
+        "id": 33,
+        "text": "Now, of course this does not mean that we should all stop collaborating. The world's great religions were all conceived by individuals who retreated to solitude.",
+        "translation": "当然，这并不意味着我们都应该停止合作。世界上伟大的宗教都是由退隐独处的个人构思出来的。"
+      },
+      {
+        "id": 34,
+        "text": "But I'm saying that solitude is a crucial ingredient often to creativity. And we need to be much better at respecting it.",
+        "translation": "但我要说的是独处往往是创造力的关键要素。我们需要更好地尊重它。"
+      },
+      {
+        "id": 35,
+        "text": "Groups famously follow the opinions of the most dominant or charismatic person in the room, even though there's zero correlation between being the best talker and having the best ideas.",
+        "translation": "众所周知，团队会追随房间里最有主导力或最有魅力的人的意见，尽管最会说话的人和拥有最好想法的人之间没有任何相关性。"
+      },
+      {
+        "id": 36,
+        "text": "You might be following the person with the best ideas, but you might not.",
+        "translation": "你可能在追随有最好想法的人，但也可能不是。"
+      },
+      {
+        "id": 37,
+        "text": "And do you really want to leave this up to chance? Much better for everybody to go off by themselves, generate their own ideas, and then come together as a team.",
+        "translation": "你真的想把这留给运气吗？每个人都自己去独立思考，产生自己的想法，然后作为一个团队聚在一起，这样对每个人都好得多。"
+      },
+      {
+        "id": 38,
+        "text": "So I have three calls to action for you. Number one: stop the madness for constant group work.",
+        "translation": "所以我有三个行动呼吁。第一：停止对持续小组工作的疯狂。"
+      },
+      {
+        "id": 39,
+        "text": "Number two: go to the wilderness. Be like Buddha. Have your own revelations.",
+        "translation": "第二：去荒野。像佛陀一样。获得你自己的启示。"
+      },
+      {
+        "id": 40,
+        "text": "Number three: take a good look at what's inside your own suitcase and why you put it there. Introverts, you're probably great at guarding your suitcase. But occasionally, open it up for other people to see.",
+        "translation": "第三：好好看看你自己箱子里有什么以及你为什么把它放在那里。内向者们，你们可能很擅长守护你们的箱子。但偶尔，打开它让其他人看看。"
+      }
+    ]
+  }
+]

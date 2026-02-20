@@ -1,0 +1,984 @@
+{
+  "questions": [
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Look at the photo: A woman is sitting at a desk in an office.",
+      "explanation": "照片中女性坐在办公桌前，A选项准确描述了这一场景。B说她站着，C说她在走路，D说她在打电话，均与照片不符。",
+      "options": [
+        { "key": "A", "text": "She is typing on a keyboard." },
+        { "key": "B", "text": "She is standing near the window." },
+        { "key": "C", "text": "She is walking down the hallway." },
+        { "key": "D", "text": "She is talking on the phone." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Look at the photo: A man is alone in a library.",
+      "explanation": "照片中男性在图书馆里阅读书籍，B选项准确描述。A说在写字，C说在用电脑，D说在整理书架，均不正确。",
+      "options": [
+        { "key": "A", "text": "He is writing in a notebook." },
+        { "key": "B", "text": "He is reading a book at a table." },
+        { "key": "C", "text": "He is using a computer." },
+        { "key": "D", "text": "He is arranging books on a shelf." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Look at the photo: A person is outdoors on a sunny day in a park.",
+      "explanation": "照片中一个人在公园里散步，C选项最准确。A说在跑步，B说在骑自行车，D说在坐长椅上，与照片不符。",
+      "options": [
+        { "key": "A", "text": "The person is jogging on a track." },
+        { "key": "B", "text": "The person is riding a bicycle." },
+        { "key": "C", "text": "The person is walking along a path." },
+        { "key": "D", "text": "The person is sitting on a bench." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Look at the photo: A woman is in a store near the checkout counter.",
+      "explanation": "照片中女性在商店收银台旁，D选项描述她在购买商品最准确。A说在试衣服，B说在看菜单，C说在打扫，不符合场景。",
+      "options": [
+        { "key": "A", "text": "She is trying on clothes." },
+        { "key": "B", "text": "She is looking at a menu." },
+        { "key": "C", "text": "She is cleaning the floor." },
+        { "key": "D", "text": "She is paying for her purchases." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Look at the photo: A man is at an airport terminal gate area.",
+      "explanation": "照片中男性在机场等候区等待登机，A选项准确描述。B说在办理值机，C说在取行李，D说在过安检，不是照片内容。",
+      "options": [
+        { "key": "A", "text": "He is waiting at the boarding gate." },
+        { "key": "B", "text": "He is checking in at the counter." },
+        { "key": "C", "text": "He is collecting his luggage from the carousel." },
+        { "key": "D", "text": "He is going through the security checkpoint." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: Several people are gathered around a table in a conference room.",
+      "explanation": "照片中多人围坐在会议室桌旁开会，B选项准确描述。A说在吃午饭，C说在搬家具，D说房间是空的，均不符合。",
+      "options": [
+        { "key": "A", "text": "The employees are having lunch together." },
+        { "key": "B", "text": "A meeting is being held in the conference room." },
+        { "key": "C", "text": "Workers are moving furniture out of the room." },
+        { "key": "D", "text": "The conference room is empty." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: Two people are standing near a printer in an office.",
+      "explanation": "照片中两人站在打印机旁查看文件，C选项最准确。A说在修打印机，B说在用复印机，D说在搬打印机，均不符。",
+      "options": [
+        { "key": "A", "text": "They are repairing the printer." },
+        { "key": "B", "text": "One person is using the copy machine alone." },
+        { "key": "C", "text": "They are reviewing a document from the printer." },
+        { "key": "D", "text": "They are carrying the printer to another room." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: A restaurant scene with a waiter serving food to customers at a table.",
+      "explanation": "照片中服务员正在给餐桌旁的客人上菜，A选项准确描述。B说客人在看菜单，C说餐厅关门了，D说在打扫桌子，不符合。",
+      "options": [
+        { "key": "A", "text": "A waiter is placing dishes on the table." },
+        { "key": "B", "text": "The customers are looking at menus." },
+        { "key": "C", "text": "The restaurant is closed for the evening." },
+        { "key": "D", "text": "A busboy is clearing the table." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: An office setting with several employees working at their desks with computers.",
+      "explanation": "照片中多名员工在办公桌前使用电脑工作，D选项准确描述了开放式办公室场景。A说只有一个人，B说在休息，C说在开会，不符合。",
+      "options": [
+        { "key": "A", "text": "Only one person is in the office." },
+        { "key": "B", "text": "The employees are taking a break in the lounge." },
+        { "key": "C", "text": "A group meeting is being conducted." },
+        { "key": "D", "text": "Several workers are using computers at their workstations." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: A hospital corridor with a nurse pushing a wheelchair.",
+      "explanation": "照片中护士在医院走廊推轮椅，B选项准确描述。A说医生在检查病人，C说走廊是空的，D说在递药，不符合。",
+      "options": [
+        { "key": "A", "text": "A doctor is examining a patient in a room." },
+        { "key": "B", "text": "A nurse is pushing a wheelchair through the hallway." },
+        { "key": "C", "text": "The corridor is completely empty." },
+        { "key": "D", "text": "A pharmacist is handing out medication." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: A parking lot with cars and a person loading groceries into a vehicle.",
+      "explanation": "照片中一个人在停车场将杂货装入车辆，C选项准确描述。A说停车场是空的，B说在修车，D说在洗车，均不正确。",
+      "options": [
+        { "key": "A", "text": "The parking lot is empty." },
+        { "key": "B", "text": "A mechanic is fixing a car in the lot." },
+        { "key": "C", "text": "A shopper is loading bags into the trunk of a car." },
+        { "key": "D", "text": "Someone is washing a vehicle in the parking area." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: Two people shaking hands in a lobby area with a reception desk behind them.",
+      "explanation": "照片中两人在大厅握手，背后有前台，A选项准确描述了商务会面场景。B说在争论，C说在签合同，D说在等电梯，不正确。",
+      "options": [
+        { "key": "A", "text": "Two business people are greeting each other in the lobby." },
+        { "key": "B", "text": "Two colleagues are having an argument." },
+        { "key": "C", "text": "They are signing a contract at the reception desk." },
+        { "key": "D", "text": "People are waiting for the elevator." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: A busy intersection with pedestrians crossing the street and vehicles stopped at a traffic light.",
+      "explanation": "照片中行人在过马路，车辆在红灯前停着，D选项准确描述。A说街道空无一人，B说车辆在移动，C说只有自行车，不正确。",
+      "options": [
+        { "key": "A", "text": "The street is deserted with no people in sight." },
+        { "key": "B", "text": "Vehicles are moving quickly through the intersection." },
+        { "key": "C", "text": "Only bicycles are crossing the road." },
+        { "key": "D", "text": "Pedestrians are crossing while cars wait at the signal." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: A man in a hard hat is pointing at blueprints on a table at a construction site.",
+      "explanation": "照片中戴安全帽的男性在工地上指着桌上的蓝图，B选项准确描述。A说在搬砖，C说在操作起重机，D说在休息，不符合。",
+      "options": [
+        { "key": "A", "text": "A worker is carrying bricks across the site." },
+        { "key": "B", "text": "A foreman is reviewing blueprints at the construction site." },
+        { "key": "C", "text": "A crane operator is lifting materials." },
+        { "key": "D", "text": "Construction workers are taking a lunch break." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Look at the photo: A factory floor with assembly line workers wearing safety goggles and gloves.",
+      "explanation": "照片中工厂里的装配线工人戴着护目镜和手套在工作，A选项准确描述。B说工厂是空的，C说工人在开会，D说在搬箱子，不正确。",
+      "options": [
+        { "key": "A", "text": "Workers are assembling products on a production line." },
+        { "key": "B", "text": "The factory floor is empty and the machines are off." },
+        { "key": "C", "text": "Employees are attending a safety meeting." },
+        { "key": "D", "text": "Workers are loading boxes onto a truck." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: A construction site with scaffolding on the side of a building and workers at various levels.",
+      "explanation": "照片中建筑工地上脚手架搭在建筑物侧面，工人在不同高度作业。C选项准确描述了脚手架(scaffolding)上的场景。注意scaffolding是TOEIC常考词汇。",
+      "options": [
+        { "key": "A", "text": "Workers are painting the interior of the building." },
+        { "key": "B", "text": "The building has been completed and is ready for occupancy." },
+        { "key": "C", "text": "Scaffolding has been erected along the exterior of the building." },
+        { "key": "D", "text": "A crane is demolishing the old structure." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: A dock area with cargo containers stacked near a large vessel, and a forklift moving goods.",
+      "explanation": "照片中码头区域有集装箱堆放在大船旁，叉车在运货。B选项准确描述了码头(dock)场景。注意dock和forklift是重要词汇。",
+      "options": [
+        { "key": "A", "text": "Passengers are boarding a cruise ship." },
+        { "key": "B", "text": "Cargo is being transported by forklift near the docked vessel." },
+        { "key": "C", "text": "Fishing boats are tied up at a small marina." },
+        { "key": "D", "text": "The harbor is empty with no ships in sight." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: A warehouse interior with tall shelving units filled with boxes and a worker operating a pallet jack.",
+      "explanation": "照片中仓库内有高大的货架装满箱子，一名工人在操作托盘搬运车。D选项准确描述了仓库(warehouse)和托盘搬运车(pallet jack)的场景。",
+      "options": [
+        { "key": "A", "text": "Customers are browsing products in a retail store." },
+        { "key": "B", "text": "The shelves are empty and awaiting new stock." },
+        { "key": "C", "text": "Workers are unloading a delivery truck outside." },
+        { "key": "D", "text": "A warehouse employee is moving inventory with a pallet jack." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: An airport tarmac with ground crew loading luggage onto a conveyor belt leading to an aircraft.",
+      "explanation": "照片中机场停机坪上地勤人员通过传送带将行李装入飞机。A选项准确描述了停机坪(tarmac)和传送带(conveyor belt)的场景。",
+      "options": [
+        { "key": "A", "text": "Ground crew members are loading baggage onto the aircraft via a conveyor belt." },
+        { "key": "B", "text": "Passengers are walking across the tarmac to board the plane." },
+        { "key": "C", "text": "A fuel truck is refueling the airplane." },
+        { "key": "D", "text": "Mechanics are inspecting the landing gear of the aircraft." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: A laboratory with technicians in white coats examining specimens under microscopes.",
+      "explanation": "照片中实验室里穿白大褂的技术人员在用显微镜检查样本。C选项准确描述了实验室场景。注意specimen和microscope是重要词汇。",
+      "options": [
+        { "key": "A", "text": "Doctors are performing surgery in an operating room." },
+        { "key": "B", "text": "Students are attending a chemistry lecture." },
+        { "key": "C", "text": "Lab technicians are analyzing specimens through microscopes." },
+        { "key": "D", "text": "Researchers are conducting a field study outdoors." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: A loading dock area where workers are stacking crates onto a flatbed truck.",
+      "explanation": "照片中装卸区(loading dock)工人将板条箱(crates)堆放到平板卡车(flatbed truck)上。B选项准确描述。注意loading dock和crates是TOEIC易混淆词汇。",
+      "options": [
+        { "key": "A", "text": "A delivery van is parked in front of a retail store." },
+        { "key": "B", "text": "Crates are being loaded onto a flatbed truck at the loading dock." },
+        { "key": "C", "text": "Workers are unpacking merchandise inside a stockroom." },
+        { "key": "D", "text": "Forklifts are transporting pallets across a parking lot." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: A greenhouse filled with potted plants on raised benches, with an overhead irrigation system visible.",
+      "explanation": "照片中温室(greenhouse)里有盆栽植物放在高架台上，可以看到头顶的灌溉系统。D选项准确描述了温室和灌溉系统(irrigation system)的场景。",
+      "options": [
+        { "key": "A", "text": "A gardener is mowing the lawn in a backyard." },
+        { "key": "B", "text": "Flowers are displayed for sale at an outdoor market." },
+        { "key": "C", "text": "Trees are being planted along a residential street." },
+        { "key": "D", "text": "Potted plants are arranged on benches inside a greenhouse with irrigation equipment overhead." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: A hotel lobby with a bellhop pushing a luggage cart past the front desk.",
+      "explanation": "照片中酒店大堂里行李员(bellhop)推着行李车(luggage cart)经过前台。A选项准确描述。注意bellhop和luggage cart是TOEIC常考词汇。",
+      "options": [
+        { "key": "A", "text": "A bellhop is wheeling a luggage cart through the hotel lobby." },
+        { "key": "B", "text": "Guests are checking out at the reception counter." },
+        { "key": "C", "text": "A concierge is hailing a taxi outside the entrance." },
+        { "key": "D", "text": "Housekeeping staff are vacuuming the lobby carpet." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: A roadside scene with a utility crew working on overhead power lines from a cherry picker.",
+      "explanation": "照片中路边公共设施维修队(utility crew)在升降机(cherry picker)上维修架空电线(overhead power lines)。C选项准确描述。",
+      "options": [
+        { "key": "A", "text": "A road crew is filling potholes on the highway." },
+        { "key": "B", "text": "Workers are installing a traffic signal at the intersection." },
+        { "key": "C", "text": "A utility crew is servicing power lines from a cherry picker." },
+        { "key": "D", "text": "Landscapers are trimming bushes along the sidewalk." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "Look at the photo: An outdoor cafe with patrons seated at wrought-iron tables under a striped awning.",
+      "explanation": "照片中户外咖啡馆顾客坐在铸铁桌(wrought-iron tables)旁，头顶有条纹遮阳篷(striped awning)。B选项准确描述。注意awning是TOEIC难点词汇。",
+      "options": [
+        { "key": "A", "text": "A vendor is selling food from a street cart." },
+        { "key": "B", "text": "Diners are seated at outdoor tables beneath a striped awning." },
+        { "key": "C", "text": "A waiter is setting up tables inside the restaurant." },
+        { "key": "D", "text": "Customers are standing in line at a food truck." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 4,
+      "stem": "Look at the photo: A person in business attire standing at a podium in a large auditorium with a presentation displayed on a screen.",
+      "explanation": "照片中穿商务装的人站在大礼堂的讲台前，屏幕上有演示文稿。需要仔细区分：A说在做演讲最准确，B说在接受采访，C说在参加颁奖典礼，D说在主持讨论会，都与照片中单人在讲台演讲的场景不完全匹配。",
+      "options": [
+        { "key": "A", "text": "A speaker is delivering a presentation to an audience in an auditorium." },
+        { "key": "B", "text": "A journalist is conducting an interview on stage." },
+        { "key": "C", "text": "An executive is receiving an award at a ceremony." },
+        { "key": "D", "text": "A moderator is facilitating a panel discussion." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 4,
+      "stem": "Look at the photo: A woman in a lab coat is pipetting a liquid into a test tube while looking at a monitor displaying data.",
+      "explanation": "照片中穿实验服的女性用移液器(pipette)将液体移入试管，同时看着显示数据的监视器。需要仔细区分各选项：B最准确，A没提到监视器，C说在清洗设备，D说在记录笔记。",
+      "options": [
+        { "key": "A", "text": "A scientist is pouring chemicals into a beaker." },
+        { "key": "B", "text": "A researcher is pipetting a sample into a test tube while monitoring results on a screen." },
+        { "key": "C", "text": "A lab assistant is cleaning glassware at the sink." },
+        { "key": "D", "text": "A technician is recording notes on a clipboard." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 4,
+      "stem": "Look at the photo: Workers in a factory are inspecting items on a conveyor belt. Some items have been set aside on a separate table.",
+      "explanation": "照片中工厂工人在传送带上检查物品，一些物品被放到旁边的桌子上。需要仔细区分：D最准确描述了质量检查过程，A说在包装，B说在组装，C说在修理传送带，不够准确。",
+      "options": [
+        { "key": "A", "text": "Workers are packaging finished products into boxes on the conveyor belt." },
+        { "key": "B", "text": "Employees are assembling components at their workstations." },
+        { "key": "C", "text": "A technician is repairing the conveyor belt mechanism." },
+        { "key": "D", "text": "Quality control workers are examining items on the belt and sorting rejected ones onto a side table." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 4,
+      "stem": "Look at the photo: A man is leaning over a railing on a balcony overlooking a courtyard where several people are walking.",
+      "explanation": "照片中一名男性靠在阳台栏杆上俯瞰庭院，庭院里有几个人在走路。各选项非常相似，C最准确。A说在浇花，B没提到楼下的人，D说在和楼下的人说话，不正确。",
+      "options": [
+        { "key": "A", "text": "A man is watering plants on a balcony above a garden." },
+        { "key": "B", "text": "A man is standing on a balcony looking at the sky." },
+        { "key": "C", "text": "A man is leaning on a balcony railing overlooking a courtyard with pedestrians below." },
+        { "key": "D", "text": "A man is calling down to people from an upper-floor terrace." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 4,
+      "stem": "Look at the photo: A receptionist is handing a visitor badge to a man in a suit while another person waits behind him holding a briefcase.",
+      "explanation": "照片中接待员在给穿西装的男性递访客证，另一个人拿着公文包在后面等待。各选项都涉及前台场景，需仔细区分：A最完整准确地描述了两个人和访客证的细节。",
+      "options": [
+        { "key": "A", "text": "A receptionist is issuing a visitor badge to a guest while another visitor waits in line with a briefcase." },
+        { "key": "B", "text": "A security guard is checking identification at the building entrance." },
+        { "key": "C", "text": "Two businessmen are signing in at the front desk simultaneously." },
+        { "key": "D", "text": "A receptionist is answering the phone while guests wait at the counter." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "Where is the nearest post office?",
+      "explanation": "这是一个where问句，问最近的邮局在哪里。需要选包含地点信息的回答。B回答了具体位置（在银行旁边两个街区远），最符合。",
+      "options": [
+        { "key": "A", "text": "It closes at five o'clock." },
+        { "key": "B", "text": "It's two blocks away, next to the bank." },
+        { "key": "C", "text": "Yes, I mailed it yesterday." },
+        { "key": "D", "text": "About thirty minutes." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "When does the morning shift start?",
+      "explanation": "这是一个when问句，问早班什么时候开始。需要选包含时间信息的回答。A回答了具体时间（早上六点），最符合。",
+      "options": [
+        { "key": "A", "text": "At six in the morning." },
+        { "key": "B", "text": "In the main warehouse." },
+        { "key": "C", "text": "About ten employees." },
+        { "key": "D", "text": "Yes, I work the morning shift." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "Who is in charge of the marketing department?",
+      "explanation": "这是一个who问句，问谁负责市场部。需要选包含人名或人物信息的回答。D回答了具体人名（Ms. Tanaka），最符合。",
+      "options": [
+        { "key": "A", "text": "On the third floor." },
+        { "key": "B", "text": "Since last January." },
+        { "key": "C", "text": "Yes, the marketing campaign was successful." },
+        { "key": "D", "text": "Ms. Tanaka has been the director for two years." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "Where did you park your car?",
+      "explanation": "这是一个where问句，问把车停在哪里了。需要选包含地点信息的回答。C回答了具体停车位置（地下车库B层），最符合。",
+      "options": [
+        { "key": "A", "text": "About two hours ago." },
+        { "key": "B", "text": "It's a blue sedan." },
+        { "key": "C", "text": "In the underground garage on level B." },
+        { "key": "D", "text": "No, I took the bus today." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "When is the deadline for the project proposal?",
+      "explanation": "这是一个when问句，问项目提案的截止日期是什么时候。需要选包含时间信息的回答。B回答了具体日期（这周五之前），最符合。",
+      "options": [
+        { "key": "A", "text": "The project manager approved it." },
+        { "key": "B", "text": "By this Friday at the latest." },
+        { "key": "C", "text": "About twenty pages long." },
+        { "key": "D", "text": "In the conference room." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "Who should I contact about the broken air conditioner?",
+      "explanation": "这是一个who问句，问空调坏了应该联系谁。需要选包含人物信息的回答。A回答了具体联系对象（维修部门），最符合。",
+      "options": [
+        { "key": "A", "text": "Call the maintenance department at extension 305." },
+        { "key": "B", "text": "It was installed last summer." },
+        { "key": "C", "text": "The temperature is quite comfortable." },
+        { "key": "D", "text": "Yes, the air conditioner is working fine." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "Where can I find the employee handbook?",
+      "explanation": "这是一个where问句，问在哪里能找到员工手册。需要选包含地点或获取方式的回答。D回答了具体获取方式（公司内网上有电子版），最符合。",
+      "options": [
+        { "key": "A", "text": "It was updated last month." },
+        { "key": "B", "text": "About fifty pages." },
+        { "key": "C", "text": "Mr. Johnson wrote it." },
+        { "key": "D", "text": "There's a digital copy on the company intranet." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "When will the new office furniture arrive?",
+      "explanation": "这是一个when问句，问新办公家具什么时候到。需要选包含时间信息的回答。C回答了具体时间（下周一），最符合。",
+      "options": [
+        { "key": "A", "text": "From a local supplier." },
+        { "key": "B", "text": "Desks and chairs." },
+        { "key": "C", "text": "It's scheduled for delivery next Monday." },
+        { "key": "D", "text": "On the second floor." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Why was the meeting rescheduled to Thursday?",
+      "explanation": "这是一个why问句，问为什么会议改到周四。需要选包含原因的回答。A回答了具体原因（主任有冲突），最符合why问句的回答方式。",
+      "options": [
+        { "key": "A", "text": "Because the director had a scheduling conflict." },
+        { "key": "B", "text": "In the large conference room." },
+        { "key": "C", "text": "About fifteen attendees." },
+        { "key": "D", "text": "Yes, it was rescheduled." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "How do I submit a reimbursement request?",
+      "explanation": "这是一个how问句，问如何提交报销申请。需要选包含方法或步骤的回答。B回答了具体方法（填写网上表格并附上收据），最符合。",
+      "options": [
+        { "key": "A", "text": "The reimbursement was approved." },
+        { "key": "B", "text": "Fill out the online form and attach your receipts." },
+        { "key": "C", "text": "By next Friday." },
+        { "key": "D", "text": "About two hundred dollars." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Why hasn't the shipment arrived yet?",
+      "explanation": "这是一个why问句，问为什么货物还没到。需要选包含原因的回答。C回答了原因（港口有延误），最符合why问句。注意D是yes/no回答，不适合why问句。",
+      "options": [
+        { "key": "A", "text": "About fifty boxes." },
+        { "key": "B", "text": "To the main warehouse." },
+        { "key": "C", "text": "There's been a delay at the port due to bad weather." },
+        { "key": "D", "text": "Yes, it arrived this morning." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "How long will the renovation take?",
+      "explanation": "这是一个how long问句，问装修要多久。需要选包含时间长度的回答。D回答了具体时间段（大约三周），最符合how long问句。",
+      "options": [
+        { "key": "A", "text": "The renovation company is very professional." },
+        { "key": "B", "text": "On the first floor." },
+        { "key": "C", "text": "It costs about ten thousand dollars." },
+        { "key": "D", "text": "The contractor estimated about three weeks." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "How much does it cost to rent the banquet hall?",
+      "explanation": "这是一个how much问句，问租宴会厅要多少钱。需要选包含价格信息的回答。A回答了具体价格（每晚五百美元），最符合how much问句。",
+      "options": [
+        { "key": "A", "text": "It's five hundred dollars per evening." },
+        { "key": "B", "text": "It can accommodate up to two hundred guests." },
+        { "key": "C", "text": "The banquet is on Saturday." },
+        { "key": "D", "text": "Yes, it's available for rent." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Why did you choose this vendor over the others?",
+      "explanation": "这是一个why问句，问为什么选择这个供应商。需要选包含原因的回答。B回答了选择的理由（他们价格最好且交货记录良好），最符合。",
+      "options": [
+        { "key": "A", "text": "We have three vendors in total." },
+        { "key": "B", "text": "They offered the best price and have a strong delivery record." },
+        { "key": "C", "text": "The order was placed last week." },
+        { "key": "D", "text": "In the purchasing department." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "How often are performance reviews conducted?",
+      "explanation": "这是一个how often问句，问绩效评估多久进行一次。需要选包含频率信息的回答。C回答了具体频率（每年两次），最符合how often问句。",
+      "options": [
+        { "key": "A", "text": "My review went very well." },
+        { "key": "B", "text": "The HR manager conducts them." },
+        { "key": "C", "text": "Twice a year, in June and December." },
+        { "key": "D", "text": "Yes, they're very thorough." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "How should I address the envelope for the overseas client?",
+      "explanation": "这是一个how问句，问如何给海外客户的信封写地址。需要选包含方法的回答。D回答了具体方法（用国际格式并加上国家名称），最符合。",
+      "options": [
+        { "key": "A", "text": "The client is based in London." },
+        { "key": "B", "text": "It was sent by express mail." },
+        { "key": "C", "text": "About five business days." },
+        { "key": "D", "text": "Use the international format and include the country name." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "How many copies of the report do we need for the board meeting?",
+      "explanation": "这是一个how many问句，问董事会需要几份报告副本。需要选包含数量的回答。A回答了具体数量（十二份，每位成员一份），最符合。",
+      "options": [
+        { "key": "A", "text": "Twelve copies, one for each board member." },
+        { "key": "B", "text": "The report is about thirty pages." },
+        { "key": "C", "text": "It was printed in color." },
+        { "key": "D", "text": "The meeting starts at two o'clock." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Why don't we take a short break before continuing?",
+      "explanation": "这是一个建议句型(Why don't we...)，表示建议休息一下。需要选回应建议的答案。B同意了建议（好主意），最符合对建议的回应。",
+      "options": [
+        { "key": "A", "text": "Because we started late this morning." },
+        { "key": "B", "text": "That sounds like a good idea. I could use some coffee." },
+        { "key": "C", "text": "The break room is down the hall." },
+        { "key": "D", "text": "About fifteen minutes." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "How do I connect to the wireless network in the office?",
+      "explanation": "这是一个how问句，问如何连接办公室无线网络。需要选包含连接方法的回答。C回答了具体步骤（选择公司网络并输入密码），最符合。",
+      "options": [
+        { "key": "A", "text": "The network was installed last month." },
+        { "key": "B", "text": "It's a high-speed connection." },
+        { "key": "C", "text": "Select the company network and enter the password posted on the bulletin board." },
+        { "key": "D", "text": "Yes, we have wireless access." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Would you like me to reserve a meeting room for the client visit?",
+      "explanation": "这是一个Would you like问句，表示提供帮助。需要选回应提议的答案。B回答接受了提议并补充了具体需求（大会议室，可以容纳八个人的），最符合对提议的回应。",
+      "options": [
+        { "key": "A", "text": "The client visited us last Tuesday." },
+        { "key": "B", "text": "Yes, please book the large one that seats eight." },
+        { "key": "C", "text": "The meeting lasted about two hours." },
+        { "key": "D", "text": "Room 201 is on the second floor." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Do you know when the quarterly sales figures will be released?",
+      "explanation": "这是一个嵌套问句(embedded question)，表面是yes/no问句，实际在问时间。不能只回答yes/no，需要提供时间信息。B回答了具体时间（应该在月底之前），最符合。",
+      "options": [
+        { "key": "A", "text": "Yes, the sales were excellent." },
+        { "key": "B", "text": "They should be available by the end of the month." },
+        { "key": "C", "text": "The finance department handles that." },
+        { "key": "D", "text": "Quarterly reports are important." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "The shipment was supposed to arrive yesterday, wasn't it?",
+      "explanation": "这是一个反意疑问句(tag question)，说货物应该昨天到的。需要选确认或否认并提供相关信息的回答。C回答确认了延误并说明了新的到达时间，最符合。",
+      "options": [
+        { "key": "A", "text": "About twenty boxes." },
+        { "key": "B", "text": "From the supplier in Shanghai." },
+        { "key": "C", "text": "Yes, but it was delayed. It should get here by tomorrow morning." },
+        { "key": "D", "text": "The shipping costs were reasonable." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Hasn't the new policy been communicated to all staff members?",
+      "explanation": "这是一个否定疑问句(negative question)。说话者预期新政策已经通知给所有员工了。D回答说还没有并解释了原因（备忘录还在起草中），最准确回应了否定疑问。",
+      "options": [
+        { "key": "A", "text": "The policy is about workplace safety." },
+        { "key": "B", "text": "Yes, I like the new policy." },
+        { "key": "C", "text": "We have about two hundred employees." },
+        { "key": "D", "text": "Not yet. The memo is still being drafted by HR." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Could you tell me where I can find the financial records from last quarter?",
+      "explanation": "这是一个间接问句(embedded question)，用Could you tell me开头表示礼貌请求。需要提供地点信息。A回答了具体位置（在共享驱动器的财务文件夹里），最符合。",
+      "options": [
+        { "key": "A", "text": "They're in the finance folder on the shared drive." },
+        { "key": "B", "text": "Yes, I could tell you." },
+        { "key": "C", "text": "Last quarter's revenue was strong." },
+        { "key": "D", "text": "The financial advisor is on vacation." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "You've already submitted your expense report, haven't you?",
+      "explanation": "这是一个反意疑问句(tag question)，确认对方是否已提交费用报告。B回答了实际情况（还在等一张收据），最恰当地回应了反意疑问。",
+      "options": [
+        { "key": "A", "text": "The expenses were quite high this month." },
+        { "key": "B", "text": "Actually, I'm still waiting for one more receipt before I can finalize it." },
+        { "key": "C", "text": "The report is about ten pages." },
+        { "key": "D", "text": "Yes, expense reports are due on Friday." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Don't you think we should upgrade the software before the audit?",
+      "explanation": "这是一个否定疑问句(negative question)，暗示说话者认为应该在审计前升级软件。C回答表示同意并补充了理由（现在的版本不符合新要求），最符合。",
+      "options": [
+        { "key": "A", "text": "The audit is scheduled for next month." },
+        { "key": "B", "text": "The software costs about five thousand dollars." },
+        { "key": "C", "text": "I agree. The current version doesn't meet the new compliance requirements." },
+        { "key": "D", "text": "No, the software was installed last year." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Would you mind if I used the projector for my presentation this afternoon?",
+      "explanation": "这是一个Would you mind问句，表示请求许可。注意Would you mind的否定回答表示同意。D回答'not at all'表示不介意（即同意），最恰当。",
+      "options": [
+        { "key": "A", "text": "Yes, I mind very much." },
+        { "key": "B", "text": "The projector was purchased last year." },
+        { "key": "C", "text": "My presentation is about the quarterly results." },
+        { "key": "D", "text": "Not at all. I'll be done with it by noon." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Can you tell me who approved the budget increase?",
+      "explanation": "这是一个嵌套问句(embedded question)，用Can you tell me开头。实际问的是谁批准了预算增加。A回答了具体人物（CFO在上次董事会上批准的），最符合。",
+      "options": [
+        { "key": "A", "text": "The CFO signed off on it at the last board meeting." },
+        { "key": "B", "text": "Yes, I can tell you." },
+        { "key": "C", "text": "The budget was increased by ten percent." },
+        { "key": "D", "text": "Budget reviews happen every quarter." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "The contract hasn't been signed by both parties yet, has it?",
+      "explanation": "这是一个反意疑问句(tag question)，确认合同是否还没有双方签字。B回答了实际状态（一方已经签了，在等另一方），最恰当。",
+      "options": [
+        { "key": "A", "text": "The contract is fifty pages long." },
+        { "key": "B", "text": "One party has signed, but we're still waiting on the other." },
+        { "key": "C", "text": "Our legal team reviewed it." },
+        { "key": "D", "text": "Yes, we need a new contract." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Shouldn't we inform the clients about the schedule change?",
+      "explanation": "这是一个否定疑问句(negative question)，暗示应该通知客户日程变更。D回答表示已经在处理（我已经让秘书发邮件了），最恰当。",
+      "options": [
+        { "key": "A", "text": "We have about thirty clients." },
+        { "key": "B", "text": "The schedule is posted on the bulletin board." },
+        { "key": "C", "text": "The change was quite unexpected." },
+        { "key": "D", "text": "Absolutely. I've already asked my assistant to send out an email notification." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Do you happen to know whether the training session has been rescheduled?",
+      "explanation": "这是一个嵌套问句(embedded question)，用Do you happen to know whether开头，实际问培训是否改期。C回答了具体信息（是的，改到下周三了），最符合。",
+      "options": [
+        { "key": "A", "text": "The training was very informative." },
+        { "key": "B", "text": "Yes, I happen to know." },
+        { "key": "C", "text": "Yes, it's been moved to next Wednesday at ten." },
+        { "key": "D", "text": "About twenty employees attended." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Weren't you supposed to submit the report by yesterday?",
+      "explanation": "这是一个否定疑问句(negative question)，暗示报告应该昨天就交了。A回答解释了延迟原因并给出了新的提交时间，最恰当地回应了这个带有质疑语气的问题。",
+      "options": [
+        { "key": "A", "text": "I asked for an extension because I needed more data from the research team." },
+        { "key": "B", "text": "The report covers our annual performance." },
+        { "key": "C", "text": "Yes, reports should be submitted on time." },
+        { "key": "D", "text": "I submitted three reports last month." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Would you like to join us for the client dinner tonight?",
+      "explanation": "这是一个邀请问句。D是间接回答——没有直接说yes或no，而是说需要先确认保姆是否有空（暗示如果能安排好孩子就去），这种间接回答在TOEIC中是正确答案。",
+      "options": [
+        { "key": "A", "text": "The restaurant is on Main Street." },
+        { "key": "B", "text": "We had dinner with them last month." },
+        { "key": "C", "text": "The client prefers Italian food." },
+        { "key": "D", "text": "Let me check if my babysitter is available first." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Have you had a chance to look at the proposal I sent over?",
+      "explanation": "这是问对方是否看了提案。C是间接回答——没有直接说yes或no，而是说打印了但还没来得及仔细看（暗示收到了但还没完全审阅），这种委婉回答在TOEIC中常作为正确答案。",
+      "options": [
+        { "key": "A", "text": "Yes, I sent it by email." },
+        { "key": "B", "text": "The proposal has ten sections." },
+        { "key": "C", "text": "I printed it out, but I haven't had time to go through it carefully yet." },
+        { "key": "D", "text": "Proposals are usually due on Monday." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Could you handle the presentation while I'm away at the conference?",
+      "explanation": "这是请求帮忙做演讲。B是间接回答——没有直接说yes或no，而是问什么时候需要准备好（暗示愿意帮忙但需要了解时间），这种间接接受在TOEIC中是正确答案。",
+      "options": [
+        { "key": "A", "text": "The conference is in Boston this year." },
+        { "key": "B", "text": "Sure. When do you need it ready by?" },
+        { "key": "C", "text": "The presentation software needs updating." },
+        { "key": "D", "text": "I attended the conference last year." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Do you think we'll finish the inventory count by five?",
+      "explanation": "这是问能否在五点前完成库存盘点。D是间接/意外的回答——没有直接回答能或不能，而是说取决于是否能多叫几个人来帮忙（暗示目前进度不确定），这种有条件的回答在TOEIC中常作为正确答案。",
+      "options": [
+        { "key": "A", "text": "We counted about five hundred items." },
+        { "key": "B", "text": "The inventory is stored in the back." },
+        { "key": "C", "text": "Five o'clock is when the store closes." },
+        { "key": "D", "text": "That depends on whether we can get a few more people to help." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Didn't the supplier confirm the delivery date?",
+      "explanation": "这是否定疑问句，问供应商是否确认了交货日期。A是间接/意外的回答——没有直接回答是或否，而是说最后一次联系他们时还在和物流部门确认（暗示还没有最终确认），这种转述情况的回答在TOEIC中常作为正确答案。",
+      "options": [
+        { "key": "A", "text": "When I last spoke with them, they were still checking with their logistics team." },
+        { "key": "B", "text": "The supplier is based in Germany." },
+        { "key": "C", "text": "Yes, we need to confirm the date." },
+        { "key": "D", "text": "Delivery charges are included in the price." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Should we postpone the product launch until the marketing materials are ready?",
+      "explanation": "这是问是否应该推迟产品发布。C是间接/意外的回答——没有直接说应该或不应该，而是建议可以先用现有材料做软发布（提供了一个折中方案），这种提供替代方案的回答在TOEIC中常作为正确答案。",
+      "options": [
+        { "key": "A", "text": "The product launch was very successful." },
+        { "key": "B", "text": "The marketing team has five members." },
+        { "key": "C", "text": "We could do a soft launch with the existing materials and update them later." },
+        { "key": "D", "text": "Marketing materials include brochures and flyers." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Is there any way we could get an extension on the filing deadline?",
+      "explanation": "这是问能否延长申报截止日期。B是间接/意外的回答——没有直接说能或不能，而是说以前他们通情达理过（暗示可能可以，值得一试），这种基于过往经验的间接回答在TOEIC中常作为正确答案。",
+      "options": [
+        { "key": "A", "text": "The deadline is next Friday." },
+        { "key": "B", "text": "I know they've been flexible about it in the past, so it's worth asking." },
+        { "key": "C", "text": "The filing system was reorganized recently." },
+        { "key": "D", "text": "Extensions are usually two weeks." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Has anyone volunteered to organize the company picnic this year?",
+      "explanation": "这是问是否有人自愿组织公司野餐。D是间接/意外的回答——没有直接说有或没有，而是暗示自己可能会做（如果没人的话我可以考虑），这种含蓄的自荐回答在TOEIC中常作为正确答案。",
+      "options": [
+        { "key": "A", "text": "The picnic was at the park last year." },
+        { "key": "B", "text": "We usually have about a hundred attendees." },
+        { "key": "C", "text": "Volunteers receive a gift card." },
+        { "key": "D", "text": "Not that I know of, but I wouldn't mind taking it on if no one else steps up." }
+      ],
+      "correctKey": "D"
+    }
+  ]
+}

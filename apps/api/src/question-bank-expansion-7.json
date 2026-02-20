@@ -1,0 +1,1404 @@
+{
+  "questions": [
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 1,
+      "stem": "Dear Team,\n\nPlease note that the office will be closed on Friday, November 10, for a national holiday. ___ We will resume normal business hours on Monday, November 13.\n\nBest regards,\nHR Department",
+      "explanation": "空白处需要一句过渡语，告知员工假期安排。选项A最合适，提醒大家提前完成紧急工作。",
+      "options": [
+        { "key": "A", "text": "Please make sure to complete any urgent tasks before then." },
+        { "key": "B", "text": "The office renovation will begin next month." },
+        { "key": "C", "text": "We are hiring new staff for the department." },
+        { "key": "D", "text": "The cafeteria menu has been updated." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 1,
+      "stem": "Hi Sarah,\n\nI wanted to let you know that the shipment of office supplies has arrived. ___ Could you help me distribute them to each department?\n\nThanks,\nMike",
+      "explanation": "空白处需要描述物品已放置的位置，以便Sarah知道去哪里取。选项B最合逻辑。",
+      "options": [
+        { "key": "A", "text": "The supplier has changed their return policy." },
+        { "key": "B", "text": "The boxes are currently in the storage room on the second floor." },
+        { "key": "C", "text": "I will be on vacation next week." },
+        { "key": "D", "text": "The budget report is due tomorrow." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 1,
+      "stem": "Notice to All Residents:\n\nThe swimming pool will be closed for maintenance from August 5 to August 12. ___ We apologize for any inconvenience.\n\nBuilding Management",
+      "explanation": "通知泳池关闭后，空白处应提供替代方案或额外说明。选项C提供了替代方案，最为合理。",
+      "options": [
+        { "key": "A", "text": "New residents must register at the front desk." },
+        { "key": "B", "text": "Parking fees will increase starting next month." },
+        { "key": "C", "text": "During this period, residents may use the pool at the neighboring facility free of charge." },
+        { "key": "D", "text": "The annual building inspection was completed last week." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 1,
+      "stem": "Dear Valued Customer,\n\nThank you for shopping at GreenMart. Your order #4582 has been shipped. ___ If you have any questions, please contact our customer service team.\n\nSincerely,\nGreenMart Team",
+      "explanation": "订单已发货后，空白处应告知预计到达时间。选项D提供了送达时间信息。",
+      "options": [
+        { "key": "A", "text": "We are currently hiring seasonal workers." },
+        { "key": "B", "text": "Our store hours have changed." },
+        { "key": "C", "text": "Please complete the employee satisfaction survey." },
+        { "key": "D", "text": "You can expect delivery within 3 to 5 business days." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 1,
+      "stem": "Hello Everyone,\n\nThe company picnic will be held on Saturday, September 20, at Riverside Park. ___ Please RSVP by September 15.\n\nRegards,\nEvents Committee",
+      "explanation": "公司野餐通知中，空白处应提供活动时间等细节信息。选项A给出了具体时间安排。",
+      "options": [
+        { "key": "A", "text": "Activities will start at 10:00 a.m. and lunch will be served at noon." },
+        { "key": "B", "text": "The quarterly report has been approved." },
+        { "key": "C", "text": "All employees must attend the safety training." },
+        { "key": "D", "text": "The parking lot will be repaved next week." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear Mr. Thompson,\n\nThank you for your interest in our Premium Membership plan. As a Premium member, you will receive a 20% discount on all purchases and free shipping on orders over $50. ___ To activate your membership, simply reply to this email with your preferred payment method.\n\nBest regards,\nCustomer Relations",
+      "explanation": "空白处应补充会员权益的其他信息。选项B提供了额外的会员福利说明，与上下文衔接紧密。",
+      "options": [
+        { "key": "A", "text": "Our warehouse is located in downtown Chicago." },
+        { "key": "B", "text": "Additionally, you will have access to exclusive members-only sales events throughout the year." },
+        { "key": "C", "text": "The company was founded in 1995." },
+        { "key": "D", "text": "Please update your emergency contact information." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo\nTo: All Department Managers\nFrom: CEO Office\nRe: Budget Planning\n\nAs we approach the end of the fiscal year, each department is required to submit a preliminary budget proposal for the next year. ___ Final budgets will be reviewed and approved during the board meeting on January 15.\n\nThank you for your cooperation.",
+      "explanation": "备忘录要求提交预算提案，空白处应说明提交截止日期。选项C给出了截止日期。",
+      "options": [
+        { "key": "A", "text": "The holiday party will be held on December 20." },
+        { "key": "B", "text": "New office furniture has been ordered." },
+        { "key": "C", "text": "All proposals must be submitted to the finance department by December 31." },
+        { "key": "D", "text": "Employee ID cards should be renewed annually." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear Ms. Rivera,\n\nWe are pleased to inform you that your application for the Marketing Coordinator position has been shortlisted. ___ Please confirm your availability by replying to this email no later than Friday.\n\nSincerely,\nHuman Resources",
+      "explanation": "通知应聘者入围后，空白处应说明下一步安排。选项A提供了面试时间安排。",
+      "options": [
+        { "key": "A", "text": "We would like to invite you for an interview on Monday, March 5, at 2:00 p.m." },
+        { "key": "B", "text": "The company has recently expanded to three new markets." },
+        { "key": "C", "text": "All employees are required to complete the annual training." },
+        { "key": "D", "text": "Your subscription has been renewed successfully." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear Guests,\n\nWelcome to the Grand Plaza Hotel. We hope you enjoy your stay with us. Breakfast is served daily from 6:30 a.m. to 10:00 a.m. in the ground-floor restaurant. ___ For any special requests, please contact the front desk at extension 0.\n\nWarm regards,\nHotel Management",
+      "explanation": "酒店欢迎信中，空白处应提供更多设施信息。选项D介绍了其他可用设施。",
+      "options": [
+        { "key": "A", "text": "The hotel was built in 1982." },
+        { "key": "B", "text": "Room rates will increase next season." },
+        { "key": "C", "text": "Please submit your expense report by Friday." },
+        { "key": "D", "text": "Guests may also use the fitness center and indoor pool, which are open from 7:00 a.m. to 9:00 p.m." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear Valued Partners,\n\nWe are excited to announce the launch of our new product line, EcoClean, which features environmentally friendly cleaning solutions. ___ We believe this line will meet the growing demand for sustainable products among consumers.\n\nWe look forward to your support.\n\nBest,\nGreenTech Industries",
+      "explanation": "新产品发布通知中，空白处应补充产品特点信息。选项B介绍了产品的环保特性。",
+      "options": [
+        { "key": "A", "text": "Our annual sales conference will be held in May." },
+        { "key": "B", "text": "All products in this line are made from plant-based ingredients and are packaged in recyclable materials." },
+        { "key": "C", "text": "The IT department will upgrade all computers next week." },
+        { "key": "D", "text": "Please remember to lock the office before leaving." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "To: All Staff\nFrom: Facilities Management\nSubject: Elevator Maintenance\n\nPlease be advised that elevators in Building A will be undergoing scheduled maintenance on Wednesday, October 18. ___ We recommend allowing extra time for travel between floors on that day.\n\nThank you for your understanding.",
+      "explanation": "电梯维护通知中，空白处应说明维护期间的使用安排。选项C说明了具体影响。",
+      "options": [
+        { "key": "A", "text": "New vending machines have been installed on each floor." },
+        { "key": "B", "text": "The company dress code has been updated." },
+        { "key": "C", "text": "Only one elevator will be operational during the maintenance period, which is expected to last from 9:00 a.m. to 4:00 p.m." },
+        { "key": "D", "text": "Employee performance reviews are due next month." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear Mr. Nakamura,\n\nThank you for contacting TechSolutions regarding the software issue you experienced. Our technical team has reviewed your case and identified the problem. ___ We sincerely apologize for the inconvenience and appreciate your patience.\n\nBest regards,\nTechSolutions Support",
+      "explanation": "技术支持回复中，空白处应说明解决方案。选项A提供了具体的修复信息。",
+      "options": [
+        { "key": "A", "text": "A software patch has been released and should resolve the issue once you update to version 3.2.1." },
+        { "key": "B", "text": "Our office is located at 500 Innovation Drive." },
+        { "key": "C", "text": "We are currently recruiting software engineers." },
+        { "key": "D", "text": "The employee handbook has been revised." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear Colleagues,\n\nI am writing to inform you that the weekly team meeting will be moved from Tuesday to Thursday, effective immediately. ___ Please update your calendars accordingly.\n\nThank you,\nDavid Chen\nProject Manager",
+      "explanation": "会议时间变更通知中，空白处应说明新的具体时间。选项D提供了新的会议时间。",
+      "options": [
+        { "key": "A", "text": "The cafeteria will be closed for renovation." },
+        { "key": "B", "text": "All travel requests must be submitted two weeks in advance." },
+        { "key": "C", "text": "The new office chairs have arrived." },
+        { "key": "D", "text": "The meeting will be held at the same time, 10:00 a.m., in Conference Room B." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear Ms. Patel,\n\nWe regret to inform you that the workshop originally scheduled for March 12 has been postponed due to unforeseen circumstances. ___ We apologize for any inconvenience this may cause and hope you will still be able to attend.\n\nSincerely,\nTraining Department",
+      "explanation": "活动延期通知中，空白处应说明新的日期安排。选项B提供了重新安排的日期。",
+      "options": [
+        { "key": "A", "text": "The company has won several industry awards." },
+        { "key": "B", "text": "The workshop has been rescheduled to March 26, and it will be held in the same venue." },
+        { "key": "C", "text": "Please submit your timesheet by the end of the week." },
+        { "key": "D", "text": "The parking garage will be repainted this weekend." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear Homeowners,\n\nThe annual community meeting will take place on Saturday, April 8, at 3:00 p.m. in the community center. ___ Light refreshments will be provided. We encourage all homeowners to attend.\n\nRegards,\nHomeowners Association Board",
+      "explanation": "社区会议通知中，空白处应说明会议讨论的主要议题。选项C列出了议程内容。",
+      "options": [
+        { "key": "A", "text": "The swimming pool hours have been extended for the summer." },
+        { "key": "B", "text": "Please contact the maintenance team for plumbing issues." },
+        { "key": "C", "text": "Key topics on the agenda include landscaping improvements, security updates, and the proposed budget for next year." },
+        { "key": "D", "text": "The recycling schedule has been updated." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear Mr. Wallace,\n\nI am writing to follow up on our meeting last Tuesday regarding the partnership proposal. Our team has reviewed the terms and we are generally in agreement. ___ I look forward to hearing from you soon.\n\nBest regards,\nLisa Park\nBusiness Development Manager",
+      "explanation": "商务跟进邮件中，空白处应表达希望进一步讨论的意愿。选项A提出了进一步讨论的安排。",
+      "options": [
+        { "key": "A", "text": "However, we would like to discuss a few details before signing the final agreement." },
+        { "key": "B", "text": "The office building has been sold to a new owner." },
+        { "key": "C", "text": "Please update your password every 90 days." },
+        { "key": "D", "text": "The quarterly newsletter will be distributed next week." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Attention All Employees:\n\nEffective January 1, the company will implement a new expense reporting system. All reimbursement requests must be submitted through the online portal. ___ Training sessions on how to use the new system will be offered throughout December.\n\nFinance Department",
+      "explanation": "新系统通知中，空白处应说明旧系统的过渡安排。选项D说明了旧系统停用的时间。",
+      "options": [
+        { "key": "A", "text": "The holiday party will feature live music." },
+        { "key": "B", "text": "New business cards can be ordered through the admin office." },
+        { "key": "C", "text": "The company softball team is looking for new members." },
+        { "key": "D", "text": "Paper-based forms will no longer be accepted after December 31." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Dr. Simmons,\n\nOn behalf of the Westfield Medical Conference Committee, I would like to extend an invitation for you to serve as the keynote speaker at our annual conference on May 15. Your research on preventive healthcare has received widespread recognition, and we believe your insights would be invaluable to our attendees. ___ We would be happy to cover your travel expenses and accommodation.\n\nPlease let us know if you are available.\n\nSincerely,\nConference Committee Chair",
+      "explanation": "邀请函中，空白处应提供演讲的具体细节。选项B说明了预期的演讲主题和时长。",
+      "options": [
+        { "key": "A", "text": "The conference center has recently been renovated." },
+        { "key": "B", "text": "We envision a 45-minute presentation followed by a 15-minute question-and-answer session on advances in preventive care." },
+        { "key": "C", "text": "All conference materials should be printed in color." },
+        { "key": "D", "text": "The registration fee includes lunch and a certificate of attendance." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "To: Regional Sales Team\nFrom: VP of Sales\nSubject: Q3 Performance Review\n\nI want to commend the entire team for an outstanding third quarter. Our regional sales exceeded targets by 18%, largely due to the successful launch of the new product line. ___ As we move into Q4, I encourage everyone to maintain this momentum and focus on client retention strategies.\n\nKeep up the excellent work.",
+      "explanation": "空白处需要在表扬和展望之间起到承上启下的作用。选项C既承认了团队贡献又点明了成功因素。",
+      "options": [
+        { "key": "A", "text": "The office air conditioning system will be serviced next week." },
+        { "key": "B", "text": "Please submit your vacation requests by the end of the month." },
+        { "key": "C", "text": "The Northeast region showed particularly impressive growth, with several representatives exceeding their individual quotas by over 25%." },
+        { "key": "D", "text": "Company-wide layoffs are expected in the coming months." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Clients,\n\nWe are writing to inform you of important changes to our service terms effective April 1. After careful consideration of market conditions and operational costs, we have decided to adjust our pricing structure. ___ We remain committed to delivering the highest quality of service and appreciate your continued trust in our company.\n\nShould you have any concerns, please do not hesitate to contact your account manager.\n\nSincerely,\nManagement Team",
+      "explanation": "服务条款变更通知中，空白处应具体说明价格调整的内容并缓和客户反应。选项A做到了这两点。",
+      "options": [
+        { "key": "A", "text": "While monthly service fees will increase by 5%, we will be adding several new features at no additional cost to enhance your experience." },
+        { "key": "B", "text": "Our headquarters will be relocating to a new building downtown." },
+        { "key": "C", "text": "The company picnic has been canceled due to weather concerns." },
+        { "key": "D", "text": "All invoices should be paid within 30 days of receipt." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Mr. Ortega,\n\nThank you for bringing your concerns about the construction noise to our attention. We understand that the ongoing renovation work on the fifth floor has been disruptive to your team's productivity. ___ In the meantime, please feel free to use the quiet workspaces available on the third floor.\n\nWe appreciate your patience during this time.\n\nBest regards,\nFacilities Management",
+      "explanation": "回复投诉时，空白处应说明解决措施和预计完工时间。选项D提供了具体的时间表。",
+      "options": [
+        { "key": "A", "text": "The building's fire alarm system will be tested tomorrow." },
+        { "key": "B", "text": "We are planning a team-building event for next month." },
+        { "key": "C", "text": "The company's stock price has risen significantly this quarter." },
+        { "key": "D", "text": "We have spoken with the contractors, and they have agreed to limit the noisiest work to the hours of 7:00 a.m. to 9:00 a.m., with the project expected to be completed by the end of next week." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Shareholders,\n\nThe Board of Directors is pleased to report a strong fiscal year for Meridian Technologies. Revenue grew by 12% compared to the previous year, driven by expansion into Asian markets. ___ Looking ahead, we plan to invest heavily in research and development to ensure long-term competitiveness.\n\nThank you for your continued support.\n\nChairman of the Board",
+      "explanation": "年度股东报告中，空白处应补充更多财务细节来支持增长说明。选项C提供了利润率的具体数据。",
+      "options": [
+        { "key": "A", "text": "The employee parking lot will be resurfaced this summer." },
+        { "key": "B", "text": "All shareholders must update their contact information." },
+        { "key": "C", "text": "Our operating profit margin improved to 15.3%, up from 12.8% last year, reflecting our focus on cost efficiency and strategic partnerships." },
+        { "key": "D", "text": "The annual company retreat will be held at a lakeside resort." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Applicant,\n\nThank you for your interest in the Graduate Research Fellowship at Brookfield University. This year, we received over 500 applications for 20 available positions. After a thorough review process, we regret to inform you that your application was not selected. ___ We wish you the best in your future academic endeavors.\n\nSincerely,\nAdmissions Office",
+      "explanation": "拒绝信中，空白处应提供鼓励性信息或替代建议。选项B既表达了肯定又提供了建议。",
+      "options": [
+        { "key": "A", "text": "The university library will be closed for renovations this summer." },
+        { "key": "B", "text": "However, your qualifications were strong, and we encourage you to apply again next year or consider our part-time research assistant openings." },
+        { "key": "C", "text": "Campus parking permits must be renewed each semester." },
+        { "key": "D", "text": "The cafeteria now offers vegetarian and vegan meal options." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "To: Marketing Team\nFrom: Creative Director\nSubject: Campaign Strategy for Q1\n\nAfter analyzing our Q4 campaign results, it is clear that our social media initiatives significantly outperformed traditional advertising in terms of customer engagement and conversion rates. ___ I have attached a detailed proposal for your review, and I would like to discuss it at our meeting on Monday.\n\nPlease come prepared with any feedback.\n\nRegards,\nCreative Director",
+      "explanation": "根据Q4分析结果，空白处应提出Q1的策略调整方向。选项A合理地提出了预算重新分配的建议。",
+      "options": [
+        { "key": "A", "text": "Therefore, I am recommending that we reallocate 30% of our traditional advertising budget to digital and social media channels for the upcoming quarter." },
+        { "key": "B", "text": "The office holiday decorations have been taken down." },
+        { "key": "C", "text": "All company vehicles must pass inspection by the end of the month." },
+        { "key": "D", "text": "The executive dining room is reserved for senior management only." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Residents of Maple Heights,\n\nFollowing last month's community survey, we are pleased to announce several improvements to our neighborhood facilities. The playground equipment will be replaced with newer, safer models, and additional lighting will be installed along the walking paths. ___ Construction is expected to begin on June 1 and be completed by August 15.\n\nThank you for your valuable input.\n\nNeighborhood Association",
+      "explanation": "社区改善通知中，空白处应补充更多改善计划的信息。选项D提到了额外的改善措施。",
+      "options": [
+        { "key": "A", "text": "The next community survey will be distributed in December." },
+        { "key": "B", "text": "Pets must be kept on a leash at all times in common areas." },
+        { "key": "C", "text": "The homeowners association fees will be waived this month." },
+        { "key": "D", "text": "Furthermore, based on popular demand, we will be adding a dog park and two new picnic areas near the east entrance." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Ms. Chang,\n\nI am writing on behalf of the selection committee to offer you the position of Director of Operations at Pinnacle Logistics. Your extensive experience in supply chain management and your strategic vision impressed the committee greatly. ___ We are confident that you will make a significant contribution to our organization.\n\nPlease let us know your decision by March 1.\n\nWarm regards,\nSelection Committee",
+      "explanation": "录用通知中，空白处应提供薪资待遇等具体条件。选项C列出了薪酬和福利细节。",
+      "options": [
+        { "key": "A", "text": "The office dress code is business casual on Fridays." },
+        { "key": "B", "text": "Our company was featured in a national magazine last month." },
+        { "key": "C", "text": "The position offers an annual salary of $125,000, along with comprehensive benefits including health insurance, retirement contributions, and four weeks of paid vacation." },
+        { "key": "D", "text": "Please return your visitor badge at the reception desk." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Mr. Henderson,\n\nWe have received your complaint regarding the late delivery of your order #7823. After investigating the matter, we found that the delay was caused by severe weather conditions that affected our distribution center in the Midwest. ___ We value your business and want to ensure your complete satisfaction.\n\nSincerely,\nCustomer Service Manager",
+      "explanation": "投诉回复中，空白处应提供补偿措施。选项B提供了具体的补偿方案。",
+      "options": [
+        { "key": "A", "text": "Our company was established in 1987." },
+        { "key": "B", "text": "As a gesture of goodwill, we have applied a 15% discount to your current order and will provide free expedited shipping on your next purchase." },
+        { "key": "C", "text": "The employee newsletter is published on the first Monday of each month." },
+        { "key": "D", "text": "All returns must include the original packaging." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "To: Engineering Department\nFrom: Project Lead\nSubject: Timeline Update for Phoenix Project\n\nI wanted to provide an update on the Phoenix Project timeline. Due to unexpected technical challenges with the database integration, we will need to extend the development phase by two weeks. ___ I understand this puts pressure on everyone, but I am confident we can still deliver a quality product.\n\nLet me know if you have any questions.\n\nProject Lead",
+      "explanation": "项目延期更新中，空白处应说明新的时间安排和应对措施。选项A提供了修改后的里程碑。",
+      "options": [
+        { "key": "A", "text": "The revised deadline for the beta release is now April 30, and the testing phase will be condensed to three weeks to keep the final launch date unchanged." },
+        { "key": "B", "text": "The company gym will be open 24 hours starting next month." },
+        { "key": "C", "text": "All team members should update their LinkedIn profiles." },
+        { "key": "D", "text": "Free coffee is available in the break room." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Members,\n\nThe City Library is excited to announce the launch of our new Digital Learning Hub, which will provide free access to online courses, e-books, and educational videos. This initiative was made possible through a generous grant from the Dawson Foundation. ___ We invite all members to explore these resources and take advantage of this wonderful opportunity.\n\nCity Library Board",
+      "explanation": "图书馆新服务通知中，空白处应说明如何使用新资源。选项D提供了使用方式和启动日期。",
+      "options": [
+        { "key": "A", "text": "Library fines have been waived for the month of January." },
+        { "key": "B", "text": "The parking lot behind the library is for staff only." },
+        { "key": "C", "text": "The annual book sale will be held in April." },
+        { "key": "D", "text": "The hub will be accessible through our website and mobile app starting February 1, and library staff will be available to assist with registration and navigation." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Ms. Foster,\n\nThank you for your proposal to redesign our company website. We were impressed by your portfolio and creative approach. However, after careful deliberation, the committee has decided to go in a different direction for this particular project. ___ We genuinely appreciate the time and effort you invested in your proposal.\n\nBest regards,\nProject Committee",
+      "explanation": "婉拒提案时，空白处应表达未来合作的可能性。选项C既解释了原因又留了合作余地。",
+      "options": [
+        { "key": "A", "text": "The company parking policy has been revised." },
+        { "key": "B", "text": "Our IT department will be upgrading all servers this weekend." },
+        { "key": "C", "text": "That said, we were very impressed with your work and would like to keep your information on file for future projects that may be a better fit." },
+        { "key": "D", "text": "All employees must complete the cybersecurity awareness training." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Employees,\n\nAs part of our ongoing commitment to sustainability, the company will be transitioning to a paperless office environment over the next six months. Beginning March 1, all internal communications, including memos, reports, and meeting minutes, should be distributed electronically. ___ Your cooperation is essential to making this initiative a success.\n\nGreen Initiative Committee",
+      "explanation": "无纸化办公通知中，空白处应说明支持措施和培训安排。选项B提供了具体的培训和支持信息。",
+      "options": [
+        { "key": "A", "text": "The company will host its annual gala dinner in November." },
+        { "key": "B", "text": "To support this transition, training on our new document management system will be provided throughout February, and each department will receive a dedicated scanner for digitizing existing paper records." },
+        { "key": "C", "text": "The elevator inspection is scheduled for next Thursday." },
+        { "key": "D", "text": "Birthday celebrations will now be held on the last Friday of each month." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Dear Professor Langley,\n\nI hope this message finds you well. I am reaching out to inquire about the possibility of collaborating on a research paper exploring the intersection of artificial intelligence and urban planning. Having followed your work on smart city infrastructure for several years, I believe our combined expertise could yield significant contributions to the field. ___ I understand your schedule may be demanding, and I am happy to work around your availability.\n\nI look forward to hearing your thoughts.\n\nWarm regards,\nDr. Elena Marchetti\nAssociate Professor, Data Science",
+      "explanation": "学术合作邀请中，空白处需要用谦逊而专业的语气提出具体的合作设想。选项A在保持适当学术礼节的同时提出了明确建议。",
+      "options": [
+        { "key": "A", "text": "Specifically, I was thinking we might examine how predictive analytics could enhance public transportation efficiency, a topic I noticed you touched upon briefly in your 2024 keynote address." },
+        { "key": "B", "text": "I need you to agree to this collaboration by next week." },
+        { "key": "C", "text": "My university requires all faculty to publish at least two papers per year." },
+        { "key": "D", "text": "I have attached my complete publication list for your reference." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Dear Mr. Blackwood,\n\nThank you for taking the time to share your feedback on our recent restructuring. I understand that the changes have caused some uncertainty among team members, and I want to assure you that the leadership team is committed to a smooth transition. ___ Please know that my door is always open should you or your team wish to discuss any concerns further.\n\nSincerely,\nVP of Operations",
+      "explanation": "回复员工对重组的担忧时，空白处需要在承认问题的同时传递信心和透明度。选项D既承认了挑战又提供了具体的沟通计划。",
+      "options": [
+        { "key": "A", "text": "The restructuring is final and will not be reversed." },
+        { "key": "B", "text": "Several employees have already resigned because of these changes." },
+        { "key": "C", "text": "I suggest you simply focus on your own responsibilities." },
+        { "key": "D", "text": "While I recognize that change can be unsettling, we are taking steps to ensure transparency throughout the process, including bi-weekly town halls where employees can ask questions and receive updates directly from senior leadership." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Dear Ms. Whitaker,\n\nI wanted to follow up regarding the feedback we received from the client after the product demonstration last week. While they were generally pleased with the functionality, they expressed reservations about the user interface design, noting that it felt somewhat dated compared to competing solutions. ___ I am confident that with these adjustments, we can secure the contract.\n\nBest regards,\nProduct Development Lead",
+      "explanation": "空白处需要在不贬低团队工作的同时提出改进方向。选项B在承认反馈的同时建设性地提出了改进计划。",
+      "options": [
+        { "key": "A", "text": "The client does not understand modern design principles." },
+        { "key": "B", "text": "I have asked our UX team to prepare two alternative design mockups that incorporate a more contemporary aesthetic while preserving the intuitive navigation our clients appreciated." },
+        { "key": "C", "text": "We should lower our prices to compensate for the design issues." },
+        { "key": "D", "text": "Our design team won an industry award last year." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Dear Board Members,\n\nI am writing to address the recent media coverage regarding our company's environmental practices. While some of the reporting has been accurate, certain claims have been taken out of context. ___ I recommend that we schedule a special board session to discuss our public response strategy.\n\nRespectfully,\nChief Communications Officer",
+      "explanation": "危机沟通中，空白处需要在不激化矛盾的同时纠正误解并展示积极行动。选项C在承认问题的同时提出了建设性的应对方式。",
+      "options": [
+        { "key": "A", "text": "The media is always biased against large corporations." },
+        { "key": "B", "text": "We should sue the news outlets for defamation." },
+        { "key": "C", "text": "It is essential that we proactively communicate our ongoing sustainability initiatives, including our 40% reduction in carbon emissions over the past three years, while also acknowledging the areas where we can continue to improve." },
+        { "key": "D", "text": "I suggest we avoid making any public statements on this matter." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Dear Mr. and Mrs. Holloway,\n\nThank you for choosing Grandview Resorts for your anniversary celebration. We understand that this occasion holds special significance for you, and we want to ensure that every detail exceeds your expectations. Our concierge team has prepared a personalized itinerary based on your preferences. ___ Should any adjustments be needed, please do not hesitate to let us know.\n\nWith warm regards,\nGuest Relations Manager",
+      "explanation": "高端酒店通信中，空白处需要体现个性化关注和细致入微的服务。选项A展现了定制化服务的细节。",
+      "options": [
+        { "key": "A", "text": "This includes a private sunset dinner on the terrace, a couples' spa treatment on the morning of your anniversary, and a guided vineyard tour, all arranged to allow ample time for relaxation between activities." },
+        { "key": "B", "text": "Our hotel has 200 rooms and a conference center." },
+        { "key": "C", "text": "Checkout time is 11:00 a.m. and late checkout is available for an additional fee." },
+        { "key": "D", "text": "We hope you enjoy the complimentary breakfast." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Dear Colleagues,\n\nAs many of you know, our long-time colleague and mentor, Robert Kimura, will be retiring at the end of this month after 35 years of dedicated service. His contributions to our research department have been immeasurable, and his guidance has shaped the careers of countless team members. ___ Details about the farewell reception will be shared next week.\n\nWith gratitude,\nDepartment Chair",
+      "explanation": "退休告别通知中，空白处需要以温暖而不过度感伤的语气表达敬意。选项D在表达敬意的同时展望了传承。",
+      "options": [
+        { "key": "A", "text": "His position will be filled by an external candidate." },
+        { "key": "B", "text": "All retirement paperwork must be submitted to HR by the 15th." },
+        { "key": "C", "text": "The department budget will be adjusted accordingly." },
+        { "key": "D", "text": "While his presence will be deeply missed, the values he instilled in our team, integrity, curiosity, and collaboration, will continue to guide our work for years to come." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Dear Ms. Tan,\n\nI appreciate your candid assessment of the challenges our overseas expansion has faced in the past quarter. You raised valid points about the cultural barriers and regulatory complexities that have slowed our progress in the Southeast Asian market. ___ I believe that with the right approach, these challenges can be transformed into opportunities.\n\nI look forward to your continued input.\n\nRegards,\nChief Strategy Officer",
+      "explanation": "回复战略挑战分析时，空白处需要在认可困难的同时展示解决问题的思路。选项B在战略层面提出了具体建议。",
+      "options": [
+        { "key": "A", "text": "Perhaps we should abandon the Southeast Asian market entirely." },
+        { "key": "B", "text": "To that end, I am proposing that we establish local advisory boards in each target market and partner with established regional firms who can help us navigate the regulatory landscape more effectively while building genuine cultural understanding." },
+        { "key": "C", "text": "Our competitors have not experienced similar difficulties." },
+        { "key": "D", "text": "The Q3 revenue figures will be released next Tuesday." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Dear Contributors,\n\nThe editorial board of the Pacific Journal of Economics has completed its review of submissions for the upcoming special issue on post-pandemic economic recovery. The volume of high-quality manuscripts we received was truly extraordinary, making our selection process exceptionally difficult. ___ We are grateful for the scholarly rigor each of you brought to your work.\n\nWith respect,\nEditor-in-Chief",
+      "explanation": "学术期刊编辑通信中，空白处需要用外交且专业的语气处理接受和拒绝稿件的信息。选项C做到了平衡通知结果与维护关系。",
+      "options": [
+        { "key": "A", "text": "Unfortunately, most of the submissions were not suitable for publication." },
+        { "key": "B", "text": "The journal's impact factor has increased significantly this year." },
+        { "key": "C", "text": "Individual decision letters with detailed reviewer feedback will be sent to each author by March 15; we encourage those whose papers were not selected to consider our open submission track, as several reviewers noted the potential for further development in many manuscripts." },
+        { "key": "D", "text": "All submissions must follow APA formatting guidelines." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 1,
+      "stem": "Notice: The Greenville Community Center will hold free yoga classes every Saturday morning from 9:00 a.m. to 10:30 a.m. starting January 8. All skill levels are welcome. Participants should bring their own mats. Registration is not required.\n\nWhat should participants bring to the yoga class?",
+      "explanation": "文中明确提到参加者需自带瑜伽垫(bring their own mats)。",
+      "options": [
+        { "key": "A", "text": "A registration form" },
+        { "key": "B", "text": "Their own mats" },
+        { "key": "C", "text": "A membership card" },
+        { "key": "D", "text": "A pair of running shoes" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 1,
+      "stem": "Attention Shoppers: GreenMart will be closed on Thursday, November 24, for the Thanksgiving holiday. We will reopen on Friday, November 25, at 8:00 a.m. with special Black Friday deals. Thank you for your understanding.\n\nWhen will GreenMart reopen after the holiday?",
+      "explanation": "通知明确说明商店将在11月25日星期五早上8点重新营业。",
+      "options": [
+        { "key": "A", "text": "Thursday, November 24" },
+        { "key": "B", "text": "Saturday, November 26" },
+        { "key": "C", "text": "Friday, November 25" },
+        { "key": "D", "text": "Sunday, November 27" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 1,
+      "stem": "Hi Tom,\n\nJust a quick reminder that the team lunch is at noon tomorrow at Mario's Italian Restaurant on Oak Street. Please let me know if you have any dietary restrictions.\n\nSee you there!\nJanet\n\nWhere will the team lunch take place?",
+      "explanation": "邮件明确提到团队午餐地点是Oak Street上的Mario's Italian Restaurant。",
+      "options": [
+        { "key": "A", "text": "At the office cafeteria" },
+        { "key": "B", "text": "At Mario's Italian Restaurant" },
+        { "key": "C", "text": "At Tom's house" },
+        { "key": "D", "text": "At a food truck on Main Street" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 1,
+      "stem": "Dear Tenant,\n\nThis is to notify you that building maintenance will be replacing the hallway light fixtures on Wednesday, March 3. Work will begin at 9:00 a.m. and is expected to be completed by 5:00 p.m. We apologize for any inconvenience.\n\nBuilding Management\n\nWhat is the purpose of this notice?",
+      "explanation": "这封信的目的是通知租户走廊灯具更换的维护工作安排。",
+      "options": [
+        { "key": "A", "text": "To announce a rent increase" },
+        { "key": "B", "text": "To inform tenants about upcoming maintenance work" },
+        { "key": "C", "text": "To invite tenants to a building event" },
+        { "key": "D", "text": "To request feedback on building services" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 1,
+      "stem": "Lost and Found Notice: A silver wristwatch was found in the third-floor conference room on Monday, February 7. If this item belongs to you, please visit the reception desk on the first floor to claim it. You will need to provide a description of the watch to verify ownership.\n\nWhere should the owner go to claim the watch?",
+      "explanation": "通知明确说明失主应前往一楼前台(reception desk on the first floor)认领。",
+      "options": [
+        { "key": "A", "text": "The third-floor conference room" },
+        { "key": "B", "text": "The security office" },
+        { "key": "C", "text": "The reception desk on the first floor" },
+        { "key": "D", "text": "The HR department" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 1,
+      "stem": "Staff Parking Update: Starting April 1, employee parking will move from Lot A to Lot C due to construction. Lot C is located behind Building 3. Shuttle service between Lot C and the main entrance will run every 10 minutes from 7:00 a.m. to 7:00 p.m.\n\nHow often will the shuttle service run?",
+      "explanation": "通知说明班车服务每10分钟运行一次(every 10 minutes)。",
+      "options": [
+        { "key": "A", "text": "Every 5 minutes" },
+        { "key": "B", "text": "Every 10 minutes" },
+        { "key": "C", "text": "Every 15 minutes" },
+        { "key": "D", "text": "Every 30 minutes" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 1,
+      "stem": "Book Club Announcement: The Riverside Library Book Club will meet on the first Wednesday of every month at 6:30 p.m. in the Reading Room. This month's selection is 'The Great Journey' by Hannah Brooks. New members are welcome to join at any time.\n\nWhen does the book club meet?",
+      "explanation": "公告明确说明读书会在每月第一个星期三(the first Wednesday of every month)聚会。",
+      "options": [
+        { "key": "A", "text": "Every Wednesday" },
+        { "key": "B", "text": "The last Wednesday of every month" },
+        { "key": "C", "text": "The first Wednesday of every month" },
+        { "key": "D", "text": "Every other Wednesday" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 1,
+      "stem": "Dear Neighbor,\n\nI am writing to let you know that I will be having my roof repaired next week, from Monday through Wednesday. There may be some noise during the day. I apologize in advance for any disturbance and appreciate your patience.\n\nSincerely,\nDavid\n\nWhy did David write this letter?",
+      "explanation": "David写信是为了提前告知邻居房屋修缮可能产生的噪音干扰。",
+      "options": [
+        { "key": "A", "text": "To invite the neighbor to a party" },
+        { "key": "B", "text": "To warn the neighbor about upcoming noise from repairs" },
+        { "key": "C", "text": "To ask for help with the roof repair" },
+        { "key": "D", "text": "To complain about the neighbor's noise" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Dear Mr. Collins,\n\nThank you for your recent order with Pacific Electronics. Unfortunately, the wireless headphones you ordered (Model WH-500) are currently out of stock. We expect to receive a new shipment within two weeks. In the meantime, we can offer you the upgraded model (WH-700) at the same price, or we can place your original order on back order. Please let us know how you would like to proceed.\n\nSincerely,\nPacific Electronics Customer Service\n\nWhat options are available to Mr. Collins?",
+      "explanation": "邮件提供了两个选择：以相同价格升级到WH-700型号，或者将原订单列为缺货待补。",
+      "options": [
+        { "key": "A", "text": "Cancel the order or get a refund" },
+        { "key": "B", "text": "Receive the upgraded model at the same price or wait for the original" },
+        { "key": "C", "text": "Visit the store or order online" },
+        { "key": "D", "text": "Pay extra for faster shipping or wait two months" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 2,
+      "stem": "To: All Department Heads\nFrom: Chief Financial Officer\nSubject: Budget Submission Deadline\n\nThis is a reminder that all department budget proposals for the next fiscal year must be submitted to the finance office no later than December 15. Proposals should include projected expenses, revenue estimates, and justification for any significant increases. Late submissions will not be considered in the first round of approvals.\n\nWhat is the main purpose of this memo?",
+      "explanation": "这份备忘录的主要目的是提醒各部门主管按时提交预算提案。",
+      "options": [
+        { "key": "A", "text": "To announce budget cuts across departments" },
+        { "key": "B", "text": "To remind department heads about the budget submission deadline" },
+        { "key": "C", "text": "To approve the budget for the next fiscal year" },
+        { "key": "D", "text": "To introduce a new budgeting software system" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Job Opening: Marketing Assistant\nSunrise Media Group is seeking a Marketing Assistant to join our team. Requirements: Bachelor's degree in Marketing or related field, 1-2 years of experience, proficiency in social media platforms, and strong written communication skills. This is a full-time position with benefits. Salary range: $38,000-$45,000 annually. To apply, send your resume and cover letter to careers@sunrisemedia.com by March 31.\n\nWhat is NOT listed as a requirement for the position?",
+      "explanation": "职位要求包括学位、经验、社交媒体能力和写作能力，但未要求外语能力。",
+      "options": [
+        { "key": "A", "text": "A bachelor's degree" },
+        { "key": "B", "text": "Experience with social media" },
+        { "key": "C", "text": "Foreign language proficiency" },
+        { "key": "D", "text": "Strong written communication skills" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Wellness Workshop Schedule\nThe HR department is offering the following wellness workshops this quarter:\n- Stress Management: March 5, 2:00 p.m. - 3:30 p.m., Room 201\n- Healthy Eating Habits: March 19, 12:00 p.m. - 1:00 p.m., Cafeteria\n- Workplace Ergonomics: April 2, 10:00 a.m. - 11:00 a.m., Room 305\n- Mindfulness Meditation: April 16, 3:00 p.m. - 4:00 p.m., Room 201\nAll workshops are free and open to all employees. Space is limited, so please register through the HR portal.\n\nWhich workshop will be held in the cafeteria?",
+      "explanation": "根据日程表，Healthy Eating Habits工作坊将在自助餐厅举行。",
+      "options": [
+        { "key": "A", "text": "Stress Management" },
+        { "key": "B", "text": "Healthy Eating Habits" },
+        { "key": "C", "text": "Workplace Ergonomics" },
+        { "key": "D", "text": "Mindfulness Meditation" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 2,
+      "stem": "Dear Ms. Garcia,\n\nI am writing to confirm our meeting scheduled for Thursday, April 6, at 10:00 a.m. at your office. I will bring the updated contract for your review, along with the revised cost estimates. If you need to reschedule, please let me know at least 24 hours in advance.\n\nI look forward to seeing you.\n\nBest regards,\nJames Turner\n\nWhat can be inferred about Mr. Turner and Ms. Garcia?",
+      "explanation": "从邮件内容可以推断，Turner先生和Garcia女士有商业合作关系，正在讨论合同和费用估算。",
+      "options": [
+        { "key": "A", "text": "They are family members." },
+        { "key": "B", "text": "They have a business relationship." },
+        { "key": "C", "text": "They are classmates." },
+        { "key": "D", "text": "They work in the same department." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Grand Opening Sale!\nCedarwood Furniture is excited to announce the grand opening of our new location at 450 Pine Avenue. To celebrate, we are offering 25% off all items from May 1-7. In addition, the first 50 customers each day will receive a free home accessory gift. Store hours during the sale: 9:00 a.m. to 9:00 p.m. daily. Regular hours begin May 8.\n\nWhat special offer is available to the first 50 customers each day?",
+      "explanation": "广告明确说明每天前50名顾客将获得免费家居配件礼品。",
+      "options": [
+        { "key": "A", "text": "An additional 10% discount" },
+        { "key": "B", "text": "Free delivery service" },
+        { "key": "C", "text": "A free home accessory gift" },
+        { "key": "D", "text": "A store membership card" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Dear Hotel Guest,\n\nWe hope you are enjoying your stay at the Bayview Hotel. Please note the following check-out procedures: Check-out time is 11:00 a.m. Late check-out until 2:00 p.m. is available for an additional fee of $30. Please return your room key to the front desk upon departure. Express check-out is available through the TV menu in your room.\n\nWhat is the fee for late check-out?",
+      "explanation": "通知明确说明延迟退房至下午2点需额外支付30美元。",
+      "options": [
+        { "key": "A", "text": "$15" },
+        { "key": "B", "text": "$20" },
+        { "key": "C", "text": "$25" },
+        { "key": "D", "text": "$30" }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 2,
+      "stem": "Dear Parents,\n\nWe are pleased to announce that Lincoln Elementary School will be hosting a Science Fair on Friday, April 14. Students from all grades are encouraged to participate. Each student may submit one project, which should include a display board and a brief written explanation. Projects must be dropped off at the school gymnasium by Thursday, April 13, at 3:00 p.m. Awards will be given in three categories.\n\nWhat is the purpose of this letter?",
+      "explanation": "这封信的目的是通知家长关于学校科学展览会的安排并鼓励学生参加。",
+      "options": [
+        { "key": "A", "text": "To invite parents to volunteer at the school" },
+        { "key": "B", "text": "To inform parents about an upcoming Science Fair" },
+        { "key": "C", "text": "To request donations for school supplies" },
+        { "key": "D", "text": "To announce changes to the school calendar" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Office Supply Order Policy\nAll office supply requests must be submitted through the online ordering system by the 15th of each month. Orders will be processed and delivered by the 25th. Requests submitted after the deadline will be included in the following month's order. For urgent needs, contact the Office Manager directly. Each department has a monthly supply budget of $200.\n\nWhat happens to requests submitted after the 15th?",
+      "explanation": "政策说明在15日截止日期之后提交的请求将纳入下个月的订单。",
+      "options": [
+        { "key": "A", "text": "They are canceled automatically." },
+        { "key": "B", "text": "They are processed immediately." },
+        { "key": "C", "text": "They are included in the next month's order." },
+        { "key": "D", "text": "They require manager approval." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-vocabulary",
+      "difficulty": 2,
+      "stem": "Annual Performance Review Notice\n\nAll employees will undergo their annual performance review during the month of June. Supervisors will schedule individual meetings with each team member to discuss accomplishments, areas for improvement, and goals for the coming year. Employees are encouraged to prepare a self-assessment prior to their review meeting. The outcomes of these reviews will be instrumental in determining promotions and salary adjustments.\n\nIn this notice, the word 'instrumental' is closest in meaning to:",
+      "explanation": "'instrumental'在此处意为'起重要作用的'，与'important'含义最接近。",
+      "options": [
+        { "key": "A", "text": "Musical" },
+        { "key": "B", "text": "Important" },
+        { "key": "C", "text": "Optional" },
+        { "key": "D", "text": "Complicated" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Westfield Gym Membership Plans:\n- Basic Plan: $29/month - Access to gym equipment during regular hours (6 a.m. - 10 p.m.)\n- Plus Plan: $49/month - Includes Basic Plan benefits plus group fitness classes\n- Premium Plan: $69/month - Includes Plus Plan benefits plus personal training sessions (2 per month), pool access, and 24-hour gym access\nAll new members receive a free fitness assessment. Annual memberships receive a 15% discount.\n\nWhich plan includes pool access?",
+      "explanation": "只有Premium Plan（69美元/月）包含泳池使用权。",
+      "options": [
+        { "key": "A", "text": "Basic Plan only" },
+        { "key": "B", "text": "Plus Plan only" },
+        { "key": "C", "text": "Premium Plan only" },
+        { "key": "D", "text": "All plans" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Dear Mr. Yamamoto,\n\nWe are writing to confirm your reservation at the Lakeside Convention Center for your company's annual retreat. The event is booked for September 22-24. You have reserved the Grand Ballroom for the main sessions and three breakout rooms for workshop activities. Catering for 150 guests has been arranged for all three days. A deposit of $2,500 is due by August 15.\n\nRegards,\nReservations Team\n\nHow many days is the retreat scheduled for?",
+      "explanation": "预订确认显示活动安排在9月22日至24日，共3天。",
+      "options": [
+        { "key": "A", "text": "One day" },
+        { "key": "B", "text": "Two days" },
+        { "key": "C", "text": "Three days" },
+        { "key": "D", "text": "Four days" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 2,
+      "stem": "Dear Applicant,\n\nThank you for attending the interview for the Financial Analyst position last Friday. We were impressed by your qualifications and experience. We would like to invite you back for a second interview with our senior management team on Tuesday, February 14, at 2:00 p.m. Please confirm your availability.\n\nSincerely,\nHR Department\n\nWhat can be inferred about the applicant?",
+      "explanation": "公司邀请进行第二轮面试说明对该应聘者的初次面试表现印象良好。",
+      "options": [
+        { "key": "A", "text": "The applicant has been offered the job." },
+        { "key": "B", "text": "The applicant made a good impression in the first interview." },
+        { "key": "C", "text": "The applicant needs more experience." },
+        { "key": "D", "text": "The applicant has declined the position." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Ridgeway Public Library - Summer Reading Program\nJoin our annual summer reading challenge! Read at least 10 books between June 1 and August 31 to earn a certificate and a $25 bookstore gift card. Children ages 5-12 are eligible. Parents can register their children at the circulation desk or online at www.ridgewaylibrary.org. Participants will receive a reading log to track their progress.\n\nWhat do participants receive upon completing the challenge?",
+      "explanation": "完成挑战的参与者将获得证书和25美元书店礼品卡。",
+      "options": [
+        { "key": "A", "text": "A library membership" },
+        { "key": "B", "text": "A certificate and a $25 bookstore gift card" },
+        { "key": "C", "text": "Free books of their choice" },
+        { "key": "D", "text": "A trophy and a medal" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Dear Ms. Lambert,\n\nThank you for your inquiry about our corporate training programs. We offer three tiers of service:\n\n1. Standard Package ($5,000): Up to 20 participants, one-day workshop, basic materials included.\n2. Professional Package ($8,500): Up to 40 participants, two-day workshop, comprehensive materials and follow-up resources.\n3. Executive Package ($15,000): Up to 60 participants, three-day workshop, all materials, one-on-one coaching sessions, and a 90-day post-workshop support plan.\n\nAll packages include pre-workshop assessments and certificates of completion. Custom packages can be arranged for groups larger than 60.\n\nPlease let me know if you have any questions.\n\nBest regards,\nTraining Solutions Inc.\n\nWhat is included in all packages regardless of the tier?",
+      "explanation": "邮件说明所有套餐都包含培训前评估和结业证书(pre-workshop assessments and certificates of completion)。",
+      "options": [
+        { "key": "A", "text": "One-on-one coaching sessions" },
+        { "key": "B", "text": "A 90-day support plan" },
+        { "key": "C", "text": "Pre-workshop assessments and certificates of completion" },
+        { "key": "D", "text": "Follow-up resources" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "To: Distribution Team\nFrom: Operations Manager\nDate: October 10\n\nI want to bring to your attention that we have received an unusually high volume of orders this month, likely due to the holiday season approaching earlier than expected. Our current staffing levels are insufficient to handle the demand, and several shipments have been delayed by two to three days. I have requested temporary workers from the staffing agency, and they should begin next Monday. In the meantime, I am asking all team members to prioritize orders based on the promised delivery date.\n\nWhat problem is the distribution team currently facing?",
+      "explanation": "备忘录说明由于订单量异常增大而人手不足，导致发货延迟。",
+      "options": [
+        { "key": "A", "text": "Equipment in the warehouse has broken down." },
+        { "key": "B", "text": "They do not have enough staff to handle the high volume of orders." },
+        { "key": "C", "text": "The holiday season has been canceled." },
+        { "key": "D", "text": "The staffing agency has refused to provide temporary workers." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Return Policy - Oakwood Electronics\n\nAll items purchased from Oakwood Electronics may be returned within 30 days of purchase with the original receipt. Items must be in their original packaging and in unused condition. Opened software, downloaded digital content, and customized products are not eligible for return. Refunds will be issued to the original payment method within 5-7 business days after the return is processed. Items purchased during clearance sales are final sale and cannot be returned. For defective items, please contact our warranty department at warranty@oakwood.com.\n\nWhich of the following items can be returned under this policy?",
+      "explanation": "根据退货政策，未开封且有原始包装和收据的打印机在30天内可以退货。清仓商品、已开封软件和定制产品不可退。",
+      "options": [
+        { "key": "A", "text": "A laptop purchased during a clearance sale" },
+        { "key": "B", "text": "An opened software package bought two weeks ago" },
+        { "key": "C", "text": "An unopened printer purchased 20 days ago with the receipt" },
+        { "key": "D", "text": "A customized phone case ordered last month" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "Dear Mr. Peterson,\n\nI wanted to update you on the Henderson account. After our presentation last week, the client expressed interest in our proposal but mentioned that they are also evaluating two other vendors. They have asked us to submit a revised proposal by November 15, with more detailed pricing information and case studies from similar projects. I believe our chances are strong, but we need to be very competitive on pricing. I suggest we schedule a meeting this week to discuss our approach.\n\nBest,\nSarah Mitchell\nAccount Manager\n\nWhat can be inferred about the Henderson account?",
+      "explanation": "邮件提到客户正在评估其他两家供应商，说明竞争激烈，但尚未做出最终决定。",
+      "options": [
+        { "key": "A", "text": "The client has already chosen another vendor." },
+        { "key": "B", "text": "The deal has not been finalized and there is competition from other vendors." },
+        { "key": "C", "text": "The client has accepted the original proposal." },
+        { "key": "D", "text": "Sarah Mitchell is no longer managing the account." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Conference Registration Information\n\nThe 15th Annual Digital Marketing Summit will be held on March 20-22 at the Metropolitan Convention Center.\n\nRegistration Fees:\n- Early Bird (before February 1): $350\n- Regular (February 1 - March 10): $450\n- On-site (March 20-22): $550\n- Student Rate (with valid ID): $175\n\nGroup discounts: Teams of 5 or more from the same organization receive a 20% discount on the Regular rate. Registration includes access to all keynote sessions, workshops, networking events, and conference materials. Meals are not included. Hotel accommodations can be arranged through our partner hotels at discounted rates.\n\nHow much would a team of 5 from the same company pay per person if they register at the Regular rate?",
+      "explanation": "常规价格450美元，团体5人以上享受20%折扣。450 x 0.8 = 360美元/人。",
+      "options": [
+        { "key": "A", "text": "$280" },
+        { "key": "B", "text": "$350" },
+        { "key": "C", "text": "$360" },
+        { "key": "D", "text": "$450" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-vocabulary",
+      "difficulty": 3,
+      "stem": "Internal Memo\n\nTo: All Staff\nFrom: CEO\n\nI am pleased to announce that our company has secured a lucrative contract with Meridian Healthcare, which will significantly boost our revenue for the next three fiscal years. This partnership is the culmination of months of negotiations led by our business development team. I want to commend everyone involved for their tireless efforts. The contract stipulates that we will provide comprehensive IT support and system integration services across all of Meridian's regional offices.\n\nIn this memo, the word 'lucrative' is closest in meaning to:",
+      "explanation": "'lucrative'意为'有利可图的，赚钱的'，与'profitable'含义最接近。",
+      "options": [
+        { "key": "A", "text": "Temporary" },
+        { "key": "B", "text": "Complicated" },
+        { "key": "C", "text": "Profitable" },
+        { "key": "D", "text": "Controversial" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Travel Expense Reimbursement Guidelines\n\n1. All business travel must be pre-approved by your department manager.\n2. Airfare: Economy class only for domestic flights. Business class is permitted for international flights exceeding 6 hours.\n3. Hotel: Maximum reimbursement of $180 per night for domestic travel and $250 per night for international travel.\n4. Meals: Up to $60 per day for domestic travel and $80 per day for international travel. Alcohol is not reimbursable.\n5. Ground transportation: Taxi and rideshare receipts are required. Rental cars require prior approval.\n6. All expense reports must be submitted within 14 days of trip completion with original receipts.\n\nUnder what condition is business class airfare permitted?",
+      "explanation": "指南规定国际航班超过6小时的可以乘坐商务舱。",
+      "options": [
+        { "key": "A", "text": "For all international flights" },
+        { "key": "B", "text": "When approved by the CEO" },
+        { "key": "C", "text": "For international flights exceeding 6 hours" },
+        { "key": "D", "text": "For senior management only" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "Dear Ms. Chen,\n\nThank you for your years of loyal patronage at Riverside Dental Clinic. We are writing to let you know that Dr. Harrison will be retiring effective December 31. We understand that this news may be concerning, as Dr. Harrison has been your dentist for over eight years. However, we are pleased to introduce Dr. Amelia Foster, who will be taking over Dr. Harrison's patient roster. Dr. Foster comes to us with 12 years of experience and shares Dr. Harrison's patient-centered approach to care. Your next scheduled appointment on January 15 will be with Dr. Foster.\n\nPlease call us if you have any questions or would like to discuss the transition.\n\nSincerely,\nRiverside Dental Clinic\n\nWhat is the clinic most likely trying to accomplish with this letter?",
+      "explanation": "诊所写信是为了确保患者在医生交接时不会流失，通过介绍新医生的资质来让患者安心。",
+      "options": [
+        { "key": "A", "text": "Encourage Ms. Chen to find a new dentist" },
+        { "key": "B", "text": "Retain Ms. Chen as a patient by introducing her new dentist" },
+        { "key": "C", "text": "Inform Ms. Chen about a price increase" },
+        { "key": "D", "text": "Cancel Ms. Chen's upcoming appointment" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Apartment Lease Agreement Summary\n\nProperty: Unit 4B, 225 Elm Street\nTenant: Maria Santos\nLease Term: 12 months, from April 1 to March 31\nMonthly Rent: $1,450, due on the 1st of each month\nSecurity Deposit: $2,900 (equivalent to 2 months' rent)\nLate Fee: $50 if rent is received after the 5th of the month\nPet Policy: One pet allowed with a $300 non-refundable pet deposit\nParking: One assigned space included; additional spaces available for $75/month\nMaintenance: Tenant responsible for minor repairs under $100; landlord responsible for major repairs\n\nWhat is the tenant responsible for regarding maintenance?",
+      "explanation": "租约规定租户负责100美元以下的小修小补，房东负责重大维修。",
+      "options": [
+        { "key": "A", "text": "All repairs regardless of cost" },
+        { "key": "B", "text": "Repairs costing less than $100" },
+        { "key": "C", "text": "Only plumbing repairs" },
+        { "key": "D", "text": "No maintenance responsibilities" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 3,
+      "stem": "Dear Valued Clients,\n\nAfter 25 years in business, Crawford Consulting is proud to announce a strategic merger with Whitfield & Associates, effective January 1. This merger brings together two firms with complementary expertise in management consulting and financial advisory services. All existing contracts will be honored under the new entity, Crawford-Whitfield Group. Your current account managers will remain your primary contacts, ensuring continuity of service. Our combined team of over 200 professionals will be positioned to offer you an even broader range of solutions.\n\nWe look forward to continuing to serve you.\n\nSincerely,\nJohn Crawford, Managing Partner\n\nWhat is the primary purpose of this letter?",
+      "explanation": "这封信的主要目的是通知客户公司合并事宜，并确保客户对服务连续性感到放心。",
+      "options": [
+        { "key": "A", "text": "To announce a company closure" },
+        { "key": "B", "text": "To inform clients about a merger and assure them of continued service" },
+        { "key": "C", "text": "To introduce new pricing for consulting services" },
+        { "key": "D", "text": "To recruit new employees for the merged company" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Product Recall Notice\n\nStarlight Appliances is voluntarily recalling Model SB-200 Blender due to a potential safety issue with the blade assembly. Units manufactured between January and June of this year may have a defective locking mechanism that could cause the blades to become loose during operation. Approximately 15,000 units are affected. Consumers should immediately stop using the blender and contact Starlight Appliances at 1-800-555-0199 or visit www.starlightrecall.com to receive a free replacement unit. Proof of purchase is not required. Consumers who purchased the blender after July 1 are not affected by this recall.\n\nWhat should consumers do if they own an affected blender?",
+      "explanation": "通知要求消费者立即停止使用，联系公司获取免费替换产品。",
+      "options": [
+        { "key": "A", "text": "Continue using it but with caution" },
+        { "key": "B", "text": "Return it to the store where it was purchased" },
+        { "key": "C", "text": "Stop using it and contact Starlight Appliances for a free replacement" },
+        { "key": "D", "text": "Repair the blade assembly themselves" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "Dear Mr. Dawson,\n\nI am writing to express my concern about the recent changes to our department's workflow. Since the implementation of the new project management software three weeks ago, our team's productivity has declined noticeably. Several team members have reported difficulties navigating the system, and the lack of adequate training has compounded the problem. Tasks that previously took minutes now take considerably longer, and we have missed two internal deadlines as a result.\n\nI would appreciate the opportunity to discuss possible solutions, such as additional training sessions or a temporary return to our previous system while the team adapts.\n\nRespectfully,\nKaren Liu\nSenior Analyst\n\nWhat is Karen Liu implying about the new software implementation?",
+      "explanation": "Karen暗示新软件的引入过于仓促，缺乏足够的培训支持，导致效率下降。",
+      "options": [
+        { "key": "A", "text": "The software is too expensive for the company." },
+        { "key": "B", "text": "The transition was poorly managed and the team was not adequately prepared." },
+        { "key": "C", "text": "The previous system had more security issues." },
+        { "key": "D", "text": "The team does not need any project management tools." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-vocabulary",
+      "difficulty": 3,
+      "stem": "Industry Report Excerpt:\n\nThe renewable energy sector has experienced unprecedented growth over the past decade, driven largely by favorable government policies and declining production costs. Solar and wind energy, in particular, have seen substantial increases in adoption rates. Industry analysts anticipate that this trajectory will continue, with renewable sources projected to account for 40% of global electricity generation by 2035. However, experts caution that infrastructure bottlenecks and supply chain vulnerabilities could impede progress if not addressed proactively.\n\nIn this passage, the word 'impede' is closest in meaning to:",
+      "explanation": "'impede'意为'阻碍，妨碍'，与'hinder'含义最接近。",
+      "options": [
+        { "key": "A", "text": "Accelerate" },
+        { "key": "B", "text": "Monitor" },
+        { "key": "C", "text": "Hinder" },
+        { "key": "D", "text": "Predict" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Internship Program Guidelines\n\nHorizon Industries offers a 12-week summer internship program for undergraduate and graduate students. Interns work full-time (40 hours per week) and receive a weekly stipend of $600. Each intern is assigned a mentor from senior staff. Key dates:\n- Application deadline: February 28\n- Notification of acceptance: March 31\n- Orientation: June 5\n- Program end: August 25\n\nEligibility: Must be enrolled in an accredited university, have completed at least two years of undergraduate study, and be authorized to work in the country. Students in engineering, business, and computer science are particularly encouraged to apply. Previous interns who received a satisfactory performance review are eligible to return for a second term.\n\nWhich of the following applicants would NOT be eligible for the internship?",
+      "explanation": "资格要求完成至少两年本科学习。大一新生(first-year freshman)不符合此条件。",
+      "options": [
+        { "key": "A", "text": "A third-year engineering student" },
+        { "key": "B", "text": "A first-year university freshman" },
+        { "key": "C", "text": "A graduate student in business" },
+        { "key": "D", "text": "A previous intern with a satisfactory review" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "Dear Subscribers,\n\nWe want to be transparent about changes coming to your subscription. Starting next month, our Basic streaming plan will increase from $9.99 to $12.99 per month. This adjustment reflects the significant investment we have made in original content, including 50 new exclusive series launching this year. We understand that price increases are never welcome, and we have worked hard to keep our pricing competitive. As a token of our appreciation for your loyalty, current subscribers will receive two months at the existing rate before the change takes effect.\n\nThank you for being part of our community.\n\nStreamVision Team\n\nWhat strategy is StreamVision using to soften the impact of the price increase?",
+      "explanation": "StreamVision通过让现有用户在涨价前多享受两个月原价来缓解涨价的影响，同时强调内容投入来证明涨价的合理性。",
+      "options": [
+        { "key": "A", "text": "Offering a permanent discount to existing subscribers" },
+        { "key": "B", "text": "Giving current subscribers a grace period at the old rate while highlighting new content" },
+        { "key": "C", "text": "Reducing the number of available shows" },
+        { "key": "D", "text": "Allowing subscribers to cancel without any fees" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Employee Referral Program\n\nCrestview Technologies rewards employees who refer qualified candidates for open positions. Here's how it works:\n\n1. Submit the candidate's resume through the HR portal with your employee ID.\n2. If the candidate is hired and completes 90 days of employment, you will receive a referral bonus.\n3. Bonus amounts: $1,000 for non-technical positions, $2,500 for technical positions, and $5,000 for director-level or above.\n4. There is no limit to the number of referrals an employee can make.\n5. Referrals for positions within your own department are not eligible for bonuses.\n6. The referral bonus will be included in your paycheck in the pay period following the candidate's 90th day.\n\nWhen is the referral bonus paid to the referring employee?",
+      "explanation": "奖金在被推荐人入职第90天后的下一个薪资周期发放。",
+      "options": [
+        { "key": "A", "text": "When the candidate is first interviewed" },
+        { "key": "B", "text": "On the candidate's first day of work" },
+        { "key": "C", "text": "In the pay period following the candidate's 90th day of employment" },
+        { "key": "D", "text": "At the end of the fiscal year" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "Dear Members of the Architectural Review Board,\n\nI am submitting this proposal for the renovation of the historic Pemberton Building downtown. Our design team has created plans that preserve the building's original facade while modernizing the interior spaces for commercial use. We have consulted extensively with the Historical Preservation Society to ensure compliance with heritage guidelines. The proposed changes include updated electrical and plumbing systems, energy-efficient windows that match the original style, and the addition of an elevator to improve accessibility. We believe this project strikes the ideal balance between preservation and practical modernization.\n\nAttached are the detailed architectural drawings and cost estimates.\n\nRespectfully,\nArchitect Team Lead\n\nWhy did the team consult with the Historical Preservation Society?",
+      "explanation": "由于Pemberton Building是历史建筑，翻新必须符合遗产保护指南，因此需要咨询历史保护协会。",
+      "options": [
+        { "key": "A", "text": "To reduce the cost of the renovation" },
+        { "key": "B", "text": "To ensure the renovation meets historical preservation requirements" },
+        { "key": "C", "text": "To obtain funding for the project" },
+        { "key": "D", "text": "To find tenants for the building" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Dear Ms. Alvarez,\n\nRe: Lease Renewal for Suite 510, Commerce Tower\n\nI am writing regarding the renewal of your commercial lease, which is set to expire on June 30. Based on current market conditions and recent improvements made to the building, we are proposing the following terms for a new three-year lease:\n\n- Monthly rent: $4,200 (an increase of 8% from the current rate of $3,889)\n- Annual rent escalation: 3% per year\n- Tenant improvement allowance: $15,000 for approved modifications\n- Common area maintenance (CAM) fees: $850/month (previously $780)\n- Lease term: 36 months, beginning July 1\n\nPlease note that tenants who sign by April 15 will receive a one-month rent concession applied to the first month of the new lease. We are open to negotiation on the terms and welcome the opportunity to discuss.\n\nSincerely,\nProperty Management Office\n\nIf Ms. Alvarez signs the new lease by April 15, how much will she pay in total for the first month (rent plus CAM fees)?",
+      "explanation": "如果在4月15日前签约，第一个月租金减免（为0），但仍需支付CAM费用850美元。因此第一个月总计850美元。",
+      "options": [
+        { "key": "A", "text": "$850" },
+        { "key": "B", "text": "$4,200" },
+        { "key": "C", "text": "$5,050" },
+        { "key": "D", "text": "$3,889" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 4,
+      "stem": "To: Editorial Staff\nFrom: Managing Editor\nDate: November 3\n\nAs you are aware, our subscriber numbers have been declining steadily over the past 18 months. Our latest reader survey reveals that while our long-form investigative pieces continue to receive high marks for quality, readers increasingly find our publication format inconvenient and our digital presence lacking compared to competitors. Additionally, younger demographics report discovering content primarily through social media, a channel where our presence is minimal.\n\nI am convening a strategy meeting on November 10 to discuss a comprehensive digital transformation plan. This is not about abandoning our editorial standards but rather finding new ways to deliver quality content to audiences where they are. Please come prepared with ideas.\n\nWhat does the Managing Editor suggest is the main reason for the subscriber decline?",
+      "explanation": "总编暗示订阅量下降的主要原因不是内容质量（调查显示质量获高分），而是分发方式和数字化存在不足。",
+      "options": [
+        { "key": "A", "text": "The quality of articles has decreased." },
+        { "key": "B", "text": "The publication's delivery format and digital presence are not meeting reader preferences." },
+        { "key": "C", "text": "Subscription prices are too high." },
+        { "key": "D", "text": "There are too many competing publications." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Insurance Claim Procedures\n\nFiling a Claim:\n1. Report the incident within 48 hours by calling 1-800-555-0234 or filing online.\n2. Provide your policy number, date of incident, and a detailed description.\n3. Submit supporting documentation (photos, police reports, repair estimates) within 14 days.\n\nClaim Processing:\n- Claims under $5,000: Processed within 10 business days of receiving all documentation.\n- Claims $5,000-$25,000: Require an adjuster visit, processed within 21 business days.\n- Claims over $25,000: Require adjuster visit and independent appraisal, processed within 45 business days.\n\nDeductibles:\n- Standard policy: $500 deductible per claim\n- Premium policy: $250 deductible per claim\n- Comprehensive policy: $0 deductible\n\nNote: Claims filed more than 48 hours after the incident may be subject to additional review and could result in reduced coverage.\n\nA Premium policyholder files a $12,000 claim with all documentation submitted promptly. What is the maximum amount the policyholder can expect to receive, and how long should processing take?",
+      "explanation": "Premium保单免赔额为250美元，因此最高可获赔11,750美元。12,000美元的索赔在5,000-25,000范围内，需21个工作日处理。",
+      "options": [
+        { "key": "A", "text": "$11,500 within 10 business days" },
+        { "key": "B", "text": "$11,750 within 21 business days" },
+        { "key": "C", "text": "$12,000 within 21 business days" },
+        { "key": "D", "text": "$11,750 within 45 business days" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 4,
+      "stem": "Dear Dr. Watanabe,\n\nI am writing to share some concerns raised by the quality assurance team regarding our latest batch of pharmaceutical products (Batch #PH-2847). While the products meet all mandatory regulatory standards, the QA team noted that several measurements fell within the lower acceptable range of our internal specifications, which are typically more stringent than regulatory requirements. Specifically, the dissolution rates for three samples were at 85%, just above our internal minimum of 82%, though well above the regulatory minimum of 75%.\n\nI want to emphasize that releasing this batch would be entirely compliant with all regulations. However, given our company's reputation for exceeding industry standards, I wanted to bring this to your attention before we proceed. The production team has identified a possible calibration drift in one of the mixing units that may explain the variance.\n\nPlease advise on how you would like to proceed.\n\nRegards,\nQuality Assurance Director\n\nWhat is the QA Director implicitly recommending?",
+      "explanation": "QA主任虽然说产品合规，但通过强调公司一贯超越行业标准的声誉和已发现的设备问题，暗示应谨慎处理，可能需要在发布前进一步调查。",
+      "options": [
+        { "key": "A", "text": "Release the batch immediately since it meets all regulations" },
+        { "key": "B", "text": "Destroy the entire batch and start over" },
+        { "key": "C", "text": "Investigate the calibration issue before releasing the batch to maintain the company's quality standards" },
+        { "key": "D", "text": "Lower the company's internal quality standards" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-vocabulary",
+      "difficulty": 4,
+      "stem": "Annual Sustainability Report Excerpt:\n\nOur commitment to environmental stewardship has yielded tangible results this year. Through a combination of process optimization and investment in clean technology, we have reduced our carbon footprint by 22% compared to our baseline year. Water consumption at our manufacturing facilities has decreased by 15%, and we have diverted 87% of our operational waste from landfills through recycling and composting programs. These achievements underscore our belief that environmental responsibility and business performance are not mutually exclusive but rather complementary objectives that reinforce one another.\n\nIn this passage, the phrase 'mutually exclusive' is closest in meaning to:",
+      "explanation": "'mutually exclusive'意为'互相排斥的，不能同时存在的'，即'incompatible, unable to coexist'。",
+      "options": [
+        { "key": "A", "text": "Equally important" },
+        { "key": "B", "text": "Incompatible and unable to coexist" },
+        { "key": "C", "text": "Dependent on each other" },
+        { "key": "D", "text": "Difficult to measure" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Vendor Selection Criteria - Request for Proposal (RFP) #2024-087\n\nThe City of Westbrook is seeking proposals for the design and installation of a new traffic management system. Proposals will be evaluated based on the following weighted criteria:\n\n- Technical approach and methodology: 35%\n- Experience with similar projects: 25%\n- Cost proposal: 20%\n- Project timeline: 10%\n- Local workforce utilization: 5%\n- Sustainability features: 5%\n\nAdditional Requirements:\n- Vendors must have completed at least three projects of similar scope within the last five years.\n- The proposed system must be compatible with the city's existing infrastructure.\n- A performance bond equal to 10% of the total contract value is required.\n- Proposals are due by 4:00 p.m. on January 31. Late submissions will not be considered.\n- The city reserves the right to reject any or all proposals.\n\nA vendor submits the lowest cost proposal but has completed only two similar projects in the last five years. What is the most likely outcome?",
+      "explanation": "RFP明确要求供应商在过去五年内至少完成三个类似项目。仅完成两个项目不满足基本资格要求，即使价格最低也可能被取消资格。",
+      "options": [
+        { "key": "A", "text": "The vendor will be selected because they offered the lowest price." },
+        { "key": "B", "text": "The vendor's proposal will likely be disqualified for not meeting the minimum experience requirement." },
+        { "key": "C", "text": "The vendor will be given extra time to complete a third project." },
+        { "key": "D", "text": "The experience criterion will be waived due to the low cost." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 4,
+      "stem": "Dear Members of the Compensation Committee,\n\nI have prepared the attached analysis of executive compensation trends across our industry peer group. Our findings indicate that while our base salaries are competitive at the 60th percentile, our total compensation packages, when including long-term incentives, fall below the median. This disparity is most pronounced at the vice president level, where our total compensation is approximately 18% below the peer group median.\n\nIn the past two years, we have lost four vice presidents to competitors, and exit interviews consistently cite compensation as a contributing factor. Meanwhile, our company has outperformed the industry average in revenue growth by 7% and in profit margins by 4%, suggesting that our leadership team is delivering above-average results for below-median pay.\n\nI recommend we revisit our long-term incentive structure at the next committee meeting.\n\nRespectfully,\nChief Human Resources Officer\n\nWhat argument is the CHRO building in this memo?",
+      "explanation": "CHRO通过数据论证公司领导层以低于中位数的薪酬创造了高于平均水平的业绩，暗示薪酬与绩效不匹配，建议调整长期激励以留住人才。",
+      "options": [
+        { "key": "A", "text": "Base salaries should be reduced to cut costs." },
+        { "key": "B", "text": "The company should hire less experienced executives at lower pay." },
+        { "key": "C", "text": "Long-term incentive compensation should be increased to retain high-performing executives." },
+        { "key": "D", "text": "The company's financial performance does not justify higher compensation." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Warranty Terms and Conditions - ProBuild Power Tools\n\nProBuild power tools come with the following warranty coverage:\n\n- Professional Series: 5-year limited warranty covering manufacturing defects; 2-year warranty on batteries and chargers.\n- Home Series: 3-year limited warranty covering manufacturing defects; 1-year warranty on batteries and chargers.\n\nWarranty Exclusions:\n- Damage resulting from misuse, neglect, or unauthorized modifications\n- Normal wear and tear, including brushes, blades, and bits\n- Tools used for commercial purposes under a Home Series warranty\n- Damage caused by power surges or improper voltage\n\nClaim Process:\nReturn the defective product to any authorized ProBuild service center with proof of purchase. Warranty repairs will be completed within 15 business days. If repair is not possible, ProBuild will replace the product with the same or comparable model at no charge. Transportation costs to the service center are the responsibility of the customer.\n\nA homeowner purchases a Home Series drill and uses it to renovate rental properties for profit. After 18 months, the motor fails. Is this covered under warranty?",
+      "explanation": "虽然电钻在3年保修期内（18个月），但Home Series保修明确排除商业用途。将其用于翻新出租物业属于商业用途，因此不在保修范围内。",
+      "options": [
+        { "key": "A", "text": "Yes, because the drill is within the 3-year warranty period." },
+        { "key": "B", "text": "Yes, because motor failure is a manufacturing defect." },
+        { "key": "C", "text": "No, because using a Home Series tool for commercial purposes voids the warranty." },
+        { "key": "D", "text": "No, because the warranty only covers the first 12 months." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 4,
+      "stem": "Dear Mr. Prescott,\n\nThank you for your thoughtful letter regarding your experience at our restaurant last Saturday evening. I was troubled to learn that your anniversary dinner did not meet the standards we strive for. You mentioned that the wait for your table exceeded 30 minutes despite having a reservation, that the appetizers arrived after the main course, and that the server seemed inattentive throughout the evening.\n\nI have spoken with the staff members involved, and I want you to know that this experience does not reflect who we are. Our maître d' informed me that an unexpected large party arrived shortly before your reservation time, which created a cascade of delays that affected several tables that evening. We have since revised our booking procedures to prevent this from happening again.\n\nI would like to invite you and your wife to return as our guests for a complimentary dinner so that we may have the opportunity to provide you with the experience you deserve.\n\nWith sincere apologies,\nRestaurant Owner\n\nWhat does the restaurant owner's response reveal about the owner's priorities?",
+      "explanation": "餐厅老板的回应显示他重视客户关系的长期维护，不仅道歉和解释原因，还改进了预订流程并提供免费晚餐，体现了以客户为中心和持续改进的经营理念。",
+      "options": [
+        { "key": "A", "text": "The owner is primarily focused on defending the restaurant's staff." },
+        { "key": "B", "text": "The owner values customer relationships and is willing to take corrective action and make amends." },
+        { "key": "C", "text": "The owner believes the customer's complaints were exaggerated." },
+        { "key": "D", "text": "The owner wants to avoid any legal liability." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Professional Development Reimbursement Policy\n\nEligible employees may receive tuition reimbursement for approved courses and certifications that are directly related to their current role or an identified career path within the company.\n\nReimbursement Levels:\n- Employees with 1-3 years of service: Up to $3,000 per calendar year\n- Employees with 3-5 years of service: Up to $5,000 per calendar year\n- Employees with 5+ years of service: Up to $8,000 per calendar year\n\nConditions:\n- Courses must be taken at an accredited institution or through an approved provider.\n- Pre-approval from the employee's manager and HR is required before enrollment.\n- Employees must achieve a grade of B or higher (or equivalent) to qualify for reimbursement.\n- Employees who voluntarily leave the company within 12 months of receiving reimbursement must repay 100% of the amount. Those who leave within 12-24 months must repay 50%.\n- Part-time employees receive reimbursement at 50% of the applicable rate.\n\nAn employee who has worked at the company for 4 years on a part-time basis earns an A in an approved course that cost $6,000. How much reimbursement will the employee receive?",
+      "explanation": "4年工龄的员工最高可报销5,000美元/年，但作为兼职员工只能获得50%，即2,500美元。虽然课程费6,000美元，但报销上限为2,500美元。",
+      "options": [
+        { "key": "A", "text": "$2,500" },
+        { "key": "B", "text": "$3,000" },
+        { "key": "C", "text": "$5,000" },
+        { "key": "D", "text": "$6,000" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 4,
+      "stem": "Dear Board of Directors,\n\nI am writing to present the findings of the independent audit conducted on the operations of Clearwater Municipal Water Authority over the past fiscal year. While overall financial management was found to be satisfactory, several areas of concern were identified.\n\nFirst, overtime expenses increased by 43% compared to the previous year, primarily concentrated in the maintenance department. Our analysis suggests this is linked to aging infrastructure that requires increasingly frequent repairs rather than planned maintenance. Second, the authority's emergency reserve fund currently stands at $1.2 million, which is below the recommended minimum of $2 million for an organization of this size. Third, we noted that 12 of the 45 vendor contracts reviewed had not been competitively bid within the last five years, contrary to the authority's procurement policy.\n\nWe recommend that the board prioritize infrastructure investment planning, replenish the emergency fund through a phased approach, and conduct a comprehensive review of all vendor contracts.\n\nRespectfully submitted,\nIndependent Auditor\n\nBased on the audit findings, what is the most significant long-term risk facing the Water Authority?",
+      "explanation": "审计报告显示加班费激增与基础设施老化直接相关，应急储备金不足，这些都指向同一个核心问题：缺乏基础设施投资规划将导致越来越多的紧急维修和财务压力。",
+      "options": [
+        { "key": "A", "text": "Vendor fraud due to non-competitive contracts" },
+        { "key": "B", "text": "Escalating costs from deteriorating infrastructure that is being repaired rather than replaced" },
+        { "key": "C", "text": "Employee dissatisfaction due to excessive overtime" },
+        { "key": "D", "text": "Insufficient revenue from water service fees" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 4,
+      "stem": "Dear Colleagues,\n\nAs many of you have heard through various channels, there has been speculation about potential organizational changes in the coming months. I want to address this directly rather than allow uncertainty to persist.\n\nYes, the executive team is evaluating our organizational structure to better align with our strategic goals for the next three years. This process is still in its early stages, and no decisions have been made. What I can tell you is that any changes will be guided by three principles: first, we will prioritize retaining our talented workforce; second, we will ensure that affected employees receive comprehensive support; and third, we will communicate openly throughout the process.\n\nI understand that ambiguity can be stressful, and I appreciate your patience. I will provide a detailed update by the end of next month. In the meantime, please direct any questions to your department heads.\n\nSincerely,\nCEO\n\nWhat is the CEO's primary communication strategy in this message?",
+      "explanation": "CEO的主要沟通策略是在无法提供具体细节的情况下，通过直接承认传闻、阐述指导原则和承诺持续沟通来主动管理员工的预期和焦虑。",
+      "options": [
+        { "key": "A", "text": "Denying that any changes will take place" },
+        { "key": "B", "text": "Providing detailed plans for the restructuring" },
+        { "key": "C", "text": "Acknowledging uncertainty while establishing trust through transparency and clear principles" },
+        { "key": "D", "text": "Distracting employees from the potential changes" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Dear Team,\n\nI would like to share an update on the client satisfaction survey results from Q2. Overall, our scores improved by 6% compared to Q1, with particularly strong gains in response time and technical expertise. ___ I encourage each team lead to review the detailed results and identify specific areas where their teams can continue to improve.\n\nThank you for your dedication.\n\nDirector of Client Services",
+      "explanation": "空白处应在总结积极结果后指出仍需改进的方面，起到平衡作用。选项D在肯定成绩的同时指出了薄弱环节。",
+      "options": [
+        { "key": "A", "text": "The survey software will be upgraded next quarter." },
+        { "key": "B", "text": "All employees should take the rest of the day off to celebrate." },
+        { "key": "C", "text": "The office supply room has been reorganized." },
+        { "key": "D", "text": "However, the communication clarity category showed only a marginal increase, suggesting that we still have room for growth in how we explain complex solutions to clients." }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Volunteer Opportunity\n\nThe Riverside Food Bank is looking for volunteers to help sort and distribute food donations during the holiday season. Volunteers are needed on Saturdays from November 18 through December 23, from 9:00 a.m. to 1:00 p.m. No experience is necessary. Volunteers must be at least 16 years old. Groups of 10 or more should contact us in advance to arrange scheduling. To sign up, visit www.riversidefoodbank.org or call 555-0187.\n\nWhat is the minimum age requirement for volunteers?",
+      "explanation": "通知明确说明志愿者必须至少16岁(must be at least 16 years old)。",
+      "options": [
+        { "key": "A", "text": "12 years old" },
+        { "key": "B", "text": "14 years old" },
+        { "key": "C", "text": "16 years old" },
+        { "key": "D", "text": "18 years old" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-purpose",
+      "difficulty": 2,
+      "stem": "Dear Ms. Turner,\n\nThank you for your purchase of the Deluxe Standing Desk from ErgoWorks. We hope you are enjoying your new desk. We are writing to let you know that a free accessory kit is now available for your desk model, which includes a cable management tray and a cup holder attachment. To claim your free kit, simply log into your account at www.ergoworks.com and enter the code DESK2024.\n\nBest regards,\nErgoWorks Team\n\nWhat is the purpose of this email?",
+      "explanation": "这封邮件的目的是通知客户可以免费领取配件套装，以提升客户体验和品牌忠诚度。",
+      "options": [
+        { "key": "A", "text": "To request payment for an outstanding balance" },
+        { "key": "B", "text": "To offer the customer a free accessory kit for their purchase" },
+        { "key": "C", "text": "To recall a defective product" },
+        { "key": "D", "text": "To announce a store closing sale" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Company Shuttle Schedule\nEffective March 1, the company shuttle will operate between the Main Campus and the Downtown Office as follows:\n\nDeparting Main Campus: 7:30 a.m., 8:30 a.m., 12:00 p.m., 5:00 p.m., 6:00 p.m.\nDeparting Downtown Office: 8:00 a.m., 9:00 a.m., 12:30 p.m., 5:30 p.m., 6:30 p.m.\n\nThe ride takes approximately 25 minutes. The shuttle does not operate on weekends or company holidays. Employees must show their ID badge to board.\n\nIf an employee finishes work at 5:15 p.m. at the Main Campus, what is the earliest shuttle they can take?",
+      "explanation": "员工5:15下班，错过了5:00的班车，最早可以乘坐6:00从主校区出发的班车。",
+      "options": [
+        { "key": "A", "text": "The 5:00 p.m. shuttle" },
+        { "key": "B", "text": "The 5:30 p.m. shuttle" },
+        { "key": "C", "text": "The 6:00 p.m. shuttle" },
+        { "key": "D", "text": "The 6:30 p.m. shuttle" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-vocabulary",
+      "difficulty": 2,
+      "stem": "Company Newsletter Excerpt:\n\nWe are delighted to announce that our Greenfield branch has been nominated for the Regional Business Excellence Award. This recognition is a testament to the hard work and dedication of the entire Greenfield team. The award ceremony will take place on May 12 at the Civic Center.\n\nIn this excerpt, the word 'testament' is closest in meaning to:",
+      "explanation": "'testament'在此处意为'证明，证据'，与'proof'含义最接近。",
+      "options": [
+        { "key": "A", "text": "A legal document" },
+        { "key": "B", "text": "A religious text" },
+        { "key": "C", "text": "Proof or evidence" },
+        { "key": "D", "text": "A celebration" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Dear Tenant,\n\nPlease be advised that pest control treatment will be performed in all units of Building C on Tuesday, April 11, between 10:00 a.m. and 3:00 p.m. All residents must remove food items from countertops and ensure pets are kept out of the unit during treatment. Residents do not need to be present but should leave their unit unlocked or provide a key to the management office by April 9.\n\nBuilding Management\n\nBy when must residents provide a key if they will not be home?",
+      "explanation": "通知要求不在家的住户在4月9日之前将钥匙交给管理处。",
+      "options": [
+        { "key": "A", "text": "April 7" },
+        { "key": "B", "text": "April 9" },
+        { "key": "C", "text": "April 10" },
+        { "key": "D", "text": "April 11" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 2,
+      "stem": "Dear Mr. Kowalski,\n\nWe are pleased to inform you that your subscription to Business Weekly has been renewed for another year. Your new subscription period runs from June 1 through May 31 of next year. As a returning subscriber, you will continue to receive the print edition every Monday and have full access to our online articles and archives.\n\nThank you for your continued readership.\n\nBusiness Weekly Subscriptions\n\nWhat can be inferred about Mr. Kowalski?",
+      "explanation": "信中称他为'returning subscriber'（续订用户），说明他此前已经订阅过该杂志。",
+      "options": [
+        { "key": "A", "text": "He is subscribing for the first time." },
+        { "key": "B", "text": "He has been a subscriber before." },
+        { "key": "C", "text": "He only reads the online edition." },
+        { "key": "D", "text": "He works for Business Weekly." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Conference Room Booking Policy\n\nAll conference room reservations must be made through the online booking system at least 24 hours in advance. Rooms may be booked for a maximum of 3 hours per session. If a room is not occupied within 15 minutes of the reservation start time, the booking will be automatically canceled and the room will become available to others. Recurring bookings are limited to 4 weeks and must be renewed. Priority is given to client-facing meetings. Any cancellations should be made at least 2 hours before the reserved time. Employees who fail to cancel unused reservations three or more times in a quarter may lose booking privileges for 30 days.\n\nWhat happens if no one shows up within 15 minutes of the booking start time?",
+      "explanation": "政策规定如果预订开始15分钟内无人使用，预订将被自动取消，房间将重新开放。",
+      "options": [
+        { "key": "A", "text": "The booking is extended by 15 minutes." },
+        { "key": "B", "text": "The booking is automatically canceled and the room becomes available." },
+        { "key": "C", "text": "A fee is charged to the department." },
+        { "key": "D", "text": "Security is notified to lock the room." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "Dear Employees,\n\nEffective next month, the company will transition from a traditional performance review system to a continuous feedback model. Instead of annual reviews, managers will conduct brief monthly check-ins with each team member. Peer feedback will be collected quarterly through an anonymous online platform. Compensation adjustments will still occur annually but will be informed by the accumulated feedback throughout the year rather than a single review.\n\nThe HR team will hold information sessions next week to answer any questions.\n\nHR Director\n\nWhat problem is the company most likely trying to address with this change?",
+      "explanation": "从年度考核改为持续反馈模式，说明公司认为年度考核频率不够，难以及时反映员工表现，新系统旨在提供更频繁、更全面的反馈。",
+      "options": [
+        { "key": "A", "text": "Employees were receiving too much feedback." },
+        { "key": "B", "text": "Annual reviews were too infrequent to accurately capture ongoing performance." },
+        { "key": "C", "text": "Managers did not want to conduct performance reviews." },
+        { "key": "D", "text": "The company wanted to reduce the number of salary adjustments." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Shipping Options - QuickShip Logistics\n\n- Standard Shipping (5-7 business days): Free for orders over $50; $5.99 for orders under $50\n- Express Shipping (2-3 business days): $12.99 for all orders\n- Overnight Shipping (next business day): $24.99 for all orders; not available for P.O. boxes or rural addresses\n- International Shipping (10-15 business days): Starting at $19.99; customs fees are the responsibility of the recipient\n\nAll orders placed before 2:00 p.m. EST are processed the same business day. Orders placed after 2:00 p.m. or on weekends will be processed the next business day. Tracking information is provided via email within 24 hours of shipment.\n\nA customer in a rural area places a $75 order at 1:00 p.m. EST on a Tuesday and needs it by Thursday. Which shipping option should they choose?",
+      "explanation": "客户在农村地区，隔夜送达不适用于农村地址。快递送达需要2-3个工作日（周二下单周四或周五到），是最快的可用选项。由于下午2点前下单，当天处理，快递可能在周四到达。",
+      "options": [
+        { "key": "A", "text": "Standard Shipping" },
+        { "key": "B", "text": "Express Shipping" },
+        { "key": "C", "text": "Overnight Shipping" },
+        { "key": "D", "text": "International Shipping" }
+      ],
+      "correctKey": "B"
+    }
+  ]
+}

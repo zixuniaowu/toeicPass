@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" fill="none">
+  <rect width="960" height="540" fill="#EEF3FF"/>
+  <rect x="130" y="120" width="700" height="300" rx="20" fill="#D9E6FF"/>
+  <rect x="180" y="170" width="600" height="55" rx="12" fill="#FFFFFF"/>
+  <rect x="180" y="245" width="260" height="130" rx="12" fill="#FFFFFF"/>
+  <rect x="460" y="245" width="320" height="130" rx="12" fill="#FFFFFF"/>
+  <circle cx="250" cy="310" r="34" fill="#7E9ED9"/>
+  <circle cx="530" cy="300" r="28" fill="#5F80C2"/>
+  <circle cx="620" cy="300" r="28" fill="#5F80C2"/>
+  <circle cx="710" cy="300" r="28" fill="#5F80C2"/>
+  <text x="80" y="505" fill="#334E86" font-family="Arial" font-size="34" font-weight="700">Part 2 Listening: Question and response</text>
+</svg>

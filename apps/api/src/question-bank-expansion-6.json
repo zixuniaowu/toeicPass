@@ -1,0 +1,1124 @@
+{
+  "questions": [
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 1,
+      "stem": "The company ___ its revenue target last quarter.",
+      "explanation": "此处需要过去时，因为'last quarter'表示过去的时间，应使用一般过去式exceeded。",
+      "options": [
+        { "key": "A", "text": "exceeded" },
+        { "key": "B", "text": "has exceeded" },
+        { "key": "C", "text": "will exceed" },
+        { "key": "D", "text": "exceeds" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 2,
+      "stem": "By the time the audit is complete, the finance team ___ all the necessary documents.",
+      "explanation": "by the time引导的时间状语从句表示将来某一时间之前完成的动作，主句应使用将来完成时will have prepared。",
+      "options": [
+        { "key": "A", "text": "prepares" },
+        { "key": "B", "text": "will have prepared" },
+        { "key": "C", "text": "has prepared" },
+        { "key": "D", "text": "prepared" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 2,
+      "stem": "The marketing department ___ on the new campaign since January.",
+      "explanation": "since January表示从一月到现在一直在做的事情，应使用现在完成进行时has been working。",
+      "options": [
+        { "key": "A", "text": "works" },
+        { "key": "B", "text": "worked" },
+        { "key": "C", "text": "has been working" },
+        { "key": "D", "text": "will work" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 3,
+      "stem": "If the board ___ the proposal yesterday, we would have started production this week.",
+      "explanation": "这是与过去事实相反的虚拟语气，if从句应使用过去完成时had approved。",
+      "options": [
+        { "key": "A", "text": "approves" },
+        { "key": "B", "text": "approved" },
+        { "key": "C", "text": "had approved" },
+        { "key": "D", "text": "has approved" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 2,
+      "stem": "Our sales team ___ a training session every Monday morning.",
+      "explanation": "every Monday morning表示习惯性的动作，应使用一般现在时attends。",
+      "options": [
+        { "key": "A", "text": "attends" },
+        { "key": "B", "text": "attended" },
+        { "key": "C", "text": "has attended" },
+        { "key": "D", "text": "will attend" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 3,
+      "stem": "The project manager announced that the deadline ___ to the following Friday.",
+      "explanation": "在间接引语中，主句用过去时announced，从句应使用过去完成时had been moved来表示时态后移。",
+      "options": [
+        { "key": "A", "text": "moves" },
+        { "key": "B", "text": "has been moved" },
+        { "key": "C", "text": "had been moved" },
+        { "key": "D", "text": "is moved" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 2,
+      "stem": "Ms. Tanaka ___ as the regional manager for five years before she was promoted.",
+      "explanation": "before she was promoted表明在过去某时间点之前已持续的动作，应使用过去完成时had served。",
+      "options": [
+        { "key": "A", "text": "serves" },
+        { "key": "B", "text": "served" },
+        { "key": "C", "text": "had served" },
+        { "key": "D", "text": "has served" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 4,
+      "stem": "Had the shipment arrived on schedule, the production line ___ any delays.",
+      "explanation": "这是省略if的虚拟语气倒装句，与过去事实相反，主句应使用would not have experienced。",
+      "options": [
+        { "key": "A", "text": "will not experience" },
+        { "key": "B", "text": "would not experience" },
+        { "key": "C", "text": "would not have experienced" },
+        { "key": "D", "text": "did not experience" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 2,
+      "stem": "The warehouse staff ___ the inventory count by the end of today.",
+      "explanation": "by the end of today表示到今天结束为止将完成的动作，应使用将来完成时will have finished。",
+      "options": [
+        { "key": "A", "text": "finish" },
+        { "key": "B", "text": "finished" },
+        { "key": "C", "text": "will have finished" },
+        { "key": "D", "text": "have finished" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 3,
+      "stem": "Customer complaints ___ significantly since the company introduced its new quality control measures.",
+      "explanation": "since引导的时间状语表示从过去到现在的变化，应使用现在完成时have decreased。",
+      "options": [
+        { "key": "A", "text": "decrease" },
+        { "key": "B", "text": "decreased" },
+        { "key": "C", "text": "have decreased" },
+        { "key": "D", "text": "had decreased" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 4,
+      "stem": "The consultant recommended that the firm ___ its IT infrastructure before expanding overseas.",
+      "explanation": "recommend后接that从句应使用虚拟语气，动词用原形upgrade（省略should）。",
+      "options": [
+        { "key": "A", "text": "upgrades" },
+        { "key": "B", "text": "upgraded" },
+        { "key": "C", "text": "upgrade" },
+        { "key": "D", "text": "will upgrade" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 2,
+      "stem": "Next month, the CEO ___ a keynote speech at the annual technology conference.",
+      "explanation": "Next month表示将来的时间，应使用将来时will deliver。",
+      "options": [
+        { "key": "A", "text": "delivers" },
+        { "key": "B", "text": "delivered" },
+        { "key": "C", "text": "has delivered" },
+        { "key": "D", "text": "will deliver" }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 4,
+      "stem": "The negotiations ___ smoothly until one party raised concerns about the payment terms.",
+      "explanation": "until引导的从句表示过去某个时间点，之前一直在进行的动作应使用过去完成进行时had been proceeding。",
+      "options": [
+        { "key": "A", "text": "proceed" },
+        { "key": "B", "text": "proceeded" },
+        { "key": "C", "text": "have been proceeding" },
+        { "key": "D", "text": "had been proceeding" }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 3,
+      "stem": "Once the renovation ___, the office will be able to accommodate fifty additional staff members.",
+      "explanation": "once引导的时间状语从句中用一般现在时is completed表示将来的动作，主句用将来时。",
+      "options": [
+        { "key": "A", "text": "is completed" },
+        { "key": "B", "text": "will be completed" },
+        { "key": "C", "text": "has been completing" },
+        { "key": "D", "text": "completed" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-tense",
+      "difficulty": 1,
+      "stem": "The new branch office ___ next Monday at 9 A.M.",
+      "explanation": "next Monday表示将来的具体时间，应使用将来时will open。",
+      "options": [
+        { "key": "A", "text": "opens" },
+        { "key": "B", "text": "opened" },
+        { "key": "C", "text": "will open" },
+        { "key": "D", "text": "has opened" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 1,
+      "stem": "The meeting is scheduled ___ 3 P.M. on Friday.",
+      "explanation": "具体时间点前用介词at，如at 3 P.M.。",
+      "options": [
+        { "key": "A", "text": "at" },
+        { "key": "B", "text": "on" },
+        { "key": "C", "text": "in" },
+        { "key": "D", "text": "by" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 2,
+      "stem": "All expense reports must be submitted ___ the end of each month.",
+      "explanation": "by the end of表示'在...之前'，是固定搭配，表示截止时间。",
+      "options": [
+        { "key": "A", "text": "until" },
+        { "key": "B", "text": "by" },
+        { "key": "C", "text": "at" },
+        { "key": "D", "text": "on" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 2,
+      "stem": "Mr. Park has been working ___ the Seoul branch since 2019.",
+      "explanation": "at表示在某个具体的工作地点或分公司，at the branch是常见搭配。",
+      "options": [
+        { "key": "A", "text": "at" },
+        { "key": "B", "text": "on" },
+        { "key": "C", "text": "in" },
+        { "key": "D", "text": "for" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 3,
+      "stem": "The training program is designed to prepare employees ___ leadership roles.",
+      "explanation": "prepare someone for something是固定搭配，意为'为某事做准备'。",
+      "options": [
+        { "key": "A", "text": "to" },
+        { "key": "B", "text": "with" },
+        { "key": "C", "text": "for" },
+        { "key": "D", "text": "at" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 3,
+      "stem": "The new policy will remain in effect ___ further notice.",
+      "explanation": "until further notice是固定短语，意为'直到另行通知'。",
+      "options": [
+        { "key": "A", "text": "by" },
+        { "key": "B", "text": "until" },
+        { "key": "C", "text": "for" },
+        { "key": "D", "text": "since" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 2,
+      "stem": "The contract was signed ___ behalf of the entire department.",
+      "explanation": "on behalf of是固定短语，意为'代表'。",
+      "options": [
+        { "key": "A", "text": "on" },
+        { "key": "B", "text": "in" },
+        { "key": "C", "text": "at" },
+        { "key": "D", "text": "by" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 3,
+      "stem": "The factory is located ___ close proximity to the shipping port.",
+      "explanation": "in close proximity to是固定短语，意为'在...的附近'，介词用in。",
+      "options": [
+        { "key": "A", "text": "at" },
+        { "key": "B", "text": "in" },
+        { "key": "C", "text": "with" },
+        { "key": "D", "text": "on" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 1,
+      "stem": "Please send the updated report directly ___ the department head.",
+      "explanation": "send something to someone是固定搭配，to表示发送对象。",
+      "options": [
+        { "key": "A", "text": "for" },
+        { "key": "B", "text": "at" },
+        { "key": "C", "text": "to" },
+        { "key": "D", "text": "with" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 4,
+      "stem": "The supervisor insisted ___ reviewing the safety protocols before approving the project.",
+      "explanation": "insist on doing something是固定搭配，意为'坚持要做某事'。",
+      "options": [
+        { "key": "A", "text": "at" },
+        { "key": "B", "text": "in" },
+        { "key": "C", "text": "for" },
+        { "key": "D", "text": "on" }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 2,
+      "stem": "The conference room is located ___ the third floor of the main building.",
+      "explanation": "在楼层前用on，on the third floor是固定搭配。",
+      "options": [
+        { "key": "A", "text": "at" },
+        { "key": "B", "text": "in" },
+        { "key": "C", "text": "on" },
+        { "key": "D", "text": "by" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 3,
+      "stem": "The merger resulted ___ a significant increase in the company's market share.",
+      "explanation": "result in是固定搭配，意为'导致，结果是'。",
+      "options": [
+        { "key": "A", "text": "in" },
+        { "key": "B", "text": "to" },
+        { "key": "C", "text": "from" },
+        { "key": "D", "text": "at" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-preposition",
+      "difficulty": 2,
+      "stem": "Applications for the position must be received ___ March 15.",
+      "explanation": "by March 15表示截止日期，意为'在3月15日之前'。",
+      "options": [
+        { "key": "A", "text": "until" },
+        { "key": "B", "text": "by" },
+        { "key": "C", "text": "on" },
+        { "key": "D", "text": "since" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 2,
+      "stem": "___ the budget was limited, the team managed to complete the project on time.",
+      "explanation": "Although表示'尽管'，引导让步状语从句，后接完整的句子。",
+      "options": [
+        { "key": "A", "text": "Although" },
+        { "key": "B", "text": "Because" },
+        { "key": "C", "text": "Unless" },
+        { "key": "D", "text": "Since" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 3,
+      "stem": "___ the heavy rain, the outdoor event proceeded as planned.",
+      "explanation": "Despite后接名词短语（the heavy rain），表示'尽管'。Although后需接完整句子。",
+      "options": [
+        { "key": "A", "text": "Although" },
+        { "key": "B", "text": "Despite" },
+        { "key": "C", "text": "Because of" },
+        { "key": "D", "text": "Since" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 2,
+      "stem": "The shipment will be delayed ___ the supplier can resolve the quality issue.",
+      "explanation": "until表示'直到...为止'，说明延迟会持续到问题解决。",
+      "options": [
+        { "key": "A", "text": "unless" },
+        { "key": "B", "text": "although" },
+        { "key": "C", "text": "until" },
+        { "key": "D", "text": "while" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 3,
+      "stem": "___ the CEO was presenting the quarterly results, the board members reviewed the financial statements.",
+      "explanation": "While表示'在...期间'，引导时间状语从句，表示两件事同时发生。",
+      "options": [
+        { "key": "A", "text": "While" },
+        { "key": "B", "text": "Although" },
+        { "key": "C", "text": "Unless" },
+        { "key": "D", "text": "Because" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 2,
+      "stem": "The product launch will be postponed ___ there are unexpected improvements in the supply chain.",
+      "explanation": "unless表示'除非'，意为除非供应链有意外改善，否则产品发布会推迟。",
+      "options": [
+        { "key": "A", "text": "although" },
+        { "key": "B", "text": "because" },
+        { "key": "C", "text": "unless" },
+        { "key": "D", "text": "while" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 4,
+      "stem": "The eastern region saw a 20 percent increase in sales, ___ the western region experienced a slight decline.",
+      "explanation": "whereas表示'然而，相比之下'，用于对比两种不同的情况。",
+      "options": [
+        { "key": "A", "text": "whereas" },
+        { "key": "B", "text": "because" },
+        { "key": "C", "text": "unless" },
+        { "key": "D", "text": "although" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 1,
+      "stem": "We decided to hire additional staff ___ the workload has increased significantly.",
+      "explanation": "because表示原因，'因为工作量大幅增加'是招聘更多员工的原因。",
+      "options": [
+        { "key": "A", "text": "although" },
+        { "key": "B", "text": "unless" },
+        { "key": "C", "text": "because" },
+        { "key": "D", "text": "while" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 4,
+      "stem": "___ having extensive experience in the industry, the applicant was not selected for the senior position.",
+      "explanation": "Despite having表示'尽管拥有'，despite后接动名词形式，表示让步关系。",
+      "options": [
+        { "key": "A", "text": "Despite" },
+        { "key": "B", "text": "Because of" },
+        { "key": "C", "text": "Instead of" },
+        { "key": "D", "text": "According to" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 3,
+      "stem": "Employees may work remotely ___ they obtain prior approval from their supervisors.",
+      "explanation": "provided that表示'只要，如果'，是条件连词，意为只要获得上级批准就可以远程办公。",
+      "options": [
+        { "key": "A", "text": "provided that" },
+        { "key": "B", "text": "in spite of" },
+        { "key": "C", "text": "so that" },
+        { "key": "D", "text": "even though" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conjunction",
+      "difficulty": 2,
+      "stem": "The company invested in new technology ___ it could improve operational efficiency.",
+      "explanation": "so that表示目的，'以便提高运营效率'是投资新技术的目的。",
+      "options": [
+        { "key": "A", "text": "unless" },
+        { "key": "B", "text": "so that" },
+        { "key": "C", "text": "even though" },
+        { "key": "D", "text": "whereas" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-pronoun",
+      "difficulty": 2,
+      "stem": "The manager ___ approved the budget will attend the meeting tomorrow.",
+      "explanation": "关系代词who引导定语从句修饰the manager（人），在从句中作主语。",
+      "options": [
+        { "key": "A", "text": "who" },
+        { "key": "B", "text": "which" },
+        { "key": "C", "text": "whom" },
+        { "key": "D", "text": "whose" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-pronoun",
+      "difficulty": 2,
+      "stem": "The report ___ was submitted last week contains several important recommendations.",
+      "explanation": "关系代词that/which引导定语从句修饰the report（物），在从句中作主语。",
+      "options": [
+        { "key": "A", "text": "who" },
+        { "key": "B", "text": "whom" },
+        { "key": "C", "text": "that" },
+        { "key": "D", "text": "whose" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-pronoun",
+      "difficulty": 3,
+      "stem": "The client ___ account was overdue received a formal notice from the billing department.",
+      "explanation": "whose表示所有格关系，修饰account，意为'其账户逾期的客户'。",
+      "options": [
+        { "key": "A", "text": "who" },
+        { "key": "B", "text": "whose" },
+        { "key": "C", "text": "which" },
+        { "key": "D", "text": "whom" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-pronoun",
+      "difficulty": 3,
+      "stem": "All department heads should familiarize ___ with the new safety regulations before the inspection.",
+      "explanation": "familiarize oneself with是固定搭配，主语是they，反身代词用themselves。",
+      "options": [
+        { "key": "A", "text": "them" },
+        { "key": "B", "text": "their" },
+        { "key": "C", "text": "themselves" },
+        { "key": "D", "text": "theirs" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-pronoun",
+      "difficulty": 4,
+      "stem": "The engineer to ___ the project was assigned has over fifteen years of experience.",
+      "explanation": "介词to后面的关系代词指人时应使用whom，to whom the project was assigned意为'项目被分配给的工程师'。",
+      "options": [
+        { "key": "A", "text": "who" },
+        { "key": "B", "text": "whom" },
+        { "key": "C", "text": "which" },
+        { "key": "D", "text": "that" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-pronoun",
+      "difficulty": 1,
+      "stem": "Each employee must submit ___ performance review form before the deadline.",
+      "explanation": "each employee是单数，需要用单数形容词性物主代词his or her，此处their也被广泛接受。",
+      "options": [
+        { "key": "A", "text": "they" },
+        { "key": "B", "text": "them" },
+        { "key": "C", "text": "their" },
+        { "key": "D", "text": "theirs" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-pronoun",
+      "difficulty": 3,
+      "stem": "The two proposals are quite different from one another; ___ focuses on cost reduction, while the other emphasizes revenue growth.",
+      "explanation": "one...the other是固定搭配，用于指两者中的一个，one作主语。",
+      "options": [
+        { "key": "A", "text": "one" },
+        { "key": "B", "text": "it" },
+        { "key": "C", "text": "each" },
+        { "key": "D", "text": "this" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-pronoun",
+      "difficulty": 2,
+      "stem": "The director praised the team members for ___ outstanding performance during the product launch.",
+      "explanation": "修饰名词performance应使用形容词性物主代词their。",
+      "options": [
+        { "key": "A", "text": "they" },
+        { "key": "B", "text": "their" },
+        { "key": "C", "text": "them" },
+        { "key": "D", "text": "theirs" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-article",
+      "difficulty": 2,
+      "stem": "She was appointed as ___ director of the marketing division last year.",
+      "explanation": "职位头衔在as后面通常不用冠词，特别是当该职位是唯一的时候，此处用零冠词。",
+      "options": [
+        { "key": "A", "text": "a" },
+        { "key": "B", "text": "an" },
+        { "key": "C", "text": "the" },
+        { "key": "D", "text": "(no article)" }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-article",
+      "difficulty": 1,
+      "stem": "We need to hire ___ experienced accountant for the new branch office.",
+      "explanation": "an用于以元音发音开头的单数可数名词前，experienced以元音音素开头。",
+      "options": [
+        { "key": "A", "text": "a" },
+        { "key": "B", "text": "an" },
+        { "key": "C", "text": "the" },
+        { "key": "D", "text": "(no article)" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-article",
+      "difficulty": 3,
+      "stem": "___ information provided in the brochure is subject to change without notice.",
+      "explanation": "此处information指的是宣传册中特定的信息，需要用定冠词the来特指。",
+      "options": [
+        { "key": "A", "text": "A" },
+        { "key": "B", "text": "An" },
+        { "key": "C", "text": "The" },
+        { "key": "D", "text": "(No article)" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-article",
+      "difficulty": 2,
+      "stem": "The board held ___ emergency meeting to discuss the unexpected financial results.",
+      "explanation": "an用于以元音发音开头的单数可数名词前，emergency以元音音素开头。",
+      "options": [
+        { "key": "A", "text": "a" },
+        { "key": "B", "text": "an" },
+        { "key": "C", "text": "the" },
+        { "key": "D", "text": "(no article)" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-article",
+      "difficulty": 3,
+      "stem": "All attendees were given ___ access to the conference materials online.",
+      "explanation": "access是不可数名词，在此处为泛指，不需要冠词，使用零冠词。",
+      "options": [
+        { "key": "A", "text": "a" },
+        { "key": "B", "text": "an" },
+        { "key": "C", "text": "the" },
+        { "key": "D", "text": "(no article)" }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-article",
+      "difficulty": 4,
+      "stem": "___ equipment ordered for the new laboratory has not yet been delivered.",
+      "explanation": "此处equipment指特定订购的设备，需要用定冠词the来特指。equipment是不可数名词，不用a/an。",
+      "options": [
+        { "key": "A", "text": "A" },
+        { "key": "B", "text": "An" },
+        { "key": "C", "text": "The" },
+        { "key": "D", "text": "(No article)" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-article",
+      "difficulty": 2,
+      "stem": "The human resources department is looking for ___ qualified candidate to fill the vacancy.",
+      "explanation": "a用于辅音发音开头的单数可数名词前，qualified以辅音音素/kw/开头。",
+      "options": [
+        { "key": "A", "text": "a" },
+        { "key": "B", "text": "an" },
+        { "key": "C", "text": "the" },
+        { "key": "D", "text": "(no article)" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-article",
+      "difficulty": 4,
+      "stem": "Mr. Hoffman was elected ___ chairperson of the board at yesterday's general meeting.",
+      "explanation": "当选某一唯一职位时，be elected chairperson不加冠词，与be appointed as类似。",
+      "options": [
+        { "key": "A", "text": "a" },
+        { "key": "B", "text": "an" },
+        { "key": "C", "text": "the" },
+        { "key": "D", "text": "(no article)" }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The company plans to ___ its operations to Southeast Asia within the next two years.",
+      "explanation": "expand表示'扩展，扩大'（业务范围）。expend意为'花费'，extend意为'延长'，extract意为'提取'。",
+      "options": [
+        { "key": "A", "text": "expand" },
+        { "key": "B", "text": "expend" },
+        { "key": "C", "text": "extend" },
+        { "key": "D", "text": "extract" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The warranty does not ___ damage caused by misuse or unauthorized modifications.",
+      "explanation": "cover在此表示'涵盖，包括'（保修范围内）。recover意为'恢复'，discover意为'发现'，uncover意为'揭露'。",
+      "options": [
+        { "key": "A", "text": "recover" },
+        { "key": "B", "text": "cover" },
+        { "key": "C", "text": "discover" },
+        { "key": "D", "text": "uncover" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "The accounting team needs to ___ all transactions before the fiscal year ends.",
+      "explanation": "reconcile表示'核对，对账'，是会计术语。record意为'记录'，reconsider意为'重新考虑'，recommend意为'推荐'。",
+      "options": [
+        { "key": "A", "text": "record" },
+        { "key": "B", "text": "reconcile" },
+        { "key": "C", "text": "reconsider" },
+        { "key": "D", "text": "recommend" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 1,
+      "stem": "Please ___ the attached document for your reference before the meeting.",
+      "explanation": "review表示'查看，审阅'，常用于商务场景中请求查看文件。revise意为'修改'，reveal意为'揭示'，revoke意为'撤销'。",
+      "options": [
+        { "key": "A", "text": "revise" },
+        { "key": "B", "text": "review" },
+        { "key": "C", "text": "reveal" },
+        { "key": "D", "text": "revoke" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "The new regulation will ___ all companies operating within the financial services sector.",
+      "explanation": "affect表示'影响'，是动词。effect是名词'效果'，infect意为'感染'，reflect意为'反映'。",
+      "options": [
+        { "key": "A", "text": "affect" },
+        { "key": "B", "text": "effect" },
+        { "key": "C", "text": "infect" },
+        { "key": "D", "text": "reflect" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The HR department will ___ interviews with all shortlisted candidates next week.",
+      "explanation": "conduct表示'进行，实施'（面试、调查等），是商务用语。contact意为'联系'，conclude意为'结束'，confirm意为'确认'。",
+      "options": [
+        { "key": "A", "text": "contact" },
+        { "key": "B", "text": "conduct" },
+        { "key": "C", "text": "conclude" },
+        { "key": "D", "text": "confirm" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "The board voted to ___ the merger agreement after months of negotiations.",
+      "explanation": "ratify表示'批准，正式认可'（协议、条约等）。rectify意为'纠正'，justify意为'证明...合理'，verify意为'核实'。",
+      "options": [
+        { "key": "A", "text": "rectify" },
+        { "key": "B", "text": "ratify" },
+        { "key": "C", "text": "justify" },
+        { "key": "D", "text": "verify" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Employees are encouraged to ___ any workplace safety concerns to their immediate supervisors.",
+      "explanation": "report表示'报告，汇报'，常用于表达向上级反映问题。support意为'支持'，deport意为'驱逐'，transport意为'运输'。",
+      "options": [
+        { "key": "A", "text": "support" },
+        { "key": "B", "text": "report" },
+        { "key": "C", "text": "deport" },
+        { "key": "D", "text": "transport" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The company has decided to ___ several new positions in response to growing demand.",
+      "explanation": "create表示'创建，设立'（新职位）。delete意为'删除'，relate意为'关联'，donate意为'捐赠'。",
+      "options": [
+        { "key": "A", "text": "create" },
+        { "key": "B", "text": "delete" },
+        { "key": "C", "text": "relate" },
+        { "key": "D", "text": "donate" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "The consultant's findings were ___ with the data collected by the internal audit team.",
+      "explanation": "consistent表示'一致的'，be consistent with意为'与...一致'。persistent意为'坚持的'，resistant意为'抵抗的'，insistent意为'坚决的'。",
+      "options": [
+        { "key": "A", "text": "persistent" },
+        { "key": "B", "text": "consistent" },
+        { "key": "C", "text": "resistant" },
+        { "key": "D", "text": "insistent" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 1,
+      "stem": "The manager asked her assistant to ___ copies of the agenda for all meeting participants.",
+      "explanation": "distribute表示'分发'。contribute意为'贡献'，attribute意为'归因于'，substitute意为'替代'。",
+      "options": [
+        { "key": "A", "text": "contribute" },
+        { "key": "B", "text": "distribute" },
+        { "key": "C", "text": "attribute" },
+        { "key": "D", "text": "substitute" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "All employees must ___ to the company's code of conduct at all times.",
+      "explanation": "adhere表示'遵守'，adhere to意为'遵守，坚持'（规则、准则）。adapt意为'适应'，adopt意为'采用'，admit意为'承认'。",
+      "options": [
+        { "key": "A", "text": "adapt" },
+        { "key": "B", "text": "adopt" },
+        { "key": "C", "text": "adhere" },
+        { "key": "D", "text": "admit" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "The CEO emphasized the importance of ___ between departments to achieve company goals.",
+      "explanation": "collaboration表示'合作，协作'，是商务中常用词汇。collection意为'收集'，celebration意为'庆祝'，calculation意为'计算'。",
+      "options": [
+        { "key": "A", "text": "collection" },
+        { "key": "B", "text": "collaboration" },
+        { "key": "C", "text": "celebration" },
+        { "key": "D", "text": "calculation" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "The newly appointed director is expected to ___ significant changes within the organization.",
+      "explanation": "implement表示'实施，执行'（变革、计划等）。complement意为'补充'，compliment意为'赞美'，supplement意为'补充'。",
+      "options": [
+        { "key": "A", "text": "complement" },
+        { "key": "B", "text": "compliment" },
+        { "key": "C", "text": "implement" },
+        { "key": "D", "text": "supplement" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Due to unforeseen circumstances, the annual conference has been ___ indefinitely.",
+      "explanation": "postponed表示'推迟'。imposed意为'施加'，proposed意为'提议'，composed意为'组成'。",
+      "options": [
+        { "key": "A", "text": "imposed" },
+        { "key": "B", "text": "postponed" },
+        { "key": "C", "text": "proposed" },
+        { "key": "D", "text": "composed" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-modal",
+      "difficulty": 2,
+      "stem": "All employees ___ submit their timesheets by Friday afternoon without exception.",
+      "explanation": "must表示强制性的义务和要求，'必须在周五下午前提交'。should语气较弱，would/could不表示强制义务。",
+      "options": [
+        { "key": "A", "text": "should" },
+        { "key": "B", "text": "must" },
+        { "key": "C", "text": "would" },
+        { "key": "D", "text": "could" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-modal",
+      "difficulty": 3,
+      "stem": "The marketing budget ___ be increased if sales continue to grow at this rate.",
+      "explanation": "might表示可能性，'如果销售持续增长，营销预算可能会增加'。语境表示一种可能性而非确定性。",
+      "options": [
+        { "key": "A", "text": "might" },
+        { "key": "B", "text": "must" },
+        { "key": "C", "text": "shall" },
+        { "key": "D", "text": "will" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-modal",
+      "difficulty": 2,
+      "stem": "Visitors ___ wear identification badges at all times while on the premises.",
+      "explanation": "must表示规定和要求，'在场所内必须始终佩戴身份证'。",
+      "options": [
+        { "key": "A", "text": "could" },
+        { "key": "B", "text": "would" },
+        { "key": "C", "text": "must" },
+        { "key": "D", "text": "might" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-modal",
+      "difficulty": 3,
+      "stem": "Candidates ___ have at least five years of relevant experience to be considered for the position.",
+      "explanation": "should表示'应该'，在此表示对候选人的期望和建议性要求。",
+      "options": [
+        { "key": "A", "text": "should" },
+        { "key": "B", "text": "would" },
+        { "key": "C", "text": "could" },
+        { "key": "D", "text": "might" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-modal",
+      "difficulty": 4,
+      "stem": "The shipment ___ have arrived by now; please check with the logistics department.",
+      "explanation": "should have arrived表示'按理应该已经到了'，表达对过去事件的推测和期望。",
+      "options": [
+        { "key": "A", "text": "should" },
+        { "key": "B", "text": "would" },
+        { "key": "C", "text": "could" },
+        { "key": "D", "text": "might" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-modal",
+      "difficulty": 4,
+      "stem": "Had I known about the policy change, I ___ have prepared a different proposal.",
+      "explanation": "would have prepared是与过去事实相反的虚拟语气结果句，表示'我本会准备一份不同的提案'。",
+      "options": [
+        { "key": "A", "text": "should" },
+        { "key": "B", "text": "would" },
+        { "key": "C", "text": "could" },
+        { "key": "D", "text": "must" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conditional",
+      "difficulty": 2,
+      "stem": "If the shipment ___ on time, we will meet the production deadline.",
+      "explanation": "在条件句中，if从句用一般现在时arrives表示将来可能发生的事。",
+      "options": [
+        { "key": "A", "text": "arrives" },
+        { "key": "B", "text": "arrived" },
+        { "key": "C", "text": "will arrive" },
+        { "key": "D", "text": "has arrived" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conditional",
+      "difficulty": 3,
+      "stem": "If the company ___ in more research last year, the new product would have been launched sooner.",
+      "explanation": "与过去事实相反的虚拟语气，if从句用过去完成时had invested。",
+      "options": [
+        { "key": "A", "text": "invests" },
+        { "key": "B", "text": "invested" },
+        { "key": "C", "text": "had invested" },
+        { "key": "D", "text": "will invest" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conditional",
+      "difficulty": 2,
+      "stem": "___ the new software is installed properly, the system should run without any issues.",
+      "explanation": "Provided that表示'只要'，引导条件从句，意为只要软件正确安装。",
+      "options": [
+        { "key": "A", "text": "Provided that" },
+        { "key": "B", "text": "Even though" },
+        { "key": "C", "text": "In case" },
+        { "key": "D", "text": "So that" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conditional",
+      "difficulty": 3,
+      "stem": "The project will not proceed ___ the client approves the revised budget.",
+      "explanation": "unless表示'除非'，意为除非客户批准修订后的预算，否则项目不会继续。",
+      "options": [
+        { "key": "A", "text": "although" },
+        { "key": "B", "text": "unless" },
+        { "key": "C", "text": "because" },
+        { "key": "D", "text": "while" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conditional",
+      "difficulty": 1,
+      "stem": "If you ___ any questions about the new policy, please contact the HR department.",
+      "explanation": "在条件句中表示现实的一般情况，if从句用一般现在时have。",
+      "options": [
+        { "key": "A", "text": "have" },
+        { "key": "B", "text": "had" },
+        { "key": "C", "text": "will have" },
+        { "key": "D", "text": "would have" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar-conditional",
+      "difficulty": 4,
+      "stem": "Were the proposal to be accepted, the company ___ immediately begin recruiting additional engineers.",
+      "explanation": "Were...to be是虚拟语气的倒装形式，表示假设条件。主句用would表示结果。",
+      "options": [
+        { "key": "A", "text": "will" },
+        { "key": "B", "text": "would" },
+        { "key": "C", "text": "should" },
+        { "key": "D", "text": "can" }
+      ],
+      "correctKey": "B"
+    }
+  ]
+}

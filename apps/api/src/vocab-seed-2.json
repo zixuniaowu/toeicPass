@@ -1,0 +1,604 @@
+{
+  "cards": [
+    {
+      "term": "decade",
+      "pos": "noun",
+      "definition": "a period of ten years",
+      "example": "The firm has grown steadily over the past decade.",
+      "sourcePart": 7,
+      "tags": ["office"]
+    },
+    {
+      "term": "declare",
+      "pos": "verb",
+      "definition": "to officially announce or state something",
+      "example": "Travelers must declare any goods purchased abroad.",
+      "sourcePart": 5,
+      "tags": ["legal", "travel"]
+    },
+    {
+      "term": "decline",
+      "pos": "verb",
+      "definition": "to decrease or politely refuse",
+      "example": "Sales declined by twelve percent in the third quarter.",
+      "sourcePart": 5,
+      "tags": ["finance"]
+    },
+    {
+      "term": "deduct",
+      "pos": "verb",
+      "definition": "to subtract an amount from a total",
+      "example": "The company will deduct travel expenses from the reimbursement.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "defect",
+      "pos": "noun",
+      "definition": "a flaw or imperfection in a product",
+      "example": "Quality inspectors found a defect in the circuit board.",
+      "sourcePart": 6,
+      "tags": ["manufacturing"]
+    },
+    {
+      "term": "deficiency",
+      "pos": "noun",
+      "definition": "a lack or shortage of something needed",
+      "example": "The audit revealed a deficiency in the current safety procedures.",
+      "sourcePart": 7,
+      "tags": ["manufacturing", "office"]
+    },
+    {
+      "term": "delegate",
+      "pos": "verb",
+      "definition": "to assign responsibility or tasks to another person",
+      "example": "Managers should delegate routine tasks to junior staff.",
+      "sourcePart": 6,
+      "tags": ["hr", "office"]
+    },
+    {
+      "term": "demonstrate",
+      "pos": "verb",
+      "definition": "to show how something works or is done",
+      "example": "The sales representative will demonstrate the new software features.",
+      "sourcePart": 4,
+      "tags": ["marketing", "technology"]
+    },
+    {
+      "term": "department",
+      "pos": "noun",
+      "definition": "a division within an organization",
+      "example": "Please forward the invoice to the accounting department.",
+      "sourcePart": 3,
+      "tags": ["office"]
+    },
+    {
+      "term": "deposit",
+      "pos": "noun",
+      "definition": "an initial partial payment to secure a purchase",
+      "example": "A deposit of five hundred dollars is required to reserve the venue.",
+      "sourcePart": 5,
+      "tags": ["finance", "real-estate"]
+    },
+    {
+      "term": "designate",
+      "pos": "verb",
+      "definition": "to officially assign a role or purpose",
+      "example": "The parking lot was designated for employee use only.",
+      "sourcePart": 6,
+      "tags": ["office"]
+    },
+    {
+      "term": "develop",
+      "pos": "verb",
+      "definition": "to create or improve something over time",
+      "example": "The firm plans to develop a new line of eco-friendly products.",
+      "sourcePart": 6,
+      "tags": ["manufacturing", "technology"]
+    },
+    {
+      "term": "diploma",
+      "pos": "noun",
+      "definition": "a certificate awarded upon completing a course of study",
+      "example": "Applicants must hold a diploma in business administration.",
+      "sourcePart": 7,
+      "tags": ["training", "hr"]
+    },
+    {
+      "term": "directory",
+      "pos": "noun",
+      "definition": "a listing of names, addresses, or information",
+      "example": "You can find her extension number in the company directory.",
+      "sourcePart": 7,
+      "tags": ["office", "communication"]
+    },
+    {
+      "term": "discontinue",
+      "pos": "verb",
+      "definition": "to stop producing or offering something",
+      "example": "The manufacturer decided to discontinue the older model.",
+      "sourcePart": 5,
+      "tags": ["manufacturing", "retail"]
+    },
+    {
+      "term": "discount",
+      "pos": "noun",
+      "definition": "a reduction in the usual price",
+      "example": "Members receive a ten-percent discount on all purchases.",
+      "sourcePart": 1,
+      "tags": ["retail", "finance"]
+    },
+    {
+      "term": "dismiss",
+      "pos": "verb",
+      "definition": "to terminate someone's employment",
+      "example": "The employee was dismissed for repeated policy violations.",
+      "sourcePart": 5,
+      "tags": ["hr", "legal"]
+    },
+    {
+      "term": "dispatch",
+      "pos": "verb",
+      "definition": "to send goods or personnel to a destination",
+      "example": "The warehouse will dispatch your order within two business days.",
+      "sourcePart": 5,
+      "tags": ["logistics"]
+    },
+    {
+      "term": "durable",
+      "pos": "adjective",
+      "definition": "able to withstand wear and last a long time",
+      "example": "These durable containers are ideal for overseas shipping.",
+      "sourcePart": 5,
+      "tags": ["manufacturing", "logistics"]
+    },
+    {
+      "term": "efficient",
+      "pos": "adjective",
+      "definition": "achieving results with minimal waste of time or resources",
+      "example": "The new workflow is far more efficient than the old process.",
+      "sourcePart": 5,
+      "tags": ["office", "manufacturing"]
+    },
+    {
+      "term": "eligible",
+      "pos": "adjective",
+      "definition": "meeting the requirements to participate or receive",
+      "example": "Full-time employees are eligible for health insurance benefits.",
+      "sourcePart": 5,
+      "tags": ["hr"]
+    },
+    {
+      "term": "emphasize",
+      "pos": "verb",
+      "definition": "to give special importance to something",
+      "example": "The director emphasized the need for stricter quality controls.",
+      "sourcePart": 6,
+      "tags": ["communication"]
+    },
+    {
+      "term": "employ",
+      "pos": "verb",
+      "definition": "to hire someone for paid work",
+      "example": "The factory employs over three hundred workers.",
+      "sourcePart": 5,
+      "tags": ["hr"]
+    },
+    {
+      "term": "encounter",
+      "pos": "verb",
+      "definition": "to unexpectedly come across a situation or problem",
+      "example": "Customers may encounter brief delays during the system upgrade.",
+      "sourcePart": 6,
+      "tags": ["technology", "office"]
+    },
+    {
+      "term": "endorse",
+      "pos": "verb",
+      "definition": "to publicly support or approve something",
+      "example": "Several industry leaders endorsed the new safety regulations.",
+      "sourcePart": 6,
+      "tags": ["marketing", "legal"]
+    },
+    {
+      "term": "enhance",
+      "pos": "verb",
+      "definition": "to improve the quality or value of something",
+      "example": "Renovations were made to enhance the hotel's guest experience.",
+      "sourcePart": 5,
+      "tags": ["hospitality"]
+    },
+    {
+      "term": "enroll",
+      "pos": "verb",
+      "definition": "to register or sign up for a program",
+      "example": "Employees can enroll in the professional development course online.",
+      "sourcePart": 5,
+      "tags": ["training", "hr"]
+    },
+    {
+      "term": "enterprise",
+      "pos": "noun",
+      "definition": "a business organization or venture",
+      "example": "The grant supports small enterprises in the technology sector.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "equipped",
+      "pos": "adjective",
+      "definition": "provided with the necessary tools or features",
+      "example": "Each conference room is equipped with a projector and microphone.",
+      "sourcePart": 5,
+      "tags": ["office", "event"]
+    },
+    {
+      "term": "establish",
+      "pos": "verb",
+      "definition": "to set up or create something formally",
+      "example": "The company was established in nineteen ninety-five.",
+      "sourcePart": 6,
+      "tags": ["office"]
+    },
+    {
+      "term": "evaluate",
+      "pos": "verb",
+      "definition": "to assess the quality or value of something",
+      "example": "Supervisors evaluate employee performance twice a year.",
+      "sourcePart": 6,
+      "tags": ["hr", "training"]
+    },
+    {
+      "term": "exceed",
+      "pos": "verb",
+      "definition": "to go beyond a set limit or expectation",
+      "example": "Revenue this quarter exceeded our original projections.",
+      "sourcePart": 5,
+      "tags": ["finance"]
+    },
+    {
+      "term": "exclusive",
+      "pos": "adjective",
+      "definition": "limited to a particular group or available only to few",
+      "example": "Premium members enjoy exclusive access to the executive lounge.",
+      "sourcePart": 5,
+      "tags": ["marketing", "hospitality"]
+    },
+    {
+      "term": "exempt",
+      "pos": "adjective",
+      "definition": "freed from a rule or obligation that applies to others",
+      "example": "Non-profit organizations are exempt from certain taxes.",
+      "sourcePart": 5,
+      "tags": ["legal", "finance"]
+    },
+    {
+      "term": "expenditure",
+      "pos": "noun",
+      "definition": "the amount of money spent on something",
+      "example": "Annual expenditure on marketing increased by fifteen percent.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "expire",
+      "pos": "verb",
+      "definition": "to reach the end of a period of validity",
+      "example": "The warranty on this appliance will expire next month.",
+      "sourcePart": 5,
+      "tags": ["retail", "legal"]
+    },
+    {
+      "term": "extension",
+      "pos": "noun",
+      "definition": "additional time or an extra part added to something",
+      "example": "The client requested a two-week extension on the project deadline.",
+      "sourcePart": 3,
+      "tags": ["office", "communication"]
+    },
+    {
+      "term": "enforce",
+      "pos": "verb",
+      "definition": "to ensure that rules or laws are obeyed",
+      "example": "Security staff will enforce the new visitor identification policy.",
+      "sourcePart": 5,
+      "tags": ["legal", "office"]
+    },
+    {
+      "term": "facilitate",
+      "pos": "verb",
+      "definition": "to make a process easier or more efficient",
+      "example": "The new software will facilitate online collaboration among teams.",
+      "sourcePart": 6,
+      "tags": ["technology"]
+    },
+    {
+      "term": "familiarize",
+      "pos": "verb",
+      "definition": "to make someone aware of or accustomed to something",
+      "example": "New hires should familiarize themselves with the employee handbook.",
+      "sourcePart": 6,
+      "tags": ["training", "hr"]
+    },
+    {
+      "term": "feasible",
+      "pos": "adjective",
+      "definition": "possible and practical to achieve",
+      "example": "The board determined that expanding overseas was financially feasible.",
+      "sourcePart": 5,
+      "tags": ["finance"]
+    },
+    {
+      "term": "finalize",
+      "pos": "verb",
+      "definition": "to complete the last details of a plan or agreement",
+      "example": "We need to finalize the contract before the end of the week.",
+      "sourcePart": 5,
+      "tags": ["legal", "office"]
+    },
+    {
+      "term": "fiscal",
+      "pos": "adjective",
+      "definition": "relating to government or company finances",
+      "example": "The fiscal year ends on March thirty-first.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "fluctuate",
+      "pos": "verb",
+      "definition": "to rise and fall irregularly",
+      "example": "Raw material prices tend to fluctuate throughout the year.",
+      "sourcePart": 5,
+      "tags": ["finance", "manufacturing"]
+    },
+    {
+      "term": "fluctuation",
+      "pos": "noun",
+      "definition": "an irregular rise and fall in amount or level",
+      "example": "Currency fluctuation affected our profit margins this quarter.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "forecast",
+      "pos": "noun",
+      "definition": "a prediction of future trends or conditions",
+      "example": "The sales forecast for next quarter looks very promising.",
+      "sourcePart": 7,
+      "tags": ["finance", "marketing"]
+    },
+    {
+      "term": "forfeit",
+      "pos": "verb",
+      "definition": "to lose a right or possession as a penalty",
+      "example": "Late applicants will forfeit their registration deposit.",
+      "sourcePart": 5,
+      "tags": ["legal", "finance"]
+    },
+    {
+      "term": "forthcoming",
+      "pos": "adjective",
+      "definition": "about to happen or appear in the near future",
+      "example": "Details about the forthcoming merger will be announced Friday.",
+      "sourcePart": 5,
+      "tags": ["communication", "finance"]
+    },
+    {
+      "term": "forward",
+      "pos": "verb",
+      "definition": "to send a message or document on to another person",
+      "example": "Please forward the meeting agenda to all department heads.",
+      "sourcePart": 2,
+      "tags": ["communication", "office"]
+    },
+    {
+      "term": "fragile",
+      "pos": "adjective",
+      "definition": "easily broken or damaged",
+      "example": "Fragile items must be packed with extra protective material.",
+      "sourcePart": 1,
+      "tags": ["logistics"]
+    },
+    {
+      "term": "franchise",
+      "pos": "noun",
+      "definition": "a license to operate a business under a brand name",
+      "example": "She opened a franchise of the popular coffee chain downtown.",
+      "sourcePart": 7,
+      "tags": ["retail", "finance"]
+    },
+    {
+      "term": "freight",
+      "pos": "noun",
+      "definition": "goods transported in bulk by truck, train, or ship",
+      "example": "The freight arrived at the port two days ahead of schedule.",
+      "sourcePart": 7,
+      "tags": ["logistics"]
+    },
+    {
+      "term": "frequently",
+      "pos": "adverb",
+      "definition": "occurring often or at short intervals",
+      "example": "The shuttle bus runs frequently between the airport and the hotel.",
+      "sourcePart": 5,
+      "tags": ["travel"]
+    },
+    {
+      "term": "fulfill",
+      "pos": "verb",
+      "definition": "to carry out or complete a task or order",
+      "example": "The warehouse is working overtime to fulfill holiday orders.",
+      "sourcePart": 5,
+      "tags": ["logistics", "retail"]
+    },
+    {
+      "term": "fund",
+      "pos": "verb",
+      "definition": "to provide money for a project or organization",
+      "example": "The government will fund research into renewable energy sources.",
+      "sourcePart": 5,
+      "tags": ["finance"]
+    },
+    {
+      "term": "furnish",
+      "pos": "verb",
+      "definition": "to supply or provide something needed",
+      "example": "Applicants are asked to furnish two professional references.",
+      "sourcePart": 6,
+      "tags": ["hr", "real-estate"]
+    },
+    {
+      "term": "formulate",
+      "pos": "verb",
+      "definition": "to create or devise a plan or strategy",
+      "example": "The committee will formulate a policy on remote work arrangements.",
+      "sourcePart": 6,
+      "tags": ["office"]
+    },
+    {
+      "term": "gauge",
+      "pos": "verb",
+      "definition": "to measure or assess the level of something",
+      "example": "The survey was designed to gauge customer satisfaction levels.",
+      "sourcePart": 6,
+      "tags": ["marketing"]
+    },
+    {
+      "term": "generate",
+      "pos": "verb",
+      "definition": "to produce or create something",
+      "example": "The marketing campaign generated significant interest from investors.",
+      "sourcePart": 5,
+      "tags": ["marketing", "finance"]
+    },
+    {
+      "term": "generous",
+      "pos": "adjective",
+      "definition": "larger or more than expected; willing to give",
+      "example": "The company offers a generous benefits package to all employees.",
+      "sourcePart": 5,
+      "tags": ["hr"]
+    },
+    {
+      "term": "genuine",
+      "pos": "adjective",
+      "definition": "truly what it is claimed to be; authentic",
+      "example": "Please verify that the signature on the contract is genuine.",
+      "sourcePart": 5,
+      "tags": ["legal"]
+    },
+    {
+      "term": "glance",
+      "pos": "noun",
+      "definition": "a quick or brief look at something",
+      "example": "At first glance, the quarterly report showed positive trends.",
+      "sourcePart": 7,
+      "tags": ["office"]
+    },
+    {
+      "term": "glimpse",
+      "pos": "noun",
+      "definition": "a brief or partial view of something",
+      "example": "The preview gave attendees a glimpse of the upcoming product line.",
+      "sourcePart": 4,
+      "tags": ["marketing", "event"]
+    },
+    {
+      "term": "gradually",
+      "pos": "adverb",
+      "definition": "happening slowly over a period of time",
+      "example": "The company gradually expanded into international markets.",
+      "sourcePart": 5,
+      "tags": ["office"]
+    },
+    {
+      "term": "grant",
+      "pos": "noun",
+      "definition": "a sum of money given for a specific purpose",
+      "example": "The startup received a government grant for product development.",
+      "sourcePart": 7,
+      "tags": ["finance"]
+    },
+    {
+      "term": "grasp",
+      "pos": "verb",
+      "definition": "to understand something fully",
+      "example": "New employees need time to grasp the company procedures.",
+      "sourcePart": 5,
+      "tags": ["training"]
+    },
+    {
+      "term": "gratitude",
+      "pos": "noun",
+      "definition": "a feeling of thankfulness and appreciation",
+      "example": "The director expressed gratitude to the volunteers at the event.",
+      "sourcePart": 7,
+      "tags": ["communication", "event"]
+    },
+    {
+      "term": "grievance",
+      "pos": "noun",
+      "definition": "a formal complaint about unfair treatment",
+      "example": "Employees may file a grievance through the human resources office.",
+      "sourcePart": 7,
+      "tags": ["hr", "legal"]
+    },
+    {
+      "term": "groundbreaking",
+      "pos": "adjective",
+      "definition": "innovative and introducing new ideas or methods",
+      "example": "The lab announced a groundbreaking discovery in battery technology.",
+      "sourcePart": 6,
+      "tags": ["technology"]
+    },
+    {
+      "term": "guarantee",
+      "pos": "noun",
+      "definition": "a formal promise that a product or service will perform",
+      "example": "All appliances come with a two-year manufacturer guarantee.",
+      "sourcePart": 5,
+      "tags": ["retail", "manufacturing"]
+    },
+    {
+      "term": "guidelines",
+      "pos": "noun",
+      "definition": "recommended rules or instructions for a procedure",
+      "example": "Please review the safety guidelines before entering the facility.",
+      "sourcePart": 7,
+      "tags": ["office", "manufacturing"]
+    },
+    {
+      "term": "garment",
+      "pos": "noun",
+      "definition": "an item of clothing",
+      "example": "The factory produces garments for several well-known fashion brands.",
+      "sourcePart": 7,
+      "tags": ["manufacturing", "retail"]
+    },
+    {
+      "term": "gallery",
+      "pos": "noun",
+      "definition": "a room or building for displaying works of art",
+      "example": "The corporate lobby features a gallery of local artwork.",
+      "sourcePart": 3,
+      "tags": ["event", "hospitality"]
+    },
+    {
+      "term": "gathering",
+      "pos": "noun",
+      "definition": "an assembly of people for a particular purpose",
+      "example": "The annual gathering of shareholders will be held next Tuesday.",
+      "sourcePart": 3,
+      "tags": ["event"]
+    },
+    {
+      "term": "globalization",
+      "pos": "noun",
+      "definition": "the process of business becoming international in scope",
+      "example": "Globalization has opened new markets for domestic manufacturers.",
+      "sourcePart": 7,
+      "tags": ["finance", "logistics"]
+    }
+  ]
+}

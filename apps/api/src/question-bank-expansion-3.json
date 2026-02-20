@@ -1,0 +1,4030 @@
+{
+  "questions": [
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Where should I submit the invoice?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the finance office on Level 2."
+        },
+        {
+          "key": "B",
+          "text": "The invoice has ten pages."
+        },
+        {
+          "key": "C",
+          "text": "Our finance team met yesterday."
+        },
+        {
+          "key": "D",
+          "text": "The office moved last year."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "When can your team finish the purchase order?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "B",
+          "text": "Tuesday by end of day."
+        },
+        {
+          "key": "C",
+          "text": "The purchase order has ten pages."
+        },
+        {
+          "key": "D",
+          "text": "Our operations team met yesterday."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Who is responsible for approving the vendor list?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our sales team met yesterday."
+        },
+        {
+          "key": "B",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "C",
+          "text": "The sales manager approves it."
+        },
+        {
+          "key": "D",
+          "text": "The vendor list has ten pages."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Could you send me the latest forecast file today?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The forecast file has ten pages."
+        },
+        {
+          "key": "B",
+          "text": "Our marketing team met yesterday."
+        },
+        {
+          "key": "C",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "D",
+          "text": "Sure, I will share the forecast file before noon."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Do we need to revise the status report before Friday?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, legal asked us to update it first."
+        },
+        {
+          "key": "B",
+          "text": "The status report has ten pages."
+        },
+        {
+          "key": "C",
+          "text": "Our HR team met yesterday."
+        },
+        {
+          "key": "D",
+          "text": "The office moved last year."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Where should I submit the training plan?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "B",
+          "text": "At the IT office on Level 2."
+        },
+        {
+          "key": "C",
+          "text": "The training plan has ten pages."
+        },
+        {
+          "key": "D",
+          "text": "Our IT team met yesterday."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "When can your team finish the audit sheet?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our logistics team met yesterday."
+        },
+        {
+          "key": "B",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "C",
+          "text": "Tuesday by end of day."
+        },
+        {
+          "key": "D",
+          "text": "The audit sheet has ten pages."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Who is responsible for approving the proposal?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The proposal has ten pages."
+        },
+        {
+          "key": "B",
+          "text": "Our procurement team met yesterday."
+        },
+        {
+          "key": "C",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "D",
+          "text": "The procurement manager approves it."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Could you send me the latest risk log today?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sure, I will share the risk log before noon."
+        },
+        {
+          "key": "B",
+          "text": "The risk log has ten pages."
+        },
+        {
+          "key": "C",
+          "text": "Our support team met yesterday."
+        },
+        {
+          "key": "D",
+          "text": "The office moved last year."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Do we need to revise the shipment form before Friday?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "B",
+          "text": "Yes, legal asked us to update it first."
+        },
+        {
+          "key": "C",
+          "text": "The shipment form has ten pages."
+        },
+        {
+          "key": "D",
+          "text": "Our design team met yesterday."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Where should I submit the invoice?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our finance team met yesterday."
+        },
+        {
+          "key": "B",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "C",
+          "text": "At the finance office on Level 2."
+        },
+        {
+          "key": "D",
+          "text": "The invoice has ten pages."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "When can your team finish the purchase order?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The purchase order has ten pages."
+        },
+        {
+          "key": "B",
+          "text": "Our operations team met yesterday."
+        },
+        {
+          "key": "C",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "D",
+          "text": "Tuesday by end of day."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Who is responsible for approving the vendor list?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The sales manager approves it."
+        },
+        {
+          "key": "B",
+          "text": "The vendor list has ten pages."
+        },
+        {
+          "key": "C",
+          "text": "Our sales team met yesterday."
+        },
+        {
+          "key": "D",
+          "text": "The office moved last year."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Could you send me the latest forecast file today?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "B",
+          "text": "Sure, I will share the forecast file before noon."
+        },
+        {
+          "key": "C",
+          "text": "The forecast file has ten pages."
+        },
+        {
+          "key": "D",
+          "text": "Our marketing team met yesterday."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Do we need to revise the status report before Friday?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our HR team met yesterday."
+        },
+        {
+          "key": "B",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "C",
+          "text": "Yes, legal asked us to update it first."
+        },
+        {
+          "key": "D",
+          "text": "The status report has ten pages."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Where should I submit the training plan?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The training plan has ten pages."
+        },
+        {
+          "key": "B",
+          "text": "Our IT team met yesterday."
+        },
+        {
+          "key": "C",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "D",
+          "text": "At the IT office on Level 2."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "When can your team finish the audit sheet?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tuesday by end of day."
+        },
+        {
+          "key": "B",
+          "text": "The audit sheet has ten pages."
+        },
+        {
+          "key": "C",
+          "text": "Our logistics team met yesterday."
+        },
+        {
+          "key": "D",
+          "text": "The office moved last year."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 4,
+      "stem": "Who is responsible for approving the proposal?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "B",
+          "text": "The procurement manager approves it."
+        },
+        {
+          "key": "C",
+          "text": "The proposal has ten pages."
+        },
+        {
+          "key": "D",
+          "text": "Our procurement team met yesterday."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Could you send me the latest risk log today?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our support team met yesterday."
+        },
+        {
+          "key": "B",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "C",
+          "text": "Sure, I will share the risk log before noon."
+        },
+        {
+          "key": "D",
+          "text": "The risk log has ten pages."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Do we need to revise the shipment form before Friday?",
+      "explanation": "Choose the response that best matches the question type and intent.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The shipment form has ten pages."
+        },
+        {
+          "key": "B",
+          "text": "Our design team met yesterday."
+        },
+        {
+          "key": "C",
+          "text": "The office moved last year."
+        },
+        {
+          "key": "D",
+          "text": "Yes, legal asked us to update it first."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "In a conversation, the speakers discuss operations planning for the Seoul branch. What concern is mentioned?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "A key risk log is still missing updated figures."
+        },
+        {
+          "key": "B",
+          "text": "The Seoul office has been closed permanently."
+        },
+        {
+          "key": "C",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "D",
+          "text": "No action is required before next quarter."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What does the woman suggest doing first regarding the training plan?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "B",
+          "text": "Requesting a revised training plan from the sales team."
+        },
+        {
+          "key": "C",
+          "text": "The Tokyo office has been closed permanently."
+        },
+        {
+          "key": "D",
+          "text": "The team decided to cancel the project immediately."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What will the man probably do next after the discussion?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "B",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "C",
+          "text": "He will email a confirmation to stakeholders."
+        },
+        {
+          "key": "D",
+          "text": "The Taipei office has been closed permanently."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "In a conversation, the speakers discuss HR planning for the Bangkok branch. What concern is mentioned?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The Bangkok office has been closed permanently."
+        },
+        {
+          "key": "B",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "C",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "D",
+          "text": "A key shipment form is still missing updated figures."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What does the woman suggest doing first regarding the audit sheet?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Requesting a revised audit sheet from the IT team."
+        },
+        {
+          "key": "B",
+          "text": "The Jakarta office has been closed permanently."
+        },
+        {
+          "key": "C",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "D",
+          "text": "No action is required before next quarter."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What will the man probably do next after the discussion?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "B",
+          "text": "He will email a confirmation to stakeholders."
+        },
+        {
+          "key": "C",
+          "text": "The Manila office has been closed permanently."
+        },
+        {
+          "key": "D",
+          "text": "The team decided to cancel the project immediately."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "In a conversation, the speakers discuss procurement planning for the Hanoi branch. What concern is mentioned?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "B",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "C",
+          "text": "A key invoice is still missing updated figures."
+        },
+        {
+          "key": "D",
+          "text": "The Hanoi office has been closed permanently."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What does the woman suggest doing first regarding the proposal?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The Sydney office has been closed permanently."
+        },
+        {
+          "key": "B",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "C",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "D",
+          "text": "Requesting a revised proposal from the support team."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What will the man probably do next after the discussion?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "He will email a confirmation to stakeholders."
+        },
+        {
+          "key": "B",
+          "text": "The Auckland office has been closed permanently."
+        },
+        {
+          "key": "C",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "D",
+          "text": "No action is required before next quarter."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "In a conversation, the speakers discuss finance planning for the Singapore branch. What concern is mentioned?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "B",
+          "text": "A key purchase order is still missing updated figures."
+        },
+        {
+          "key": "C",
+          "text": "The Singapore office has been closed permanently."
+        },
+        {
+          "key": "D",
+          "text": "The team decided to cancel the project immediately."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What does the woman suggest doing first regarding the risk log?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "B",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "C",
+          "text": "Requesting a revised risk log from the operations team."
+        },
+        {
+          "key": "D",
+          "text": "The Seoul office has been closed permanently."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What will the man probably do next after the discussion?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The Tokyo office has been closed permanently."
+        },
+        {
+          "key": "B",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "C",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "D",
+          "text": "He will email a confirmation to stakeholders."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "In a conversation, the speakers discuss marketing planning for the Taipei branch. What concern is mentioned?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "A key vendor list is still missing updated figures."
+        },
+        {
+          "key": "B",
+          "text": "The Taipei office has been closed permanently."
+        },
+        {
+          "key": "C",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "D",
+          "text": "No action is required before next quarter."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 4,
+      "stem": "What does the woman suggest doing first regarding the shipment form?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "B",
+          "text": "Requesting a revised shipment form from the HR team."
+        },
+        {
+          "key": "C",
+          "text": "The Bangkok office has been closed permanently."
+        },
+        {
+          "key": "D",
+          "text": "The team decided to cancel the project immediately."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "conversation-detail",
+      "difficulty": 3,
+      "stem": "What will the man probably do next after the discussion?",
+      "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "The team decided to cancel the project immediately."
+        },
+        {
+          "key": "B",
+          "text": "No action is required before next quarter."
+        },
+        {
+          "key": "C",
+          "text": "He will email a confirmation to stakeholders."
+        },
+        {
+          "key": "D",
+          "text": "The Jakarta office has been closed permanently."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "A recorded announcement for the Taipei office explains building access. What should listeners do by Monday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "B",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "C",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "D",
+          "text": "Submit the required update to the marketing coordinator."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "A recorded announcement for the Bangkok office explains staff orientation. What should listeners do by Tuesday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Submit the required update to the HR coordinator."
+        },
+        {
+          "key": "B",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "C",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "D",
+          "text": "Contact the external vendor for approval."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 4,
+      "stem": "A recorded announcement for the Jakarta office explains system migration. What should listeners do by Wednesday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "B",
+          "text": "Submit the required update to the IT coordinator."
+        },
+        {
+          "key": "C",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "D",
+          "text": "Skip the process if the schedule is busy."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "A recorded announcement for the Manila office explains service outage. What should listeners do by Thursday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "B",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "C",
+          "text": "Submit the required update to the logistics coordinator."
+        },
+        {
+          "key": "D",
+          "text": "Wait for printed instructions next month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 3,
+      "stem": "A recorded announcement for the Hanoi office explains safety drill. What should listeners do by Friday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "B",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "C",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "D",
+          "text": "Submit the required update to the procurement coordinator."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 4,
+      "stem": "A recorded announcement for the Sydney office explains building access. What should listeners do by Monday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Submit the required update to the support coordinator."
+        },
+        {
+          "key": "B",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "C",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "D",
+          "text": "Contact the external vendor for approval."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "A recorded announcement for the Auckland office explains staff orientation. What should listeners do by Tuesday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "B",
+          "text": "Submit the required update to the design coordinator."
+        },
+        {
+          "key": "C",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "D",
+          "text": "Skip the process if the schedule is busy."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "A recorded announcement for the Singapore office explains system migration. What should listeners do by Wednesday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "B",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "C",
+          "text": "Submit the required update to the finance coordinator."
+        },
+        {
+          "key": "D",
+          "text": "Wait for printed instructions next month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 4,
+      "stem": "A recorded announcement for the Seoul office explains service outage. What should listeners do by Thursday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "B",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "C",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "D",
+          "text": "Submit the required update to the operations coordinator."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 2,
+      "stem": "A recorded announcement for the Tokyo office explains safety drill. What should listeners do by Friday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Submit the required update to the sales coordinator."
+        },
+        {
+          "key": "B",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "C",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "D",
+          "text": "Contact the external vendor for approval."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 3,
+      "stem": "A recorded announcement for the Taipei office explains building access. What should listeners do by Monday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "B",
+          "text": "Submit the required update to the marketing coordinator."
+        },
+        {
+          "key": "C",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "D",
+          "text": "Skip the process if the schedule is busy."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 4,
+      "stem": "A recorded announcement for the Bangkok office explains staff orientation. What should listeners do by Tuesday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "B",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "C",
+          "text": "Submit the required update to the HR coordinator."
+        },
+        {
+          "key": "D",
+          "text": "Wait for printed instructions next month."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 2,
+      "stem": "A recorded announcement for the Jakarta office explains system migration. What should listeners do by Wednesday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "B",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "C",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "D",
+          "text": "Submit the required update to the IT coordinator."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-detail",
+      "difficulty": 3,
+      "stem": "A recorded announcement for the Manila office explains service outage. What should listeners do by Thursday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Submit the required update to the logistics coordinator."
+        },
+        {
+          "key": "B",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "C",
+          "text": "Skip the process if the schedule is busy."
+        },
+        {
+          "key": "D",
+          "text": "Contact the external vendor for approval."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "talk-purpose",
+      "difficulty": 4,
+      "stem": "A recorded announcement for the Hanoi office explains safety drill. What should listeners do by Friday?",
+      "explanation": "Identify required action and operational detail in the talk.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Contact the external vendor for approval."
+        },
+        {
+          "key": "B",
+          "text": "Submit the required update to the procurement coordinator."
+        },
+        {
+          "key": "C",
+          "text": "Wait for printed instructions next month."
+        },
+        {
+          "key": "D",
+          "text": "Skip the process if the schedule is busy."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "The invoice must be submitted ___ Tuesday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Our marketing team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "Please notify me as soon as the updated status report ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for purchase order.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "The risk log must be submitted ___ Monday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "Our procurement team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "Please notify me as soon as the updated vendor list ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for shipment form.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "The audit sheet must be submitted ___ Friday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "Our operations team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "Please notify me as soon as the updated invoice ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for proposal.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "The status report must be submitted ___ Thursday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Our IT team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "Please notify me as soon as the updated risk log ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for training plan.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "The vendor list must be submitted ___ Wednesday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "Our design team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "Please notify me as soon as the updated audit sheet ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for forecast file.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "The invoice must be submitted ___ Tuesday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "Our marketing team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "Please notify me as soon as the updated status report ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for purchase order.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "The risk log must be submitted ___ Monday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Our procurement team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "Please notify me as soon as the updated vendor list ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for shipment form.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "The audit sheet must be submitted ___ Friday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "Our operations team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "Please notify me as soon as the updated invoice ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for proposal.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "The status report must be submitted ___ Thursday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "Our IT team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 3,
+      "stem": "Please notify me as soon as the updated risk log ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 4,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for training plan.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 2,
+      "stem": "The vendor list must be submitted ___ Wednesday afternoon.",
+      "explanation": "Use the preposition that correctly marks a deadline.",
+      "options": [
+        {
+          "key": "A",
+          "text": "from"
+        },
+        {
+          "key": "B",
+          "text": "unless"
+        },
+        {
+          "key": "C",
+          "text": "by"
+        },
+        {
+          "key": "D",
+          "text": "during"
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 3,
+      "stem": "Our design team resolved the issue quickly and communicated ___ with clients.",
+      "explanation": "Choose the adverb form that modifies the verb.",
+      "options": [
+        {
+          "key": "A",
+          "text": "clear"
+        },
+        {
+          "key": "B",
+          "text": "clarity"
+        },
+        {
+          "key": "C",
+          "text": "clearer"
+        },
+        {
+          "key": "D",
+          "text": "clearly"
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "grammar",
+      "difficulty": 4,
+      "stem": "Please notify me as soon as the updated audit sheet ___.",
+      "explanation": "Use present simple after 'as soon as' for future timing.",
+      "options": [
+        {
+          "key": "A",
+          "text": "arrives"
+        },
+        {
+          "key": "B",
+          "text": "arrive"
+        },
+        {
+          "key": "C",
+          "text": "arrival"
+        },
+        {
+          "key": "D",
+          "text": "arrivingly"
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "vocabulary",
+      "difficulty": 2,
+      "stem": "Because of stricter audits, the company adopted a more ___ approval process for forecast file.",
+      "explanation": "Choose the adjective that best fits business context.",
+      "options": [
+        {
+          "key": "A",
+          "text": "transparence"
+        },
+        {
+          "key": "B",
+          "text": "transparent"
+        },
+        {
+          "key": "C",
+          "text": "transparency"
+        },
+        {
+          "key": "D",
+          "text": "transparently"
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo (Seoul office): The HR team updated the training plan process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "B",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "C",
+          "text": "Please review the new training plan checklist before Monday."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby has new chairs."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo (Tokyo office): The IT team updated the vendor list process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "B",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "C",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "D",
+          "text": "Please review the new vendor list checklist before Tuesday."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo (Taipei office): The logistics team updated the shipment form process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please review the new shipment form checklist before Wednesday."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "C",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "D",
+          "text": "The weekly newsletter is colorful."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo (Bangkok office): The procurement team updated the audit sheet process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "B",
+          "text": "Please review the new audit sheet checklist before Thursday."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "D",
+          "text": "Our branch opened in 2018."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo (Jakarta office): The support team updated the forecast file process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "B",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "C",
+          "text": "Please review the new forecast file checklist before Friday."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby has new chairs."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo (Manila office): The design team updated the invoice process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "B",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "C",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "D",
+          "text": "Please review the new invoice checklist before Monday."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo (Hanoi office): The finance team updated the proposal process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please review the new proposal checklist before Tuesday."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "C",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "D",
+          "text": "The weekly newsletter is colorful."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo (Sydney office): The operations team updated the status report process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "B",
+          "text": "Please review the new status report checklist before Wednesday."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "D",
+          "text": "Our branch opened in 2018."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo (Auckland office): The sales team updated the purchase order process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "B",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "C",
+          "text": "Please review the new purchase order checklist before Thursday."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby has new chairs."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo (Singapore office): The marketing team updated the risk log process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "B",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "C",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "D",
+          "text": "Please review the new risk log checklist before Friday."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo (Seoul office): The HR team updated the training plan process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please review the new training plan checklist before Monday."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "C",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "D",
+          "text": "The weekly newsletter is colorful."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo (Tokyo office): The IT team updated the vendor list process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "B",
+          "text": "Please review the new vendor list checklist before Tuesday."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "D",
+          "text": "Our branch opened in 2018."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo (Taipei office): The logistics team updated the shipment form process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "B",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "C",
+          "text": "Please review the new shipment form checklist before Wednesday."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby has new chairs."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo (Bangkok office): The procurement team updated the audit sheet process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "B",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "C",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "D",
+          "text": "Please review the new audit sheet checklist before Thursday."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo (Jakarta office): The support team updated the forecast file process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please review the new forecast file checklist before Friday."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "C",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "D",
+          "text": "The weekly newsletter is colorful."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo (Manila office): The design team updated the invoice process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "B",
+          "text": "Please review the new invoice checklist before Monday."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "D",
+          "text": "Our branch opened in 2018."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo (Hanoi office): The finance team updated the proposal process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "B",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "C",
+          "text": "Please review the new proposal checklist before Tuesday."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby has new chairs."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo (Sydney office): The operations team updated the status report process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "B",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "C",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "D",
+          "text": "Please review the new status report checklist before Wednesday."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo (Auckland office): The sales team updated the purchase order process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please review the new purchase order checklist before Thursday."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "C",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "D",
+          "text": "The weekly newsletter is colorful."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo (Singapore office): The marketing team updated the risk log process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "B",
+          "text": "Please review the new risk log checklist before Friday."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "D",
+          "text": "Our branch opened in 2018."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo (Seoul office): The HR team updated the training plan process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "B",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "C",
+          "text": "Please review the new training plan checklist before Monday."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby has new chairs."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo (Tokyo office): The IT team updated the vendor list process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "B",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "C",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "D",
+          "text": "Please review the new vendor list checklist before Tuesday."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "Memo (Taipei office): The logistics team updated the shipment form process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Please review the new shipment form checklist before Wednesday."
+        },
+        {
+          "key": "B",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "C",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "D",
+          "text": "The weekly newsletter is colorful."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 4,
+      "stem": "Memo (Bangkok office): The procurement team updated the audit sheet process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "B",
+          "text": "Please review the new audit sheet checklist before Thursday."
+        },
+        {
+          "key": "C",
+          "text": "The office lobby has new chairs."
+        },
+        {
+          "key": "D",
+          "text": "Our branch opened in 2018."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Memo (Jakarta office): The support team updated the forecast file process this week. ___",
+      "explanation": "Choose the sentence that logically continues the internal memo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Our branch opened in 2018."
+        },
+        {
+          "key": "B",
+          "text": "The weekly newsletter is colorful."
+        },
+        {
+          "key": "C",
+          "text": "Please review the new forecast file checklist before Friday."
+        },
+        {
+          "key": "D",
+          "text": "The office lobby has new chairs."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Bangkok): \"The logistics team revised the shipment form workflow and reduced turnaround time by 18%.\" What is the main benefit?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "B",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "C",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "D",
+          "text": "Processing now finishes faster than before."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Jakarta): \"The procurement team revised the audit sheet workflow and reduced turnaround time by 18%.\" What can be inferred?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The updated workflow improved operational efficiency."
+        },
+        {
+          "key": "B",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "C",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "D",
+          "text": "The change applies to one person only."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Manila): \"The support team revised the forecast file workflow and reduced turnaround time by 18%.\" Why was this update announced?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "B",
+          "text": "To inform teams about a required process change."
+        },
+        {
+          "key": "C",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "D",
+          "text": "Only external vendors can use the workflow."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Hanoi): \"The design team revised the invoice workflow and reduced turnaround time by 18%.\" What should staff do next?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "B",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "C",
+          "text": "Follow the revised workflow for future tasks."
+        },
+        {
+          "key": "D",
+          "text": "The process was canceled after review."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Sydney): \"The finance team revised the proposal workflow and reduced turnaround time by 18%.\" What is most likely true?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "B",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "C",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "D",
+          "text": "The new process is already in effect."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Auckland): \"The operations team revised the status report workflow and reduced turnaround time by 18%.\" What is the main benefit?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Processing now finishes faster than before."
+        },
+        {
+          "key": "B",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "C",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "D",
+          "text": "The change applies to one person only."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Singapore): \"The sales team revised the purchase order workflow and reduced turnaround time by 18%.\" What can be inferred?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "B",
+          "text": "The updated workflow improved operational efficiency."
+        },
+        {
+          "key": "C",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "D",
+          "text": "Only external vendors can use the workflow."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Seoul): \"The marketing team revised the risk log workflow and reduced turnaround time by 18%.\" Why was this update announced?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "B",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "C",
+          "text": "To inform teams about a required process change."
+        },
+        {
+          "key": "D",
+          "text": "The process was canceled after review."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Tokyo): \"The HR team revised the training plan workflow and reduced turnaround time by 18%.\" What should staff do next?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "B",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "C",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "D",
+          "text": "Follow the revised workflow for future tasks."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Taipei): \"The IT team revised the vendor list workflow and reduced turnaround time by 18%.\" What is most likely true?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The new process is already in effect."
+        },
+        {
+          "key": "B",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "C",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "D",
+          "text": "The change applies to one person only."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Bangkok): \"The logistics team revised the shipment form workflow and reduced turnaround time by 18%.\" What is the main benefit?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "B",
+          "text": "Processing now finishes faster than before."
+        },
+        {
+          "key": "C",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "D",
+          "text": "Only external vendors can use the workflow."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Jakarta): \"The procurement team revised the audit sheet workflow and reduced turnaround time by 18%.\" What can be inferred?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "B",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "C",
+          "text": "The updated workflow improved operational efficiency."
+        },
+        {
+          "key": "D",
+          "text": "The process was canceled after review."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Manila): \"The support team revised the forecast file workflow and reduced turnaround time by 18%.\" Why was this update announced?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "B",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "C",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "D",
+          "text": "To inform teams about a required process change."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Hanoi): \"The design team revised the invoice workflow and reduced turnaround time by 18%.\" What should staff do next?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Follow the revised workflow for future tasks."
+        },
+        {
+          "key": "B",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "C",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "D",
+          "text": "The change applies to one person only."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Sydney): \"The finance team revised the proposal workflow and reduced turnaround time by 18%.\" What is most likely true?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "B",
+          "text": "The new process is already in effect."
+        },
+        {
+          "key": "C",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "D",
+          "text": "Only external vendors can use the workflow."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Auckland): \"The operations team revised the status report workflow and reduced turnaround time by 18%.\" What is the main benefit?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "B",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "C",
+          "text": "Processing now finishes faster than before."
+        },
+        {
+          "key": "D",
+          "text": "The process was canceled after review."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Singapore): \"The sales team revised the purchase order workflow and reduced turnaround time by 18%.\" What can be inferred?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "B",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "C",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "D",
+          "text": "The updated workflow improved operational efficiency."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Seoul): \"The marketing team revised the risk log workflow and reduced turnaround time by 18%.\" Why was this update announced?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "To inform teams about a required process change."
+        },
+        {
+          "key": "B",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "C",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "D",
+          "text": "The change applies to one person only."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Tokyo): \"The HR team revised the training plan workflow and reduced turnaround time by 18%.\" What should staff do next?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "B",
+          "text": "Follow the revised workflow for future tasks."
+        },
+        {
+          "key": "C",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "D",
+          "text": "Only external vendors can use the workflow."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Taipei): \"The IT team revised the vendor list workflow and reduced turnaround time by 18%.\" What is most likely true?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "B",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "C",
+          "text": "The new process is already in effect."
+        },
+        {
+          "key": "D",
+          "text": "The process was canceled after review."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Bangkok): \"The logistics team revised the shipment form workflow and reduced turnaround time by 18%.\" What is the main benefit?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "B",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "C",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "D",
+          "text": "Processing now finishes faster than before."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Jakarta): \"The procurement team revised the audit sheet workflow and reduced turnaround time by 18%.\" What can be inferred?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The updated workflow improved operational efficiency."
+        },
+        {
+          "key": "B",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "C",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "D",
+          "text": "The change applies to one person only."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Manila): \"The support team revised the forecast file workflow and reduced turnaround time by 18%.\" Why was this update announced?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "B",
+          "text": "To inform teams about a required process change."
+        },
+        {
+          "key": "C",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "D",
+          "text": "Only external vendors can use the workflow."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 4,
+      "stem": "Report excerpt (Hanoi): \"The design team revised the invoice workflow and reduced turnaround time by 18%.\" What should staff do next?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "B",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "C",
+          "text": "Follow the revised workflow for future tasks."
+        },
+        {
+          "key": "D",
+          "text": "The process was canceled after review."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "Report excerpt (Sydney): \"The finance team revised the proposal workflow and reduced turnaround time by 18%.\" What is most likely true?",
+      "explanation": "Select the option directly supported by the excerpt.",
+      "options": [
+        {
+          "key": "A",
+          "text": "The process was canceled after review."
+        },
+        {
+          "key": "B",
+          "text": "Only external vendors can use the workflow."
+        },
+        {
+          "key": "C",
+          "text": "The change applies to one person only."
+        },
+        {
+          "key": "D",
+          "text": "The new process is already in effect."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, employees are sorting invoice on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Staff are organizing invoice at a table."
+        },
+        {
+          "key": "B",
+          "text": "A customer is ordering lunch at a cafe."
+        },
+        {
+          "key": "C",
+          "text": "Passengers are boarding a train platform."
+        },
+        {
+          "key": "D",
+          "text": "Technicians are repairing a rooftop antenna."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, employees are sorting proposal on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Technicians are repairing a rooftop antenna."
+        },
+        {
+          "key": "B",
+          "text": "Staff are organizing proposal at a table."
+        },
+        {
+          "key": "C",
+          "text": "A customer is ordering lunch at a cafe."
+        },
+        {
+          "key": "D",
+          "text": "Passengers are boarding a train platform."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, employees are sorting status report on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Passengers are boarding a train platform."
+        },
+        {
+          "key": "B",
+          "text": "Technicians are repairing a rooftop antenna."
+        },
+        {
+          "key": "C",
+          "text": "Staff are organizing status report at a table."
+        },
+        {
+          "key": "D",
+          "text": "A customer is ordering lunch at a cafe."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, employees are sorting purchase order on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "A customer is ordering lunch at a cafe."
+        },
+        {
+          "key": "B",
+          "text": "Passengers are boarding a train platform."
+        },
+        {
+          "key": "C",
+          "text": "Technicians are repairing a rooftop antenna."
+        },
+        {
+          "key": "D",
+          "text": "Staff are organizing purchase order at a table."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, employees are sorting risk log on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Staff are organizing risk log at a table."
+        },
+        {
+          "key": "B",
+          "text": "A customer is ordering lunch at a cafe."
+        },
+        {
+          "key": "C",
+          "text": "Passengers are boarding a train platform."
+        },
+        {
+          "key": "D",
+          "text": "Technicians are repairing a rooftop antenna."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, employees are sorting training plan on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Technicians are repairing a rooftop antenna."
+        },
+        {
+          "key": "B",
+          "text": "Staff are organizing training plan at a table."
+        },
+        {
+          "key": "C",
+          "text": "A customer is ordering lunch at a cafe."
+        },
+        {
+          "key": "D",
+          "text": "Passengers are boarding a train platform."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, employees are sorting vendor list on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Passengers are boarding a train platform."
+        },
+        {
+          "key": "B",
+          "text": "Technicians are repairing a rooftop antenna."
+        },
+        {
+          "key": "C",
+          "text": "Staff are organizing vendor list at a table."
+        },
+        {
+          "key": "D",
+          "text": "A customer is ordering lunch at a cafe."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, employees are sorting shipment form on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "A customer is ordering lunch at a cafe."
+        },
+        {
+          "key": "B",
+          "text": "Passengers are boarding a train platform."
+        },
+        {
+          "key": "C",
+          "text": "Technicians are repairing a rooftop antenna."
+        },
+        {
+          "key": "D",
+          "text": "Staff are organizing shipment form at a table."
+        }
+      ],
+      "correctKey": "D"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, employees are sorting audit sheet on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Staff are organizing audit sheet at a table."
+        },
+        {
+          "key": "B",
+          "text": "A customer is ordering lunch at a cafe."
+        },
+        {
+          "key": "C",
+          "text": "Passengers are boarding a train platform."
+        },
+        {
+          "key": "D",
+          "text": "Technicians are repairing a rooftop antenna."
+        }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, employees are sorting forecast file on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Technicians are repairing a rooftop antenna."
+        },
+        {
+          "key": "B",
+          "text": "Staff are organizing forecast file at a table."
+        },
+        {
+          "key": "C",
+          "text": "A customer is ordering lunch at a cafe."
+        },
+        {
+          "key": "D",
+          "text": "Passengers are boarding a train platform."
+        }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "In the photo, employees are sorting invoice on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "Passengers are boarding a train platform."
+        },
+        {
+          "key": "B",
+          "text": "Technicians are repairing a rooftop antenna."
+        },
+        {
+          "key": "C",
+          "text": "Staff are organizing invoice at a table."
+        },
+        {
+          "key": "D",
+          "text": "A customer is ordering lunch at a cafe."
+        }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 3,
+      "stem": "In the photo, employees are sorting proposal on a worktable.",
+      "explanation": "Choose the statement that best describes the scene.",
+      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+      "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
+      "options": [
+        {
+          "key": "A",
+          "text": "A customer is ordering lunch at a cafe."
+        },
+        {
+          "key": "B",
+          "text": "Passengers are boarding a train platform."
+        },
+        {
+          "key": "C",
+          "text": "Technicians are repairing a rooftop antenna."
+        },
+        {
+          "key": "D",
+          "text": "Staff are organizing proposal at a table."
+        }
+      ],
+      "correctKey": "D"
+    }
+  ]
+}

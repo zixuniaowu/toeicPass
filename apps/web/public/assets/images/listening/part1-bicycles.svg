@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" fill="none">
+  <rect width="960" height="540" fill="#F2F6EA"/>
+  <rect x="80" y="120" width="800" height="14" rx="7" fill="#7AA35A"/>
+  <rect x="100" y="134" width="8" height="260" fill="#7AA35A"/>
+  <rect x="850" y="134" width="8" height="260" fill="#7AA35A"/>
+  <circle cx="250" cy="330" r="62" fill="#7B9DD4"/>
+  <circle cx="430" cy="330" r="62" fill="#6E8BC3"/>
+  <circle cx="610" cy="330" r="62" fill="#5E79AF"/>
+  <circle cx="250" cy="330" r="24" fill="#F8FBFF"/>
+  <circle cx="430" cy="330" r="24" fill="#F8FBFF"/>
+  <circle cx="610" cy="330" r="24" fill="#F8FBFF"/>
+  <rect x="210" y="240" width="80" height="30" rx="12" fill="#4D689C"/>
+  <rect x="390" y="240" width="80" height="30" rx="12" fill="#4D689C"/>
+  <rect x="570" y="240" width="80" height="30" rx="12" fill="#4D689C"/>
+  <text x="80" y="505" fill="#425B2B" font-family="Arial" font-size="34" font-weight="700">Part 1 Photo: Bicycles parked near fence</text>
+</svg>
