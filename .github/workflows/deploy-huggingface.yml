@@ -105,26 +105,38 @@ jobs:
           git clean -fd
 
           if [[ "${HF_REPO_TYPE}" == "space" ]]; then
-            tmp_readme="$(mktemp)"
-            awk 'BEGIN{skip=0}
-              NR==1 && $0=="---" {skip=1; next}
-              skip==1 && $0=="---" {skip=0; next}
-              skip==1 {next}
-              {print}
-            ' README.md > "${tmp_readme}"
-            cat > README.md <<EOF
----
-title: toeicPass
-emoji: 📘
-colorFrom: blue
-colorTo: indigo
-sdk: ${HF_SPACE_SDK}
-app_port: 7860
-pinned: false
----
+            python - <<'PY'
+            import os
+            from pathlib import Path
 
-EOF
-            cat "${tmp_readme}" >> README.md
+            path = Path("README.md")
+            body = path.read_text(encoding="utf-8")
+
+            if body.startswith("---\n"):
+              lines = body.splitlines()
+              end_idx = None
+              for idx, line in enumerate(lines[1:], start=1):
+                if line.strip() == "---":
+                  end_idx = idx
+                  break
+              if end_idx is not None:
+                body = "\n".join(lines[end_idx + 1 :]).lstrip("\n")
+
+            header = "\n".join([
+              "---",
+              "title: toeicPass",
+              "emoji: 📘",
+              "colorFrom: blue",
+              "colorTo: indigo",
+              f"sdk: {os.environ.get('HF_SPACE_SDK', 'docker')}",
+              "app_port: 7860",
+              "pinned: false",
+              "---",
+              "",
+              "",
+            ])
+            path.write_text(header + body, encoding="utf-8")
+            PY
           fi
 
           # Track large media with Git LFS for HF Hub limits.
