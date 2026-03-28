@@ -1,4 +1,5 @@
 // Session and Authentication Types
+export type Locale = "zh" | "ja";
 export type LoginResponse = { accessToken: string; tenantCode: string };
 export type SessionMode = "diagnostic" | "practice" | "mock";
 export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "shadowing" | "mock" | "mistakes" | "vocab" | "writing" | "settings";
@@ -202,17 +203,10 @@ export const ALL_PARTS = [1, 2, 3, 4, 5, 6, 7] as const;
 export const DIFFICULTY_OPTIONS = [1, 2, 3, 4, 5] as const;
 
 export const TABS: Array<{ key: ViewTab; label: string }> = [
-  { key: "dashboard", label: "概览" },
-  { key: "listening", label: "听力" },
-  { key: "grammar", label: "语法填空" },
-  { key: "textcompletion", label: "段落填空" },
-  { key: "reading", label: "阅读理解" },
   { key: "shadowing", label: "跟读练习" },
   { key: "mock", label: "模拟考试" },
-  { key: "mistakes", label: "错题库" },
+  { key: "mistakes", label: "错题集" },
   { key: "vocab", label: "背单词" },
-  { key: "writing", label: "写作练习" },
-  { key: "settings", label: "设置" },
 ];
 
 export const ROOT_CAUSE_OPTIONS = [

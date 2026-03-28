@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
-import type { MistakeLibraryItem } from "../types";
+import type { Locale, MistakeLibraryItem } from "../types";
 import * as api from "../lib/api";
 
 const normalizeOptionKey = (value: unknown): "A" | "B" | "C" | "D" => {
@@ -64,8 +64,10 @@ const normalizeMistakeItem = (raw: MistakeLibraryItem, index: number): MistakeLi
 export function useMistakes(
   ensureSession: () => Promise<string | null>,
   getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
-  setMessage: (msg: string) => void
+  setMessage: (msg: string) => void,
+  locale: Locale,
 ) {
+  const byLocale = (zh: string, ja: string) => (locale === "ja" ? ja : zh);
   const [mistakeLibrary, setMistakeLibrary] = useState<MistakeLibraryItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [partFilter, setPartFilter] = useState<string>("all");
@@ -93,12 +95,17 @@ export function useMistakes(
           Object.fromEntries(safeItems.map((item) => [item.latestAttemptItemId, item.latestNote?.rootCause ?? ""]))
         );
       } catch (error) {
-        setMessage(`加载错题库异常: ${error instanceof Error ? error.message : String(error)}`);
+        setMessage(
+          byLocale(
+            `加载错题库异常: ${error instanceof Error ? error.message : String(error)}`,
+            `ミスノート読み込みエラー: ${error instanceof Error ? error.message : String(error)}`,
+          ),
+        );
       } finally {
         setIsLoading(false);
       }
     },
-    [ensureSession, getRequestOptions, setMessage]
+    [ensureSession, getRequestOptions, locale, setMessage]
   );
 
   const updateNoteDraft = useCallback((itemId: string, note: string) => {
@@ -116,7 +123,7 @@ export function useMistakes(
 
       const note = (noteDraftMap[item.latestAttemptItemId] ?? "").trim();
       if (!note) {
-        setMessage("请先输入错题备注。");
+        setMessage(byLocale("请先输入错题备注。", "先に復習メモを入力してください。"));
         return false;
       }
 
@@ -131,21 +138,26 @@ export function useMistakes(
         );
 
         if (!result.success) {
-          setMessage(`保存错题备注失败: ${result.error}`);
+          setMessage(byLocale(`保存错题备注失败: ${result.error}`, `ミスノート保存失敗: ${result.error}`));
           return false;
         }
 
-        setMessage("错题备注已保存。");
+        setMessage(byLocale("错题备注已保存。", "復習メモを保存しました。"));
         await loadMistakes(token);
         return true;
       } catch (error) {
-        setMessage(`保存错题备注异常: ${error instanceof Error ? error.message : String(error)}`);
+        setMessage(
+          byLocale(
+            `保存错题备注异常: ${error instanceof Error ? error.message : String(error)}`,
+            `ミスノート保存エラー: ${error instanceof Error ? error.message : String(error)}`,
+          ),
+        );
         return false;
       } finally {
         setSavingId(null);
       }
     },
-    [ensureSession, getRequestOptions, noteDraftMap, rootCauseMap, setMessage, loadMistakes]
+    [ensureSession, getRequestOptions, noteDraftMap, rootCauseMap, locale, setMessage, loadMistakes]
   );
 
   const filteredMistakes = useMemo(() => {

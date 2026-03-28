@@ -16,7 +16,7 @@ const displayFont = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "toeicPass",
-  description: "TOEIC score improvement and IP test operations",
+  description: "英语口语强化",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

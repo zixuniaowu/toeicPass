@@ -10,6 +10,7 @@
     "import:ted-latest": "node scripts/pull-ted-latest-shadowing.js"
   },
   "dependencies": {
+    "kuromoji": "^0.1.2",
     "next": "^15.4.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

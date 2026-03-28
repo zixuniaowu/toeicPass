@@ -1,14 +1,16 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
-import type { VocabCard, VocabSummary } from "../types";
+import type { Locale, VocabCard, VocabSummary } from "../types";
 import * as api from "../lib/api";
 
 export function useVocab(
   ensureSession: () => Promise<string | null>,
   getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
-  setMessage: (msg: string) => void
+  setMessage: (msg: string) => void,
+  locale: Locale,
 ) {
+  const byLocale = (zh: string, ja: string) => (locale === "ja" ? ja : zh);
   const [cards, setCards] = useState<VocabCard[]>([]);
   const [summary, setSummary] = useState<VocabSummary | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,12 +30,17 @@ export function useVocab(
           setCards(payload.cards);
         }
       } catch (error) {
-        setMessage(`加载词卡异常: ${error instanceof Error ? error.message : String(error)}`);
+        setMessage(
+          byLocale(
+            `加载词卡异常: ${error instanceof Error ? error.message : String(error)}`,
+            `単語カード読み込みエラー: ${error instanceof Error ? error.message : String(error)}`,
+          ),
+        );
       } finally {
         setIsLoading(false);
       }
     },
-    [ensureSession, getRequestOptions, setMessage]
+    [ensureSession, getRequestOptions, locale, setMessage]
   );
 
   const toggleReveal = useCallback((cardId: string) => {
@@ -49,22 +56,27 @@ export function useVocab(
       try {
         const result = await api.gradeVocabularyCard(cardId, grade, getRequestOptions(token));
         if (!result.success) {
-          setMessage(`词卡评级失败: ${result.error}`);
+          setMessage(byLocale(`词卡评级失败: ${result.error}`, `カード評価失敗: ${result.error}`));
           return false;
         }
 
         setRevealMap((prev) => ({ ...prev, [cardId]: false }));
         await loadCards(token);
-        setMessage("词卡进度已更新。");
+        setMessage(byLocale("词卡进度已更新。", "カード進捗を更新しました。"));
         return true;
       } catch (error) {
-        setMessage(`词卡评级异常: ${error instanceof Error ? error.message : String(error)}`);
+        setMessage(
+          byLocale(
+            `词卡评级异常: ${error instanceof Error ? error.message : String(error)}`,
+            `カード評価エラー: ${error instanceof Error ? error.message : String(error)}`,
+          ),
+        );
         return false;
       } finally {
         setGradingCardId(null);
       }
     },
-    [ensureSession, getRequestOptions, setMessage, loadCards]
+    [ensureSession, getRequestOptions, locale, setMessage, loadCards]
   );
 
   const dueCards = useMemo(() => cards.filter((card) => card.due), [cards]);

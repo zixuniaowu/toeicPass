@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import type { SessionQuestion, OptionKey } from "../../types";
+import type { Locale, OptionKey, SessionQuestion } from "../../types";
 import { isListeningPart } from "../../types";
 import { AudioPlayer } from "../ui/AudioPlayer";
 import { SelectionPronunciation } from "../ui/SelectionPronunciation";
@@ -10,6 +10,7 @@ import styles from "./QuestionCard.module.css";
 
 interface QuestionCardProps {
   question: SessionQuestion;
+  locale?: Locale;
   selectedAnswer: OptionKey | undefined;
   isAnswerRevealed: boolean;
   onSelectAnswer: (key: OptionKey) => void;
@@ -44,6 +45,7 @@ function shouldShowPart1Image(question: SessionQuestion): boolean {
 
 export function QuestionCard({
   question,
+  locale = "zh",
   selectedAnswer,
   isAnswerRevealed,
   onSelectAnswer,
@@ -160,7 +162,7 @@ export function QuestionCard({
         </div>
       )}
 
-      <SelectionPronunciation scopeRef={textScopeRef} />
+      <SelectionPronunciation scopeRef={textScopeRef} locale={locale} />
     </div>
   );
 }

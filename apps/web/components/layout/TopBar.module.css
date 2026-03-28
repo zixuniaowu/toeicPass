@@ -124,6 +124,31 @@
   gap: var(--space-2);
 }
 
+.localeSwitch {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #cfdced;
+  border-radius: 999px;
+  background: #f7fbff;
+  padding: 2px;
+}
+
+.localeBtn {
+  border: none;
+  background: transparent;
+  color: #355171;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.localeBtnActive {
+  background: #0f61f2;
+  color: #fff;
+}
+
 .logout {
   border: 1px solid #cfdced;
   border-radius: 10px;
@@ -155,6 +180,7 @@
   .actions {
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .tabs {

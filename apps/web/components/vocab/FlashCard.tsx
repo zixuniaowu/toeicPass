@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { VocabCard } from "../../types";
+import type { Locale, VocabCard } from "../../types";
 import { annotateTerm } from "../../data/word-dictionary";
 import { getWordIpa } from "../../lib/pronunciation";
+import { translateText } from "../../lib/translate";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
 import styles from "./FlashCard.module.css";
 
 interface FlashCardProps {
+  locale: Locale;
   card: VocabCard;
   isRevealed: boolean;
   isGrading: boolean;
@@ -16,16 +18,65 @@ interface FlashCardProps {
   onGrade: (grade: number) => void;
 }
 
+const COPY = {
+  zh: {
+    currentCard: "当前词卡",
+    loadingIpa: "正在查询音标...",
+    noIpa: "暂无 IPA（可点下方朗读）",
+    dueReview: "到期复习",
+    nextDue: (dueAt: string) => `下次 ${dueAt}`,
+    hideMeaning: "隐藏释义",
+    showMeaning: "显示释义",
+    speakWord: "朗读单词",
+    speakExample: "朗读例句",
+    stop: "停止",
+    chineseDef: "中文释义",
+    japaneseDef: "日文释义",
+    noChineseDef: "词典暂未收录该词中文释义，可先看英文解释。",
+    translating: "翻译中...",
+    englishDef: "English Definition",
+    tags: (tags: string) => `Tags: ${tags}`,
+    unknown: "不认识",
+    familiar: "有点印象",
+    mastered: "完全掌握",
+  },
+  ja: {
+    currentCard: "現在のカード",
+    loadingIpa: "IPA を取得中...",
+    noIpa: "IPA なし（下の読み上げを利用できます）",
+    dueReview: "復習期限",
+    nextDue: (dueAt: string) => `次回 ${dueAt}`,
+    hideMeaning: "意味を隠す",
+    showMeaning: "意味を表示",
+    speakWord: "単語を再生",
+    speakExample: "例文を再生",
+    stop: "停止",
+    chineseDef: "中国語訳",
+    japaneseDef: "日本語訳",
+    noChineseDef: "辞書に中国語訳がありません。先に英語定義を確認してください。",
+    translating: "翻訳中...",
+    englishDef: "English Definition",
+    tags: (tags: string) => `Tags: ${tags}`,
+    unknown: "わからない",
+    familiar: "少し分かる",
+    mastered: "完全に覚えた",
+  },
+} as const;
+
 export function FlashCard({
+  locale,
   card,
   isRevealed,
   isGrading,
   onToggleReveal,
   onGrade,
 }: FlashCardProps) {
+  const copy = COPY[locale];
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [fallbackIpa, setFallbackIpa] = useState<string | null>(null);
   const [isLoadingIpa, setIsLoadingIpa] = useState(false);
+  const [localizedDefinition, setLocalizedDefinition] = useState<string | null>(null);
+  const [isTranslatingDefinition, setIsTranslatingDefinition] = useState(false);
   const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
   const termInfo = annotateTerm(card.term);
 
@@ -89,65 +140,100 @@ export function FlashCard({
   const hasChineseInDefinition = /[\u4e00-\u9fff]/.test(card.definition);
   const chineseDefinition = termInfo?.cn ?? (hasChineseInDefinition ? card.definition : null);
   const englishDefinition = hasChineseInDefinition ? null : card.definition;
+  const baseDefinition = chineseDefinition ?? englishDefinition ?? card.definition;
+
+  useEffect(() => {
+    if (locale !== "ja") {
+      setLocalizedDefinition(null);
+      setIsTranslatingDefinition(false);
+      return;
+    }
+    const sourceText = String(baseDefinition ?? "").trim();
+    if (!sourceText) {
+      setLocalizedDefinition(null);
+      setIsTranslatingDefinition(false);
+      return;
+    }
+    let cancelled = false;
+    setIsTranslatingDefinition(true);
+    void translateText(sourceText, "ja", /[\u4e00-\u9fff]/.test(sourceText) ? "zh-CN" : "en")
+      .then((result) => {
+        if (!cancelled) {
+          setLocalizedDefinition(result);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setIsTranslatingDefinition(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [baseDefinition, locale]);
 
   return (
     <div className={styles.card}>
       <div className={styles.header}>
         <div>
-          <p className={styles.label}>当前词卡</p>
+          <p className={styles.label}>{copy.currentCard}</p>
           <h2 className={styles.term}>{card.term}</h2>
           <p className={styles.ipa}>
-            {displayIpa ?? (isLoadingIpa ? "正在查询音标..." : "暂无 IPA（可点下方朗读）")}
+            {displayIpa ?? (isLoadingIpa ? copy.loadingIpa : copy.noIpa)}
           </p>
           <span className={styles.meta}>
             {card.pos} · Part {card.sourcePart}
           </span>
         </div>
         <Badge variant={card.due ? "warning" : "info"}>
-          {card.due ? "到期复习" : `下次 ${card.dueAt}`}
+          {card.due ? copy.dueReview : copy.nextDue(card.dueAt)}
         </Badge>
       </div>
 
       <Button variant="secondary" onClick={onToggleReveal}>
-        {isRevealed ? "隐藏释义" : "显示释义"}
+        {isRevealed ? copy.hideMeaning : copy.showMeaning}
       </Button>
 
       <div className={styles.pronounceRow}>
         <Button variant="secondary" onClick={() => speak(card.term)}>
-          朗读单词
+          {copy.speakWord}
         </Button>
         <Button variant="secondary" onClick={() => speak(card.example || card.term)}>
-          朗读例句
+          {copy.speakExample}
         </Button>
         <Button variant="secondary" onClick={stopSpeak} disabled={!isSpeaking}>
-          停止
+          {copy.stop}
         </Button>
       </div>
 
       {isRevealed && (
         <div className={styles.answer}>
-          <p className={styles.defLabel}>中文释义</p>
-          <p>{chineseDefinition ?? "词典暂未收录该词中文释义，可先看英文解释。"}</p>
+          <p className={styles.defLabel}>{locale === "ja" ? copy.japaneseDef : copy.chineseDef}</p>
+          <p>
+            {locale === "ja"
+              ? (isTranslatingDefinition ? copy.translating : (localizedDefinition ?? baseDefinition))
+              : (chineseDefinition ?? copy.noChineseDef)}
+          </p>
           {englishDefinition && (
             <>
-              <p className={styles.defLabel}>English Definition</p>
+              <p className={styles.defLabel}>{copy.englishDef}</p>
               <p>{englishDefinition}</p>
             </>
           )}
           <p className={styles.example}>{card.example}</p>
-          <p className={styles.tags}>Tags: {card.tags.join(", ")}</p>
+          <p className={styles.tags}>{copy.tags(card.tags.join(", "))}</p>
         </div>
       )}
 
       <div className={styles.gradeRow}>
         <Button variant="secondary" onClick={() => onGrade(1)} disabled={isGrading}>
-          不认识
+          {copy.unknown}
         </Button>
         <Button variant="secondary" onClick={() => onGrade(3)} disabled={isGrading}>
-          有点印象
+          {copy.familiar}
         </Button>
         <Button onClick={() => onGrade(5)} disabled={isGrading}>
-          完全掌握
+          {copy.mastered}
         </Button>
       </div>
     </div>

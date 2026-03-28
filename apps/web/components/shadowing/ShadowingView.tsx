@@ -1,8 +1,12 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef, type ChangeEvent } from "react";
+import type { Locale } from "../../types";
 import { SHADOWING_MATERIALS, type ShadowingMaterial } from "../../data/shadowing-materials";
+import { JAPANESE_SHADOWING_MATERIALS } from "../../data/japanese-shadowing-materials";
 import { annotateWords, type WordAnnotation } from "../../data/word-dictionary";
+import { getJapaneseReading } from "../../lib/japanese-reading";
+import { translateText } from "../../lib/translate";
 import tedLatestShadowing from "../../data/ted-latest-shadowing.json";
 import { Card, CardContent } from "../ui/Card";
 import { Button } from "../ui/Button";
@@ -11,6 +15,7 @@ import { SelectionPronunciation } from "../ui/SelectionPronunciation";
 import styles from "./ShadowingView.module.css";
 
 type ViewMode = "materials" | "practice" | "news" | "youtube";
+type TrainingLanguage = "en" | "ja";
 
 type CompareWord = {
   word: string;
@@ -50,7 +55,7 @@ type TedLatestSnapshot = {
 };
 
 // Normalize text for comparison: lowercase, remove punctuation
-function normalize(text: string): string[] {
+function normalizeEnglish(text: string): string[] {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9'\s-]/g, "")
@@ -58,10 +63,41 @@ function normalize(text: string): string[] {
     .filter(Boolean);
 }
 
+function normalizeJapanese(text: string): string[] {
+  return Array.from(
+    String(text ?? "")
+      .normalize("NFKC")
+      .replace(/[、。！？!?,，．「」『』（）()［］\[\]{}【】…・〜～―—\-_：;；"'`｀\s]/g, "")
+      .trim(),
+  ).filter(Boolean);
+}
+
+function normalizeByLanguage(text: string, language: TrainingLanguage): string[] {
+  return language === "ja" ? normalizeJapanese(text) : normalizeEnglish(text);
+}
+
+function containsKanji(text: string): boolean {
+  return /[一-龯々]/u.test(String(text ?? ""));
+}
+
+function annotateJapaneseWords(sentence: string): WordAnnotation[] {
+  const raw = String(sentence ?? "").trim();
+  if (!raw) {
+    return [];
+  }
+  const tokens = raw.match(/[ぁ-んァ-ヶ一-龯々ー]+|[A-Za-z0-9']+/g);
+  const words = (tokens && tokens.length > 0 ? tokens : [raw]).filter(Boolean);
+  return words.map((word) => ({ word, clean: word, cn: null, ipa: null }));
+}
+
 // Compare user's speech to original using word alignment
-function compareWords(original: string, spoken: string): { words: CompareWord[]; accuracy: number } {
-  const origWords = normalize(original);
-  const spokenWords = normalize(spoken);
+function compareWords(
+  original: string,
+  spoken: string,
+  language: TrainingLanguage,
+): { words: CompareWord[]; accuracy: number } {
+  const origWords = normalizeByLanguage(original, language);
+  const spokenWords = normalizeByLanguage(spoken, language);
   const result: CompareWord[] = [];
   let matchCount = 0;
 
@@ -526,9 +562,14 @@ function mergeSnapshotMaterials(
   return deduped.slice(0, 60);
 }
 
-export function ShadowingView() {
+export function ShadowingView({ locale }: { locale: Locale }) {
+  const isJa = locale === "ja";
+  const l = (zh: string, ja: string) => (isJa ? ja : zh);
+
+  const [trainingLanguage, setTrainingLanguage] = useState<TrainingLanguage>("en");
   const [viewMode, setViewMode] = useState<ViewMode>("materials");
   const [originMode, setOriginMode] = useState<ViewMode>("materials");
+  const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [activeMaterial, setActiveMaterial] = useState<ShadowingMaterial | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [alwaysShowTranslation, setAlwaysShowTranslation] = useState(false);
@@ -548,6 +589,7 @@ export function ShadowingView() {
   // Word annotation toggles
   const [showWordTranslation, setShowWordTranslation] = useState(false);
   const [showIPA, setShowIPA] = useState(false);
+  const [showReading, setShowReading] = useState(false);
   const selectionScopeRef = useRef<HTMLDivElement | null>(null);
   const [youtubeUrlInput, setYoutubeUrlInput] = useState("");
   const [youtubeTitleInput, setYoutubeTitleInput] = useState("");
@@ -561,6 +603,201 @@ export function ShadowingView() {
   const [materialProgressMap, setMaterialProgressMap] = useState<Record<string, MaterialProgressRecord>>({});
   const [videoStartSec, setVideoStartSec] = useState(0);
   const [videoEmbedNonce, setVideoEmbedNonce] = useState(0);
+  const [jpWordGlossMap, setJpWordGlossMap] = useState<Record<string, string>>({});
+  const translatingJpWordGlossRef = useRef<Set<string>>(new Set());
+  const [jpWordReadingMap, setJpWordReadingMap] = useState<Record<string, string>>({});
+  const translatingJpWordReadingRef = useRef<Set<string>>(new Set());
+  const [jaSentenceMap, setJaSentenceMap] = useState<Record<string, string>>({});
+  const translatingSentenceSetRef = useRef<Set<string>>(new Set());
+  const [jaWordGlossMap, setJaWordGlossMap] = useState<Record<string, string>>({});
+  const translatingWordGlossRef = useRef<Set<string>>(new Set());
+  const isJapaneseTraining = trainingLanguage === "ja";
+  const makeSentenceTranslationKey = useCallback(
+    (materialId: string, sentenceId: number, text: string) => `${materialId}::${sentenceId}::${text}`,
+    [],
+  );
+
+  const ensureJaSentenceTranslation = useCallback(
+    (material: ShadowingMaterial, sentence: { id: number; text: string; translation?: string }) => {
+      if (locale !== "ja" || trainingLanguage !== "en") {
+        return;
+      }
+      const key = makeSentenceTranslationKey(material.id, sentence.id, sentence.text);
+      if (jaSentenceMap[key] || translatingSentenceSetRef.current.has(key)) {
+        return;
+      }
+      translatingSentenceSetRef.current.add(key);
+      void translateText(sentence.text, "ja", "en")
+        .then(async (translated) => {
+          let resolved = String(translated ?? "").trim();
+          if (!resolved || resolved.toLowerCase() === sentence.text.trim().toLowerCase()) {
+            const zhSource = String(sentence.translation ?? "").trim();
+            if (zhSource) {
+              const translatedFromZh = await translateText(zhSource, "ja", "zh-CN");
+              const fromZh = String(translatedFromZh ?? "").trim();
+              resolved = fromZh && fromZh !== zhSource ? fromZh : "";
+            } else {
+              resolved = "";
+            }
+          }
+          if (resolved) {
+            setJaSentenceMap((prev) => ({ ...prev, [key]: resolved }));
+          }
+        })
+        .finally(() => {
+          translatingSentenceSetRef.current.delete(key);
+        });
+    },
+    [jaSentenceMap, locale, makeSentenceTranslationKey, trainingLanguage],
+  );
+
+  const getSentenceTranslation = useCallback(
+    (material: ShadowingMaterial, sentence: { id: number; text: string; translation?: string }) => {
+      if (trainingLanguage === "ja") {
+        return sentence.translation ?? "";
+      }
+      if (locale !== "ja") {
+        return sentence.translation ?? "";
+      }
+      const key = makeSentenceTranslationKey(material.id, sentence.id, sentence.text);
+      return jaSentenceMap[key] ?? sentence.translation ?? "";
+    },
+    [jaSentenceMap, locale, makeSentenceTranslationKey, trainingLanguage],
+  );
+
+  const makeWordGlossKey = useCallback((word: WordAnnotation) => {
+    return String(word.clean || word.word || "").toLowerCase().trim();
+  }, []);
+
+  const ensureJaWordGloss = useCallback(
+    (word: WordAnnotation) => {
+      if (locale !== "ja" || trainingLanguage !== "en") {
+        return;
+      }
+      const key = makeWordGlossKey(word);
+      if (!key || jaWordGlossMap[key] || translatingWordGlossRef.current.has(key)) {
+        return;
+      }
+      translatingWordGlossRef.current.add(key);
+      void translateText(key, "ja", "en")
+        .then(async (translated) => {
+          let resolved = String(translated ?? "").trim();
+          if (!resolved || resolved.toLowerCase() === key.toLowerCase()) {
+            const zhSource = String(word.cn ?? "").trim();
+            if (zhSource) {
+              const translatedFromZh = await translateText(zhSource, "ja", "zh-CN");
+              const fromZh = String(translatedFromZh ?? "").trim();
+              resolved = fromZh && fromZh !== zhSource ? fromZh : "";
+            } else {
+              resolved = "";
+            }
+          }
+          if (resolved) {
+            setJaWordGlossMap((prev) => ({ ...prev, [key]: resolved }));
+          }
+        })
+        .finally(() => {
+          translatingWordGlossRef.current.delete(key);
+        });
+    },
+    [jaWordGlossMap, locale, makeWordGlossKey, trainingLanguage],
+  );
+
+  const ensureJapaneseWordGloss = useCallback(
+    (word: WordAnnotation) => {
+      if (trainingLanguage !== "ja") {
+        return;
+      }
+      const key = makeWordGlossKey(word);
+      if (!key || jpWordGlossMap[key] || translatingJpWordGlossRef.current.has(key)) {
+        return;
+      }
+      translatingJpWordGlossRef.current.add(key);
+      void translateText(key, "zh-CN", "ja")
+        .then((translated) => {
+          const resolved = String(translated ?? "").trim();
+          if (resolved && resolved !== key) {
+            setJpWordGlossMap((prev) => ({ ...prev, [key]: resolved }));
+          }
+        })
+        .finally(() => {
+          translatingJpWordGlossRef.current.delete(key);
+        });
+    },
+    [jpWordGlossMap, makeWordGlossKey, trainingLanguage],
+  );
+
+  const ensureJapaneseWordReading = useCallback(
+    (word: WordAnnotation) => {
+      if (trainingLanguage !== "ja") {
+        return;
+      }
+      if (!containsKanji(word.word)) {
+        return;
+      }
+      const key = makeWordGlossKey(word);
+      if (!key || jpWordReadingMap[key] || translatingJpWordReadingRef.current.has(key)) {
+        return;
+      }
+      translatingJpWordReadingRef.current.add(key);
+      void getJapaneseReading(key)
+        .then((result) => {
+          const reading = String(result.readingText ?? "").trim();
+          if (reading && reading !== key) {
+            setJpWordReadingMap((prev) => ({ ...prev, [key]: reading }));
+          }
+        })
+        .finally(() => {
+          translatingJpWordReadingRef.current.delete(key);
+        });
+    },
+    [jpWordReadingMap, makeWordGlossKey, trainingLanguage],
+  );
+
+  const getWordGloss = useCallback(
+    (word: WordAnnotation): string | null => {
+      if (trainingLanguage === "ja") {
+        const key = makeWordGlossKey(word);
+        if (!key) {
+          return null;
+        }
+        return jpWordGlossMap[key] ?? null;
+      }
+      if (locale !== "ja") {
+        return word.cn ?? null;
+      }
+      const key = makeWordGlossKey(word);
+      if (!key) {
+        return word.cn ?? null;
+      }
+      return jaWordGlossMap[key] ?? word.cn ?? null;
+    },
+    [jaWordGlossMap, jpWordGlossMap, locale, makeWordGlossKey, trainingLanguage],
+  );
+
+  const getJapaneseWordReading = useCallback(
+    (word: WordAnnotation): string | null => {
+      if (trainingLanguage !== "ja") {
+        return null;
+      }
+      const key = makeWordGlossKey(word);
+      if (!key) {
+        return null;
+      }
+      return jpWordReadingMap[key] ?? null;
+    },
+    [jpWordReadingMap, makeWordGlossKey, trainingLanguage],
+  );
+
+  const getAnnotatedWords = useCallback(
+    (text: string) => {
+      if (trainingLanguage === "ja") {
+        return annotateJapaneseWords(text);
+      }
+      return annotateWords(text);
+    },
+    [trainingLanguage],
+  );
 
   // Cancel speech and recognition on unmount or material change
   useEffect(() => {
@@ -591,7 +828,7 @@ export function ShadowingView() {
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US";
+    utterance.lang = trainingLanguage === "ja" ? "ja-JP" : "en-US";
     utterance.rate = speechRate;
     utterance.pitch = 1;
     utterance.onstart = () => setIsSpeaking(true);
@@ -599,7 +836,7 @@ export function ShadowingView() {
     utterance.onerror = () => setIsSpeaking(false);
     utteranceRef.current = utterance;
     window.speechSynthesis.speak(utterance);
-  }, [speechRate]);
+  }, [speechRate, trainingLanguage]);
 
   const stopSpeaking = useCallback(() => {
     window.speechSynthesis?.cancel();
@@ -613,10 +850,22 @@ export function ShadowingView() {
     setIsRecording(false);
   }, []);
 
+  useEffect(() => {
+    stopSpeaking();
+    clearRecognition();
+    setActiveMaterial(null);
+    setViewMode("materials");
+    setCategoryFilter("all");
+    setShowIPA(false);
+    setShowReading(false);
+    setShowWordTranslation(false);
+    setAlwaysShowTranslation(false);
+  }, [clearRecognition, stopSpeaking, trainingLanguage]);
+
   const startRecording = useCallback((originalText: string) => {
     const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognitionAPI) {
-      setRecognizedText("浏览器不支持语音识别，请使用 Chrome 浏览器");
+      setRecognizedText(l("浏览器不支持语音识别，请使用 Chrome 浏览器", "ブラウザが音声認識に未対応です。Chrome を使用してください。"));
       return;
     }
 
@@ -624,7 +873,7 @@ export function ShadowingView() {
     stopSpeaking();
 
     const recognition = new SpeechRecognitionAPI();
-    recognition.lang = "en-US";
+    recognition.lang = trainingLanguage === "ja" ? "ja-JP" : "en-US";
     recognition.continuous = false;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
@@ -644,7 +893,7 @@ export function ShadowingView() {
 
       // If final result, do comparison
       if (event.results[event.results.length - 1].isFinal) {
-        const result = compareWords(originalText, transcript);
+        const result = compareWords(originalText, transcript, trainingLanguage);
         setCompareResult(result);
       }
     };
@@ -652,11 +901,11 @@ export function ShadowingView() {
     recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
       setIsRecording(false);
       if (event.error === "no-speech") {
-        setRecognizedText("未检测到语音，请再试一次");
+        setRecognizedText(l("未检测到语音，请再试一次", "音声が検出されませんでした。もう一度試してください。"));
       } else if (event.error === "not-allowed") {
-        setRecognizedText("麦克风权限被拒绝，请在浏览器设置中允许麦克风访问");
+        setRecognizedText(l("麦克风权限被拒绝，请在浏览器设置中允许麦克风访问", "マイク権限が拒否されました。ブラウザ設定で許可してください。"));
       } else {
-        setRecognizedText(`识别出错: ${event.error}`);
+        setRecognizedText(`${l("识别出错", "認識エラー")}: ${event.error}`);
       }
     };
 
@@ -666,7 +915,7 @@ export function ShadowingView() {
 
     recognitionRef.current = recognition;
     recognition.start();
-  }, [stopSpeaking]);
+  }, [l, stopSpeaking, trainingLanguage]);
 
   const stopRecording = useCallback(() => {
     recognitionRef.current?.stop();
@@ -771,7 +1020,7 @@ export function ShadowingView() {
   const handleImportTedLatestBatch = useCallback(() => {
     const { materials } = parseTedSnapshotMaterials();
     if (materials.length === 0) {
-      setYoutubeError("未找到 TED 批量材料。请先运行 npm run -w apps/web import:ted-latest");
+      setYoutubeError(l("未找到 TED 批量材料。请先运行 npm run -w apps/web import:ted-latest", "TED 一括素材が見つかりません。先に npm run -w apps/web import:ted-latest を実行してください。"));
       return;
     }
     setYoutubeError("");
@@ -809,6 +1058,104 @@ export function ShadowingView() {
     );
     persistMaterialProgress(activeMaterial.id, safeIndex, safeCompleted);
   }, [activeMaterial, completedSet, currentIndex, persistMaterialProgress]);
+
+  useEffect(() => {
+    if (locale !== "ja" || trainingLanguage !== "en" || !activeMaterial) {
+      return;
+    }
+    const around = [
+      activeMaterial.sentences[currentIndex - 1],
+      activeMaterial.sentences[currentIndex],
+      activeMaterial.sentences[currentIndex + 1],
+    ].filter((item): item is ShadowingMaterial["sentences"][number] => Boolean(item?.text));
+    around.forEach((sentence) => ensureJaSentenceTranslation(activeMaterial, sentence));
+  }, [activeMaterial, currentIndex, ensureJaSentenceTranslation, locale, trainingLanguage]);
+
+  useEffect(() => {
+    if (locale !== "ja" || trainingLanguage !== "en" || !activeMaterial || !alwaysShowTranslation) {
+      return;
+    }
+    activeMaterial.sentences.slice(0, 80).forEach((sentence) => {
+      ensureJaSentenceTranslation(activeMaterial, sentence);
+    });
+  }, [activeMaterial, alwaysShowTranslation, ensureJaSentenceTranslation, locale, trainingLanguage]);
+
+  useEffect(() => {
+    if (!activeMaterial || !showWordTranslation) {
+      return;
+    }
+    const currentSentence = activeMaterial.sentences[currentIndex];
+    if (!currentSentence?.text) {
+      return;
+    }
+    const words = getAnnotatedWords(currentSentence.text).slice(0, 24);
+    if (trainingLanguage === "ja") {
+      words.forEach((word) => ensureJapaneseWordGloss(word));
+      return;
+    }
+    if (locale === "ja") {
+      words.forEach((word) => ensureJaWordGloss(word));
+    }
+  }, [
+    activeMaterial,
+    currentIndex,
+    ensureJaWordGloss,
+    ensureJapaneseWordGloss,
+    getAnnotatedWords,
+    locale,
+    showWordTranslation,
+    trainingLanguage,
+  ]);
+
+  useEffect(() => {
+    if (trainingLanguage !== "ja" || !activeMaterial || !showReading) {
+      return;
+    }
+    const currentSentence = activeMaterial.sentences[currentIndex];
+    if (!currentSentence?.text) {
+      return;
+    }
+    getAnnotatedWords(currentSentence.text)
+      .slice(0, 24)
+      .forEach((word) => ensureJapaneseWordReading(word));
+  }, [
+    activeMaterial,
+    currentIndex,
+    ensureJapaneseWordReading,
+    getAnnotatedWords,
+    showReading,
+    trainingLanguage,
+  ]);
+
+  useEffect(() => {
+    if (locale !== "ja" || trainingLanguage !== "en" || !activeMaterial) {
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      const currentSentence = activeMaterial.sentences[currentIndex];
+      if (!currentSentence?.text) {
+        return;
+      }
+      ensureJaSentenceTranslation(activeMaterial, currentSentence);
+      if (showWordTranslation) {
+        getAnnotatedWords(currentSentence.text)
+          .slice(0, 24)
+          .forEach((word) => ensureJaWordGloss(word));
+      }
+    }, 1200);
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [
+    activeMaterial,
+    currentIndex,
+    ensureJaSentenceTranslation,
+    ensureJaWordGloss,
+    getAnnotatedWords,
+    locale,
+    showWordTranslation,
+    trainingLanguage,
+  ]);
 
   const handleNext = useCallback(() => {
     if (!activeMaterial) return;
@@ -855,7 +1202,7 @@ export function ShadowingView() {
     setYoutubeError("");
     const videoId = parseYoutubeVideoId(youtubeUrlInput);
     if (!videoId) {
-      setYoutubeError("请输入有效的 YouTube 链接或视频 ID。");
+      setYoutubeError(l("请输入有效的 YouTube 链接或视频 ID。", "有効な YouTube リンクまたは動画 ID を入力してください。"));
       return;
     }
     const { sentences, errors } = parseYoutubeScript(youtubeScriptInput);
@@ -864,11 +1211,11 @@ export function ShadowingView() {
       return;
     }
     if (sentences.length === 0) {
-      setYoutubeError("请至少输入一行句子脚本。");
+      setYoutubeError(l("请至少输入一行句子脚本。", "少なくとも 1 行のスクリプトを入力してください。"));
       return;
     }
 
-    const title = youtubeTitleInput.trim() || "YouTube 跟读";
+    const title = youtubeTitleInput.trim() || l("YouTube 跟读", "YouTube シャドーイング");
     const customMaterial: ShadowingMaterial = {
       id: `youtube-${videoId}-${Date.now()}`,
       title,
@@ -887,7 +1234,7 @@ export function ShadowingView() {
     setYoutubeError("");
     const input = youtubeUrlInput.trim();
     if (!input) {
-      setYoutubeError("请先输入 YouTube 链接或视频 ID。");
+      setYoutubeError(l("请先输入 YouTube 链接或视频 ID。", "先に YouTube リンクまたは動画 ID を入力してください。"));
       return;
     }
 
@@ -902,17 +1249,17 @@ export function ShadowingView() {
       });
       const payload = (await response.json()) as YoutubeImportResponse;
       if (!response.ok || !payload.success) {
-        setYoutubeError(withSubtitleFallbackHint(payload.error || "自动导入失败。"));
+        setYoutubeError(withSubtitleFallbackHint(payload.error || l("自动导入失败。", "自動インポートに失敗しました。")));
         return;
       }
       const videoId = payload.videoId ? String(payload.videoId) : parseYoutubeVideoId(input);
       const normalizedSentences = normalizeImportedSentences(payload.sentences);
       if (!videoId || normalizedSentences.length === 0) {
-        setYoutubeError("未获取到可用字幕。请换一个有英文字幕的视频，或改用 SRT/VTT 字幕文件导入。");
+        setYoutubeError(l("未获取到可用字幕。请换一个有英文字幕的视频，或改用 SRT/VTT 字幕文件导入。", "利用可能な字幕が取得できませんでした。英語字幕付き動画に変更するか、SRT/VTT ファイルを使ってください。"));
         return;
       }
 
-      const title = youtubeTitleInput.trim() || String(payload.title ?? "").trim() || "YouTube 跟读";
+      const title = youtubeTitleInput.trim() || String(payload.title ?? "").trim() || l("YouTube 跟读", "YouTube シャドーイング");
       const autoMaterial: ShadowingMaterial = {
         id: `youtube-${videoId}-${Date.now()}`,
         title,
@@ -928,11 +1275,11 @@ export function ShadowingView() {
       setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
       handleStart(autoMaterial);
     } catch (error) {
-      setYoutubeError(withSubtitleFallbackHint(error instanceof Error ? error.message : "自动导入失败。"));
+      setYoutubeError(withSubtitleFallbackHint(error instanceof Error ? error.message : l("自动导入失败。", "自動インポートに失敗しました。")));
     } finally {
       setYoutubeImporting(false);
     }
-  }, [handleStart, upsertYoutubeMaterial, youtubeTitleInput, youtubeUrlInput]);
+  }, [handleStart, l, upsertYoutubeMaterial, youtubeTitleInput, youtubeUrlInput]);
 
   const handleSubtitleFileImport = useCallback(async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -943,11 +1290,11 @@ export function ShadowingView() {
 
     setYoutubeError("");
     if (!/\.(srt|vtt)$/i.test(file.name)) {
-      setYoutubeError("仅支持 .srt 或 .vtt 字幕文件。");
+      setYoutubeError(l("仅支持 .srt 或 .vtt 字幕文件。", ".srt または .vtt 字幕ファイルのみ対応しています。"));
       return;
     }
     if (file.size > 2_000_000) {
-      setYoutubeError("字幕文件过大，请控制在 2MB 内。");
+      setYoutubeError(l("字幕文件过大，请控制在 2MB 内。", "字幕ファイルが大きすぎます。2MB 以内にしてください。"));
       return;
     }
 
@@ -955,7 +1302,7 @@ export function ShadowingView() {
     try {
       const subtitleText = await file.text();
       if (!subtitleText.trim()) {
-        setYoutubeError("字幕文件为空，请换一个文件。");
+        setYoutubeError(l("字幕文件为空，请换一个文件。", "字幕ファイルが空です。別のファイルを使用してください。"));
         return;
       }
 
@@ -975,13 +1322,13 @@ export function ShadowingView() {
       });
       const payload = (await response.json()) as YoutubeImportResponse;
       if (!response.ok || !payload.success) {
-        setYoutubeError(payload.error || "字幕文件导入失败。");
+        setYoutubeError(payload.error || l("字幕文件导入失败。", "字幕ファイルのインポートに失敗しました。"));
         return;
       }
 
       const normalizedSentences = normalizeImportedSentences(payload.sentences);
       if (normalizedSentences.length === 0) {
-        setYoutubeError("字幕文件里没有可用句子。");
+        setYoutubeError(l("字幕文件里没有可用句子。", "字幕ファイルに利用可能な文がありません。"));
         return;
       }
 
@@ -1002,17 +1349,17 @@ export function ShadowingView() {
       setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
       handleStart(importedMaterial);
     } catch (error) {
-      setYoutubeError(error instanceof Error ? error.message : "字幕文件导入失败。");
+      setYoutubeError(error instanceof Error ? error.message : l("字幕文件导入失败。", "字幕ファイルのインポートに失敗しました。"));
     } finally {
       setSubtitleFileImporting(false);
     }
-  }, [handleStart, upsertYoutubeMaterial, youtubeTitleInput, youtubeUrlInput]);
+  }, [handleStart, l, upsertYoutubeMaterial, youtubeTitleInput, youtubeUrlInput]);
 
   const handleTranscriptImport = useCallback(async () => {
     setYoutubeError("");
     const transcriptText = youtubeTranscriptInput.trim();
     if (!transcriptText) {
-      setYoutubeError("请先粘贴 transcript 内容。");
+      setYoutubeError(l("请先粘贴 transcript 内容。", "先に transcript テキストを貼り付けてください。"));
       return;
     }
 
@@ -1022,7 +1369,7 @@ export function ShadowingView() {
       return;
     }
     if (cues.length === 0) {
-      setYoutubeError("未识别到可用句子。请检查 transcript 格式。");
+      setYoutubeError(l("未识别到可用句子。请检查 transcript 格式。", "利用可能な文を認識できませんでした。transcript 形式を確認してください。"));
       return;
     }
 
@@ -1030,7 +1377,7 @@ export function ShadowingView() {
     try {
       const subtitleText = buildVttFromCues(cues);
       const maybeVideoId = parseYoutubeVideoId(youtubeUrlInput);
-      const fallbackTitle = youtubeTitleInput.trim() || "YouTube Transcript 跟读";
+      const fallbackTitle = youtubeTitleInput.trim() || l("YouTube Transcript 跟读", "YouTube Transcript シャドーイング");
       const response = await fetch("/api/youtube-subtitles", {
         method: "POST",
         headers: {
@@ -1045,13 +1392,13 @@ export function ShadowingView() {
       });
       const payload = (await response.json()) as YoutubeImportResponse;
       if (!response.ok || !payload.success) {
-        setYoutubeError(payload.error || "Transcript 导入失败。");
+        setYoutubeError(payload.error || l("Transcript 导入失败。", "Transcript のインポートに失敗しました。"));
         return;
       }
 
       const normalizedSentences = normalizeImportedSentences(payload.sentences);
       if (normalizedSentences.length === 0) {
-        setYoutubeError("Transcript 可解析，但未生成可练习句子。");
+        setYoutubeError(l("Transcript 可解析，但未生成可练习句子。", "Transcript は解析できましたが、練習用の文を生成できませんでした。"));
         return;
       }
 
@@ -1072,11 +1419,11 @@ export function ShadowingView() {
       setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
       handleStart(importedMaterial);
     } catch (error) {
-      setYoutubeError(error instanceof Error ? error.message : "Transcript 导入失败。");
+      setYoutubeError(error instanceof Error ? error.message : l("Transcript 导入失败。", "Transcript のインポートに失敗しました。"));
     } finally {
       setTranscriptImporting(false);
     }
-  }, [handleStart, upsertYoutubeMaterial, youtubeTitleInput, youtubeTranscriptInput, youtubeUrlInput]);
+  }, [handleStart, l, upsertYoutubeMaterial, youtubeTitleInput, youtubeTranscriptInput, youtubeUrlInput]);
 
   const jumpToSentenceVideo = useCallback((index: number) => {
     if (!activeMaterial?.youtubeVideoId) {
@@ -1136,31 +1483,49 @@ export function ShadowingView() {
     handleStart(material);
   }, [handleStart]);
 
-  // Category filter for materials
-  const [categoryFilter, setCategoryFilter] = useState<string>("all");
-
   const categories = [
-    { key: "all", label: "全部" },
-    { key: "speech", label: "演讲" },
-    { key: "drama", label: "美剧" },
-    { key: "ted", label: "TED" },
+    { key: "all", label: l("全部", "すべて") },
+    { key: "speech", label: isJapaneseTraining ? l("商务", "ビジネス") : l("演讲", "スピーチ") },
+    { key: "drama", label: isJapaneseTraining ? l("日常", "日常会話") : l("美剧", "ドラマ") },
+    { key: "ted", label: isJapaneseTraining ? l("演讲", "スピーチ") : "TED" },
   ];
 
+  const baseMaterials = isJapaneseTraining ? JAPANESE_SHADOWING_MATERIALS : SHADOWING_MATERIALS;
   const filteredMaterials = categoryFilter === "all"
-    ? SHADOWING_MATERIALS
-    : SHADOWING_MATERIALS.filter((m) => m.category === categoryFilter);
+    ? baseMaterials
+    : baseMaterials.filter((m) => m.category === categoryFilter);
   const tedSnapshot = parseTedSnapshotMaterials();
   const tedSnapshotGeneratedAt = tedSnapshot.generatedAt
     ? new Date(tedSnapshot.generatedAt).toLocaleString()
     : "";
+  const showEnglishExtraTabs = !isJapaneseTraining;
 
   // --- Material Selection Screen ---
-  if ((viewMode === "materials" || viewMode === "news" || viewMode === "youtube") && !activeMaterial) {
+  if ((viewMode === "materials" || (showEnglishExtraTabs && (viewMode === "news" || viewMode === "youtube"))) && !activeMaterial) {
     return (
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>跟读练习</h2>
-          <p className={styles.subtitle}>逐句跟读练习英语发音和语感，点击「🎙 开始跟读」录音并自动纠错</p>
+          <h2>{isJapaneseTraining ? l("日语口语强化", "日本語スピーキング強化") : l("英语口语强化", "英語スピーキング強化")}</h2>
+          <p className={styles.subtitle}>
+            {isJapaneseTraining
+              ? l("逐句跟读练习日语口语，点击「🎙 开始跟读」录音并自动纠错", "文ごとに日本語スピーキングを練習できます。「🎙 シャドーイング開始」で録音し自動チェックします。")
+              : l("逐句跟读练习英语发音和语感，点击「🎙 开始跟读」录音并自动纠错", "文ごとに英語スピーキングを練習できます。「🎙 シャドーイング開始」で録音し自動チェックします。")}
+          </p>
+        </div>
+
+        <div className={styles.categoryFilter}>
+          <button
+            className={`${styles.categoryBtn} ${trainingLanguage === "en" ? styles.categoryBtnActive : ""}`}
+            onClick={() => setTrainingLanguage("en")}
+          >
+            {l("英语口语强化", "英語スピーキング強化")}
+          </button>
+          <button
+            className={`${styles.categoryBtn} ${trainingLanguage === "ja" ? styles.categoryBtnActive : ""}`}
+            onClick={() => setTrainingLanguage("ja")}
+          >
+            {l("日语口语强化", "日本語スピーキング強化")}
+          </button>
         </div>
 
         {/* Tab switcher */}
@@ -1169,20 +1534,24 @@ export function ShadowingView() {
             className={`${styles.tab} ${viewMode === "materials" ? styles.tabActive : ""}`}
             onClick={() => setViewMode("materials")}
           >
-            经典材料 ({SHADOWING_MATERIALS.length})
+            {l("经典材料", "定番素材")} ({baseMaterials.length})
           </button>
-          <button
-            className={`${styles.tab} ${viewMode === "news" ? styles.tabActive : ""}`}
-            onClick={() => { setViewMode("news"); if (newsArticles.length === 0) loadNews(); }}
-          >
-            每日新闻
-          </button>
-          <button
-            className={`${styles.tab} ${viewMode === "youtube" ? styles.tabActive : ""}`}
-            onClick={() => setViewMode("youtube")}
-          >
-            YouTube 跟读
-          </button>
+          {showEnglishExtraTabs && (
+            <button
+              className={`${styles.tab} ${viewMode === "news" ? styles.tabActive : ""}`}
+              onClick={() => { setViewMode("news"); if (newsArticles.length === 0) loadNews(); }}
+            >
+              {l("每日新闻", "デイリーニュース")}
+            </button>
+          )}
+          {showEnglishExtraTabs && (
+            <button
+              className={`${styles.tab} ${viewMode === "youtube" ? styles.tabActive : ""}`}
+              onClick={() => setViewMode("youtube")}
+            >
+              {l("YouTube 跟读", "YouTube シャドーイング")}
+            </button>
+          )}
         </div>
 
         {viewMode === "materials" && (
@@ -1197,8 +1566,8 @@ export function ShadowingView() {
                 >
                   {cat.label}
                   {cat.key === "all"
-                    ? ` (${SHADOWING_MATERIALS.length})`
-                    : ` (${SHADOWING_MATERIALS.filter((m) => m.category === cat.key).length})`
+                    ? ` (${baseMaterials.length})`
+                    : ` (${baseMaterials.filter((m) => m.category === cat.key).length})`
                   }
                 </button>
               ))}
@@ -1208,18 +1577,18 @@ export function ShadowingView() {
               <Card key={material.id} className={styles.materialCard}>
                 <div className={styles.materialHeader}>
                   <h3>{material.title}</h3>
-                  <span className={styles.titleCn}>{material.titleCn}</span>
+                  <span className={styles.titleCn}>{isJa ? material.title : material.titleCn}</span>
                 </div>
                 <p className={styles.source}>{material.source}</p>
                 <div className={styles.materialMeta}>
                   <Badge variant={getDifficultyVariant(material.difficulty)}>
-                    {getDifficultyLabel(material.difficulty)}
+                    {getDifficultyLabel(material.difficulty, locale)}
                   </Badge>
-                  <Badge variant="info">{getCategoryLabel(material.category)}</Badge>
-                  <span className={styles.sentenceCount}>{material.sentences.length} 句</span>
+                  <Badge variant="info">{getCategoryLabel(material.category, locale)}</Badge>
+                  <span className={styles.sentenceCount}>{material.sentences.length} {l("句", "文")}</span>
                 </div>
                 <Button onClick={() => handleStart(material)} className={styles.startBtn}>
-                  开始跟读
+                  {l("开始跟读", "練習開始")}
                 </Button>
               </Card>
             ))}
@@ -1231,29 +1600,29 @@ export function ShadowingView() {
           <div>
             <div className={styles.newsHeader}>
               <Button variant="secondary" onClick={loadNews} disabled={isLoadingNews}>
-                {isLoadingNews ? "加载中..." : "刷新新闻"}
+                {isLoadingNews ? l("加载中...", "読み込み中...") : l("刷新新闻", "ニュース更新")}
               </Button>
             </div>
             {newsArticles.length === 0 && !isLoadingNews && (
-              <p className={styles.emptyNews}>点击「刷新新闻」获取今日英语新闻</p>
+              <p className={styles.emptyNews}>{l("点击「刷新新闻」获取今日英语新闻", "「ニュース更新」を押して今日の英語ニュースを取得")}</p>
             )}
             <div className={styles.materialGrid}>
               {newsArticles.map((article) => (
                 <Card key={article.id} className={styles.materialCard}>
                   <div className={styles.materialHeader}>
                     <h3>{article.title}</h3>
-                    <span className={styles.titleCn}>{article.titleCn}</span>
+                    <span className={styles.titleCn}>{isJa ? article.title : article.titleCn}</span>
                   </div>
                   <p className={styles.source}>{article.source} · {article.date}</p>
                   <div className={styles.materialMeta}>
                     <Badge variant={getDifficultyVariant(article.difficulty)}>
-                      {getDifficultyLabel(article.difficulty)}
+                      {getDifficultyLabel(article.difficulty, locale)}
                     </Badge>
-                    <Badge variant="info">新闻</Badge>
-                    <span className={styles.sentenceCount}>{article.sentences.length} 句</span>
+                    <Badge variant="info">{l("新闻", "ニュース")}</Badge>
+                    <span className={styles.sentenceCount}>{article.sentences.length} {l("句", "文")}</span>
                   </div>
                   <Button onClick={() => handleStartNews(article)} className={styles.startBtn}>
-                    开始跟读
+                    {l("开始跟读", "練習開始")}
                   </Button>
                 </Card>
               ))}
@@ -1266,11 +1635,11 @@ export function ShadowingView() {
             <CardContent>
               <div className={styles.youtubeFormGrid}>
                 <label className={styles.youtubeLabel}>
-                  <span>YouTube 链接 / 视频 ID</span>
+                  <span>{l("YouTube 链接 / 视频 ID", "YouTube リンク / 動画 ID")}</span>
                   <input
                     className={styles.youtubeInput}
                     type="text"
-                    placeholder="例如：https://www.youtube.com/watch?v=xxxxxxxxxxx"
+                    placeholder={l("例如：https://www.youtube.com/watch?v=xxxxxxxxxxx", "例：https://www.youtube.com/watch?v=xxxxxxxxxxx")}
                     value={youtubeUrlInput}
                     onChange={(e) => setYoutubeUrlInput(e.target.value)}
                   />
@@ -1283,26 +1652,26 @@ export function ShadowingView() {
                     onClick={handleAutoImportYoutube}
                     disabled={youtubeImporting}
                   >
-                    {youtubeImporting ? "自动导入中..." : "一键抓字幕并自动导入"}
+                    {youtubeImporting ? l("自动导入中...", "自動インポート中...") : l("一键抓字幕并自动导入", "字幕を取得して自動インポート")}
                   </Button>
                   <Button
                     variant="secondary"
                     onClick={handleImportTedLatestBatch}
                     disabled={youtubeImporting || tedSnapshot.materials.length === 0}
                   >
-                    一键导入 TED 最新10
+                    {l("一键导入 TED 最新10", "TED 最新10件を一括導入")}
                   </Button>
                 </div>
 
                 <div className={styles.youtubeHint}>
-                  <p>最省事：直接点「一键导入 TED 最新10」。</p>
-                  {tedSnapshotGeneratedAt && <p>TED 批量包生成时间：{tedSnapshotGeneratedAt}</p>}
+                  <p>{l("最省事：直接点「一键导入 TED 最新10」。", "最短手順：「TED 最新10件を一括導入」を押してください。")}</p>
+                  {tedSnapshotGeneratedAt && <p>{l("TED 批量包生成时间", "TED バッチ生成時刻")}：{tedSnapshotGeneratedAt}</p>}
                 </div>
 
                 <div className={styles.savedMaterialsBlock}>
-                  <h4>我的视频材料</h4>
+                  <h4>{l("我的视频材料", "マイ動画素材")}</h4>
                   {savedYoutubeMaterials.length === 0 ? (
-                    <p className={styles.savedEmpty}>还没有保存的材料。导入一个视频后会自动保存。</p>
+                    <p className={styles.savedEmpty}>{l("还没有保存的材料。导入一个视频后会自动保存。", "保存済み素材はまだありません。動画を導入すると自動保存されます。")}</p>
                   ) : (
                     <div className={styles.savedMaterialList}>
                       {savedYoutubeMaterials.map((material) => (
@@ -1341,7 +1710,9 @@ export function ShadowingView() {
                                   const sentenceTotal = material.sentences.length;
                                   const progress = materialProgressMap[material.id];
                                   if (!progress) {
-                                    return `未开始 · ${sentenceTotal} 句 · ${material.source}`;
+                                    return isJa
+                                      ? `未開始 · ${sentenceTotal} 文 · ${material.source}`
+                                      : `未开始 · ${sentenceTotal} 句 · ${material.source}`;
                                   }
                                   const current = clampSentenceIndex(progress.currentIndex, sentenceTotal) + 1;
                                   const completedCount = new Set(
@@ -1349,7 +1720,9 @@ export function ShadowingView() {
                                       (id) => Number.isInteger(id) && id >= 0 && id < sentenceTotal,
                                     ),
                                   ).size;
-                                  return `第 ${current}/${sentenceTotal} 句 · 已完成 ${completedCount} 句 · ${material.source}`;
+                                  return isJa
+                                    ? `${current}/${sentenceTotal} 文 · 完了 ${completedCount} 文 · ${material.source}`
+                                    : `第 ${current}/${sentenceTotal} 句 · 已完成 ${completedCount} 句 · ${material.source}`;
                                 })()}
                               </span>
                             </div>
@@ -1359,14 +1732,14 @@ export function ShadowingView() {
                                 onClick={() => handleStartSavedMaterial(material)}
                                 size="sm"
                               >
-                                {materialProgressMap[material.id] ? "继续练习" : "开始练习"}
+                                {materialProgressMap[material.id] ? l("继续练习", "続きから練習") : l("开始练习", "練習開始")}
                               </Button>
                               <Button
                                 variant="link"
                                 onClick={() => deleteYoutubeMaterial(material.id)}
                                 size="sm"
                               >
-                                删除
+                                {l("删除", "削除")}
                               </Button>
                             </div>
                           </div>
@@ -1387,8 +1760,10 @@ export function ShadowingView() {
   if (!activeMaterial) return null;
 
   const sentence = activeMaterial.sentences[currentIndex];
+  const translatedSentence = getSentenceTranslation(activeMaterial, sentence);
   const progress = completedSet.size;
   const total = activeMaterial.sentences.length;
+  const showPronunciationHint = trainingLanguage === "en" ? showIPA : showReading;
   const isYoutubeMaterial = Boolean(activeMaterial.youtubeVideoId);
   const sentenceRangeText =
     typeof sentence.startSec === "number" && typeof sentence.endSec === "number"
@@ -1451,7 +1826,7 @@ export function ShadowingView() {
                         checked={alwaysShowTranslation}
                         onChange={(e) => setAlwaysShowTranslation(e.target.checked)}
                       />
-                      <span>双语</span>
+                      <span>{l("双语", "対訳")}</span>
                     </label>
                     <label className={styles.cinemaToggle}>
                       <input
@@ -1459,7 +1834,7 @@ export function ShadowingView() {
                         checked={showIPA}
                         onChange={(e) => setShowIPA(e.target.checked)}
                       />
-                      <span>音标</span>
+                      <span>{l("音标", "IPA")}</span>
                     </label>
                     <label className={styles.cinemaToggle}>
                       <input
@@ -1467,12 +1842,12 @@ export function ShadowingView() {
                         checked={showWordTranslation}
                         onChange={(e) => setShowWordTranslation(e.target.checked)}
                       />
-                      <span>释义</span>
+                      <span>{l("释义", "語釈")}</span>
                     </label>
                     <button
                       className={styles.cinemaSpeed}
                       onClick={() => setSpeechRate(r => r === 0.6 ? 0.85 : r === 0.85 ? 1.0 : 0.6)}
-                      title="点击切换TTS语速"
+                      title={l("点击切换TTS语速", "クリックしてTTS速度を切替")}
                     >
                       {speechRate}x
                     </button>
@@ -1482,14 +1857,14 @@ export function ShadowingView() {
                       className={styles.cinemaPrevNext}
                       onClick={handlePrev}
                       disabled={currentIndex === 0}
-                      title="上一句"
+                      title={l("上一句", "前の文")}
                     >
                       ⏮
                     </button>
                     <button
                       className={styles.cinemaPlayBtn}
                       onClick={() => isSpeaking ? stopSpeaking() : speak(sentence.text)}
-                      title={isSpeaking ? "停止" : "播放当前句TTS"}
+                      title={isSpeaking ? l("停止", "停止") : l("播放当前句TTS", "現在の文を再生")}
                     >
                       {isSpeaking ? "⏸" : "▶"}
                     </button>
@@ -1497,7 +1872,7 @@ export function ShadowingView() {
                       className={styles.cinemaPrevNext}
                       onClick={handleNext}
                       disabled={currentIndex >= total - 1}
-                      title="下一句"
+                      title={l("下一句", "次の文")}
                     >
                       ⏭
                     </button>
@@ -1508,7 +1883,7 @@ export function ShadowingView() {
                         YouTube ↗
                       </a>
                     )}
-                    <button className={styles.cinemaBackBtn} onClick={handleBack}>返回</button>
+                    <button className={styles.cinemaBackBtn} onClick={handleBack}>{l("返回", "戻る")}</button>
                   </div>
                 </div>
               </div>
@@ -1516,7 +1891,7 @@ export function ShadowingView() {
               {/* Right: Scrollable transcript pane */}
               <div className={styles.transcriptPane}>
                 <div className={styles.transcriptHeader}>
-                  <span className={styles.transcriptTitle}>字幕列表</span>
+                  <span className={styles.transcriptTitle}>{l("字幕列表", "字幕リスト")}</span>
                   <span className={styles.transcriptProgress}>{currentIndex + 1}/{total}</span>
                 </div>
                 <div className={styles.transcriptList}>
@@ -1530,23 +1905,34 @@ export function ShadowingView() {
                         <button
                           className={styles.transcriptPlayBtn}
                           onClick={(e) => { e.stopPropagation(); goToSentence(idx); }}
-                          title="播放"
+                          title={l("播放", "再生")}
                         >
                           ▶
                         </button>
                         <button
                           className={styles.transcriptRecordBtn}
                           onClick={(e) => { e.stopPropagation(); goToSentence(idx); setTimeout(() => startRecording(s.text), 100); }}
-                          title="跟读"
+                          title={l("跟读", "シャドーイング")}
                         >
                           🎙
                         </button>
                       </div>
                       <div className={styles.transcriptItemText}>
                         <p className={styles.transcriptEn}>{s.text}</p>
-                        {(alwaysShowTranslation || idx === currentIndex) && s.translation && (
-                          <p className={styles.transcriptCn}>{s.translation}</p>
-                        )}
+                        {(() => {
+                          if (!(alwaysShowTranslation || idx === currentIndex)) {
+                            return null;
+                          }
+                          const transcriptTranslation = getSentenceTranslation(activeMaterial, s);
+                          if (!transcriptTranslation && locale !== "ja") {
+                            return null;
+                          }
+                          return (
+                            <p className={styles.transcriptCn}>
+                              {transcriptTranslation || l("翻译中...", "翻訳中...")}
+                            </p>
+                          );
+                        })()}
                       </div>
                       {typeof s.startSec === "number" && (
                         <span className={styles.transcriptTime}>{formatSeconds(s.startSec)}</span>
@@ -1571,10 +1957,10 @@ export function ShadowingView() {
             {/* Meta tags */}
             <div className={styles.practiceMetaRow}>
               <Badge variant={getDifficultyVariant(activeMaterial.difficulty)}>
-                {getDifficultyLabel(activeMaterial.difficulty)}
+                {getDifficultyLabel(activeMaterial.difficulty, locale)}
               </Badge>
               <span className={styles.practiceMetaTitle}>{activeMaterial.title}</span>
-              <span className={styles.practiceMetaSub}>已完成 {progress}/{total} 句</span>
+              <span className={styles.practiceMetaSub}>{isJa ? `完了 ${progress}/${total} 文` : `已完成 ${progress}/${total} 句`}</span>
             </div>
 
 
@@ -1590,28 +1976,36 @@ export function ShadowingView() {
                   <button
                     className={`${styles.speakBtn} ${isSpeaking ? styles.speakBtnActive : ""}`}
                     onClick={() => isSpeaking ? stopSpeaking() : speak(sentence.text)}
-                    title="朗读"
+                    title={l("朗读", "読み上げ")}
                   >
-                    {isSpeaking ? "⏹ 停止" : "🔊 朗读"}
+                    {isSpeaking ? `⏹ ${l("停止", "停止")}` : `🔊 ${l("朗读", "読み上げ")}`}
                   </button>
                 </div>
 
                 {/* Sentence text */}
                 <div className={styles.selectionScope} ref={selectionScopeRef}>
-                  {!showWordTranslation && !showIPA ? (
+                  {!showWordTranslation && !showPronunciationHint ? (
                     <p className={styles.sentenceText}>{sentence.text}</p>
                   ) : (
                     <div className={styles.annotatedSentence}>
-                      {annotateWords(sentence.text).map((w, i) => (
-                        <span key={i} className={styles.annotatedWord}>
-                          <span className={styles.wordMain}>{w.word}</span>
-                          {showIPA && w.ipa && <span className={styles.wordIPA}>{w.ipa}</span>}
-                          {showWordTranslation && w.cn && <span className={styles.wordCN}>{w.cn}</span>}
-                        </span>
-                      ))}
+                      {getAnnotatedWords(sentence.text).map((w, i) => {
+                        const gloss = getWordGloss(w);
+                        const reading = getJapaneseWordReading(w);
+                        const canShowGloss = showWordTranslation && Boolean(gloss);
+                        return (
+                          <span key={i} className={styles.annotatedWord}>
+                            <span className={styles.wordMain}>{w.word}</span>
+                            {trainingLanguage === "en" && showIPA && w.ipa && <span className={styles.wordIPA}>{w.ipa}</span>}
+                            {trainingLanguage === "ja" && showReading && containsKanji(w.word) && reading && (
+                              <span className={styles.wordIPA}>{reading}</span>
+                            )}
+                            {canShowGloss && <span className={styles.wordCN}>{gloss}</span>}
+                          </span>
+                        );
+                      })}
                     </div>
                   )}
-                  <SelectionPronunciation scopeRef={selectionScopeRef} />
+                  <SelectionPronunciation scopeRef={selectionScopeRef} locale={locale} learningLanguage={trainingLanguage} />
                 </div>
 
                 {/* Recording section */}
@@ -1623,32 +2017,32 @@ export function ShadowingView() {
                         onClick={() => startRecording(sentence.text)}
                         disabled={isSpeaking}
                       >
-                        🎙 开始跟读
+                        {`🎙 ${l("开始跟读", "シャドーイング開始")}`}
                       </button>
                     ) : (
                       <button
                         className={`${styles.recordBtn} ${styles.recordBtnActive}`}
                         onClick={stopRecording}
                       >
-                        ⏹ 停止录音
+                        {`⏹ ${l("停止录音", "録音停止")}`}
                       </button>
                     )}
                     {isRecording && (
-                      <span className={styles.recordingIndicator}>录音中...</span>
+                      <span className={styles.recordingIndicator}>{l("录音中...", "録音中...")}</span>
                     )}
                   </div>
 
                   {recognizedText && !compareResult && (
                     <div className={styles.recognizedText}>
-                      <span className={styles.recognizedLabel}>识别中：</span>
+                      <span className={styles.recognizedLabel}>{l("识别中：", "認識中：")}</span>
                       {recognizedText}
                     </div>
                   )}
 
                   {compareResult && (
                     <div className={styles.compareResult}>
-                      <div className={styles.accuracyBar}>
-                        <span className={styles.accuracyLabel}>准确率：{compareResult.accuracy}%</span>
+                    <div className={styles.accuracyBar}>
+                        <span className={styles.accuracyLabel}>{l("准确率", "正確率")}：{compareResult.accuracy}%</span>
                         <div className={styles.accuracyTrack}>
                           <div
                             className={styles.accuracyFill}
@@ -1667,35 +2061,35 @@ export function ShadowingView() {
                           <span
                             key={i}
                             className={w.status === "correct" ? styles.wordCorrect : w.status === "wrong" ? styles.wordWrong : styles.wordMissing}
-                            title={w.status === "correct" ? "正确" : w.status === "wrong" ? "多余/错误" : "漏读"}
+                            title={w.status === "correct" ? l("正确", "正解") : w.status === "wrong" ? l("多余/错误", "余分/誤り") : l("漏读", "読み落とし")}
                           >
                             {w.word}
                           </span>
                         ))}
                       </div>
                       <div className={styles.compareHint}>
-                        <span className={styles.wordCorrect}>绿色=正确</span>
-                        <span className={styles.wordWrong}>红色=错误</span>
-                        <span className={styles.wordMissing}>灰色=漏读</span>
+                        <span className={styles.wordCorrect}>{l("绿色=正确", "緑=正解")}</span>
+                        <span className={styles.wordWrong}>{l("红色=错误", "赤=誤り")}</span>
+                        <span className={styles.wordMissing}>{l("灰色=漏读", "灰=読み落とし")}</span>
                       </div>
                       <button className={styles.retryBtn} onClick={() => startRecording(sentence.text)}>
-                        🎙 再读一次
+                        {`🎙 ${l("再读一次", "もう一度読む")}`}
                       </button>
                     </div>
                   )}
                 </div>
 
-                {sentence.translation && alwaysShowTranslation && (
-                  <p className={styles.translation}>{sentence.translation}</p>
+                {translatedSentence && alwaysShowTranslation && (
+                  <p className={styles.translation}>{translatedSentence}</p>
                 )}
-                {sentence.translation && !alwaysShowTranslation && (
+                {translatedSentence && !alwaysShowTranslation && (
                   <details className={styles.translationDetails}>
-                    <summary>点击查看翻译</summary>
-                    <p className={styles.translation}>{sentence.translation}</p>
+                    <summary>{l("点击查看翻译", "訳を表示")}</summary>
+                    <p className={styles.translation}>{translatedSentence}</p>
                   </details>
                 )}
-                {!sentence.translation && (
-                  <p className={styles.noTranslation}>实时新闻暂无翻译，可使用「逐词释义」辅助理解</p>
+                {!translatedSentence && (
+                  <p className={styles.noTranslation}>{l("实时新闻暂无翻译，可使用「逐词释义」辅助理解", "ニュース文に翻訳がありません。「語釈」表示を使って理解してください。")}</p>
                 )}
               </CardContent>
             </Card>
@@ -1705,10 +2099,10 @@ export function ShadowingView() {
         /* ── Standard (non-YouTube) practice layout ── */
         <>
           <div className={styles.sessionHeader}>
-            <Button variant="secondary" onClick={handleBack}>返回列表</Button>
+            <Button variant="secondary" onClick={handleBack}>{l("返回列表", "一覧へ戻る")}</Button>
             <div className={styles.sessionTitle}>
-              <h2>{activeMaterial.titleCn}</h2>
-              <span className={styles.progressLabel}>第 {currentIndex + 1} / {total} 句 · 已完成 {progress}</span>
+              <h2>{isJa ? activeMaterial.title : activeMaterial.titleCn}</h2>
+              <span className={styles.progressLabel}>{isJa ? `${currentIndex + 1} / ${total} 文 · 完了 ${progress}` : `第 ${currentIndex + 1} / ${total} 句 · 已完成 ${progress}`}</span>
             </div>
           </div>
 
@@ -1720,22 +2114,30 @@ export function ShadowingView() {
             <div className={styles.toggleGroup}>
               <label className={styles.toggleLabel}>
                 <input type="checkbox" checked={alwaysShowTranslation} onChange={(e) => setAlwaysShowTranslation(e.target.checked)} />
-                显示翻译
+                {l("显示翻译", "訳を表示")}
               </label>
               <label className={styles.toggleLabel}>
                 <input type="checkbox" checked={showWordTranslation} onChange={(e) => setShowWordTranslation(e.target.checked)} />
-                逐词释义
+                {isJapaneseTraining ? l("词义提示", "語釈") : l("逐词释义", "語釈")}
               </label>
-              <label className={styles.toggleLabel}>
-                <input type="checkbox" checked={showIPA} onChange={(e) => setShowIPA(e.target.checked)} />
-                显示音标
-              </label>
+              {trainingLanguage === "en" && (
+                <label className={styles.toggleLabel}>
+                  <input type="checkbox" checked={showIPA} onChange={(e) => setShowIPA(e.target.checked)} />
+                  {l("显示音标", "IPA 表示")}
+                </label>
+              )}
+              {trainingLanguage === "ja" && (
+                <label className={styles.toggleLabel}>
+                  <input type="checkbox" checked={showReading} onChange={(e) => setShowReading(e.target.checked)} />
+                  {l("显示假名读法", "ふりがな表示")}
+                </label>
+              )}
             </div>
             <div className={styles.speedControl}>
-              <span>语速：</span>
-              <button className={`${styles.speedBtn} ${speechRate === 0.6 ? styles.speedActive : ""}`} onClick={() => setSpeechRate(0.6)}>慢</button>
-              <button className={`${styles.speedBtn} ${speechRate === 0.85 ? styles.speedActive : ""}`} onClick={() => setSpeechRate(0.85)}>中</button>
-              <button className={`${styles.speedBtn} ${speechRate === 1.0 ? styles.speedActive : ""}`} onClick={() => setSpeechRate(1.0)}>快</button>
+              <span>{l("语速：", "速度：")}</span>
+              <button className={`${styles.speedBtn} ${speechRate === 0.6 ? styles.speedActive : ""}`} onClick={() => setSpeechRate(0.6)}>{l("慢", "遅い")}</button>
+              <button className={`${styles.speedBtn} ${speechRate === 0.85 ? styles.speedActive : ""}`} onClick={() => setSpeechRate(0.85)}>{l("中", "標準")}</button>
+              <button className={`${styles.speedBtn} ${speechRate === 1.0 ? styles.speedActive : ""}`} onClick={() => setSpeechRate(1.0)}>{l("快", "速い")}</button>
             </div>
           </div>
 
@@ -1747,45 +2149,53 @@ export function ShadowingView() {
                   className={`${styles.speakBtn} ${isSpeaking ? styles.speakBtnActive : ""}`}
                   onClick={() => isSpeaking ? stopSpeaking() : speak(sentence.text)}
                 >
-                  {isSpeaking ? "⏹ 停止" : "🔊 朗读"}
+                  {isSpeaking ? `⏹ ${l("停止", "停止")}` : `🔊 ${l("朗读", "読み上げ")}`}
                 </button>
               </div>
 
               <div className={styles.selectionScope} ref={selectionScopeRef}>
-                {!showWordTranslation && !showIPA ? (
+                {!showWordTranslation && !showPronunciationHint ? (
                   <p className={styles.sentenceText}>{sentence.text}</p>
                 ) : (
                   <div className={styles.annotatedSentence}>
-                    {annotateWords(sentence.text).map((w, i) => (
-                      <span key={i} className={styles.annotatedWord}>
-                        <span className={styles.wordMain}>{w.word}</span>
-                        {showIPA && w.ipa && <span className={styles.wordIPA}>{w.ipa}</span>}
-                        {showWordTranslation && w.cn && <span className={styles.wordCN}>{w.cn}</span>}
-                      </span>
-                    ))}
+                    {getAnnotatedWords(sentence.text).map((w, i) => {
+                      const gloss = getWordGloss(w);
+                      const reading = getJapaneseWordReading(w);
+                      const canShowGloss = showWordTranslation && Boolean(gloss);
+                      return (
+                        <span key={i} className={styles.annotatedWord}>
+                          <span className={styles.wordMain}>{w.word}</span>
+                          {trainingLanguage === "en" && showIPA && w.ipa && <span className={styles.wordIPA}>{w.ipa}</span>}
+                          {trainingLanguage === "ja" && showReading && containsKanji(w.word) && reading && (
+                            <span className={styles.wordIPA}>{reading}</span>
+                          )}
+                          {canShowGloss && <span className={styles.wordCN}>{gloss}</span>}
+                        </span>
+                      );
+                    })}
                   </div>
                 )}
-                <SelectionPronunciation scopeRef={selectionScopeRef} />
+                <SelectionPronunciation scopeRef={selectionScopeRef} locale={locale} learningLanguage={trainingLanguage} />
               </div>
 
               <div className={styles.recordSection}>
                 <div className={styles.recordActions}>
                   {!isRecording ? (
-                    <button className={styles.recordBtn} onClick={() => startRecording(sentence.text)} disabled={isSpeaking}>🎙 开始跟读</button>
+                    <button className={styles.recordBtn} onClick={() => startRecording(sentence.text)} disabled={isSpeaking}>{`🎙 ${l("开始跟读", "シャドーイング開始")}`}</button>
                   ) : (
-                    <button className={`${styles.recordBtn} ${styles.recordBtnActive}`} onClick={stopRecording}>⏹ 停止录音</button>
+                    <button className={`${styles.recordBtn} ${styles.recordBtnActive}`} onClick={stopRecording}>{`⏹ ${l("停止录音", "録音停止")}`}</button>
                   )}
-                  {isRecording && <span className={styles.recordingIndicator}>录音中...</span>}
+                  {isRecording && <span className={styles.recordingIndicator}>{l("录音中...", "録音中...")}</span>}
                 </div>
                 {recognizedText && !compareResult && (
                   <div className={styles.recognizedText}>
-                    <span className={styles.recognizedLabel}>识别中：</span>{recognizedText}
+                    <span className={styles.recognizedLabel}>{l("识别中：", "認識中：")}</span>{recognizedText}
                   </div>
                 )}
                 {compareResult && (
                   <div className={styles.compareResult}>
                     <div className={styles.accuracyBar}>
-                      <span className={styles.accuracyLabel}>准确率：{compareResult.accuracy}%</span>
+                      <span className={styles.accuracyLabel}>{l("准确率", "正確率")}：{compareResult.accuracy}%</span>
                       <div className={styles.accuracyTrack}>
                         <div className={styles.accuracyFill} style={{ width: `${compareResult.accuracy}%`, background: compareResult.accuracy >= 80 ? "var(--color-success, #10b981)" : compareResult.accuracy >= 50 ? "var(--color-warning, #f59e0b)" : "#dc2626" }} />
                       </div>
@@ -1799,41 +2209,45 @@ export function ShadowingView() {
                       ))}
                     </div>
                     <div className={styles.compareHint}>
-                      <span className={styles.wordCorrect}>绿色=正确</span>
-                      <span className={styles.wordWrong}>红色=错误</span>
-                      <span className={styles.wordMissing}>灰色=漏读</span>
+                      <span className={styles.wordCorrect}>{l("绿色=正确", "緑=正解")}</span>
+                      <span className={styles.wordWrong}>{l("红色=错误", "赤=誤り")}</span>
+                      <span className={styles.wordMissing}>{l("灰色=漏读", "灰=読み落とし")}</span>
                     </div>
-                    <button className={styles.retryBtn} onClick={() => startRecording(sentence.text)}>🎙 再读一次</button>
+                    <button className={styles.retryBtn} onClick={() => startRecording(sentence.text)}>{`🎙 ${l("再读一次", "もう一度読む")}`}</button>
                   </div>
                 )}
               </div>
 
-              {sentence.translation && alwaysShowTranslation && <p className={styles.translation}>{sentence.translation}</p>}
-              {sentence.translation && !alwaysShowTranslation && (
-                <details className={styles.translationDetails}><summary>点击查看翻译</summary><p className={styles.translation}>{sentence.translation}</p></details>
+              {translatedSentence && alwaysShowTranslation && <p className={styles.translation}>{translatedSentence}</p>}
+              {translatedSentence && !alwaysShowTranslation && (
+                <details className={styles.translationDetails}><summary>{l("点击查看翻译", "訳を表示")}</summary><p className={styles.translation}>{translatedSentence}</p></details>
               )}
-              {!sentence.translation && <p className={styles.noTranslation}>实时新闻暂无翻译，可使用「逐词释义」辅助理解</p>}
+              {!translatedSentence && <p className={styles.noTranslation}>{l("实时新闻暂无翻译，可使用「逐词释义」辅助理解", "ニュース文に翻訳がありません。「語釈」表示を使って理解してください。")}</p>}
             </CardContent>
           </Card>
 
           <div className={styles.navigation}>
-            <Button variant="secondary" onClick={handlePrev} disabled={currentIndex === 0}>上一句</Button>
-            <Button variant="secondary" onClick={() => speak(sentence.text)} disabled={isSpeaking}>🔊 再听一遍</Button>
+            <Button variant="secondary" onClick={handlePrev} disabled={currentIndex === 0}>{l("上一句", "前の文")}</Button>
+            <Button variant="secondary" onClick={() => speak(sentence.text)} disabled={isSpeaking}>{`🔊 ${l("再听一遍", "もう一度聞く")}`}</Button>
             {currentIndex < total - 1 ? (
-              <Button onClick={handleNext}>下一句</Button>
+              <Button onClick={handleNext}>{l("下一句", "次の文")}</Button>
             ) : (
-              <Button onClick={handleBack}>练习完成！</Button>
+              <Button onClick={handleBack}>{l("练习完成！", "練習完了！")}</Button>
             )}
           </div>
 
           <div className={styles.tips}>
-            <h4>跟读方法</h4>
+            <h4>{l("跟读方法", "シャドーイング手順")}</h4>
             <ol>
-              <li><strong>第一步 听 →</strong> 点击「🔊 朗读」听标准发音</li>
-              <li><strong>第二步 读 →</strong> 点击「🎙 开始跟读」对着麦克风读出来</li>
-              <li><strong>第三步 比 →</strong> 查看对比结果，绿色=正确，红色=错误，灰色=漏读</li>
-              <li><strong>第四步 查 →</strong> 可直接划词，查看音标/释义并朗读单词</li>
-              <li><strong>第五步 练 →</strong> 反复练习直到准确率达到 80% 以上</li>
+              <li>{l("第一步 听 → 点击「🔊 朗读」听标准发音", "Step 1 聞く → 「🔊 読み上げ」で基準音声を聞く")}</li>
+              <li>{l("第二步 读 → 点击「🎙 开始跟读」对着麦克风读出来", "Step 2 話す → 「🎙 シャドーイング開始」でマイクに向かって読む")}</li>
+              <li>{l("第三步 比 → 查看对比结果，绿色=正确，红色=错误，灰色=漏读", "Step 3 比較 → 緑=正解、赤=誤り、灰=読み落としを確認")}</li>
+              <li>
+                {trainingLanguage === "en"
+                  ? l("第四步 查 → 可直接划词，查看音标/释义并朗读单词", "Step 4 確認 → 選択した語の IPA / 語釈 / 再生を確認")
+                  : l("第四步 查 → 开启词义提示，先理解关键短语再继续跟读", "Step 4 確認 → 語釈表示を使ってキーフレーズを確認して続ける")}
+              </li>
+              <li>{l("第五步 练 → 反复练习直到准确率达到 80% 以上", "Step 5 反復 → 正確率 80% 以上まで繰り返す")}</li>
             </ol>
           </div>
         </>
@@ -1973,11 +2387,16 @@ function getDifficultyVariant(d: number): "success" | "warning" | "error" {
   return d === 1 ? "success" : d === 2 ? "warning" : "error";
 }
 
-function getDifficultyLabel(d: number): string {
+function getDifficultyLabel(d: number, locale: Locale): string {
+  if (locale === "ja") {
+    return d === 1 ? "初級" : d === 2 ? "中級" : "上級";
+  }
   return d === 1 ? "初级" : d === 2 ? "中级" : "高级";
 }
 
-function getCategoryLabel(c: string): string {
-  const m: Record<string, string> = { speech: "演讲", drama: "美剧", ted: "TED" };
+function getCategoryLabel(c: string, locale: Locale): string {
+  const m: Record<string, string> = locale === "ja"
+    ? { speech: "スピーチ", drama: "ドラマ", ted: "TED" }
+    : { speech: "演讲", drama: "美剧", ted: "TED" };
   return m[c] || c;
 }

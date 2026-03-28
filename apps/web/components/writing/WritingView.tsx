@@ -17,7 +17,7 @@ export function WritingView() {
   const [text, setText] = useState("");
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [result, setResult] = useState<WritingResult | null>(null);
-  const auth = useAuth();
+  const auth = useAuth("zh");
 
   const wordCount = text.split(/\s+/).filter(Boolean).length;
 

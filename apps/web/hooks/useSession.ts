@@ -3,11 +3,12 @@
 import { useState, useCallback, useRef } from "react";
 import type {
   ActiveSession,
+  Locale,
+  OptionKey,
   SessionMode,
   SessionFilters,
   SessionQuestion,
   SubmitReport,
-  OptionKey,
 } from "../types";
 import { isListeningPart } from "../types";
 import * as api from "../lib/api";
@@ -15,8 +16,10 @@ import * as api from "../lib/api";
 export function useSession(
   ensureSession: () => Promise<string | null>,
   getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
-  setMessage: (msg: string) => void
+  setMessage: (msg: string) => void,
+  locale: Locale,
 ) {
+  const byLocale = (zh: string, ja: string) => (locale === "ja" ? ja : zh);
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answerMap, setAnswerMap] = useState<Record<string, OptionKey>>({});
@@ -32,9 +35,9 @@ export function useSession(
   const practiceHint = currentQuestion
     ? isListeningPart(currentQuestion.partNo)
       ? currentQuestion.partNo <= 2
-        ? "先播放题目音频再作答，仅按 A/B/C/D 选择。"
-        : "先听音频，再看题干关键词，再做题。"
-      : "先读题干关键词，再排除干扰项。"
+        ? byLocale("先播放题目音频再作答，仅按 A/B/C/D 选择。", "先に音声を聞いてから A/B/C/D で解答してください。")
+        : byLocale("先听音频，再看题干关键词，再做题。", "先に音声を聞き、設問キーワードを確認して解答します。")
+      : byLocale("先读题干关键词，再排除干扰项。", "設問キーワードを先に読み、不要な選択肢を除外します。")
     : "";
 
   const startSession = useCallback(
@@ -44,12 +47,12 @@ export function useSession(
 
       const result = await api.startSession(mode, filters, getRequestOptions(token));
       if (!result.success || !result.questions) {
-        setMessage(`开题失败: ${result.error ?? "未知错误"}`);
+        setMessage(byLocale(`开题失败: ${result.error ?? "未知错误"}`, `問題セットの開始に失敗: ${result.error ?? "不明なエラー"}`));
         return false;
       }
 
       if (result.questions.length === 0) {
-        setMessage("当前筛选条件下没有题目。");
+        setMessage(byLocale("当前筛选条件下没有题目。", "現在の条件に一致する問題がありません。"));
         return false;
       }
 
@@ -67,11 +70,14 @@ export function useSession(
       const listeningCount = result.questions.filter((q) => isListeningPart(q.partNo)).length;
       const readingCount = result.questions.length - listeningCount;
       setMessage(
-        `已加载 ${result.questions.length} 题（听力 ${listeningCount} / 阅读 ${readingCount}）。请按顺序逐题作答。`
+        byLocale(
+          `已加载 ${result.questions.length} 题（听力 ${listeningCount} / 阅读 ${readingCount}）。请按顺序逐题作答。`,
+          `${result.questions.length} 問を読み込みました（L ${listeningCount} / R ${readingCount}）。順番に解答してください。`,
+        ),
       );
       return true;
     },
-    [ensureSession, getRequestOptions, setMessage]
+    [ensureSession, getRequestOptions, locale, setMessage]
   );
 
   const startMistakeDrill = useCallback(
@@ -81,11 +87,11 @@ export function useSession(
 
       const result = await api.startMistakeDrillSession(payload, getRequestOptions(token));
       if (!result.success || !result.questions) {
-        setMessage(`错题练习开题失败: ${result.error ?? "未知错误"}`);
+        setMessage(byLocale(`错题练习开题失败: ${result.error ?? "未知错误"}`, `ミス演習の開始に失敗: ${result.error ?? "不明なエラー"}`));
         return null;
       }
       if (result.questions.length === 0) {
-        setMessage("当前错题条件下没有可练习题目。");
+        setMessage(byLocale("当前错题条件下没有可练习题目。", "現在の条件で練習できるミス問題がありません。"));
         return null;
       }
 
@@ -103,11 +109,14 @@ export function useSession(
       const listeningCount = result.questions.filter((q) => isListeningPart(q.partNo)).length;
       const readingCount = result.questions.length - listeningCount;
       setMessage(
-        `已生成错题强化 ${result.questions.length} 题（听力 ${listeningCount} / 阅读 ${readingCount}）。`
+        byLocale(
+          `已生成错题强化 ${result.questions.length} 题（听力 ${listeningCount} / 阅读 ${readingCount}）。`,
+          `ミス強化 ${result.questions.length} 問を生成しました（L ${listeningCount} / R ${readingCount}）。`,
+        ),
       );
       return result.questions[0]?.partNo ?? null;
     },
-    [ensureSession, getRequestOptions, setMessage]
+    [ensureSession, getRequestOptions, locale, setMessage]
   );
 
   const trackCurrentQuestionDuration = useCallback(() => {
@@ -153,7 +162,7 @@ export function useSession(
 
     const unanswered = activeSession.questions.filter((q) => !answerMap[q.id]);
     if (unanswered.length > 0 && !options?.allowPartial) {
-      setMessage(`还有 ${unanswered.length} 题未作答。`);
+      setMessage(byLocale(`还有 ${unanswered.length} 题未作答。`, `${unanswered.length} 問が未回答です。`));
       return null;
     }
 
@@ -175,7 +184,7 @@ export function useSession(
       );
 
       if (!result.success || !result.report) {
-        setMessage(`提交失败: ${result.error ?? "未知错误"}`);
+        setMessage(byLocale(`提交失败: ${result.error ?? "未知错误"}`, `提出失敗: ${result.error ?? "不明なエラー"}`));
         return null;
       }
 
@@ -186,18 +195,24 @@ export function useSession(
       questionStartedAtRef.current = 0;
       if (options?.allowPartial && unanswered.length > 0) {
         setMessage(
-          `已提交。未作答 ${unanswered.length} 题按错误计入。总分 ${result.report.scoreTotal}。`
+          byLocale(
+            `已提交。未作答 ${unanswered.length} 题按错误计入。总分 ${result.report.scoreTotal}。`,
+            `提出しました。未回答 ${unanswered.length} 問は誤答として計上。スコア ${result.report.scoreTotal}。`,
+          ),
         );
       } else {
         setMessage(
-          `提交成功。总分 ${result.report.scoreTotal}，答对 ${result.report.correct}/${result.report.answered}。`
+          byLocale(
+            `提交成功。总分 ${result.report.scoreTotal}，答对 ${result.report.correct}/${result.report.answered}。`,
+            `提出完了。スコア ${result.report.scoreTotal}、正解 ${result.report.correct}/${result.report.answered}。`,
+          ),
         );
       }
       return result.report;
     } finally {
       setIsSubmitting(false);
     }
-  }, [activeSession, answerMap, ensureSession, getRequestOptions, setMessage, trackCurrentQuestionDuration]);
+  }, [activeSession, answerMap, ensureSession, getRequestOptions, locale, setMessage, trackCurrentQuestionDuration]);
 
   const resetSession = useCallback(() => {
     setActiveSession(null);

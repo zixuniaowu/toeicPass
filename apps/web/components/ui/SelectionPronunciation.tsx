@@ -2,8 +2,11 @@
 
 import { RefObject, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import type { Locale } from "../../types";
 import { annotateWords } from "../../data/word-dictionary";
+import { getJapaneseReading } from "../../lib/japanese-reading";
 import { getWordIpa } from "../../lib/pronunciation";
+import { translateText } from "../../lib/translate";
 import styles from "./SelectionPronunciation.module.css";
 
 type SelectionState = {
@@ -21,6 +24,12 @@ type SelectionState = {
 
 interface SelectionPronunciationProps {
   scopeRef: RefObject<HTMLElement | null>;
+  locale?: Locale;
+  learningLanguage?: "en" | "ja";
+}
+
+function containsKanji(text: string): boolean {
+  return /[一-龯々]/u.test(String(text ?? ""));
 }
 
 function buildPhraseTranslation(text: string): {
@@ -45,11 +54,19 @@ function buildPhraseTranslation(text: string): {
   };
 }
 
-export function SelectionPronunciation({ scopeRef }: SelectionPronunciationProps) {
+export function SelectionPronunciation({
+  scopeRef,
+  locale = "zh",
+  learningLanguage = "en",
+}: SelectionPronunciationProps) {
   const [selectionState, setSelectionState] = useState<SelectionState | null>(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [fallbackIpa, setFallbackIpa] = useState<string | null>(null);
   const [isLoadingIpa, setIsLoadingIpa] = useState(false);
+  const [translatedText, setTranslatedText] = useState<string | null>(null);
+  const [isTranslating, setIsTranslating] = useState(false);
+  const [japaneseReading, setJapaneseReading] = useState<string | null>(null);
+  const [isLoadingJapaneseReading, setIsLoadingJapaneseReading] = useState(false);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const popoverRef = useRef<HTMLDivElement | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -76,7 +93,7 @@ export function SelectionPronunciation({ scopeRef }: SelectionPronunciationProps
     }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(selectionState.cleanWord ?? selectionState.text);
-    utterance.lang = "en-US";
+    utterance.lang = learningLanguage === "ja" ? "ja-JP" : "en-US";
     utterance.rate = 0.88;
     utterance.pitch = 1;
     utterance.onend = () => {
@@ -93,7 +110,7 @@ export function SelectionPronunciation({ scopeRef }: SelectionPronunciationProps
   };
 
   const copyTranslation = async () => {
-    const text = selectionState?.phraseCn ?? selectionState?.cn;
+    const text = translatedText ?? selectionState?.phraseCn ?? selectionState?.cn;
     if (!text || typeof window === "undefined" || !window.navigator?.clipboard) {
       return;
     }
@@ -136,13 +153,28 @@ export function SelectionPronunciation({ scopeRef }: SelectionPronunciationProps
         return;
       }
 
-      const wordCandidates = text.match(/[A-Za-z'-]+/g) ?? [];
-      const multipleWords = wordCandidates.length !== 1;
-      const firstCandidate = wordCandidates[0];
-      const cleanWord = firstCandidate ? firstCandidate.toLowerCase() : null;
+      let multipleWords = true;
+      let cleanWord: string | null = null;
+      let annotation: ReturnType<typeof annotateWords>[number] | null = null;
+      let phraseTranslation: ReturnType<typeof buildPhraseTranslation> = {
+        phraseCn: null,
+        unknownWords: [],
+        coverage: 0,
+      };
 
-      const annotation = cleanWord ? annotateWords(cleanWord)[0] : null;
-      const phraseTranslation = buildPhraseTranslation(text);
+      if (learningLanguage === "ja") {
+        const compact = text.replace(/\s+/g, "").trim();
+        cleanWord = compact || null;
+        multipleWords = text.trim().includes(" ") || compact.length > 10;
+        phraseTranslation = { phraseCn: null, unknownWords: [], coverage: 1 };
+      } else {
+        const wordCandidates = text.match(/[A-Za-z'-]+/g) ?? [];
+        multipleWords = wordCandidates.length !== 1;
+        const firstCandidate = wordCandidates[0];
+        cleanWord = firstCandidate ? firstCandidate.toLowerCase() : null;
+        annotation = cleanWord ? annotateWords(cleanWord)[0] : null;
+        phraseTranslation = buildPhraseTranslation(text);
+      }
       const rect = range.getBoundingClientRect();
       setSelectionState({
         text,
@@ -156,6 +188,8 @@ export function SelectionPronunciation({ scopeRef }: SelectionPronunciationProps
         top: rect.top - 12,
         multipleWords,
       });
+      setTranslatedText(null);
+      setJapaneseReading(null);
     };
 
     const clearState = () => setSelectionState(null);
@@ -185,9 +219,87 @@ export function SelectionPronunciation({ scopeRef }: SelectionPronunciationProps
       document.removeEventListener("mousedown", onMouseDown);
       stopSpeaking();
     };
-  }, [scopeRef]);
+  }, [learningLanguage, scopeRef]);
 
   useEffect(() => {
+    if (!selectionState) {
+      setTranslatedText(null);
+      setIsTranslating(false);
+      setJapaneseReading(null);
+      setIsLoadingJapaneseReading(false);
+      return;
+    }
+    let cancelled = false;
+    const sourceText = (selectionState.cleanWord ?? selectionState.text).trim();
+    if (!sourceText) {
+      setTranslatedText(null);
+      setIsTranslating(false);
+      return;
+    }
+    if (learningLanguage !== "ja" && locale !== "ja") {
+      setTranslatedText(null);
+      setIsTranslating(false);
+      return;
+    }
+    setIsTranslating(true);
+    const targetLang = learningLanguage === "ja" ? "zh-CN" : "ja";
+    const sourceLang = learningLanguage === "ja" ? "ja" : "en";
+    void translateText(sourceText, targetLang, sourceLang)
+      .then((result) => {
+        if (!cancelled) {
+          setTranslatedText(result);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setIsTranslating(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [learningLanguage, locale, selectionState]);
+
+  useEffect(() => {
+    if (learningLanguage !== "ja" || !selectionState) {
+      setJapaneseReading(null);
+      setIsLoadingJapaneseReading(false);
+      return;
+    }
+    const sourceText = (selectionState.cleanWord ?? selectionState.text).trim();
+    if (!sourceText || !containsKanji(sourceText)) {
+      setJapaneseReading(null);
+      setIsLoadingJapaneseReading(false);
+      return;
+    }
+
+    let cancelled = false;
+    setIsLoadingJapaneseReading(true);
+    void getJapaneseReading(sourceText)
+      .then((result) => {
+        if (cancelled) {
+          return;
+        }
+        const reading = String(result.readingText ?? "").trim();
+        setJapaneseReading(reading && reading !== sourceText ? reading : null);
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setIsLoadingJapaneseReading(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [learningLanguage, selectionState]);
+
+  useEffect(() => {
+    if (learningLanguage === "ja") {
+      setFallbackIpa(null);
+      setIsLoadingIpa(false);
+      return;
+    }
     if (!selectionState?.cleanWord || selectionState.multipleWords || selectionState.ipa) {
       setFallbackIpa(null);
       setIsLoadingIpa(false);
@@ -213,13 +325,18 @@ export function SelectionPronunciation({ scopeRef }: SelectionPronunciationProps
     return () => {
       cancelled = true;
     };
-  }, [selectionState?.cleanWord, selectionState?.ipa, selectionState?.multipleWords]);
+  }, [learningLanguage, selectionState?.cleanWord, selectionState?.ipa, selectionState?.multipleWords]);
 
   if (!selectionState || !mounted) {
     return null;
   }
 
+  const isJa = locale === "ja";
+  const t = (zh: string, ja: string) => (isJa ? ja : zh);
   const displayIpa = selectionState.ipa ?? fallbackIpa;
+  const displayWordTranslation = learningLanguage === "ja" ? translatedText : (isJa ? translatedText : selectionState.cn);
+  const displayPhraseTranslation = learningLanguage === "ja" ? translatedText : (isJa ? translatedText : selectionState.phraseCn);
+  const displayJapaneseReading = learningLanguage === "ja" ? japaneseReading : null;
 
   const popover = (
     <div
@@ -235,39 +352,47 @@ export function SelectionPronunciation({ scopeRef }: SelectionPronunciationProps
     >
       <p className={styles.word}>{selectionState.cleanWord ?? selectionState.text}</p>
       {selectionState.multipleWords ? (
-        <p className={styles.meta}>已选中短语，可查看划词翻译。</p>
+        <p className={styles.meta}>{t("已选中短语，可查看划词翻译。", "フレーズを選択しました。翻訳を確認できます。")}</p>
       ) : (
         <>
-          <p className={styles.meta}>
-            {displayIpa ?? (isLoadingIpa ? "正在查询音标..." : "暂无 IPA，可直接朗读听发音。")}
-          </p>
-          {selectionState.cn && <p className={styles.meta}>释义：{selectionState.cn}</p>}
+          {learningLanguage !== "ja" && (
+            <p className={styles.meta}>
+              {displayIpa ?? (isLoadingIpa ? t("正在查询音标...", "IPA を取得中...") : t("暂无 IPA，可直接朗读听发音。", "IPA がありません。読み上げで確認できます。"))}
+            </p>
+          )}
+          {displayWordTranslation && <p className={styles.meta}>{t("释义", "訳")}: {displayWordTranslation}</p>}
         </>
       )}
-      {selectionState.phraseCn && (
-        <p className={styles.meta}>翻译：{selectionState.phraseCn}</p>
-      )}
-      {selectionState.unknownWords.length > 0 && (
+      {learningLanguage === "ja" && (isLoadingJapaneseReading || displayJapaneseReading) && (
         <p className={styles.meta}>
-          未收录词：{selectionState.unknownWords.slice(0, 4).join(", ")}
+          {t("读法", "読み方")}：{isLoadingJapaneseReading ? t("获取中...", "取得中...") : displayJapaneseReading}
+        </p>
+      )}
+      {isTranslating && <p className={styles.meta}>{t("翻译中...", "翻訳中...")}</p>}
+      {displayPhraseTranslation && (
+        <p className={styles.meta}>{t("翻译", "翻訳")}：{displayPhraseTranslation}</p>
+      )}
+      {learningLanguage !== "ja" && selectionState.unknownWords.length > 0 && (
+        <p className={styles.meta}>
+          {t("未收录词", "未収録語")}：{selectionState.unknownWords.slice(0, 4).join(", ")}
           {selectionState.unknownWords.length > 4 ? " ..." : ""}
-          （覆盖率 {Math.round(selectionState.coverage * 100)}%）
+          （{t("覆盖率", "カバー率")} {Math.round(selectionState.coverage * 100)}%）
         </p>
       )}
       <div className={styles.actions}>
         <button type="button" className={styles.button} onClick={speak}>
-          {isSpeaking ? "重播" : "朗读"}
+          {isSpeaking ? t("重播", "再生") : t("朗读", "読み上げ")}
         </button>
         <button
           type="button"
           className={styles.button}
           onClick={copyTranslation}
-          disabled={!selectionState.phraseCn && !selectionState.cn}
+          disabled={!displayPhraseTranslation && !displayWordTranslation}
         >
-          复制翻译
+          {t("复制翻译", "翻訳をコピー")}
         </button>
         <button type="button" className={`${styles.button} ${styles.secondary}`} onClick={stopSpeaking}>
-          停止
+          {t("停止", "停止")}
         </button>
       </div>
     </div>
