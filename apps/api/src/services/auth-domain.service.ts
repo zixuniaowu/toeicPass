@@ -13,10 +13,85 @@ import { newId, nowIso } from "../utils";
 
 @Injectable()
 export class AuthDomainService {
+  private readonly defaultAccountEnabled = (process.env.DEFAULT_ACCOUNT_ENABLED ?? "true").toLowerCase() !== "false";
+  private readonly defaultTenantCode = (process.env.DEFAULT_TENANT_CODE ?? "demo").trim();
+  private readonly defaultTenantName = (process.env.DEFAULT_TENANT_NAME ?? "Demo Tenant").trim();
+  private readonly defaultEmail = (process.env.DEFAULT_ACCOUNT_EMAIL ?? "owner@demo.com").trim().toLowerCase();
+  private readonly defaultPassword = process.env.DEFAULT_ACCOUNT_PASSWORD ?? "toeic123";
+  private readonly defaultDisplayName = (process.env.DEFAULT_ACCOUNT_DISPLAY_NAME ?? "Demo Owner").trim();
+
   constructor(
     private readonly store: StoreService,
     private readonly jwtService: JwtService,
   ) {}
+
+  private async ensureDefaultAccountOnDemand(
+    normalizedEmail: string,
+    password: string,
+    requestedTenantCode?: string,
+  ): Promise<void> {
+    if (!this.defaultAccountEnabled) {
+      return;
+    }
+    if (!this.defaultEmail || !this.defaultPassword || !this.defaultTenantCode) {
+      return;
+    }
+    if (normalizedEmail !== this.defaultEmail || password !== this.defaultPassword) {
+      return;
+    }
+
+    const tenantCode = requestedTenantCode?.trim() || this.defaultTenantCode;
+    if (tenantCode !== this.defaultTenantCode) {
+      return;
+    }
+
+    let tenant = this.store.tenants.find((item) => item.code === this.defaultTenantCode);
+    if (!tenant) {
+      tenant = {
+        id: newId(),
+        code: this.defaultTenantCode,
+        name: this.defaultTenantName || this.defaultTenantCode,
+        createdAt: nowIso(),
+      };
+      this.store.tenants.push(tenant);
+    }
+
+    let user = this.store.users.find((item) => item.email === this.defaultEmail);
+    if (!user) {
+      const passwordHash = await hash(this.defaultPassword, 10);
+      user = {
+        id: newId(),
+        email: this.defaultEmail,
+        passwordHash,
+        displayName: this.defaultDisplayName || "Demo Owner",
+        isActive: true,
+        createdAt: nowIso(),
+      };
+      this.store.users.push(user);
+    } else {
+      // Keep demo account always usable in demo deployments (HF/local preview).
+      user.passwordHash = await hash(this.defaultPassword, 10);
+      if (!user.displayName) {
+        user.displayName = this.defaultDisplayName || "Demo Owner";
+      }
+      user.isActive = true;
+    }
+
+    const membership = this.store.memberships.find(
+      (item) => item.tenantId === tenant.id && item.userId === user.id,
+    );
+    if (!membership) {
+      this.store.memberships.push({
+        id: newId(),
+        tenantId: tenant.id,
+        userId: user.id,
+        role: "tenant_admin",
+      });
+    }
+
+    this.store.ensureSeedQuestions(tenant.id, user.id);
+    this.store.ensureSeedVocabularyCards(tenant.id, user.id);
+  }
 
   async register(dto: RegisterDto): Promise<{ userId: string }> {
     const normalizedEmail = dto.email.toLowerCase().trim();
@@ -64,11 +139,20 @@ export class AuthDomainService {
 
   async login(dto: LoginDto): Promise<{ accessToken: string; tenantCode: string }> {
     const normalizedEmail = dto.email.toLowerCase().trim();
+    await this.ensureDefaultAccountOnDemand(normalizedEmail, dto.password, dto.tenantCode);
     const user = this.store.users.find((item) => item.email === normalizedEmail);
     if (!user) {
       throw new UnauthorizedException("Invalid credentials");
     }
-    const matched = await compare(dto.password, user.passwordHash);
+    if (!user.passwordHash || typeof user.passwordHash !== "string") {
+      throw new UnauthorizedException("Invalid credentials");
+    }
+    let matched = false;
+    try {
+      matched = await compare(dto.password, user.passwordHash);
+    } catch {
+      throw new UnauthorizedException("Invalid credentials");
+    }
     if (!matched) {
       throw new UnauthorizedException("Invalid credentials");
     }
