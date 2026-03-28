@@ -105,38 +105,26 @@ jobs:
           git clean -fd
 
           if [[ "${HF_REPO_TYPE}" == "space" ]]; then
-            python - <<'PY'
-            import os
-            from pathlib import Path
-
-            path = Path("README.md")
-            body = path.read_text(encoding="utf-8")
-
-            if body.startswith("---\n"):
-              lines = body.splitlines()
-              end_idx = None
-              for idx, line in enumerate(lines[1:], start=1):
-                if line.strip() == "---":
-                  end_idx = idx
-                  break
-              if end_idx is not None:
-                body = "\n".join(lines[end_idx + 1 :]).lstrip("\n")
-
-            header = "\n".join([
-              "---",
-              "title: toeicPass",
-              "emoji: 📘",
-              "colorFrom: blue",
-              "colorTo: indigo",
-              f"sdk: {os.environ.get('HF_SPACE_SDK', 'docker')}",
-              "app_port: 7860",
-              "pinned: false",
-              "---",
-              "",
-              "",
-            ])
-            path.write_text(header + body, encoding="utf-8")
-            PY
+            tmp_readme="$(mktemp)"
+            awk 'BEGIN { skip = 0; first = 1 }
+              first && $0 == "---" { skip = 1; first = 0; next }
+              skip && $0 == "---" { skip = 0; next }
+              skip { next }
+              { first = 0; print }
+            ' README.md > "${tmp_readme}"
+            {
+              printf '%s\n' '---'
+              printf '%s\n' 'title: toeicPass'
+              printf '%s\n' 'emoji: 📘'
+              printf '%s\n' 'colorFrom: blue'
+              printf '%s\n' 'colorTo: indigo'
+              printf '%s\n' "sdk: ${HF_SPACE_SDK}"
+              printf '%s\n' 'app_port: 7860'
+              printf '%s\n' 'pinned: false'
+              printf '%s\n' '---'
+              printf '\n'
+              cat "${tmp_readme}"
+            } > README.md
           fi
 
           # Track large media with Git LFS for HF Hub limits.
