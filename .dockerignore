@@ -1,0 +1,10 @@
+.git
+.github
+node_modules
+apps/web/.next
+apps/web/.next_old
+.runtime
+apps/api/.runtime
+apps/api/.local-pg
+*.log
+tmp-login.png

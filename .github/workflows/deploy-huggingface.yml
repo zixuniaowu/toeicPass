@@ -45,8 +45,12 @@ jobs:
             echo "HF_REPO_BRANCH=main" >> "$GITHUB_ENV"
           fi
           if [[ "${HF_REPO_TYPE}" == "space" && -z "${HF_SPACE_SDK}" ]]; then
-            echo "HF_SPACE_SDK not set. Defaulting to 'static'."
-            echo "HF_SPACE_SDK=static" >> "$GITHUB_ENV"
+            echo "HF_SPACE_SDK not set. Defaulting to 'docker'."
+            echo "HF_SPACE_SDK=docker" >> "$GITHUB_ENV"
+          fi
+          if [[ "${HF_REPO_TYPE}" == "space" && "${HF_SPACE_SDK}" != "docker" ]]; then
+            echo "HF_SPACE_SDK=${HF_SPACE_SDK} is unsupported for this project. Forcing to 'docker'."
+            echo "HF_SPACE_SDK=docker" >> "$GITHUB_ENV"
           fi
 
       - name: Checkout repository
@@ -67,7 +71,7 @@ jobs:
           repo_type = os.environ.get("HF_REPO_TYPE", "space")
           kwargs = dict(repo_id=repo_id, repo_type=repo_type, token=token, exist_ok=True)
           if repo_type == "space":
-            kwargs["space_sdk"] = os.environ.get("HF_SPACE_SDK", "static")
+            kwargs["space_sdk"] = os.environ.get("HF_SPACE_SDK", "docker")
           HfApi().create_repo(**kwargs)
           print(f"Ensured HF repo exists: {repo_type}/{repo_id}")
           PY
@@ -99,6 +103,29 @@ jobs:
           git reset --hard
           git checkout "${GITHUB_SHA}" -- .
           git clean -fd
+
+          if [[ "${HF_REPO_TYPE}" == "space" ]]; then
+            tmp_readme="$(mktemp)"
+            awk 'BEGIN{skip=0}
+              NR==1 && $0=="---" {skip=1; next}
+              skip==1 && $0=="---" {skip=0; next}
+              skip==1 {next}
+              {print}
+            ' README.md > "${tmp_readme}"
+            cat > README.md <<EOF
+---
+title: toeicPass
+emoji: 📘
+colorFrom: blue
+colorTo: indigo
+sdk: ${HF_SPACE_SDK}
+app_port: 7860
+pinned: false
+---
+
+EOF
+            cat "${tmp_readme}" >> README.md
+          fi
 
           # Track large media with Git LFS for HF Hub limits.
           git lfs install --local
