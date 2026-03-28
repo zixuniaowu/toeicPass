@@ -52,7 +52,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Ensure repo exists on Hugging Face
         shell: bash
@@ -93,4 +93,18 @@ jobs:
           auth_url="$(echo "${hf_url}" | sed "s#https://#https://user:${HF_TOKEN}@#")"
           git remote remove hf 2>/dev/null || true
           git remote add hf "${auth_url}"
+
+          # Build a deploy-only root commit so HF doesn't receive full GitHub history blobs.
+          git checkout --orphan hf-deploy
+          git reset --hard
+          git checkout "${GITHUB_SHA}" -- .
+          git clean -fd
+
+          # Track large media with Git LFS for HF Hub limits.
+          git lfs install --local
+          git lfs track "*.mp3" "*.mp4" "*.wav" "*.m4a" "*.flac" "*.ogg" "*.webm"
+          git add .gitattributes
+          git add -A
+          git commit -m "deploy: ${GITHUB_SHA}"
+
           git push hf "HEAD:${HF_REPO_BRANCH}" --force
