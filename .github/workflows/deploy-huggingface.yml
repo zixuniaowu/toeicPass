@@ -102,7 +102,7 @@ jobs:
 
           # Track large media with Git LFS for HF Hub limits.
           git lfs install --local
-          git lfs track "*.mp3" "*.mp4" "*.wav" "*.m4a" "*.flac" "*.ogg" "*.webm"
+          git lfs track "*.mp3" "*.mp4" "*.wav" "*.m4a" "*.flac" "*.ogg" "*.webm" "*.jpg" "*.jpeg" "*.png" "*.gif" "*.webp"
           git add .gitattributes
           git add -A
           git commit -m "deploy: ${GITHUB_SHA}"
