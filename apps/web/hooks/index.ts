@@ -8,3 +8,5 @@ export { useAnalytics } from "./useAnalytics";
 export { useMistakes } from "./useMistakes";
 
 export { useVocab } from "./useVocab";
+
+export { useLearningCommandRunner } from "./useLearningCommandRunner";

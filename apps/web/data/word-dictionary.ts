@@ -1,6 +1,8 @@
 // Common English words dictionary with Chinese translation and IPA pronunciation
 // Used for word-by-word annotation in shadowing practice
 
+import { VOCAB_CN_OVERRIDES } from "./vocab-cn-overrides";
+
 type WordEntry = {
   cn: string;       // Chinese translation
   ipa: string;      // IPA pronunciation
@@ -5648,6 +5650,135 @@ const DICT: Record<string, WordEntry> = {
   "gunfire": { cn: "枪声", ipa: "/ˈɡʌnfaɪər/" },
 };
 
+const DICT_WITH_OVERRIDES: Record<string, WordEntry> = {
+  ...DICT,
+  ...VOCAB_CN_OVERRIDES,
+};
+
+function normalizeLookupTerm(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[\u2018\u2019\u2032]/g, "'")
+    .replace(/[\u2013\u2014]/g, "-")
+    .replace(/[^a-z\s'-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function baseFormCandidates(term: string): string[] {
+  const candidates = new Set<string>([term]);
+  if (term.endsWith("ies") && term.length > 4) {
+    candidates.add(`${term.slice(0, -3)}y`);
+  }
+  if (term.endsWith("es") && term.length > 3) {
+    candidates.add(term.slice(0, -2));
+  }
+  if (term.endsWith("s") && term.length > 3) {
+    candidates.add(term.slice(0, -1));
+  }
+  if (term.endsWith("ied") && term.length > 4) {
+    candidates.add(`${term.slice(0, -3)}y`);
+  }
+  if (term.endsWith("ed") && term.length > 3) {
+    const base = term.slice(0, -2);
+    candidates.add(base);
+    candidates.add(`${base}e`);
+    if (base.length >= 2 && base.at(-1) === base.at(-2)) {
+      candidates.add(base.slice(0, -1));
+    }
+  }
+  if (term.endsWith("ing") && term.length > 5) {
+    const base = term.slice(0, -3);
+    candidates.add(base);
+    candidates.add(`${base}e`);
+    if (base.length >= 2 && base.at(-1) === base.at(-2)) {
+      candidates.add(base.slice(0, -1));
+    }
+  }
+  return Array.from(candidates);
+}
+
+function addContractionCandidates(term: string, candidates: Set<string>): void {
+  if (term.includes(" ")) {
+    return;
+  }
+
+  if (term.endsWith("'s") && term.length > 2) {
+    candidates.add(term.slice(0, -2));
+  }
+  if (term.endsWith("s'") && term.length > 2) {
+    candidates.add(term.slice(0, -1));
+  }
+
+  const suffixes = ["'d", "'ll", "'re", "'ve", "'m"];
+  for (const suffix of suffixes) {
+    if (term.endsWith(suffix) && term.length > suffix.length) {
+      candidates.add(term.slice(0, -suffix.length));
+    }
+  }
+
+  if (term.endsWith("n't") && term.length > 3) {
+    if (term === "won't") {
+      candidates.add("will");
+    } else if (term === "can't") {
+      candidates.add("can");
+    } else {
+      candidates.add(term.slice(0, -3));
+    }
+  }
+
+  if (term.startsWith("'") && term.length > 1) {
+    candidates.add(term.slice(1));
+  }
+  if (term.endsWith("'") && term.length > 1) {
+    candidates.add(term.slice(0, -1));
+  }
+}
+
+function resolveWordEntry(term: string): WordEntry | undefined {
+  const normalized = normalizeLookupTerm(term);
+  if (!normalized) {
+    return undefined;
+  }
+
+  const directCandidates = new Set<string>([normalized]);
+  addContractionCandidates(normalized, directCandidates);
+
+  for (const candidate of Array.from(directCandidates)) {
+    if (candidate.includes("-")) {
+      directCandidates.add(candidate.replace(/-/g, " "));
+      directCandidates.add(candidate.replace(/-/g, ""));
+    }
+    if (candidate.includes(" ")) {
+      directCandidates.add(candidate.replace(/\s+/g, "-"));
+      directCandidates.add(candidate.replace(/\s+/g, ""));
+    }
+  }
+
+  for (const candidate of directCandidates) {
+    const entry = DICT_WITH_OVERRIDES[candidate];
+    if (entry) {
+      return entry;
+    }
+  }
+
+  if (normalized.includes(" ")) {
+    return undefined;
+  }
+
+  const compact = normalized.replace(/[-']/g, "");
+  for (const candidate of baseFormCandidates(compact)) {
+    const entry =
+      DICT_WITH_OVERRIDES[candidate] ??
+      DICT_WITH_OVERRIDES[candidate.replace(/-/g, " ")] ??
+      DICT_WITH_OVERRIDES[candidate.replace(/\s+/g, "-")];
+    if (entry) {
+      return entry;
+    }
+  }
+  return undefined;
+}
+
 export type WordAnnotation = {
   word: string;        // Original word (with punctuation)
   clean: string;       // Cleaned word (lowercase, no punctuation)
@@ -5655,14 +5786,26 @@ export type WordAnnotation = {
   ipa: string | null;  // IPA pronunciation or null
 };
 
+export function annotateTerm(term: string): WordAnnotation {
+  const clean = normalizeLookupTerm(term);
+  const entry = resolveWordEntry(clean);
+  return {
+    word: term,
+    clean,
+    cn: entry?.cn ?? null,
+    ipa: entry?.ipa ?? null,
+  };
+}
+
 export function annotateWords(sentence: string): WordAnnotation[] {
   const tokens = sentence.split(/\s+/);
   return tokens.map((token) => {
-    // Normalize curly quotes to straight, then clean
     const normalized = token.replace(/[\u2018\u2019\u2032]/g, "'");
-    const clean = normalized.toLowerCase().replace(/[^a-z'-]/g, "");
-    // Try exact match first, then without trailing punctuation artifacts
-    const entry = DICT[clean] || DICT[clean.replace(/^-+|-+$/g, "")];
+    const clean = normalized
+      .toLowerCase()
+      .replace(/[^a-z'-]/g, "")
+      .replace(/^[-']+|[-']+$/g, "");
+    const entry = resolveWordEntry(clean);
     return {
       word: token,
       clean,

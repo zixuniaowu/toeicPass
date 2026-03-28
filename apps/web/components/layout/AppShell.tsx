@@ -12,6 +12,7 @@ interface AppShellProps {
   onViewChange: (view: ViewTab) => void;
   isLoggedIn: boolean;
   message: string;
+  onLogout?: () => void;
 }
 
 export function AppShell({
@@ -20,16 +21,20 @@ export function AppShell({
   onViewChange,
   isLoggedIn,
   message,
+  onLogout,
 }: AppShellProps) {
   return (
     <div className={styles.shell}>
-      <TopBar
-        activeView={activeView}
-        onViewChange={onViewChange}
-        isLoggedIn={isLoggedIn}
-      />
-      <main className={styles.main}>{children}</main>
-      <Footer message={message} />
+      <div className={styles.content}>
+        <TopBar
+          activeView={activeView}
+          onViewChange={onViewChange}
+          isLoggedIn={isLoggedIn}
+          onLogout={onLogout}
+        />
+        <main className={styles.main}>{children}</main>
+        <Footer message={message} />
+      </div>
     </div>
   );
 }

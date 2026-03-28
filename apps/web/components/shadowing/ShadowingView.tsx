@@ -1,18 +1,52 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef, type ChangeEvent } from "react";
 import { SHADOWING_MATERIALS, type ShadowingMaterial } from "../../data/shadowing-materials";
 import { annotateWords, type WordAnnotation } from "../../data/word-dictionary";
+import tedLatestShadowing from "../../data/ted-latest-shadowing.json";
 import { Card, CardContent } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
+import { SelectionPronunciation } from "../ui/SelectionPronunciation";
 import styles from "./ShadowingView.module.css";
 
-type ViewMode = "materials" | "practice" | "news";
+type ViewMode = "materials" | "practice" | "news" | "youtube";
 
 type CompareWord = {
   word: string;
   status: "correct" | "wrong" | "missing";
+};
+
+type YoutubeImportResponse = {
+  success: boolean;
+  error?: string;
+  videoId?: string;
+  title?: string;
+  sourceLanguage?: string;
+  importMode?: string;
+  sentences?: Array<{
+    id: number;
+    text: string;
+    translation?: string;
+    startSec?: number;
+    endSec?: number;
+  }>;
+};
+
+const YOUTUBE_MATERIALS_STORAGE_KEY = "toeicpass.youtube-materials.v1";
+const YOUTUBE_PROGRESS_STORAGE_KEY = "toeicpass.youtube-material-progress.v1";
+const TED_SNAPSHOT_SYNC_KEY = "toeicpass.ted-latest.generated-at.v1";
+
+type MaterialProgressRecord = {
+  currentIndex: number;
+  completedSentenceIds: number[];
+  updatedAt: number;
+};
+
+type TedLatestSnapshot = {
+  generatedAt?: string;
+  itemCount?: number;
+  items?: ShadowingMaterial[];
 };
 
 // Normalize text for comparison: lowercase, remove punctuation
@@ -67,8 +101,434 @@ function compareWords(original: string, spoken: string): { words: CompareWord[];
   return { words: result, accuracy };
 }
 
+function parseYoutubeVideoId(rawUrl: string): string | null {
+  const input = rawUrl.trim();
+  if (!input) {
+    return null;
+  }
+  const directId = input.match(/^[a-zA-Z0-9_-]{11}$/);
+  if (directId) {
+    return directId[0];
+  }
+  try {
+    const url = new URL(input);
+    if (url.hostname.includes("youtu.be")) {
+      const id = url.pathname.replace("/", "").trim();
+      return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : null;
+    }
+    const v = url.searchParams.get("v");
+    if (v && /^[a-zA-Z0-9_-]{11}$/.test(v)) {
+      return v;
+    }
+    const embed = url.pathname.match(/\/embed\/([a-zA-Z0-9_-]{11})/);
+    if (embed?.[1]) {
+      return embed[1];
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+function parseTimestampToSeconds(raw: string): number | null {
+  const parts = raw
+    .trim()
+    .split(":")
+    .map((v) => Number(v));
+  if (parts.length < 2 || parts.some((v) => !Number.isFinite(v) || v < 0)) {
+    return null;
+  }
+  if (parts.length === 2) {
+    return Math.round(parts[0] * 60 + parts[1]);
+  }
+  return Math.round(parts[0] * 3600 + parts[1] * 60 + parts[2]);
+}
+
+function parseYoutubeScript(raw: string): {
+  sentences: ShadowingMaterial["sentences"];
+  errors: string[];
+} {
+  const lines = raw
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const errors: string[] = [];
+  const sentences: ShadowingMaterial["sentences"] = [];
+
+  lines.forEach((line, index) => {
+    let startSec: number | undefined;
+    let endSec: number | undefined;
+    let body = line;
+
+    const timed = line.match(
+      /^\[?(\d{1,2}:\d{2}(?::\d{2})?)\s*-\s*(\d{1,2}:\d{2}(?::\d{2})?)\]?\s*(.+)$/u,
+    );
+    if (timed) {
+      const start = parseTimestampToSeconds(timed[1]);
+      const end = parseTimestampToSeconds(timed[2]);
+      if (start === null || end === null || end <= start) {
+        errors.push(`第 ${index + 1} 行时间轴格式错误：${line}`);
+        return;
+      }
+      startSec = start;
+      endSec = end;
+      body = timed[3].trim();
+    }
+
+    const [textPart, translationPart = ""] = body.split("|");
+    const text = textPart?.trim() ?? "";
+    const translation = translationPart.trim();
+    if (!text) {
+      errors.push(`第 ${index + 1} 行缺少英文句子：${line}`);
+      return;
+    }
+    sentences.push({
+      id: index + 1,
+      text,
+      translation,
+      ...(typeof startSec === "number" ? { startSec } : {}),
+      ...(typeof endSec === "number" ? { endSec } : {}),
+    });
+  });
+
+  return { sentences, errors };
+}
+
+type TranscriptCue = {
+  startSec: number;
+  endSec: number;
+  text: string;
+};
+
+function parseLooseTimestamp(raw: string): number | null {
+  const normalized = String(raw ?? "").trim().replace(",", ".");
+  const parts = normalized.split(":").map((part) => Number(part));
+  if ((parts.length !== 2 && parts.length !== 3) || parts.some((value) => !Number.isFinite(value) || value < 0)) {
+    return null;
+  }
+  if (parts.length === 2) {
+    const [m, s] = parts;
+    return m * 60 + s;
+  }
+  const [h, m, s] = parts;
+  return h * 3600 + m * 60 + s;
+}
+
+function normalizeTranscriptLine(raw: string): string {
+  return String(raw ?? "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function splitPlainSentences(rawText: string): string[] {
+  const compact = normalizeTranscriptLine(rawText);
+  if (!compact) {
+    return [];
+  }
+  const rough = compact.split(/(?<=[.!?])\s+/);
+  const result = rough
+    .map((sentence) => sentence.trim())
+    .filter((sentence) => sentence.length > 1);
+  if (result.length > 0) {
+    return result;
+  }
+  return compact.split(/,\s+/).map((sentence) => sentence.trim()).filter((sentence) => sentence.length > 1);
+}
+
+function parseYoutubeTranscriptText(raw: string): { cues: TranscriptCue[]; errors: string[] } {
+  const lines = String(raw ?? "")
+    .replace(/\uFEFF/g, "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const errors: string[] = [];
+  const rawCues: Array<{ startSec: number; text: string }> = [];
+  const plainLines: string[] = [];
+  let pendingStartSec: number | null = null;
+
+  lines.forEach((line) => {
+    const timed = line.match(/^\[?\s*((?:\d{1,2}:)?\d{1,2}:\d{2}(?:[.,]\d{1,3})?)\s*\]?\s*(.*)$/u);
+    if (timed) {
+      const startSec = parseLooseTimestamp(timed[1]);
+      if (startSec === null) {
+        errors.push(`无法解析时间戳：${line}`);
+        return;
+      }
+      const tail = normalizeTranscriptLine(timed[2]);
+      if (tail) {
+        rawCues.push({ startSec, text: tail });
+        pendingStartSec = null;
+      } else {
+        pendingStartSec = startSec;
+      }
+      return;
+    }
+
+    if (pendingStartSec !== null) {
+      const text = normalizeTranscriptLine(line);
+      if (text) {
+        rawCues.push({ startSec: pendingStartSec, text });
+      }
+      pendingStartSec = null;
+      return;
+    }
+
+    plainLines.push(normalizeTranscriptLine(line));
+  });
+
+  if (rawCues.length === 0) {
+    const plainSentences = splitPlainSentences(plainLines.join(" "));
+    if (plainSentences.length === 0) {
+      return { cues: [], errors: errors.length > 0 ? errors : ["未识别到可用的 transcript 内容。"] };
+    }
+    const cues = plainSentences.map((text, index) => {
+      const startSec = index * 4;
+      return {
+        startSec,
+        endSec: startSec + 4,
+        text,
+      };
+    });
+    return { cues, errors };
+  }
+
+  const deduped = rawCues.filter((cue, index) => {
+    if (index === 0) {
+      return true;
+    }
+    const previous = rawCues[index - 1];
+    return !(cue.text === previous.text && Math.abs(cue.startSec - previous.startSec) < 0.2);
+  });
+
+  const cues: TranscriptCue[] = deduped.map((cue, index) => {
+    const nextStart = deduped[index + 1]?.startSec;
+    const endSec =
+      typeof nextStart === "number" && nextStart > cue.startSec
+        ? nextStart
+        : cue.startSec + 4;
+    return {
+      startSec: cue.startSec,
+      endSec: Math.max(cue.startSec + 0.5, endSec),
+      text: cue.text,
+    };
+  });
+  return { cues, errors };
+}
+
+function formatVttTimestamp(totalSeconds: number): string {
+  const safe = Math.max(0, totalSeconds);
+  const hours = Math.floor(safe / 3600);
+  const minutes = Math.floor((safe % 3600) / 60);
+  const seconds = Math.floor(safe % 60);
+  const milliseconds = Math.floor((safe - Math.floor(safe)) * 1000);
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${String(milliseconds).padStart(3, "0")}`;
+}
+
+function buildVttFromCues(cues: TranscriptCue[]): string {
+  const lines: string[] = ["WEBVTT", ""];
+  cues.forEach((cue, index) => {
+    lines.push(String(index + 1));
+    lines.push(`${formatVttTimestamp(cue.startSec)} --> ${formatVttTimestamp(cue.endSec)}`);
+    lines.push(cue.text);
+    lines.push("");
+  });
+  return lines.join("\n");
+}
+
+function normalizeImportedSentences(
+  rawSentences: YoutubeImportResponse["sentences"],
+): ShadowingMaterial["sentences"] {
+  const list = Array.isArray(rawSentences) ? rawSentences : [];
+  return list
+    .map((sentence, index) => ({
+      id: index + 1,
+      text: String(sentence.text ?? "").trim(),
+      translation: String(sentence.translation ?? "").trim(),
+      ...(typeof sentence.startSec === "number" ? { startSec: sentence.startSec } : {}),
+      ...(typeof sentence.endSec === "number" ? { endSec: sentence.endSec } : {}),
+    }))
+    .filter((sentence) => sentence.text.length > 0);
+}
+
+function buildScriptTextFromSentences(sentences: ShadowingMaterial["sentences"]): string {
+  return sentences
+    .map((sentence) => {
+      const timePrefix =
+        typeof sentence.startSec === "number" && typeof sentence.endSec === "number"
+          ? `[${formatSeconds(sentence.startSec)}-${formatSeconds(sentence.endSec)}] `
+          : "";
+      const translationSuffix = sentence.translation ? ` | ${sentence.translation}` : "";
+      return `${timePrefix}${sentence.text}${translationSuffix}`;
+    })
+    .join("\n");
+}
+
+function withSubtitleFallbackHint(rawMessage: string): string {
+  const message = String(rawMessage || "自动导入失败。").trim();
+  if (/srt|vtt|字幕文件/i.test(message)) {
+    return message;
+  }
+  return `${message} 你可以改用下方 SRT/VTT 字幕文件导入。`;
+}
+
+function titleFromSubtitleFile(fileName: string): string {
+  const title = String(fileName ?? "")
+    .replace(/\.(srt|vtt)$/i, "")
+    .trim();
+  return title || "字幕文件跟读";
+}
+
+function parseTedSnapshotMaterials(): { generatedAt: string; materials: ShadowingMaterial[] } {
+  const snapshot = tedLatestShadowing as TedLatestSnapshot;
+  const generatedAt = String(snapshot?.generatedAt ?? "").trim();
+  const items = Array.isArray(snapshot?.items) ? snapshot.items : [];
+  const materials = items
+    .map((item) => normalizeMaterialForStorage(item))
+    .filter((item) => item.sentences.length > 0);
+  return { generatedAt, materials };
+}
+
+function buildYoutubeEmbedUrl(videoId: string, startSec: number, endSec?: number): string {
+  const params = new URLSearchParams({
+    rel: "0",
+    modestbranding: "1",
+    playsinline: "1",
+    autoplay: "1",
+    start: String(Math.max(0, Math.floor(startSec))),
+  });
+  if (typeof endSec === "number" && endSec > startSec) {
+    params.set("end", String(Math.floor(endSec)));
+  }
+  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+}
+
+function normalizeMaterialForStorage(material: ShadowingMaterial): ShadowingMaterial {
+  return {
+    id: String(material.id),
+    title: String(material.title),
+    titleCn: String(material.titleCn),
+    source: String(material.source),
+    category: "speech",
+    difficulty: material.difficulty === 1 || material.difficulty === 3 ? material.difficulty : 2,
+    ...(material.youtubeVideoId ? { youtubeVideoId: String(material.youtubeVideoId) } : {}),
+    sentences: material.sentences.map((sentence, index) => ({
+      id: index + 1,
+      text: String(sentence.text ?? "").trim(),
+      translation: String(sentence.translation ?? "").trim(),
+      ...(typeof sentence.startSec === "number" ? { startSec: sentence.startSec } : {}),
+      ...(typeof sentence.endSec === "number" ? { endSec: sentence.endSec } : {}),
+    })),
+  };
+}
+
+function clampSentenceIndex(index: number, sentenceTotal: number): number {
+  if (!Number.isFinite(index) || sentenceTotal <= 0) {
+    return 0;
+  }
+  return Math.max(0, Math.min(sentenceTotal - 1, Math.floor(index)));
+}
+
+function isPersistedVideoMaterial(material: ShadowingMaterial): boolean {
+  return material.id.startsWith("youtube-") || material.id.startsWith("subtitle-");
+}
+
+function loadYoutubeMaterialsFromStorage(): ShadowingMaterial[] {
+  if (typeof window === "undefined") {
+    return [];
+  }
+  try {
+    const raw = window.localStorage.getItem(YOUTUBE_MATERIALS_STORAGE_KEY);
+    if (!raw) {
+      return [];
+    }
+    const parsed = JSON.parse(raw) as unknown;
+    const list = Array.isArray(parsed) ? parsed : [];
+    return list
+      .map((item) => normalizeMaterialForStorage(item as ShadowingMaterial))
+      .filter((item) => item.sentences.length > 0);
+  } catch {
+    return [];
+  }
+}
+
+function saveYoutubeMaterialsToStorage(materials: ShadowingMaterial[]): void {
+  if (typeof window === "undefined") {
+    return;
+  }
+  const payload = materials
+    .map((item) => normalizeMaterialForStorage(item))
+    .slice(0, 30);
+  window.localStorage.setItem(YOUTUBE_MATERIALS_STORAGE_KEY, JSON.stringify(payload));
+}
+
+function loadYoutubeProgressFromStorage(): Record<string, MaterialProgressRecord> {
+  if (typeof window === "undefined") {
+    return {};
+  }
+  try {
+    const raw = window.localStorage.getItem(YOUTUBE_PROGRESS_STORAGE_KEY);
+    if (!raw) {
+      return {};
+    }
+    const parsed = JSON.parse(raw) as unknown;
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return {};
+    }
+
+    const result: Record<string, MaterialProgressRecord> = {};
+    Object.entries(parsed).forEach(([materialId, value]) => {
+      if (!materialId || !value || typeof value !== "object" || Array.isArray(value)) {
+        return;
+      }
+      const currentIndex = Number((value as { currentIndex?: unknown }).currentIndex);
+      const completedRaw = (value as { completedSentenceIds?: unknown }).completedSentenceIds;
+      const updatedAt = Number((value as { updatedAt?: unknown }).updatedAt);
+      const completedSentenceIds = Array.isArray(completedRaw)
+        ? completedRaw
+          .map((item) => Number(item))
+          .filter((item) => Number.isInteger(item) && item >= 0)
+        : [];
+
+      result[materialId] = {
+        currentIndex: Number.isFinite(currentIndex) && currentIndex >= 0 ? Math.floor(currentIndex) : 0,
+        completedSentenceIds: Array.from(new Set(completedSentenceIds)),
+        updatedAt: Number.isFinite(updatedAt) ? updatedAt : Date.now(),
+      };
+    });
+    return result;
+  } catch {
+    return {};
+  }
+}
+
+function saveYoutubeProgressToStorage(progressMap: Record<string, MaterialProgressRecord>): void {
+  if (typeof window === "undefined") {
+    return;
+  }
+  window.localStorage.setItem(YOUTUBE_PROGRESS_STORAGE_KEY, JSON.stringify(progressMap));
+}
+
+function mergeSnapshotMaterials(
+  snapshotMaterials: ShadowingMaterial[],
+  storedMaterials: ShadowingMaterial[],
+): ShadowingMaterial[] {
+  const merged = [...snapshotMaterials, ...storedMaterials.map((item) => normalizeMaterialForStorage(item))];
+  const deduped: ShadowingMaterial[] = [];
+  const seen = new Set<string>();
+  merged.forEach((item) => {
+    const key = item.youtubeVideoId ? `video:${item.youtubeVideoId}` : `id:${item.id}`;
+    if (seen.has(key)) {
+      return;
+    }
+    seen.add(key);
+    deduped.push(item);
+  });
+  return deduped.slice(0, 60);
+}
+
 export function ShadowingView() {
   const [viewMode, setViewMode] = useState<ViewMode>("materials");
+  const [originMode, setOriginMode] = useState<ViewMode>("materials");
   const [activeMaterial, setActiveMaterial] = useState<ShadowingMaterial | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [alwaysShowTranslation, setAlwaysShowTranslation] = useState(false);
@@ -88,6 +548,19 @@ export function ShadowingView() {
   // Word annotation toggles
   const [showWordTranslation, setShowWordTranslation] = useState(false);
   const [showIPA, setShowIPA] = useState(false);
+  const selectionScopeRef = useRef<HTMLDivElement | null>(null);
+  const [youtubeUrlInput, setYoutubeUrlInput] = useState("");
+  const [youtubeTitleInput, setYoutubeTitleInput] = useState("");
+  const [youtubeScriptInput, setYoutubeScriptInput] = useState("");
+  const [youtubeTranscriptInput, setYoutubeTranscriptInput] = useState("");
+  const [youtubeError, setYoutubeError] = useState("");
+  const [youtubeImporting, setYoutubeImporting] = useState(false);
+  const [subtitleFileImporting, setSubtitleFileImporting] = useState(false);
+  const [transcriptImporting, setTranscriptImporting] = useState(false);
+  const [savedYoutubeMaterials, setSavedYoutubeMaterials] = useState<ShadowingMaterial[]>([]);
+  const [materialProgressMap, setMaterialProgressMap] = useState<Record<string, MaterialProgressRecord>>({});
+  const [videoStartSec, setVideoStartSec] = useState(0);
+  const [videoEmbedNonce, setVideoEmbedNonce] = useState(0);
 
   // Cancel speech and recognition on unmount or material change
   useEffect(() => {
@@ -96,6 +569,22 @@ export function ShadowingView() {
       recognitionRef.current?.abort();
     };
   }, [activeMaterial]);
+
+  useEffect(() => {
+    const storedMaterials = loadYoutubeMaterialsFromStorage();
+    const tedSnapshot = parseTedSnapshotMaterials();
+    let nextMaterials = storedMaterials;
+    if (typeof window !== "undefined" && tedSnapshot.materials.length > 0 && tedSnapshot.generatedAt) {
+      const syncedAt = String(window.localStorage.getItem(TED_SNAPSHOT_SYNC_KEY) ?? "").trim();
+      if (syncedAt !== tedSnapshot.generatedAt) {
+        nextMaterials = mergeSnapshotMaterials(tedSnapshot.materials, storedMaterials);
+        saveYoutubeMaterialsToStorage(nextMaterials);
+        window.localStorage.setItem(TED_SNAPSHOT_SYNC_KEY, tedSnapshot.generatedAt);
+      }
+    }
+    setSavedYoutubeMaterials(nextMaterials);
+    setMaterialProgressMap(loadYoutubeProgressFromStorage());
+  }, []);
 
   const speak = useCallback((text: string) => {
     if (!window.speechSynthesis) return;
@@ -183,14 +672,143 @@ export function ShadowingView() {
     recognitionRef.current?.stop();
   }, []);
 
-  const handleStart = useCallback((material: ShadowingMaterial) => {
+  const persistMaterialProgress = useCallback(
+    (materialId: string, current: number, completedSetValue: Set<number>) => {
+      setMaterialProgressMap((prev) => {
+        const nextRecord: MaterialProgressRecord = {
+          currentIndex: Math.max(0, Math.floor(current)),
+          completedSentenceIds: Array.from(completedSetValue)
+            .filter((id) => Number.isInteger(id) && id >= 0)
+            .sort((a, b) => a - b),
+          updatedAt: Date.now(),
+        };
+        const nextMap: Record<string, MaterialProgressRecord> = {
+          ...prev,
+          [materialId]: nextRecord,
+        };
+        saveYoutubeProgressToStorage(nextMap);
+        return nextMap;
+      });
+    },
+    [],
+  );
+
+  const clearMaterialProgress = useCallback((materialId: string) => {
+    setMaterialProgressMap((prev) => {
+      if (!(materialId in prev)) {
+        return prev;
+      }
+      const nextMap = { ...prev };
+      delete nextMap[materialId];
+      saveYoutubeProgressToStorage(nextMap);
+      return nextMap;
+    });
+  }, []);
+
+  const handleStart = useCallback((material: ShadowingMaterial, options?: { resumeFromLast?: boolean }) => {
+    const sentenceTotal = material.sentences.length;
+    const storedProgress = options?.resumeFromLast ? materialProgressMap[material.id] : undefined;
+    const initialIndex = storedProgress
+      ? clampSentenceIndex(storedProgress.currentIndex, sentenceTotal)
+      : 0;
+    const initialCompleted = storedProgress
+      ? new Set(
+        storedProgress.completedSentenceIds.filter(
+          (id) => Number.isInteger(id) && id >= 0 && id < sentenceTotal,
+        ),
+      )
+      : new Set<number>();
+    const firstSentenceStart = material.sentences[initialIndex]?.startSec ?? 0;
     setActiveMaterial(material);
-    setCurrentIndex(0);
+    setCurrentIndex(initialIndex);
     setAlwaysShowTranslation(false);
-    setCompletedSet(new Set());
+    setCompletedSet(initialCompleted);
+    setVideoStartSec(firstSentenceStart);
+    setVideoEmbedNonce((prev) => prev + 1);
+    setOriginMode(viewMode);
     clearRecognition();
     setViewMode("practice");
-  }, [clearRecognition]);
+  }, [clearRecognition, materialProgressMap, viewMode]);
+
+  const upsertYoutubeMaterial = useCallback((material: ShadowingMaterial) => {
+    const normalized = normalizeMaterialForStorage(material);
+    setSavedYoutubeMaterials((prev) => {
+      const deduped = prev.filter((item) => {
+        if (item.id === normalized.id) {
+          return false;
+        }
+        if (item.youtubeVideoId && normalized.youtubeVideoId && item.youtubeVideoId === normalized.youtubeVideoId) {
+          return false;
+        }
+        if (!item.youtubeVideoId && !normalized.youtubeVideoId && item.title === normalized.title && item.source === normalized.source) {
+          return false;
+        }
+        return true;
+      });
+      const next = [normalized, ...deduped].slice(0, 30);
+      saveYoutubeMaterialsToStorage(next);
+      return next;
+    });
+  }, []);
+
+  const deleteYoutubeMaterial = useCallback((materialId: string) => {
+    setSavedYoutubeMaterials((prev) => {
+      const next = prev.filter((item) => item.id !== materialId);
+      saveYoutubeMaterialsToStorage(next);
+      return next;
+    });
+    clearMaterialProgress(materialId);
+  }, [clearMaterialProgress]);
+
+  const resetYoutubeMaterialProgress = useCallback((materialId: string) => {
+    clearMaterialProgress(materialId);
+  }, [clearMaterialProgress]);
+
+  const handleStartSavedMaterial = useCallback((material: ShadowingMaterial) => {
+    handleStart(material, { resumeFromLast: true });
+  }, [handleStart]);
+
+  const handleImportTedLatestBatch = useCallback(() => {
+    const { materials } = parseTedSnapshotMaterials();
+    if (materials.length === 0) {
+      setYoutubeError("未找到 TED 批量材料。请先运行 npm run -w apps/web import:ted-latest");
+      return;
+    }
+    setYoutubeError("");
+    setSavedYoutubeMaterials((prev) => {
+      const merged = [...materials, ...prev.map((item) => normalizeMaterialForStorage(item))];
+      const deduped: ShadowingMaterial[] = [];
+      const seen = new Set<string>();
+      merged.forEach((item) => {
+        const key = item.youtubeVideoId ? `video:${item.youtubeVideoId}` : `id:${item.id}`;
+        if (seen.has(key)) {
+          return;
+        }
+        seen.add(key);
+        deduped.push(item);
+      });
+      const next = deduped.slice(0, 60);
+      saveYoutubeMaterialsToStorage(next);
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!activeMaterial || !isPersistedVideoMaterial(activeMaterial)) {
+      return;
+    }
+    const sentenceTotal = activeMaterial.sentences.length;
+    if (sentenceTotal <= 0) {
+      return;
+    }
+    const safeIndex = clampSentenceIndex(currentIndex, sentenceTotal);
+    const safeCompleted = new Set(
+      Array.from(completedSet).filter(
+        (id) => Number.isInteger(id) && id >= 0 && id < sentenceTotal,
+      ),
+    );
+    persistMaterialProgress(activeMaterial.id, safeIndex, safeCompleted);
+  }, [activeMaterial, completedSet, currentIndex, persistMaterialProgress]);
 
   const handleNext = useCallback(() => {
     if (!activeMaterial) return;
@@ -198,7 +816,13 @@ export function ShadowingView() {
     clearRecognition();
     setCompletedSet((prev) => new Set(prev).add(currentIndex));
     if (currentIndex < activeMaterial.sentences.length - 1) {
-      setCurrentIndex((i) => i + 1);
+      const nextIndex = currentIndex + 1;
+      setCurrentIndex(nextIndex);
+      const nextStart = activeMaterial.sentences[nextIndex]?.startSec;
+      if (typeof nextStart === "number") {
+        setVideoStartSec(nextStart);
+        setVideoEmbedNonce((prev) => prev + 1);
+      }
     }
   }, [activeMaterial, currentIndex, stopSpeaking, clearRecognition]);
 
@@ -206,9 +830,15 @@ export function ShadowingView() {
     if (currentIndex > 0) {
       stopSpeaking();
       clearRecognition();
-      setCurrentIndex((i) => i - 1);
+      const prevIndex = currentIndex - 1;
+      setCurrentIndex(prevIndex);
+      const prevStart = activeMaterial?.sentences[prevIndex]?.startSec;
+      if (typeof prevStart === "number") {
+        setVideoStartSec(prevStart);
+        setVideoEmbedNonce((prev) => prev + 1);
+      }
     }
-  }, [currentIndex, stopSpeaking, clearRecognition]);
+  }, [activeMaterial, currentIndex, stopSpeaking, clearRecognition]);
 
   const handleBack = useCallback(() => {
     stopSpeaking();
@@ -217,8 +847,250 @@ export function ShadowingView() {
     setCurrentIndex(0);
     setAlwaysShowTranslation(false);
     setCompletedSet(new Set());
-    setViewMode("materials");
-  }, [stopSpeaking, clearRecognition]);
+    setYoutubeError("");
+    setViewMode(originMode);
+  }, [stopSpeaking, clearRecognition, originMode]);
+
+  const handleStartYoutube = useCallback(() => {
+    setYoutubeError("");
+    const videoId = parseYoutubeVideoId(youtubeUrlInput);
+    if (!videoId) {
+      setYoutubeError("请输入有效的 YouTube 链接或视频 ID。");
+      return;
+    }
+    const { sentences, errors } = parseYoutubeScript(youtubeScriptInput);
+    if (errors.length > 0) {
+      setYoutubeError(errors[0]);
+      return;
+    }
+    if (sentences.length === 0) {
+      setYoutubeError("请至少输入一行句子脚本。");
+      return;
+    }
+
+    const title = youtubeTitleInput.trim() || "YouTube 跟读";
+    const customMaterial: ShadowingMaterial = {
+      id: `youtube-${videoId}-${Date.now()}`,
+      title,
+      titleCn: title,
+      source: "YouTube (manual script)",
+      category: "speech",
+      difficulty: 2,
+      youtubeVideoId: videoId,
+      sentences,
+    };
+    upsertYoutubeMaterial(customMaterial);
+    handleStart(customMaterial);
+  }, [handleStart, upsertYoutubeMaterial, youtubeScriptInput, youtubeTitleInput, youtubeUrlInput]);
+
+  const handleAutoImportYoutube = useCallback(async () => {
+    setYoutubeError("");
+    const input = youtubeUrlInput.trim();
+    if (!input) {
+      setYoutubeError("请先输入 YouTube 链接或视频 ID。");
+      return;
+    }
+
+    setYoutubeImporting(true);
+    try {
+      const response = await fetch("/api/youtube-subtitles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url: input }),
+      });
+      const payload = (await response.json()) as YoutubeImportResponse;
+      if (!response.ok || !payload.success) {
+        setYoutubeError(withSubtitleFallbackHint(payload.error || "自动导入失败。"));
+        return;
+      }
+      const videoId = payload.videoId ? String(payload.videoId) : parseYoutubeVideoId(input);
+      const normalizedSentences = normalizeImportedSentences(payload.sentences);
+      if (!videoId || normalizedSentences.length === 0) {
+        setYoutubeError("未获取到可用字幕。请换一个有英文字幕的视频，或改用 SRT/VTT 字幕文件导入。");
+        return;
+      }
+
+      const title = youtubeTitleInput.trim() || String(payload.title ?? "").trim() || "YouTube 跟读";
+      const autoMaterial: ShadowingMaterial = {
+        id: `youtube-${videoId}-${Date.now()}`,
+        title,
+        titleCn: title,
+        source: `YouTube (${payload.sourceLanguage ?? "subtitle"})`,
+        category: "speech",
+        difficulty: 2,
+        youtubeVideoId: videoId,
+        sentences: normalizedSentences,
+      };
+
+      upsertYoutubeMaterial(autoMaterial);
+      setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
+      handleStart(autoMaterial);
+    } catch (error) {
+      setYoutubeError(withSubtitleFallbackHint(error instanceof Error ? error.message : "自动导入失败。"));
+    } finally {
+      setYoutubeImporting(false);
+    }
+  }, [handleStart, upsertYoutubeMaterial, youtubeTitleInput, youtubeUrlInput]);
+
+  const handleSubtitleFileImport = useCallback(async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) {
+      return;
+    }
+
+    setYoutubeError("");
+    if (!/\.(srt|vtt)$/i.test(file.name)) {
+      setYoutubeError("仅支持 .srt 或 .vtt 字幕文件。");
+      return;
+    }
+    if (file.size > 2_000_000) {
+      setYoutubeError("字幕文件过大，请控制在 2MB 内。");
+      return;
+    }
+
+    setSubtitleFileImporting(true);
+    try {
+      const subtitleText = await file.text();
+      if (!subtitleText.trim()) {
+        setYoutubeError("字幕文件为空，请换一个文件。");
+        return;
+      }
+
+      const maybeVideoId = parseYoutubeVideoId(youtubeUrlInput);
+      const fallbackTitle = youtubeTitleInput.trim() || titleFromSubtitleFile(file.name);
+      const response = await fetch("/api/youtube-subtitles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url: youtubeUrlInput.trim(),
+          videoId: maybeVideoId ?? undefined,
+          title: fallbackTitle,
+          subtitleText,
+        }),
+      });
+      const payload = (await response.json()) as YoutubeImportResponse;
+      if (!response.ok || !payload.success) {
+        setYoutubeError(payload.error || "字幕文件导入失败。");
+        return;
+      }
+
+      const normalizedSentences = normalizeImportedSentences(payload.sentences);
+      if (normalizedSentences.length === 0) {
+        setYoutubeError("字幕文件里没有可用句子。");
+        return;
+      }
+
+      const videoId = payload.videoId ? String(payload.videoId) : maybeVideoId;
+      const title = youtubeTitleInput.trim() || String(payload.title ?? "").trim() || fallbackTitle;
+      const importedMaterial: ShadowingMaterial = {
+        id: videoId ? `youtube-${videoId}-${Date.now()}` : `subtitle-${Date.now()}`,
+        title,
+        titleCn: title,
+        source: `Subtitle file (${file.name})`,
+        category: "speech",
+        difficulty: 2,
+        ...(videoId ? { youtubeVideoId: videoId } : {}),
+        sentences: normalizedSentences,
+      };
+
+      upsertYoutubeMaterial(importedMaterial);
+      setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
+      handleStart(importedMaterial);
+    } catch (error) {
+      setYoutubeError(error instanceof Error ? error.message : "字幕文件导入失败。");
+    } finally {
+      setSubtitleFileImporting(false);
+    }
+  }, [handleStart, upsertYoutubeMaterial, youtubeTitleInput, youtubeUrlInput]);
+
+  const handleTranscriptImport = useCallback(async () => {
+    setYoutubeError("");
+    const transcriptText = youtubeTranscriptInput.trim();
+    if (!transcriptText) {
+      setYoutubeError("请先粘贴 transcript 内容。");
+      return;
+    }
+
+    const { cues, errors } = parseYoutubeTranscriptText(transcriptText);
+    if (errors.length > 0) {
+      setYoutubeError(errors[0]);
+      return;
+    }
+    if (cues.length === 0) {
+      setYoutubeError("未识别到可用句子。请检查 transcript 格式。");
+      return;
+    }
+
+    setTranscriptImporting(true);
+    try {
+      const subtitleText = buildVttFromCues(cues);
+      const maybeVideoId = parseYoutubeVideoId(youtubeUrlInput);
+      const fallbackTitle = youtubeTitleInput.trim() || "YouTube Transcript 跟读";
+      const response = await fetch("/api/youtube-subtitles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url: youtubeUrlInput.trim(),
+          videoId: maybeVideoId ?? undefined,
+          title: fallbackTitle,
+          subtitleText,
+        }),
+      });
+      const payload = (await response.json()) as YoutubeImportResponse;
+      if (!response.ok || !payload.success) {
+        setYoutubeError(payload.error || "Transcript 导入失败。");
+        return;
+      }
+
+      const normalizedSentences = normalizeImportedSentences(payload.sentences);
+      if (normalizedSentences.length === 0) {
+        setYoutubeError("Transcript 可解析，但未生成可练习句子。");
+        return;
+      }
+
+      const videoId = payload.videoId ? String(payload.videoId) : maybeVideoId;
+      const title = youtubeTitleInput.trim() || String(payload.title ?? "").trim() || fallbackTitle;
+      const importedMaterial: ShadowingMaterial = {
+        id: videoId ? `youtube-${videoId}-${Date.now()}` : `subtitle-${Date.now()}`,
+        title,
+        titleCn: title,
+        source: videoId ? "YouTube Transcript (pasted)" : "Transcript (pasted)",
+        category: "speech",
+        difficulty: 2,
+        ...(videoId ? { youtubeVideoId: videoId } : {}),
+        sentences: normalizedSentences,
+      };
+
+      upsertYoutubeMaterial(importedMaterial);
+      setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
+      handleStart(importedMaterial);
+    } catch (error) {
+      setYoutubeError(error instanceof Error ? error.message : "Transcript 导入失败。");
+    } finally {
+      setTranscriptImporting(false);
+    }
+  }, [handleStart, upsertYoutubeMaterial, youtubeTitleInput, youtubeTranscriptInput, youtubeUrlInput]);
+
+  const jumpToSentenceVideo = useCallback((index: number) => {
+    if (!activeMaterial?.youtubeVideoId) {
+      return;
+    }
+    const target = activeMaterial.sentences[index];
+    if (!target) {
+      return;
+    }
+    if (typeof target.startSec === "number") {
+      setVideoStartSec(target.startSec);
+      setVideoEmbedNonce((prev) => prev + 1);
+    }
+  }, [activeMaterial]);
 
   const loadNews = useCallback(async () => {
     setIsLoadingNews(true);
@@ -277,9 +1149,13 @@ export function ShadowingView() {
   const filteredMaterials = categoryFilter === "all"
     ? SHADOWING_MATERIALS
     : SHADOWING_MATERIALS.filter((m) => m.category === categoryFilter);
+  const tedSnapshot = parseTedSnapshotMaterials();
+  const tedSnapshotGeneratedAt = tedSnapshot.generatedAt
+    ? new Date(tedSnapshot.generatedAt).toLocaleString()
+    : "";
 
   // --- Material Selection Screen ---
-  if (viewMode === "materials" || (viewMode === "news" && !activeMaterial)) {
+  if ((viewMode === "materials" || viewMode === "news" || viewMode === "youtube") && !activeMaterial) {
     return (
       <div className={styles.container}>
         <div className={styles.header}>
@@ -300,6 +1176,12 @@ export function ShadowingView() {
             onClick={() => { setViewMode("news"); if (newsArticles.length === 0) loadNews(); }}
           >
             每日新闻
+          </button>
+          <button
+            className={`${styles.tab} ${viewMode === "youtube" ? styles.tabActive : ""}`}
+            onClick={() => setViewMode("youtube")}
+          >
+            YouTube 跟读
           </button>
         </div>
 
@@ -378,6 +1260,125 @@ export function ShadowingView() {
             </div>
           </div>
         )}
+
+        {viewMode === "youtube" && (
+          <Card className={styles.youtubeFormCard}>
+            <CardContent>
+              <div className={styles.youtubeFormGrid}>
+                <label className={styles.youtubeLabel}>
+                  <span>YouTube 链接 / 视频 ID</span>
+                  <input
+                    className={styles.youtubeInput}
+                    type="text"
+                    placeholder="例如：https://www.youtube.com/watch?v=xxxxxxxxxxx"
+                    value={youtubeUrlInput}
+                    onChange={(e) => setYoutubeUrlInput(e.target.value)}
+                  />
+                </label>
+
+                {youtubeError && <p className={styles.youtubeError}>{youtubeError}</p>}
+
+                <div className={styles.youtubeActions}>
+                  <Button
+                    onClick={handleAutoImportYoutube}
+                    disabled={youtubeImporting}
+                  >
+                    {youtubeImporting ? "自动导入中..." : "一键抓字幕并自动导入"}
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={handleImportTedLatestBatch}
+                    disabled={youtubeImporting || tedSnapshot.materials.length === 0}
+                  >
+                    一键导入 TED 最新10
+                  </Button>
+                </div>
+
+                <div className={styles.youtubeHint}>
+                  <p>最省事：直接点「一键导入 TED 最新10」。</p>
+                  {tedSnapshotGeneratedAt && <p>TED 批量包生成时间：{tedSnapshotGeneratedAt}</p>}
+                </div>
+
+                <div className={styles.savedMaterialsBlock}>
+                  <h4>我的视频材料</h4>
+                  {savedYoutubeMaterials.length === 0 ? (
+                    <p className={styles.savedEmpty}>还没有保存的材料。导入一个视频后会自动保存。</p>
+                  ) : (
+                    <div className={styles.savedMaterialList}>
+                      {savedYoutubeMaterials.map((material) => (
+                        <div key={material.id} className={styles.savedMaterialItem}>
+                          {material.youtubeVideoId ? (
+                            <div 
+                              className={styles.videoThumbnailWrap} 
+                              onClick={() => handleStartSavedMaterial(material)}
+                              style={{ cursor: 'pointer' }}
+                            >
+                              <img src={`https://img.youtube.com/vi/${material.youtubeVideoId}/mqdefault.jpg`} alt={material.title} />
+                              <div className={styles.thumbnailOverlay}>
+                                <div className={styles.playIcon}>
+                                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <div 
+                              className={styles.videoThumbnailWrap} 
+                              onClick={() => handleStartSavedMaterial(material)}
+                              style={{ cursor: 'pointer', background: 'linear-gradient(135deg, var(--color-primary-light), var(--color-primary))' }}
+                            >
+                              <div className={styles.thumbnailOverlay} style={{ opacity: 1 }}>
+                                <div className={styles.playIcon}>
+                                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                          <div className={styles.savedMaterialContent}>
+                            <div className={styles.savedMaterialInfo}>
+                              <strong title={material.title}>{material.title}</strong>
+                              <span>
+                                {(() => {
+                                  const sentenceTotal = material.sentences.length;
+                                  const progress = materialProgressMap[material.id];
+                                  if (!progress) {
+                                    return `未开始 · ${sentenceTotal} 句 · ${material.source}`;
+                                  }
+                                  const current = clampSentenceIndex(progress.currentIndex, sentenceTotal) + 1;
+                                  const completedCount = new Set(
+                                    progress.completedSentenceIds.filter(
+                                      (id) => Number.isInteger(id) && id >= 0 && id < sentenceTotal,
+                                    ),
+                                  ).size;
+                                  return `第 ${current}/${sentenceTotal} 句 · 已完成 ${completedCount} 句 · ${material.source}`;
+                                })()}
+                              </span>
+                            </div>
+                            <div className={styles.savedMaterialActions}>
+                              <Button
+                                variant="secondary"
+                                onClick={() => handleStartSavedMaterial(material)}
+                                size="sm"
+                              >
+                                {materialProgressMap[material.id] ? "继续练习" : "开始练习"}
+                              </Button>
+                              <Button
+                                variant="link"
+                                onClick={() => deleteYoutubeMaterial(material.id)}
+                                size="sm"
+                              >
+                                删除
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
     );
   }
@@ -388,255 +1389,455 @@ export function ShadowingView() {
   const sentence = activeMaterial.sentences[currentIndex];
   const progress = completedSet.size;
   const total = activeMaterial.sentences.length;
+  const isYoutubeMaterial = Boolean(activeMaterial.youtubeVideoId);
+  const sentenceRangeText =
+    typeof sentence.startSec === "number" && typeof sentence.endSec === "number"
+      ? `${formatSeconds(sentence.startSec)} - ${formatSeconds(sentence.endSec)}`
+      : typeof sentence.startSec === "number"
+        ? `${formatSeconds(sentence.startSec)}`
+        : null;
+  const youtubeEmbedUrl =
+    activeMaterial.youtubeVideoId
+      ? buildYoutubeEmbedUrl(
+          activeMaterial.youtubeVideoId,
+          videoStartSec,
+          sentence.startSec === videoStartSec ? sentence.endSec : undefined,
+        )
+      : "";
+  const youtubeWatchUrl = activeMaterial.youtubeVideoId
+    ? `https://www.youtube.com/watch?v=${activeMaterial.youtubeVideoId}`
+    : "";
+
+  // Helper to navigate to a specific sentence index
+  const goToSentence = (index: number) => {
+    if (index < 0 || index >= total) return;
+    stopSpeaking();
+    clearRecognition();
+    setCurrentIndex(index);
+    const startSec = activeMaterial.sentences[index]?.startSec;
+    if (typeof startSec === "number") {
+      setVideoStartSec(startSec);
+      setVideoEmbedNonce((prev) => prev + 1);
+    }
+  };
 
   return (
     <div className={styles.container}>
-      <div className={styles.sessionHeader}>
-        <Button variant="secondary" onClick={handleBack}>
-          返回列表
-        </Button>
-        <div className={styles.sessionTitle}>
-          <h2>{activeMaterial.titleCn}</h2>
-          <span className={styles.progressLabel}>
-            第 {currentIndex + 1} / {total} 句 · 已完成 {progress}
-          </span>
-        </div>
-      </div>
-
-      {/* Progress bar */}
-      <div className={styles.progressBar}>
-        <div
-          className={styles.progressFill}
-          style={{ width: `${(progress / total) * 100}%` }}
-        />
-      </div>
-
-      {/* Controls bar */}
-      <div className={styles.controlsBar}>
-        <div className={styles.toggleGroup}>
-          <label className={styles.toggleLabel}>
-            <input
-              type="checkbox"
-              checked={alwaysShowTranslation}
-              onChange={(e) => setAlwaysShowTranslation(e.target.checked)}
-            />
-            显示翻译
-          </label>
-          <label className={styles.toggleLabel}>
-            <input
-              type="checkbox"
-              checked={showWordTranslation}
-              onChange={(e) => setShowWordTranslation(e.target.checked)}
-            />
-            逐词释义
-          </label>
-          <label className={styles.toggleLabel}>
-            <input
-              type="checkbox"
-              checked={showIPA}
-              onChange={(e) => setShowIPA(e.target.checked)}
-            />
-            显示音标
-          </label>
-        </div>
-        <div className={styles.speedControl}>
-          <span>语速：</span>
-          <button
-            className={`${styles.speedBtn} ${speechRate === 0.6 ? styles.speedActive : ""}`}
-            onClick={() => setSpeechRate(0.6)}
-          >
-            慢
-          </button>
-          <button
-            className={`${styles.speedBtn} ${speechRate === 0.85 ? styles.speedActive : ""}`}
-            onClick={() => setSpeechRate(0.85)}
-          >
-            中
-          </button>
-          <button
-            className={`${styles.speedBtn} ${speechRate === 1.0 ? styles.speedActive : ""}`}
-            onClick={() => setSpeechRate(1.0)}
-          >
-            快
-          </button>
-        </div>
-      </div>
-
-      {/* Sentence card */}
-      <Card className={styles.sentenceCard}>
-        <CardContent>
-          <div className={styles.sentenceTop}>
-            <div className={styles.sentenceNumber}>#{sentence.id}</div>
-            <button
-              className={`${styles.speakBtn} ${isSpeaking ? styles.speakBtnActive : ""}`}
-              onClick={() => isSpeaking ? stopSpeaking() : speak(sentence.text)}
-              title="朗读"
-            >
-              {isSpeaking ? "⏹ 停止" : "🔊 朗读"}
-            </button>
-          </div>
-
-          {/* Sentence text - plain or annotated */}
-          {!showWordTranslation && !showIPA ? (
-            <p className={styles.sentenceText}>{sentence.text}</p>
-          ) : (
-            <div className={styles.annotatedSentence}>
-              {annotateWords(sentence.text).map((w, i) => (
-                <span key={i} className={styles.annotatedWord}>
-                  <span className={styles.wordMain}>{w.word}</span>
-                  {showIPA && w.ipa && (
-                    <span className={styles.wordIPA}>{w.ipa}</span>
-                  )}
-                  {showWordTranslation && w.cn && (
-                    <span className={styles.wordCN}>{w.cn}</span>
-                  )}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Recording section */}
-          <div className={styles.recordSection}>
-            <div className={styles.recordActions}>
-              {!isRecording ? (
-                <button
-                  className={styles.recordBtn}
-                  onClick={() => startRecording(sentence.text)}
-                  disabled={isSpeaking}
-                >
-                  🎙 开始跟读
-                </button>
-              ) : (
-                <button
-                  className={`${styles.recordBtn} ${styles.recordBtnActive}`}
-                  onClick={stopRecording}
-                >
-                  ⏹ 停止录音
-                </button>
-              )}
-              {isRecording && (
-                <span className={styles.recordingIndicator}>录音中...</span>
-              )}
-            </div>
-
-            {/* Show recognized text */}
-            {recognizedText && !compareResult && (
-              <div className={styles.recognizedText}>
-                <span className={styles.recognizedLabel}>识别中：</span>
-                {recognizedText}
-              </div>
-            )}
-
-            {/* Show comparison result */}
-            {compareResult && (
-              <div className={styles.compareResult}>
-                <div className={styles.accuracyBar}>
-                  <span className={styles.accuracyLabel}>
-                    准确率：{compareResult.accuracy}%
-                  </span>
-                  <div className={styles.accuracyTrack}>
-                    <div
-                      className={styles.accuracyFill}
-                      style={{
-                        width: `${compareResult.accuracy}%`,
-                        background: compareResult.accuracy >= 80 ? "var(--color-success, #10b981)" : compareResult.accuracy >= 50 ? "var(--color-warning, #f59e0b)" : "#dc2626",
-                      }}
-                    />
-                  </div>
-                  {compareResult.accuracy >= 80 && <span className={styles.accuracyEmoji}>excellent!</span>}
-                  {compareResult.accuracy >= 50 && compareResult.accuracy < 80 && <span className={styles.accuracyEmoji}>good, keep going</span>}
-                  {compareResult.accuracy < 50 && <span className={styles.accuracyEmoji}>try again</span>}
+      {/* ── VoiceTube‑style cinematic layout for YouTube materials ── */}
+      {isYoutubeMaterial ? (
+        <>
+          {/* Dark cinematic header area */}
+          <div className={styles.cinemaZone}>
+            <div className={styles.cinemaInner}>
+              {/* Left: Video player */}
+              <div className={styles.cinemaVideo}>
+                <div className={styles.videoFrameWrap}>
+                  <iframe
+                    key={`${activeMaterial.youtubeVideoId}-${videoEmbedNonce}`}
+                    className={styles.videoFrame}
+                    src={youtubeEmbedUrl}
+                    title={activeMaterial.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
                 </div>
-                <div className={styles.wordComparison}>
-                  {compareResult.words.map((w, i) => (
-                    <span
-                      key={i}
-                      className={
-                        w.status === "correct" ? styles.wordCorrect :
-                        w.status === "wrong" ? styles.wordWrong :
-                        styles.wordMissing
-                      }
-                      title={
-                        w.status === "correct" ? "正确" :
-                        w.status === "wrong" ? "多余/错误" :
-                        "漏读"
-                      }
+
+                {/* Custom controls bar below video */}
+                <div className={styles.cinemaControls}>
+                  <div className={styles.cinemaControlsLeft}>
+                    <label className={styles.cinemaToggle}>
+                      <input
+                        type="checkbox"
+                        checked={alwaysShowTranslation}
+                        onChange={(e) => setAlwaysShowTranslation(e.target.checked)}
+                      />
+                      <span>双语</span>
+                    </label>
+                    <label className={styles.cinemaToggle}>
+                      <input
+                        type="checkbox"
+                        checked={showIPA}
+                        onChange={(e) => setShowIPA(e.target.checked)}
+                      />
+                      <span>音标</span>
+                    </label>
+                    <label className={styles.cinemaToggle}>
+                      <input
+                        type="checkbox"
+                        checked={showWordTranslation}
+                        onChange={(e) => setShowWordTranslation(e.target.checked)}
+                      />
+                      <span>释义</span>
+                    </label>
+                    <button
+                      className={styles.cinemaSpeed}
+                      onClick={() => setSpeechRate(r => r === 0.6 ? 0.85 : r === 0.85 ? 1.0 : 0.6)}
+                      title="点击切换TTS语速"
                     >
-                      {w.word}
-                    </span>
+                      {speechRate}x
+                    </button>
+                  </div>
+                  <div className={styles.cinemaControlsCenter}>
+                    <button
+                      className={styles.cinemaPrevNext}
+                      onClick={handlePrev}
+                      disabled={currentIndex === 0}
+                      title="上一句"
+                    >
+                      ⏮
+                    </button>
+                    <button
+                      className={styles.cinemaPlayBtn}
+                      onClick={() => isSpeaking ? stopSpeaking() : speak(sentence.text)}
+                      title={isSpeaking ? "停止" : "播放当前句TTS"}
+                    >
+                      {isSpeaking ? "⏸" : "▶"}
+                    </button>
+                    <button
+                      className={styles.cinemaPrevNext}
+                      onClick={handleNext}
+                      disabled={currentIndex >= total - 1}
+                      title="下一句"
+                    >
+                      ⏭
+                    </button>
+                  </div>
+                  <div className={styles.cinemaControlsRight}>
+                    {youtubeWatchUrl && (
+                      <a href={youtubeWatchUrl} target="_blank" rel="noreferrer" className={styles.cinemaLink}>
+                        YouTube ↗
+                      </a>
+                    )}
+                    <button className={styles.cinemaBackBtn} onClick={handleBack}>返回</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Scrollable transcript pane */}
+              <div className={styles.transcriptPane}>
+                <div className={styles.transcriptHeader}>
+                  <span className={styles.transcriptTitle}>字幕列表</span>
+                  <span className={styles.transcriptProgress}>{currentIndex + 1}/{total}</span>
+                </div>
+                <div className={styles.transcriptList}>
+                  {activeMaterial.sentences.map((s, idx) => (
+                    <div
+                      key={s.id}
+                      className={`${styles.transcriptItem} ${idx === currentIndex ? styles.transcriptItemActive : ""} ${completedSet.has(idx) ? styles.transcriptItemDone : ""}`}
+                      onClick={() => goToSentence(idx)}
+                    >
+                      <div className={styles.transcriptItemIcons}>
+                        <button
+                          className={styles.transcriptPlayBtn}
+                          onClick={(e) => { e.stopPropagation(); goToSentence(idx); }}
+                          title="播放"
+                        >
+                          ▶
+                        </button>
+                        <button
+                          className={styles.transcriptRecordBtn}
+                          onClick={(e) => { e.stopPropagation(); goToSentence(idx); setTimeout(() => startRecording(s.text), 100); }}
+                          title="跟读"
+                        >
+                          🎙
+                        </button>
+                      </div>
+                      <div className={styles.transcriptItemText}>
+                        <p className={styles.transcriptEn}>{s.text}</p>
+                        {(alwaysShowTranslation || idx === currentIndex) && s.translation && (
+                          <p className={styles.transcriptCn}>{s.translation}</p>
+                        )}
+                      </div>
+                      {typeof s.startSec === "number" && (
+                        <span className={styles.transcriptTime}>{formatSeconds(s.startSec)}</span>
+                      )}
+                    </div>
                   ))}
                 </div>
-                <div className={styles.compareHint}>
-                  <span className={styles.wordCorrect}>绿色=正确</span>
-                  <span className={styles.wordWrong}>红色=错误</span>
-                  <span className={styles.wordMissing}>灰色=漏读</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Below cinema: active sentence practice area */}
+          <div className={styles.practiceBelow}>
+            {/* Progress bar */}
+            <div className={styles.progressBar}>
+              <div
+                className={styles.progressFill}
+                style={{ width: `${(progress / total) * 100}%` }}
+              />
+            </div>
+
+            {/* Meta tags */}
+            <div className={styles.practiceMetaRow}>
+              <Badge variant={getDifficultyVariant(activeMaterial.difficulty)}>
+                {getDifficultyLabel(activeMaterial.difficulty)}
+              </Badge>
+              <span className={styles.practiceMetaTitle}>{activeMaterial.title}</span>
+              <span className={styles.practiceMetaSub}>已完成 {progress}/{total} 句</span>
+            </div>
+
+
+
+            {/* Active sentence detail */}
+            <Card className={styles.sentenceCard}>
+              <CardContent>
+                <div className={styles.sentenceTop}>
+                  <div className={styles.sentenceNumber}>#{sentence.id}</div>
+                  {sentenceRangeText && (
+                    <span className={styles.sentenceTimeTag}>{sentenceRangeText}</span>
+                  )}
+                  <button
+                    className={`${styles.speakBtn} ${isSpeaking ? styles.speakBtnActive : ""}`}
+                    onClick={() => isSpeaking ? stopSpeaking() : speak(sentence.text)}
+                    title="朗读"
+                  >
+                    {isSpeaking ? "⏹ 停止" : "🔊 朗读"}
+                  </button>
                 </div>
+
+                {/* Sentence text */}
+                <div className={styles.selectionScope} ref={selectionScopeRef}>
+                  {!showWordTranslation && !showIPA ? (
+                    <p className={styles.sentenceText}>{sentence.text}</p>
+                  ) : (
+                    <div className={styles.annotatedSentence}>
+                      {annotateWords(sentence.text).map((w, i) => (
+                        <span key={i} className={styles.annotatedWord}>
+                          <span className={styles.wordMain}>{w.word}</span>
+                          {showIPA && w.ipa && <span className={styles.wordIPA}>{w.ipa}</span>}
+                          {showWordTranslation && w.cn && <span className={styles.wordCN}>{w.cn}</span>}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <SelectionPronunciation scopeRef={selectionScopeRef} />
+                </div>
+
+                {/* Recording section */}
+                <div className={styles.recordSection}>
+                  <div className={styles.recordActions}>
+                    {!isRecording ? (
+                      <button
+                        className={styles.recordBtn}
+                        onClick={() => startRecording(sentence.text)}
+                        disabled={isSpeaking}
+                      >
+                        🎙 开始跟读
+                      </button>
+                    ) : (
+                      <button
+                        className={`${styles.recordBtn} ${styles.recordBtnActive}`}
+                        onClick={stopRecording}
+                      >
+                        ⏹ 停止录音
+                      </button>
+                    )}
+                    {isRecording && (
+                      <span className={styles.recordingIndicator}>录音中...</span>
+                    )}
+                  </div>
+
+                  {recognizedText && !compareResult && (
+                    <div className={styles.recognizedText}>
+                      <span className={styles.recognizedLabel}>识别中：</span>
+                      {recognizedText}
+                    </div>
+                  )}
+
+                  {compareResult && (
+                    <div className={styles.compareResult}>
+                      <div className={styles.accuracyBar}>
+                        <span className={styles.accuracyLabel}>准确率：{compareResult.accuracy}%</span>
+                        <div className={styles.accuracyTrack}>
+                          <div
+                            className={styles.accuracyFill}
+                            style={{
+                              width: `${compareResult.accuracy}%`,
+                              background: compareResult.accuracy >= 80 ? "var(--color-success, #10b981)" : compareResult.accuracy >= 50 ? "var(--color-warning, #f59e0b)" : "#dc2626",
+                            }}
+                          />
+                        </div>
+                        {compareResult.accuracy >= 80 && <span className={styles.accuracyEmoji}>excellent!</span>}
+                        {compareResult.accuracy >= 50 && compareResult.accuracy < 80 && <span className={styles.accuracyEmoji}>good, keep going</span>}
+                        {compareResult.accuracy < 50 && <span className={styles.accuracyEmoji}>try again</span>}
+                      </div>
+                      <div className={styles.wordComparison}>
+                        {compareResult.words.map((w, i) => (
+                          <span
+                            key={i}
+                            className={w.status === "correct" ? styles.wordCorrect : w.status === "wrong" ? styles.wordWrong : styles.wordMissing}
+                            title={w.status === "correct" ? "正确" : w.status === "wrong" ? "多余/错误" : "漏读"}
+                          >
+                            {w.word}
+                          </span>
+                        ))}
+                      </div>
+                      <div className={styles.compareHint}>
+                        <span className={styles.wordCorrect}>绿色=正确</span>
+                        <span className={styles.wordWrong}>红色=错误</span>
+                        <span className={styles.wordMissing}>灰色=漏读</span>
+                      </div>
+                      <button className={styles.retryBtn} onClick={() => startRecording(sentence.text)}>
+                        🎙 再读一次
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {sentence.translation && alwaysShowTranslation && (
+                  <p className={styles.translation}>{sentence.translation}</p>
+                )}
+                {sentence.translation && !alwaysShowTranslation && (
+                  <details className={styles.translationDetails}>
+                    <summary>点击查看翻译</summary>
+                    <p className={styles.translation}>{sentence.translation}</p>
+                  </details>
+                )}
+                {!sentence.translation && (
+                  <p className={styles.noTranslation}>实时新闻暂无翻译，可使用「逐词释义」辅助理解</p>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </>
+      ) : (
+        /* ── Standard (non-YouTube) practice layout ── */
+        <>
+          <div className={styles.sessionHeader}>
+            <Button variant="secondary" onClick={handleBack}>返回列表</Button>
+            <div className={styles.sessionTitle}>
+              <h2>{activeMaterial.titleCn}</h2>
+              <span className={styles.progressLabel}>第 {currentIndex + 1} / {total} 句 · 已完成 {progress}</span>
+            </div>
+          </div>
+
+          <div className={styles.progressBar}>
+            <div className={styles.progressFill} style={{ width: `${(progress / total) * 100}%` }} />
+          </div>
+
+          <div className={styles.controlsBar}>
+            <div className={styles.toggleGroup}>
+              <label className={styles.toggleLabel}>
+                <input type="checkbox" checked={alwaysShowTranslation} onChange={(e) => setAlwaysShowTranslation(e.target.checked)} />
+                显示翻译
+              </label>
+              <label className={styles.toggleLabel}>
+                <input type="checkbox" checked={showWordTranslation} onChange={(e) => setShowWordTranslation(e.target.checked)} />
+                逐词释义
+              </label>
+              <label className={styles.toggleLabel}>
+                <input type="checkbox" checked={showIPA} onChange={(e) => setShowIPA(e.target.checked)} />
+                显示音标
+              </label>
+            </div>
+            <div className={styles.speedControl}>
+              <span>语速：</span>
+              <button className={`${styles.speedBtn} ${speechRate === 0.6 ? styles.speedActive : ""}`} onClick={() => setSpeechRate(0.6)}>慢</button>
+              <button className={`${styles.speedBtn} ${speechRate === 0.85 ? styles.speedActive : ""}`} onClick={() => setSpeechRate(0.85)}>中</button>
+              <button className={`${styles.speedBtn} ${speechRate === 1.0 ? styles.speedActive : ""}`} onClick={() => setSpeechRate(1.0)}>快</button>
+            </div>
+          </div>
+
+          <Card className={styles.sentenceCard}>
+            <CardContent>
+              <div className={styles.sentenceTop}>
+                <div className={styles.sentenceNumber}>#{sentence.id}</div>
                 <button
-                  className={styles.retryBtn}
-                  onClick={() => startRecording(sentence.text)}
+                  className={`${styles.speakBtn} ${isSpeaking ? styles.speakBtnActive : ""}`}
+                  onClick={() => isSpeaking ? stopSpeaking() : speak(sentence.text)}
                 >
-                  🎙 再读一次
+                  {isSpeaking ? "⏹ 停止" : "🔊 朗读"}
                 </button>
               </div>
+
+              <div className={styles.selectionScope} ref={selectionScopeRef}>
+                {!showWordTranslation && !showIPA ? (
+                  <p className={styles.sentenceText}>{sentence.text}</p>
+                ) : (
+                  <div className={styles.annotatedSentence}>
+                    {annotateWords(sentence.text).map((w, i) => (
+                      <span key={i} className={styles.annotatedWord}>
+                        <span className={styles.wordMain}>{w.word}</span>
+                        {showIPA && w.ipa && <span className={styles.wordIPA}>{w.ipa}</span>}
+                        {showWordTranslation && w.cn && <span className={styles.wordCN}>{w.cn}</span>}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <SelectionPronunciation scopeRef={selectionScopeRef} />
+              </div>
+
+              <div className={styles.recordSection}>
+                <div className={styles.recordActions}>
+                  {!isRecording ? (
+                    <button className={styles.recordBtn} onClick={() => startRecording(sentence.text)} disabled={isSpeaking}>🎙 开始跟读</button>
+                  ) : (
+                    <button className={`${styles.recordBtn} ${styles.recordBtnActive}`} onClick={stopRecording}>⏹ 停止录音</button>
+                  )}
+                  {isRecording && <span className={styles.recordingIndicator}>录音中...</span>}
+                </div>
+                {recognizedText && !compareResult && (
+                  <div className={styles.recognizedText}>
+                    <span className={styles.recognizedLabel}>识别中：</span>{recognizedText}
+                  </div>
+                )}
+                {compareResult && (
+                  <div className={styles.compareResult}>
+                    <div className={styles.accuracyBar}>
+                      <span className={styles.accuracyLabel}>准确率：{compareResult.accuracy}%</span>
+                      <div className={styles.accuracyTrack}>
+                        <div className={styles.accuracyFill} style={{ width: `${compareResult.accuracy}%`, background: compareResult.accuracy >= 80 ? "var(--color-success, #10b981)" : compareResult.accuracy >= 50 ? "var(--color-warning, #f59e0b)" : "#dc2626" }} />
+                      </div>
+                      {compareResult.accuracy >= 80 && <span className={styles.accuracyEmoji}>excellent!</span>}
+                      {compareResult.accuracy >= 50 && compareResult.accuracy < 80 && <span className={styles.accuracyEmoji}>good, keep going</span>}
+                      {compareResult.accuracy < 50 && <span className={styles.accuracyEmoji}>try again</span>}
+                    </div>
+                    <div className={styles.wordComparison}>
+                      {compareResult.words.map((w, i) => (
+                        <span key={i} className={w.status === "correct" ? styles.wordCorrect : w.status === "wrong" ? styles.wordWrong : styles.wordMissing}>{w.word}</span>
+                      ))}
+                    </div>
+                    <div className={styles.compareHint}>
+                      <span className={styles.wordCorrect}>绿色=正确</span>
+                      <span className={styles.wordWrong}>红色=错误</span>
+                      <span className={styles.wordMissing}>灰色=漏读</span>
+                    </div>
+                    <button className={styles.retryBtn} onClick={() => startRecording(sentence.text)}>🎙 再读一次</button>
+                  </div>
+                )}
+              </div>
+
+              {sentence.translation && alwaysShowTranslation && <p className={styles.translation}>{sentence.translation}</p>}
+              {sentence.translation && !alwaysShowTranslation && (
+                <details className={styles.translationDetails}><summary>点击查看翻译</summary><p className={styles.translation}>{sentence.translation}</p></details>
+              )}
+              {!sentence.translation && <p className={styles.noTranslation}>实时新闻暂无翻译，可使用「逐词释义」辅助理解</p>}
+            </CardContent>
+          </Card>
+
+          <div className={styles.navigation}>
+            <Button variant="secondary" onClick={handlePrev} disabled={currentIndex === 0}>上一句</Button>
+            <Button variant="secondary" onClick={() => speak(sentence.text)} disabled={isSpeaking}>🔊 再听一遍</Button>
+            {currentIndex < total - 1 ? (
+              <Button onClick={handleNext}>下一句</Button>
+            ) : (
+              <Button onClick={handleBack}>练习完成！</Button>
             )}
           </div>
 
-          {sentence.translation && alwaysShowTranslation && (
-            <p className={styles.translation}>{sentence.translation}</p>
-          )}
-
-          {sentence.translation && !alwaysShowTranslation && (
-            <details className={styles.translationDetails}>
-              <summary>点击查看翻译</summary>
-              <p className={styles.translation}>{sentence.translation}</p>
-            </details>
-          )}
-
-          {!sentence.translation && (
-            <p className={styles.noTranslation}>实时新闻暂无翻译，可使用「逐词释义」辅助理解</p>
-          )}
-        </CardContent>
-      </Card>
-
-      {/* Navigation */}
-      <div className={styles.navigation}>
-        <Button
-          variant="secondary"
-          onClick={handlePrev}
-          disabled={currentIndex === 0}
-        >
-          上一句
-        </Button>
-
-        <Button
-          variant="secondary"
-          onClick={() => speak(sentence.text)}
-          disabled={isSpeaking}
-        >
-          🔊 再听一遍
-        </Button>
-
-        {currentIndex < total - 1 ? (
-          <Button onClick={handleNext}>
-            下一句
-          </Button>
-        ) : (
-          <Button onClick={handleBack}>
-            练习完成！
-          </Button>
-        )}
-      </div>
-
-      {/* Tips */}
-      <div className={styles.tips}>
-        <h4>跟读方法</h4>
-        <ol>
-          <li><strong>第一步 听 →</strong> 点击「🔊 朗读」听标准发音</li>
-          <li><strong>第二步 读 →</strong> 点击「🎙 开始跟读」对着麦克风读出来</li>
-          <li><strong>第三步 比 →</strong> 查看对比结果，绿色=正确，红色=错误，灰色=漏读</li>
-          <li><strong>第四步 练 →</strong> 反复练习直到准确率达到 80% 以上</li>
-        </ol>
-      </div>
+          <div className={styles.tips}>
+            <h4>跟读方法</h4>
+            <ol>
+              <li><strong>第一步 听 →</strong> 点击「🔊 朗读」听标准发音</li>
+              <li><strong>第二步 读 →</strong> 点击「🎙 开始跟读」对着麦克风读出来</li>
+              <li><strong>第三步 比 →</strong> 查看对比结果，绿色=正确，红色=错误，灰色=漏读</li>
+              <li><strong>第四步 查 →</strong> 可直接划词，查看音标/释义并朗读单词</li>
+              <li><strong>第五步 练 →</strong> 反复练习直到准确率达到 80% 以上</li>
+            </ol>
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -755,6 +1956,17 @@ function getDailyNews(): NewsMaterial[] {
       ],
     },
   ];
+}
+
+function formatSeconds(value: number): string {
+  const total = Math.max(0, Math.floor(value));
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  if (h > 0) {
+    return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  }
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
 function getDifficultyVariant(d: number): "success" | "warning" | "error" {

@@ -5,6 +5,7 @@ export type ShadowingMaterial = {
   source: string;
   category: "speech" | "drama" | "ted";
   difficulty: 1 | 2 | 3;
+  youtubeVideoId?: string;
   sentences: ShadowingSentence[];
 };
 
@@ -12,6 +13,8 @@ export type ShadowingSentence = {
   id: number;
   text: string;
   translation: string;
+  startSec?: number;
+  endSec?: number;
 };
 
 export const SHADOWING_MATERIALS: ShadowingMaterial[] = [

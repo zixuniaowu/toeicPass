@@ -10,7 +10,8 @@
     "test": "jest --config ./test/jest-e2e.json --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json --runInBand",
     "lint": "tsc --noEmit",
-    "db:migrate": "tsx scripts/migrate.ts"
+    "db:migrate": "tsx scripts/migrate.ts",
+    "audit:questions": "tsx scripts/audit-question-quality.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.6",

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useRef, useCallback, useEffect } from "react";
 import type { ConversationScenario, ConversationSession } from "../../types";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
@@ -27,6 +28,63 @@ export function ConversationView({
   onSendMessage,
   onEndSession,
 }: ConversationViewProps) {
+  const [isRecording, setIsRecording] = useState(false);
+  const recognitionRef = useRef<any>(null);
+
+  useEffect(() => {
+    return () => {
+      if (recognitionRef.current) {
+        recognitionRef.current.abort();
+      }
+    };
+  }, []);
+
+  const toggleRecording = useCallback(() => {
+    if (isRecording) {
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+      return;
+    }
+
+    const SpeechRecognitionAPI = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognitionAPI) {
+      alert("浏览器不支持语音识别，请使用 Chrome 浏览器");
+      return;
+    }
+
+    const recognition = new SpeechRecognitionAPI();
+    recognition.lang = "en-US";
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+
+    recognition.onstart = () => {
+      setIsRecording(true);
+      onInputChange("");
+    };
+
+    recognition.onresult = (event: any) => {
+      let transcript = "";
+      for (let i = 0; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+      }
+      onInputChange(transcript);
+    };
+
+    recognition.onerror = (event: any) => {
+      console.error("Speech recognition error", event.error);
+      setIsRecording(false);
+    };
+
+    recognition.onend = () => {
+      setIsRecording(false);
+    };
+
+    recognitionRef.current = recognition;
+    recognition.start();
+  }, [isRecording, onInputChange]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputText.trim() && !isLoading) {
@@ -136,14 +194,24 @@ export function ConversationView({
             value={inputText}
             onChange={(e) => onInputChange(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="用英语输入你的回复..."
+            placeholder={isRecording ? "正在录音，请讲话..." : "用英语输入你的回复或点击录音..."}
             className={styles.textInput}
             disabled={isLoading}
             rows={2}
           />
-          <Button type="submit" disabled={!inputText.trim() || isLoading}>
-            发送
-          </Button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <Button 
+              type="button" 
+              variant={isRecording ? "destructive" : "secondary"} 
+              onClick={toggleRecording}
+              disabled={isLoading}
+            >
+              {isRecording ? "⏹️ 停止" : "🎤 录音"}
+            </Button>
+            <Button type="submit" disabled={!inputText.trim() || isLoading}>
+              发送
+            </Button>
+          </div>
         </form>
       </Card>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useRef } from "react";
 import * as api from "../lib/api";
 
 export type AuthCredentials = {
@@ -17,128 +17,131 @@ export type AuthState = {
   isLoggedIn: boolean;
 };
 
+const DEFAULT_CREDENTIALS: AuthCredentials = {
+  tenantCode: "demo",
+  tenantName: "",
+  email: "owner@demo.com",
+  password: "toeic123",
+  displayName: "",
+};
+
 export function useAuth() {
+  const tenantCodeRef = useRef<string>(DEFAULT_CREDENTIALS.tenantCode);
   const [token, setToken] = useState<string>("");
-  const [credentials, setCredentials] = useState<AuthCredentials>({
-    tenantCode: "demo",
-    tenantName: "Demo Org",
-    email: "owner@demo.com",
-    password: "toeic123",
-    displayName: "Owner",
-  });
-  const [message, setMessage] = useState<string>("先做一次听力或阅读练习，系统会开始生成真实数据。");
+  const [credentials, setCredentials] = useState<AuthCredentials>(DEFAULT_CREDENTIALS);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState<string>("请先登录。首次使用可先注册账号。");
 
   const isLoggedIn = Boolean(token);
   const authHeader = useMemo(() => (token ? `Bearer ${token}` : null), [token]);
 
   const updateCredentials = useCallback((updates: Partial<AuthCredentials>) => {
+    if (typeof updates.tenantCode === "string") {
+      tenantCodeRef.current = updates.tenantCode.trim();
+    }
     setCredentials((prev) => ({ ...prev, ...updates }));
   }, []);
 
   const register = useCallback(
     async (silent = false): Promise<boolean> => {
-      const result = await api.register(credentials);
-      if (!result.success) {
-        if (!silent) setMessage(`注册失败: ${result.error}`);
+      const normalized: AuthCredentials = {
+        tenantCode: credentials.tenantCode.trim(),
+        tenantName: credentials.tenantName.trim(),
+        email: credentials.email.trim().toLowerCase(),
+        password: credentials.password,
+        displayName: credentials.displayName.trim(),
+      };
+      if (!normalized.tenantCode || !normalized.tenantName || !normalized.email || !normalized.password || !normalized.displayName) {
+        if (!silent) setMessage("请完整填写租户、姓名、邮箱和密码。");
         return false;
       }
-      if (!silent) setMessage("注册成功，请登录。登录后会自动同步学习数据。");
-      return true;
+      setIsSubmitting(true);
+      try {
+        try {
+          const result = await api.register(normalized);
+          if (!result.success) {
+            if ((result.error ?? "").toLowerCase().includes("already registered")) {
+              if (!silent) setMessage("账号已存在，正在直接登录。");
+              return true;
+            }
+            if (!silent) setMessage(`注册失败: ${result.error}`);
+            return false;
+          }
+          if (!silent) setMessage("注册成功，请继续登录。");
+          return true;
+        } catch (error) {
+          if (!silent) {
+            setMessage(
+              `注册请求失败，请确认服务已启动（API: http://127.0.0.1:8001）。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
+            );
+          }
+          return false;
+        }
+      } finally {
+        setIsSubmitting(false);
+      }
     },
     [credentials]
   );
 
   const login = useCallback(
     async (silent = false): Promise<string | null> => {
-      const result = await api.login({
-        tenantCode: credentials.tenantCode,
-        email: credentials.email,
+      const normalizedTenantCode = credentials.tenantCode.trim();
+      const normalized = {
+        ...(normalizedTenantCode ? { tenantCode: normalizedTenantCode } : {}),
+        email: credentials.email.trim().toLowerCase(),
         password: credentials.password,
-      });
-      if (!result.success) {
-        if (!silent) setMessage(`登录失败: ${result.error}`);
+      };
+      if (!normalized.email || !normalized.password) {
+        if (!silent) setMessage("请先填写邮箱和密码。");
         return null;
       }
-      setToken(result.token!);
-      if (!silent) setMessage("登录成功，已准备好开始训练。");
-      return result.token!;
+      setIsSubmitting(true);
+      try {
+        try {
+          const result = await api.login(normalized);
+          if (!result.success || !result.token) {
+            if (!silent) setMessage(`登录失败: ${result.error}`);
+            return null;
+          }
+          const resolvedTenantCode = result.tenantCode ?? normalizedTenantCode;
+          if (resolvedTenantCode) {
+            tenantCodeRef.current = resolvedTenantCode;
+            setCredentials((prev) => ({ ...prev, tenantCode: resolvedTenantCode }));
+          }
+          setToken(result.token);
+          if (!silent) setMessage("登录成功。");
+          return result.token;
+        } catch (error) {
+          if (!silent) {
+            setMessage(
+              `登录请求失败，请确认服务已启动（API: http://127.0.0.1:8001）。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
+            );
+          }
+          return null;
+        }
+      } finally {
+        setIsSubmitting(false);
+      }
     },
     [credentials]
   );
 
   const ensureSession = useCallback(async (): Promise<string | null> => {
     if (token) return token;
+    setMessage("请先登录后再开始训练。");
+    return null;
+  }, [token]);
 
-    const normalizedTenantCode = credentials.tenantCode.trim() || "demo";
-    const normalizedTenantName = credentials.tenantName.trim() || "Demo Org";
-
-    // Try login first
-    let loginResult = await api.login({
-      tenantCode: normalizedTenantCode,
-      email: credentials.email,
-      password: credentials.password,
-    });
-
-    if (!loginResult.success) {
-      // Try register then login
-      await api.register({
-        tenantCode: normalizedTenantCode,
-        tenantName: normalizedTenantName,
-        email: credentials.email,
-        password: credentials.password,
-        displayName: credentials.displayName,
-      });
-      loginResult = await api.login({
-        tenantCode: normalizedTenantCode,
-        email: credentials.email,
-        password: credentials.password,
-      });
-    }
-
-    if (loginResult.success && loginResult.token) {
-      setToken(loginResult.token);
-      setMessage("已自动进入体验模式。");
-      return loginResult.token;
-    }
-
-    // Fallback: create new demo account
-    const fallbackEmail = `autodemo+${Date.now()}@example.com`;
-    const fallbackCredentials = {
-      tenantCode: normalizedTenantCode,
-      tenantName: normalizedTenantName,
-      email: fallbackEmail,
-      password: "toeic123",
-      displayName: "Auto Demo",
-    };
-
-    await api.register(fallbackCredentials);
-    loginResult = await api.login({
-      tenantCode: fallbackCredentials.tenantCode,
-      email: fallbackCredentials.email,
-      password: fallbackCredentials.password,
-    });
-
-    if (!loginResult.success || !loginResult.token) {
-      setMessage("自动体验登录失败，请确认 API 端口 8001 正常。");
-      return null;
-    }
-
-    setCredentials({
-      tenantCode: fallbackCredentials.tenantCode,
-      tenantName: fallbackCredentials.tenantName,
-      email: fallbackCredentials.email,
-      password: fallbackCredentials.password,
-      displayName: fallbackCredentials.displayName,
-    });
-    setToken(loginResult.token);
-    setMessage("已自动创建体验账号并登录。");
-    return loginResult.token;
-  }, [token, credentials]);
+  const logout = useCallback(() => {
+    setToken("");
+    setMessage("已退出登录。请使用账号重新登录。");
+  }, []);
 
   const getRequestOptions = useCallback(
     (sessionToken?: string) => ({
       token: sessionToken ?? token,
-      tenantCode: credentials.tenantCode,
+      tenantCode: tenantCodeRef.current || credentials.tenantCode,
     }),
     [token, credentials.tenantCode]
   );
@@ -147,12 +150,14 @@ export function useAuth() {
     token,
     credentials,
     isLoggedIn,
+    isSubmitting,
     authHeader,
     message,
     setMessage,
     updateCredentials,
     register,
     login,
+    logout,
     ensureSession,
     getRequestOptions,
   };

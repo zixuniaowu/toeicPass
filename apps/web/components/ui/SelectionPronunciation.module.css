@@ -1,0 +1,59 @@
+.popover {
+  position: fixed;
+  z-index: 65;
+  width: min(280px, 88vw);
+  transform: translate(-50%, -100%);
+  border: 1px solid #bfd4ee;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  padding: 10px 12px;
+}
+
+.word {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #10233f;
+}
+
+.meta {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #40556f;
+  line-height: 1.45;
+}
+
+.actions {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button {
+  border: 1px solid #8fb0da;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #17345e;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #edf5ff;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.secondary {
+  border-color: #d5a9a9;
+  color: #7f1d1d;
+}

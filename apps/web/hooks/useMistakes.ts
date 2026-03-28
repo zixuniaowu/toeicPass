@@ -4,6 +4,63 @@ import { useState, useCallback, useMemo } from "react";
 import type { MistakeLibraryItem } from "../types";
 import * as api from "../lib/api";
 
+const normalizeOptionKey = (value: unknown): "A" | "B" | "C" | "D" => {
+  const key = String(value ?? "").toUpperCase();
+  if (key === "A" || key === "B" || key === "C" || key === "D") {
+    return key;
+  }
+  return "A";
+};
+
+const normalizeOptionalOptionKey = (value: unknown): "A" | "B" | "C" | "D" | null => {
+  const key = String(value ?? "").toUpperCase();
+  if (key === "A" || key === "B" || key === "C" || key === "D") {
+    return key;
+  }
+  return null;
+};
+
+const normalizeMistakeItem = (raw: MistakeLibraryItem, index: number): MistakeLibraryItem => {
+  const options = Array.isArray(raw.options)
+    ? raw.options
+        .filter((opt) => Boolean(opt))
+        .map((opt) => ({
+          key: normalizeOptionKey(opt.key),
+          text: String(opt.text ?? "").trim(),
+        }))
+        .filter((opt) => opt.text.length > 0)
+    : [];
+
+  const questionId = String(raw.questionId ?? "").trim() || `mistake-q-${index + 1}`;
+  const latestAttemptItemId = String(raw.latestAttemptItemId ?? "").trim() || `${questionId}-latest`;
+  const partNo = typeof raw.partNo === "number" && Number.isFinite(raw.partNo) ? raw.partNo : null;
+  const wrongCountRaw = Number(raw.wrongCount ?? 0);
+  const wrongCount = Number.isFinite(wrongCountRaw) && wrongCountRaw > 0 ? Math.floor(wrongCountRaw) : 1;
+  const lastWrongAt = String(raw.lastWrongAt ?? "").trim() || new Date().toISOString();
+
+  return {
+    questionId,
+    partNo,
+    stem: String(raw.stem ?? "").trim(),
+    explanation: String(raw.explanation ?? "").trim(),
+    mediaUrl: typeof raw.mediaUrl === "string" && raw.mediaUrl.trim().length > 0 ? raw.mediaUrl : null,
+    imageUrl: typeof raw.imageUrl === "string" && raw.imageUrl.trim().length > 0 ? raw.imageUrl : null,
+    options,
+    correctKey: normalizeOptionalOptionKey(raw.correctKey),
+    wrongCount,
+    latestAttemptItemId,
+    lastSelectedKey: normalizeOptionalOptionKey(raw.lastSelectedKey),
+    lastWrongAt,
+    latestNote: raw.latestNote && typeof raw.latestNote.note === "string"
+      ? {
+          note: raw.latestNote.note,
+          rootCause: raw.latestNote.rootCause ?? null,
+          createdAt: String(raw.latestNote.createdAt ?? "").trim() || lastWrongAt,
+        }
+      : null,
+  };
+};
+
 export function useMistakes(
   ensureSession: () => Promise<string | null>,
   getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
@@ -25,12 +82,15 @@ export function useMistakes(
       setIsLoading(true);
       try {
         const items = await api.fetchMistakeLibrary(getRequestOptions(activeToken));
-        setMistakeLibrary(items);
+        const safeItems = (Array.isArray(items) ? items : []).map((item, index) =>
+          normalizeMistakeItem(item, index)
+        );
+        setMistakeLibrary(safeItems);
         setNoteDraftMap(
-          Object.fromEntries(items.map((item) => [item.latestAttemptItemId, item.latestNote?.note ?? ""]))
+          Object.fromEntries(safeItems.map((item) => [item.latestAttemptItemId, item.latestNote?.note ?? ""]))
         );
         setRootCauseMap(
-          Object.fromEntries(items.map((item) => [item.latestAttemptItemId, item.latestNote?.rootCause ?? ""]))
+          Object.fromEntries(safeItems.map((item) => [item.latestAttemptItemId, item.latestNote?.rootCause ?? ""]))
         );
       } catch (error) {
         setMessage(`加载错题库异常: ${error instanceof Error ? error.message : String(error)}`);
@@ -97,10 +157,13 @@ export function useMistakes(
         return true;
       }
       const q = searchQuery.trim().toLowerCase();
+      const stem = String(item.stem ?? "").toLowerCase();
+      const explanation = String(item.explanation ?? "").toLowerCase();
       return (
-        item.stem.toLowerCase().includes(q) ||
-        item.explanation.toLowerCase().includes(q) ||
-        item.options.some((opt) => opt.text.toLowerCase().includes(q))
+        stem.includes(q) ||
+        explanation.includes(q) ||
+        (Array.isArray(item.options) &&
+          item.options.some((opt) => String(opt?.text ?? "").toLowerCase().includes(q)))
       );
     });
   }, [mistakeLibrary, partFilter, searchQuery]);

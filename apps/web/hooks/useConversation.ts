@@ -1,5 +1,6 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import type { ConversationScenario, ConversationMessage, ConversationSession } from "../types";
+import * as api from "../lib/api";
 
 // TOEIC-relevant conversation scenarios
 const SCENARIOS: ConversationScenario[] = [
@@ -79,14 +80,30 @@ const SCENARIOS: ConversationScenario[] = [
 
 const newId = () => Math.random().toString(36).slice(2, 11);
 
-export function useConversation() {
+export function useConversation(
+  ensureSession: () => Promise<string | null>,
+  getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
+  setMessage: (message: string) => void
+) {
   const [scenarios] = useState<ConversationScenario[]>(SCENARIOS);
+  const [remoteScenarios, setRemoteScenarios] = useState<ConversationScenario[]>(SCENARIOS);
   const [activeSession, setActiveSession] = useState<ConversationSession | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [inputText, setInputText] = useState("");
 
+  useEffect(() => {
+    void (async () => {
+      const token = await ensureSession();
+      if (!token) return;
+      const fetched = await api.fetchConversationScenarios(getRequestOptions(token));
+      if (fetched.length > 0) {
+        setRemoteScenarios(fetched);
+      }
+    })();
+  }, [ensureSession, getRequestOptions]);
+
   const startSession = useCallback((scenarioId: string) => {
-    const scenario = SCENARIOS.find((s) => s.id === scenarioId);
+    const scenario = remoteScenarios.find((s) => s.id === scenarioId);
     if (!scenario) return;
 
     const systemMessage: ConversationMessage = {
@@ -108,7 +125,7 @@ export function useConversation() {
       messages: [systemMessage, assistantGreeting],
       startedAt: new Date().toISOString(),
     });
-  }, []);
+  }, [remoteScenarios]);
 
   const sendMessage = useCallback(async (text: string) => {
     if (!activeSession || !text.trim()) return;
@@ -127,28 +144,55 @@ export function useConversation() {
 
     setInputText("");
     setIsLoading(true);
+    try {
+      const token = await ensureSession();
+      if (!token) {
+        setMessage("对话失败：请先登录。");
+        return;
+      }
 
-    // Simulate AI response (in production, this would call a real AI API)
-    setTimeout(() => {
-      const scenario = SCENARIOS.find((s) => s.id === activeSession.scenarioId);
-      const response = generateResponse(text, scenario, activeSession.messages.length);
+      const history = activeSession.messages
+        .filter((item) => item.role !== "system")
+        .slice(-8)
+        .map((item) => item.content);
+      const response = await api.fetchConversationReply(
+        {
+          scenarioId: activeSession.scenarioId,
+          text: text.trim(),
+          history,
+        },
+        getRequestOptions(token)
+      );
+
+      const fallback = generateResponse(
+        text,
+        remoteScenarios.find((s) => s.id === activeSession.scenarioId),
+        activeSession.messages.length
+      );
+      const content = response.success && response.content ? response.content : fallback.content;
+      const corrections = response.success ? response.corrections : fallback.corrections;
+      const suggestions = response.success ? response.suggestions : fallback.suggestions;
+      if (!response.success) {
+        setMessage(`AI 服务暂不可用，已切换本地练习模式: ${response.error ?? "unknown error"}`);
+      }
 
       const assistantMessage: ConversationMessage = {
         id: newId(),
         role: "assistant",
-        content: response.content,
+        content,
         timestamp: new Date().toISOString(),
-        corrections: response.corrections,
-        suggestions: response.suggestions,
+        corrections,
+        suggestions,
       };
 
       setActiveSession((prev) => {
         if (!prev) return null;
         return { ...prev, messages: [...prev.messages, assistantMessage] };
       });
+    } finally {
       setIsLoading(false);
-    }, 800);
-  }, [activeSession]);
+    }
+  }, [activeSession, ensureSession, getRequestOptions, setMessage, remoteScenarios]);
 
   const endSession = useCallback(() => {
     setActiveSession(null);
@@ -156,7 +200,7 @@ export function useConversation() {
   }, []);
 
   return {
-    scenarios,
+    scenarios: remoteScenarios.length > 0 ? remoteScenarios : scenarios,
     activeSession,
     isLoading,
     inputText,

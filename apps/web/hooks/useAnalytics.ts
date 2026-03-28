@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import type { AnalyticsOverview, NextTask } from "../types";
+import type { AnalyticsOverview, DailyPlan, NextTask } from "../types";
 import * as api from "../lib/api";
 
 export function useAnalytics(
@@ -9,6 +9,7 @@ export function useAnalytics(
 ) {
   const [analytics, setAnalytics] = useState<AnalyticsOverview | null>(null);
   const [nextTasks, setNextTasks] = useState<NextTask[]>([]);
+  const [dailyPlan, setDailyPlan] = useState<DailyPlan | null>(null);
   const [predictedScore, setPredictedScore] = useState<number | null>(null);
   const [latestScore, setLatestScore] = useState<number | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -20,9 +21,10 @@ export function useAnalytics(
 
       setIsSyncing(true);
       try {
-        const [overview, tasks] = await Promise.all([
+        const [overview, tasks, plan] = await Promise.all([
           api.fetchAnalyticsOverview(options),
           api.fetchNextTasks(options),
+          api.fetchDailyPlan(options),
         ]);
 
         if (overview) {
@@ -32,6 +34,7 @@ export function useAnalytics(
           }
         }
         setNextTasks(tasks);
+        setDailyPlan(plan);
       } finally {
         setIsSyncing(false);
       }
@@ -60,7 +63,12 @@ export function useAnalytics(
   );
 
   const updateLatestScore = useCallback((score: number) => {
-    setLatestScore(score);
+    setLatestScore((prev) => {
+      if (typeof prev !== "number") {
+        return score;
+      }
+      return Math.max(prev, score);
+    });
   }, []);
 
   // Computed values
@@ -82,6 +90,7 @@ export function useAnalytics(
   return {
     analytics,
     nextTasks,
+    dailyPlan,
     predictedScore,
     latestScore,
     isSyncing,

@@ -30,6 +30,13 @@
   line-height: 1.2;
 }
 
+.ipa {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-base);
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
 .meta {
   display: block;
   margin-top: var(--space-2);
@@ -55,6 +62,13 @@
   margin-top: var(--space-3);
 }
 
+.defLabel {
+  font-size: var(--text-sm) !important;
+  color: var(--color-muted) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .example {
   font-style: italic;
   color: var(--color-muted);
@@ -68,6 +82,12 @@
 .gradeRow {
   display: flex;
   gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.pronounceRow {
+  display: flex;
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 

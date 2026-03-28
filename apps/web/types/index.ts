@@ -1,17 +1,20 @@
 // Session and Authentication Types
-export type LoginResponse = { accessToken: string };
+export type LoginResponse = { accessToken: string; tenantCode: string };
 export type SessionMode = "diagnostic" | "practice" | "mock";
-export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "conversation" | "shadowing" | "mock" | "review" | "mistakes" | "vocab" | "settings";
+export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "shadowing" | "mock" | "mistakes" | "vocab" | "writing" | "settings";
 export type OptionKey = "A" | "B" | "C" | "D";
-export type SessionFilters = { partNo?: number; difficulty?: number };
+export type SessionFilters = { partNo?: number; difficulty?: number; partGroup?: "listening" | "reading" };
 
 // Question Types
 export type SessionQuestion = {
   id: string;
   stem: string;
+  passage?: string;
   partNo: number;
   mediaUrl?: string;
   imageUrl?: string;
+  explanation?: string;
+  correctKey?: OptionKey | null;
   options: Array<{ key: OptionKey; text: string }>;
 };
 
@@ -51,6 +54,20 @@ export type AnalyticsOverview = {
   avgDurationMs: number;
   latestScore: number | null;
   scoreHistory: number[];
+  activeDays7: number;
+  currentStreak: number;
+  studyMinutes7: number;
+  modeBreakdown: {
+    diagnostic: number;
+    practice: number;
+    mock: number;
+    ip_simulation: number;
+  };
+  goalPace: {
+    daysToExam: number | null;
+    requiredWeeklyGain: number | null;
+    status: "no_goal" | "on_track" | "at_risk" | "critical";
+  };
   byPart: PartAnalytics[];
   goal: GoalInfo;
 };
@@ -67,6 +84,7 @@ export type GoalInfo = {
   targetScore: number | null;
   gap: number | null;
   targetExamDate: string | null;
+  baselineScore?: number | null;
 };
 
 // Task Types
@@ -78,8 +96,50 @@ export type NextTask = {
   priority: number;
 };
 
+export type DailyPlanBlock = {
+  id: string;
+  title: string;
+  minutes: number;
+  reason: string;
+  action: string;
+  checklist?: DailyPlanChecklistItem[];
+};
+
+export type DailyPlanChecklistItem = {
+  id: string;
+  label: string;
+  detail?: string;
+  questionId?: string;
+  partNo?: number | null;
+};
+
+export type WeeklyPlanTask = {
+  id: string;
+  title: string;
+  minutes: number;
+  action: string;
+  previews: string[];
+};
+
+export type WeeklyPlanDay = {
+  date: string;
+  dayLabel: string;
+  totalMinutes: number;
+  tasks: WeeklyPlanTask[];
+};
+
+export type DailyPlan = {
+  generatedAt: string;
+  totalMinutes: number;
+  focusPart: number | null;
+  blocks: DailyPlanBlock[];
+  weekSchedule?: WeeklyPlanDay[];
+};
+
 export type DueCard = {
+  questionId?: string;
   question?: {
+    id?: string;
     partNo?: number;
   };
 };
@@ -147,12 +207,11 @@ export const TABS: Array<{ key: ViewTab; label: string }> = [
   { key: "grammar", label: "语法填空" },
   { key: "textcompletion", label: "段落填空" },
   { key: "reading", label: "阅读理解" },
-  { key: "conversation", label: "AI对话" },
   { key: "shadowing", label: "跟读练习" },
   { key: "mock", label: "模拟考试" },
-  { key: "review", label: "复盘" },
   { key: "mistakes", label: "错题库" },
   { key: "vocab", label: "背单词" },
+  { key: "writing", label: "写作练习" },
   { key: "settings", label: "设置" },
 ];
 

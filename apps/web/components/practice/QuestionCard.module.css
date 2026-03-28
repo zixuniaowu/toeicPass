@@ -25,6 +25,43 @@
   font-size: var(--text-xl);
   line-height: 1.7;
   color: var(--color-ink);
+  user-select: text;
+}
+
+.passageBox {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.passageLabel {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}
+
+.passage {
+  margin: 0;
+  font-size: var(--text-md);
+  line-height: 1.65;
+  color: var(--color-text);
+  user-select: text;
+}
+
+.listeningPrompt {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  color: var(--color-ink);
+  background: #f3f8ff;
+  border: 1px solid #cfe0f8;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
 }
 
 .options {
@@ -45,6 +82,7 @@
   color: var(--color-text);
   cursor: pointer;
   transition: all var(--transition-fast);
+  user-select: text;
 }
 
 .option:hover {
@@ -56,12 +94,60 @@
   background: var(--color-background);
 }
 
+.optionKeyOnly {
+  justify-content: center;
+  align-items: center;
+  min-height: 64px;
+}
+
 .optionKey {
   font-weight: 700;
   color: var(--color-muted);
   min-width: 28px;
 }
 
+.optionKeyOnlyText {
+  min-width: 0;
+  font-size: calc(var(--text-lg) + 2px);
+}
+
 .option.selected .optionKey {
   color: var(--color-ink);
+}
+
+.answerAction {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.answerPanel {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid #cfe0f8;
+  border-radius: var(--radius-md);
+  background: #f4f9ff;
+}
+
+.answerLine {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+
+.answerLabel {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: #1f3f66;
+}
+
+.answerExplanation {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  white-space: pre-line;
+  user-select: text;
 }

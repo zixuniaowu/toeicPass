@@ -7,9 +7,10 @@ interface TopBarProps {
   activeView: ViewTab;
   onViewChange: (view: ViewTab) => void;
   isLoggedIn: boolean;
+  onLogout?: () => void;
 }
 
-export function TopBar({ activeView, onViewChange, isLoggedIn }: TopBarProps) {
+export function TopBar({ activeView, onViewChange, isLoggedIn, onLogout }: TopBarProps) {
   return (
     <header className={styles.topbar}>
       <div className={styles.brand}>
@@ -20,20 +21,29 @@ export function TopBar({ activeView, onViewChange, isLoggedIn }: TopBarProps) {
         </div>
       </div>
 
-      <nav className={styles.tabs}>
-        {TABS.map((tab) => (
-          <button
-            key={tab.key}
-            className={`${styles.tab} ${activeView === tab.key ? styles.active : ""}`}
-            onClick={() => onViewChange(tab.key)}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </nav>
+      {isLoggedIn && (
+        <nav className={styles.tabs}>
+          {TABS.map((tab) => (
+            <button
+              key={tab.key}
+              className={`${styles.tab} ${activeView === tab.key ? styles.active : ""}`}
+              onClick={() => onViewChange(tab.key)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </nav>
+      )}
 
-      <div className={`${styles.badge} ${isLoggedIn ? styles.on : styles.off}`}>
-        {isLoggedIn ? "已登录" : "体验模式"}
+      <div className={styles.actions}>
+        <div className={`${styles.badge} ${isLoggedIn ? styles.on : styles.off}`}>
+          {isLoggedIn ? "已登录" : "未登录"}
+        </div>
+        {isLoggedIn && onLogout && (
+          <button type="button" className={styles.logout} onClick={onLogout}>
+            退出登录
+          </button>
+        )}
       </div>
     </header>
   );

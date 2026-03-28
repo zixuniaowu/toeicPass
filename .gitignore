@@ -1,9 +1,15 @@
 node_modules/
 dist/
 .next/
+apps/web/.next_old/
 coverage/
 *.log
 *.tsbuildinfo
 .env
 .env.local
 apps/api/.local-pg/
+.runtime/
+apps/api/.runtime/
+apps/web/public/assets/youtube/
+tmp-login.png
+nul

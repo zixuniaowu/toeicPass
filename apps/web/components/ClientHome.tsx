@@ -1,32 +1,50 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import type { ViewTab, NextTask, SessionFilters } from "../types";
-import { isListeningPart } from "../types";
+import { useState, useEffect, useCallback, useRef } from "react";
+import type { ViewTab } from "../types";
 import * as api from "../lib/api";
+import { parseNumericFilter } from "../lib/learning-action";
 import { useAuth } from "../hooks/useAuth";
+import { useLearningCommandRunner } from "../hooks/useLearningCommandRunner";
 import { useSession } from "../hooks/useSession";
 import { useAnalytics } from "../hooks/useAnalytics";
 import { useMistakes } from "../hooks/useMistakes";
 import { useVocab } from "../hooks/useVocab";
-import { useConversation } from "../hooks/useConversation";
 import { AppShell } from "./layout/AppShell";
 import { DashboardView } from "./dashboard/DashboardView";
+import { DiagnosticGate } from "./dashboard/DiagnosticGate";
 import { PracticeView } from "./practice/PracticeView";
-import { ReviewView } from "./review/ReviewView";
 import { MistakesView } from "./mistakes/MistakesView";
 import { VocabView } from "./vocab/VocabView";
+import { WritingView } from "./writing/WritingView";
 import { SettingsView } from "./settings/SettingsView";
-import { ConversationView } from "./conversation/ConversationView";
 import { ShadowingView } from "./shadowing/ShadowingView";
 import { MockExamView } from "./mock/MockExamView";
+import { LoginView } from "./auth/LoginView";
+import { ViewErrorBoundary } from "./error/ViewErrorBoundary";
+
+const DEFAULT_SPRINT_GOAL_SCORE = 800;
+const DEFAULT_SPRINT_DAYS = 90;
+const PRACTICE_VIEWS = new Set<ViewTab>(["listening", "grammar", "textcompletion", "reading", "mock"]);
+const DIAGNOSTIC_ALLOWED_VIEWS = new Set<ViewTab>(["dashboard", "listening", "mistakes", "settings"]);
+
+const toDateInputValue = (date: Date): string => {
+  const local = new Date(date.getTime() - date.getTimezoneOffset() * 60_000);
+  return local.toISOString().slice(0, 10);
+};
+
+const buildGoalDateFromToday = (days: number): string => {
+  const date = new Date();
+  date.setDate(date.getDate() + days);
+  return toDateInputValue(date);
+};
 
 export function ClientHome() {
   const [activeView, setActiveView] = useState<ViewTab>("dashboard");
-  const [goalScore, setGoalScore] = useState<number>(800);
-  const [goalDate, setGoalDate] = useState<string>("2026-09-30");
+  const [currentExamScore, setCurrentExamScore] = useState<number>(590);
+  const [goalScore, setGoalScore] = useState<number>(DEFAULT_SPRINT_GOAL_SCORE);
+  const [goalDate, setGoalDate] = useState<string>("");
   const [listeningPartFilter, setListeningPartFilter] = useState<string>("all");
-  const [readingPartFilter, setReadingPartFilter] = useState<string>("all");
 
 
   const auth = useAuth();
@@ -34,12 +52,19 @@ export function ClientHome() {
   const analytics = useAnalytics(auth.getRequestOptions);
   const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage);
   const vocab = useVocab(auth.ensureSession, auth.getRequestOptions, auth.setMessage);
-  const conversation = useConversation();
+  const bootstrapped = useRef(false);
+  const goalHydratedRef = useRef(false);
+  const diagnosticAttempts = analytics.analytics?.modeBreakdown?.diagnostic ?? 0;
+  const requiresDiagnostic = auth.isLoggedIn && diagnosticAttempts === 0;
 
   // Reset session when switching between practice tabs to avoid showing stale questions
-  const PRACTICE_VIEWS = new Set(["listening", "grammar", "textcompletion", "reading", "mock"]);
-
   const handleViewChange = useCallback((newView: ViewTab) => {
+    if (requiresDiagnostic && !DIAGNOSTIC_ALLOWED_VIEWS.has(newView)) {
+      auth.setMessage("请先完成 20 题自测，再开启完整训练计划。");
+      setActiveView("dashboard");
+      return;
+    }
+
     // If switching between different practice views, reset the session
     if (PRACTICE_VIEWS.has(newView) && PRACTICE_VIEWS.has(activeView) && newView !== activeView) {
       session.resetSession();
@@ -49,12 +74,20 @@ export function ClientHome() {
       session.resetSession();
     }
     setActiveView(newView);
-  }, [activeView, session]);
+  }, [activeView, auth, requiresDiagnostic, session]);
 
-  const parseFilter = (value: string): number | undefined => {
-    const parsed = Number(value);
-    return Number.isNaN(parsed) ? undefined : parsed;
-  };
+  const {
+    runAction: handleRunAction,
+    runTask: handleRunTask,
+    openPracticeViewForPart,
+  } = useLearningCommandRunner({
+    requiresDiagnostic,
+    setActiveView,
+    setMessage: auth.setMessage,
+    startSession: session.startSession,
+    loadMistakes: mistakes.loadMistakes,
+    loadVocabularyCards: vocab.loadCards,
+  });
 
   // Handlers
   const handleStartDiagnostic = useCallback(async () => {
@@ -68,8 +101,10 @@ export function ClientHome() {
   }, [session]);
 
   const handleStartListeningPractice = useCallback(async () => {
+    const parsedPart = parseNumericFilter(listeningPartFilter);
     const success = await session.startSession("practice", {
-      partNo: parseFilter(listeningPartFilter),
+      partNo: parsedPart,
+      partGroup: typeof parsedPart === "number" ? undefined : "listening",
     });
     if (success) setActiveView("listening");
   }, [session, listeningPartFilter]);
@@ -95,112 +130,153 @@ export function ClientHome() {
     if (success) setActiveView("reading");
   }, [session]);
 
-  const handleLoadDueCards = useCallback(async () => {
-    const token = await auth.ensureSession();
-    if (!token) return;
-
-    const dueCards = await api.fetchDueCards(auth.getRequestOptions(token));
-    const firstPart = dueCards.find((card) => typeof card.question?.partNo === "number")?.question?.partNo;
-    await session.startSession("practice", { partNo: firstPart });
-    setActiveView("review");
-  }, [auth, session]);
-
-  const handleSubmitSession = useCallback(async () => {
-    const report = await session.submitSession();
+  const handleSubmitSession = useCallback(async (options?: { allowPartial?: boolean }) => {
+    const report = await session.submitSession(options);
     if (report) {
       analytics.updateLatestScore(report.scoreTotal);
       await analytics.refreshAll();
-      setActiveView("review");
+      setActiveView("mistakes");
+      await mistakes.loadMistakes();
+      auth.setMessage("已完成本轮练习，已自动切换到错题库继续强化。");
     }
-  }, [session, analytics]);
-
-  const handleRunTask = useCallback(
-    async (task: NextTask) => {
-      const [command, queryString] = task.action.split("?");
-      const query = new URLSearchParams(queryString ?? "");
-      const partNo = parseFilter(query.get("part") ?? "");
-      const difficulty = parseFilter(query.get("difficulty") ?? "");
-
-      if (command === "practice:start") {
-        const success = await session.startSession("practice", { partNo, difficulty });
-        if (success) {
-          if (typeof partNo === "number") {
-            if (isListeningPart(partNo)) {
-              setActiveView("listening");
-            } else if (partNo === 5) {
-              setActiveView("grammar");
-            } else if (partNo === 6) {
-              setActiveView("textcompletion");
-            } else {
-              setActiveView("reading");
-            }
-          } else {
-            setActiveView("listening");
-          }
-        }
-        return;
-      }
-
-      if (command === "mock:start") {
-        const success = await session.startSession("mock", { difficulty });
-        if (success) setActiveView("mock");
-        return;
-      }
-
-      if (command === "review:start") {
-        await handleLoadDueCards();
-        return;
-      }
-
-      if (command === "mistakes:start") {
-        setActiveView("mistakes");
-        await mistakes.loadMistakes();
-        return;
-      }
-
-      if (command === "vocab:start") {
-        setActiveView("vocab");
-        await vocab.loadCards();
-        return;
-      }
-
-      auth.setMessage(`暂不支持该任务动作: ${task.action}`);
-    },
-    [session, handleLoadDueCards, mistakes, vocab, auth]
-  );
+  }, [session, analytics, mistakes, auth]);
 
   const handleSaveGoal = useCallback(async () => {
     const token = await auth.ensureSession();
     if (!token) return;
 
-    const result = await api.createGoal(goalScore, goalDate, auth.getRequestOptions(token));
+    const result = await api.createGoal(goalScore, goalDate, currentExamScore, auth.getRequestOptions(token));
     if (result.success) {
-      auth.setMessage(`目标已保存：${goalScore} 分。`);
+      auth.setMessage(`目标已保存：当前 ${currentExamScore} 分，目标 ${goalScore} 分。`);
       await analytics.refreshInsights(token);
     } else {
       auth.setMessage(`保存目标失败: ${result.error}`);
     }
-  }, [auth, goalScore, goalDate, analytics]);
+  }, [auth, goalScore, goalDate, currentExamScore, analytics]);
+
+  const handleLogin = useCallback(async () => {
+    const token = await auth.login();
+    if (!token) return;
+    setActiveView("dashboard");
+    await analytics.refreshAll(token);
+  }, [auth, analytics]);
+
+  const handleRegisterAndLogin = useCallback(async () => {
+    const registered = await auth.register();
+    if (!registered) return;
+    const token = await auth.login(true);
+    if (!token) return;
+    auth.setMessage("注册并登录成功，先完成 20 题自测。");
+    setActiveView("dashboard");
+    await analytics.refreshAll(token);
+  }, [auth, analytics]);
+
+  const handleLogout = useCallback(() => {
+    session.resetSession();
+    setActiveView("dashboard");
+    bootstrapped.current = false;
+    goalHydratedRef.current = false;
+    auth.logout();
+  }, [auth, session]);
+
+  const handleApplyNinetyDayGoal = useCallback(() => {
+    setGoalScore(DEFAULT_SPRINT_GOAL_SCORE);
+    setGoalDate(buildGoalDateFromToday(DEFAULT_SPRINT_DAYS));
+    auth.setMessage(`已填入冲刺目标：当前 ${currentExamScore} 分 -> 800 分 / 90 天。请点“保存目标”。`);
+  }, [auth, currentExamScore]);
 
   const handleMistakePractice = useCallback(
     async (partNo: number) => {
       const success = await session.startSession("practice", { partNo });
-      if (success) {
-        if (isListeningPart(partNo)) {
-          setActiveView("listening");
-        } else if (partNo === 5) {
-          setActiveView("grammar");
-        } else if (partNo === 6) {
-          setActiveView("textcompletion");
-        } else {
-          setActiveView("reading");
-        }
-      }
+      if (success) openPracticeViewForPart(partNo, "reading");
     },
-    [session]
+    [session, openPracticeViewForPart]
+  );
+
+  const handlePracticeFilteredMistakes = useCallback(
+    async (payload: { questionIds: string[]; partNo?: number }) => {
+      const firstPart = await session.startMistakeDrill({
+        questionIds: payload.questionIds,
+        partNo: payload.partNo,
+        limit: Math.min(payload.questionIds.length || 20, 20),
+      });
+      if (typeof firstPart !== "number") return;
+      openPracticeViewForPart(firstPart, "reading");
+    },
+    [session, openPracticeViewForPart]
+  );
+
+  const handlePracticeSingleMistake = useCallback(
+    async (questionId: string, partNo?: number) => {
+      const firstPart = await session.startMistakeDrill({
+        questionIds: [questionId],
+        partNo,
+        limit: 5,
+      });
+      if (typeof firstPart !== "number") return;
+      openPracticeViewForPart(firstPart, "reading");
+    },
+    [session, openPracticeViewForPart]
   );
 
   // Effects for loading data when views change
+  useEffect(() => {
+    if (!auth.isLoggedIn) {
+      bootstrapped.current = false;
+      goalHydratedRef.current = false;
+      return;
+    }
+    if (bootstrapped.current) {
+      return;
+    }
+    bootstrapped.current = true;
+    void (async () => {
+      await analytics.refreshAll();
+    })();
+  }, [auth.isLoggedIn, analytics]);
+
+  useEffect(() => {
+    if (goalHydratedRef.current) {
+      return;
+    }
+    const goal = analytics.analytics?.goal;
+    if (!goal) {
+      return;
+    }
+    let hydrated = false;
+    if (typeof goal.targetScore === "number") {
+      setGoalScore(goal.targetScore);
+      hydrated = true;
+    }
+    if (typeof goal.baselineScore === "number") {
+      setCurrentExamScore(goal.baselineScore);
+      hydrated = true;
+    }
+    if (typeof goal.targetExamDate === "string" && goal.targetExamDate.length >= 10) {
+      setGoalDate(goal.targetExamDate.slice(0, 10));
+      hydrated = true;
+    }
+    if (hydrated) {
+      goalHydratedRef.current = true;
+    }
+  }, [analytics.analytics]);
+
+  useEffect(() => {
+    if (goalHydratedRef.current || goalDate) {
+      return;
+    }
+    setGoalDate(buildGoalDateFromToday(DEFAULT_SPRINT_DAYS));
+  }, [goalDate]);
+
+  useEffect(() => {
+    if (goalHydratedRef.current) {
+      return;
+    }
+    if (typeof analytics.currentScore === "number") {
+      setCurrentExamScore(analytics.currentScore);
+    }
+  }, [analytics.currentScore]);
+
   useEffect(() => {
     if (activeView === "mistakes") {
       void mistakes.loadMistakes();
@@ -214,10 +290,14 @@ export function ClientHome() {
   const renderView = () => {
     switch (activeView) {
       case "dashboard":
+        if (requiresDiagnostic) {
+          return <DiagnosticGate onStartDiagnostic={handleStartDiagnostic} />;
+        }
         return (
           <DashboardView
             analytics={analytics.analytics}
             nextTasks={analytics.nextTasks}
+            dailyPlan={analytics.dailyPlan}
             currentScore={analytics.currentScore}
             predictedScore={analytics.predictedScore}
             currentGap={analytics.currentGap}
@@ -228,6 +308,8 @@ export function ClientHome() {
             onStartDiagnostic={handleStartDiagnostic}
             onViewChange={handleViewChange}
             onRunTask={handleRunTask}
+            onRunAction={handleRunAction}
+            progressStorageKey={`${auth.credentials.tenantCode}:${auth.credentials.email}`}
           />
         );
 
@@ -350,33 +432,32 @@ export function ClientHome() {
           />
         );
 
-      case "review":
-        return (
-          <ReviewView
-            sessionResult={session.sessionResult}
-            onLoadDueCards={handleLoadDueCards}
-          />
-        );
-
       case "mistakes":
         return (
-          <MistakesView
-            mistakeLibrary={mistakes.mistakeLibrary}
-            filteredMistakes={mistakes.filteredMistakes}
-            isLoading={mistakes.isLoading}
-            partFilter={mistakes.partFilter}
-            searchQuery={mistakes.searchQuery}
-            noteDraftMap={mistakes.noteDraftMap}
-            rootCauseMap={mistakes.rootCauseMap}
-            savingId={mistakes.savingId}
-            onPartFilterChange={mistakes.setPartFilter}
-            onSearchQueryChange={mistakes.setSearchQuery}
-            onNoteDraftChange={mistakes.updateNoteDraft}
-            onRootCauseChange={mistakes.updateRootCause}
-            onSaveNote={mistakes.saveNote}
-            onRefresh={() => mistakes.loadMistakes()}
-            onPractice={handleMistakePractice}
-          />
+          <ViewErrorBoundary
+            title="错题库加载失败"
+            hint="错题数据存在异常字段。你可以先点“刷新错题”，系统会尽量自动修复并继续加载。"
+          >
+            <MistakesView
+              mistakeLibrary={mistakes.mistakeLibrary}
+              filteredMistakes={mistakes.filteredMistakes}
+              isLoading={mistakes.isLoading}
+              partFilter={mistakes.partFilter}
+              searchQuery={mistakes.searchQuery}
+              noteDraftMap={mistakes.noteDraftMap}
+              rootCauseMap={mistakes.rootCauseMap}
+              savingId={mistakes.savingId}
+              onPartFilterChange={mistakes.setPartFilter}
+              onSearchQueryChange={mistakes.setSearchQuery}
+              onNoteDraftChange={mistakes.updateNoteDraft}
+              onRootCauseChange={mistakes.updateRootCause}
+              onSaveNote={mistakes.saveNote}
+              onRefresh={() => mistakes.loadMistakes()}
+              onPractice={handleMistakePractice}
+              onPracticeFiltered={handlePracticeFilteredMistakes}
+              onPracticeQuestion={handlePracticeSingleMistake}
+            />
+          </ViewErrorBoundary>
         );
 
       case "vocab":
@@ -395,31 +476,23 @@ export function ClientHome() {
           />
         );
 
-      case "conversation":
-        return (
-          <ConversationView
-            scenarios={conversation.scenarios}
-            activeSession={conversation.activeSession}
-            isLoading={conversation.isLoading}
-            inputText={conversation.inputText}
-            onInputChange={conversation.setInputText}
-            onStartSession={conversation.startSession}
-            onSendMessage={conversation.sendMessage}
-            onEndSession={conversation.endSession}
-          />
-        );
+      case "writing":
+        return <WritingView />;
 
       case "settings":
         return (
           <SettingsView
             credentials={auth.credentials}
+            currentScore={currentExamScore}
             goalScore={goalScore}
             goalDate={goalDate}
             onCredentialsChange={auth.updateCredentials}
+            onCurrentScoreChange={setCurrentExamScore}
             onGoalScoreChange={setGoalScore}
             onGoalDateChange={setGoalDate}
-            onRegister={() => auth.register()}
-            onLogin={() => auth.login()}
+            onRegister={() => void handleRegisterAndLogin()}
+            onLogin={() => void handleLogin()}
+            onApplyNinetyDayGoal={handleApplyNinetyDayGoal}
             onSaveGoal={handleSaveGoal}
           />
         );
@@ -435,8 +508,20 @@ export function ClientHome() {
       onViewChange={handleViewChange}
       isLoggedIn={auth.isLoggedIn}
       message={auth.message}
+      onLogout={handleLogout}
     >
-      {renderView()}
+      {auth.isLoggedIn ? (
+        renderView()
+      ) : (
+        <LoginView
+          credentials={auth.credentials}
+          isSubmitting={auth.isSubmitting}
+          message={auth.message}
+          onCredentialsChange={auth.updateCredentials}
+          onLogin={() => void handleLogin()}
+          onRegister={() => void handleRegisterAndLogin()}
+        />
+      )}
     </AppShell>
   );
 }

@@ -6,6 +6,13 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: huggingface-deploy
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,10 +20,13 @@ jobs:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       HF_REPO_ID: ${{ vars.HF_REPO_ID }}
       HF_REPO_TYPE: ${{ vars.HF_REPO_TYPE }}
+      HF_REPO_BRANCH: ${{ vars.HF_REPO_BRANCH }}
     steps:
       - name: Validate required settings
         shell: bash
         run: |
+          set -euo pipefail
+
           if [[ -z "${HF_TOKEN}" ]]; then
             echo "Missing secret HF_TOKEN"
             exit 1
@@ -28,6 +38,10 @@ jobs:
           if [[ -z "${HF_REPO_TYPE}" ]]; then
             echo "HF_REPO_TYPE not set. Defaulting to 'space'."
             echo "HF_REPO_TYPE=space" >> "$GITHUB_ENV"
+          fi
+          if [[ -z "${HF_REPO_BRANCH}" ]]; then
+            echo "HF_REPO_BRANCH not set. Defaulting to 'main'."
+            echo "HF_REPO_BRANCH=main" >> "$GITHUB_ENV"
           fi
 
       - name: Checkout repository
@@ -54,6 +68,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
@@ -70,4 +85,4 @@ jobs:
           auth_url="$(echo "${hf_url}" | sed "s#https://#https://user:${HF_TOKEN}@#")"
           git remote remove hf 2>/dev/null || true
           git remote add hf "${auth_url}"
-          git push hf HEAD:main --force
+          git push hf "HEAD:${HF_REPO_BRANCH}" --force

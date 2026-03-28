@@ -10,25 +10,31 @@ import styles from "./SettingsView.module.css";
 
 interface SettingsViewProps {
   credentials: AuthCredentials;
+  currentScore: number;
   goalScore: number;
   goalDate: string;
   onCredentialsChange: (updates: Partial<AuthCredentials>) => void;
+  onCurrentScoreChange: (score: number) => void;
   onGoalScoreChange: (score: number) => void;
   onGoalDateChange: (date: string) => void;
   onRegister: () => void;
   onLogin: () => void;
+  onApplyNinetyDayGoal: () => void;
   onSaveGoal: () => void;
 }
 
 export function SettingsView({
   credentials,
+  currentScore,
   goalScore,
   goalDate,
   onCredentialsChange,
+  onCurrentScoreChange,
   onGoalScoreChange,
   onGoalDateChange,
   onRegister,
   onLogin,
+  onApplyNinetyDayGoal,
   onSaveGoal,
 }: SettingsViewProps) {
   return (
@@ -79,6 +85,14 @@ export function SettingsView({
           <div className={styles.box}>
             <h3>目标</h3>
             <Input
+              label="当前分数（最近真实考试）"
+              type="number"
+              min={10}
+              max={990}
+              value={currentScore}
+              onChange={(e) => onCurrentScoreChange(Number(e.target.value) || 10)}
+            />
+            <Input
               label="目标分数"
               type="number"
               min={10}
@@ -92,7 +106,11 @@ export function SettingsView({
               value={goalDate}
               onChange={(e) => onGoalDateChange(e.target.value)}
             />
-            <Button onClick={onSaveGoal}>保存目标</Button>
+            <p className={styles.goalHint}>推荐：先点“一键填入”，再点“保存目标”。</p>
+            <div className={styles.goalActions}>
+              <Button variant="secondary" onClick={onApplyNinetyDayGoal}>一键填入 800 / 90 天</Button>
+              <Button onClick={onSaveGoal}>保存目标</Button>
+            </div>
           </div>
         </div>
 

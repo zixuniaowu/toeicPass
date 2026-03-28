@@ -25,6 +25,18 @@
   gap: var(--space-3);
 }
 
+.goalHint {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.goalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
 .statusList {
   list-style: none;
   margin: 0;

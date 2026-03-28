@@ -39,6 +39,13 @@ export interface QuestionOption {
   isCorrect: boolean;
 }
 
+export type QuestionSource =
+  | "seed"
+  | "bank"
+  | "official_pack"
+  | "admin"
+  | "legacy";
+
 export interface Question {
   id: string;
   tenantId: string;
@@ -46,9 +53,11 @@ export interface Question {
   skillTag: string;
   difficulty: number;
   stem: string;
+  passage?: string;
   explanation: string;
   mediaUrl?: string;
   imageUrl?: string;
+  source?: QuestionSource;
   status: "draft" | "review" | "published" | "archived";
   createdBy?: string;
   createdAt: string;
@@ -198,4 +207,31 @@ export interface AuditLog {
   entityId?: string;
   payloadHash: string;
   createdAt: string;
+}
+
+export interface ConversationScenario {
+  id: string;
+  title: string;
+  titleCn: string;
+  description: string;
+  context: string;
+  difficulty: 1 | 2 | 3;
+  category:
+    | "office"
+    | "restaurant"
+    | "airport"
+    | "hotel"
+    | "shopping"
+    | "meeting"
+    | "phone"
+    | "interview";
+}
+
+export interface ConversationMessage {
+  id: string;
+  role: "user" | "assistant" | "system";
+  content: string;
+  timestamp: string;
+  corrections?: string[];
+  suggestions?: string[];
 }

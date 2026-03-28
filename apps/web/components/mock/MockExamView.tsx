@@ -31,11 +31,11 @@ interface MockExamViewProps {
   onGoToQuestion: (index: number) => void;
   onPrevious: () => void;
   onNext: () => void;
-  onSubmit: () => void;
+  onSubmit: (options?: { allowPartial?: boolean }) => void;
 }
 
-// Mock exam: 30 questions, 25 minutes (simulated pace)
-const MOCK_DURATION_MS = 25 * 60 * 1000;
+// Full TOEIC-style mock: 200 questions, 120 minutes.
+const MOCK_DURATION_MS = 120 * 60 * 1000;
 
 export function MockExamView({
   activeSession,
@@ -76,8 +76,11 @@ export function MockExamView({
   useEffect(() => {
     if (timerMs === 0 && isTimerRunning) {
       setIsTimerRunning(false);
+      if (activeSession && !isSubmitting) {
+        onSubmit({ allowPartial: true });
+      }
     }
-  }, [timerMs, isTimerRunning]);
+  }, [timerMs, isTimerRunning, activeSession, isSubmitting, onSubmit]);
 
   // Track fullscreen changes (e.g. user presses Esc)
   useEffect(() => {
@@ -119,11 +122,11 @@ export function MockExamView({
           <div className={styles.examInfo}>
             <div className={styles.infoItem}>
               <span className={styles.infoLabel}>题目数量</span>
-              <strong>30 题</strong>
+              <strong>200 题</strong>
             </div>
             <div className={styles.infoItem}>
               <span className={styles.infoLabel}>考试时间</span>
-              <strong>25 分钟</strong>
+              <strong>120 分钟</strong>
             </div>
             <div className={styles.infoItem}>
               <span className={styles.infoLabel}>题型覆盖</span>
@@ -304,7 +307,11 @@ export function MockExamView({
           <QuestionCard
             question={currentQuestion}
             selectedAnswer={answerMap[currentQuestion.id]}
+            isAnswerRevealed={false}
             onSelectAnswer={(key) => onSelectAnswer(currentQuestion.id, key)}
+            onRevealAnswer={() => {
+              // Mock mode keeps answers hidden until submit.
+            }}
           />
 
           <div className={styles.examNav}>
@@ -316,7 +323,7 @@ export function MockExamView({
             </Button>
           </div>
 
-          <Button fullWidth onClick={onSubmit} disabled={isSubmitting}>
+          <Button fullWidth onClick={() => onSubmit({ allowPartial: true })} disabled={isSubmitting}>
             {isSubmitting ? "提交中..." : `提交试卷 (${answeredCount}/${totalQuestions} 已答)`}
           </Button>
         </div>

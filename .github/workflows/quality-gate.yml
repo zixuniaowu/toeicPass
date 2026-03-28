@@ -1,0 +1,40 @@
+name: Quality Gate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run lint
+
+      - name: API e2e
+        run: npm --prefix apps/api run test:e2e
+
+      - name: Question quality audit (strict)
+        run: npm --prefix apps/api run audit:questions -- --strict --out=.runtime/question-quality-audit.json
+
+      - name: Upload quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: question-quality-audit
+          path: apps/api/.runtime/question-quality-audit.json

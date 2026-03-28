@@ -1,4 +1,5 @@
 import {
+  ArrayMaxSize,
   ArrayMinSize,
   IsArray,
   IsDateString,
@@ -11,6 +12,7 @@ import {
   Max,
   Min,
   MinLength,
+  ValidateIf,
   ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
@@ -44,9 +46,9 @@ export class LoginDto {
   @IsNotEmpty()
   password!: string;
 
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
-  tenantCode!: string;
+  tenantCode?: string;
 }
 
 export class GoalDto {
@@ -57,6 +59,12 @@ export class GoalDto {
 
   @IsDateString()
   targetExamDate!: string;
+
+  @IsOptional()
+  @IsInt()
+  @Min(10)
+  @Max(990)
+  currentScore?: number;
 }
 
 export class AnswerDto {
@@ -74,10 +82,30 @@ export class AnswerDto {
 
 export class SubmitAttemptDto {
   @IsArray()
-  @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => AnswerDto)
   answers!: AnswerDto[];
+}
+
+export class StartMistakeDrillDto {
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(7)
+  partNo?: number;
+
+  @IsOptional()
+  @IsInt()
+  @Min(5)
+  @Max(30)
+  limit?: number;
+
+  @IsOptional()
+  @IsArray()
+  @ArrayMinSize(1)
+  @ArrayMaxSize(30)
+  @IsString({ each: true })
+  questionIds?: string[];
 }
 
 export class MistakeNoteDto {
@@ -210,4 +238,26 @@ export class IpResultRowDto {
   @Min(5)
   @Max(495)
   scoreR!: number;
+}
+
+export class ConversationReplyDto {
+  @IsString()
+  @IsNotEmpty()
+  scenarioId!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  text!: string;
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  @ValidateIf((_, value) => Array.isArray(value))
+  history?: string[];
+}
+
+export class WritingEvaluateDto {
+  @IsString()
+  @IsNotEmpty()
+  text!: string;
 }

@@ -1,0 +1,4070 @@
+{
+  "generatedAt": "2026-03-02T00:54:37.932Z",
+  "channelUrl": "https://www.youtube.com/@TED/videos",
+  "limit": 10,
+  "downloadVideo": false,
+  "outputRoot": "public/assets/youtube/ted-latest",
+  "itemCount": 10,
+  "failureCount": 0,
+  "items": [
+    {
+      "id": "youtube-s5P3EYUN1Zo-seed",
+      "title": "Why Can’t We Better Prepare for Extreme Weather? | Catherine Nakalembe | TED",
+      "titleCn": "Why Can’t We Better Prepare for Extreme Weather? | Catherine Nakalembe | TED",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "s5P3EYUN1Zo",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "We can predict droughts, floods weeks, even months in advance, yet we still see the same crises unfold.",
+          "translation": "我们可以提前数周甚至数月预测干旱、洪水，但我们仍然看到同样的危机发生。",
+          "startSec": 8.547,
+          "endSec": 16.012
+        },
+        {
+          "id": 2,
+          "text": "Crop failure, economic and environmental devastation and displacement: the same crises that have trapped famine communities for generations.",
+          "translation": "农作物歉收、经济和环境破坏以及流离失所：这些危机使饥荒社区世世代代陷入困境。",
+          "startSec": 16.93,
+          "endSec": 26.439
+        },
+        {
+          "id": 3,
+          "text": "This is obviously not a prediction problem, it's a translation problem, one that I came to realize painfully in 2015.",
+          "translation": "这显然不是一个预测问题，而是一个翻译问题，我在 2015 年痛苦地认识到了这一问题。",
+          "startSec": 26.773,
+          "endSec": 35.156
+        },
+        {
+          "id": 4,
+          "text": "Equipped with the best tools available at the time, including that very expensive fancy drone, I spent August 2015 with my team in Karamoja, documenting yet another failed cropping season, one that I predicted months earlier, using satellite data.",
+          "translation": "2015 年 8 月，我和我的团队在卡拉莫贾，配备了当时最好的工具，包括那架非常昂贵的精美无人机，记录了又一个失败的作物季节，这是我几个月前使用卫星数据预测的。",
+          "startSec": 36.366,
+          "endSec": 51.715
+        },
+        {
+          "id": 5,
+          "text": "This was part of the worst drought in East Africa in decades, affecting 30 million people in Uganda, Kenya, Somalia and Ethiopia.",
+          "translation": "这是东非几十年来最严重干旱的一部分，影响了乌干达、肯尼亚、索马里和埃塞俄比亚的 3000 万人。",
+          "startSec": 51.756,
+          "endSec": 61.6
+        },
+        {
+          "id": 6,
+          "text": "After my field work, I did something researchers rarely do.",
+          "translation": "实地工作结束后，我做了一些研究人员很少做的事情。",
+          "startSec": 62.267,
+          "endSec": 65.687
+        },
+        {
+          "id": 7,
+          "text": "I went straight to the office of the prime minister.",
+          "translation": "我直接去了首相办公室。",
+          "startSec": 65.729,
+          "endSec": 69.7914
+        },
+        {
+          "id": 8,
+          "text": "And 24 hours after my second presentation to several ministers, food trucks were dispatched to Kamagaya on September 26th, 2015, exactly 10 years this week which marked the first time the office used satellite data to trigger an emergency response.",
+          "translation": "在我第二次向几位部长发表演讲后 24 小时，2015 年 9 月 26 日，食品卡车被派往镰谷，正好是 10 周年的这一周，这标志着该办公室首次使用卫星数据触发紧急响应。",
+          "startSec": 69.7914,
+          "endSec": 86.041
+        },
+        {
+          "id": 9,
+          "text": "Following this, I helped design a program that would proactively release financing to support alternative employment for communities affected by drought.",
+          "translation": "此后，我帮助设计了一个计划，该计划将主动释放资金，以支持受干旱影响的社区的替代就业。",
+          "startSec": 86.082,
+          "endSec": 95.634
+        },
+        {
+          "id": 10,
+          "text": "This program went on to support 450,000 people over five years, saving the government millions in emergency response and deploying several projects that included environmental restoration.",
+          "translation": "该计划在五年内为 45 万人提供了支持，为政府节省了数百万美元的应急响应费用，并部署了多个包括环境恢复在内的项目。",
+          "startSec": 95.675,
+          "endSec": 108.021
+        },
+        {
+          "id": 11,
+          "text": "But what haunted me then, and is still true today, is this if we could mobilize emergency response within 24 hours, why couldn't we prevent this predictable crisis from unfolding?",
+          "translation": "但当时和今天仍然困扰着我的是，如果我们能够在 24 小时内动员紧急响应，为什么我们不能阻止这场可预见的危机的发生呢？",
+          "startSec": 108.813,
+          "endSec": 120.617
+        },
+        {
+          "id": 12,
+          "text": "This paradox has deepened because today's capabilities make 2015's best look primitive.",
+          "translation": "这个悖论已经加深，因为今天的能力让 2015 年的最佳造型显得很原始。",
+          "startSec": 120.659,
+          "endSec": 127.29
+        },
+        {
+          "id": 13,
+          "text": "We have over 8,000 satellites and AI models and computation power that will make predictions, using this data with other data sets, to produce information at unprecedented scales and at unprecedented speeds.",
+          "translation": "我们拥有 8,000 多个卫星、人工智能模型和计算能力，可以利用这些数据与其他数据集进行预测，以前所未有的规模和速度生成信息。",
+          "startSec": 127.332,
+          "endSec": 142.555
+        },
+        {
+          "id": 14,
+          "text": "Yet, if you can combine this with advances in crop science...",
+          "translation": "然而，如果你能将其与作物科学的进步结合起来......",
+          "startSec": 143.306,
+          "endSec": 148.144
+        },
+        {
+          "id": 15,
+          "text": "Mobile banking, mechanization, the possibilities seem limitless.",
+          "translation": "手机银行、机械化，可能性似乎无限。",
+          "startSec": 149.52100000000002,
+          "endSec": 156.19400000000002
+        },
+        {
+          "id": 16,
+          "text": "Yet just last year, in 2024, nearly one in three people were worried about where their next meal will come from.",
+          "translation": "然而就在去年，即 2024 年，近三分之一的人担心下一顿饭从哪里来。",
+          "startSec": 156.236,
+          "endSec": 164.828
+        },
+        {
+          "id": 17,
+          "text": "Climate disasters have more than doubled since the 1980s.",
+          "translation": "自 20 世纪 80 年代以来，气候灾害增加了一倍多。",
+          "startSec": 164.869,
+          "endSec": 168.832
+        },
+        {
+          "id": 18,
+          "text": "So the question is: Why does this keep happening?",
+          "translation": "所以问题是：为什么这种情况不断发生？",
+          "startSec": 169.666,
+          "endSec": 174.963
+        },
+        {
+          "id": 19,
+          "text": "I would like to tell you a story that will help you bridge the gap between why we have such incredible capabilities and are unable to deliver clear information for a farmer.",
+          "translation": "我想告诉您一个故事，它将帮助您弥合为什么我们拥有如此令人难以置信的能力和无法为农民提供清晰信息之间的差距。",
+          "startSec": 176.089,
+          "endSec": 187.86357777777778
+        },
+        {
+          "id": 20,
+          "text": "For example to increase their yield, save their produce by reducing post-harvest losses,.",
+          "translation": "例如，为了提高产量，通过减少收获后损失来保存产品。",
+          "startSec": 187.86357777777778,
+          "endSec": 192.647
+        },
+        {
+          "id": 21,
+          "text": "And having alternative income so they can survive through tough times.",
+          "translation": "并拥有其他收入，以便他们能够度过困难时期。",
+          "startSec": 192.689,
+          "endSec": 198.445
+        },
+        {
+          "id": 22,
+          "text": "We have incredible technology But we're missing translators to connect our predictions of that drought, for example, to real, tangible solutions that can get a farmer what they actually need to thrive.",
+          "translation": "我们拥有令人难以置信的技术，但我们缺少翻译人员来将我们对干旱的预测与真实、切实的解决方案联系起来，这些解决方案可以为农民提供他们真正需要的繁荣发展。",
+          "startSec": 198.82,
+          "endSec": 212.751
+        },
+        {
+          "id": 23,
+          "text": "I'd like to share the story of Mary, whose experience represents millions of smallholder farmers around the world.",
+          "translation": "我想分享玛丽的故事，她的经历代表了世界各地数百万小农。",
+          "startSec": 212.751,
+          "endSec": 219.466
+        },
+        {
+          "id": 24,
+          "text": "Mary is not her real name, but she's a farmer in Iringa, Tanzania.",
+          "translation": "玛丽不是她的真名，但她是坦桑尼亚伊林加的一名农民。",
+          "startSec": 219.507,
+          "endSec": 223.97
+        },
+        {
+          "id": 25,
+          "text": "But her story could easily be from Uganda, Madagascar or Senegal, or any other country where smallholders face similar challenges.",
+          "translation": "但她的故事很可能来自乌干达、马达加斯加或塞内加尔，或小农面临类似挑战的任何其他国家。",
+          "startSec": 224.012,
+          "endSec": 232.85399999999998
+        },
+        {
+          "id": 26,
+          "text": "Today's reality is this.",
+          "translation": "今天的现实就是这样。",
+          "startSec": 233.48,
+          "endSec": 235.398
+        },
+        {
+          "id": 27,
+          "text": "For Mary and her neighbors, they plant February, March, for June, July harvests.",
+          "translation": "对于玛丽和她的邻居来说，他们二月、三月播种，六月、七月收获。",
+          "startSec": 235.44,
+          "endSec": 241.78
+        },
+        {
+          "id": 28,
+          "text": "This year, Mary acquired improved seeds, along with fertilizer that she heard about from a radio program.",
+          "translation": "今年，玛丽获得了改良种子以及她从广播节目中听说的肥料。",
+          "startSec": 241.821,
+          "endSec": 248.912
+        },
+        {
+          "id": 29,
+          "text": "Unfortunately, despite her best hopes, rainfall was irregular, and she only harvested 800 kilograms from her one-acre plot.",
+          "translation": "不幸的是，尽管她满怀希望，降雨却不稳定，她一英亩的土地只收获了 800 公斤。",
+          "startSec": 248.953,
+          "endSec": 257.587
+        },
+        {
+          "id": 30,
+          "text": "Her poultry business that used to provide critical backup income recently collapsed, so she does not have any savings.",
+          "translation": "她曾经提供重要后备收入的家禽生意最近倒闭了，所以她没有任何积蓄。",
+          "startSec": 258.379,
+          "endSec": 267.013
+        },
+        {
+          "id": 31,
+          "text": "And it's just another year of surviving.",
+          "translation": "这只是又一个生存的一年。",
+          "startSec": 267.013,
+          "endSec": 269.766
+        },
+        {
+          "id": 32,
+          "text": "Now imagine that Mary did in fact receive seasonal information sometime in January.",
+          "translation": "现在想象一下，玛丽确实在一月份的某个时候收到了季节性信息。",
+          "startSec": 269.808,
+          "endSec": 275.563
+        },
+        {
+          "id": 33,
+          "text": "Not only did it include the drought prediction, it included when and where she could access fertilizer, a recommended planting date.",
+          "translation": "它不仅包括干旱预测，还包括她可以获得肥料的时间和地点以及建议的种植日期。",
+          "startSec": 275.605,
+          "endSec": 284.447
+        },
+        {
+          "id": 34,
+          "text": "But most critical is that she has access to financing that she could acquire a water pump so she could irrigate during dry spells.",
+          "translation": "但最重要的是，她可以获得融资，购买水泵，以便在干旱期间进行灌溉。",
+          "startSec": 284.447,
+          "endSec": 293.289
+        },
+        {
+          "id": 35,
+          "text": "Come July, Mary has 3,000 kilograms.",
+          "translation": "到了七月份，玛丽的体重就达到了 3000 公斤。",
+          "startSec": 293.957,
+          "endSec": 297.919
+        },
+        {
+          "id": 36,
+          "text": "She has enough to see her through the next harvest, enough income because she has access to buyers who provide premium prices for her produce.",
+          "translation": "她有足够的钱度过下一个收获季，足够的收入，因为她可以接触到为她的农产品提供高价的买家。",
+          "startSec": 297.919,
+          "endSec": 307.7797142857143
+        },
+        {
+          "id": 37,
+          "text": "And storage so she can store it until markets stabilize.",
+          "translation": "还有储存，这样她就可以储存它，直到市场稳定为止。",
+          "startSec": 307.7797142857143,
+          "endSec": 311.724
+        },
+        {
+          "id": 38,
+          "text": "She can send her daughter to school, but most critically, she has extra income, so she can revive her poultry business.",
+          "translation": "她可以送女儿上学，但最重要的是，她有额外的收入，这样她就可以重振家禽生意。",
+          "startSec": 312.35,
+          "endSec": 320.483
+        },
+        {
+          "id": 39,
+          "text": "This is not science fiction.",
+          "translation": "这不是科幻小说。",
+          "startSec": 320.525,
+          "endSec": 321.985
+        },
+        {
+          "id": 40,
+          "text": "All the tools, all the technologies to get her that extra income exist today.",
+          "translation": "如今，为她带来额外收入的所有工具、所有技术都已存在。",
+          "startSec": 322.026,
+          "endSec": 327.407
+        },
+        {
+          "id": 41,
+          "text": "So why is Mary still stuck?",
+          "translation": "那么为什么玛丽仍然被困住呢？",
+          "startSec": 327.448,
+          "endSec": 329.617
+        },
+        {
+          "id": 42,
+          "text": "Why does she get set back by very predictable crises?",
+          "translation": "为什么她会因为可预见的危机而受挫？",
+          "startSec": 329.659,
+          "endSec": 334.33
+        },
+        {
+          "id": 43,
+          "text": "The challenge lies in this messy middle, the complex web of relationships and real-life challenges that stand between our incredibly capable predictions and assessments and real, tangible solutions for Mary on the ground.",
+          "translation": "挑战就在于这个混乱的中间，复杂的关系网络和现实生活中的挑战，它们介于我们极其强大的预测和评估与玛丽实际的实际、切实的解决方案之间。",
+          "startSec": 334.998,
+          "endSec": 350.68
+        },
+        {
+          "id": 44,
+          "text": "For Mary, it's as if all our technology disappears into a black hole.",
+          "translation": "对于玛丽来说，就好像我们所有的技术都消失在黑洞中。",
+          "startSec": 351.347,
+          "endSec": 356.311
+        },
+        {
+          "id": 45,
+          "text": "And in my experience, drought predictions do not deliver pumps to the ground.",
+          "translation": "根据我的经验，干旱预测不会向地面提供水泵。",
+          "startSec": 356.311,
+          "endSec": 361.149
+        },
+        {
+          "id": 46,
+          "text": "They produce bulletins.",
+          "translation": "他们制作公告。",
+          "startSec": 361.191,
+          "endSec": 362.942
+        },
+        {
+          "id": 47,
+          "text": "Add to this complexity the fact that Mary has a small, irregular sized field that doesn't fit our perfect pixels.",
+          "translation": "更复杂的是，玛丽有一个小的、不规则大小的区域，不适合我们的完美像素。",
+          "startSec": 362.984,
+          "endSec": 370.575
+        },
+        {
+          "id": 48,
+          "text": "We are doing a terrible job mapping fields like Mary's.",
+          "translation": "我们在绘制像玛丽这样的领域的工作上做得很糟糕。",
+          "startSec": 370.617,
+          "endSec": 374.662
+        },
+        {
+          "id": 49,
+          "text": "In addition to this, the basic infrastructure required for us to improve our predictions and really bring them to the ground are largely missing for regions like where Mary is based.",
+          "translation": "除此之外，像玛丽所在的地区基本上缺乏我们改进预测并真正将其付诸实践所需的基础设施。",
+          "startSec": 374.662,
+          "endSec": 386.09
+        },
+        {
+          "id": 50,
+          "text": "This complex, messy middle is where all the capabilities shrivel, because it requires things that technology alone cannot provide.",
+          "translation": "这个复杂、混乱的中间是所有能力都萎缩的地方，因为它需要的东西是技术本身无法提供的。",
+          "startSec": 386.132,
+          "endSec": 397.06
+        },
+        {
+          "id": 51,
+          "text": "For example, it would require partnering with an extension agent who not only delivers fertilizer, trains a farmer and is an excellent data collector, but not replacing them.",
+          "translation": "例如，它需要与推广代理合作，该代理不仅提供肥料、培训农民，而且还是优秀的数据收集者，但不能取代他们。",
+          "startSec": 397.06,
+          "endSec": 409.364
+        },
+        {
+          "id": 52,
+          "text": "It would also require presenting our information in a way that is accessible to a bank.",
+          "translation": "它还需要以银行可以访问的方式提供我们的信息。",
+          "startSec": 410.031,
+          "endSec": 415.5575
+        },
+        {
+          "id": 53,
+          "text": "So that they can invest in a farmer like Mary, who needs to plant next month.",
+          "translation": "这样他们就可以投资像玛丽这样下个月需要种植的农民。",
+          "startSec": 415.5575,
+          "endSec": 421.084
+        },
+        {
+          "id": 54,
+          "text": "So what is the path forward?",
+          "translation": "那么前进的道路是什么？",
+          "startSec": 421.125,
+          "endSec": 422.71
+        },
+        {
+          "id": 55,
+          "text": "We can either expand this messy middle, this translation gap, by creating more tech-driven silos, or we can use our current capabilities and venture to connect them to real solutions on the ground.",
+          "translation": "我们可以通过创建更多技术驱动的孤岛来扩大这个混乱的中间，这种翻译差距，或者我们可以利用我们当前的能力并冒险将它们与实际的解决方案连接起来。",
+          "startSec": 422.752,
+          "endSec": 436.557
+        },
+        {
+          "id": 56,
+          "text": "To do this, there are five fundamental shifts that we would need to do.",
+          "translation": "为此，我们需要进行五项根本性转变。",
+          "startSec": 436.599,
+          "endSec": 440.687
+        },
+        {
+          "id": 57,
+          "text": "The first is we need to focus on translating, and this would require we're emphasizing reliability over perfection.",
+          "translation": "首先，我们需要专注于翻译，这需要我们强调可靠性而不是完美。",
+          "startSec": 440.728,
+          "endSec": 449.112
+        },
+        {
+          "id": 58,
+          "text": "A model that is 80 percent accurate, that delivers a pump to Mary, is far better than one that's 90 percent accurate, that never leaves our research paper or dashboard.",
+          "translation": "一个准确率为 80% 的模型（为玛丽提供泵）比一个准确度为 90%（永远不会离开我们的研究论文或仪表板）的模型要好得多。",
+          "startSec": 449.153,
+          "endSec": 458.621
+        },
+        {
+          "id": 59,
+          "text": "It would require that not only do we fill that critical data gap.",
+          "translation": "这不仅要求我们填补关键的数据空白。",
+          "startSec": 458.663,
+          "endSec": 463.4316666666667
+        },
+        {
+          "id": 60,
+          "text": "So we are better able to predict and assess the conditions in Mary's field, we would need to make sure our predictions can actually be evaluated.",
+          "translation": "因此，我们能够更好地预测和评估玛丽领域的条件，我们需要确保我们的预测能够得到实际评估。",
+          "startSec": 463.4316666666667,
+          "endSec": 472.969
+        }
+      ]
+    },
+    {
+      "id": "youtube-Qcz_GJyD-3E-seed",
+      "title": "The Attack on Iran — Why Now? | TED Explains the World with Ian Bremmer",
+      "titleCn": "The Attack on Iran — Why Now? | TED Explains the World with Ian Bremmer",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "Qcz_GJyD-3E",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "This morning, after weeks of escalating threats, the United States and Israel bombed several parts of Iran, including the Supreme Leader Ali Ham's compound in Tehran.",
+          "translation": "今天早上，经过数周不断升级的威胁，美国和以色列轰炸了伊朗的多个地区，其中包括最高领袖阿里·哈姆在德黑兰的住所。",
+          "startSec": 2.55,
+          "endSec": 11.474499999999999
+        },
+        {
+          "id": 2,
+          "text": "Iran responded in kind with missiles launched towards Israel and four Gulf Arab countries which host US military bases, Bahrain, Kuwait, Qatar, and the UAE.",
+          "translation": "伊朗也向以色列和四个拥有美国军事基地的海湾阿拉伯国家——巴林、科威特、卡塔尔和阿联酋发射了导弹作为回应。",
+          "startSec": 11.474499999999999,
+          "endSec": 21.395000000000003
+        },
+        {
+          "id": 3,
+          "text": "Now, this is a fastmoving situation which feels extraordinarily tenuous.",
+          "translation": "现在，形势瞬息万变，让人感觉异常脆弱。",
+          "startSec": 21.395000000000003,
+          "endSec": 26.314999999999998
+        },
+        {
+          "id": 4,
+          "text": "So, we obviously turned immediately to Eurasia Group's founder Ian Bremer to help us make sense of what is happening now and what is to come.",
+          "translation": "因此，我们显然立即向欧亚集团创始人伊恩·布雷默寻求帮助，以帮助我们了解现在正在发生的事情以及即将发生的事情。",
+          "startSec": 26.314999999999998,
+          "endSec": 35.51
+        },
+        {
+          "id": 5,
+          "text": "Ian, hi.",
+          "translation": "伊恩，嗨。",
+          "startSec": 35.52,
+          "endSec": 36.549
+        },
+        {
+          "id": 6,
+          "text": "Helen, good to see you as always.",
+          "translation": "海伦，一如既往地很高兴见到你。",
+          "startSec": 36.559,
+          "endSec": 38.79
+        },
+        {
+          "id": 7,
+          "text": "So, Ian, as I mentioned, the threats have been stacking up for weeks now, so this escalation isn't exactly a surprise, but tell us why Trump is doing this now.",
+          "translation": "所以，伊恩，正如我所提到的，威胁已经持续数周了，所以这种升级并不令人意外，但请告诉我们特朗普为什么现在这样做。",
+          "startSec": 38.8,
+          "endSec": 47.91
+        },
+        {
+          "id": 8,
+          "text": "Well, there are a couple reasons.",
+          "translation": "嗯，有几个原因。",
+          "startSec": 47.92,
+          "endSec": 50.069
+        },
+        {
+          "id": 9,
+          "text": "First, there is a level of confidence that Trump has both on the back of his success in Venezuela, having removed Nicholas Maduro, not assassinated him, actually bringing him to justice though a lot of Venezuelans and Cubans were killed in the operation.",
+          "translation": "首先，特朗普对他在委内瑞拉取得的成功有一定程度的信心，他除掉了尼古拉斯·马杜罗，而不是暗杀了他，实际上将他绳之以法，尽管许多委内瑞拉人和古巴人在行动中丧生。",
+          "startSec": 50.079,
+          "endSec": 68.23
+        },
+        {
+          "id": 10,
+          "text": "No Americans were.",
+          "translation": "没有美国人。",
+          "startSec": 68.24,
+          "endSec": 69.315
+        },
+        {
+          "id": 11,
+          "text": "It's gone over well.",
+          "translation": "一切顺利。",
+          "startSec": 69.315,
+          "endSec": 70.39
+        },
+        {
+          "id": 12,
+          "text": "The Americans find it popular.",
+          "translation": "美国人发现它很受欢迎。",
+          "startSec": 70.4,
+          "endSec": 71.9145
+        },
+        {
+          "id": 13,
+          "text": "Most of the Latin American countries find it popular.",
+          "translation": "大多数拉丁美洲国家都发现它很受欢迎。",
+          "startSec": 71.9145,
+          "endSec": 76.515
+        },
+        {
+          "id": 14,
+          "text": "And you know he's like well I can do this in other places too.",
+          "translation": "你知道他就像我在其他地方也能做到这一点。",
+          "startSec": 76.515,
+          "endSec": 79.749
+        },
+        {
+          "id": 15,
+          "text": "So part of it is that he's had experience with Iran before military experience.",
+          "translation": "部分原因是他在军事经历之前就曾与伊朗打过交道。",
+          "startSec": 79.759,
+          "endSec": 86.3945
+        },
+        {
+          "id": 16,
+          "text": "After withdrawing from the Iranian nuclear deal, the JCPOA in his first term he's put the Iranians on notice on a couple of occasions.",
+          "translation": "在退出伊朗核协议和联合全面行动计划后，他在第一个任期内曾多次引起伊朗人的注意。",
+          "startSec": 86.3945,
+          "endSec": 95.59450000000001
+        },
+        {
+          "id": 17,
+          "text": "And when he has engaged in military strikes against Iran, the Iranians have not been able or willing to hit him back.",
+          "translation": "当他对伊朗进行军事打击时，伊朗人没有能力也不愿意反击他。",
+          "startSec": 95.59450000000001,
+          "endSec": 102.875
+        },
+        {
+          "id": 18,
+          "text": "And so he doesn't feel like there's a deterrent capability here.",
+          "translation": "所以他不觉得这里有威慑能力。",
+          "startSec": 102.875,
+          "endSec": 108.435
+        },
+        {
+          "id": 19,
+          "text": "So he's not taking a particularly big risk.",
+          "translation": "所以他并没有冒特别大的风险。",
+          "startSec": 108.435,
+          "endSec": 111.6345
+        },
+        {
+          "id": 20,
+          "text": "Finally he did engage in negotiations but his demands were much greater than the Iranians were willing to engage and that's been clear for months now frankly.",
+          "translation": "最后他确实参与了谈判，但他的要求比伊朗人愿意参与的要高得多，坦率地说，这一点几个月来就已经很清楚了。",
+          "startSec": 111.6345,
+          "endSec": 123.3145
+        },
+        {
+          "id": 21,
+          "text": "But he did want to ensure that there was adequate military capabilities in the region both in terms of the strikes that the Americans were going to engage in.",
+          "translation": "但他确实希望确保该地区有足够的军事能力来应对美国将要发动的袭击。",
+          "startSec": 123.3145,
+          "endSec": 133.4087894736842
+        },
+        {
+          "id": 22,
+          "text": "That we're now seeing the beginning of but also in terms of America's ability to help defend Israel and its own bases and its allies across the region that final components of that only got into place days ago and then this was the first window of opportunity after that when the Americans and Israelis had a clean shot at the supreme leader and the top military leadership and they gave the order.",
+          "translation": "我们现在看到了美国帮助保卫以色列及其基地及其在该地区的盟友的能力的开始，而最终的组成部分几天前才到位，然后这是第一个机会之窗，当时美国和以色列人对最高领导人和最高军事领导层进行了明确的攻击，他们下达了命令。",
+          "startSec": 133.4087894736842,
+          "endSec": 166.6345
+        },
+        {
+          "id": 23,
+          "text": "So that's you know what precipitated all of this.",
+          "translation": "所以你知道是什么促成了这一切。",
+          "startSec": 166.6345,
+          "endSec": 173.475
+        },
+        {
+          "id": 24,
+          "text": "There's a broader question about, you know, how do we feel about the United States exercising unilateral military power all over the world engaging in a policy of regime change, assassinating political leaders.",
+          "translation": "有一个更广泛的问题，你知道，我们对美国在世界各地行使单方面军事力量、推行政权更迭政策、暗杀政治领导人有何看法。",
+          "startSec": 173.475,
+          "endSec": 187.635
+        },
+        {
+          "id": 25,
+          "text": "What does that mean going forward for the US?",
+          "translation": "这对美国的未来意味着什么？",
+          "startSec": 187.635,
+          "endSec": 190.79
+        },
+        {
+          "id": 26,
+          "text": "What does it mean for other countries around the world?",
+          "translation": "这对世界其他国家意味着什么？",
+          "startSec": 190.8,
+          "endSec": 193.15449999999998
+        },
+        {
+          "id": 27,
+          "text": "But in terms of what led to this series of strikes, this did not certainly did not surprise us.",
+          "translation": "但就导致这一系列罢工的原因而言，这当然并不让我们感到惊讶。",
+          "startSec": 193.15449999999998,
+          "endSec": 201.154
+        },
+        {
+          "id": 28,
+          "text": "I don't think it was a big surprise to the markets.",
+          "translation": "我不认为这对市场来说是一个很大的惊喜。",
+          "startSec": 201.154,
+          "endSec": 203.23399999999998
+        },
+        {
+          "id": 29,
+          "text": "The scale of the military strikes were greater than were generally anticipated, but nobody credible following this believed that the negotiations were heading for breakthrough.",
+          "translation": "军事打击的规模超出了普遍预期，但此后没有任何可信人士相信谈判即将取得突破。",
+          "startSec": 203.23399999999998,
+          "endSec": 215.7945
+        },
+        {
+          "id": 30,
+          "text": "Nor did they believe that this was a taco moment that Trump was going to chicken out.",
+          "translation": "他们也不相信特朗普会在这个玉米卷时刻退缩。",
+          "startSec": 215.7945,
+          "endSec": 220.595
+        },
+        {
+          "id": 31,
+          "text": "They did feel and we did feel that he was going to make good as it were on his threats as were the Israelis.",
+          "translation": "他们确实感觉到，我们也确实感觉到，他会像以色列人一样兑现他的威胁。",
+          "startSec": 220.595,
+          "endSec": 229.35815789473685
+        },
+        {
+          "id": 32,
+          "text": "And they've been coordinating on this very closely for a couple of months now.",
+          "translation": "几个月来，他们一直在这方面进行密切协调。",
+          "startSec": 229.35815789473685,
+          "endSec": 234.47
+        },
+        {
+          "id": 33,
+          "text": "So as you know Trump just announced a few minutes ago on Truth Social that Kam is dead is like what happens now?",
+          "translation": "正如你所知，特朗普几分钟前刚刚在 Truth Social 上宣布卡姆已经死了，就像现在发生的情况一样吗？",
+          "startSec": 234.48,
+          "endSec": 242.42
+        },
+        {
+          "id": 34,
+          "text": "That feels huge.",
+          "translation": "那感觉很大。",
+          "startSec": 242.42,
+          "endSec": 245.11
+        },
+        {
+          "id": 35,
+          "text": "I think it is a big deal.",
+          "translation": "我认为这是一件大事。",
+          "startSec": 245.12,
+          "endSec": 246.755
+        },
+        {
+          "id": 36,
+          "text": "And I mean there are a few things to say about it.",
+          "translation": "我的意思是对此有几件事要说。",
+          "startSec": 246.755,
+          "endSec": 251.6345
+        },
+        {
+          "id": 37,
+          "text": "The first is that let us remember that this is an incredibly brutal regime and that Hamei has not only been personally responsible for the brutality of the regime.",
+          "translation": "首先，让我们记住，这是一个令人难以置信的残暴政权，哈梅不仅个人要对该政权的残暴负责。",
+          "startSec": 251.6345,
+          "endSec": 262.87230208333335
+        },
+        {
+          "id": 38,
+          "text": "But also has been a hardliner in terms of refusing effective negotiations with the Americans over the past months.",
+          "translation": "但在过去几个月里，他在拒绝与美国人进行有效谈判方面一直表现强硬。",
+          "startSec": 262.87230208333335,
+          "endSec": 270.235
+        },
+        {
+          "id": 39,
+          "text": "I mean certainly many thousands of Iranian civilians and believed tens of thousands of Iranian civilians were killed under the order of Hamei in January when they were demonstrating and most of these were unarmed.",
+          "translation": "我的意思是，肯定有成千上万的伊朗平民，相信有数万名伊朗平民在一月份示威时在哈梅的命令下被杀害，其中大多数人手无寸铁。",
+          "startSec": 270.235,
+          "endSec": 287.78723880597016
+        },
+        {
+          "id": 40,
+          "text": "And not posing a direct security threat to the troops that they were facing off against and that is frankly we haven't seen that kind of short-term brutality in the region anywhere.",
+          "translation": "并且不会对他们所面对的部队构成直接的安全威胁，坦率地说，我们在该地区的任何地方都没有看到这种短期的暴行。",
+          "startSec": 287.78723880597016,
+          "endSec": 303.83500000000004
+        },
+        {
+          "id": 41,
+          "text": "You'd have to look to Sudan, you'd have to look to Rwanda before you saw that kind of killing.",
+          "translation": "在看到这种杀戮之前，你必须看看苏丹，你必须看看卢旺达。",
+          "startSec": 303.83500000000004,
+          "endSec": 310.275
+        },
+        {
+          "id": 42,
+          "text": "You're talking about the sort of deaths over the course of a couple weeks that you saw in Gaza over an entire year of fighting.",
+          "translation": "你说的是在加沙一整年的战斗中几周内发生的死亡人数。",
+          "startSec": 310.275,
+          "endSec": 315.355
+        },
+        {
+          "id": 43,
+          "text": "So that's really an extraordinary brutality and as a consequence, there aren't a lot of people that are going to shed a tear over the death of Hamei.",
+          "translation": "所以这确实是一种非同寻常的暴行，因此，没有多少人会为哈美的死流泪。",
+          "startSec": 315.355,
+          "endSec": 330.5145
+        },
+        {
+          "id": 44,
+          "text": "Having said that, he is not the regime.",
+          "translation": "话虽如此，他不是政权。",
+          "startSec": 330.5145,
+          "endSec": 334.5145
+        },
+        {
+          "id": 45,
+          "text": "He's 86 years old.",
+          "translation": "他今年 86 岁了。",
+          "startSec": 334.5145,
+          "endSec": 335.99
+        },
+        {
+          "id": 46,
+          "text": "They've been planning for transition for a long time.",
+          "translation": "他们长期以来一直在计划转型。",
+          "startSec": 336,
+          "endSec": 339.475
+        },
+        {
+          "id": 47,
+          "text": "The fact that he has been killed will make him seem to be more of a martyr in the eyes certainly of those that support the regime inside Iran.",
+          "translation": "他被杀的事实将使他在那些支持伊朗境内政权的人眼中更像是一位烈士。",
+          "startSec": 339.475,
+          "endSec": 350.553
+        },
+        {
+          "id": 48,
+          "text": "Of whom there are many a minimum of probably 15 and 20% of the population that are hardened regime supporters and will become more so on the back of this assassination.",
+          "translation": "其中至少有 15% 到 20% 的人是顽固的政权支持者，并且在这次暗杀事件后将变得更加坚定。",
+          "startSec": 350.553,
+          "endSec": 362.395
+        },
+        {
+          "id": 49,
+          "text": "The Iranian military leadership has taken substantial strikes over the 12-day war last year and they reconstituted themselves quite quickly.",
+          "translation": "伊朗军方领导层在去年为期12天的战争中遭受了重大打击，并且很快就进行了重组。",
+          "startSec": 362.395,
+          "endSec": 374.475
+        },
+        {
+          "id": 50,
+          "text": "It didn't affect their ability and willingness to repress internally.",
+          "translation": "这并不影响他们内心压抑的能力和意愿。",
+          "startSec": 374.475,
+          "endSec": 379.71500000000003
+        },
+        {
+          "id": 51,
+          "text": "It does appear that a number of other military leaders may well be dead probably not the president but others.",
+          "translation": "看来其他一些军事领导人很可能已经去世，可能不是总统，而是其他人。",
+          "startSec": 379.71500000000003,
+          "endSec": 389.595
+        },
+        {
+          "id": 52,
+          "text": "The president's not a very important figure, frankly, in the eyes of the Iranian people or in driving power, but the head of the IRGC may well be dead.",
+          "translation": "坦率地说，在伊朗人民眼中或在推动权力方面，总统并不是一个非常重要的人物，但伊斯兰革命卫队的领导人很可能已经去世了。",
+          "startSec": 389.595,
+          "endSec": 400.8745
+        },
+        {
+          "id": 53,
+          "text": "The Islamic Revolutionary Guard Corps, the Israelis have announced that he has been killed as well as other top adviserss to the Supreme Leader on the military side.",
+          "translation": "以色列伊斯兰革命卫队宣布，他以及最高领袖军事方面的其他高级顾问均已被杀。",
+          "startSec": 400.8745,
+          "endSec": 410.235
+        },
+        {
+          "id": 54,
+          "text": "But it's very far to go from that to it's the end of the regime because remember when Trump launched these strikes with the Israelis, he said, \"We're attacking all of the military installations.\"",
+          "translation": "但距离该政权的终结还有很长的路要走，因为记得特朗普对以色列发动这些袭击时，他说，“我们正在攻击所有军事设施。”",
+          "startSec": 410.235,
+          "endSec": 426.595
+        },
+        {
+          "id": 55,
+          "text": "And they've certainly done that.",
+          "translation": "他们确实做到了。",
+          "startSec": 426.595,
+          "endSec": 428.2745
+        },
+        {
+          "id": 56,
+          "text": "They're attacking all the ballistic missile installations that they can find that they can get to.",
+          "translation": "他们正在攻击所有他们能到达的弹道导弹设施。",
+          "startSec": 428.2745,
+          "endSec": 433.749
+        },
+        {
+          "id": 57,
+          "text": "They're certainly doing that.",
+          "translation": "他们当然正在这样做。",
+          "startSec": 433.759,
+          "endSec": 435.194
+        },
+        {
+          "id": 58,
+          "text": "But he also said this is meant to be an operation of regime change.",
+          "translation": "但他也表示，这意味着政权更迭的行动。",
+          "startSec": 435.194,
+          "endSec": 440.11400000000003
+        },
+        {
+          "id": 59,
+          "text": "She said, \"Now that we're taking out the leadership, it is your once in a generation opportunity, the Iranian people, to take your government.",
+          "translation": "她说：“现在我们要推翻领导权，伊朗人民，这是千载难逢的机会来夺取你们的政府。",
+          "startSec": 440.11400000000003,
+          "endSec": 451.0515731707317
+        },
+        {
+          "id": 60,
+          "text": "But taking the government requires overthrowing those members of the IRGC, the military, the bases, the paramilitary groups, the police officers on the streets.",
+          "translation": "但夺取政府需要推翻伊斯兰革命卫队成员、军队、基地、准军事团体和街头警察。",
+          "startSec": 451.0515731707317,
+          "endSec": 461.98914634146337
+        }
+      ]
+    },
+    {
+      "id": "youtube-d4vMetEtv0k-seed",
+      "title": "The Case for Spending More Time with Your Friends | Rhaina Cohen | TED",
+      "titleCn": "The Case for Spending More Time with Your Friends | Rhaina Cohen | TED",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "d4vMetEtv0k",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "For a lot of us, this is a moment when questions of family come into sharper focus who do we gather with who supports us who do we choose?",
+          "translation": "对于我们很多人来说，这是一个家庭问题更加引人注目的时刻，我们与谁聚集在一起，谁支持我们，我们选择谁？",
+          "startSec": 6.23,
+          "endSec": 12.53
+        },
+        {
+          "id": 2,
+          "text": "And who chooses us and for some of us, those answers might feel wonderfully clear.",
+          "translation": "谁选择了我们，对于我们中的一些人来说，这些答案可能会感觉非常清楚。",
+          "startSec": 12.42,
+          "endSec": 17.71576388888889
+        },
+        {
+          "id": 3,
+          "text": "But for others, there might be a tenderness around this or a sense that your answers aren't quite what tradition tells you they should be.",
+          "translation": "但对其他人来说，可能会对此感到温柔，或者感觉你的答案并不完全是传统告诉你的答案。",
+          "startSec": 17.71576388888889,
+          "endSec": 25.355
+        },
+        {
+          "id": 4,
+          "text": "And that's why our guest today feels especially essential right now.",
+          "translation": "这就是为什么我们今天的客人现在感觉特别重要。",
+          "startSec": 25.355,
+          "endSec": 29.354999999999997
+        },
+        {
+          "id": 5,
+          "text": "She's a journalist and author of the other significant others.",
+          "translation": "她是一名记者，也是其他重要人物的作者。",
+          "startSec": 29.354999999999997,
+          "endSec": 33.233999999999995
+        },
+        {
+          "id": 6,
+          "text": "And last year, she delivered a TED talk that pushed us to expand who we count as our people and to recognize the deep sustaining connections that don't always fit neatly onto holiday cards or family trees.",
+          "translation": "去年，她发表了一场 TED 演讲，促使我们扩大我们的员工范围，并认识到深层的维持联系并不总是完全适合节日贺卡或家谱。",
+          "startSec": 33.233999999999995,
+          "endSec": 44.59219565217391
+        },
+        {
+          "id": 7,
+          "text": "But can shape our lives in very profound ways.",
+          "translation": "但可以以非常深刻的方式塑造我们的生活。",
+          "startSec": 44.59219565217391,
+          "endSec": 47.355000000000004
+        },
+        {
+          "id": 8,
+          "text": "I'm so grateful she's here to help us reflect on belonging, connection, and relationships that can carry us into this season and well beyond it.",
+          "translation": "我非常感谢她在这里帮助我们反思归属感、联系和关系，这些可以让我们进入这个季节并超越它。",
+          "startSec": 47.355000000000004,
+          "endSec": 55.555
+        },
+        {
+          "id": 9,
+          "text": "Please give a welcome to Raina Cohen.",
+          "translation": "请欢迎雷娜·科恩。",
+          "startSec": 55.555,
+          "endSec": 57.86333333333334
+        },
+        {
+          "id": 10,
+          "text": "What a nice intro.",
+          "translation": "多好的介绍啊。",
+          "startSec": 57.86333333333334,
+          "endSec": 58.766666666666666
+        },
+        {
+          "id": 11,
+          "text": "Thanks, Whitney.",
+          "translation": "谢谢，惠特尼。",
+          "startSec": 58.766666666666666,
+          "endSec": 60.63
+        },
+        {
+          "id": 12,
+          "text": "Well, I think just maybe to kick things off, your talk, the talk that you delivered on the TED stage is sort of a distillation of the big idea from your.",
+          "translation": "好吧，我想也许首先，你的演讲，你在 TED 舞台上发表的演讲是你的伟大想法的升华。",
+          "startSec": 60.64,
+          "endSec": 69.09725
+        },
+        {
+          "id": 13,
+          "text": "Book, The Other Significant Others that essentially argues for a more expansive approach to friendship and the role it can play for all of us.",
+          "translation": "《其他重要的其他人》一书本质上主张对友谊采取更广泛的态度，以及它可以为我们所有人发挥的作用。",
+          "startSec": 69.09725,
+          "endSec": 77.55449999999999
+        },
+        {
+          "id": 14,
+          "text": "And to pull a quote from the book, you say, \"If we don't limit friendship, it can be central to our lives.\"",
+          "translation": "引用书中的话，你说：“如果我们不限制友谊，它就会成为我们生活的核心。”",
+          "startSec": 77.55449999999999,
+          "endSec": 83.715
+        },
+        {
+          "id": 15,
+          "text": "So, for those of us who aren't familiar, as a primer, I think for our conversation, what do you mean by this?",
+          "translation": "那么，对于我们这些不熟悉的人来说，作为入门，我想对于我们的谈话，你这是什么意思？",
+          "startSec": 83.715,
+          "endSec": 90.11500000000001
+        },
+        {
+          "id": 16,
+          "text": "How are we limiting friendship?",
+          "translation": "我们如何限制友谊？",
+          "startSec": 90.11500000000001,
+          "endSec": 91.83500000000001
+        },
+        {
+          "id": 17,
+          "text": "And how could we think about it more fully?",
+          "translation": "我们怎样才能更全面地思考这个问题？",
+          "startSec": 91.83500000000001,
+          "endSec": 94.31
+        },
+        {
+          "id": 18,
+          "text": "I think we limit friendship by thinking it can do less than it actually can.",
+          "translation": "我认为我们限制了友谊，因为我们认为友谊所能做的事情比实际做的要少。",
+          "startSec": 94.32,
+          "endSec": 98.115
+        },
+        {
+          "id": 19,
+          "text": "And one of the ways that feels really clear is by looking across time and across places and seeing what friendship looked like in those times and places.",
+          "translation": "感觉真正清晰的方法之一就是跨越时间和地点，看看友谊在那些时间和地点是什么样子。",
+          "startSec": 98.115,
+          "endSec": 108.074
+        },
+        {
+          "id": 20,
+          "text": "And it was different.",
+          "translation": "但情况有所不同。",
+          "startSec": 108.074,
+          "endSec": 110.914
+        },
+        {
+          "id": 21,
+          "text": "For one thing, I think the expectation now is that friendship is going to be a relationship that's private.",
+          "translation": "一方面，我认为现在的期望是友谊将成为一种私人关系。",
+          "startSec": 110.914,
+          "endSec": 119.075
+        },
+        {
+          "id": 22,
+          "text": "It's just between you and someone else or maybe it's a small group of people and it is a nice addition to your life but it is not an essential part of your life.",
+          "translation": "它只是在你和其他人之间，或者可能是一小群人之间，它是你生活的一个很好的补充，但它不是你生活的重要组成部分。",
+          "startSec": 119.075,
+          "endSec": 126.6745
+        },
+        {
+          "id": 23,
+          "text": "It's something that you can you know maybe put on the back burner and that was just not true in many other places.",
+          "translation": "你知道，这件事可能会被搁置一旁，但在许多其他地方并非如此。",
+          "startSec": 126.6745,
+          "endSec": 134.235
+        },
+        {
+          "id": 24,
+          "text": "I mean you can see that there were rituals that were built around recognizing friendship potentially for the rest of your life.",
+          "translation": "我的意思是，你可以看到，有一些仪式是围绕着认识到你的余生可能存在的友谊而建立的。",
+          "startSec": 134.235,
+          "endSec": 143.755
+        },
+        {
+          "id": 25,
+          "text": "There an example of this ritual is called sworn brotherhood.",
+          "translation": "这种仪式的一个例子被称为宣誓兄弟会。",
+          "startSec": 143.755,
+          "endSec": 146.315
+        },
+        {
+          "id": 26,
+          "text": "And it was recognized as something that people would witness like that commitment.",
+          "translation": "它被认为是人们会见证的事情，就像这样的承诺。",
+          "startSec": 146.315,
+          "endSec": 154.635
+        },
+        {
+          "id": 27,
+          "text": "We don't think about friendship as involving commitment let alone a commitment that you are going to formalize in front of other people.",
+          "translation": "我们不认为友谊涉及承诺，更不用说您将在其他人面前正式做出的承诺。",
+          "startSec": 154.635,
+          "endSec": 162.635
+        },
+        {
+          "id": 28,
+          "text": "So I think even the idea of commitment is something that would surprise a lot of people.",
+          "translation": "所以我认为即使是承诺的想法也会让很多人感到惊讶。",
+          "startSec": 162.635,
+          "endSec": 169.51500000000001
+        },
+        {
+          "id": 29,
+          "text": "And then I think the kinds of feelings that we think are possible to experience in friendship are also kind of limited.",
+          "translation": "然后我认为我们认为在友谊中可能体验到的感受也是有限的。",
+          "startSec": 169.51500000000001,
+          "endSec": 177.195
+        },
+        {
+          "id": 30,
+          "text": "That we hold out romantic relationships as the relationship where you can experience excitement and infatuation.",
+          "translation": "我们将浪漫关系视为可以体验兴奋和迷恋的关系。",
+          "startSec": 177.195,
+          "endSec": 185.91
+        },
+        {
+          "id": 31,
+          "text": "And the you know the sort of fluttery feelings that actually friends can experience.",
+          "translation": "你知道真正的朋友可以体验到的那种激动的感觉。",
+          "startSec": 185.92,
+          "endSec": 194.115
+        },
+        {
+          "id": 32,
+          "text": "I can you know can talk about my own experience with this.",
+          "translation": "我可以告诉你可以谈谈我自己的经历吗？",
+          "startSec": 194.115,
+          "endSec": 196.1945
+        },
+        {
+          "id": 33,
+          "text": "It's partly what led me to write the book.",
+          "translation": "这也是我写这本书的部分原因。",
+          "startSec": 196.1945,
+          "endSec": 200.2745
+        },
+        {
+          "id": 34,
+          "text": "But again if you look across different times and places you will see that kind of affection where friends would talk about loving each other and that's that was obvious that you would love your friends.",
+          "translation": "但是，如果你看看不同的时间和地点，你会看到那种朋友们谈论彼此相爱的感情，这很明显你会爱你的朋友。",
+          "startSec": 200.2745,
+          "endSec": 210.8651075949367
+        },
+        {
+          "id": 35,
+          "text": "And I think especially you know we're talking about certain subsets of society it's not that common to talk in that language of love or to snuggle up to your friend without that being a question of you know are you romantically involved.",
+          "translation": "我认为，尤其是你知道我们正在谈论社会的某些子集，用爱的语言交谈或依偎在你的朋友身上而不是你知道你是否陷入浪漫的问题并不常见。",
+          "startSec": 210.8651075949367,
+          "endSec": 223.515
+        },
+        {
+          "id": 36,
+          "text": "So I think between the idea that friendship is private that it doesn't it should be easy, it shouldn't necessarily involve commitment.",
+          "translation": "所以我认为，友谊是私人的，但它并不应该是容易的，它不一定需要承诺。",
+          "startSec": 223.515,
+          "endSec": 231.34446153846153
+        },
+        {
+          "id": 37,
+          "text": "And that there are there's kind of a cap on how intense the emotional experience might be.",
+          "translation": "而且情感体验的强度是有上限的。",
+          "startSec": 231.34446153846153,
+          "endSec": 237.3945
+        },
+        {
+          "id": 38,
+          "text": "All of those are ways that we I think underestimate what friendship can be and do for our lives.",
+          "translation": "我认为所有这些都是我们低估了友谊的意义和对我们生活的影响。",
+          "startSec": 237.3945,
+          "endSec": 244.55
+        },
+        {
+          "id": 39,
+          "text": "And you mentioned just now that you have sort of a personal connection to this.",
+          "translation": "您刚才提到您与此有某种个人联系。",
+          "startSec": 244.56,
+          "endSec": 248.87400000000002
+        },
+        {
+          "id": 40,
+          "text": "Can you tell us a little bit more about why you wrote the book and then ultimately gave the talk?",
+          "translation": "您能告诉我们更多关于您写这本书并最终发表演讲的原因吗？",
+          "startSec": 248.87400000000002,
+          "endSec": 252.474
+        },
+        {
+          "id": 41,
+          "text": "So, I found myself in a friendship that really broke the definition of friendship that I thought was, you know, what it was supposed to be.",
+          "translation": "所以，我发现自己处于一种友谊之中，这种友谊真的打破了我所认为的友谊的定义，你知道，它应该是什么。",
+          "startSec": 252.474,
+          "endSec": 263.995
+        },
+        {
+          "id": 42,
+          "text": "And, this happened in my early 20s and I ended up meeting a friend who, it turned out lived 5 minutes, a five-minute walk away from me.",
+          "translation": "这件事发生在我 20 岁出头的时候，我最终遇到了一位朋友，结果他住的地方离我只有 5 分钟路程，步行 5 分钟即可到达。",
+          "startSec": 263.995,
+          "endSec": 274.7545
+        },
+        {
+          "id": 43,
+          "text": "And we became much more intertwined in each other's lives, than I had ex I had experienced maybe something somewhat comparable.",
+          "translation": "我们在彼此的生活中变得更加交织在一起，比我的前任经历过的事情也许有些类似。",
+          "startSec": 274.7545,
+          "endSec": 282.03499999999997
+        },
+        {
+          "id": 44,
+          "text": "A couple of times, but we found ourselves struggling with even the language of best friend that felt inadequate that something more like partners maybe fit.",
+          "translation": "有几次，我们发现自己甚至在最好朋友的语言上都感到挣扎，这种语言感觉不够，更像是伴侣的东西可能更适合。",
+          "startSec": 282.03499999999997,
+          "endSec": 292.95500000000004
+        },
+        {
+          "id": 45,
+          "text": "And I found myself thinking about other people that I had known at different points in my life who had these really intense, devoted friendships that didn't kind of couldn't be captured with the term friend or best friend.",
+          "translation": "我发现自己想到了我在生命中不同阶段认识的其他人，他们拥有真正强烈、忠诚的友谊，这种友谊不能用朋友或最好的朋友这个词来形容。",
+          "startSec": 292.95500000000004,
+          "endSec": 308.995
+        },
+        {
+          "id": 46,
+          "text": "And then I looked to history, some of what I was just talking about before, and realized that we have a really specific idea about what friendship is now.",
+          "translation": "然后我回顾了历史，回顾了我之前谈到的一些历史，并意识到我们现在对于友谊是什么有一个非常具体的想法。",
+          "startSec": 308.995,
+          "endSec": 318.475
+        },
+        {
+          "id": 47,
+          "text": "And I wanted to find people today who had these kinds of friendships.",
+          "translation": "今天我想找到拥有这种友谊的人。",
+          "startSec": 318.475,
+          "endSec": 323.274
+        },
+        {
+          "id": 48,
+          "text": "And essentially over the course of those interviews, I realized that this wasn't just a project to lift up and help people recognize that there were these extremely close friendships that I called Platonic partnerships.",
+          "translation": "本质上，在这些采访的过程中，我意识到这不仅仅是一个提升和帮助人们认识到存在着我称之为柏拉图式伙伴关系的极其亲密的友谊的项目。",
+          "startSec": 323.274,
+          "endSec": 335.91200000000003
+        },
+        {
+          "id": 49,
+          "text": "But that because they challenged the definition of friendship by blending together kinds of elements of partnership and platonic friendship that they ended up asking all these bigger questions about how do we, you know,.",
+          "translation": "但因为他们通过将伙伴关系和柏拉图式友谊的各种元素融合在一起来挑战友谊的定义，所以他们最终提出了所有这些更大的问题，即我们如何，你知道的。",
+          "startSec": 335.91200000000003,
+          "endSec": 348.55
+        },
+        {
+          "id": 50,
+          "text": "Know that a romantic relationship is romantic?",
+          "translation": "知道恋爱关系很浪漫吗？",
+          "startSec": 348.56,
+          "endSec": 351.554
+        },
+        {
+          "id": 51,
+          "text": "Why are romantic relationships held up higher than friendships by default?",
+          "translation": "为什么默认情况下浪漫关系比友谊更受重视？",
+          "startSec": 351.554,
+          "endSec": 355.275
+        },
+        {
+          "id": 52,
+          "text": "Like how do we define what family is?",
+          "translation": "比如我们如何定义什么是家庭？",
+          "startSec": 355.275,
+          "endSec": 357.43449999999996
+        },
+        {
+          "id": 53,
+          "text": "How does the state define what an important relationship is?",
+          "translation": "国家如何定义什么是重要关系？",
+          "startSec": 357.43449999999996,
+          "endSec": 361.195
+        },
+        {
+          "id": 54,
+          "text": "So basically like it started from this personal place, but all these bigger questions came up for me that I wanted to tackle in a book.",
+          "translation": "所以基本上就像是从这个个人的地方开始的，但所有这些更大的问题都出现在我面前，我想在一本书中解决。",
+          "startSec": 361.195,
+          "endSec": 368.87
+        },
+        {
+          "id": 55,
+          "text": "And I think it's really important to note that this isn't an argument against romantic relationships.",
+          "translation": "我认为值得注意的是，这并不是反对浪漫关系的论点。",
+          "startSec": 368.88,
+          "endSec": 372.9945
+        },
+        {
+          "id": 56,
+          "text": "You're not suggesting that you have either or, right?",
+          "translation": "你并不是说你有或者，对吧？",
+          "startSec": 372.9945,
+          "endSec": 377.749
+        },
+        {
+          "id": 57,
+          "text": "No.",
+          "translation": "不。",
+          "startSec": 377.759,
+          "endSec": 379.0626666666667
+        },
+        {
+          "id": 58,
+          "text": "Absolutely not.",
+          "translation": "绝对不是。",
+          "startSec": 379.0626666666667,
+          "endSec": 380.36633333333333
+        },
+        {
+          "id": 59,
+          "text": "I mean, I try to be really careful in a number of ways to say that it's not either or.",
+          "translation": "我的意思是，我尝试在很多方面非常小心地说这不是非此即彼。",
+          "startSec": 380.36633333333333,
+          "endSec": 384.6745
+        },
+        {
+          "id": 60,
+          "text": "I think that would be kind of using the same logic that I am trying to push against the idea that there's one right way to live.",
+          "translation": "我认为这与我试图反对“只有一种正确的生活方式”这一观点的逻辑相同。",
+          "startSec": 384.6745,
+          "endSec": 394.075
+        }
+      ]
+    },
+    {
+      "id": "youtube-aMB8JWgejIw-seed",
+      "title": "How Competition Is Stifling AI Breakthroughs | Llion Jones | TED",
+      "titleCn": "How Competition Is Stifling AI Breakthroughs | Llion Jones | TED",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "aMB8JWgejIw",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "So, as mentioned, I'm probably most well-known as one of the transformers authors.",
+          "translation": "因此，如前所述，我可能是最知名的变形金刚作者之一。",
+          "startSec": 4.335,
+          "endSec": 9.373
+        },
+        {
+          "id": 2,
+          "text": "Transformers are, of course, the T in ChatGPT, and are the architectures that run most of the state-of-the-art artificial intelligence if I think back to that time when we were working on the transformers, I remember it as a very organic.",
+          "translation": "当然，Transformers 是 ChatGPT 中的 T，并且是运行大多数最先进人工智能的架构，如果我回想起我们开发 Transformer 的时候，我记得它是一个非常有机的。",
+          "startSec": 10.641,
+          "endSec": 33.981
+        },
+        {
+          "id": 3,
+          "text": "Bottom-up kind of project, where the idea came from talking over lunch or scribbling randomly on the whiteboards in the office.",
+          "translation": "自下而上的项目，其想法来自于午餐时的交谈或在办公室的白板上随意涂鸦。",
+          "startSec": 33.981,
+          "endSec": 45.476
+        },
+        {
+          "id": 4,
+          "text": "And importantly, when we felt like we did actually have a good idea, we had the freedom to actually spend the time and go and work on it.",
+          "translation": "重要的是，当我们觉得自己确实有一个好主意时，我们就可以自由地花时间去实现它。",
+          "startSec": 47.078,
+          "endSec": 57.922
+        },
+        {
+          "id": 5,
+          "text": "And even more importantly, we didn't have any pressure that was coming down from management.",
+          "translation": "更重要的是，我们没有任何来自管理层的压力。",
+          "startSec": 58.656,
+          "endSec": 66.097
+        },
+        {
+          "id": 6,
+          "text": "No pressure to work on any particular project, publish a number of papers, to push a certain number up.",
+          "translation": "没有压力去从事任何特定的项目、发表大量论文、推动一定数量的上升。",
+          "startSec": 67.69800000000001,
+          "endSec": 77.475
+        },
+        {
+          "id": 7,
+          "text": "So that's the image I want you to have in your mind, right?",
+          "translation": "这就是我希望你脑海中浮现的形象，对吧？",
+          "startSec": 78.275,
+          "endSec": 81.645
+        },
+        {
+          "id": 8,
+          "text": "That is the kind of environment that allowed the transformer to come into existence.",
+          "translation": "这就是变压器诞生的环境。",
+          "startSec": 82.04599999999999,
+          "endSec": 89.086
+        },
+        {
+          "id": 9,
+          "text": "An organic, open-ended and with a lot of freedom to pursue the ideas that we thought were interesting and important.",
+          "translation": "一个有机的、开放式的，有很大的自由来追求我们认为有趣和重要的想法。",
+          "startSec": 90.788,
+          "endSec": 100.09700000000001
+        },
+        {
+          "id": 10,
+          "text": "And my deep concern is that right now in the AI industry, we do not have this kind of environment.",
+          "translation": "而我深感担忧的是，目前在人工智能行业，我们还没有这样的环境。",
+          "startSec": 100.99799999999999,
+          "endSec": 108.87299999999999
+        },
+        {
+          "id": 11,
+          "text": "And I want to talk about why not and what can we do about it so the main paradox that I see in artificial intelligence research, or the industry in general right now.",
+          "translation": "我想谈谈为什么不这样做以及我们能做些什么，这是我在人工智能研究或目前整个行业中看到的主要悖论。",
+          "startSec": 110.708,
+          "endSec": 126.661625
+        },
+        {
+          "id": 12,
+          "text": "Is that despite the fact that there's never been so much interest and resources and money and talent, this has somehow caused a narrowing of the research that we're doing.",
+          "translation": "尽管事实上从来没有如此多的兴趣、资源、金钱和人才，但这在某种程度上导致了我们正在进行的研究范围的缩小。",
+          "startSec": 126.661625,
+          "endSec": 141.906
+        },
+        {
+          "id": 13,
+          "text": "And to me, I think the reason is fairly obvious.",
+          "translation": "对我来说，我认为原因相当明显。",
+          "startSec": 142.706,
+          "endSec": 145.709
+        },
+        {
+          "id": 14,
+          "text": "It's because the immense amount of pressure that comes with that, right?",
+          "translation": "因为随之而来的压力是巨大的，对吗？",
+          "startSec": 147.111,
+          "endSec": 151.482
+        },
+        {
+          "id": 15,
+          "text": "Pressure from investors that are going to ask for a return on their investment and pressure that comes from individuals because this is such an overcrowded industry right now, where it is very difficult to stand out.",
+          "translation": "来自要求投资回报的投资者的压力和来自个人的压力，因为目前这是一个过度拥挤的行业，很难脱颖而出。",
+          "startSec": 151.515,
+          "endSec": 167.631
+        },
+        {
+          "id": 16,
+          "text": "And the researchers are really feeling this pressure, right if you're doing, let's say, standard AI research right now, you kind of have to assume that there's maybe three or four other groups doing something very similar or maybe exactly the same.",
+          "translation": "研究人员确实感受到了这种压力，如果你现在正在进行标准人工智能研究，你就必须假设可能还有三四个其他小组在做非常相似或完全相同的事情。",
+          "startSec": 168.86599999999999,
+          "endSec": 187.651
+        },
+        {
+          "id": 17,
+          "text": "So you have to spend the time checking to see if you've been scooped, to see if someone else has put your idea out there.",
+          "translation": "所以你必须花时间检查你是否被抢先，看看其他人是否已经提出了你的想法。",
+          "startSec": 187.685,
+          "endSec": 194.425
+        },
+        {
+          "id": 18,
+          "text": "And even in academia, where you would hope you would have more freedom, there's pressure to publish, right, and to have your papers published.",
+          "translation": "即使在学术界，你希望自己有更多的自由，也有发表论文的压力，对吧，发表你的论文。",
+          "startSec": 195.492,
+          "endSec": 204.00905
+        },
+        {
+          "id": 19,
+          "text": "So if you have an interesting idea that could create something very interesting, or you have kind of a mediocre idea that it'll probably get a paper and probably get accepted, the temptation is to go for the low-hanging fruit.",
+          "translation": "因此，如果你有一个有趣的想法，可以创造出一些非常有趣的东西，或者你有一个平庸的想法，它可能会得到一篇论文并可能被接受，那么诱惑就是去追求唾手可得的果实。",
+          "startSec": 204.00905,
+          "endSec": 220.451
+        },
+        {
+          "id": 20,
+          "text": "So unfortunately, this pressure damages the science, because people are rushing out papers, and it's reducing the amount of creativity that we have.",
+          "translation": "不幸的是，这种压力损害了科学，因为人们急于发表论文，这减少了我们的创造力。",
+          "startSec": 222.41899999999998,
+          "endSec": 236.8
+        },
+        {
+          "id": 21,
+          "text": "So I want to take an analogy from AI itself.",
+          "translation": "所以我想用人工智能本身来类比。",
+          "startSec": 240.204,
+          "endSec": 243.641
+        },
+        {
+          "id": 22,
+          "text": "So when we're designing AI search algorithms, we have to trade off something called the exploration-exploitation trade off when you're searching for a solution, you can either spend your time exploring or exploiting if you spend all your time exploring, then you will probably only find a large number of medical solutions if you spend your time just exploiting, then you might lose out on finding other alternative solutions that you might be able to exploit better and improve better.",
+          "translation": "所以当我们设计人工智能搜索算法时，当你寻找解决方案时，我们必须权衡一种叫做探索-利用权衡的东西，你要么花时间探索，要么利用，如果你把所有的时间都花在探索上，那么你可能只会找到大量的医疗解决方案，如果你把时间花在探索上，那么你可能会失去寻找其他你可能能够更好地利用和改进的替代解决方案。",
+          "startSec": 243.641,
+          "endSec": 281.745
+        },
+        {
+          "id": 23,
+          "text": "And we are almost certainly in that situation right now in the AI industry.",
+          "translation": "几乎可以肯定，我们现在的人工智能行业就处于这种情况。",
+          "startSec": 283.58,
+          "endSec": 289.92
+        },
+        {
+          "id": 24,
+          "text": "So all I really want to ask you today is to consider just changing that balance a little bit, right?",
+          "translation": "所以我今天真正想问你的是考虑稍微改变一下这种平衡，对吧？",
+          "startSec": 290.621,
+          "endSec": 299.063
+        },
+        {
+          "id": 25,
+          "text": "Just turning up the dial and exploring more.",
+          "translation": "只需转动旋钮并探索更多。",
+          "startSec": 299.096,
+          "endSec": 303.3
+        },
+        {
+          "id": 26,
+          "text": "So I actually remember what it was like just before the transformers, and I want to paint that picture for you as well.",
+          "translation": "所以我实际上还记得《变形金刚》之前的样子，我也想为你画出那幅画。",
+          "startSec": 304.201,
+          "endSec": 310.007
+        },
+        {
+          "id": 27,
+          "text": "Back then, my main memory was there were a lot of papers coming out and they were always permutating the current architecture which was recurrent neural networks at the time, just endlessly trying different things, different gates, different layers,.",
+          "translation": "当时，我的主要记忆是有很多论文发表，它们总是对当前的架构进行排列，当时的架构是循环神经网络，只是无休止地尝试不同的东西，不同的门，不同的层。",
+          "startSec": 310.04,
+          "endSec": 328.79200000000003
+        },
+        {
+          "id": 28,
+          "text": "Mostly for incremental gains.",
+          "translation": "主要是为了增量收益。",
+          "startSec": 328.826,
+          "endSec": 331.395
+        },
+        {
+          "id": 29,
+          "text": "And then after the transformer came out, all of that work that was spent on improving the recurrent neural network kind of felt a bit pointless.",
+          "translation": "在 Transformer 出现之后，所有花在改进循环神经网络上的工作都感觉有点毫无意义。",
+          "startSec": 333.564,
+          "endSec": 344.274
+        },
+        {
+          "id": 30,
+          "text": "Maybe that's a bit too harsh, but think of it like this.",
+          "translation": "也许这有点太严厉了，但是这样想吧。",
+          "startSec": 345.509,
+          "endSec": 349.713
+        },
+        {
+          "id": 31,
+          "text": "How much time do you think those researchers would have spent trying to improve the recurrent neural network if they knew something like transformers was around the corner, right?",
+          "translation": "如果这些研究人员知道像变形金刚这样的东西即将出现，你认为他们会花多少时间来尝试改进循环神经网络，对吗？",
+          "startSec": 349.747,
+          "endSec": 362.326
+        },
+        {
+          "id": 32,
+          "text": "It turned out we needed a longer conceptual leap.",
+          "translation": "事实证明，我们需要一个更长的概念飞跃。",
+          "startSec": 362.359,
+          "endSec": 366.029
+        },
+        {
+          "id": 33,
+          "text": "We needed to throw away recurrence completely and again, I am worried that we're in that situation right now where we're just concentrating on one architecture.",
+          "translation": "我们需要一次又一次地彻底放弃重复，我担心我们现在正处于那种只专注于一种架构的情况。",
+          "startSec": 366.73,
+          "endSec": 379.8412702702703
+        },
+        {
+          "id": 34,
+          "text": "And just permuting it and trying different things where there might be a breakthrough just around the corner.",
+          "translation": "只要改变它并尝试不同的事情，也许突破就在眼前。",
+          "startSec": 379.8412702702703,
+          "endSec": 388.185
+        },
+        {
+          "id": 35,
+          "text": "And if there is, then we should be acting like it.",
+          "translation": "如果有的话，那么我们就应该这样做。",
+          "startSec": 388.786,
+          "endSec": 391.789
+        },
+        {
+          "id": 36,
+          "text": "The next breakthrough, almost by definition, has to come from this sort of open-ended, much more speculative research, right?",
+          "translation": "几乎按照定义，下一个突破必须来自这种开放式、更具推测性的研究，对吗？",
+          "startSec": 393.323,
+          "endSec": 402.56600000000003
+        },
+        {
+          "id": 37,
+          "text": "And the only way to really hedge your bets against missing out on the next big thing is to invest in this kind of research.",
+          "translation": "真正避免错过下一件大事的唯一方法就是投资此类研究。",
+          "startSec": 403.767,
+          "endSec": 413.243
+        },
+        {
+          "id": 38,
+          "text": "So if I came up here and did nothing but just moan about the current situation, I don't think it would be a great talk.",
+          "translation": "因此，如果我来到这里除了抱怨当前的状况之外什么也没做，我认为这不会是一次很好的演讲。",
+          "startSec": 413.944,
+          "endSec": 420.884
+        },
+        {
+          "id": 39,
+          "text": "So I want to give you a couple of suggestions.",
+          "translation": "所以我想给你一些建议。",
+          "startSec": 420.918,
+          "endSec": 424.354
+        },
+        {
+          "id": 40,
+          "text": "First of all, in my company, we champion having nature-inspired.",
+          "translation": "首先，在我的公司，我们倡导以自然为灵感。",
+          "startSec": 425.856,
+          "endSec": 432.963
+        },
+        {
+          "id": 41,
+          "text": "So there are still things, plenty of things that the human brain can do, that current state-of-the-art AI can't do.",
+          "translation": "因此，仍然有很多事情是人类大脑可以做的，而当前最先进的人工智能却无法做到的。",
+          "startSec": 434.264,
+          "endSec": 442.873
+        },
+        {
+          "id": 42,
+          "text": "So maybe if we take some inspiration from nature, we can get some of those properties.",
+          "translation": "因此，如果我们从大自然中获得一些灵感，也许我们可以获得其中的一些特性。",
+          "startSec": 443.307,
+          "endSec": 450.18
+        },
+        {
+          "id": 43,
+          "text": "But that's kind of my bias.",
+          "translation": "但这是我的偏见。",
+          "startSec": 450.981,
+          "endSec": 453.15
+        },
+        {
+          "id": 44,
+          "text": "You should follow what's interesting to you?",
+          "translation": "你应该关注你感兴趣的事情？",
+          "startSec": 453.75,
+          "endSec": 456.92
+        },
+        {
+          "id": 45,
+          "text": "There's actually a quote I heard two weeks ago and I thought, that's perfect, I'm having that for my talk.",
+          "translation": "事实上，我两周前听到过一句话，我想，这太完美了，我就用它来做我的演讲。",
+          "startSec": 458.689,
+          "endSec": 464.661
+        },
+        {
+          "id": 46,
+          "text": "And I think I'm stealing it from a guy called Brian Chung.",
+          "translation": "我想我是从一个叫 Brian Chung 的人那里偷来的。",
+          "startSec": 465.262,
+          "endSec": 468.899
+        },
+        {
+          "id": 47,
+          "text": "And it goes like this.",
+          "translation": "事情是这样的。",
+          "startSec": 468.932,
+          "endSec": 470.3
+        },
+        {
+          "id": 48,
+          "text": "“You should only do research that wouldn’t happen if you weren’t working on it.",
+          "translation": "“你应该只做那些如果你不努力就不会发生的研究。",
+          "startSec": 472.836,
+          "endSec": 478.77549999999997
+        },
+        {
+          "id": 49,
+          "text": "” And I think that captures it perfectly.",
+          "translation": "” 我认为这完美地体现了这一点。",
+          "startSec": 478.77549999999997,
+          "endSec": 483.847
+        },
+        {
+          "id": 50,
+          "text": "And if we all did that, we wouldn’t be stepping on each other’s toes, and we'd be exploring much more efficiently.",
+          "translation": "如果我们都这样做，我们就不会踩到彼此的脚趾，我们的探索也会更加有效。",
+          "startSec": 483.881,
+          "endSec": 491.088
+        },
+        {
+          "id": 51,
+          "text": "So I want to give you a concrete example.",
+          "translation": "所以我想给大家举一个具体的例子。",
+          "startSec": 493.35699999999997,
+          "endSec": 496.159
+        },
+        {
+          "id": 52,
+          "text": "There's a piece of research that we put out recently called the Continuous Thought Machine.",
+          "translation": "我们最近推出了一项名为“连续思维机器”的研究。",
+          "startSec": 496.193,
+          "endSec": 500.764
+        },
+        {
+          "id": 53,
+          "text": "And all we did is we just took a little bit of inspiration from nature.",
+          "translation": "我们所做的只是从大自然中获取一点灵感。",
+          "startSec": 501.73199999999997,
+          "endSec": 505.202
+        },
+        {
+          "id": 54,
+          "text": "So in the human brain, synchronization is very important.",
+          "translation": "所以在人脑中，同步是非常重要的。",
+          "startSec": 505.235,
+          "endSec": 509.84
+        },
+        {
+          "id": 55,
+          "text": "And we try to add this kind of synchronization into artificial neural networks.",
+          "translation": "我们尝试将这种同步添加到人工神经网络中。",
+          "startSec": 510.807,
+          "endSec": 516.38
+        },
+        {
+          "id": 56,
+          "text": "I remember the employee coming to me with the idea and I said, OK, work on it for a week, and we’ll see what happens that employee later confided in me that in his previous employment, or even in his academic position before that he probably would have gotten skepticism and told not to waste his time.",
+          "translation": "我记得那位员工带着这个想法来找我，我说，好吧，研究一周，我们会看看会发生什么，这位员工后来向我透露，在他以前的工作中，甚至在他之前的学术职位上，他可能会受到怀疑，并被告知不要浪费时间。",
+          "startSec": 517.781,
+          "endSec": 547.544
+        },
+        {
+          "id": 57,
+          "text": "But after that week, he started to find much more interesting properties of this model.",
+          "translation": "但在那一周之后，他开始发现这个模型更有趣的特性。",
+          "startSec": 548.211,
+          "endSec": 556.82
+        },
+        {
+          "id": 58,
+          "text": "And the project became a success.",
+          "translation": "该项目取得了成功。",
+          "startSec": 558.522,
+          "endSec": 561.024
+        },
+        {
+          "id": 59,
+          "text": "We actually announced that we got a spotlight at NeurIPS this year.",
+          "translation": "事实上，我们宣布今年我们在 NeurIPS 上受到了关注。",
+          "startSec": 561.992,
+          "endSec": 566.33
+        },
+        {
+          "id": 60,
+          "text": "And I think there's a couple of reasons for that.",
+          "translation": "我认为这有几个原因。",
+          "startSec": 567.531,
+          "endSec": 569.833
+        }
+      ]
+    },
+    {
+      "id": "youtube-Dn9Svqhwgmk-seed",
+      "title": "TED Idea Search — 9 Cities, 1 Main Stage | Premiering Tuesday, March 3",
+      "titleCn": "TED Idea Search — 9 Cities, 1 Main Stage | Premiering Tuesday, March 3",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "Dn9Svqhwgmk",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "My name is [music] Reggie Watts and my life changed forever when I got the opportunity to speak at TED.",
+          "translation": "我的名字是[音乐]雷吉·瓦茨，当我有机会在 TED 演讲时，我的生活永远改变了。",
+          "startSec": 2.629,
+          "endSec": 8.39
+        },
+        {
+          "id": 2,
+          "text": "Now TED is searching the globe for ideas [music] that could change everything.",
+          "translation": "现在，TED 正在全球范围内寻找可以改变一切的想法（音乐）。",
+          "startSec": 8.4,
+          "endSec": 14.629
+        },
+        {
+          "id": 3,
+          "text": "Nine TED X events around the world.",
+          "translation": "全球九场 TED X 活动。",
+          "startSec": 14.639,
+          "endSec": 18.39
+        },
+        {
+          "id": 4,
+          "text": "Giving a global [music] voice to the unknown.",
+          "translation": "为未知事物发出全球[音乐]声音。",
+          "startSec": 18.4,
+          "endSec": 21.67
+        },
+        {
+          "id": 5,
+          "text": "6 minutes that can inspire, motivate, and change their lives forever.",
+          "translation": "6 分钟可以激励、激励并永远改变他们的生活。",
+          "startSec": 21.68,
+          "endSec": 27.75
+        },
+        {
+          "id": 6,
+          "text": "But that's not all.",
+          "translation": "但这还不是全部。",
+          "startSec": 27.76,
+          "endSec": 29.465
+        },
+        {
+          "id": 7,
+          "text": "Coached by an expert panel, one lucky speaker will be surprised with the opportunity of a lifetime.",
+          "translation": "在专家小组的指导下，一位幸运的演讲者将惊讶地发现一生难得的机会。",
+          "startSec": 29.475,
+          "endSec": 37.43
+        },
+        {
+          "id": 8,
+          "text": "A chance to [music] speak on the TED Main stage and have their voices heard by millions.",
+          "translation": "有机会在 TED 主舞台上[音乐]演讲，让数百万人听到他们的声音。",
+          "startSec": 37.44,
+          "endSec": 45.27
+        },
+        {
+          "id": 9,
+          "text": "It's just so exciting.",
+          "translation": "真是太令人兴奋了。",
+          "startSec": 46.95,
+          "endSec": 47.75
+        },
+        {
+          "id": 10,
+          "text": "Wow.",
+          "translation": "哇。",
+          "startSec": 46.96,
+          "endSec": 48.229
+        },
+        {
+          "id": 11,
+          "text": "This is exactly the [music] opportunity to reach out to millions of people.",
+          "translation": "这正是接触数百万人的[音乐]机会。",
+          "startSec": 48.239,
+          "endSec": 52.069
+        },
+        {
+          "id": 12,
+          "text": "It's the biggest stage in the world.",
+          "translation": "这是世界上最大的舞台。",
+          "startSec": 52.079,
+          "endSec": 53.83
+        },
+        {
+          "id": 13,
+          "text": "It's bigger than [music] any dream.",
+          "translation": "它比[音乐]任何梦想都伟大。",
+          "startSec": 53.84,
+          "endSec": 55.27
+        },
+        {
+          "id": 14,
+          "text": "There were a bunch of people that were reading their scripts.",
+          "translation": "有一群人正在阅读他们的剧本。",
+          "startSec": 55.28,
+          "endSec": 58.869
+        },
+        {
+          "id": 15,
+          "text": "Small punch lines.",
+          "translation": "小妙语。",
+          "startSec": 58.879,
+          "endSec": 60.709
+        },
+        {
+          "id": 16,
+          "text": "I think there's a lot of work to be done.",
+          "translation": "我认为还有很多工作要做。",
+          "startSec": 60.719,
+          "endSec": 62.279
+        },
+        {
+          "id": 17,
+          "text": "No clip notes.",
+          "translation": "没有剪辑笔记。",
+          "startSec": 62.279,
+          "endSec": 63.67
+        },
+        {
+          "id": 18,
+          "text": "Can I start again?",
+          "translation": "我可以重新开始吗？",
+          "startSec": 63.68,
+          "endSec": 65.59
+        },
+        {
+          "id": 19,
+          "text": "This I cannot.",
+          "translation": "这个我不能。",
+          "startSec": 65.6,
+          "endSec": 68.31
+        },
+        {
+          "id": 20,
+          "text": "It blew me away.",
+          "translation": "它让我大吃一惊。",
+          "startSec": 68.32,
+          "endSec": 69.91
+        },
+        {
+          "id": 21,
+          "text": "Wow.",
+          "translation": "哇。",
+          "startSec": 69.92,
+          "endSec": 70.72
+        },
+        {
+          "id": 22,
+          "text": "I'm really sorry.",
+          "translation": "我真的很抱歉。",
+          "startSec": 70.235,
+          "endSec": 72.3545
+        },
+        {
+          "id": 23,
+          "text": "So big.",
+          "translation": "这么大。",
+          "startSec": 72.3545,
+          "endSec": 74.149
+        },
+        {
+          "id": 24,
+          "text": "This is the TED idea search.",
+          "translation": "这就是 TED 创意搜索。",
+          "startSec": 74.159,
+          "endSec": 79.64
+        }
+      ]
+    },
+    {
+      "id": "youtube-qDTMeR4n2b8-seed",
+      "title": "What Happened When I Started Measuring My Life Every Day | Chris Musser | TED",
+      "titleCn": "What Happened When I Started Measuring My Life Every Day | Chris Musser | TED",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "qDTMeR4n2b8",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "Can I get a show of hands if you use a wearable?",
+          "translation": "如果您使用可穿戴设备，我可以举手吗？",
+          "startSec": 3.86,
+          "endSec": 6.98
+        },
+        {
+          "id": 2,
+          "text": "Fitbit, Oura, Apple Watch, track your health, come on.",
+          "translation": "Fitbit、Oura、Apple Watch，追踪您的健康状况，加油。",
+          "startSec": 7.02,
+          "endSec": 10.14
+        },
+        {
+          "id": 3,
+          "text": "OK, it's like 50 percent of you.",
+          "translation": "好吧，这就像你的 50% 一样。",
+          "startSec": 10.18,
+          "endSec": 13.5
+        },
+        {
+          "id": 4,
+          "text": "I love this so my question for us today, for you but also the non-wearables, is what if we expanded from not just measuring our health but to measuring all the important parts of our lives?",
+          "translation": "我喜欢这个，所以今天我向我们、你们以及非可穿戴设备提出的问题是，如果我们不仅测量我们的健康状况，而且扩展到测量我们生活的所有重要部分，会怎么样？",
+          "startSec": 13.54,
+          "endSec": 24.7
+        },
+        {
+          "id": 5,
+          "text": "So this really started for me right after I turned 25, and I started to wake up in the middle of the night pretty consistently with these panics.",
+          "translation": "所以这对我来说真的是在我 25 岁之后就开始了，我开始经常在半夜醒来，伴随着这些恐慌。",
+          "startSec": 25.5,
+          "endSec": 33.58
+        },
+        {
+          "id": 6,
+          "text": "A lot of folks wake up with to-do lists bouncing through their minds.",
+          "translation": "很多人醒来时脑子里都会浮现出待办事项清单。",
+          "startSec": 33.58,
+          "endSec": 36.82
+        },
+        {
+          "id": 7,
+          "text": "A lot of you maybe, some of you?",
+          "translation": "也许你们很多人，你们中的一些人？",
+          "startSec": 36.86,
+          "endSec": 38.58
+        },
+        {
+          "id": 8,
+          "text": "I had to-do lists, but I also had this major to-be list.",
+          "translation": "我有待办事项清单，但我也有这个主要的待办事项清单。",
+          "startSec": 38.62,
+          "endSec": 41.7
+        },
+        {
+          "id": 9,
+          "text": "Really just will I be a good man, will I live a good life?",
+          "translation": "我真的会做一个好人，过上美好的生活吗？",
+          "startSec": 41.98,
+          "endSec": 45.18
+        },
+        {
+          "id": 10,
+          "text": "And now, I'm a pretty insecure guy generally.",
+          "translation": "现在，我基本上是一个非常没有安全感的人。",
+          "startSec": 46.06,
+          "endSec": 49.58
+        },
+        {
+          "id": 11,
+          "text": "But I have this thing, I have one of those extremely encouraging moms which maybe some of you have.",
+          "translation": "但我有这样的事情，我有一位非常鼓舞人心的妈妈，也许你们中的一些人也有这样的妈妈。",
+          "startSec": 49.62,
+          "endSec": 55.54
+        },
+        {
+          "id": 12,
+          "text": "Mine is very likely more encouraging.",
+          "translation": "我的很可能更令人鼓舞。",
+          "startSec": 55.54,
+          "endSec": 57.66
+        },
+        {
+          "id": 13,
+          "text": "And so, with her voice in my mind, I would basically answer the question, yeah, I am going to live a good life.",
+          "translation": "因此，当我脑海中浮现出她的声音时，我基本上会回答这个问题：是的，我会过上美好的生活。",
+          "startSec": 57.66,
+          "endSec": 63.3
+        },
+        {
+          "id": 14,
+          "text": "In fact, maybe she's right, I will change millions of lives.",
+          "translation": "事实上，也许她是对的，我将改变数百万人的生活。",
+          "startSec": 63.3,
+          "endSec": 66.14
+        },
+        {
+          "id": 15,
+          "text": "Maybe I'll be president.",
+          "translation": "也许我会成为总统。",
+          "startSec": 66.18,
+          "endSec": 67.5
+        },
+        {
+          "id": 16,
+          "text": "So I had this narrative from 25 to about 33, and then I hit 33.",
+          "translation": "所以我从 25 到 33 左右都有这个故事，然后我就到了 33。",
+          "startSec": 68.06,
+          "endSec": 72.82
+        },
+        {
+          "id": 17,
+          "text": "And I haven't changed that many lives.",
+          "translation": "我并没有改变那么多人的生活。",
+          "startSec": 73.22,
+          "endSec": 76.9
+        },
+        {
+          "id": 18,
+          "text": "And I find out one day that Bill Clinton was already a governor by 33, which to most of you is no big deal.",
+          "translation": "有一天，我发现比尔·克林顿 (Bill Clinton) 33 岁时已经成为州长，这对你们大多数人来说没什么大不了的。",
+          "startSec": 76.94,
+          "endSec": 84.66
+        },
+        {
+          "id": 19,
+          "text": "But ask my wife, Ashley, that broke me.",
+          "translation": "但问问我的妻子阿什利，这让我心碎。",
+          "startSec": 84.7,
+          "endSec": 87.26
+        },
+        {
+          "id": 20,
+          "text": "I think what happened is it kind of shattered this, sort of, mom-induced megalomania I had, and it made me take an actual look at my life.",
+          "translation": "我认为发生的事情打破了我这种由妈妈引发的狂妄自大，它让我真正审视自己的生活。",
+          "startSec": 87.26,
+          "endSec": 94.86
+        },
+        {
+          "id": 21,
+          "text": "And so I looked at my professional life, but then what about my friendships?",
+          "translation": "所以我审视了我的职业生涯，那么我的友谊又如何呢？",
+          "startSec": 94.9,
+          "endSec": 99.58
+        },
+        {
+          "id": 22,
+          "text": "What about my contributions to society, what about my character?",
+          "translation": "我对社会的贡献怎么样，我的品格怎么样？",
+          "startSec": 99.62,
+          "endSec": 103.1
+        },
+        {
+          "id": 23,
+          "text": "And honestly, I looked and I was fine, but I wasn't thriving, I wasn't flourishing.",
+          "translation": "老实说，我看起来很好，但我并没有蓬勃发展，我没有蓬勃发展。",
+          "startSec": 103.78,
+          "endSec": 110.25999999999999
+        },
+        {
+          "id": 24,
+          "text": "And so then it struck me, you know, Chris, a lot of people don't live good lives.",
+          "translation": "然后我突然意识到，克里斯，你知道，很多人都过着不好的生活。",
+          "startSec": 111.25999999999999,
+          "endSec": 115.5
+        },
+        {
+          "id": 25,
+          "text": "Why do you think you would automatically be any different?",
+          "translation": "为什么你认为你会自动变得不同？",
+          "startSec": 116.46000000000001,
+          "endSec": 119.42
+        },
+        {
+          "id": 26,
+          "text": "What if I wake up in 50 years and I discover I have not become the man I wanted to be.",
+          "translation": "如果 50 年后我醒来发现自己没有成为我想成为的人怎么办？",
+          "startSec": 120.46,
+          "endSec": 126.94
+        },
+        {
+          "id": 27,
+          "text": "I'm guessing some of you have similar thoughts, because Gallup tells us that only 33 percent of us are thriving in life.",
+          "translation": "我猜你们中的一些人也有类似的想法，因为盖洛普告诉我们，只有 33% 的人在生活中蒸蒸日上。",
+          "startSec": 128.9,
+          "endSec": 136.38
+        },
+        {
+          "id": 28,
+          "text": "So if you're in the other 66 percent, like me, how do we get into the 33 percent?",
+          "translation": "那么，如果你像我一样属于另外 66% 的人，那么我们如何才能进入 33% 的人呢？",
+          "startSec": 136.74,
+          "endSec": 143.38
+        },
+        {
+          "id": 29,
+          "text": "Now I am a management consultant.",
+          "translation": "现在我是一名管理顾问。",
+          "startSec": 145.78,
+          "endSec": 147.46
+        },
+        {
+          "id": 30,
+          "text": "And so there's one thing that we love and believe deeply.",
+          "translation": "因此，我们深爱并坚信一件事。",
+          "startSec": 147.94,
+          "endSec": 151.22
+        },
+        {
+          "id": 31,
+          "text": "Say it with me if you know it.",
+          "translation": "如果你知道的话跟我说吧。",
+          "startSec": 151.26,
+          "endSec": 152.74
+        },
+        {
+          "id": 32,
+          "text": "What gets measured, gets managed.",
+          "translation": "衡量什么，就管理什么。",
+          "startSec": 152.74,
+          "endSec": 156.3
+        },
+        {
+          "id": 33,
+          "text": "Come on, guys, you know this.",
+          "translation": "来吧，伙计们，你知道这一点。",
+          "startSec": 156.3,
+          "endSec": 157.7
+        },
+        {
+          "id": 34,
+          "text": "You know, what is it, 50 percent of us use wearables to measure our health, to presumably manage it.",
+          "translation": "你知道吗，我们 50% 的人使用可穿戴设备来衡量我们的健康状况，大概是为了管理它。",
+          "startSec": 160.42000000000002,
+          "endSec": 165.93542857142856
+        },
+        {
+          "id": 35,
+          "text": "But I couldn't find anything like that to measure all the dimensions that mattered in life.",
+          "translation": "但我找不到类似的东西来衡量生活中所有重要的维度。",
+          "startSec": 165.93542857142856,
+          "endSec": 170.57999999999998
+        },
+        {
+          "id": 36,
+          "text": "So I created this super simple, kind of clunky Excel tracker that I use.",
+          "translation": "所以我创建了这个超级简单、笨重的 Excel 跟踪器并使用。",
+          "startSec": 171.38,
+          "endSec": 175.34
+        },
+        {
+          "id": 37,
+          "text": "So the first step was to identify the dimensions of a good life.",
+          "translation": "因此，第一步是确定美好生活的维度。",
+          "startSec": 175.9,
+          "endSec": 179.7
+        },
+        {
+          "id": 38,
+          "text": "So I started with my faith, but then I brought in insights from the thinkers who've studied this stuff.",
+          "translation": "所以我从我的信仰开始，但后来我引入了研究过这些东西的思想家的见解。",
+          "startSec": 180.1,
+          "endSec": 185.1
+        },
+        {
+          "id": 39,
+          "text": "So from Aristotle to this thing called the Harvard Happiness Study to Martin Seligman's positive psychology to Clayton Christensen’s “How Will You Measure Your Life?",
+          "translation": "因此，从亚里士多德到哈佛幸福研究，到马丁·塞利格曼的积极心理学，再到克莱顿·克里斯滕森的“你将如何衡量你的生活？”",
+          "startSec": 185.1,
+          "endSec": 191.54000000000002
+        },
+        {
+          "id": 40,
+          "text": "” to my professor Arthur Brooks's research on happiness, to this global flourishing study and this cool article by my colleagues at BCG called \"Strategize Your Life.\"",
+          "translation": "” 我的教授阿瑟·布鲁克斯 (Arthur Brooks) 对幸福的研究，这项全球蓬勃发展的研究，以及我在 BCG 的同事撰写的这篇很酷的文章，名为“制定你的生活策略”。",
+          "startSec": 191.54000000000002,
+          "endSec": 201.02
+        },
+        {
+          "id": 41,
+          "text": "And so I landed on these nine dimensions of the good life for me.",
+          "translation": "因此，我找到了美好生活的这九个维度。",
+          "startSec": 201.54,
+          "endSec": 206.9
+        },
+        {
+          "id": 42,
+          "text": "You're seeing these and you're like, pretty obvious, right which is kind of the point, because from the ancients to the moderns, these ingredients have been remarkably consistent.",
+          "translation": "你看到这些，你会觉得，非常明显，这就是重点，因为从古人到现代，这些成分一直非常一致。",
+          "startSec": 208.46,
+          "endSec": 216.98
+        },
+        {
+          "id": 43,
+          "text": "They're knowable.",
+          "translation": "他们是可知的。",
+          "startSec": 216.98,
+          "endSec": 218.22
+        },
+        {
+          "id": 44,
+          "text": "So step two, measure.",
+          "translation": "所以第二步，测量。",
+          "startSec": 219.26,
+          "endSec": 221.54
+        },
+        {
+          "id": 45,
+          "text": "I had the privilege of working for Gallup for a few years, if you know them.",
+          "translation": "如果你认识的话，我有幸在盖洛普工作了几年。",
+          "startSec": 222.1,
+          "endSec": 226.06
+        },
+        {
+          "id": 46,
+          "text": "And so I had this nerdy thing where I love building surveys.",
+          "translation": "所以我有一个书呆子的东西，我喜欢建立调查。",
+          "startSec": 226.06,
+          "endSec": 228.9
+        },
+        {
+          "id": 47,
+          "text": "So I turned these nine dimensions into kind of a 20-ish question survey that I answer pretty much every day.",
+          "translation": "因此，我将这九个维度变成了一项包含 20 个左右问题的调查，我几乎每天都会回答这些问题。",
+          "startSec": 228.9,
+          "endSec": 234.18
+        },
+        {
+          "id": 48,
+          "text": "Now, these are the questions.",
+          "translation": "现在，这些就是问题。",
+          "startSec": 234.18,
+          "endSec": 235.62
+        },
+        {
+          "id": 49,
+          "text": "I have a few others I answer weekly, like contribution to society that's sort of a weekly thing for me.",
+          "translation": "我每周都会回答一些其他问题，比如对社会的贡献，这对我来说是每周都会做的事情。",
+          "startSec": 235.62,
+          "endSec": 240.86
+        },
+        {
+          "id": 50,
+          "text": "My mom thinks it's daily, it's not.",
+          "translation": "我妈妈认为这是日常，但事实并非如此。",
+          "startSec": 240.9,
+          "endSec": 242.58
+        },
+        {
+          "id": 51,
+          "text": "But these to me basically are the picture of the good life to me.",
+          "translation": "但这些对我来说基本上就是我美好生活的写照。",
+          "startSec": 244.62,
+          "endSec": 249.5
+        },
+        {
+          "id": 52,
+          "text": "And so for the past 18 months, I've essentially answered these questions every day.",
+          "translation": "所以在过去的 18 个月里，我基本上每天都在回答这些问题。",
+          "startSec": 250.34,
+          "endSec": 254.9
+        },
+        {
+          "id": 53,
+          "text": "I do it at 9pm on my couch, on my phone, and it literally takes me 90 seconds.",
+          "translation": "我晚上 9 点在沙发上用手机做这件事，实际上花了 90 秒。",
+          "startSec": 254.94,
+          "endSec": 260.98
+        },
+        {
+          "id": 54,
+          "text": "But folks, this has been a total game changer for me.",
+          "translation": "但是朋友们，这对我来说彻底改变了游戏规则。",
+          "startSec": 261.66,
+          "endSec": 264.86
+        },
+        {
+          "id": 55,
+          "text": "My therapists have told me -- I have multiple therapists simultaneously which I hear is not best practice but here's what they agree on which is I have a lot of cognitive distortions.",
+          "translation": "我的治疗师告诉我——我同时接受多名治疗师，我听说这不是最佳实践，但他们一致认为我有很多认知扭曲。",
+          "startSec": 265.66,
+          "endSec": 277.78
+        },
+        {
+          "id": 56,
+          "text": "So, you know, these things, some of you have them, you're like, yeah, I've got some of those, too.",
+          "translation": "所以，你知道，这些东西，你们中的一些人拥有它们，你会说，是的，我也有一些。",
+          "startSec": 277.78,
+          "endSec": 282.38
+        },
+        {
+          "id": 57,
+          "text": "These are things like all-or-nothing thinking, catastrophizing, overgeneralizing.",
+          "translation": "这些都是诸如“全有或全无”的思维、灾难性的思考、过度概括等。",
+          "startSec": 282.42,
+          "endSec": 286.22
+        },
+        {
+          "id": 58,
+          "text": "Like when you pop up the news and you discover the sky is falling.",
+          "translation": "就像当你弹出新闻时，你发现天塌下来了。",
+          "startSec": 286.26,
+          "endSec": 289.38
+        },
+        {
+          "id": 59,
+          "text": "So for me, I was prepping for this TED talk a month ago, and I was already in pretty good shape, I thought.",
+          "translation": "所以对我来说，一个月前我正在准备这次 TED 演讲，我想我的状态已经很好了。",
+          "startSec": 289.38,
+          "endSec": 294.98
+        },
+        {
+          "id": 60,
+          "text": "And so I sent a recording of myself to some mentors, and I said, you know, I'd love some feedback.",
+          "translation": "所以我把自己的录音发给了一些导师，我说，你知道，我希望得到一些反馈。",
+          "startSec": 296.02,
+          "endSec": 301.22
+        }
+      ]
+    },
+    {
+      "id": "youtube-Xlc_ALDWc0Q-seed",
+      "title": "How to Power the World 24/7 — Without Oil | Cindy Taff | TED",
+      "titleCn": "How to Power the World 24/7 — Without Oil | Cindy Taff | TED",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "Xlc_ALDWc0Q",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "OK, so if you can't tell already, I'm from Texas.",
+          "translation": "好吧，如果你还看不出来，我来自德克萨斯州。",
+          "startSec": 8.036,
+          "endSec": 11.436
+        },
+        {
+          "id": 2,
+          "text": "And I also spent my career in the oil and gas industry.",
+          "translation": "我的职业生涯也是在石油和天然气行业度过的。",
+          "startSec": 16.076,
+          "endSec": 19.676
+        },
+        {
+          "id": 3,
+          "text": "So do you hate me yet?",
+          "translation": "那你还恨我吗？",
+          "startSec": 19.716,
+          "endSec": 21.796
+        },
+        {
+          "id": 4,
+          "text": "Let's hope not.",
+          "translation": "我们希望不会。",
+          "startSec": 23.156,
+          "endSec": 24.916
+        },
+        {
+          "id": 5,
+          "text": "So I went into oil and gas because energy is life.",
+          "translation": "所以我进入了石油和天然气领域，因为能源就是生命。",
+          "startSec": 24.916,
+          "endSec": 29.156
+        },
+        {
+          "id": 6,
+          "text": "And I wanted to be able to provide people with lights, air conditioning, heat, and, of course, the ability to watch funny cat videos on their phone.",
+          "translation": "我希望能够为人们提供灯光、空调、暖气，当然还有在手机上观看有趣的猫视频的能力。",
+          "startSec": 29.156,
+          "endSec": 40.276
+        },
+        {
+          "id": 7,
+          "text": "But energy also evolves.",
+          "translation": "但能量也在进化。",
+          "startSec": 41.356,
+          "endSec": 43.236
+        },
+        {
+          "id": 8,
+          "text": "So humans used to burn wood for heat and light.",
+          "translation": "所以人类过去常常燃烧木头来取暖和照明。",
+          "startSec": 43.236,
+          "endSec": 47.156
+        },
+        {
+          "id": 9,
+          "text": "We then transitioned to whale oil and to coal, and then to oil and gas.",
+          "translation": "然后我们转向鲸油和煤炭，然后转向石油和天然气。",
+          "startSec": 47.156,
+          "endSec": 53.076
+        },
+        {
+          "id": 10,
+          "text": "But we're now using renewables, like solar and wind.",
+          "translation": "但我们现在使用可再生能源，如太阳能和风能。",
+          "startSec": 53.076,
+          "endSec": 58.396
+        },
+        {
+          "id": 11,
+          "text": "And it's this exciting evolution to clean, renewable energy that inspired me to leave Shell and start my own geothermal company with my partners.",
+          "translation": "正是这种向清洁、可再生能源的激动人心的发展激励我离开壳牌并与我的合作伙伴一起创办自己的地热公司。",
+          "startSec": 58.436,
+          "endSec": 71.436
+        },
+        {
+          "id": 12,
+          "text": "And so we're now using that mud-on-your-boots know-how from the oil and gas industry to drill for heat instead of for hydrocarbons.",
+          "translation": "因此，我们现在正在利用石油和天然气行业的专业知识来钻取热量而不是碳氢化合物。",
+          "startSec": 71.476,
+          "endSec": 80.236
+        },
+        {
+          "id": 13,
+          "text": "So most people don't know this, but there's a lot of heat deep in the Earth.",
+          "translation": "所以大多数人不知道这一点，但地球深处有大量的热量。",
+          "startSec": 80.236,
+          "endSec": 84.396
+        },
+        {
+          "id": 14,
+          "text": "And the deeper you drill, the hotter it gets.",
+          "translation": "钻得越深，温度就越高。",
+          "startSec": 84.436,
+          "endSec": 88.196
+        },
+        {
+          "id": 15,
+          "text": "And this heat, this energy, it's always on, it's clean, and it actually holds 50,000 times more energy than all of the oil and gas reserves on the planet.",
+          "translation": "这种热量、这种能量，它永远存在，它是清洁的，而且它所蕴藏的能量实际上是地球上所有石油和天然气储量的 50,000 倍。",
+          "startSec": 88.196,
+          "endSec": 103.51599999999999
+        },
+        {
+          "id": 16,
+          "text": "So why am I still talking about oil and gas?",
+          "translation": "那么为什么我还在谈论石油和天然气呢？",
+          "startSec": 104.476,
+          "endSec": 108.51599999999999
+        },
+        {
+          "id": 17,
+          "text": "It's because we're going to take the technologies that the oil and gas have developed over the last 100 years, at a cost of trillions of dollars.",
+          "translation": "这是因为我们将花费数万亿美元来采用过去 100 年来开发的石油和天然气技术。",
+          "startSec": 109.51599999999999,
+          "endSec": 120.79915789473684
+        },
+        {
+          "id": 18,
+          "text": "And we're going to start drilling for heat instead of hydrocarbons.",
+          "translation": "我们将开始钻探热量而不是碳氢化合物。",
+          "startSec": 120.79915789473684,
+          "endSec": 125.396
+        },
+        {
+          "id": 19,
+          "text": "So let's talk a little bit about drilling, just to give you guys a basis on it.",
+          "translation": "那么我们来谈谈钻探，只是为了给大家提供一个基础。",
+          "startSec": 125.436,
+          "endSec": 129.516
+        },
+        {
+          "id": 20,
+          "text": "Oil used to be found in puddles on the ground.",
+          "translation": "过去，石油是在地面的水坑中发现的。",
+          "startSec": 129.556,
+          "endSec": 132.916
+        },
+        {
+          "id": 21,
+          "text": "So people figured out that they could use it to run machineries, cars, airplanes, and the demand skyrocketed.",
+          "translation": "于是人们发现他们可以用它来运行机械、汽车、飞机，需求猛增。",
+          "startSec": 132.916,
+          "endSec": 142.156
+        },
+        {
+          "id": 22,
+          "text": "The oil line on the ground ran out because people were using it.",
+          "translation": "地面上的石油管道已经耗尽，因为人们正在使用它。",
+          "startSec": 142.156,
+          "endSec": 145.956
+        },
+        {
+          "id": 23,
+          "text": "So we started to dig.",
+          "translation": "于是我们开始挖掘。",
+          "startSec": 145.956,
+          "endSec": 147.236
+        },
+        {
+          "id": 24,
+          "text": "So we dug deeper and deeper.",
+          "translation": "所以我们挖得越来越深。",
+          "startSec": 147.236,
+          "endSec": 149.356
+        },
+        {
+          "id": 25,
+          "text": "And despite what you may have heard or think about, you know, roughnecks and oil field work, it's actually quite complex and technical.",
+          "translation": "尽管你可能听说过或想到过钻工和油田工作，但它实际上是相当复杂和技术性的。",
+          "startSec": 150.316,
+          "endSec": 160.95600000000002
+        },
+        {
+          "id": 26,
+          "text": "The industry was able to advance the technologies even more to unlock oil that was previously out of reach, and at a cost the world could afford.",
+          "translation": "该行业能够进一步推进技术，以世界可以承受的成本来开采以前遥不可及的石油。",
+          "startSec": 160.95600000000002,
+          "endSec": 170.796
+        },
+        {
+          "id": 27,
+          "text": "And so, using amazing innovation, the industry learned how to basically turn the bit sideways in the subsurface, be able to drill horizontally within the layers that actually carried the oil and gas.",
+          "translation": "因此，通过惊人的创新，该行业基本上学会了如何在地下将钻头横向转动，从而能够在实际携带石油和天然气的层内水平钻孔。",
+          "startSec": 170.836,
+          "endSec": 188.516
+        },
+        {
+          "id": 28,
+          "text": "The industry also learned how to frack the rock to release oil that would have otherwise been stuck in there.",
+          "translation": "该行业还学会了如何对岩石进行水力压裂，以释放原本滞留在其中的石油。",
+          "startSec": 188.556,
+          "endSec": 197.476
+        },
+        {
+          "id": 29,
+          "text": "And so I know, not everybody's a fan of fracking, but it really did bring in an era of lower cost energy.",
+          "translation": "所以我知道，并不是每个人都喜欢水力压裂，但它确实带来了一个更低成本能源的时代。",
+          "startSec": 197.516,
+          "endSec": 207.236
+        },
+        {
+          "id": 30,
+          "text": "And I'll tell you in a minute why fracking is important for geothermal energy.",
+          "translation": "稍后我将告诉您为什么水力压裂对于地热能很重要。",
+          "startSec": 207.236,
+          "endSec": 213.756
+        },
+        {
+          "id": 31,
+          "text": "So the oil and gas industry, with all of this turning and steering underground, was able to drill deeper, drill hotter and actually drill with some pinpoint precision.",
+          "translation": "因此，石油和天然气行业通过在地下进行所有这些转向和转向，能够钻得更深、钻得更热，并且实际上能够以一定的精确度进行钻探。",
+          "startSec": 213.796,
+          "endSec": 226.296
+        },
+        {
+          "id": 32,
+          "text": "So, for example, imagine hitting a target the size of a pizza at a depth of five miles under the ground into the Earth.",
+          "translation": "例如，想象一下将一个披萨大小的目标击中地下五英里深处的地球。",
+          "startSec": 226.296,
+          "endSec": 238.796
+        },
+        {
+          "id": 33,
+          "text": "And being able to do this over and over again.",
+          "translation": "并且能够一次又一次地这样做。",
+          "startSec": 238.796,
+          "endSec": 242.796
+        },
+        {
+          "id": 34,
+          "text": "The technology is pretty amazing and so we are now going to use that technology for geothermal but we're not going to have to learn over those 100 years.",
+          "translation": "这项技术非常惊人，所以我们现在将把这项技术用于地热发电，但我们不需要花 100 年的时间来学习。",
+          "startSec": 242.836,
+          "endSec": 254.96116129032256
+        },
+        {
+          "id": 35,
+          "text": "So we can apply it straight away.",
+          "translation": "所以我们可以立即应用它。",
+          "startSec": 254.96116129032256,
+          "endSec": 257.716
+        },
+        {
+          "id": 36,
+          "text": "So you guys may ask, why do we even need geothermal because let's admit, wind and solar have done a great job greening the grid.",
+          "translation": "所以你们可能会问，为什么我们甚至需要地热，因为我们承认，风能和太阳能在绿化电网方面做得很好。",
+          "startSec": 258.556,
+          "endSec": 266.676
+        },
+        {
+          "id": 37,
+          "text": "Well geothermal can do what wind and solar can’t, and that is provide power 24 hours a day, seven days a week, regardless of what the weather is.",
+          "translation": "地热能可以做到风能和太阳能所不能做到的，那就是每周 7 天、每天 24 小时提供电力，无论天气如何。",
+          "startSec": 266.716,
+          "endSec": 278.076
+        },
+        {
+          "id": 38,
+          "text": "You can also use geothermal as a giant battery to store extra energy from wind and solar and to make those intermittent power resources baseload because we can then use that extra energy during the day when the sun is not shining and the wind's not blowing.",
+          "translation": "您还可以使用地热作为巨型电池来存储来自风能和太阳能的额外能量，并使这些间歇性电力资源成为基载，因为我们可以在白天没有阳光和风的时候使用这些额外的能量。",
+          "startSec": 278.916,
+          "endSec": 296.636
+        },
+        {
+          "id": 39,
+          "text": "And so where is the real prize for geothermal?",
+          "translation": "那么地热能的真正价值在哪里呢？",
+          "startSec": 296.676,
+          "endSec": 301.956
+        },
+        {
+          "id": 40,
+          "text": "So I think a lot of us know about Iceland or the geysers in California, where they've done a great job of exploiting the shallow pools of hot water that's just below the surface.",
+          "translation": "所以我想我们很多人都知道冰岛或加利福尼亚州的间歇泉，他们在开发地表以下的浅热水池方面做得很好。",
+          "startSec": 301.956,
+          "endSec": 315.236
+        },
+        {
+          "id": 41,
+          "text": "The challenge with those areas is that it's kind of a unique, unicorn geology.",
+          "translation": "这些地区面临的挑战是它是一种独特的独角兽地质。",
+          "startSec": 316.076,
+          "endSec": 322.556
+        },
+        {
+          "id": 42,
+          "text": "So the real prize in geothermal is in rock that’s deep, hot, so you're going to have to drill deeper.",
+          "translation": "因此，地热能真正的价值在于又深又热的岩石，所以你必须钻得更深。",
+          "startSec": 322.596,
+          "endSec": 330.836
+        },
+        {
+          "id": 43,
+          "text": "So we call this next-generation geothermal.",
+          "translation": "所以我们称之为下一代地热。",
+          "startSec": 330.876,
+          "endSec": 334.556
+        },
+        {
+          "id": 44,
+          "text": "And that's where we're going.",
+          "translation": "这就是我们要去的地方。",
+          "startSec": 334.596,
+          "endSec": 336.036
+        },
+        {
+          "id": 45,
+          "text": "And we're going there by drilling deeper, hotter and horizontal.",
+          "translation": "我们将通过更深、更热和水平的钻探来实现这一目标。",
+          "startSec": 336.036,
+          "endSec": 340.396
+        },
+        {
+          "id": 46,
+          "text": "And I would say that there are several companies that are racing toward this future.",
+          "translation": "我想说，有几家公司正在朝着这个未来而努力。",
+          "startSec": 340.876,
+          "endSec": 345.236
+        },
+        {
+          "id": 47,
+          "text": "Ours is one of them.",
+          "translation": "我们的就是其中之一。",
+          "startSec": 345.236,
+          "endSec": 346.516
+        },
+        {
+          "id": 48,
+          "text": "I'm proud to say that we are not just talking about it.",
+          "translation": "我很自豪地说，我们不仅仅是在谈论它。",
+          "startSec": 346.556,
+          "endSec": 350.396
+        },
+        {
+          "id": 49,
+          "text": "We’re actually in the field, drilling wells, building systems and proving that geothermal technology can work in unassuming places like Texas who had ever heard of geothermal in Texas?",
+          "translation": "我们实际上在现场，打井，建造系统，并证明地热技术可以在像德克萨斯州这样不起眼的地方发挥作用，谁听说过德克萨斯州的地热？",
+          "startSec": 350.436,
+          "endSec": 363.036
+        },
+        {
+          "id": 50,
+          "text": "It's there.",
+          "translation": "它就在那里。",
+          "startSec": 363.036,
+          "endSec": 364.316
+        },
+        {
+          "id": 51,
+          "text": "OK, I said I’d come back to the f-word, fracking, and why is it important to geothermal.",
+          "translation": "好吧，我说了我会回到那个词，水力压裂，以及为什么它对地热很重要。",
+          "startSec": 364.356,
+          "endSec": 371.116
+        },
+        {
+          "id": 52,
+          "text": "So in this deep, hot rock, there's not a lot of cracks for water to flow through and the way we get geothermal to work is to flow water through fracks to absorb the heat.",
+          "translation": "因此，在这层又深又热的岩石中，没有太多可供水流过的裂缝，而我们利用地热的方式就是让水流过裂缝来吸收热量。",
+          "startSec": 371.116,
+          "endSec": 385.556
+        },
+        {
+          "id": 53,
+          "text": "And then we use that water to carry the heat to the surface.",
+          "translation": "然后我们利用水将热量带到地表。",
+          "startSec": 385.556,
+          "endSec": 390.756
+        },
+        {
+          "id": 54,
+          "text": "And when you get that heat to the surface, you can use it to drive turbines, to power electricity, or you can use the heat directly.",
+          "translation": "当你将这些热量带到地表时，你可以用它来驱动涡轮机、发电，或者你也可以直接使用这些热量。",
+          "startSec": 390.796,
+          "endSec": 399.956
+        },
+        {
+          "id": 55,
+          "text": "The reason why we use fracturing is we can create those cracks in the rock, or those pathways through which the water can flow through.",
+          "translation": "我们使用压裂技术的原因是我们可以在岩石中制造裂缝，或者水可以流过的通道。",
+          "startSec": 399.956,
+          "endSec": 409.636
+        },
+        {
+          "id": 56,
+          "text": "So here is a picture of a frack operation.",
+          "translation": "这是一张水力压裂作业的图片。",
+          "startSec": 409.676,
+          "endSec": 412.716
+        },
+        {
+          "id": 57,
+          "text": "This was actually at our well so what we do during fracking operations is we are creating cracks in the rock or we're widening cracks that are already there.",
+          "translation": "这实际上是在我们的井里，所以我们在水力压裂操作中所做的就是在岩石中制造裂缝，或者扩大已经存在的裂缝。",
+          "startSec": 412.756,
+          "endSec": 423.1654117647059
+        },
+        {
+          "id": 58,
+          "text": "And we're using it with a liquid that is mainly water.",
+          "translation": "我们将其与主要是水的液体一起使用。",
+          "startSec": 423.1654117647059,
+          "endSec": 426.996
+        },
+        {
+          "id": 59,
+          "text": "We do add crushed rock called barite in the water to make it more dense.",
+          "translation": "我们确实在水中添加了称为重晶石的碎石，以使其更加致密。",
+          "startSec": 426.996,
+          "endSec": 433.116
+        },
+        {
+          "id": 60,
+          "text": "The thing I want to note is that we're pumping at lower pressures and lower rates than the oil and gas industry.",
+          "translation": "我要指出的是，我们的抽油压力和速率比石油和天然气行业更低。",
+          "startSec": 433.116,
+          "endSec": 440.6101935483871
+        }
+      ]
+    },
+    {
+      "id": "youtube-lRXkSn4pUyU-seed",
+      "title": "How to Raise Kids Who Can Handle Hard Things | Kathryn Hecht | TED",
+      "titleCn": "How to Raise Kids Who Can Handle Hard Things | Kathryn Hecht | TED",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "lRXkSn4pUyU",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "I've walked a lot in these shoes today.",
+          "translation": "今天我穿着这双鞋走了很多路。",
+          "startSec": 7.656,
+          "endSec": 10.009
+        },
+        {
+          "id": 2,
+          "text": "These soles have ground into the pavement of downtown Minneapolis, the rubber mats of my car, the linoleum of a gas station bathroom and the Play Doh-crusted carpet of a daycare.",
+          "translation": "这些鞋底已经磨进了明尼阿波利斯市中心的人行道、我汽车的橡胶垫、加油站浴室的油毡和托儿所布满 Play Doh 结垢的地毯。",
+          "startSec": 11.243,
+          "endSec": 22.321
+        },
+        {
+          "id": 3,
+          "text": "Embedded in the tread, a smear a toddler booger.",
+          "translation": "胎面中嵌入了幼儿鼻屎的痕迹。",
+          "startSec": 23.789,
+          "endSec": 27.927
+        },
+        {
+          "id": 4,
+          "text": "Yeah, a little leftover norovirus maybe.",
+          "translation": "是的，也许还有一点诺如病毒残留。",
+          "startSec": 28.327,
+          "endSec": 31.197
+        },
+        {
+          "id": 5,
+          "text": "Maybe if I'm really lucky, a little fleck of dog poop.",
+          "translation": "如果我真的很幸运的话，也许会有一点狗屎。",
+          "startSec": 32.364,
+          "endSec": 35.951
+        },
+        {
+          "id": 6,
+          "text": "Makes you sick just thinking about it, right?",
+          "translation": "光是想想就让人恶心，对吧？",
+          "startSec": 37.269,
+          "endSec": 40.172
+        },
+        {
+          "id": 7,
+          "text": "Audience: Ooh!",
+          "translation": "观众：哦！",
+          "startSec": 41.307,
+          "endSec": 43.359
+        },
+        {
+          "id": 8,
+          "text": "So, yeah, that happened.",
+          "translation": "所以，是的，事情发生了。",
+          "startSec": 51.784,
+          "endSec": 54.386
+        },
+        {
+          "id": 9,
+          "text": "And while you may not have tasted what I just tasted, you felt what I felt.",
+          "translation": "虽然你可能没有尝过我刚刚尝过的味道，但你感受到了我的感受。",
+          "startSec": 55.871,
+          "endSec": 61.61
+        },
+        {
+          "id": 10,
+          "text": "Your sympathetic nervous system activated, increasing your heart rate and tensing your muscles.",
+          "translation": "您的交感神经系统被激活，心率加快，肌肉紧张。",
+          "startSec": 61.644,
+          "endSec": 67.116
+        },
+        {
+          "id": 11,
+          "text": "Your anterior insula flared, creating a feeling of disgust.",
+          "translation": "你的前岛叶张开，产生一种厌恶的感觉。",
+          "startSec": 67.133,
+          "endSec": 71.003
+        },
+        {
+          "id": 12,
+          "text": "Little nausea, slight gag reflex.",
+          "translation": "轻微恶心，轻微呕吐反射。",
+          "startSec": 71.437,
+          "endSec": 74.523
+        },
+        {
+          "id": 13,
+          "text": "Am I going to get sick now?",
+          "translation": "我现在会生病吗？",
+          "startSec": 75.624,
+          "endSec": 77.35900000000001
+        },
+        {
+          "id": 14,
+          "text": "I don't know.",
+          "translation": "我不知道。",
+          "startSec": 78.11,
+          "endSec": 79.27799999999999
+        },
+        {
+          "id": 15,
+          "text": "But I do know this.",
+          "translation": "但我确实知道这一点。",
+          "startSec": 80.763,
+          "endSec": 82.114
+        },
+        {
+          "id": 16,
+          "text": "I am so glad you're uncomfortable.",
+          "translation": "我很高兴你感到不舒服。",
+          "startSec": 82.465,
+          "endSec": 85.634
+        },
+        {
+          "id": 17,
+          "text": "Congratulations, truly because that discomfort, that is the first essential step to creating confident kids.",
+          "translation": "恭喜你，因为这种不适是培养自信孩子的第一步。",
+          "startSec": 86.952,
+          "endSec": 96.412
+        },
+        {
+          "id": 18,
+          "text": "And you can trust me on this one.",
+          "translation": "在这一点上你可以相信我。",
+          "startSec": 97.463,
+          "endSec": 99.231
+        },
+        {
+          "id": 19,
+          "text": "I make kids uncomfortable for a living.",
+          "translation": "我以让孩子们不舒服为生。",
+          "startSec": 99.265,
+          "endSec": 101.55
+        },
+        {
+          "id": 20,
+          "text": "This week I had an eight-year-old stab me with a needle, twice, took a kid into a basement on a spider safari and played Uno on the bathroom floor with an understandably reluctant teen.",
+          "translation": "这周，我被一个八岁的孩子用针刺了我两次，带着一个孩子去地下室进行蜘蛛狩猎，并在浴室地板上和一个不情愿的青少年一起玩乌诺，这是可以理解的。",
+          "startSec": 103.00200000000001,
+          "endSec": 115.831
+        },
+        {
+          "id": 21,
+          "text": "It's only Wednesday.",
+          "translation": "现在只是星期三。",
+          "startSec": 116.482,
+          "endSec": 117.93299999999999
+        },
+        {
+          "id": 22,
+          "text": "Now I’m not doing this stuff because I’m an evil psychologist.",
+          "translation": "现在我不做这些事，因为我是一个邪恶的心理学家。",
+          "startSec": 118.884,
+          "endSec": 122.571
+        },
+        {
+          "id": 23,
+          "text": "I'm doing this because as a pediatric anxiety and OCD expert, I'm a professional bravery coach.",
+          "translation": "我这样做是因为作为一名儿科焦虑和强迫症专家，我是一名专业的勇敢教练。",
+          "startSec": 122.955,
+          "endSec": 129.328
+        },
+        {
+          "id": 24,
+          "text": "I'd like to tell you about a kid that I worked with years ago named Sammy.",
+          "translation": "我想告诉你一个多年前和我一起工作的孩子的故事，他的名字叫萨米。",
+          "startSec": 130.613,
+          "endSec": 134.95
+        },
+        {
+          "id": 25,
+          "text": "Sammy was this sweet little third-grade string bean who lived for adventure.",
+          "translation": "萨米是一个可爱的三年级小四季豆，为冒险而生。",
+          "startSec": 135.718,
+          "endSec": 140.272
+        },
+        {
+          "id": 26,
+          "text": "Bright, curious, optimistic, could tell you everything you honestly never needed to know about airport design.",
+          "translation": "聪明、好奇、乐观，他可以告诉你关于机场设计的一切你根本不需要知道的事情。",
+          "startSec": 140.689,
+          "endSec": 147.73
+        },
+        {
+          "id": 27,
+          "text": "But Sammy had a fear: bees.",
+          "translation": "但萨米有一个恐惧：蜜蜂。",
+          "startSec": 148.781,
+          "endSec": 151.617
+        },
+        {
+          "id": 28,
+          "text": "His brain appreciated bees, vital pollinators.",
+          "translation": "他的大脑很欣赏蜜蜂这种重要的传粉媒介。",
+          "startSec": 152.31799999999998,
+          "endSec": 156.172
+        },
+        {
+          "id": 29,
+          "text": "His body, however, reacted like they were flying yellow needles with some anger issues.",
+          "translation": "然而，他的身体反应就像飞黄针一样，有些愤怒。",
+          "startSec": 157.089,
+          "endSec": 162.595
+        },
+        {
+          "id": 30,
+          "text": "As soon as those leaves turned green, Sammy would initiate his own personal bee safety protocol.",
+          "translation": "一旦这些叶子变绿，萨米就会启动他自己的个人蜜蜂安全协议。",
+          "startSec": 163.329,
+          "endSec": 168.88400000000001
+        },
+        {
+          "id": 31,
+          "text": "No sweets outside, social distancing from the flowers, even staying inside during his family's cabin trips when Sammy got to me, he and his parents had tried everything to get rid of this anxiety.",
+          "translation": "外面不准吃糖果，与鲜花保持社交距离，甚至在萨米来找我时，他和他的父母都想尽一切办法来摆脱这种焦虑。",
+          "startSec": 168.901,
+          "endSec": 181.997
+        },
+        {
+          "id": 32,
+          "text": "Deep breathing, distraction.",
+          "translation": "深呼吸，分散注意力。",
+          "startSec": 182.031,
+          "endSec": 184.333
+        },
+        {
+          "id": 33,
+          "text": "No luck.",
+          "translation": "运气不好。",
+          "startSec": 184.35,
+          "endSec": 185.651
+        },
+        {
+          "id": 34,
+          "text": "They had also debated the fear endlessly.",
+          "translation": "他们还就恐惧进行了无休止的争论。",
+          "startSec": 185.684,
+          "endSec": 189.071
+        },
+        {
+          "id": 35,
+          "text": "His parents would reassure him, \"You won't get stung.\"",
+          "translation": "他的父母会向他保证：“你不会被蜇到的。”",
+          "startSec": 189.088,
+          "endSec": 192.224
+        },
+        {
+          "id": 36,
+          "text": "Sammy reminded his parents they were not fortune telling wizards in four words: \"How do you know?\"",
+          "translation": "萨米用四个字提醒父母，他们不是算命巫师：“你怎么知道？”",
+          "startSec": 192.825,
+          "endSec": 200.332
+        },
+        {
+          "id": 37,
+          "text": "This phobia was stealing Sammy's childhood one sunny summer day at a time when I sing Happy Birthday with a cringing 12-year-old, as loudly as possible, in the grocery store produce section when I rank order photos of vomit by chunk level, or, yes when I lick my own dirty shoes, I don't just do it for fun although, believe it or not, sometimes it's very fun.",
+          "translation": "这种恐惧症正在偷走萨米的童年。在一个阳光明媚的夏日，当我在杂货店农产品区与一个畏缩的 12 岁孩子尽可能大声地唱生日快乐歌时，我会按块级别排列呕吐物的照片，或者，是的，当我舔自己的脏鞋子时，我这样做并不只是为了好玩，尽管信不信由你，有时这很有趣。",
+          "startSec": 201.817,
+          "endSec": 228.727
+        },
+        {
+          "id": 38,
+          "text": "I do it for kids like Sammy, because there is a method to this madness.",
+          "translation": "我为像萨米这样的孩子做这件事，因为这种疯狂是有办法的。",
+          "startSec": 230.112,
+          "endSec": 234.8
+        },
+        {
+          "id": 39,
+          "text": "And after a decade of clinical practice helping kids be brave, it's become clear to me that the method, exposure therapy, isn't just the gold-standard treatment for child anxiety and OCD.",
+          "translation": "经过十年帮助孩子变得勇敢的临床实践，我清楚地认识到，暴露疗法不仅仅是治疗儿童焦虑和强迫症的黄金标准。",
+          "startSec": 234.817,
+          "endSec": 246.745
+        },
+        {
+          "id": 40,
+          "text": "It is a secret parenting playbook for raising kids that thrive.",
+          "translation": "这是一本培养孩子茁壮成长的秘密育儿手册。",
+          "startSec": 247.279,
+          "endSec": 252.067
+        },
+        {
+          "id": 41,
+          "text": "I want to share that secret playbook with you today.",
+          "translation": "今天我想与大家分享这本秘密剧本。",
+          "startSec": 253.002,
+          "endSec": 256.105
+        },
+        {
+          "id": 42,
+          "text": "But before we talk about what to do, we need to talk about what we are up against.",
+          "translation": "但在我们讨论该做什么之前，我们需要先讨论一下我们面临的挑战。",
+          "startSec": 256.789,
+          "endSec": 261.043
+        },
+        {
+          "id": 43,
+          "text": "It's a wild, worried world out there, folks.",
+          "translation": "伙计们，外面的世界是一个狂野、令人担忧的世界。",
+          "startSec": 261.06,
+          "endSec": 263.629
+        },
+        {
+          "id": 44,
+          "text": "According to the National Survey of Children's Health, pediatric anxiety diagnoses rose by nearly 30 percent from 2016 to 2019.",
+          "translation": "根据全国儿童健康调查，2016 年至 2019 年，儿科焦虑症诊断增加了近 30%。",
+          "startSec": 264.663,
+          "endSec": 274.206
+        },
+        {
+          "id": 45,
+          "text": "And that was before COVID.",
+          "translation": "那是在新冠疫情之前。",
+          "startSec": 274.239,
+          "endSec": 275.991
+        },
+        {
+          "id": 46,
+          "text": "But you don't need stats or lists.",
+          "translation": "但您不需要统计数据或列表。",
+          "startSec": 276.342,
+          "endSec": 278.494
+        },
+        {
+          "id": 47,
+          "text": "You have felt this, because thanks to evolutionary biology, when kids get anxious, adults get anxious too.",
+          "translation": "你已经感受到了这一点，因为由于进化生物学，当孩子们感到焦虑时，成年人也会感到焦虑。",
+          "startSec": 278.51,
+          "endSec": 286.218
+        },
+        {
+          "id": 48,
+          "text": "Now I have two girls, and home is the hardest clinic that I have to work in when one of my little gals looks up at me with the big teary eyes, aka the mommy bat signal, my nervous system does the same thing that yours does.",
+          "translation": "现在我有两个女儿，家是我必须工作的最艰苦的诊所，当我的一个小女儿用泪水汪汪的大眼睛抬头看着我时，也就是蝙蝠妈妈的信号，我的神经系统会做和你一样的事情。",
+          "startSec": 287.202,
+          "endSec": 301.817
+        },
+        {
+          "id": 49,
+          "text": "It responds as though I have discovered that the kitchen is on fire.",
+          "translation": "它的反应就好像我发现厨房着火了一样。",
+          "startSec": 301.834,
+          "endSec": 305.904
+        },
+        {
+          "id": 50,
+          "text": "The amygdala, the watchdog in our brain, starts barking and the fight-or-flight system kicks in and adrenaline surges, and there is this instant magical transfer of distress.",
+          "translation": "杏仁核，我们大脑中的看门狗，开始吠叫，战斗或逃跑系统启动，肾上腺素激增，痛苦的瞬间神奇转移。",
+          "startSec": 306.422,
+          "endSec": 316.432
+        },
+        {
+          "id": 51,
+          "text": "Her emergency becomes my emergency.",
+          "translation": "她的紧急情况变成了我的紧急情况。",
+          "startSec": 316.882,
+          "endSec": 319.968
+        },
+        {
+          "id": 52,
+          "text": "And in an emergency, what do you do?",
+          "translation": "在紧急情况下，你会做什么？",
+          "startSec": 320.536,
+          "endSec": 322.938
+        },
+        {
+          "id": 53,
+          "text": "You rescue the child.",
+          "translation": "你救救孩子。",
+          "startSec": 323.372,
+          "endSec": 325.474
+        },
+        {
+          "id": 54,
+          "text": "Now I am proof that professional degrees do not make you immune to this.",
+          "translation": "现在我证明专业学位并不能让你免受这种影响。",
+          "startSec": 326.558,
+          "endSec": 330.829
+        },
+        {
+          "id": 55,
+          "text": "In my eldest daughter's four short years of life, I have become a one-woman emotional SWAT team more times than I can count.",
+          "translation": "在我大女儿短暂的四年生命里，我无数次成为了一名单身女性情感特警队。",
+          "startSec": 330.863,
+          "endSec": 337.72
+        },
+        {
+          "id": 56,
+          "text": "I've answered questions for my daughter when she clams up with a new adult.",
+          "translation": "当我女儿对新成人保持沉默时，我曾为她回答过问题。",
+          "startSec": 338.303,
+          "endSec": 341.907
+        },
+        {
+          "id": 57,
+          "text": "I've sacrificed my sleep and allowed our little human space heater into the big bed for the night.",
+          "translation": "我牺牲了自己的睡眠，让我们的小型人体加热器在大床上过夜。",
+          "startSec": 341.924,
+          "endSec": 347.179
+        },
+        {
+          "id": 58,
+          "text": "I have forfeited all privacy while peeing because even that closed bathroom door feels too far away.",
+          "translation": "小便时我已经丧失了所有隐私，因为即使那扇关闭的浴室门也感觉太远了。",
+          "startSec": 347.212,
+          "endSec": 355.27
+        },
+        {
+          "id": 59,
+          "text": "Now all of this is what I call parenting for comfort, and it is the single most natural and well-meaning and deeply flawed thing that we do.",
+          "translation": "现在，所有这一切就是我所说的为了舒适而养育孩子，这是我们所做的最自然、善意却存在严重缺陷的事情。",
+          "startSec": 356.055,
+          "endSec": 366.248
+        },
+        {
+          "id": 60,
+          "text": "In the anxiety treatment world, parenting for comfort has another name: accommodation.",
+          "translation": "在焦虑治疗领域，为了舒适而养育孩子还有另一个名字：住宿。",
+          "startSec": 367.75,
+          "endSec": 372.337
+        }
+      ]
+    },
+    {
+      "id": "youtube-0JXeAM_5xq8-seed",
+      "title": "Are You Spending Your Money Wisely? | Wolfgang Schnellbaecher | TED",
+      "titleCn": "Are You Spending Your Money Wisely? | Wolfgang Schnellbaecher | TED",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "0JXeAM_5xq8",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "I've got two questions for each one of you.",
+          "translation": "我有两个问题要问你们每一个人。",
+          "startSec": 4.34,
+          "endSec": 6.9
+        },
+        {
+          "id": 2,
+          "text": "Question number one.",
+          "translation": "第一个问题。",
+          "startSec": 7.9,
+          "endSec": 9.14
+        },
+        {
+          "id": 3,
+          "text": "How much money did you spend in your entire life so far that already takes a bit to estimate, right?",
+          "translation": "到目前为止，你这一生花了多少钱，已经有点难以估算了，对吧？",
+          "startSec": 9.98,
+          "endSec": 16.94
+        },
+        {
+          "id": 4,
+          "text": "And question number two, did you spend your money wisely if you hesitate now and are not so sure, it likely means you're not a good buyer, frankly because you have not even defined for yourself what good buying truly is.",
+          "translation": "第二个问题，如果你现在犹豫并且不太确定，这可能意味着你不是一个好的买家，坦率地说，因为你甚至没有为自己定义什么是真正的好购买，你是否明智地花钱了。",
+          "startSec": 18.02,
+          "endSec": 36.34
+        },
+        {
+          "id": 5,
+          "text": "And that -- sorry for the bitter truth -- despite your buying things pretty much every day.",
+          "translation": "尽管你几乎每天都在买东西，但对这个痛苦的事实感到抱歉。",
+          "startSec": 37.34,
+          "endSec": 44.26
+        },
+        {
+          "id": 6,
+          "text": "Good buying can have such a massive effect on your entire life.",
+          "translation": "好的购买会对您的一生产生巨大的影响。",
+          "startSec": 44.3,
+          "endSec": 48.22
+        },
+        {
+          "id": 7,
+          "text": "And through your lifetime, you will spend a fortune, if not several fortunes, considering we're in Dubai.",
+          "translation": "考虑到我们在迪拜，在您的一生中，您将花费一大笔钱，甚至几笔钱。",
+          "startSec": 49.22,
+          "endSec": 56.58
+        },
+        {
+          "id": 8,
+          "text": "Spending it more wisely will either make you have to spend less or, for the same amount, make your life more luxurious, comfortable, sustainable, fun or whatever else you want it to be.",
+          "translation": "更明智地花钱要么会让你花更少的钱，要么花同样的钱，让你的生活更加奢华、舒适、可持续、有趣或任何你想要的东西。",
+          "startSec": 56.62,
+          "endSec": 71.53999999999999
+        },
+        {
+          "id": 9,
+          "text": "And the good news is there are people you can learn it from.",
+          "translation": "好消息是你可以向一些人学习。",
+          "startSec": 72.86,
+          "endSec": 76.22
+        },
+        {
+          "id": 10,
+          "text": "As a procurement leader in BCG, I work with them throughout the world.",
+          "translation": "作为 BCG 的采购主管，我在世界各地与他们合作。",
+          "startSec": 77.02,
+          "endSec": 81.14
+        },
+        {
+          "id": 11,
+          "text": "High tech companies, auto manufacturers, American Big Pharma, Middle Eastern oil companies, from Swiss clock manufacturers to Middle Eastern mass producers.",
+          "translation": "高科技公司、汽车制造商、美国大型制药公司、中东石油公司、从瑞士钟表制造商到中东大规模生产商。",
+          "startSec": 81.94,
+          "endSec": 92.82
+        },
+        {
+          "id": 12,
+          "text": "They all have to buy a lot of things -- steel, spare parts, intellectual property rights, fruit.",
+          "translation": "他们都必须购买很多东西——钢材、备件、知识产权、水果。",
+          "startSec": 92.86,
+          "endSec": 102.58
+        },
+        {
+          "id": 13,
+          "text": "Just last week, I did a live auction for a Norwegian salmon farm for fish.",
+          "translation": "就在上周，我为挪威一家三文鱼养殖场进行了现场拍卖。",
+          "startSec": 103.18,
+          "endSec": 108.34
+        },
+        {
+          "id": 14,
+          "text": "My promise to you is if you learn from the combined knowledge of these professional procurement teams, you will be a good buyer for the rest of your life.",
+          "translation": "我向您保证，如果您学习这些专业采购团队的综合知识，您将成为您一生的好买家。",
+          "startSec": 109.53999999999999,
+          "endSec": 118.7
+        },
+        {
+          "id": 15,
+          "text": "And on top, it's easy.",
+          "translation": "最重要的是，这很容易。",
+          "startSec": 119.53999999999999,
+          "endSec": 121.58
+        },
+        {
+          "id": 16,
+          "text": "It only boils down to three rules these companies do right.",
+          "translation": "归根结底，这些公司正确执行了三项规则。",
+          "startSec": 122.34,
+          "endSec": 126.26
+        },
+        {
+          "id": 17,
+          "text": "Number one, prioritize on what really matters.",
+          "translation": "第一，优先考虑真正重要的事情。",
+          "startSec": 127.18,
+          "endSec": 130.94
+        },
+        {
+          "id": 18,
+          "text": "Now that sounds simple, doesn’t it?",
+          "translation": "这听起来很简单，不是吗？",
+          "startSec": 132.02,
+          "endSec": 134.38
+        },
+        {
+          "id": 19,
+          "text": "The truth is, it's not, because there's a few words missing.",
+          "translation": "事实是，不是，因为少了几个词。",
+          "startSec": 135.14,
+          "endSec": 140.18
+        },
+        {
+          "id": 20,
+          "text": "Prioritize on what really matters for a group, together.",
+          "translation": "一起优先考虑对团队真正重要的事情。",
+          "startSec": 141.3,
+          "endSec": 145.22
+        },
+        {
+          "id": 21,
+          "text": "In every company, in almost every household, there's a few players.",
+          "translation": "每个公司，几乎每个家庭，都有一些玩家。",
+          "startSec": 146.26,
+          "endSec": 150.57999999999998
+        },
+        {
+          "id": 22,
+          "text": "And even for yourself, you're oftentimes not so sure how to prioritize healthy food versus cheaper prices.",
+          "translation": "即使对于你自己来说，你也常常不太确定如何优先考虑健康食品和便宜的价格。",
+          "startSec": 151.18,
+          "endSec": 158.82
+        },
+        {
+          "id": 23,
+          "text": "How about a more comfortable buying experience versus sustainable products?",
+          "translation": "与可持续产品相比，更舒适的购买体验怎么样？",
+          "startSec": 159.5,
+          "endSec": 164.62
+        },
+        {
+          "id": 24,
+          "text": "Do we pay extra just to make our neighbor jealous?",
+          "translation": "我们付额外的钱只是为了让邻居嫉妒吗？",
+          "startSec": 165.94,
+          "endSec": 169.1
+        },
+        {
+          "id": 25,
+          "text": "You might laugh, but I'm from Germany, and you might argue we built an entire auto industry purely on that feeling.",
+          "translation": "你可能会笑，但我来自德国，你可能会说我们纯粹基于这种感觉建立了整个汽车工业。",
+          "startSec": 170.02,
+          "endSec": 176.34
+        },
+        {
+          "id": 26,
+          "text": "Now professional buyers, they actually read the corporate strategy, they align with business partners to find out what’s it really that makes our company better.",
+          "translation": "现在是专业买家，他们实际上阅读了公司战略，他们与业务合作伙伴保持一致，以找出真正使我们公司变得更好的因素。",
+          "startSec": 179.1,
+          "endSec": 188.22
+        },
+        {
+          "id": 27,
+          "text": "The superstar buyers go even further.",
+          "translation": "超级明星买家走得更远。",
+          "startSec": 188.7,
+          "endSec": 191.26
+        },
+        {
+          "id": 28,
+          "text": "They graphically pin down what are the priorities and then share with everybody.",
+          "translation": "他们以图形方式确定优先事项，然后与所有人分享。",
+          "startSec": 191.3,
+          "endSec": 196.54
+        },
+        {
+          "id": 29,
+          "text": "For your life, it might look like this.",
+          "translation": "对于你的生活来说，它可能是这样的。",
+          "startSec": 196.57999999999998,
+          "endSec": 199.26
+        },
+        {
+          "id": 30,
+          "text": "Maybe, at the start, during education, start of your career, you don't have so much money and therefore you want to have fun, but you have some cost consciousness.",
+          "translation": "也许，在一开始，在教育期间，在你的职业生涯开始时，你没有那么多钱，因此你想玩得开心，但你有一些成本意识。",
+          "startSec": 199.26,
+          "endSec": 208.46
+        },
+        {
+          "id": 31,
+          "text": "A bit later, you might form a family, [have] children.",
+          "translation": "稍后，你可能会组建家庭，生孩子。",
+          "startSec": 209.02,
+          "endSec": 211.9258823529412
+        },
+        {
+          "id": 32,
+          "text": "And you care a lot about quality of the food, of the toys, of the furniture, just to have it all right for them.",
+          "translation": "你非常关心食物、玩具、家具的质量，只是为了让他们一切都好。",
+          "startSec": 211.9258823529412,
+          "endSec": 218.9
+        },
+        {
+          "id": 33,
+          "text": "Maybe, a bit later, you care a lot about comfort.",
+          "translation": "也许，过了一会儿，你会非常关心舒适度。",
+          "startSec": 218.9,
+          "endSec": 222.18
+        },
+        {
+          "id": 34,
+          "text": "You just want to have an easygoing lifestyle.",
+          "translation": "你只是想拥有一种轻松的生活方式。",
+          "startSec": 222.22,
+          "endSec": 224.86
+        },
+        {
+          "id": 35,
+          "text": "I've even seen a lot of families like this, who have slightly different priorities.",
+          "translation": "我什至见过很多这样的家庭，他们的优先事项略有不同。",
+          "startSec": 224.9,
+          "endSec": 230.66
+        },
+        {
+          "id": 36,
+          "text": "Now the core thing is to be a good buyer, you don't have to follow a predefined set of rules.",
+          "translation": "现在的核心是成为一个好的买家，你不必遵循一组预先定义的规则。",
+          "startSec": 233.06,
+          "endSec": 238.94
+        },
+        {
+          "id": 37,
+          "text": "It's just for yourself and your loved ones, you need to have these priorities very clear.",
+          "translation": "这只是为了你自己和你所爱的人，你需要非常清楚这些优先事项。",
+          "startSec": 239.34,
+          "endSec": 245.14
+        },
+        {
+          "id": 38,
+          "text": "And now, we are already at rule number two.",
+          "translation": "现在，我们已经处于第二条规则了。",
+          "startSec": 245.18,
+          "endSec": 247.78
+        },
+        {
+          "id": 39,
+          "text": "Influence your allies.",
+          "translation": "影响你的盟友。",
+          "startSec": 248.78,
+          "endSec": 250.02
+        },
+        {
+          "id": 40,
+          "text": "Imagine the following situation.",
+          "translation": "想象一下以下情况。",
+          "startSec": 251.38,
+          "endSec": 253.54
+        },
+        {
+          "id": 41,
+          "text": "You're off to buy a new car.",
+          "translation": "你要去买一辆新车了。",
+          "startSec": 253.58,
+          "endSec": 255.06
+        },
+        {
+          "id": 42,
+          "text": "You arrive at the dealership, and the first thing that happens is your kids climb into the car.",
+          "translation": "您到达经销店，发生的第一件事就是您的孩子爬上车。",
+          "startSec": 255.86,
+          "endSec": 261.66
+        },
+        {
+          "id": 43,
+          "text": "They have dirty boots on and they yell and tell you how much they love it.",
+          "translation": "他们穿着脏靴子，大喊大叫，告诉你他们有多喜欢它。",
+          "startSec": 261.7,
+          "endSec": 266.9
+        },
+        {
+          "id": 44,
+          "text": "The colors, the design, everything.",
+          "translation": "颜色、设计，一切。",
+          "startSec": 266.94,
+          "endSec": 269.58
+        },
+        {
+          "id": 45,
+          "text": "You're already a bit on your back foot, starting to negotiate, and the car dealer basically tells you that right now, cars with dirty seats are a bit rare.",
+          "translation": "你已经有点处于不利地位，开始谈判，汽车经销商基本上告诉你，现在座位脏的汽车有点罕见。",
+          "startSec": 270.78,
+          "endSec": 280.7
+        },
+        {
+          "id": 46,
+          "text": "He can't do anything on the price.",
+          "translation": "他在价格上无能为力。",
+          "startSec": 280.74,
+          "endSec": 282.58
+        },
+        {
+          "id": 47,
+          "text": "In that moment, your wife gives you a look, like, \"Please don't mess it up.",
+          "translation": "在那一刻，你的妻子看了你一眼，好像在说：“请别搞砸了。",
+          "startSec": 283.5,
+          "endSec": 289.72
+        },
+        {
+          "id": 48,
+          "text": "I also want this car so much.\"",
+          "translation": "我也非常想要这辆车。”",
+          "startSec": 289.72,
+          "endSec": 291.74
+        },
+        {
+          "id": 49,
+          "text": "You will very likely not buy the car.",
+          "translation": "你很可能不会买这辆车。",
+          "startSec": 292.78,
+          "endSec": 295.5
+        },
+        {
+          "id": 50,
+          "text": "You will for sure not buy it at a good price.",
+          "translation": "你肯定不会以优惠的价格买到它。",
+          "startSec": 296.22,
+          "endSec": 298.78
+        },
+        {
+          "id": 51,
+          "text": "In business, the good buyers, they know they have to align with their allies up front who's going to say what in a negotiation, after negotiation, before negotiation.",
+          "translation": "在商业上，好的买家知道他们必须预先与盟友保持一致，他们会在谈判中、谈判后、谈判前说什么。",
+          "startSec": 300.06,
+          "endSec": 311.74
+        },
+        {
+          "id": 52,
+          "text": "Only if these things are clear, they can ensure they really strike the best deals.",
+          "translation": "只有弄清楚这些事情，他们才能确保真正达成最好的交易。",
+          "startSec": 313.3,
+          "endSec": 318.26
+        },
+        {
+          "id": 53,
+          "text": "The superstar buyers go even further.",
+          "translation": "超级明星买家走得更远。",
+          "startSec": 319.02,
+          "endSec": 321.34
+        },
+        {
+          "id": 54,
+          "text": "They have the ability to influence the stakeholders on what they really want.",
+          "translation": "他们有能力影响利益相关者，让他们知道他们真正想要什么。",
+          "startSec": 322.42,
+          "endSec": 327.18
+        },
+        {
+          "id": 55,
+          "text": "Let me tell you about the inverting method.",
+          "translation": "我给大家讲一下反转的方法。",
+          "startSec": 327.22,
+          "endSec": 330.06
+        },
+        {
+          "id": 56,
+          "text": "I once had a workshop with a big railway company.",
+          "translation": "我曾经在一家大铁路公司举办过一个研讨会。",
+          "startSec": 330.1,
+          "endSec": 333.5
+        },
+        {
+          "id": 57,
+          "text": "We were supposed to reduce the cost of big steel tracks, and we had a group sitting there of rather old buyers basically telling us everything is optimal.",
+          "translation": "我们应该降低大型钢轨的成本，我们有一群相当老的买家坐在那里，基本上告诉我们一切都是最佳的。",
+          "startSec": 334.58,
+          "endSec": 344.22
+        },
+        {
+          "id": 58,
+          "text": "After 60 minutes, I was sitting in front of an empty flip chart, panicking a bit.",
+          "translation": "60 分钟后，我坐在一张空的活动挂图前，有点惊慌。",
+          "startSec": 345.06,
+          "endSec": 349.78
+        },
+        {
+          "id": 59,
+          "text": "My colleague, however, was very cool.",
+          "translation": "然而，我的同事非常酷。",
+          "startSec": 350.46,
+          "endSec": 352.86
+        },
+        {
+          "id": 60,
+          "text": "He just turned around to the crowd and said, \"Let's forget this exercise for a moment.",
+          "translation": "他只是转身对人群说：“让我们暂时忘掉这个练习吧。",
+          "startSec": 352.9,
+          "endSec": 357.9
+        }
+      ]
+    },
+    {
+      "id": "youtube-7ZdPKEf-LXA-seed",
+      "title": "What Losing Everything Taught Me About Resilience | Jane Marie Chen | TED",
+      "titleCn": "What Losing Everything Taught Me About Resilience | Jane Marie Chen | TED",
+      "source": "TED YouTube Latest",
+      "category": "ted",
+      "difficulty": 2,
+      "youtubeVideoId": "7ZdPKEf-LXA",
+      "sentences": [
+        {
+          "id": 1,
+          "text": "Do you ever wonder who you are beyond your job, your titles, your accomplishments?",
+          "translation": "你有没有想过，除了你的工作、你的头衔、你的成就之外，你是谁？",
+          "startSec": 8.039,
+          "endSec": 14.612
+        },
+        {
+          "id": 2,
+          "text": "This is the question I was forced to confront when the company I'd spent a decade pouring my soul into shut down.",
+          "translation": "当我花了十年心血投入的公司倒闭时，我被迫面对这个问题。",
+          "startSec": 15.212,
+          "endSec": 22.987
+        },
+        {
+          "id": 3,
+          "text": "My work had been my entire identity, and without it, I didn't know who I was anymore.",
+          "translation": "我的工作就是我的全部身份，没有它，我就不知道自己是谁了。",
+          "startSec": 23.687,
+          "endSec": 29.527
+        },
+        {
+          "id": 4,
+          "text": "Ten years earlier, I had co-founded Embrace, a social enterprise that created a low-cost portable incubator for premature babies in underserved communities.",
+          "translation": "十年前，我与他人共同创立了 Embrace，这是一家社会企业，为服务匮乏的社区中的早产儿创建了一款低成本便携式保温箱。",
+          "startSec": 30.594,
+          "endSec": 41.238
+        },
+        {
+          "id": 5,
+          "text": "Our technology could work without constant electricity, making it usable in remote parts of the world.",
+          "translation": "我们的技术可以在没有持续电力的情况下工作，使其可以在世界偏远地区使用。",
+          "startSec": 41.739,
+          "endSec": 47.378
+        },
+        {
+          "id": 6,
+          "text": "We set an audacious goal: to save a million babies.",
+          "translation": "我们设定了一个大胆的目标：拯救一百万婴儿。",
+          "startSec": 48.012,
+          "endSec": 52.183
+        },
+        {
+          "id": 7,
+          "text": "I moved to India, where over 20 percent of all the world's premature babies are born, and I made that mission my life over the years, we saved thousands of babies.",
+          "translation": "我搬到了印度，世界上超过 20% 的早产儿出生在印度，多年来我将这一使命作为我的一生，我们拯救了数千名婴儿。",
+          "startSec": 52.883,
+          "endSec": 63.794
+        },
+        {
+          "id": 8,
+          "text": "Babies like Nathan, who was abandoned on a street weighing just two and a half pounds.",
+          "translation": "像内森这样的婴儿，被遗弃在街上，体重只有两磅半。",
+          "startSec": 63.828,
+          "endSec": 68.866
+        },
+        {
+          "id": 9,
+          "text": "He was rescued by an orphanage and kept inside our incubator for weeks.",
+          "translation": "他被一家孤儿院救了出来，并在我们的孵化器里关了几个星期。",
+          "startSec": 69.333,
+          "endSec": 74.004
+        },
+        {
+          "id": 10,
+          "text": "He survived.",
+          "translation": "他活了下来。",
+          "startSec": 74.472,
+          "endSec": 75.906
+        },
+        {
+          "id": 11,
+          "text": "Seven months later, I visited the orphanage and I held him in my arms.",
+          "translation": "七个月后，我来到孤儿院，把他抱在怀里。",
+          "startSec": 76.474,
+          "endSec": 81.479
+        },
+        {
+          "id": 12,
+          "text": "A few months after that, he was adopted by a family in Chicago.",
+          "translation": "几个月后，他被芝加哥的一个家庭收养。",
+          "startSec": 82.213,
+          "endSec": 86.617
+        },
+        {
+          "id": 13,
+          "text": "Stories like this kept me going.",
+          "translation": "这样的故事让我继续前进。",
+          "startSec": 87.818,
+          "endSec": 89.82
+        },
+        {
+          "id": 14,
+          "text": "Along the way, we were recognized by President Obama and funded by Beyonce.",
+          "translation": "一路走来，我们得到了奥巴马总统的认可，并得到了碧昂丝的资助。",
+          "startSec": 90.354,
+          "endSec": 94.85900000000001
+        },
+        {
+          "id": 15,
+          "text": "Our work was featured in headlines all over the world.",
+          "translation": "我们的工作出现在世界各地的头条新闻中。",
+          "startSec": 97.72800000000001,
+          "endSec": 100.898
+        },
+        {
+          "id": 16,
+          "text": "On the outside, it looked like a success story.",
+          "translation": "从表面上看，这似乎是一个成功的故事。",
+          "startSec": 101.732,
+          "endSec": 104.935
+        },
+        {
+          "id": 17,
+          "text": "But the truth was, on the inside, I felt like I was drowning in stress, exhaustion, self-doubt.",
+          "translation": "但事实是，在内心深处，我感觉自己淹没在压力、疲惫和自我怀疑之中。",
+          "startSec": 105.836,
+          "endSec": 114.545
+        },
+        {
+          "id": 18,
+          "text": "The work weighed so heavily on me, there were moments I felt like I could barely breathe.",
+          "translation": "这项工作对我来说太沉重了，有时我感觉自己几乎无法呼吸。",
+          "startSec": 114.87899999999999,
+          "endSec": 119.316
+        },
+        {
+          "id": 19,
+          "text": "Ten years in, after countless setbacks from manufacturing to distribution to funding challenges, we had to shut down the company.",
+          "translation": "十年过去了，在经历了从制造到分销再到资金挑战的无数挫折后，我们不得不关闭公司。",
+          "startSec": 120.151,
+          "endSec": 129.16
+        },
+        {
+          "id": 20,
+          "text": "I failed.",
+          "translation": "我失败了。",
+          "startSec": 129.96,
+          "endSec": 131.195
+        },
+        {
+          "id": 21,
+          "text": "I hit the lowest point of my life.",
+          "translation": "我达到了人生的最低谷。",
+          "startSec": 131.962,
+          "endSec": 133.631
+        },
+        {
+          "id": 22,
+          "text": "I was having panic attacks, I was depressed, I couldn't sleep, I felt completely broken in mind, body and spirit.",
+          "translation": "我惊恐发作，心情沮丧，无法入睡，感觉思想、身体和精神都完全崩溃了。",
+          "startSec": 133.664,
+          "endSec": 140.738
+        },
+        {
+          "id": 23,
+          "text": "So I decided to set off on a healing journey.",
+          "translation": "于是我决定踏上治愈之旅。",
+          "startSec": 141.939,
+          "endSec": 144.84199999999998
+        },
+        {
+          "id": 24,
+          "text": "I packed a surfboard and a suitcase",
+          "translation": "我带了一个冲浪板和一个手提箱",
+          "startSec": 145.242,
+          "endSec": 147.2914193548387
+        },
+        {
+          "id": 25,
+          "text": "And I bought a one-way ticket to Indonesia, where I threw myself into healing with the same intensity I'd once poured into my company.",
+          "translation": "我买了一张去印度尼西亚的单程票，在那里我全身心地投入到治疗中，就像我曾经在公司里投入的那样。",
+          "startSec": 147.2914193548387,
+          "endSec": 154.31799999999998
+        },
+        {
+          "id": 26,
+          "text": "I was willing to do anything because this was a matter of survival.",
+          "translation": "我愿意做任何事，因为这事关生存。",
+          "startSec": 154.91899999999998,
+          "endSec": 159.59
+        },
+        {
+          "id": 27,
+          "text": "I was going to heal the shit out of myself.",
+          "translation": "我要治愈自己的伤痛。",
+          "startSec": 160.024,
+          "endSec": 162.826
+        },
+        {
+          "id": 28,
+          "text": "I meditated for days in silence in the jungle until I hallucinated although I'm pretty sure those cockroaches on steroids were real.",
+          "translation": "我在丛林里默默冥想了好几天，直到出现幻觉，尽管我很确定那些服用类固醇的蟑螂是真实的。",
+          "startSec": 166.564,
+          "endSec": 175.172
+        },
+        {
+          "id": 29,
+          "text": "I did psychedelic journeys.",
+          "translation": "我进行了迷幻之旅。",
+          "startSec": 176.874,
+          "endSec": 178.542
+        },
+        {
+          "id": 30,
+          "text": "I dove with sharks so I could learn to relax.",
+          "translation": "我和鲨鱼一起潜水，这样我就可以学会放松。",
+          "startSec": 179.543,
+          "endSec": 182.546
+        },
+        {
+          "id": 31,
+          "text": "I don't know why I couldn't just get a massage like a normal person.",
+          "translation": "我不知道为什么我不能像正常人一样接受按摩。",
+          "startSec": 183.047,
+          "endSec": 186.25
+        },
+        {
+          "id": 32,
+          "text": "I burned holes in my leg for a frog poison ceremony.",
+          "translation": "为了举行毒青蛙仪式，我在腿上烧了几个洞。",
+          "startSec": 188.352,
+          "endSec": 191.889
+        },
+        {
+          "id": 33,
+          "text": "It was supposed to purge my past.",
+          "translation": "它应该清除我的过去。",
+          "startSec": 191.889,
+          "endSec": 193.99099999999999
+        },
+        {
+          "id": 34,
+          "text": "Instead, I think I purged everything I'd ever eaten in my entire life.",
+          "translation": "相反，我认为我清除了我一生中吃过的所有东西。",
+          "startSec": 194.024,
+          "endSec": 198.395
+        },
+        {
+          "id": 35,
+          "text": "But the real breakthroughs came only when I began to confront my childhood.",
+          "translation": "但真正的突破只有在我开始面对自己的童年时才出现。",
+          "startSec": 200.297,
+          "endSec": 204.635
+        },
+        {
+          "id": 36,
+          "text": "Growing up, my father showed his love by pushing me to excel.",
+          "translation": "在我的成长过程中，父亲通过督促我追求卓越来表达他的爱。",
+          "startSec": 205.636,
+          "endSec": 209.273
+        },
+        {
+          "id": 37,
+          "text": "I remember in second grade, on weekend mornings, I would cuddle with him and he would warm my cold feet under his as he quizzed me on my times tables.",
+          "translation": "我记得二年级的时候，周末的早晨，我会拥抱他，他会用他的脚温暖我冰冷的脚，同时他会用乘法表来测试我。",
+          "startSec": 209.807,
+          "endSec": 218.415
+        },
+        {
+          "id": 38,
+          "text": "Thanks to those drills, I won all the math competitions in my class when I didn't meet his expectations, I was punished.",
+          "translation": "多亏了这些练习，我赢得了班上所有的数学比赛，当我没有达到他的期望时，我受到了惩罚。",
+          "startSec": 219.35,
+          "endSec": 227.992
+        },
+        {
+          "id": 39,
+          "text": "Violently when I was 12 years old, I came home from school one day and I decided to read my history book on the front lawn.",
+          "translation": "当我12岁的时候，有一天，我放学回家，决定在门前的草坪上读我的历史书。",
+          "startSec": 228.025,
+          "endSec": 236.333
+        },
+        {
+          "id": 40,
+          "text": "It was a beautiful sunny day when my father came home and saw this, he flew into a rage.",
+          "translation": "那是一个阳光明媚的日子，父亲回到家看到这一幕，勃然大怒。",
+          "startSec": 236.333,
+          "endSec": 242.74
+        },
+        {
+          "id": 41,
+          "text": "He decided homework shouldn't be done on a lawn, it should be done at a desk.",
+          "translation": "他认为家庭作业不应该在草坪上完成，而应该在桌子上完成。",
+          "startSec": 243.274,
+          "endSec": 247.911
+        },
+        {
+          "id": 42,
+          "text": "And so he beat me.",
+          "translation": "所以他打败了我。",
+          "startSec": 248.679,
+          "endSec": 250.347
+        },
+        {
+          "id": 43,
+          "text": "And he demanded that I apologize.",
+          "translation": "他要求我道歉。",
+          "startSec": 251.115,
+          "endSec": 253.784
+        },
+        {
+          "id": 44,
+          "text": "I refused because for the first time in my life, I knew I had done nothing wrong.",
+          "translation": "我拒绝了，因为这是我一生中第一次，我知道我没有做错任何事。",
+          "startSec": 255.052,
+          "endSec": 259.556
+        },
+        {
+          "id": 45,
+          "text": "I also knew I was utterly powerless.",
+          "translation": "我也知道我完全无能为力。",
+          "startSec": 260.424,
+          "endSec": 263.093
+        },
+        {
+          "id": 46,
+          "text": "As I did this healing work, I finally connected the dots.",
+          "translation": "当我进行这项治疗工作时，我终于把这些点联系起来了。",
+          "startSec": 264.328,
+          "endSec": 267.998
+        },
+        {
+          "id": 47,
+          "text": "Feeling so powerless throughout my childhood had driven me to help the most powerless people in the world.",
+          "translation": "我整个童年都感到如此无能为力，这促使我去帮助世界上最无能为力的人。",
+          "startSec": 268.465,
+          "endSec": 275.239
+        },
+        {
+          "id": 48,
+          "text": "My pain had become my purpose.",
+          "translation": "我的痛苦已成为我的目的。",
+          "startSec": 275.906,
+          "endSec": 278.475
+        },
+        {
+          "id": 49,
+          "text": "But it had also become my shadow.",
+          "translation": "但它也成为了我的影子。",
+          "startSec": 279.14300000000003,
+          "endSec": 281.478
+        },
+        {
+          "id": 50,
+          "text": "No matter how many babies I saved or how much recognition I received, I never felt like I was enough.",
+          "translation": "无论我拯救了多少婴儿，无论我获得了多少认可，我都从未觉得自己足够了。",
+          "startSec": 281.512,
+          "endSec": 288.485
+        },
+        {
+          "id": 51,
+          "text": "Sometimes our trauma gets channeled into drive, perfectionism, overwork.",
+          "translation": "有时我们的创伤会转化为动力、完美主义、过度劳累。",
+          "startSec": 289.653,
+          "endSec": 296.26
+        },
+        {
+          "id": 52,
+          "text": "Some people numb their pain with substances.",
+          "translation": "有些人用物质来麻痹疼痛。",
+          "startSec": 296.76,
+          "endSec": 299.897
+        },
+        {
+          "id": 53,
+          "text": "I numbed mine with productivity.",
+          "translation": "我的生产力让我麻木了。",
+          "startSec": 299.93,
+          "endSec": 302.066
+        },
+        {
+          "id": 54,
+          "text": "I cared deeply about my work, but I also believe that my worth depended on what I achieved.",
+          "translation": "我非常关心我的工作，但我也相信我的价值取决于我所取得的成就。",
+          "startSec": 302.966,
+          "endSec": 310.24
+        },
+        {
+          "id": 55,
+          "text": "I finally stopped trying to achieve my way out of pain.",
+          "translation": "我终于不再试图摆脱痛苦了。",
+          "startSec": 311.608,
+          "endSec": 315.279
+        },
+        {
+          "id": 56,
+          "text": "Here's how I found my way back to myself.",
+          "translation": "这就是我如何找到回归自我的方法。",
+          "startSec": 315.779,
+          "endSec": 318.048
+        },
+        {
+          "id": 57,
+          "text": "First, I slowed down and I just let myself feel.",
+          "translation": "首先，我放慢速度，让自己感受。",
+          "startSec": 319.316,
+          "endSec": 323.887
+        },
+        {
+          "id": 58,
+          "text": "For most of my life, I had disconnected from my emotions to survive.",
+          "translation": "在我生命的大部分时间里，我为了生存而脱离了自己的情绪。",
+          "startSec": 324.488,
+          "endSec": 328.158
+        },
+        {
+          "id": 59,
+          "text": "Research shows most of us do this.",
+          "translation": "研究表明我们大多数人都会这样做。",
+          "startSec": 328.759,
+          "endSec": 330.794
+        },
+        {
+          "id": 60,
+          "text": "We avoid painful emotions through working, drinking, social media and other endless distractions.",
+          "translation": "我们通过工作、饮酒、社交媒体和其他无休止的干扰来避免痛苦的情绪。",
+          "startSec": 330.828,
+          "endSec": 336.5
+        }
+      ]
+    }
+  ],
+  "failures": []
+}

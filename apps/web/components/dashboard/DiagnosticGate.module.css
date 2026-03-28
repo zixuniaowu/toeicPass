@@ -1,0 +1,24 @@
+.panel {
+  border: 1px solid #cfe0f5;
+  border-radius: 14px;
+  padding: var(--space-5);
+  background: linear-gradient(140deg, #f5faff, #edf6ff 56%, #eefaf3);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.lead {
+  margin: 0;
+  color: #1e293b;
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+  color: #334155;
+  display: grid;
+  gap: 6px;
+}
+

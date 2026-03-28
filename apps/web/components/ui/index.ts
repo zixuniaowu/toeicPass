@@ -12,3 +12,4 @@ export { Input } from "./Input";
 export { Select } from "./Select";
 
 export { AudioPlayer } from "./AudioPlayer";
+export { SelectionPronunciation } from "./SelectionPronunciation";

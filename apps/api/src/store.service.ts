@@ -1,4 +1,12 @@
 import { Injectable } from "@nestjs/common";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs";
+import { dirname, resolve } from "path";
+import {
+  buildQuestionCorpus,
+  isKnownPart1Image,
+  isPart1ImageMatch,
+  resolvePart1ImageFromQuestion,
+} from "./question-quality";
 import {
   Attempt,
   AttemptItem,
@@ -28,7 +36,218 @@ import * as questionBankExpansion4 from "./question-bank-expansion-4.json";
 import * as questionBankExpansion5 from "./question-bank-expansion-5.json";
 import * as questionBankExpansion6 from "./question-bank-expansion-6.json";
 import * as questionBankExpansion7 from "./question-bank-expansion-7.json";
+import * as questionBankExpansion8 from "./question-bank-expansion-8.json";
 import * as vocabSeedData from "./vocab-seed.json";
+import * as vocabSeedData1 from "./vocab-seed-1.json";
+import * as vocabSeedData2 from "./vocab-seed-2.json";
+
+type ImportedQuestion = {
+  partNo: number;
+  skillTag?: string;
+  difficulty?: number;
+  stem?: string;
+  passage?: string;
+  explanation?: string;
+  mediaUrl?: string;
+  imageUrl?: string;
+  options?: Array<{ key?: string; text?: string }>;
+  correctKey?: string;
+};
+
+type ImportedQuestionSource = "bank" | "official_pack";
+
+type ImportedQuestionWithSource = ImportedQuestion & {
+  __source: ImportedQuestionSource;
+};
+
+type VocabularySeedCard = {
+  term: string;
+  pos: string;
+  definition: string;
+  example: string;
+  sourcePart: number;
+  tags: string[];
+};
+
+const VOCAB_STOP_WORDS = new Set([
+  "a",
+  "an",
+  "and",
+  "are",
+  "as",
+  "at",
+  "be",
+  "been",
+  "being",
+  "but",
+  "by",
+  "can",
+  "could",
+  "did",
+  "do",
+  "does",
+  "for",
+  "from",
+  "had",
+  "has",
+  "have",
+  "if",
+  "in",
+  "into",
+  "is",
+  "it",
+  "its",
+  "may",
+  "might",
+  "must",
+  "of",
+  "on",
+  "or",
+  "our",
+  "should",
+  "so",
+  "that",
+  "the",
+  "their",
+  "them",
+  "there",
+  "these",
+  "they",
+  "this",
+  "those",
+  "to",
+  "was",
+  "we",
+  "were",
+  "what",
+  "when",
+  "where",
+  "which",
+  "who",
+  "why",
+  "will",
+  "with",
+  "would",
+  "you",
+  "your",
+  "about",
+  "after",
+  "before",
+  "during",
+  "under",
+  "over",
+  "within",
+  "without",
+  "between",
+  "across",
+  "onto",
+  "upon",
+  "only",
+  "also",
+  "then",
+  "than",
+  "here",
+  "please",
+  "today",
+  "tomorrow",
+  "yesterday",
+  "first",
+  "second",
+  "third",
+  "last",
+  "next",
+  "year",
+  "month",
+  "week",
+  "time",
+  "need",
+  "needs",
+  "needed",
+  "take",
+  "takes",
+  "took",
+  "taken",
+  "work",
+  "works",
+  "working",
+  "question",
+  "questions",
+  "option",
+  "options",
+  "answer",
+  "answers",
+  "correct",
+  "incorrect",
+  "choose",
+  "choosing",
+  "selected",
+  "selection",
+  "prompt",
+  "prompts",
+  "sentence",
+  "sentences",
+  "excerpt",
+  "audio",
+  "image",
+  "images",
+  "toeic",
+  "style",
+  "practice",
+  "item",
+  "items",
+  "context",
+  "contexts",
+  "part",
+  "parts",
+  "speaker",
+  "speakers",
+  "likely",
+  "most",
+  "least",
+  "best",
+  "according",
+  "based",
+  "detail",
+  "details",
+  "main",
+  "purpose",
+  "following",
+  "blank",
+  "blanks",
+  "dear",
+  "conversation",
+  "talk",
+  "photo",
+  "response",
+  "baseform",
+  "logical",
+  "logically",
+  "explicitly",
+  "implicit",
+  "implicitly",
+  "grammar",
+  "grammatical",
+  "verb",
+  "verbs",
+  "noun",
+  "nouns",
+  "adjective",
+  "adjectives",
+  "adverb",
+  "adverbs",
+  "keyword",
+  "keywords",
+  "distractor",
+  "distractors",
+  "action",
+  "requirement",
+  "requirements",
+  "because",
+  "therefore",
+  "however",
+]);
+
+const VOCAB_DICTIONARY_TERM_PATTERN = /^[a-z][a-z' -]{1,63}$/;
 
 @Injectable()
 export class StoreService {
@@ -51,12 +270,154 @@ export class StoreService {
   public ipResults: IpResult[] = [];
   public auditLogs: AuditLog[] = [];
 
-  ensureSeedQuestions(tenantId: string, createdBy?: string): void {
-    const seededStemSet = new Set(
-      this.questions
-        .filter((item) => item.tenantId === tenantId)
-        .map((item) => item.stem.trim().toLowerCase()),
+  private readonly snapshotFile =
+    process.env.STORE_SNAPSHOT_FILE ?? (process.env.NODE_ENV === "test" ? "" : ".runtime/store-snapshot.json");
+  private readonly snapshotEnabled = this.snapshotFile.trim().length > 0;
+  private readonly officialPackFile =
+    process.env.OFFICIAL_QUESTION_PACK_FILE ?? ".runtime/question-bank-official-pack.json";
+  private officialPackCache: ImportedQuestion[] | null = null;
+  private questionBankCache: ImportedQuestionWithSource[] | null = null;
+  private vocabularySeedCache: VocabularySeedCard[] | null = null;
+
+  constructor() {
+    if (this.snapshotEnabled) {
+      this.loadSnapshot();
+      this.normalizeLearningHistory();
+    }
+  }
+
+  hasOfficialQuestionPack(): boolean {
+    return this.loadOfficialQuestionPack().length > 0;
+  }
+
+  persistSnapshot(): void {
+    if (!this.snapshotEnabled) {
+      return;
+    }
+    const payload = {
+      version: 1,
+      savedAt: nowIso(),
+      data: {
+        tenants: this.tenants,
+        users: this.users,
+        memberships: this.memberships,
+        goals: this.goals,
+        questions: this.questions,
+        attempts: this.attempts,
+        attemptItems: this.attemptItems,
+        mistakeNotes: this.mistakeNotes,
+        reviewCards: this.reviewCards,
+        vocabularyCards: this.vocabularyCards,
+        predictions: this.predictions,
+        orgUnits: this.orgUnits,
+        ipCampaigns: this.ipCampaigns,
+        ipCandidates: this.ipCandidates,
+        ipSessions: this.ipSessions,
+        ipSessionCandidates: this.ipSessionCandidates,
+        ipResults: this.ipResults,
+        auditLogs: this.auditLogs,
+      },
+    };
+
+    try {
+      mkdirSync(dirname(this.snapshotFile), { recursive: true });
+      writeFileSync(this.snapshotFile, JSON.stringify(payload), "utf8");
+    } catch {
+      // Persistence is best-effort in local mode; runtime should keep serving requests.
+    }
+  }
+
+  private loadSnapshot(): void {
+    if (!this.snapshotEnabled) {
+      return;
+    }
+    if (!existsSync(this.snapshotFile)) {
+      return;
+    }
+    try {
+      const parsed = JSON.parse(readFileSync(this.snapshotFile, "utf8")) as {
+        data?: Partial<StoreService>;
+      };
+      const data = parsed.data ?? {};
+      this.tenants = Array.isArray(data.tenants) ? data.tenants : [];
+      this.users = Array.isArray(data.users) ? data.users : [];
+      this.memberships = Array.isArray(data.memberships) ? data.memberships : [];
+      this.goals = Array.isArray(data.goals) ? data.goals : [];
+      this.questions = Array.isArray(data.questions) ? data.questions : [];
+      this.attempts = Array.isArray(data.attempts) ? data.attempts : [];
+      this.attemptItems = Array.isArray(data.attemptItems) ? data.attemptItems : [];
+      this.mistakeNotes = Array.isArray(data.mistakeNotes) ? data.mistakeNotes : [];
+      this.reviewCards = Array.isArray(data.reviewCards) ? data.reviewCards : [];
+      this.vocabularyCards = Array.isArray(data.vocabularyCards) ? data.vocabularyCards : [];
+      this.predictions = Array.isArray(data.predictions) ? data.predictions : [];
+      this.orgUnits = Array.isArray(data.orgUnits) ? data.orgUnits : [];
+      this.ipCampaigns = Array.isArray(data.ipCampaigns) ? data.ipCampaigns : [];
+      this.ipCandidates = Array.isArray(data.ipCandidates) ? data.ipCandidates : [];
+      this.ipSessions = Array.isArray(data.ipSessions) ? data.ipSessions : [];
+      this.ipSessionCandidates = Array.isArray(data.ipSessionCandidates) ? data.ipSessionCandidates : [];
+      this.ipResults = Array.isArray(data.ipResults) ? data.ipResults : [];
+      this.auditLogs = Array.isArray(data.auditLogs) ? data.auditLogs : [];
+    } catch {
+      // Ignore invalid snapshot and continue with fresh in-memory state.
+    }
+  }
+
+  private normalizeLearningHistory(): void {
+    if (this.attemptItems.length === 0 && this.reviewCards.length === 0) {
+      return;
+    }
+
+    // Legacy snapshots may mark unanswered questions as incorrect. Normalize them first.
+    this.attemptItems.forEach((item) => {
+      if (typeof item.selectedKey !== "string" && item.isCorrect === false) {
+        delete (item as { isCorrect?: boolean }).isCorrect;
+      }
+    });
+
+    if (this.reviewCards.length === 0) {
+      return;
+    }
+
+    const attemptMap = new Map(this.attempts.map((attempt) => [attempt.id, attempt]));
+    const answeredWrongKeys = new Set<string>();
+    this.attemptItems.forEach((item) => {
+      if (item.isCorrect !== false || typeof item.selectedKey !== "string") {
+        return;
+      }
+      const attempt = attemptMap.get(item.attemptId);
+      if (!attempt) {
+        return;
+      }
+      answeredWrongKeys.add(`${attempt.tenantId}:${attempt.userId}:${item.questionId}`);
+    });
+
+    this.reviewCards = this.reviewCards.filter((card) =>
+      answeredWrongKeys.has(`${card.tenantId}:${card.userId}:${card.questionId}`),
     );
+  }
+
+  ensureSeedQuestions(tenantId: string, createdBy?: string): void {
+    this.normalizeTenantQuestions(tenantId);
+    this.archiveDuplicateTenantQuestions(tenantId);
+
+    const existingQuestionByKey = new Map<string, Question>();
+    this.questions
+      .filter((item) => item.tenantId === tenantId)
+      .forEach((item) => {
+        const key = this.buildQuestionSeedKey(item.partNo, item.stem, item.passage, item.options);
+        const existing = existingQuestionByKey.get(key);
+        if (!existing) {
+          existingQuestionByKey.set(key, item);
+          return;
+        }
+        if (existing.status !== "published" && item.status === "published") {
+          existingQuestionByKey.set(key, item);
+          return;
+        }
+        if (existing.createdAt.localeCompare(item.createdAt) < 0) {
+          existingQuestionByKey.set(key, item);
+        }
+      });
 
     const questionSeed: Array<{
       partNo: number;
@@ -420,21 +781,36 @@ export class StoreService {
       },
     ];
 
-    questionSeed.forEach((seed) => {
-      const stemKey = seed.stem.trim().toLowerCase();
-      if (seededStemSet.has(stemKey)) {
+    questionSeed.forEach((seed, seedIndex) => {
+      const parsed = this.extractPassageAndStem(seed.partNo, seed.stem);
+      const normalizedReading = this.normalizeReadingContext(
+        seed.partNo,
+        parsed.stem,
+        parsed.passage,
+        seed.explanation,
+      );
+      const questionKey = this.buildQuestionSeedKey(
+        seed.partNo,
+        normalizedReading.stem,
+        normalizedReading.passage,
+        seed.options,
+      );
+      if (existingQuestionByKey.has(questionKey)) {
         return;
       }
-      this.questions.push({
+      const mediaUrl = this.normalizeListeningMediaUrl(seed.mediaUrl, seed.partNo, seedIndex);
+      const question: Question = {
         id: newId(),
         tenantId,
         partNo: seed.partNo,
         skillTag: seed.skillTag,
         difficulty: seed.difficulty,
-        stem: seed.stem,
+        stem: normalizedReading.stem,
+        passage: normalizedReading.passage,
         explanation: seed.explanation,
-        mediaUrl: seed.mediaUrl,
+        mediaUrl,
         imageUrl: seed.imageUrl,
+        source: "seed",
         status: "published",
         createdAt: nowIso(),
         createdBy,
@@ -443,45 +819,14 @@ export class StoreService {
           text: opt.text,
           isCorrect: opt.key === seed.correctKey,
         })),
-      });
-      seededStemSet.add(stemKey);
+      };
+      this.questions.push(question);
+      existingQuestionByKey.set(questionKey, question);
     });
 
-    const part1Images = [
-      "/assets/images/listening/part1-filing-cabinets.jpg",
-      "/assets/images/listening/part1-unloading-truck.jpg",
-      "/assets/images/listening/part1-bicycles-real.jpg",
-    ];
-    const listeningMediaByPart: Record<number, string> = {
-      1: "/assets/audio/toeic-official/practice-test-2-part-1.mp3",
-      2: "/assets/audio/toeic-official/practice-test-2-part-2.mp3",
-      3: "/assets/audio/toeic-official/practice-test-2-part-3.mp3",
-      4: "/assets/audio/toeic-official/practice-test-2-part-4.mp3",
-    };
-
-    type ImportedQuestion = {
-      partNo: number;
-      skillTag?: string;
-      difficulty?: number;
-      stem?: string;
-      explanation?: string;
-      mediaUrl?: string;
-      imageUrl?: string;
-      options?: Array<{ key?: string; text?: string }>;
-      correctKey?: string;
-    };
-
-    const allBankQuestions: ImportedQuestion[] = [
-      ...(questionBank as { questions: ImportedQuestion[] }).questions,
-      ...(questionBankExpansion as { questions: ImportedQuestion[] }).questions,
-      ...(questionBankExpansion2 as { questions: ImportedQuestion[] }).questions,
-      ...(questionBankExpansion3 as { questions: ImportedQuestion[] }).questions,
-      ...(questionBankExpansion4 as { questions: ImportedQuestion[] }).questions,
-      ...(questionBankExpansion5 as { questions: ImportedQuestion[] }).questions,
-      ...(questionBankExpansion6 as { questions: ImportedQuestion[] }).questions,
-      ...(questionBankExpansion7 as { questions: ImportedQuestion[] }).questions,
-    ];
+    const allBankQuestions = this.questionBankDataset();
     allBankQuestions.forEach((raw, index) => {
+      const sourceTag = raw.__source === "official_pack" ? "official_pack" : "bank";
       const partNo = Number(raw.partNo);
       if (!Number.isFinite(partNo) || partNo < 1 || partNo > 7) {
         return;
@@ -489,10 +834,6 @@ export class StoreService {
 
       const stem = String(raw.stem ?? "").trim();
       if (!stem) {
-        return;
-      }
-      const stemKey = stem.toLowerCase();
-      if (seededStemSet.has(stemKey)) {
         return;
       }
 
@@ -512,6 +853,7 @@ export class StoreService {
       if (options.length < 3) {
         return;
       }
+      this.padOptionsToFour(options, stem, partNo, sourceTag);
 
       const sourceCorrect = String(raw.correctKey ?? "").toUpperCase();
       let correctIndex = options.findIndex((item) => item.sourceKey === sourceCorrect);
@@ -529,21 +871,71 @@ export class StoreService {
         "TOEIC-style practice item. Focus on choosing the option that best matches context and grammar.";
       const mediaUrl =
         String(raw.mediaUrl ?? "").trim() ||
-        (partNo >= 1 && partNo <= 4 ? listeningMediaByPart[partNo] : undefined);
+        (partNo >= 1 && partNo <= 4 && sourceTag !== "official_pack"
+          ? this.listeningMediaFor(partNo, index)
+          : undefined);
       const imageUrl =
-        String(raw.imageUrl ?? "").trim() ||
-        (partNo === 1 ? part1Images[index % part1Images.length] : undefined);
+        partNo === 1
+          ? this.normalizePart1Image(
+              String(raw.imageUrl ?? "").trim() || undefined,
+              stem,
+              options.map((opt) => opt.text),
+            )
+          : String(raw.imageUrl ?? "").trim() || undefined;
+      const parsed = this.extractPassageAndStem(partNo, stem, String(raw.passage ?? "").trim() || undefined);
+      const normalizedReading = this.normalizeReadingContext(
+        partNo,
+        parsed.stem,
+        parsed.passage,
+        explanation,
+      );
+      const questionKey = this.buildQuestionSeedKey(
+        partNo,
+        normalizedReading.stem,
+        normalizedReading.passage,
+        options,
+      );
+      const existingQuestion = existingQuestionByKey.get(questionKey);
+      if (existingQuestion && sourceTag !== "official_pack") {
+        return;
+      }
+      const normalizedMediaUrl = this.normalizeListeningMediaUrl(mediaUrl, partNo, index, sourceTag);
 
-      this.questions.push({
+      if (existingQuestion && sourceTag === "official_pack") {
+        if (existingQuestion.source === "admin") {
+          return;
+        }
+        existingQuestion.partNo = partNo;
+        existingQuestion.skillTag = skillTag;
+        existingQuestion.difficulty = normalizedDifficulty;
+        existingQuestion.stem = normalizedReading.stem;
+        existingQuestion.passage = normalizedReading.passage;
+        existingQuestion.explanation = explanation;
+        existingQuestion.mediaUrl = normalizedMediaUrl;
+        existingQuestion.imageUrl = imageUrl;
+        existingQuestion.source = "official_pack";
+        existingQuestion.status = "published";
+        existingQuestion.options = options.map((opt) => ({
+          key: opt.key,
+          text: opt.text,
+          isCorrect: opt.key === correctKey,
+        }));
+        existingQuestionByKey.set(questionKey, existingQuestion);
+        return;
+      }
+
+      const question: Question = {
         id: newId(),
         tenantId,
         partNo,
         skillTag,
         difficulty: normalizedDifficulty,
-        stem,
+        stem: normalizedReading.stem,
+        passage: normalizedReading.passage,
         explanation,
-        mediaUrl,
+        mediaUrl: normalizedMediaUrl,
         imageUrl,
+        source: sourceTag,
         status: "published",
         createdAt: nowIso(),
         createdBy,
@@ -552,9 +944,704 @@ export class StoreService {
           text: opt.text,
           isCorrect: opt.key === correctKey,
         })),
-      });
-      seededStemSet.add(stemKey);
+      };
+      this.questions.push(question);
+      existingQuestionByKey.set(questionKey, question);
     });
+  }
+
+  private loadOfficialQuestionPack(): ImportedQuestion[] {
+    if (this.officialPackCache) {
+      return this.officialPackCache;
+    }
+    const candidatePaths = Array.from(
+      new Set([
+        resolve(this.officialPackFile),
+        resolve(__dirname, "..", this.officialPackFile),
+        resolve(__dirname, "..", "..", this.officialPackFile),
+        resolve(__dirname, "..", "..", "..", this.officialPackFile),
+      ]),
+    );
+
+    for (const packPath of candidatePaths) {
+      if (!existsSync(packPath)) {
+        continue;
+      }
+      try {
+        const parsed = JSON.parse(readFileSync(packPath, "utf8")) as { questions?: ImportedQuestion[] };
+        const questions = Array.isArray(parsed.questions) ? parsed.questions : [];
+        if (questions.length > 0) {
+          this.officialPackCache = questions;
+          return questions;
+        }
+      } catch {
+        // Try the next candidate path.
+      }
+    }
+    this.officialPackCache = [];
+    return [];
+  }
+
+  private officialStemSet(): Set<string> {
+    return new Set(
+      this.loadOfficialQuestionPack()
+        .map((item) => String(item.stem ?? "").trim().toLowerCase())
+        .filter((stem) => stem.length > 0),
+    );
+  }
+
+  private questionBankDataset(): ImportedQuestionWithSource[] {
+    if (this.questionBankCache) {
+      return this.questionBankCache;
+    }
+
+    this.questionBankCache = [
+      ...((questionBank as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...((questionBankExpansion as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...((questionBankExpansion2 as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...((questionBankExpansion3 as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...((questionBankExpansion4 as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...((questionBankExpansion5 as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...((questionBankExpansion6 as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...((questionBankExpansion7 as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...((questionBankExpansion8 as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...this.loadOfficialQuestionPack().map((item) => ({
+        ...item,
+        __source: "official_pack" as const,
+      })),
+    ];
+    return this.questionBankCache;
+  }
+
+  private normalizeTenantQuestions(tenantId: string): void {
+    const partIndexes = new Map<number, number>();
+    const questions = this.questions.filter((item) => item.tenantId === tenantId);
+    const officialStems = this.officialStemSet();
+
+    questions.forEach((question) => {
+      const seq = partIndexes.get(question.partNo) ?? 0;
+      partIndexes.set(question.partNo, seq + 1);
+
+      if (!Array.isArray(question.options)) {
+        question.options = [];
+      }
+      question.options = question.options
+        .slice(0, 4)
+        .map((opt, index) => ({
+          key: ["A", "B", "C", "D"][index] as "A" | "B" | "C" | "D",
+          text: String(opt?.text ?? "").trim(),
+          isCorrect: Boolean(opt?.isCorrect),
+        }))
+        .filter((opt) => opt.text.length > 0);
+      this.padOptionsToFour(question.options, question.stem, question.partNo, question.source ?? "legacy");
+      if (question.options.filter((opt) => opt.isCorrect).length !== 1 && question.options.length > 0) {
+        question.options = question.options.map((opt, index) => ({ ...opt, isCorrect: index === 0 }));
+      }
+
+      if (question.partNo >= 1 && question.partNo <= 4) {
+        question.mediaUrl = this.normalizeListeningMediaUrl(
+          question.mediaUrl,
+          question.partNo,
+          seq,
+          question.source,
+        );
+      }
+      if (question.partNo === 1) {
+        question.imageUrl = this.normalizePart1Image(
+          question.imageUrl,
+          question.stem,
+          question.options.map((opt) => opt.text),
+        );
+      }
+
+      const parsed = this.extractPassageAndStem(question.partNo, question.stem, question.passage);
+      const normalizedReading = this.normalizeReadingContext(
+        question.partNo,
+        parsed.stem,
+        parsed.passage,
+        question.explanation,
+      );
+      question.stem = normalizedReading.stem;
+      question.passage = normalizedReading.passage;
+
+      const stemKey = question.stem.trim().toLowerCase();
+      if (officialStems.has(stemKey)) {
+        question.source = "official_pack";
+      } else if (!question.source || question.source === "official_pack") {
+        question.source = "legacy";
+      }
+    });
+  }
+
+  private buildQuestionSeedKey(
+    partNo: number,
+    stem: string,
+    passage?: string,
+    options?: Array<{ text?: string } | string>,
+  ): string {
+    const normalizedPart = Number.isFinite(Number(partNo)) ? Number(partNo) : 0;
+    const normalizedStem = String(stem ?? "")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+    const normalizedPassage = String(passage ?? "")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+    const normalizedOptions = (options ?? [])
+      .map((item) => (typeof item === "string" ? item : String(item?.text ?? "")))
+      .map((text) =>
+        text
+          .toLowerCase()
+          .replace(/\s+/g, " ")
+          .trim(),
+      )
+      .filter((text) => text.length > 0)
+      .join("||");
+    const baseKey = normalizedPassage
+      ? `p${normalizedPart}|${normalizedStem}|${normalizedPassage}`
+      : `p${normalizedPart}|${normalizedStem}`;
+    return normalizedOptions ? `${baseKey}|${normalizedOptions}` : baseKey;
+  }
+
+  private questionSourcePriority(source?: string): number {
+    if (source === "official_pack") return 5;
+    if (source === "admin") return 4;
+    if (source === "seed") return 3;
+    if (source === "bank") return 2;
+    if (source === "legacy") return 1;
+    return 0;
+  }
+
+  private archiveDuplicateTenantQuestions(tenantId: string): void {
+    const keyed = new Map<string, Question[]>();
+    this.questions.forEach((question) => {
+      if (question.tenantId !== tenantId) {
+        return;
+      }
+      if (question.source === "admin") {
+        return;
+      }
+      const key = this.buildQuestionSeedKey(question.partNo, question.stem, question.passage, question.options);
+      const bucket = keyed.get(key) ?? [];
+      bucket.push(question);
+      keyed.set(key, bucket);
+    });
+
+    const referencedQuestionIds = new Set(this.attemptItems.map((item) => item.questionId));
+    const removableIds = new Set<string>();
+
+    keyed.forEach((bucket) => {
+      if (bucket.length <= 1) {
+        return;
+      }
+
+      bucket.sort((a, b) => {
+        const sourceDiff = this.questionSourcePriority(b.source) - this.questionSourcePriority(a.source);
+        if (sourceDiff !== 0) {
+          return sourceDiff;
+        }
+        const publishedDiff = Number(b.status === "published") - Number(a.status === "published");
+        if (publishedDiff !== 0) {
+          return publishedDiff;
+        }
+        const referencedDiff = Number(referencedQuestionIds.has(b.id)) - Number(referencedQuestionIds.has(a.id));
+        if (referencedDiff !== 0) {
+          return referencedDiff;
+        }
+        const passageDiff = String(b.passage ?? "").length - String(a.passage ?? "").length;
+        if (passageDiff !== 0) {
+          return passageDiff;
+        }
+        return b.createdAt.localeCompare(a.createdAt);
+      });
+
+      const keeper = bucket[0];
+      keeper.status = "published";
+      bucket.slice(1).forEach((question) => {
+        if (referencedQuestionIds.has(question.id)) {
+          question.status = "archived";
+          return;
+        }
+        removableIds.add(question.id);
+      });
+    });
+
+    if (removableIds.size > 0) {
+      this.questions = this.questions.filter((question) => !removableIds.has(question.id));
+    }
+  }
+
+  private listeningTracksByPart(partNo: number): string[] {
+    const tracks: Record<number, string[]> = {
+      1: [
+        "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
+        "/assets/audio/toeic-official/practice-test-2-part-1.mp3",
+      ],
+      2: [
+        "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
+        "/assets/audio/toeic-official/practice-test-2-part-2.mp3",
+      ],
+      3: [
+        "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
+        "/assets/audio/toeic-official/practice-test-2-part-3.mp3",
+      ],
+      4: [
+        "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
+        "/assets/audio/toeic-official/practice-test-2-part-4.mp3",
+      ],
+    };
+    return tracks[partNo] ?? [];
+  }
+
+  private isClipEligibleListeningTrack(url: string): boolean {
+    if (!url.includes("/assets/audio/toeic-official/")) {
+      return false;
+    }
+    return /practice-test-\d-part-\d\.mp3$/i.test(url);
+  }
+
+  private listeningClipDuration(partNo: number): number {
+    if (partNo === 1) return 11;
+    if (partNo === 2) return 9;
+    if (partNo === 3) return 24;
+    return 26;
+  }
+
+  private listeningOffsetRange(partNo: number): { intro: number; step: number; window: number } {
+    if (partNo === 1) return { intro: 22, step: 13, window: 320 };
+    if (partNo === 2) return { intro: 30, step: 10, window: 440 };
+    if (partNo === 3) return { intro: 40, step: 26, window: 520 };
+    return { intro: 40, step: 28, window: 540 };
+  }
+
+  private parseFragmentStart(url: string): number | undefined {
+    const fragment = url.split("#", 2)[1];
+    if (!fragment) {
+      return undefined;
+    }
+    const parsed = fragment.match(/(?:^|&)t=(\d+(?:\.\d+)?)(?:,\d+(?:\.\d+)?)?/i);
+    if (!parsed) {
+      return undefined;
+    }
+    const start = Number(parsed[1]);
+    return Number.isFinite(start) ? start : undefined;
+  }
+
+  private buildListeningClip(track: string, partNo: number, index: number, startOverride?: number): string {
+    const clipSeconds = this.listeningClipDuration(partNo);
+    const { intro, step, window } = this.listeningOffsetRange(partNo);
+    const tracks = this.listeningTracksByPart(partNo);
+    const trackIndex = tracks.indexOf(track);
+    const normalizedTrackIndex = trackIndex >= 0 ? trackIndex : index % Math.max(tracks.length, 1);
+    const sequence = Math.floor(index / Math.max(tracks.length, 1));
+    const maxStart = Math.max(12, window - clipSeconds - 1);
+    const derivedStart = intro + ((sequence + normalizedTrackIndex * 2) * step) % maxStart;
+    const start = typeof startOverride === "number" ? startOverride : derivedStart;
+    const end = start + clipSeconds;
+    return `${track}#t=${start},${end}`;
+  }
+
+  private normalizeListeningMediaUrl(
+    mediaUrl: string | undefined,
+    partNo: number,
+    index: number,
+    source?: string,
+  ): string | undefined {
+    if (partNo < 1 || partNo > 4) {
+      return mediaUrl;
+    }
+
+    const fallback = this.listeningMediaFor(partNo, index);
+    if (!mediaUrl) {
+      // Keep official listening items silent when matching source audio is unavailable.
+      if (source === "official_pack" && partNo <= 4) {
+        return undefined;
+      }
+      return fallback;
+    }
+
+    const [trackPath] = mediaUrl.split("#", 1);
+    if (!this.isClipEligibleListeningTrack(trackPath)) {
+      return mediaUrl;
+    }
+
+    const clipStart = this.parseFragmentStart(mediaUrl);
+    return this.buildListeningClip(trackPath, partNo, index, clipStart);
+  }
+
+  private listeningMediaFor(partNo: number, index: number): string | undefined {
+    const tracks = this.listeningTracksByPart(partNo);
+    if (tracks.length === 0) {
+      return undefined;
+    }
+    const track = tracks[index % tracks.length];
+    return this.buildListeningClip(track, partNo, index);
+  }
+
+  private normalizePart1Image(
+    imageUrl: string | undefined,
+    stem: string,
+    optionTexts: string[],
+  ): string | undefined {
+    const normalizedImageUrl = imageUrl?.trim();
+    const corpus = buildQuestionCorpus(stem, optionTexts);
+    const derived = resolvePart1ImageFromQuestion(stem, optionTexts);
+
+    if (normalizedImageUrl) {
+      if (!isKnownPart1Image(normalizedImageUrl)) {
+        return normalizedImageUrl;
+      }
+      if (isPart1ImageMatch(normalizedImageUrl, corpus)) {
+        return normalizedImageUrl;
+      }
+      return derived ?? this.syntheticPart1ImageFromStem(stem);
+    }
+
+    return derived ?? this.syntheticPart1ImageFromStem(stem);
+  }
+
+  private syntheticPart1ImageFromStem(stem: string): string {
+    const normalizedStem = stem.trim().replace(/\s+/g, " ");
+    const lines = this.wrapSyntheticCaption(normalizedStem, 34, 3);
+    const escapedLines = lines.map((line) => this.escapeSvgText(line));
+    const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2f6ff"/>
+      <stop offset="100%" stop-color="#e7eef9"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <rect x="64" y="60" width="832" height="420" rx="20" fill="#ffffff" stroke="#c7d7f1" stroke-width="3"/>
+  <text x="96" y="118" font-size="32" font-family="Segoe UI, Arial, sans-serif" fill="#1f3a6d" font-weight="700">TOEIC Part 1 Visual Cue</text>
+  <text x="96" y="168" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#445b82">Use the image description below to match the audio options.</text>
+  <text x="96" y="238" font-size="30" font-family="Segoe UI, Arial, sans-serif" fill="#1f2a3d">${escapedLines[0] ?? ""}</text>
+  <text x="96" y="288" font-size="30" font-family="Segoe UI, Arial, sans-serif" fill="#1f2a3d">${escapedLines[1] ?? ""}</text>
+  <text x="96" y="338" font-size="30" font-family="Segoe UI, Arial, sans-serif" fill="#1f2a3d">${escapedLines[2] ?? ""}</text>
+</svg>`.trim();
+    return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+  }
+
+  private wrapSyntheticCaption(text: string, lineWidth: number, maxLines: number): string[] {
+    const words = text.split(" ").filter(Boolean);
+    if (words.length === 0) {
+      return ["Image description unavailable"];
+    }
+    const lines: string[] = [];
+    let current = "";
+
+    words.forEach((word) => {
+      const candidate = current ? `${current} ${word}` : word;
+      if (candidate.length <= lineWidth) {
+        current = candidate;
+        return;
+      }
+      if (current) {
+        lines.push(current);
+      }
+      current = word;
+    });
+    if (current) {
+      lines.push(current);
+    }
+
+    if (lines.length > maxLines) {
+      const clipped = lines.slice(0, maxLines);
+      const last = clipped[maxLines - 1];
+      clipped[maxLines - 1] = last.length > lineWidth - 3 ? `${last.slice(0, lineWidth - 3)}...` : `${last}...`;
+      return clipped;
+    }
+
+    return lines;
+  }
+
+  private escapeSvgText(value: string): string {
+    return value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  private padOptionsToFour(
+    options: Array<{ key: "A" | "B" | "C" | "D"; text: string; sourceKey?: string; isCorrect?: boolean }>,
+    stem: string,
+    partNo?: number,
+    source?: string,
+  ): void {
+    // Keep official Part 2 as A/B/C choices to match the TOEIC format.
+    if (partNo === 2 && source === "official_pack") {
+      return;
+    }
+    const fallback = [
+      "No additional details were provided.",
+      "The information is not mentioned.",
+      "The request has already been completed.",
+      "The schedule remains unchanged.",
+    ];
+    while (options.length < 4) {
+      const key = ["A", "B", "C", "D"][options.length] as "A" | "B" | "C" | "D";
+      const text = fallback[options.length - 1] ?? `Not related to: ${stem.slice(0, 24)}`;
+      options.push({ key, text, sourceKey: key, isCorrect: false });
+    }
+  }
+
+  private extractPassageAndStem(
+    partNo: number,
+    stem: string,
+    existingPassage?: string,
+  ): { passage?: string; stem: string } {
+    if (partNo !== 7) {
+      const normalizedPassage = existingPassage?.trim();
+      return {
+        passage: normalizedPassage && normalizedPassage.length > 0 ? normalizedPassage : undefined,
+        stem,
+      };
+    }
+    if (existingPassage?.trim()) {
+      return { passage: existingPassage.trim(), stem: stem.trim() };
+    }
+    const normalizedStem = stem.trim();
+    const normalizePassage = (raw: string) =>
+      raw
+        .trim()
+        .replace(/\r\n/g, "\n")
+        .replace(/^[“"'`]+/, "")
+        .replace(/[”"'`]+$/, "");
+
+    const quotedExcerpt = normalizedStem.match(/^(?:[^:]+excerpt:\s*)["“']([\s\S]+?)["”']\s*(.+\?)$/i);
+    if (quotedExcerpt) {
+      return {
+        passage: normalizePassage(quotedExcerpt[1]),
+        stem: quotedExcerpt[2].trim(),
+      };
+    }
+
+    const singleQuotedLabel = normalizedStem.match(/^(?:[^:]{1,28}:\s*)'([\s\S]+)'\s*(.+\?)$/i);
+    if (singleQuotedLabel) {
+      const passageCandidate = normalizePassage(singleQuotedLabel[1]);
+      const stemCandidate = singleQuotedLabel[2].trim();
+      if (passageCandidate.length >= 40) {
+        return {
+          passage: passageCandidate,
+          stem: stemCandidate,
+        };
+      }
+    }
+
+    const quotedLabel = normalizedStem.match(/^(?:[^:]{1,28}:\s*)["“']([\s\S]+?)["”']\s*(.+\?)$/i);
+    if (quotedLabel) {
+      const passageCandidate = normalizePassage(quotedLabel[1]);
+      const stemCandidate = quotedLabel[2].trim();
+      if (passageCandidate.length >= 50) {
+        return {
+          passage: passageCandidate,
+          stem: stemCandidate,
+        };
+      }
+    }
+
+    const lines = normalizedStem.split(/\n+/).map((line) => line.trim()).filter(Boolean);
+    if (lines.length >= 2) {
+      const stemCandidate = lines[lines.length - 1];
+      const passageCandidate = lines.slice(0, -1).join("\n");
+      if (stemCandidate.endsWith("?") && passageCandidate.length >= 50) {
+        return {
+          passage: normalizePassage(passageCandidate),
+          stem: stemCandidate,
+        };
+      }
+    }
+
+    const lower = normalizedStem.toLowerCase();
+    const markers = [" what ", " why ", " which ", " who ", " where ", " when ", " how ", " according ", " based "];
+    let splitAt = -1;
+    markers.forEach((marker) => {
+      const idx = lower.indexOf(marker);
+      if (idx > 0 && (splitAt < 0 || idx < splitAt)) {
+        splitAt = idx;
+      }
+    });
+    if (splitAt > 0) {
+      const passageCandidate = normalizePassage(
+        normalizedStem.slice(0, splitAt).replace(/^[^:]+excerpt:\s*/i, ""),
+      );
+      const stemCandidate = normalizedStem.slice(splitAt).trim();
+      if (passageCandidate.length >= 50 && stemCandidate.endsWith("?")) {
+        return {
+          passage: passageCandidate,
+          stem: stemCandidate,
+        };
+      }
+    }
+
+    const tailQuestion = normalizedStem.match(/^(.*?)(?:\s+)((?:What|Why|Which|Who|Where|When|How|According|Based)[\s\S]*\?)$/i);
+    if (tailQuestion) {
+      const passageCandidate = normalizePassage(tailQuestion[1]);
+      const stemCandidate = tailQuestion[2].trim();
+      if (passageCandidate.length >= 60) {
+        return {
+          passage: passageCandidate,
+          stem: stemCandidate,
+        };
+      }
+    }
+
+    if (normalizedStem.length >= 140) {
+      return {
+        passage: normalizePassage(normalizedStem),
+        stem: "What is the most likely correct answer?",
+      };
+    }
+    return { passage: undefined, stem: normalizedStem };
+  }
+
+  private normalizeReadingContext(
+    partNo: number,
+    stem: string,
+    passage: string | undefined,
+    explanation: string,
+  ): { stem: string; passage?: string } {
+    if (partNo === 6) {
+      const normalizedStem = stem.trim();
+      const normalizedPassage = this.ensurePart6Passage(normalizedStem, passage, explanation);
+      return {
+        stem: normalizedStem,
+        passage: normalizedPassage,
+      };
+    }
+
+    if (partNo === 7) {
+      const normalizedStem = this.ensureQuestionStem(stem);
+      const normalizedPassage = this.ensurePart7Passage(normalizedStem, passage, explanation);
+      return {
+        stem: normalizedStem,
+        passage: normalizedPassage,
+      };
+    }
+
+    return {
+      stem: stem.trim(),
+      passage,
+    };
+  }
+
+  private ensurePart6Passage(stem: string, passage: string | undefined, explanation: string): string | undefined {
+    const normalizedPassage = passage?.trim();
+    const context = `${normalizedPassage ?? ""} ${stem}`.trim();
+    const sentenceCount = (context.match(/[.!?](\s|$)/g) ?? []).length;
+    if (context.length >= 60 && sentenceCount >= 2) {
+      return normalizedPassage;
+    }
+
+    const baseExplanation = explanation
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/[.!?]+$/, "");
+    const guidance =
+      baseExplanation.length > 0
+        ? `${baseExplanation}.`
+        : "Read the sentence in a workplace context and choose the most natural completion.";
+    const bridge = "Use the surrounding business context to decide which option best completes the blank.";
+    return `Workplace memo: ${guidance} ${bridge}`;
+  }
+
+  private ensurePart7Passage(stem: string, passage: string | undefined, explanation: string): string {
+    const normalizedPassage = passage?.trim();
+    if (!normalizedPassage) {
+      return this.buildSyntheticPart7Passage(stem, explanation);
+    }
+
+    const sentenceCount = (normalizedPassage.match(/[.!?](\s|$)/g) ?? []).length;
+    if (normalizedPassage.length >= 90 && sentenceCount >= 2) {
+      return normalizedPassage;
+    }
+
+    const addition = this.buildPart7SupportSentence(explanation);
+    let expanded = normalizedPassage;
+    if (!expanded.endsWith(".") && !expanded.endsWith("!") && !expanded.endsWith("?")) {
+      expanded = `${expanded}.`;
+    }
+    expanded = `${expanded} ${addition}`;
+
+    const expandedSentenceCount = (expanded.match(/[.!?](\s|$)/g) ?? []).length;
+    if (expanded.length < 90 || expandedSentenceCount < 2) {
+      expanded = `${expanded} The announcement applies to regular business operations and should be followed as written.`;
+    }
+    return expanded;
+  }
+
+  private ensureQuestionStem(stem: string): string {
+    const normalizedStem = stem.trim();
+    if (normalizedStem.endsWith("?")) {
+      return normalizedStem;
+    }
+    if (/^(what|why|which|who|where|when|how|according|based)\b/i.test(normalizedStem)) {
+      return `${normalizedStem.replace(/[.。!！]+$/, "").trim()}?`;
+    }
+    return "What is the most likely correct answer?";
+  }
+
+  private buildSyntheticPart7Passage(stem: string, explanation: string): string {
+    const detail = this.buildPart7SupportSentence(explanation);
+    const topic = this.part7TopicFromStem(stem);
+    return `${topic} ${detail}`;
+  }
+
+  private part7TopicFromStem(stem: string): string {
+    const normalizedStem = stem.toLowerCase();
+    if (normalizedStem.includes("purpose")) {
+      return "An internal notice was shared to explain an operational policy update for staff members.";
+    }
+    if (normalizedStem.includes("infer")) {
+      return "A business email describes a recent situation and asks readers to infer the most likely conclusion.";
+    }
+    if (normalizedStem.includes("when") || normalizedStem.includes("schedule")) {
+      return "A scheduling update was distributed to clarify deadlines, timing, and expected next steps.";
+    }
+    if (normalizedStem.includes("where")) {
+      return "A workplace announcement provides location details for an upcoming task or event.";
+    }
+    return "A short business message was distributed to inform employees and customers about a practical update.";
+  }
+
+  private buildPart7SupportSentence(explanation: string): string {
+    const normalizedExplanation = explanation
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/[.!?]+$/, "");
+    if (normalizedExplanation.length > 0) {
+      return `${normalizedExplanation}. Readers should rely on the stated information when choosing the best answer.`;
+    }
+    return "Readers should rely on the stated information when choosing the best answer.";
   }
 
   private defaultSkillTag(partNo: number): string {
@@ -568,24 +1655,20 @@ export class StoreService {
   }
 
   ensureSeedVocabularyCards(tenantId: string, userId: string): void {
-    const exists = this.vocabularyCards.some(
-      (card) => card.tenantId === tenantId && card.userId === userId,
+    const userCards = this.vocabularyCards
+      .filter((card) => card.tenantId === tenantId && card.userId === userId)
+      .sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.term.localeCompare(b.term));
+    const existingKeys = new Set(
+      userCards.map((card) => `${card.term.trim().toLowerCase()}::${card.pos.trim().toLowerCase()}`),
     );
-    if (exists) {
-      return;
-    }
-
-    const dueToday = nowIso().slice(0, 10);
-    const seed = (vocabSeedData as { cards: Array<{
-      term: string;
-      pos: string;
-      definition: string;
-      example: string;
-      sourcePart: number;
-      tags: string[];
-    }> }).cards;
+    const seed = this.buildVocabularySeedCards();
+    let queueIndex = userCards.length;
 
     seed.forEach((item) => {
+      const key = `${item.term.trim().toLowerCase()}::${item.pos.trim().toLowerCase()}`;
+      if (existingKeys.has(key)) {
+        return;
+      }
       this.vocabularyCards.push({
         id: newId(),
         tenantId,
@@ -598,9 +1681,676 @@ export class StoreService {
         tags: item.tags,
         easeFactor: 2.3,
         intervalDays: 0,
-        dueAt: dueToday,
+        dueAt: this.vocabularyDueDate(queueIndex),
         createdAt: nowIso(),
       });
+      existingKeys.add(key);
+      queueIndex += 1;
     });
+
+    this.rebalanceVocabularySchedule(tenantId, userId);
+  }
+
+  private buildVocabularySeedCards(): VocabularySeedCard[] {
+    if (this.vocabularySeedCache) {
+      return this.vocabularySeedCache;
+    }
+
+    const curatedSeed = this.normalizeVocabularySeedCards([
+      ...((vocabSeedData as { cards?: VocabularySeedCard[] }).cards ?? []),
+      ...((vocabSeedData1 as { cards?: VocabularySeedCard[] }).cards ?? []),
+      ...((vocabSeedData2 as { cards?: VocabularySeedCard[] }).cards ?? []),
+    ]);
+    const existingTerms = new Set(curatedSeed.map((item) => item.term.toLowerCase()));
+    const generatedSeed = this.buildQuestionBankVocabularyCards(existingTerms);
+    generatedSeed.forEach((item) => existingTerms.add(item.term.toLowerCase()));
+    const dictionarySeed = this.buildDictionaryVocabularyCards(existingTerms);
+    const shadowingSeed = this.buildShadowingCorpusVocabularyCards(existingTerms);
+
+    const merged = new Map<string, VocabularySeedCard>();
+    [...curatedSeed, ...generatedSeed, ...dictionarySeed, ...shadowingSeed].forEach((item) => {
+      const key = item.term.trim().toLowerCase();
+      if (!key || merged.has(key)) {
+        return;
+      }
+      merged.set(key, item);
+    });
+
+    this.vocabularySeedCache = Array.from(merged.values());
+    return this.vocabularySeedCache;
+  }
+
+  private buildDictionaryVocabularyCards(existingTerms: Set<string>): VocabularySeedCard[] {
+    const sourcePaths = this.resolveVocabularyDictionaryPaths();
+    if (sourcePaths.length === 0) {
+      return [];
+    }
+
+    const cards: VocabularySeedCard[] = [];
+    const entryPattern = /"([^"]+)":\s*\{\s*cn:\s*"((?:[^"\\]|\\.)*)"\s*,\s*ipa:\s*"((?:[^"\\]|\\.)*)"\s*\}/g;
+    for (const filePath of sourcePaths) {
+      let source = "";
+      try {
+        source = readFileSync(filePath, "utf8");
+      } catch {
+        continue;
+      }
+
+      let match: RegExpExecArray | null = null;
+      while ((match = entryPattern.exec(source)) !== null) {
+        const term = String(match[1] ?? "")
+          .trim()
+          .toLowerCase();
+        if (!VOCAB_DICTIONARY_TERM_PATTERN.test(term)) {
+          continue;
+        }
+        if (term.includes("  ")) {
+          continue;
+        }
+        if (term.split(/\s+/).length > 6) {
+          continue;
+        }
+        if (VOCAB_STOP_WORDS.has(term) || existingTerms.has(term)) {
+          continue;
+        }
+
+        const pos = this.inferVocabularyPos(term);
+        const cn = String(match[2] ?? "")
+          .replace(/\\"/g, "\"")
+          .replace(/\\n/g, " ")
+          .replace(/\\t/g, " ")
+          .trim();
+
+        cards.push({
+          term,
+          pos,
+          definition: cn ? `中文释义：${cn}` : this.generatedVocabularyDefinition(pos, 7),
+          example: this.generatedVocabularyExample(term, pos),
+          sourcePart: 7,
+          tags: ["dictionary-sync", "shadowing"],
+        });
+        existingTerms.add(term);
+      }
+    }
+
+    return cards;
+  }
+
+  private resolveVocabularyDictionaryPaths(): string[] {
+    const candidates = [
+      "apps/web/data/word-dictionary.ts",
+      "apps/web/data/vocab-cn-overrides.ts",
+      "../web/data/word-dictionary.ts",
+      "../web/data/vocab-cn-overrides.ts",
+      "../../web/data/word-dictionary.ts",
+      "../../web/data/vocab-cn-overrides.ts",
+      "../../../web/data/word-dictionary.ts",
+      "../../../web/data/vocab-cn-overrides.ts",
+      "../../../../web/data/word-dictionary.ts",
+      "../../../../web/data/vocab-cn-overrides.ts",
+    ].map((relativePath) => resolve(process.cwd(), relativePath));
+
+    const fallbackFromDir = [
+      resolve(__dirname, "../../web/data/word-dictionary.ts"),
+      resolve(__dirname, "../../web/data/vocab-cn-overrides.ts"),
+      resolve(__dirname, "../../../web/data/word-dictionary.ts"),
+      resolve(__dirname, "../../../web/data/vocab-cn-overrides.ts"),
+      resolve(__dirname, "../../../../web/data/word-dictionary.ts"),
+      resolve(__dirname, "../../../../web/data/vocab-cn-overrides.ts"),
+    ];
+
+    return Array.from(new Set([...candidates, ...fallbackFromDir])).filter((filePath) => existsSync(filePath));
+  }
+
+  private buildShadowingCorpusVocabularyCards(existingTerms: Set<string>): VocabularySeedCard[] {
+    const sources = [...this.loadShadowingCorpusTexts(), ...this.loadYoutubeSubtitleCorpusTexts()];
+    if (sources.length === 0) {
+      return [];
+    }
+
+    const frequency = new Map<string, number>();
+    sources.forEach((text) => {
+      this.extractVocabularyTokens(text).forEach((token) => {
+        if (!VOCAB_DICTIONARY_TERM_PATTERN.test(token)) {
+          return;
+        }
+        if (VOCAB_STOP_WORDS.has(token) || existingTerms.has(token)) {
+          return;
+        }
+        frequency.set(token, (frequency.get(token) ?? 0) + 1);
+      });
+    });
+
+    const ranked = Array.from(frequency.entries())
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, 5000);
+
+    const cards: VocabularySeedCard[] = [];
+    ranked.forEach(([term]) => {
+      if (existingTerms.has(term)) {
+        return;
+      }
+      const pos = this.inferVocabularyPos(term);
+      cards.push({
+        term,
+        pos,
+        definition: this.generatedVocabularyDefinition(pos, 7),
+        example: this.generatedVocabularyExample(term, pos),
+        sourcePart: 7,
+        tags: ["corpus-sync", "shadowing"],
+      });
+      existingTerms.add(term);
+    });
+    return cards;
+  }
+
+  private loadShadowingCorpusTexts(): string[] {
+    const files = this.resolveShadowingCorpusPaths();
+    if (files.length === 0) {
+      return [];
+    }
+
+    const textSet = new Set<string>();
+    files.forEach((filePath) => {
+      const lower = filePath.toLowerCase();
+      let raw = "";
+      try {
+        raw = readFileSync(filePath, "utf8");
+      } catch {
+        return;
+      }
+
+      if (lower.endsWith("shadowing-materials.ts")) {
+        const matches = raw.match(/text:\s*"([^"\\]*(?:\\.[^"\\]*)*)"/g) ?? [];
+        matches.forEach((match) => {
+          const text = match
+            .replace(/^text:\s*"/, "")
+            .replace(/"$/, "")
+            .replace(/\\"/g, "\"")
+            .trim();
+          if (text) {
+            textSet.add(text);
+          }
+        });
+        return;
+      }
+
+      if (lower.endsWith(".json")) {
+        try {
+          this.extractTextsFromShadowingJson(raw).forEach((text) => textSet.add(text));
+        } catch {
+          // ignore invalid JSON corpus
+        }
+      }
+    });
+
+    return Array.from(textSet.values());
+  }
+
+  private extractTextsFromShadowingJson(raw: string): string[] {
+    const parsed = JSON.parse(raw) as
+      | Array<{ sentences?: Array<{ text?: string }> }>
+      | { items?: Array<{ sentences?: Array<{ text?: string }> }> };
+
+    const materials = Array.isArray(parsed) ? parsed : (parsed.items ?? []);
+    const textSet = new Set<string>();
+    materials.forEach((item) => {
+      (item?.sentences ?? []).forEach((sentence) => {
+        const text = String(sentence?.text ?? "").trim();
+        if (text) {
+          textSet.add(text);
+        }
+      });
+    });
+    return Array.from(textSet.values());
+  }
+
+  private resolveShadowingCorpusPaths(): string[] {
+    const fromCwd = [
+      "apps/web/data/shadowing-materials.ts",
+      "apps/web/data/shadowing-materials-expanded-b.json",
+      "apps/web/data/shadowing-materials-expanded-c.json",
+      "apps/web/data/ted-latest-shadowing.json",
+      "../web/data/shadowing-materials.ts",
+      "../web/data/shadowing-materials-expanded-b.json",
+      "../web/data/shadowing-materials-expanded-c.json",
+      "../web/data/ted-latest-shadowing.json",
+      "../../web/data/shadowing-materials.ts",
+      "../../web/data/shadowing-materials-expanded-b.json",
+      "../../web/data/shadowing-materials-expanded-c.json",
+      "../../web/data/ted-latest-shadowing.json",
+      "../../../web/data/shadowing-materials.ts",
+      "../../../web/data/shadowing-materials-expanded-b.json",
+      "../../../web/data/shadowing-materials-expanded-c.json",
+      "../../../web/data/ted-latest-shadowing.json",
+      "../../../../web/data/shadowing-materials.ts",
+      "../../../../web/data/shadowing-materials-expanded-b.json",
+      "../../../../web/data/shadowing-materials-expanded-c.json",
+      "../../../../web/data/ted-latest-shadowing.json",
+    ].map((relativePath) => resolve(process.cwd(), relativePath));
+
+    const fromDir = [
+      resolve(__dirname, "../../web/data/shadowing-materials.ts"),
+      resolve(__dirname, "../../web/data/shadowing-materials-expanded-b.json"),
+      resolve(__dirname, "../../web/data/shadowing-materials-expanded-c.json"),
+      resolve(__dirname, "../../web/data/ted-latest-shadowing.json"),
+      resolve(__dirname, "../../../web/data/shadowing-materials.ts"),
+      resolve(__dirname, "../../../web/data/shadowing-materials-expanded-b.json"),
+      resolve(__dirname, "../../../web/data/shadowing-materials-expanded-c.json"),
+      resolve(__dirname, "../../../web/data/ted-latest-shadowing.json"),
+      resolve(__dirname, "../../../../web/data/shadowing-materials.ts"),
+      resolve(__dirname, "../../../../web/data/shadowing-materials-expanded-b.json"),
+      resolve(__dirname, "../../../../web/data/shadowing-materials-expanded-c.json"),
+      resolve(__dirname, "../../../../web/data/ted-latest-shadowing.json"),
+    ];
+
+    return Array.from(new Set([...fromCwd, ...fromDir])).filter((filePath) => existsSync(filePath));
+  }
+
+  private loadYoutubeSubtitleCorpusTexts(): string[] {
+    const roots = this.resolveYoutubeSubtitleRoots();
+    if (roots.length === 0) {
+      return [];
+    }
+
+    const textSet = new Set<string>();
+    roots.forEach((rootPath) => {
+      this.collectFilesByExtension(rootPath, ".vtt").forEach((filePath) => {
+        let raw = "";
+        try {
+          raw = readFileSync(filePath, "utf8");
+        } catch {
+          return;
+        }
+        const lines = raw.replace(/\uFEFF/g, "").split(/\r?\n/);
+        lines.forEach((line) => {
+          const trimmed = line.trim();
+          if (!trimmed) {
+            return;
+          }
+          if (
+            /^webvtt$/i.test(trimmed) ||
+            /^kind:/i.test(trimmed) ||
+            /^language:/i.test(trimmed) ||
+            /^note\b/i.test(trimmed) ||
+            /^\d+$/.test(trimmed) ||
+            /-->/.test(trimmed)
+          ) {
+            return;
+          }
+          const plain = trimmed
+            .replace(/<[^>]+>/g, " ")
+            .replace(/&nbsp;/g, " ")
+            .replace(/&amp;/g, "&")
+            .replace(/\s+/g, " ")
+            .trim();
+          if (!plain || !/[a-z]/i.test(plain)) {
+            return;
+          }
+          textSet.add(plain);
+        });
+      });
+    });
+    return Array.from(textSet.values());
+  }
+
+  private resolveYoutubeSubtitleRoots(): string[] {
+    const fromCwd = [
+      "apps/web/public/assets/youtube/ted-latest",
+      "../web/public/assets/youtube/ted-latest",
+      "../../web/public/assets/youtube/ted-latest",
+      "../../../web/public/assets/youtube/ted-latest",
+      "../../../../web/public/assets/youtube/ted-latest",
+    ].map((relativePath) => resolve(process.cwd(), relativePath));
+
+    const fromDir = [
+      resolve(__dirname, "../../web/public/assets/youtube/ted-latest"),
+      resolve(__dirname, "../../../web/public/assets/youtube/ted-latest"),
+      resolve(__dirname, "../../../../web/public/assets/youtube/ted-latest"),
+    ];
+
+    return Array.from(new Set([...fromCwd, ...fromDir])).filter((filePath) => existsSync(filePath));
+  }
+
+  private collectFilesByExtension(rootPath: string, extension: string): string[] {
+    const files: string[] = [];
+    const stack = [rootPath];
+    while (stack.length > 0) {
+      const current = stack.pop();
+      if (!current || !existsSync(current)) {
+        continue;
+      }
+      let entries: Array<{ name: string; isDirectory: () => boolean; isFile: () => boolean }> = [];
+      try {
+        entries = readdirSync(current, { withFileTypes: true });
+      } catch {
+        continue;
+      }
+      entries.forEach((entry) => {
+        const childPath = resolve(current, entry.name);
+        if (entry.isDirectory()) {
+          stack.push(childPath);
+          return;
+        }
+        if (entry.isFile() && childPath.toLowerCase().endsWith(extension.toLowerCase())) {
+          files.push(childPath);
+        }
+      });
+    }
+    return files;
+  }
+
+  private normalizeVocabularySeedCards(cards: VocabularySeedCard[]): VocabularySeedCard[] {
+    const dedup = new Map<string, VocabularySeedCard>();
+    cards.forEach((item) => {
+      const term = String(item.term ?? "").trim().toLowerCase();
+      const pos = String(item.pos ?? "").trim().toLowerCase();
+      const definition = String(item.definition ?? "").trim();
+      if (!term || !pos || !definition) {
+        return;
+      }
+      if (dedup.has(term)) {
+        return;
+      }
+      dedup.set(term, {
+        term,
+        pos,
+        definition,
+        example: this.normalizeVocabularySentence(String(item.example ?? "").trim()),
+        sourcePart: Number(item.sourcePart) >= 1 && Number(item.sourcePart) <= 7 ? Number(item.sourcePart) : 7,
+        tags: Array.isArray(item.tags)
+          ? item.tags.filter((tag) => typeof tag === "string" && tag.trim().length > 0)
+          : [],
+      });
+    });
+    return Array.from(dedup.values());
+  }
+
+  private buildQuestionBankVocabularyCards(existingTerms: Set<string>): VocabularySeedCard[] {
+    type TokenStat = {
+      count: number;
+      contentHits: number;
+      explanationHits: number;
+      partCounts: Map<number, number>;
+      tags: Set<string>;
+      example?: string;
+    };
+
+    const tokenStats = new Map<string, TokenStat>();
+    this.questionBankDataset().forEach((item) => {
+      const partNo = Number(item.partNo);
+      if (!Number.isFinite(partNo) || partNo < 1 || partNo > 7) {
+        return;
+      }
+
+      const contentTexts = [
+        String(item.stem ?? ""),
+        String(item.passage ?? ""),
+        ...(Array.isArray(item.options) ? item.options.map((opt) => String(opt?.text ?? "")) : []),
+      ];
+      contentTexts
+        .flatMap((text) => this.splitVocabularySentences(text))
+        .forEach((sentence) => {
+          this.collectVocabularyTokens(sentence, partNo, "content", tokenStats, existingTerms);
+        });
+
+      this.splitVocabularySentences(String(item.explanation ?? "")).forEach((sentence) => {
+        this.collectVocabularyTokens(sentence, partNo, "explanation", tokenStats, existingTerms);
+      });
+    });
+
+    const minFrequency = 1;
+    const minContentRatio = 0;
+    const maxGenerated = 9000;
+    const rankedTerms = Array.from(tokenStats.entries())
+      .filter(([, stat]) => {
+        if (stat.count < minFrequency) {
+          return false;
+        }
+        if (stat.contentHits < 1) {
+          return false;
+        }
+        return stat.contentHits >= Math.ceil(stat.count * minContentRatio);
+      })
+      .sort((a, b) => b[1].count - a[1].count || a[0].localeCompare(b[0]))
+      .slice(0, maxGenerated);
+
+    return rankedTerms.map(([term, stat]) => {
+      const sourcePart = this.dominantVocabularyPart(stat.partCounts);
+      const pos = this.inferVocabularyPos(term);
+      return {
+        term,
+        pos,
+        definition: this.generatedVocabularyDefinition(pos, sourcePart),
+        example: this.generatedVocabularyExample(term, pos, stat.example),
+        sourcePart,
+        tags: ["generated", "question-bank", ...Array.from(stat.tags).slice(0, 2)],
+      };
+    });
+  }
+
+  private collectVocabularyTokens(
+    sentence: string,
+    partNo: number,
+    source: "content" | "explanation",
+    tokenStats: Map<
+      string,
+      {
+        count: number;
+        contentHits: number;
+        explanationHits: number;
+        partCounts: Map<number, number>;
+        tags: Set<string>;
+        example?: string;
+      }
+    >,
+    existingTerms: Set<string>,
+  ): void {
+    const tokens = this.extractVocabularyTokens(sentence);
+    tokens.forEach((token) => {
+      if (existingTerms.has(token)) {
+        return;
+      }
+      const stat = tokenStats.get(token) ?? {
+        count: 0,
+        contentHits: 0,
+        explanationHits: 0,
+        partCounts: new Map<number, number>(),
+        tags: new Set<string>(),
+      };
+      stat.count += 1;
+      if (source === "content") {
+        stat.contentHits += 1;
+      } else {
+        stat.explanationHits += 1;
+      }
+      stat.partCounts.set(partNo, (stat.partCounts.get(partNo) ?? 0) + 1);
+      stat.tags.add(this.vocabularyTagByPart(partNo));
+      if (!stat.example && source === "content") {
+        stat.example = this.normalizeVocabularySentence(sentence);
+      }
+      tokenStats.set(token, stat);
+    });
+  }
+
+  private splitVocabularySentences(text: string): string[] {
+    return String(text ?? "")
+      .split(/\r?\n+|(?<=[.!?])\s+/)
+      .map((item) => item.trim().replace(/\s+/g, " "))
+      .filter((item) => item.length >= 12 && item.length <= 220)
+      .filter((item) => !item.includes("___"));
+  }
+
+  private extractVocabularyTokens(text: string): string[] {
+    const rawTokens = text.toLowerCase().match(/[a-z][a-z'-]{1,}/g) ?? [];
+    const dedup = new Set<string>();
+
+    rawTokens.forEach((token) => {
+      let normalized = token.replace(/^'+|'+$/g, "");
+      normalized = normalized.replace(/-{2,}/g, "-");
+      normalized = normalized.replace(/'+/g, "'");
+      if (normalized.endsWith("'s")) {
+        normalized = normalized.slice(0, -2);
+      }
+      if (normalized.endsWith("n't")) {
+        normalized = normalized.slice(0, -3);
+      }
+      normalized = normalized.replace(/[^a-z'-]/g, "");
+      normalized = normalized.replace(/^[-']+|[-']+$/g, "");
+      const compact = normalized.replace(/[-']/g, "");
+      if (compact.length < 3 || compact.length > 24) {
+        return;
+      }
+      if (VOCAB_STOP_WORDS.has(normalized) || VOCAB_STOP_WORDS.has(compact)) {
+        return;
+      }
+      if (normalized.startsWith("http") || normalized.startsWith("www")) {
+        return;
+      }
+      dedup.add(normalized);
+    });
+
+    return Array.from(dedup.values());
+  }
+
+  private dominantVocabularyPart(partCounts: Map<number, number>): number {
+    let bestPart = 7;
+    let bestCount = 0;
+    partCounts.forEach((count, partNo) => {
+      if (count > bestCount || (count === bestCount && partNo < bestPart)) {
+        bestCount = count;
+        bestPart = partNo;
+      }
+    });
+    return bestPart;
+  }
+
+  private vocabularyTagByPart(partNo: number): string {
+    if (partNo === 1 || partNo === 2) {
+      return "listening";
+    }
+    if (partNo === 3 || partNo === 4) {
+      return "conversation";
+    }
+    if (partNo === 5) {
+      return "grammar";
+    }
+    if (partNo === 6) {
+      return "text-completion";
+    }
+    return "reading";
+  }
+
+  private inferVocabularyPos(term: string): string {
+    if (term.endsWith("ly")) {
+      return "adverb";
+    }
+    if (
+      term.endsWith("ing") ||
+      term.endsWith("ed") ||
+      term.endsWith("ize") ||
+      term.endsWith("ise") ||
+      term.endsWith("ify")
+    ) {
+      return "verb";
+    }
+    if (
+      term.endsWith("tion") ||
+      term.endsWith("sion") ||
+      term.endsWith("ment") ||
+      term.endsWith("ness") ||
+      term.endsWith("ity") ||
+      term.endsWith("ship") ||
+      term.endsWith("ance") ||
+      term.endsWith("ence")
+    ) {
+      return "noun";
+    }
+    if (
+      term.endsWith("ive") ||
+      term.endsWith("able") ||
+      term.endsWith("ible") ||
+      term.endsWith("ous") ||
+      term.endsWith("ical") ||
+      term.endsWith("ic") ||
+      term.endsWith("ary") ||
+      term.endsWith("ory") ||
+      term.endsWith("less") ||
+      term.endsWith("ful") ||
+      term.endsWith("al")
+    ) {
+      return "adjective";
+    }
+    return "noun";
+  }
+
+  private generatedVocabularyDefinition(pos: string, sourcePart: number): string {
+    const context = sourcePart >= 5 ? "reading and grammar" : "listening and conversation";
+    if (pos === "verb") {
+      return `to do something commonly required in TOEIC ${context} contexts`;
+    }
+    if (pos === "adjective") {
+      return `describing something often mentioned in TOEIC ${context} contexts`;
+    }
+    if (pos === "adverb") {
+      return `in a way that is often used in TOEIC ${context} contexts`;
+    }
+    return `a term frequently used in TOEIC ${context} contexts`;
+  }
+
+  private generatedVocabularyExample(term: string, pos: string, sampled?: string): string {
+    if (sampled) {
+      return sampled;
+    }
+    if (pos === "verb") {
+      return `Please ${term} the request before the deadline.`;
+    }
+    if (pos === "adjective") {
+      return `The team proposed a ${term} solution for the client.`;
+    }
+    if (pos === "adverb") {
+      return `The manager asked us to respond ${term} to the email.`;
+    }
+    return `The team reviewed the ${term} during the meeting.`;
+  }
+
+  private normalizeVocabularySentence(value: string): string {
+    const normalized = value
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/^[“"'`]+/, "")
+      .replace(/[”"'`]+$/, "");
+    if (!normalized) {
+      return "";
+    }
+    if (normalized.length > 160) {
+      return `${normalized.slice(0, 157).trimEnd()}...`;
+    }
+    if (/[.!?]$/.test(normalized)) {
+      return normalized;
+    }
+    return `${normalized}.`;
+  }
+
+  private vocabularyDueDate(queueIndex: number): string {
+    const dayOffset = Math.floor(Math.max(queueIndex, 0) / 30);
+    const base = new Date();
+    base.setDate(base.getDate() + dayOffset);
+    return base.toISOString().slice(0, 10);
+  }
+
+  private rebalanceVocabularySchedule(tenantId: string, userId: string): void {
+    const pendingCards = this.vocabularyCards
+      .filter((card) => card.tenantId === tenantId && card.userId === userId)
+      .filter((card) => card.intervalDays === 0 && typeof card.lastGrade !== "number");
+    if (pendingCards.length <= 60) {
+      return;
+    }
+
+    pendingCards
+      .sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.term.localeCompare(b.term))
+      .forEach((card, index) => {
+        card.dueAt = this.vocabularyDueDate(index);
+      });
   }
 }

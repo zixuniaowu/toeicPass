@@ -9,9 +9,10 @@
   ],
   "scripts": {
     "build": "npm run -w apps/api build && npm run -w apps/web build",
-    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web:hot\"",
     "dev:api": "npm run -w apps/api start:dev",
-    "dev:web": "npm run -w apps/web dev",
+    "dev:web": "npm run -w apps/web start || (npm run -w apps/web build && npm run -w apps/web start)",
+    "dev:web:hot": "npm run -w apps/web dev",
     "test": "npm run -w apps/api test",
     "test:e2e": "npm run -w apps/api test:e2e",
     "lint": "npm run -w apps/api lint && npm run -w apps/web lint",

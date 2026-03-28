@@ -41,6 +41,17 @@
   object-fit: cover;
 }
 
+.mediaPanel {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.mediaHint {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
 .stem {
   margin: 0;
   font-size: var(--text-lg);
@@ -95,6 +106,59 @@
   line-height: 1.6;
 }
 
+.coachPanel,
+.planPanel,
+.latestNote {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-background);
+  padding: var(--space-3) var(--space-4);
+}
+
+.coachPanel h4,
+.planPanel h4 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-base);
+  color: var(--color-ink);
+}
+
+.coachPanel p {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.rootCauseText {
+  margin-top: var(--space-2) !important;
+  font-size: var(--text-sm);
+  color: var(--color-muted) !important;
+  font-weight: 600;
+}
+
+.planList {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.latestNote strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+}
+
+.latestNote p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
 .noteWrapper {
   display: grid;
   gap: var(--space-2);
@@ -104,6 +168,11 @@
   font-size: var(--text-sm);
   font-weight: 600;
   color: var(--color-text);
+}
+
+.noteActions {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .textarea {

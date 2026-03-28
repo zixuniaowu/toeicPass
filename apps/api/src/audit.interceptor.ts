@@ -36,6 +36,7 @@ export class AuditInterceptor implements NestInterceptor {
           entityType: "http",
           payloadHash: hashPayload(req.body ?? {}),
         });
+        this.appService.persistStore();
       }),
     );
   }
