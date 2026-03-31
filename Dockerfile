@@ -30,4 +30,4 @@ COPY --from=build /app /app
 EXPOSE 7860
 
 # Start Nest API on 8001 and Next.js on 7860 (HF Space public port).
-CMD ["bash", "-lc", "PORT=8001 node apps/api/dist/src/main.js & cd apps/web && npx next start -p 7860"]
+CMD ["bash", "-lc", "PORT=8001 node apps/api/dist/apps/api/src/main.js & cd apps/web && npx next start -p 7860"]
