@@ -40,7 +40,7 @@ function shouldShowPart1Image(question: SessionQuestion): boolean {
   if (question.partNo !== 1 || !question.imageUrl) {
     return false;
   }
-  return !question.imageUrl.toLowerCase().startsWith("data:image");
+  return true;
 }
 
 export function QuestionCard({
