@@ -26,6 +26,84 @@ const PART1_RULES: Part1Rule[] = [
     pattern: /(filing|cabinet|drawer|office)/,
     strictPattern: /(filing|cabinet|drawer)/,
   },
+  {
+    imageUrl: "/assets/images/listening/part1-restaurant-dining.jpg",
+    token: "restaurant",
+    pattern: /(restaurant|dining|table|chair|seated|meal)/,
+    strictPattern: /(restaurant|dining|table.*set|seated|empty.*table)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-construction-site.jpg",
+    token: "construction",
+    pattern: /(construction|worker|hard hat|helmet|building|rebar|steel)/,
+    strictPattern: /(construction|hard hat|helmet|rebar|steel bar|building site)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-library-reading.jpg",
+    token: "library",
+    pattern: /(library|book|bookshelf|shelf|reading)/,
+    strictPattern: /(library|bookshelf|books.*shelf|shelved)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-warehouse-boxes.jpg",
+    token: "warehouse",
+    pattern: /(warehouse|shelf|storage|aisle|inventory|boxes)/,
+    strictPattern: /(warehouse|storage.*shelf|aisle|inventory|stacked.*boxes)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-garden-flowers.jpg",
+    token: "garden",
+    pattern: /(garden|flower|path|bush|hedge|bloom)/,
+    strictPattern: /(garden|flower.*path|hedge|bloom|walkway)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-office-meeting.jpg",
+    token: "meeting",
+    pattern: /(meeting|presentation|sticky note|whiteboard|laptop|colleague)/,
+    strictPattern: /(meeting|presentation|sticky note|whiteboard|brainstorm)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-airport-terminal.jpg",
+    token: "airport",
+    pattern: /(airplane|plane|aircraft|flying|landing|runway|airport|tarmac)/,
+    strictPattern: /(airplane|plane|aircraft|landing|takeoff|runway|airport|tarmac)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-kitchen-cooking.jpg",
+    token: "kitchen",
+    pattern: /(kitchen|cooking|pot|pan|stove|apron|recipe)/,
+    strictPattern: /(kitchen|cooking|apron|stove|counter|preparing food)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-parking-lot.jpg",
+    token: "parking",
+    pattern: /(parking|car|vehicle|lot|space|parked)/,
+    strictPattern: /(parking lot|parked.*car|vehicle|parking space)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-classroom-students.jpg",
+    token: "classroom",
+    pattern: /(classroom|desk|chalkboard|blackboard|student|chair)/,
+    strictPattern: /(classroom|chalkboard|blackboard|desk.*chair)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-supermarket-shelves.jpg",
+    token: "supermarket",
+    pattern: /(supermarket|grocery|product|cereal|aisle|shopping)/,
+    strictPattern: /(supermarket|grocery|cereal|product.*shelf|shopping aisle)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-boat-lake.jpg",
+    token: "boat",
+    pattern: /(boat|lake|water|mountain|rowing|canoe)/,
+    strictPattern: /(boat|lake|canoe|rowing|waterfront)/,
+  },
+  {
+    imageUrl: "/assets/images/listening/part1-park-bench.jpg",
+    token: "park",
+    pattern: /(park|grass|tree|outdoor|walking|lawn)/,
+    strictPattern: /(park|grass|tree|lawn|outdoor.*walk)/,
+  },
 ];
 
 export type QuestionQualityIssue =

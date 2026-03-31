@@ -51,16 +51,29 @@ export function isAlignedPart1Visual(question: {
 }): boolean {
   const image = (question.imageUrl ?? "").toLowerCase();
   const corpus = `${question.stem} ${question.options.map((opt) => opt.text).join(" ")}`.toLowerCase();
-  if (image.includes("bicycles")) {
-    return /(bicycle|bike|fence|parked)/.test(corpus);
+  const rules: Array<{ token: string; pattern: RegExp }> = [
+    { token: "bicycles", pattern: /(bicycle|bike|fence|parked)/ },
+    { token: "truck", pattern: /(truck|box|loading|unloading|delivery)/ },
+    { token: "filing", pattern: /(filing|cabinet|drawer|office)/ },
+    { token: "restaurant", pattern: /(restaurant|dining|table|chair|seated|meal)/ },
+    { token: "construction", pattern: /(construction|worker|hard hat|helmet|building|rebar|steel)/ },
+    { token: "library", pattern: /(library|book|bookshelf|shelf|reading)/ },
+    { token: "warehouse", pattern: /(warehouse|shelf|storage|aisle|inventory|boxes)/ },
+    { token: "garden", pattern: /(garden|flower|path|bush|hedge|bloom)/ },
+    { token: "meeting", pattern: /(meeting|presentation|sticky note|whiteboard|laptop|colleague)/ },
+    { token: "airport", pattern: /(airplane|plane|aircraft|flying|landing|runway|airport|tarmac)/ },
+    { token: "kitchen", pattern: /(kitchen|cooking|pot|pan|stove|apron|recipe)/ },
+    { token: "parking", pattern: /(parking|car|vehicle|lot|space|parked)/ },
+    { token: "classroom", pattern: /(classroom|desk|chalkboard|blackboard|student|chair)/ },
+    { token: "supermarket", pattern: /(supermarket|grocery|product|cereal|aisle|shopping)/ },
+    { token: "boat", pattern: /(boat|lake|water|mountain|rowing|canoe)/ },
+    { token: "park", pattern: /(park|grass|tree|outdoor|walking|lawn)/ },
+  ];
+  const rule = rules.find((r) => image.includes(r.token));
+  if (!rule) {
+    return false;
   }
-  if (image.includes("truck") || image.includes("unloading")) {
-    return /(truck|box|loading|unloading|delivery)/.test(corpus);
-  }
-  if (image.includes("filing") || image.includes("cabinet")) {
-    return /(filing|cabinet|drawer|office)/.test(corpus);
-  }
-  return false;
+  return rule.pattern.test(corpus);
 }
 
 export function isSupportedAction(action: string): boolean {

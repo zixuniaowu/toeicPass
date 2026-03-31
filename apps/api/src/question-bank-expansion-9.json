@@ -1,0 +1,1144 @@
+{
+  "questions": [
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Tables have been set for dining in a restaurant.",
+      "imageUrl": "/assets/images/listening/part1-restaurant-dining.jpg",
+      "explanation": "The photo shows a restaurant interior with tables set with glasses and place settings. The correct answer describes what is visible.",
+      "options": [
+        { "key": "A", "text": "Tables have been set for dining in a restaurant." },
+        { "key": "B", "text": "A waiter is carrying dishes to the kitchen." },
+        { "key": "C", "text": "Customers are ordering food from a menu." },
+        { "key": "D", "text": "A chef is preparing a meal in the back." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "The restaurant dining area is empty with chairs arranged around tables.",
+      "imageUrl": "/assets/images/listening/part1-restaurant-dining.jpg",
+      "explanation": "Focus on the visible arrangement: empty dining tables with chairs positioned around them, no people present.",
+      "options": [
+        { "key": "A", "text": "Guests are seated at every table." },
+        { "key": "B", "text": "The dining area is empty with chairs arranged around tables." },
+        { "key": "C", "text": "A bartender is mixing drinks at the counter." },
+        { "key": "D", "text": "The entrance of the restaurant is being decorated." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Construction workers wearing hard hats are working at a building site.",
+      "imageUrl": "/assets/images/listening/part1-construction-site.jpg",
+      "explanation": "The photo shows workers in hard hats and safety vests on a construction site surrounded by rebar and steel bars.",
+      "options": [
+        { "key": "A", "text": "Construction workers wearing helmets are at a building site." },
+        { "key": "B", "text": "An architect is reviewing blueprints in an office." },
+        { "key": "C", "text": "Boxes are stacked near a warehouse entrance." },
+        { "key": "D", "text": "Painters are finishing the exterior of a house." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Workers wearing safety vests are handling steel bars at a construction site.",
+      "imageUrl": "/assets/images/listening/part1-construction-site.jpg",
+      "explanation": "The image shows construction workers in orange safety vests on concrete surrounded by rebar. The correct answer matches this scene.",
+      "options": [
+        { "key": "A", "text": "A crane is lifting equipment onto a rooftop." },
+        { "key": "B", "text": "Workers with safety vests are handling steel bars at a construction site." },
+        { "key": "C", "text": "Concrete is being poured into a foundation." },
+        { "key": "D", "text": "An inspector is examining a finished building." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Books are arranged on shelves in a library.",
+      "imageUrl": "/assets/images/listening/part1-library-reading.jpg",
+      "explanation": "The photo shows bookshelves filled with many books in what appears to be a library. The correct answer describes the visible arrangement.",
+      "options": [
+        { "key": "A", "text": "A student is reaching for a book on a high shelf." },
+        { "key": "B", "text": "Books are arranged on shelves in a library." },
+        { "key": "C", "text": "Library visitors are waiting at the checkout counter." },
+        { "key": "D", "text": "New books are being unpacked from boxes." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Rows of bookshelves are filled with books of various sizes.",
+      "imageUrl": "/assets/images/listening/part1-library-reading.jpg",
+      "explanation": "The image shows multiple shelves packed with books in varying sizes and colors, typical of a library collection.",
+      "options": [
+        { "key": "A", "text": "A librarian is cataloging new publications." },
+        { "key": "B", "text": "All the shelves in the library are nearly empty." },
+        { "key": "C", "text": "Rows of bookshelves are filled with books." },
+        { "key": "D", "text": "Periodicals are displayed on a reading table." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Boxes are stacked on shelves in a large warehouse.",
+      "imageUrl": "/assets/images/listening/part1-warehouse-boxes.jpg",
+      "explanation": "The photo shows tall shelving aisles in a warehouse with boxes stacked on metal racks extending to the ceiling.",
+      "options": [
+        { "key": "A", "text": "A forklift is transporting pallets across a factory." },
+        { "key": "B", "text": "Boxes are stacked on shelves in a large warehouse." },
+        { "key": "C", "text": "An employee is scanning barcodes at a checkout." },
+        { "key": "D", "text": "Furniture is being assembled in a showroom." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "An aisle in a warehouse storage facility extends between tall shelving racks.",
+      "imageUrl": "/assets/images/listening/part1-warehouse-boxes.jpg",
+      "explanation": "The photo shows a long aisle in a warehouse with high storage shelves on both sides filled with inventory boxes.",
+      "options": [
+        { "key": "A", "text": "Workers are loading a delivery truck at the dock." },
+        { "key": "B", "text": "A security guard is checking identification at the gate." },
+        { "key": "C", "text": "An aisle extends between tall storage shelving racks in a warehouse." },
+        { "key": "D", "text": "Empty shelves are waiting to be restocked." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "A garden path leads through flowering bushes and hedges.",
+      "imageUrl": "/assets/images/listening/part1-garden-flowers.jpg",
+      "explanation": "The photo shows a garden walkway lined with flowering bushes and neatly trimmed hedges.",
+      "options": [
+        { "key": "A", "text": "A garden path leads through flowering bushes." },
+        { "key": "B", "text": "Trees are being trimmed along a highway." },
+        { "key": "C", "text": "A gardener is planting seeds in a field." },
+        { "key": "D", "text": "Fruit is being harvested from an orchard." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Flowers are blooming along both sides of a garden walkway.",
+      "imageUrl": "/assets/images/listening/part1-garden-flowers.jpg",
+      "explanation": "The image shows blooming flowers lining a path through a maintained garden. The correct answer describes this visible scene.",
+      "options": [
+        { "key": "A", "text": "A gardener is watering plants in a greenhouse." },
+        { "key": "B", "text": "Flowers are blooming along both sides of a garden walkway." },
+        { "key": "C", "text": "Park visitors are sitting on benches near the fountain." },
+        { "key": "D", "text": "Autumn leaves are covering the ground." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "A group of colleagues is gathered around a table for a meeting.",
+      "imageUrl": "/assets/images/listening/part1-office-meeting.jpg",
+      "explanation": "The photo shows several people seated around a table with laptops while a woman stands pointing at sticky notes on a whiteboard during a meeting.",
+      "options": [
+        { "key": "A", "text": "Colleagues are gathered around a table for a meeting." },
+        { "key": "B", "text": "A janitor is vacuuming an empty conference room." },
+        { "key": "C", "text": "A secretary is answering the telephone." },
+        { "key": "D", "text": "Documents are being shredded near the copier." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "A woman is giving a presentation using sticky notes on a whiteboard.",
+      "imageUrl": "/assets/images/listening/part1-office-meeting.jpg",
+      "explanation": "The image shows a woman standing at a whiteboard covered in colorful sticky notes while colleagues seated at a table look on.",
+      "options": [
+        { "key": "A", "text": "A manager is reading a report at her desk." },
+        { "key": "B", "text": "All the meeting participants are standing." },
+        { "key": "C", "text": "A woman is giving a presentation using sticky notes on a whiteboard." },
+        { "key": "D", "text": "An employee is adjusting the projection screen." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "An airplane is flying through a clear blue sky.",
+      "imageUrl": "/assets/images/listening/part1-airport-terminal.jpg",
+      "explanation": "The photo shows a large airplane in flight against a clear sky. The correct answer matches the visible scene.",
+      "options": [
+        { "key": "A", "text": "Passengers are boarding an aircraft at the gate." },
+        { "key": "B", "text": "An airplane is flying through a clear blue sky." },
+        { "key": "C", "text": "The runway is being cleared of debris." },
+        { "key": "D", "text": "Luggage is being placed on a conveyor belt." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "A commercial aircraft is approaching for landing with its gear down.",
+      "imageUrl": "/assets/images/listening/part1-airport-terminal.jpg",
+      "explanation": "The image shows a plane in flight with landing gear extended, suggesting it is preparing to land.",
+      "options": [
+        { "key": "A", "text": "An airplane is approaching for landing with its gear down." },
+        { "key": "B", "text": "A helicopter is hovering above a hospital." },
+        { "key": "C", "text": "Planes are parked side by side at the terminal." },
+        { "key": "D", "text": "The control tower is being painted." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "People are cooking in a kitchen with pots on the counter.",
+      "imageUrl": "/assets/images/listening/part1-kitchen-cooking.jpg",
+      "explanation": "The photo shows people in a kitchen with an apron and pots on a counter, preparing food together.",
+      "options": [
+        { "key": "A", "text": "A server is carrying plates to a table." },
+        { "key": "B", "text": "People are cooking in a kitchen with pots on the counter." },
+        { "key": "C", "text": "The dishwasher is being loaded with utensils." },
+        { "key": "D", "text": "A baker is decorating a cake." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "A man wearing an apron is preparing food at a kitchen counter.",
+      "imageUrl": "/assets/images/listening/part1-kitchen-cooking.jpg",
+      "explanation": "The image shows a man in an apron stirring a pot at a kitchen counter with another person watching. The correct answer focuses on the observable action.",
+      "options": [
+        { "key": "A", "text": "A man wearing an apron is preparing food at a kitchen counter." },
+        { "key": "B", "text": "Dishes are drying on a rack by the sink." },
+        { "key": "C", "text": "Groceries are being unpacked from shopping bags." },
+        { "key": "D", "text": "A refrigerator door has been left open." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Cars are parked in numbered spaces in a parking lot.",
+      "imageUrl": "/assets/images/listening/part1-parking-lot.jpg",
+      "explanation": "The photo shows an aerial view of a parking lot with many cars parked in numbered spaces. Some spaces are empty.",
+      "options": [
+        { "key": "A", "text": "Traffic is moving slowly on a highway." },
+        { "key": "B", "text": "A mechanic is inspecting a vehicle on a lift." },
+        { "key": "C", "text": "Cars are parked in numbered spaces in a parking lot." },
+        { "key": "D", "text": "A toll booth operator is collecting fees." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Some parking spaces are empty in a large outdoor parking lot.",
+      "imageUrl": "/assets/images/listening/part1-parking-lot.jpg",
+      "explanation": "The aerial view shows a parking lot with both occupied and vacant spaces. The correct answer accurately describes the mixed state.",
+      "options": [
+        { "key": "A", "text": "Some parking spaces are empty in a large outdoor parking lot." },
+        { "key": "B", "text": "All the vehicles in the parking lot are buses." },
+        { "key": "C", "text": "A parking attendant is directing traffic." },
+        { "key": "D", "text": "Snow covers the surface of the parking area." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Desks and chairs are arranged in rows in a classroom.",
+      "imageUrl": "/assets/images/listening/part1-classroom-students.jpg",
+      "explanation": "The photo shows a classroom with rows of wooden desks and chairs facing a chalkboard at the front.",
+      "options": [
+        { "key": "A", "text": "Students are taking an exam in a lecture hall." },
+        { "key": "B", "text": "Desks and chairs are arranged in rows in a classroom." },
+        { "key": "C", "text": "A teacher is writing equations on a digital screen." },
+        { "key": "D", "text": "Art supplies are spread across a worktable." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "An empty classroom has a chalkboard mounted on the front wall.",
+      "imageUrl": "/assets/images/listening/part1-classroom-students.jpg",
+      "explanation": "The image shows an empty classroom with a green chalkboard at the front and rows of desks. No students are present.",
+      "options": [
+        { "key": "A", "text": "A professor is lecturing to a crowded hall." },
+        { "key": "B", "text": "Children are playing on the schoolyard." },
+        { "key": "C", "text": "An empty classroom has a blackboard mounted on the front wall." },
+        { "key": "D", "text": "Textbooks are stacked on a library cart." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "Products are displayed on shelves in a supermarket aisle.",
+      "imageUrl": "/assets/images/listening/part1-supermarket-shelves.jpg",
+      "explanation": "The photo shows a supermarket aisle with products such as cereal and tea arranged on shelves on both sides.",
+      "options": [
+        { "key": "A", "text": "Products are displayed on shelves in a supermarket aisle." },
+        { "key": "B", "text": "A cashier is scanning items at the register." },
+        { "key": "C", "text": "Shopping carts are lined up near the entrance." },
+        { "key": "D", "text": "Produce is being weighed on a scale." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "A grocery store aisle is stocked with cereal boxes and other products.",
+      "imageUrl": "/assets/images/listening/part1-supermarket-shelves.jpg",
+      "explanation": "The image shows a well-stocked supermarket aisle with cereal boxes, tea packages, and other products with price signs visible.",
+      "options": [
+        { "key": "A", "text": "The shelves in the store are mostly empty." },
+        { "key": "B", "text": "A grocery store aisle is stocked with cereal boxes and other products." },
+        { "key": "C", "text": "A delivery driver is stacking crates outside." },
+        { "key": "D", "text": "Shoppers are lining up at the self-checkout." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "A wooden boat is floating on a calm lake surrounded by mountains.",
+      "imageUrl": "/assets/images/listening/part1-boat-lake.jpg",
+      "explanation": "The photo shows the bow of a wooden boat on clear turquoise water with snow-capped mountains in the background.",
+      "options": [
+        { "key": "A", "text": "Swimmers are diving into an ocean." },
+        { "key": "B", "text": "A sailboat is docked at a marina." },
+        { "key": "C", "text": "A wooden boat is floating on a calm lake surrounded by mountains." },
+        { "key": "D", "text": "Fishermen are casting nets from a pier." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "A boat is resting on a lake with mountains visible in the background.",
+      "imageUrl": "/assets/images/listening/part1-boat-lake.jpg",
+      "explanation": "The image shows a wooden boat on a serene lake with dramatic mountain scenery behind it.",
+      "options": [
+        { "key": "A", "text": "A boat is resting on a lake with mountains visible in the background." },
+        { "key": "B", "text": "Kayakers are paddling through rapids." },
+        { "key": "C", "text": "A bridge spans across a wide river." },
+        { "key": "D", "text": "Cargo ships are anchored in a harbor." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 1,
+      "stem": "People are walking through a park on a sunny day.",
+      "imageUrl": "/assets/images/listening/part1-park-bench.jpg",
+      "explanation": "The photo shows an open green park with people walking on the grass among large trees on a bright day.",
+      "options": [
+        { "key": "A", "text": "People are walking through a park on a sunny day." },
+        { "key": "B", "text": "Children are playing on a swing set." },
+        { "key": "C", "text": "A farmer is plowing a field with a tractor." },
+        { "key": "D", "text": "A fence has been put up around the playground." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 1,
+      "skillTag": "photo-description",
+      "difficulty": 2,
+      "stem": "Trees and grass fill a large outdoor park area.",
+      "imageUrl": "/assets/images/listening/part1-park-bench.jpg",
+      "explanation": "The image shows a spacious park with tall trees and wide lawns where people are scattered about.",
+      "options": [
+        { "key": "A", "text": "Trees and grass fill a large outdoor park area." },
+        { "key": "B", "text": "A construction crew is building a new playground." },
+        { "key": "C", "text": "The park is closed for winter maintenance." },
+        { "key": "D", "text": "A road runs through the center of the park." }
+      ],
+      "correctKey": "A"
+    },
+
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "When does the conference start?",
+      "explanation": "This is a When question, so the answer should provide a time. Option A gives a specific time.",
+      "options": [
+        { "key": "A", "text": "It starts at nine o'clock." },
+        { "key": "B", "text": "In the main auditorium." },
+        { "key": "C", "text": "About fifty people." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "Where can I find the supply closet?",
+      "explanation": "This is a Where question asking for a location. Option B gives a location direction.",
+      "options": [
+        { "key": "A", "text": "Yes, we have plenty of supplies." },
+        { "key": "B", "text": "It's down the hall on the left." },
+        { "key": "C", "text": "I'll close the door for you." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "Who is responsible for the annual report?",
+      "explanation": "This is a Who question. Option C identifies a person responsible.",
+      "options": [
+        { "key": "A", "text": "It was published last month." },
+        { "key": "B", "text": "The report has twenty pages." },
+        { "key": "C", "text": "Ms. Chen in the finance department." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Could you review this proposal before the deadline?",
+      "explanation": "This is a polite request. A natural response is to agree and confirm willingness.",
+      "options": [
+        { "key": "A", "text": "Sure, when is it due?" },
+        { "key": "B", "text": "The proposal was very long." },
+        { "key": "C", "text": "I prefer the window seat." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Why was the meeting rescheduled?",
+      "explanation": "This is a Why question asking for a reason. Option B provides a reason for rescheduling.",
+      "options": [
+        { "key": "A", "text": "In the third-floor conference room." },
+        { "key": "B", "text": "Because the director had a scheduling conflict." },
+        { "key": "C", "text": "It lasted about two hours." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "How long will the renovation take?",
+      "explanation": "This is a How long question about duration. Option A gives a time estimate.",
+      "options": [
+        { "key": "A", "text": "Approximately three weeks." },
+        { "key": "B", "text": "The building is on Park Street." },
+        { "key": "C", "text": "We hired a local contractor." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Would you rather work from home or come to the office tomorrow?",
+      "explanation": "This is an either/or question. Option C makes a choice between the options given.",
+      "options": [
+        { "key": "A", "text": "The office closes at six." },
+        { "key": "B", "text": "Yes, I would like that." },
+        { "key": "C", "text": "I think I'll work from home." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Have the invitations been sent out yet?",
+      "explanation": "This is a yes/no question about status. Option B gives a direct status update.",
+      "options": [
+        { "key": "A", "text": "About a hundred guests." },
+        { "key": "B", "text": "They were mailed yesterday." },
+        { "key": "C", "text": "At the reception hall downtown." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "Don't you think we should hire more staff for the busy season?",
+      "explanation": "This is a negative question seeking agreement. Option A responds to the suggestion about hiring.",
+      "options": [
+        { "key": "A", "text": "I agree, we could use the extra help." },
+        { "key": "B", "text": "The season starts in June." },
+        { "key": "C", "text": "We paid them on Friday." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 1,
+      "stem": "What time does the last train leave?",
+      "explanation": "This is a What time question. Option B provides the departure time.",
+      "options": [
+        { "key": "A", "text": "From platform seven." },
+        { "key": "B", "text": "At eleven thirty." },
+        { "key": "C", "text": "Yes, you need a ticket." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 2,
+      "stem": "Shall I make reservations for dinner tonight?",
+      "explanation": "This is an offer/suggestion. Option A accepts the offer with additional information.",
+      "options": [
+        { "key": "A", "text": "That would be great—for four people, please." },
+        { "key": "B", "text": "The restaurant is very popular." },
+        { "key": "C", "text": "I had lunch at noon." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 2,
+      "skillTag": "question-response",
+      "difficulty": 3,
+      "stem": "You'll be attending the trade fair next week, won't you?",
+      "explanation": "This is a tag question seeking confirmation. Option C directly confirms attendance.",
+      "options": [
+        { "key": "A", "text": "The fair was very successful." },
+        { "key": "B", "text": "It's held at the convention center." },
+        { "key": "C", "text": "Yes, I've already registered." }
+      ],
+      "correctKey": "C"
+    },
+
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman want to do?",
+      "context": "W: I'd like to return this printer. It stopped working after just two days.\nM: I'm sorry about that. Do you have your receipt?\nW: Yes, here it is. I'd prefer a replacement rather than a refund, if possible.\nM: Let me check if we have the same model in stock.",
+      "explanation": "The woman wants to exchange the defective printer for a working one. She says 'I'd prefer a replacement rather than a refund.'",
+      "options": [
+        { "key": "A", "text": "Get her money back for the printer." },
+        { "key": "B", "text": "Have the printer repaired." },
+        { "key": "C", "text": "Exchange the printer for a new one." },
+        { "key": "D", "text": "Purchase a different model." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "According to the man, what will happen next week?",
+      "context": "W: Have you heard about the changes to the parking policy?\nM: Yes, starting next week, all employees need to display a new parking permit.\nW: Where can we pick up the new permits?\nM: The security office on the ground floor is distributing them.",
+      "explanation": "The man says that starting next week, employees need new parking permits. The change is a new permit requirement.",
+      "options": [
+        { "key": "A", "text": "The parking lot will be closed for repairs." },
+        { "key": "B", "text": "New parking permits will be required." },
+        { "key": "C", "text": "Employee parking fees will increase." },
+        { "key": "D", "text": "Additional parking spaces will be added." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What is the woman's problem?",
+      "context": "M: How's the report coming along?\nW: I'm having trouble accessing the sales database. My login seems to have expired.\nM: That happened to several people after the system update. Contact IT support—they can reset it right away.\nW: Thanks, I'll call them now.",
+      "explanation": "The woman cannot access the sales database because her login expired after a system update.",
+      "options": [
+        { "key": "A", "text": "She cannot log in to the database." },
+        { "key": "B", "text": "She lost her report file." },
+        { "key": "C", "text": "She missed a deadline." },
+        { "key": "D", "text": "She forgot the meeting time." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man suggest the woman do?",
+      "context": "W: The client wants the proposal by Friday, but I haven't finished the financial projections yet.\nM: Why don't you ask Kevin to help with the numbers? He's finished his current project.\nW: That's a good idea. I'll talk to him after lunch.\nM: Also, I can review the final draft if you send it Thursday evening.",
+      "explanation": "The man suggests asking Kevin for help with the financial projections since Kevin has finished his current project.",
+      "options": [
+        { "key": "A", "text": "Request a deadline extension from the client." },
+        { "key": "B", "text": "Ask a colleague for assistance." },
+        { "key": "C", "text": "Use last year's financial data." },
+        { "key": "D", "text": "Schedule a meeting with the client." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "Where does the conversation most likely take place?",
+      "context": "M: Excuse me, I'm looking for the business section.\nW: It's on the second floor, near the periodicals area.\nM: Do I need a membership card to borrow books?\nW: Yes, but you can sign up at the information desk. It only takes a few minutes.",
+      "explanation": "The conversation is taking place in a library. The man asks about borrowing books and the woman mentions a membership card and information desk.",
+      "options": [
+        { "key": "A", "text": "At a bookstore." },
+        { "key": "B", "text": "At a library." },
+        { "key": "C", "text": "At a university." },
+        { "key": "D", "text": "At an office supply store." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "Why is the man calling?",
+      "context": "M: Hello, I'm calling about the job opening for a marketing coordinator that was posted on your website.\nW: Yes, that position is still available. Have you submitted an application?\nM: I have, but I wanted to ask about the start date. It wasn't listed in the posting.\nW: We're hoping the new hire can start by the first of next month.",
+      "explanation": "The man is calling to ask about the start date for a job he has applied to, as it was not mentioned in the posting.",
+      "options": [
+        { "key": "A", "text": "To apply for a position." },
+        { "key": "B", "text": "To check on his application status." },
+        { "key": "C", "text": "To ask about the start date for a job." },
+        { "key": "D", "text": "To negotiate the salary." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What will the woman do next?",
+      "context": "M: The shipment from our supplier was supposed to arrive this morning.\nW: I'll check the tracking system. There could be a delay due to the weather.\nM: If it doesn't arrive by three o'clock, we'll need to call the supplier directly.\nW: Understood. Let me pull up the tracking information right now.",
+      "explanation": "The woman says she will check the tracking system immediately to find out about the delayed shipment.",
+      "options": [
+        { "key": "A", "text": "Call the supplier." },
+        { "key": "B", "text": "Reschedule the delivery." },
+        { "key": "C", "text": "Check the shipment tracking." },
+        { "key": "D", "text": "Contact the warehouse manager." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman imply when she says, 'I wish I'd known sooner'?",
+      "context": "M: The team dinner has been moved from Thursday to Friday because the restaurant is fully booked.\nW: Oh, I wish I'd known sooner. I already have plans for Friday evening.\nM: I'm sorry. We could save you a seat in case you can rearrange your schedule.\nW: Thanks, I'll see what I can do.",
+      "explanation": "The woman implies that if she had known earlier about the change, she could have adjusted her plans. She already has a conflict on Friday.",
+      "options": [
+        { "key": "A", "text": "She would have made a reservation herself." },
+        { "key": "B", "text": "She might have kept Friday evening free." },
+        { "key": "C", "text": "She would have chosen a different restaurant." },
+        { "key": "D", "text": "She would have cancelled the dinner." }
+      ],
+      "correctKey": "B"
+    },
+
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What is the purpose of the announcement?",
+      "context": "Attention, shoppers. Our store will be closing in thirty minutes. Please bring your final selections to the checkout counters at the front of the store. We'd like to remind you that our weekend sale continues tomorrow with an additional ten percent off all clearance items. Thank you for shopping with us today.",
+      "explanation": "The announcement informs shoppers that the store is closing soon and reminds them about the ongoing weekend sale.",
+      "options": [
+        { "key": "A", "text": "To advertise a new product line." },
+        { "key": "B", "text": "To announce that the store is closing soon." },
+        { "key": "C", "text": "To report a change in store hours." },
+        { "key": "D", "text": "To welcome customers to a grand opening." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What does the speaker say about the workshop?",
+      "context": "Good morning, everyone. I'd like to remind you that the professional development workshop on project management will be held this Thursday from two to four P.M. in Conference Room B. The workshop will cover effective time management and resource allocation. Please register by end of day tomorrow so we can prepare enough materials for all participants.",
+      "explanation": "The speaker describes a project management workshop covering time management and resource allocation, asking for registration by tomorrow.",
+      "options": [
+        { "key": "A", "text": "It has been postponed until next month." },
+        { "key": "B", "text": "It will focus on project management skills." },
+        { "key": "C", "text": "It requires a registration fee." },
+        { "key": "D", "text": "It is mandatory for all employees." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "Who is the intended audience of this message?",
+      "context": "This is a message for all residents of the Oakwood Apartment Complex. Please be advised that the water supply will be shut off on Saturday morning from eight to twelve for routine maintenance of the main pipes. We recommend storing water in advance for drinking and cooking. We apologize for any inconvenience and appreciate your cooperation.",
+      "explanation": "The message is addressed to 'all residents of the Oakwood Apartment Complex,' indicating the audience is apartment residents.",
+      "options": [
+        { "key": "A", "text": "Office workers in a business district." },
+        { "key": "B", "text": "Residents of an apartment complex." },
+        { "key": "C", "text": "Visitors at a hotel." },
+        { "key": "D", "text": "Maintenance crew members." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What should the listeners do before the event?",
+      "context": "Attention all volunteers for Saturday's community cleanup event. Please meet at the Central Park entrance by eight A.M. Gloves and trash bags will be provided, but we ask that you bring your own water bottle and wear comfortable shoes. If you haven't signed the waiver form yet, please do so when you check in at the registration table.",
+      "explanation": "Volunteers are told to bring their own water bottle and wear comfortable shoes. The waiver can be signed at check-in.",
+      "options": [
+        { "key": "A", "text": "Purchase cleaning supplies." },
+        { "key": "B", "text": "Bring their own water bottles and wear comfortable shoes." },
+        { "key": "C", "text": "Submit a volunteer application." },
+        { "key": "D", "text": "Attend an orientation session." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What is being advertised?",
+      "context": "Are you looking for a faster internet connection? Metro Broadband is now offering our premium fiber optic plan at fifty percent off for the first six months. With speeds up to one gigabit per second, you'll enjoy seamless streaming, gaming, and video calls. Call us today at 555-0199 or visit our website to sign up. This limited-time offer ends March thirty-first.",
+      "explanation": "The advertisement is promoting a discounted internet service plan from Metro Broadband with fiber optic speeds.",
+      "options": [
+        { "key": "A", "text": "A mobile phone plan." },
+        { "key": "B", "text": "A cable television package." },
+        { "key": "C", "text": "A high-speed internet service." },
+        { "key": "D", "text": "A computer repair service." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What problem does the speaker mention?",
+      "context": "Good afternoon, passengers on Flight 472 to Seoul. We regret to inform you that our departure has been delayed by approximately ninety minutes due to a mechanical issue that needs to be inspected. We will provide updated boarding information as soon as it becomes available. In the meantime, meal vouchers will be distributed at the gate counter. We apologize for the inconvenience.",
+      "explanation": "The speaker reports a flight delay caused by a mechanical issue that needs inspection.",
+      "options": [
+        { "key": "A", "text": "Bad weather is affecting the flight." },
+        { "key": "B", "text": "The flight is overbooked." },
+        { "key": "C", "text": "A mechanical issue has delayed the departure." },
+        { "key": "D", "text": "The crew has not arrived yet." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What will happen at the end of this month?",
+      "context": "I'm pleased to announce that our new company cafeteria will open on the last day of this month. The cafeteria will serve breakfast from seven to nine and lunch from eleven thirty to one thirty. All employees will receive a twenty-percent discount during the opening week. Meal plans can be purchased at the HR office starting next Monday.",
+      "explanation": "The speaker says the new company cafeteria will open on the last day of this month.",
+      "options": [
+        { "key": "A", "text": "The office building will be renovated." },
+        { "key": "B", "text": "A new company cafeteria will open." },
+        { "key": "C", "text": "The lunch break hours will change." },
+        { "key": "D", "text": "New employees will start orientation." }
+      ],
+      "correctKey": "B"
+    },
+
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 1,
+      "stem": "All employees must submit their expense reports _______ the end of each month.",
+      "explanation": "The correct preposition with 'the end of each month' is 'by', meaning no later than.",
+      "options": [
+        { "key": "A", "text": "by" },
+        { "key": "B", "text": "until" },
+        { "key": "C", "text": "since" },
+        { "key": "D", "text": "for" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 1,
+      "stem": "The marketing team has been working _______ on the product launch campaign.",
+      "explanation": "'Diligently' is an adverb that modifies the verb 'working,' describing how the team has been working.",
+      "options": [
+        { "key": "A", "text": "diligent" },
+        { "key": "B", "text": "diligently" },
+        { "key": "C", "text": "diligence" },
+        { "key": "D", "text": "diligences" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 2,
+      "stem": "The shipment _______ expected to arrive at the warehouse by next Tuesday.",
+      "explanation": "'The shipment' is a singular subject, so 'is' is the correct form of the verb 'to be.'",
+      "options": [
+        { "key": "A", "text": "is" },
+        { "key": "B", "text": "are" },
+        { "key": "C", "text": "were" },
+        { "key": "D", "text": "have been" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 2,
+      "stem": "Ms. Park, _______ has extensive experience in accounting, will lead the audit team.",
+      "explanation": "'Who' is the correct relative pronoun for a person serving as the subject of the relative clause.",
+      "options": [
+        { "key": "A", "text": "who" },
+        { "key": "B", "text": "which" },
+        { "key": "C", "text": "whom" },
+        { "key": "D", "text": "whose" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 2,
+      "stem": "The new regulations will be _______ effective starting from the first of January.",
+      "explanation": "'Made' collocates with 'effective' to mean officially enacted or implemented.",
+      "options": [
+        { "key": "A", "text": "turned" },
+        { "key": "B", "text": "brought" },
+        { "key": "C", "text": "made" },
+        { "key": "D", "text": "kept" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 3,
+      "stem": "The budget proposal was approved _______ it included detailed cost projections.",
+      "explanation": "'Because' introduces a reason clause explaining why the proposal was approved.",
+      "options": [
+        { "key": "A", "text": "although" },
+        { "key": "B", "text": "because" },
+        { "key": "C", "text": "unless" },
+        { "key": "D", "text": "while" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 2,
+      "stem": "Applicants should demonstrate their ability to work _______ in a team setting.",
+      "explanation": "'Effectively' is an adverb that describes how one works. 'Effective' would be an adjective.",
+      "options": [
+        { "key": "A", "text": "effective" },
+        { "key": "B", "text": "effectiveness" },
+        { "key": "C", "text": "effectively" },
+        { "key": "D", "text": "effecting" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 3,
+      "stem": "_______ we receive your payment, your subscription will be activated within twenty-four hours.",
+      "explanation": "'Once' means 'as soon as' and introduces a condition/time clause.",
+      "options": [
+        { "key": "A", "text": "Once" },
+        { "key": "B", "text": "Despite" },
+        { "key": "C", "text": "During" },
+        { "key": "D", "text": "Rather" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 1,
+      "stem": "The company provides health insurance for all of _______ full-time employees.",
+      "explanation": "'Its' is the possessive pronoun for 'the company,' which is a singular entity.",
+      "options": [
+        { "key": "A", "text": "its" },
+        { "key": "B", "text": "it's" },
+        { "key": "C", "text": "their" },
+        { "key": "D", "text": "it" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 3,
+      "stem": "The factory output increased _______ despite the recent supply chain disruptions.",
+      "explanation": "'Significantly' is an adverb modifying the verb 'increased.'",
+      "options": [
+        { "key": "A", "text": "significant" },
+        { "key": "B", "text": "significance" },
+        { "key": "C", "text": "significantly" },
+        { "key": "D", "text": "signified" }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 2,
+      "stem": "The director asked each department head to prepare a _______ summary of quarterly results.",
+      "explanation": "'Brief' is an adjective that modifies the noun 'summary.'",
+      "options": [
+        { "key": "A", "text": "brief" },
+        { "key": "B", "text": "briefly" },
+        { "key": "C", "text": "briefed" },
+        { "key": "D", "text": "briefness" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 5,
+      "skillTag": "incomplete-sentence",
+      "difficulty": 2,
+      "stem": "All visitors are required to wear identification badges _______ they are on company premises.",
+      "explanation": "'While' introduces a time clause meaning 'during the time that.'",
+      "options": [
+        { "key": "A", "text": "while" },
+        { "key": "B", "text": "although" },
+        { "key": "C", "text": "before" },
+        { "key": "D", "text": "unless" }
+      ],
+      "correctKey": "A"
+    },
+
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Dear valued customer, thank you for your recent purchase of our premium office chair. We hope you are _______ with the quality and comfort of your new chair.",
+      "context": "Dear valued customer,\n\nThank you for your recent purchase of our premium office chair. We hope you are _______ with the quality and comfort of your new chair. If you have any concerns, our customer service team is available Monday through Friday from 9 A.M. to 6 P.M.\n\nAs a token of our appreciation, we are offering you a 15% discount on your next purchase. Simply enter the code THANKYOU15 at checkout.\n\nBest regards,\nBright Office Furniture",
+      "explanation": "'Satisfied' fits the context of hoping the customer is happy with a purchased product.",
+      "options": [
+        { "key": "A", "text": "satisfy" },
+        { "key": "B", "text": "satisfied" },
+        { "key": "C", "text": "satisfying" },
+        { "key": "D", "text": "satisfaction" }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "The annual company picnic will take place on Saturday, June 14, at Riverside Park. All employees and their families are _______ to attend.",
+      "context": "Subject: Annual Company Picnic\n\nThe annual company picnic will take place on Saturday, June 14, at Riverside Park. All employees and their families are _______ to attend. Food, drinks, and entertainment will be provided free of charge.\n\nPlease RSVP by June 7 so that we can make appropriate arrangements. Activities will include a softball game, a three-legged race, and a raffle with exciting prizes.\n\nWe look forward to seeing everyone there!",
+      "explanation": "'Welcome' fits the sentence meaning employees are invited and encouraged to attend.",
+      "options": [
+        { "key": "A", "text": "welcome" },
+        { "key": "B", "text": "requiring" },
+        { "key": "C", "text": "prevented" },
+        { "key": "D", "text": "hesitant" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "We are pleased to announce that our new flagship store in downtown Portland will _______ on March 1.",
+      "context": "FOR IMMEDIATE RELEASE\n\nWe are pleased to announce that our new flagship store in downtown Portland will _______ on March 1. The 5,000-square-foot location on Elm Street features our complete product line, including exclusive items not available online.\n\nTo celebrate the grand opening, we will offer 20% off all purchases during the first week. Customers who visit on opening day will also receive a complimentary tote bag.\n\nContact: Lisa Park, Public Relations, 555-0234",
+      "explanation": "'Open' is the correct verb form after 'will' in the future tense, meaning the store will begin operating.",
+      "options": [
+        { "key": "A", "text": "open" },
+        { "key": "B", "text": "opening" },
+        { "key": "C", "text": "opened" },
+        { "key": "D", "text": "opens" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 3,
+      "stem": "All employees should submit their vacation requests at least two weeks _______ their planned leave dates.",
+      "context": "INTERNAL MEMO\nTo: All Staff\nSubject: Updated Vacation Policy\n\nEffective immediately, all employees should submit their vacation requests at least two weeks _______ their planned leave dates. Requests should be submitted through the HR portal and must be approved by your direct supervisor.\n\nPlease note that vacation days cannot be carried over to the following year. Unused days will be forfeited on December 31.\n\nHuman Resources Department",
+      "explanation": "'Before' correctly indicates the time relationship—requests must be submitted prior to leave dates.",
+      "options": [
+        { "key": "A", "text": "before" },
+        { "key": "B", "text": "since" },
+        { "key": "C", "text": "during" },
+        { "key": "D", "text": "after" }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 6,
+      "skillTag": "text-completion",
+      "difficulty": 2,
+      "stem": "Greenfield Technologies has _______ announced plans to expand its research facility in Austin, Texas.",
+      "context": "BUSINESS NEWS\n\nGreenfield Technologies has _______ announced plans to expand its research facility in Austin, Texas. The $40 million expansion will add 200 new positions over the next three years.\n\nThe company cited growing demand for its renewable energy products as the primary reason for the investment. Construction is expected to begin in the second quarter of this year.\n\n'This expansion reflects our commitment to innovation and job creation,' said CEO Martin Hughes.",
+      "explanation": "'Recently' is an adverb that appropriately modifies 'announced,' indicating the announcement was made not long ago.",
+      "options": [
+        { "key": "A", "text": "recent" },
+        { "key": "B", "text": "recently" },
+        { "key": "C", "text": "recency" },
+        { "key": "D", "text": "recenter" }
+      ],
+      "correctKey": "B"
+    },
+
+    {
+      "partNo": 7,
+      "skillTag": "reading-comprehension",
+      "difficulty": 2,
+      "stem": "What is the main purpose of the notice?",
+      "context": "NOTICE TO ALL TENANTS\n\nThe building management would like to inform all tenants that the elevators in Tower A will undergo maintenance on Saturday, April 12, from 8:00 A.M. to 5:00 P.M. During this time, only the stairs will be available for access to upper floors.\n\nWe understand this may cause inconvenience, especially for residents on higher floors. If you require special assistance, please contact the front desk at extension 200 before Friday, April 11.\n\nWe appreciate your patience and cooperation.\n\nBuilding Management Office",
+      "explanation": "The notice informs tenants about scheduled elevator maintenance and the temporary unavailability of elevators.",
+      "options": [
+        { "key": "A", "text": "To announce a rent increase." },
+        { "key": "B", "text": "To inform tenants about elevator maintenance." },
+        { "key": "C", "text": "To introduce new building security rules." },
+        { "key": "D", "text": "To invite tenants to a community meeting." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-comprehension",
+      "difficulty": 2,
+      "stem": "What is indicated about the position?",
+      "context": "JOB OPENING: Marketing Associate\nHorizon Media Group\n\nWe are seeking a creative and detail-oriented Marketing Associate to join our growing team. The ideal candidate will have at least two years of experience in digital marketing, including social media management and content creation.\n\nResponsibilities include developing marketing campaigns, analyzing performance metrics, and collaborating with the design team on promotional materials.\n\nThis is a full-time position with competitive salary and benefits. Remote work is available two days per week.\n\nTo apply, send your resume and portfolio to careers@horizonmedia.com by April 30.",
+      "explanation": "The job posting mentions 'Remote work is available two days per week,' indicating it allows some remote work.",
+      "options": [
+        { "key": "A", "text": "It is a part-time opportunity." },
+        { "key": "B", "text": "It requires five years of experience." },
+        { "key": "C", "text": "It allows remote work on some days." },
+        { "key": "D", "text": "It is located overseas." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-comprehension",
+      "difficulty": 3,
+      "stem": "According to the email, what does Mr. Tanaka request?",
+      "context": "From: Kenji Tanaka <k.tanaka@globalcorp.com>\nTo: Sarah Mitchell <s.mitchell@globalcorp.com>\nDate: March 18\nSubject: Q1 Sales Report\n\nDear Sarah,\n\nThank you for sending the preliminary Q1 sales figures. The data looks promising, but I noticed that the figures for the Asia-Pacific region seem lower than expected.\n\nCould you double-check those numbers with the regional office before we present the report to the board next Thursday? I'd also appreciate it if you could add a comparison chart showing year-over-year trends for each region.\n\nPlease have the updated version ready by Tuesday afternoon so I can review it before the meeting.\n\nBest regards,\nKenji Tanaka\nVice President, Sales",
+      "explanation": "Mr. Tanaka asks Sarah to verify the Asia-Pacific numbers with the regional office and add a year-over-year comparison chart.",
+      "options": [
+        { "key": "A", "text": "That the board meeting be postponed." },
+        { "key": "B", "text": "That certain sales figures be verified." },
+        { "key": "C", "text": "That all regional offices be contacted." },
+        { "key": "D", "text": "That a new sales strategy be developed." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-comprehension",
+      "difficulty": 3,
+      "stem": "What can be inferred about Greenleaf Catering?",
+      "context": "CUSTOMER REVIEW — Greenleaf Catering\nReviewed by: Maria Gonzalez\nRating: ★★★★☆\n\nWe hired Greenleaf Catering for our company's year-end celebration with approximately 80 guests. The menu featured a variety of vegetarian and non-vegetarian options, all beautifully presented.\n\nThe main courses were excellent, particularly the grilled salmon and the mushroom risotto. However, dessert was limited to just two choices, which was a bit disappointing for such a large event.\n\nThe staff was professional and responsive throughout the evening. Despite the minor dessert issue, I would recommend Greenleaf for corporate events and would consider using them again.\n\nPrice: $$$ (premium)",
+      "explanation": "The reviewer gave 4 out of 5 stars and said she would recommend them and use them again despite the minor dessert issue, indicating they provide generally high-quality service.",
+      "options": [
+        { "key": "A", "text": "It specializes in dessert catering." },
+        { "key": "B", "text": "It only serves vegetarian food." },
+        { "key": "C", "text": "It generally provides quality service." },
+        { "key": "D", "text": "It is the most affordable option available." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-comprehension",
+      "difficulty": 2,
+      "stem": "What is the purpose of the message?",
+      "context": "TEXT MESSAGE CHAIN\n\nJames [2:15 PM]: Hi Priya, just confirming our site visit tomorrow at the Elm Street property. Can you meet me there at 10 AM?\n\nPriya [2:22 PM]: Sure, 10 AM works. Should I bring the inspection checklist from last time?\n\nJames [2:24 PM]: Yes, please. Also bring the updated floor plans. The client wants to discuss possible modifications to the layout.\n\nPriya [2:30 PM]: Got it. I'll print everything out tonight. See you there!",
+      "explanation": "James is confirming the details of a meeting/site visit at a property with Priya.",
+      "options": [
+        { "key": "A", "text": "To cancel an appointment." },
+        { "key": "B", "text": "To confirm details of a site visit." },
+        { "key": "C", "text": "To request time off from work." },
+        { "key": "D", "text": "To order building materials." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-comprehension",
+      "difficulty": 3,
+      "stem": "In the article, the word 'sustainable' in paragraph 2, line 1, is closest in meaning to:",
+      "context": "LOCAL BUSINESS NEWS\n\nThe city council approved a proposal from Westfield Development to build a mixed-use complex on the former industrial site at 400 Harbor Drive. The $120 million project will include 250 residential units, ground-floor retail space, and a community center.\n\nThe development will use sustainable building practices, including solar panels, rainwater collection systems, and energy-efficient insulation. Construction is set to begin in September and is expected to take approximately two years to complete.\n\nMayor Helen Torres praised the project, saying it will create jobs and revitalize the waterfront area. Some residents have expressed concerns about increased traffic, and the council has agreed to conduct a traffic impact study before issuing final permits.",
+      "explanation": "'Sustainable' in this context means 'environmentally responsible' or 'able to be maintained without harming the environment.'",
+      "options": [
+        { "key": "A", "text": "Affordable." },
+        { "key": "B", "text": "Environmentally responsible." },
+        { "key": "C", "text": "Quickly completed." },
+        { "key": "D", "text": "Government-funded." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-comprehension",
+      "difficulty": 2,
+      "stem": "According to the schedule, when does the keynote address begin?",
+      "context": "ANNUAL TECHNOLOGY CONFERENCE — SCHEDULE\nDate: Friday, May 9\nVenue: Grand Convention Center\n\n8:00 AM — 8:30 AM: Registration & Coffee\n8:30 AM — 9:00 AM: Welcome Remarks by Conference Chair\n9:00 AM — 10:15 AM: Keynote Address: \"The Future of AI in Business\" by Dr. Robert Kim\n10:15 AM — 10:45 AM: Coffee Break\n10:45 AM — 12:00 PM: Panel Discussion: Innovation in Cloud Computing\n12:00 PM — 1:00 PM: Lunch\n1:00 PM — 2:15 PM: Workshop: Cybersecurity Best Practices\n2:15 PM — 3:30 PM: Workshop: Data Analytics for Decision Making\n3:30 PM — 4:00 PM: Closing Remarks & Networking",
+      "explanation": "According to the schedule, the keynote address is from 9:00 AM to 10:15 AM.",
+      "options": [
+        { "key": "A", "text": "At 8:00 A.M." },
+        { "key": "B", "text": "At 8:30 A.M." },
+        { "key": "C", "text": "At 9:00 A.M." },
+        { "key": "D", "text": "At 10:15 A.M." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-comprehension",
+      "difficulty": 3,
+      "stem": "What is suggested about Apex Consulting?",
+      "context": "From: David Lee <d.lee@apexconsulting.com>\nTo: Yuki Sato <y.sato@nipponsteel.co.jp>\nDate: April 2\nSubject: Follow-up on March 28 Meeting\n\nDear Ms. Sato,\n\nThank you for taking the time to meet with our team last week. We were impressed by your company's expansion plans for the Southeast Asian market.\n\nAs discussed, Apex Consulting can provide market research, regulatory analysis, and local partnership facilitation. I've attached a detailed proposal outlining our services, timeline, and fees.\n\nWe have successfully guided fifteen companies through similar market entry strategies in the region over the past five years. Our consulting fee has tiered pricing based on project scope.\n\nPlease review the proposal and let us know if you'd like to schedule a follow-up call. We look forward to the possibility of working together.\n\nBest regards,\nDavid Lee\nSenior Consultant, Apex Consulting",
+      "explanation": "The email mentions Apex has guided 15 companies through market entry strategies in the past 5 years, suggesting they have extensive experience in international market entry.",
+      "options": [
+        { "key": "A", "text": "It is a newly established firm." },
+        { "key": "B", "text": "It has experience helping companies enter new markets." },
+        { "key": "C", "text": "It is based in Southeast Asia." },
+        { "key": "D", "text": "It only works with Japanese companies." }
+      ],
+      "correctKey": "B"
+    }
+  ]
+}
