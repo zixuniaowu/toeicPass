@@ -1,13 +1,8 @@
-import type { SessionFilters, ViewTab } from "../types";
+import type { LearningActionCommand, SessionFilters } from "@toeicpass/shared";
+import type { ViewTab } from "../types";
 import { isListeningPart } from "../types";
 
-export type LearningActionCommand =
-  | "practice:start"
-  | "diagnostic:start"
-  | "mock:start"
-  | "mistakes:start"
-  | "vocab:start"
-  | "shadowing:start";
+export type { LearningActionCommand } from "@toeicpass/shared";
 
 export type ParsedLearningAction = {
   command: LearningActionCommand;

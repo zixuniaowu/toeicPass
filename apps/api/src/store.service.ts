@@ -1,12 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import { dirname, resolve } from "path";
-import {
-  buildQuestionCorpus,
-  isKnownPart1Image,
-  isPart1ImageMatch,
-  resolvePart1ImageFromQuestion,
-} from "./question-quality";
+import { listeningMediaFor, normalizeListeningMediaUrl } from "./listening-media";
+import { defaultSkillTag, normalizePart1Image, padOptionsToFour } from "./question-normalize";
+import { extractPassageAndStem, normalizeReadingContext } from "./reading-context";
 import {
   Attempt,
   AttemptItem,
@@ -782,8 +779,8 @@ export class StoreService {
     ];
 
     questionSeed.forEach((seed, seedIndex) => {
-      const parsed = this.extractPassageAndStem(seed.partNo, seed.stem);
-      const normalizedReading = this.normalizeReadingContext(
+      const parsed = extractPassageAndStem(seed.partNo, seed.stem);
+      const normalizedReading = normalizeReadingContext(
         seed.partNo,
         parsed.stem,
         parsed.passage,
@@ -798,7 +795,7 @@ export class StoreService {
       if (existingQuestionByKey.has(questionKey)) {
         return;
       }
-      const mediaUrl = this.normalizeListeningMediaUrl(seed.mediaUrl, seed.partNo, seedIndex);
+      const mediaUrl = normalizeListeningMediaUrl(seed.mediaUrl, seed.partNo, seedIndex);
       const question: Question = {
         id: newId(),
         tenantId,
@@ -853,7 +850,7 @@ export class StoreService {
       if (options.length < 3) {
         return;
       }
-      this.padOptionsToFour(options, stem, partNo, sourceTag);
+      padOptionsToFour(options, stem, partNo, sourceTag);
 
       const sourceCorrect = String(raw.correctKey ?? "").toUpperCase();
       let correctIndex = options.findIndex((item) => item.sourceKey === sourceCorrect);
@@ -863,7 +860,7 @@ export class StoreService {
       const correctKey = options[correctIndex].key;
 
       const normalizedDifficulty = Math.max(1, Math.min(5, Number(raw.difficulty ?? 3)));
-      const skillTag = String(raw.skillTag ?? "").trim() || this.defaultSkillTag(partNo);
+      const skillTag = String(raw.skillTag ?? "").trim() || defaultSkillTag(partNo);
       const explanation =
         String(raw.explanation ?? "")
           .replace(/Real TOEIC/gi, "TOEIC-style")
@@ -872,18 +869,18 @@ export class StoreService {
       const mediaUrl =
         String(raw.mediaUrl ?? "").trim() ||
         (partNo >= 1 && partNo <= 4 && sourceTag !== "official_pack"
-          ? this.listeningMediaFor(partNo, index)
+          ? listeningMediaFor(partNo, index)
           : undefined);
       const imageUrl =
         partNo === 1
-          ? this.normalizePart1Image(
+          ? normalizePart1Image(
               String(raw.imageUrl ?? "").trim() || undefined,
               stem,
               options.map((opt) => opt.text),
             )
           : String(raw.imageUrl ?? "").trim() || undefined;
-      const parsed = this.extractPassageAndStem(partNo, stem, String(raw.passage ?? "").trim() || undefined);
-      const normalizedReading = this.normalizeReadingContext(
+      const parsed = extractPassageAndStem(partNo, stem, String(raw.passage ?? "").trim() || undefined);
+      const normalizedReading = normalizeReadingContext(
         partNo,
         parsed.stem,
         parsed.passage,
@@ -899,7 +896,7 @@ export class StoreService {
       if (existingQuestion && sourceTag !== "official_pack") {
         return;
       }
-      const normalizedMediaUrl = this.normalizeListeningMediaUrl(mediaUrl, partNo, index, sourceTag);
+      const normalizedMediaUrl = normalizeListeningMediaUrl(mediaUrl, partNo, index, sourceTag);
 
       if (existingQuestion && sourceTag === "official_pack") {
         if (existingQuestion.source === "admin") {
@@ -1060,13 +1057,13 @@ export class StoreService {
           isCorrect: Boolean(opt?.isCorrect),
         }))
         .filter((opt) => opt.text.length > 0);
-      this.padOptionsToFour(question.options, question.stem, question.partNo, question.source ?? "legacy");
+      padOptionsToFour(question.options, question.stem, question.partNo, question.source ?? "legacy");
       if (question.options.filter((opt) => opt.isCorrect).length !== 1 && question.options.length > 0) {
         question.options = question.options.map((opt, index) => ({ ...opt, isCorrect: index === 0 }));
       }
 
       if (question.partNo >= 1 && question.partNo <= 4) {
-        question.mediaUrl = this.normalizeListeningMediaUrl(
+        question.mediaUrl = normalizeListeningMediaUrl(
           question.mediaUrl,
           question.partNo,
           seq,
@@ -1074,15 +1071,15 @@ export class StoreService {
         );
       }
       if (question.partNo === 1) {
-        question.imageUrl = this.normalizePart1Image(
+        question.imageUrl = normalizePart1Image(
           question.imageUrl,
           question.stem,
           question.options.map((opt) => opt.text),
         );
       }
 
-      const parsed = this.extractPassageAndStem(question.partNo, question.stem, question.passage);
-      const normalizedReading = this.normalizeReadingContext(
+      const parsed = extractPassageAndStem(question.partNo, question.stem, question.passage);
+      const normalizedReading = normalizeReadingContext(
         question.partNo,
         parsed.stem,
         parsed.passage,
@@ -1197,461 +1194,6 @@ export class StoreService {
     if (removableIds.size > 0) {
       this.questions = this.questions.filter((question) => !removableIds.has(question.id));
     }
-  }
-
-  private listeningTracksByPart(partNo: number): string[] {
-    const tracks: Record<number, string[]> = {
-      1: [
-        "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
-        "/assets/audio/toeic-official/practice-test-2-part-1.mp3",
-      ],
-      2: [
-        "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
-        "/assets/audio/toeic-official/practice-test-2-part-2.mp3",
-      ],
-      3: [
-        "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
-        "/assets/audio/toeic-official/practice-test-2-part-3.mp3",
-      ],
-      4: [
-        "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
-        "/assets/audio/toeic-official/practice-test-2-part-4.mp3",
-      ],
-    };
-    return tracks[partNo] ?? [];
-  }
-
-  private isClipEligibleListeningTrack(url: string): boolean {
-    if (!url.includes("/assets/audio/toeic-official/")) {
-      return false;
-    }
-    return /practice-test-\d-part-\d\.mp3$/i.test(url);
-  }
-
-  private listeningClipDuration(partNo: number): number {
-    if (partNo === 1) return 11;
-    if (partNo === 2) return 9;
-    if (partNo === 3) return 24;
-    return 26;
-  }
-
-  private listeningOffsetRange(partNo: number): { intro: number; step: number; window: number } {
-    if (partNo === 1) return { intro: 22, step: 13, window: 320 };
-    if (partNo === 2) return { intro: 30, step: 10, window: 440 };
-    if (partNo === 3) return { intro: 40, step: 26, window: 520 };
-    return { intro: 40, step: 28, window: 540 };
-  }
-
-  private parseFragmentStart(url: string): number | undefined {
-    const fragment = url.split("#", 2)[1];
-    if (!fragment) {
-      return undefined;
-    }
-    const parsed = fragment.match(/(?:^|&)t=(\d+(?:\.\d+)?)(?:,\d+(?:\.\d+)?)?/i);
-    if (!parsed) {
-      return undefined;
-    }
-    const start = Number(parsed[1]);
-    return Number.isFinite(start) ? start : undefined;
-  }
-
-  private buildListeningClip(track: string, partNo: number, index: number, startOverride?: number): string {
-    const clipSeconds = this.listeningClipDuration(partNo);
-    const { intro, step, window } = this.listeningOffsetRange(partNo);
-    const tracks = this.listeningTracksByPart(partNo);
-    const trackIndex = tracks.indexOf(track);
-    const normalizedTrackIndex = trackIndex >= 0 ? trackIndex : index % Math.max(tracks.length, 1);
-    const sequence = Math.floor(index / Math.max(tracks.length, 1));
-    const maxStart = Math.max(12, window - clipSeconds - 1);
-    const derivedStart = intro + ((sequence + normalizedTrackIndex * 2) * step) % maxStart;
-    const start = typeof startOverride === "number" ? startOverride : derivedStart;
-    const end = start + clipSeconds;
-    return `${track}#t=${start},${end}`;
-  }
-
-  private normalizeListeningMediaUrl(
-    mediaUrl: string | undefined,
-    partNo: number,
-    index: number,
-    source?: string,
-  ): string | undefined {
-    if (partNo < 1 || partNo > 4) {
-      return mediaUrl;
-    }
-
-    const fallback = this.listeningMediaFor(partNo, index);
-    if (!mediaUrl) {
-      // Keep official listening items silent when matching source audio is unavailable.
-      if (source === "official_pack" && partNo <= 4) {
-        return undefined;
-      }
-      return fallback;
-    }
-
-    const [trackPath] = mediaUrl.split("#", 1);
-    if (!this.isClipEligibleListeningTrack(trackPath)) {
-      return mediaUrl;
-    }
-
-    const clipStart = this.parseFragmentStart(mediaUrl);
-    return this.buildListeningClip(trackPath, partNo, index, clipStart);
-  }
-
-  private listeningMediaFor(partNo: number, index: number): string | undefined {
-    const tracks = this.listeningTracksByPart(partNo);
-    if (tracks.length === 0) {
-      return undefined;
-    }
-    const track = tracks[index % tracks.length];
-    return this.buildListeningClip(track, partNo, index);
-  }
-
-  private normalizePart1Image(
-    imageUrl: string | undefined,
-    stem: string,
-    optionTexts: string[],
-  ): string | undefined {
-    const normalizedImageUrl = imageUrl?.trim();
-    const corpus = buildQuestionCorpus(stem, optionTexts);
-    const derived = resolvePart1ImageFromQuestion(stem, optionTexts);
-
-    if (normalizedImageUrl) {
-      if (!isKnownPart1Image(normalizedImageUrl)) {
-        return normalizedImageUrl;
-      }
-      if (isPart1ImageMatch(normalizedImageUrl, corpus)) {
-        return normalizedImageUrl;
-      }
-      return derived ?? this.syntheticPart1ImageFromStem(stem);
-    }
-
-    return derived ?? this.syntheticPart1ImageFromStem(stem);
-  }
-
-  private syntheticPart1ImageFromStem(stem: string): string {
-    const normalizedStem = stem.trim().replace(/\s+/g, " ");
-    const lines = this.wrapSyntheticCaption(normalizedStem, 34, 3);
-    const escapedLines = lines.map((line) => this.escapeSvgText(line));
-    const svg = `
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f2f6ff"/>
-      <stop offset="100%" stop-color="#e7eef9"/>
-    </linearGradient>
-  </defs>
-  <rect width="960" height="540" fill="url(#bg)"/>
-  <rect x="64" y="60" width="832" height="420" rx="20" fill="#ffffff" stroke="#c7d7f1" stroke-width="3"/>
-  <text x="96" y="118" font-size="32" font-family="Segoe UI, Arial, sans-serif" fill="#1f3a6d" font-weight="700">TOEIC Part 1 Visual Cue</text>
-  <text x="96" y="168" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#445b82">Use the image description below to match the audio options.</text>
-  <text x="96" y="238" font-size="30" font-family="Segoe UI, Arial, sans-serif" fill="#1f2a3d">${escapedLines[0] ?? ""}</text>
-  <text x="96" y="288" font-size="30" font-family="Segoe UI, Arial, sans-serif" fill="#1f2a3d">${escapedLines[1] ?? ""}</text>
-  <text x="96" y="338" font-size="30" font-family="Segoe UI, Arial, sans-serif" fill="#1f2a3d">${escapedLines[2] ?? ""}</text>
-</svg>`.trim();
-    return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-  }
-
-  private wrapSyntheticCaption(text: string, lineWidth: number, maxLines: number): string[] {
-    const words = text.split(" ").filter(Boolean);
-    if (words.length === 0) {
-      return ["Image description unavailable"];
-    }
-    const lines: string[] = [];
-    let current = "";
-
-    words.forEach((word) => {
-      const candidate = current ? `${current} ${word}` : word;
-      if (candidate.length <= lineWidth) {
-        current = candidate;
-        return;
-      }
-      if (current) {
-        lines.push(current);
-      }
-      current = word;
-    });
-    if (current) {
-      lines.push(current);
-    }
-
-    if (lines.length > maxLines) {
-      const clipped = lines.slice(0, maxLines);
-      const last = clipped[maxLines - 1];
-      clipped[maxLines - 1] = last.length > lineWidth - 3 ? `${last.slice(0, lineWidth - 3)}...` : `${last}...`;
-      return clipped;
-    }
-
-    return lines;
-  }
-
-  private escapeSvgText(value: string): string {
-    return value
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-  }
-
-  private padOptionsToFour(
-    options: Array<{ key: "A" | "B" | "C" | "D"; text: string; sourceKey?: string; isCorrect?: boolean }>,
-    stem: string,
-    partNo?: number,
-    source?: string,
-  ): void {
-    // Keep official Part 2 as A/B/C choices to match the TOEIC format.
-    if (partNo === 2 && source === "official_pack") {
-      return;
-    }
-    const fallback = [
-      "No additional details were provided.",
-      "The information is not mentioned.",
-      "The request has already been completed.",
-      "The schedule remains unchanged.",
-    ];
-    while (options.length < 4) {
-      const key = ["A", "B", "C", "D"][options.length] as "A" | "B" | "C" | "D";
-      const text = fallback[options.length - 1] ?? `Not related to: ${stem.slice(0, 24)}`;
-      options.push({ key, text, sourceKey: key, isCorrect: false });
-    }
-  }
-
-  private extractPassageAndStem(
-    partNo: number,
-    stem: string,
-    existingPassage?: string,
-  ): { passage?: string; stem: string } {
-    if (partNo !== 7) {
-      const normalizedPassage = existingPassage?.trim();
-      return {
-        passage: normalizedPassage && normalizedPassage.length > 0 ? normalizedPassage : undefined,
-        stem,
-      };
-    }
-    if (existingPassage?.trim()) {
-      return { passage: existingPassage.trim(), stem: stem.trim() };
-    }
-    const normalizedStem = stem.trim();
-    const normalizePassage = (raw: string) =>
-      raw
-        .trim()
-        .replace(/\r\n/g, "\n")
-        .replace(/^[“"'`]+/, "")
-        .replace(/[”"'`]+$/, "");
-
-    const quotedExcerpt = normalizedStem.match(/^(?:[^:]+excerpt:\s*)["“']([\s\S]+?)["”']\s*(.+\?)$/i);
-    if (quotedExcerpt) {
-      return {
-        passage: normalizePassage(quotedExcerpt[1]),
-        stem: quotedExcerpt[2].trim(),
-      };
-    }
-
-    const singleQuotedLabel = normalizedStem.match(/^(?:[^:]{1,28}:\s*)'([\s\S]+)'\s*(.+\?)$/i);
-    if (singleQuotedLabel) {
-      const passageCandidate = normalizePassage(singleQuotedLabel[1]);
-      const stemCandidate = singleQuotedLabel[2].trim();
-      if (passageCandidate.length >= 40) {
-        return {
-          passage: passageCandidate,
-          stem: stemCandidate,
-        };
-      }
-    }
-
-    const quotedLabel = normalizedStem.match(/^(?:[^:]{1,28}:\s*)["“']([\s\S]+?)["”']\s*(.+\?)$/i);
-    if (quotedLabel) {
-      const passageCandidate = normalizePassage(quotedLabel[1]);
-      const stemCandidate = quotedLabel[2].trim();
-      if (passageCandidate.length >= 50) {
-        return {
-          passage: passageCandidate,
-          stem: stemCandidate,
-        };
-      }
-    }
-
-    const lines = normalizedStem.split(/\n+/).map((line) => line.trim()).filter(Boolean);
-    if (lines.length >= 2) {
-      const stemCandidate = lines[lines.length - 1];
-      const passageCandidate = lines.slice(0, -1).join("\n");
-      if (stemCandidate.endsWith("?") && passageCandidate.length >= 50) {
-        return {
-          passage: normalizePassage(passageCandidate),
-          stem: stemCandidate,
-        };
-      }
-    }
-
-    const lower = normalizedStem.toLowerCase();
-    const markers = [" what ", " why ", " which ", " who ", " where ", " when ", " how ", " according ", " based "];
-    let splitAt = -1;
-    markers.forEach((marker) => {
-      const idx = lower.indexOf(marker);
-      if (idx > 0 && (splitAt < 0 || idx < splitAt)) {
-        splitAt = idx;
-      }
-    });
-    if (splitAt > 0) {
-      const passageCandidate = normalizePassage(
-        normalizedStem.slice(0, splitAt).replace(/^[^:]+excerpt:\s*/i, ""),
-      );
-      const stemCandidate = normalizedStem.slice(splitAt).trim();
-      if (passageCandidate.length >= 50 && stemCandidate.endsWith("?")) {
-        return {
-          passage: passageCandidate,
-          stem: stemCandidate,
-        };
-      }
-    }
-
-    const tailQuestion = normalizedStem.match(/^(.*?)(?:\s+)((?:What|Why|Which|Who|Where|When|How|According|Based)[\s\S]*\?)$/i);
-    if (tailQuestion) {
-      const passageCandidate = normalizePassage(tailQuestion[1]);
-      const stemCandidate = tailQuestion[2].trim();
-      if (passageCandidate.length >= 60) {
-        return {
-          passage: passageCandidate,
-          stem: stemCandidate,
-        };
-      }
-    }
-
-    if (normalizedStem.length >= 140) {
-      return {
-        passage: normalizePassage(normalizedStem),
-        stem: "What is the most likely correct answer?",
-      };
-    }
-    return { passage: undefined, stem: normalizedStem };
-  }
-
-  private normalizeReadingContext(
-    partNo: number,
-    stem: string,
-    passage: string | undefined,
-    explanation: string,
-  ): { stem: string; passage?: string } {
-    if (partNo === 6) {
-      const normalizedStem = stem.trim();
-      const normalizedPassage = this.ensurePart6Passage(normalizedStem, passage, explanation);
-      return {
-        stem: normalizedStem,
-        passage: normalizedPassage,
-      };
-    }
-
-    if (partNo === 7) {
-      const normalizedStem = this.ensureQuestionStem(stem);
-      const normalizedPassage = this.ensurePart7Passage(normalizedStem, passage, explanation);
-      return {
-        stem: normalizedStem,
-        passage: normalizedPassage,
-      };
-    }
-
-    return {
-      stem: stem.trim(),
-      passage,
-    };
-  }
-
-  private ensurePart6Passage(stem: string, passage: string | undefined, explanation: string): string | undefined {
-    const normalizedPassage = passage?.trim();
-    const context = `${normalizedPassage ?? ""} ${stem}`.trim();
-    const sentenceCount = (context.match(/[.!?](\s|$)/g) ?? []).length;
-    if (context.length >= 60 && sentenceCount >= 2) {
-      return normalizedPassage;
-    }
-
-    const baseExplanation = explanation
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/[.!?]+$/, "");
-    const guidance =
-      baseExplanation.length > 0
-        ? `${baseExplanation}.`
-        : "Read the sentence in a workplace context and choose the most natural completion.";
-    const bridge = "Use the surrounding business context to decide which option best completes the blank.";
-    return `Workplace memo: ${guidance} ${bridge}`;
-  }
-
-  private ensurePart7Passage(stem: string, passage: string | undefined, explanation: string): string {
-    const normalizedPassage = passage?.trim();
-    if (!normalizedPassage) {
-      return this.buildSyntheticPart7Passage(stem, explanation);
-    }
-
-    const sentenceCount = (normalizedPassage.match(/[.!?](\s|$)/g) ?? []).length;
-    if (normalizedPassage.length >= 90 && sentenceCount >= 2) {
-      return normalizedPassage;
-    }
-
-    const addition = this.buildPart7SupportSentence(explanation);
-    let expanded = normalizedPassage;
-    if (!expanded.endsWith(".") && !expanded.endsWith("!") && !expanded.endsWith("?")) {
-      expanded = `${expanded}.`;
-    }
-    expanded = `${expanded} ${addition}`;
-
-    const expandedSentenceCount = (expanded.match(/[.!?](\s|$)/g) ?? []).length;
-    if (expanded.length < 90 || expandedSentenceCount < 2) {
-      expanded = `${expanded} The announcement applies to regular business operations and should be followed as written.`;
-    }
-    return expanded;
-  }
-
-  private ensureQuestionStem(stem: string): string {
-    const normalizedStem = stem.trim();
-    if (normalizedStem.endsWith("?")) {
-      return normalizedStem;
-    }
-    if (/^(what|why|which|who|where|when|how|according|based)\b/i.test(normalizedStem)) {
-      return `${normalizedStem.replace(/[.。!！]+$/, "").trim()}?`;
-    }
-    return "What is the most likely correct answer?";
-  }
-
-  private buildSyntheticPart7Passage(stem: string, explanation: string): string {
-    const detail = this.buildPart7SupportSentence(explanation);
-    const topic = this.part7TopicFromStem(stem);
-    return `${topic} ${detail}`;
-  }
-
-  private part7TopicFromStem(stem: string): string {
-    const normalizedStem = stem.toLowerCase();
-    if (normalizedStem.includes("purpose")) {
-      return "An internal notice was shared to explain an operational policy update for staff members.";
-    }
-    if (normalizedStem.includes("infer")) {
-      return "A business email describes a recent situation and asks readers to infer the most likely conclusion.";
-    }
-    if (normalizedStem.includes("when") || normalizedStem.includes("schedule")) {
-      return "A scheduling update was distributed to clarify deadlines, timing, and expected next steps.";
-    }
-    if (normalizedStem.includes("where")) {
-      return "A workplace announcement provides location details for an upcoming task or event.";
-    }
-    return "A short business message was distributed to inform employees and customers about a practical update.";
-  }
-
-  private buildPart7SupportSentence(explanation: string): string {
-    const normalizedExplanation = explanation
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/[.!?]+$/, "");
-    if (normalizedExplanation.length > 0) {
-      return `${normalizedExplanation}. Readers should rely on the stated information when choosing the best answer.`;
-    }
-    return "Readers should rely on the stated information when choosing the best answer.";
-  }
-
-  private defaultSkillTag(partNo: number): string {
-    if (partNo === 1) return "photo-description";
-    if (partNo === 2) return "question-response";
-    if (partNo === 3) return "conversation-detail";
-    if (partNo === 4) return "talk-detail";
-    if (partNo === 5) return "grammar";
-    if (partNo === 6) return "text-completion";
-    return "reading-comprehension";
   }
 
   ensureSeedVocabularyCards(tenantId: string, userId: string): void {

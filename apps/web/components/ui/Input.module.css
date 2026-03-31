@@ -12,17 +12,19 @@
 
 .input {
   padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--color-border);
+  border: 1.5px solid rgba(148, 185, 236, 0.35);
   border-radius: var(--radius-md);
   font-size: var(--text-base);
   color: var(--color-text);
-  background: var(--color-surface);
-  transition: border-color var(--transition-fast);
+  background: rgba(255, 255, 255, 0.85);
+  transition: all var(--transition-fast);
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--color-ink);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+  background: #ffffff;
 }
 
 .input::placeholder {

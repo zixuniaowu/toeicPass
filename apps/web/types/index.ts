@@ -1,10 +1,11 @@
-// Session and Authentication Types
-export type Locale = "zh" | "ja";
+// Re-export shared types as canonical source
+import type { Locale as _Locale, SessionMode as _SessionMode, SessionFilters as _SessionFilters } from "@toeicpass/shared";
+export type Locale = _Locale;
+export type SessionMode = _SessionMode;
+export type SessionFilters = _SessionFilters;
 export type LoginResponse = { accessToken: string; tenantCode: string };
-export type SessionMode = "diagnostic" | "practice" | "mock";
 export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "shadowing" | "mock" | "mistakes" | "vocab" | "writing" | "settings";
 export type OptionKey = "A" | "B" | "C" | "D";
-export type SessionFilters = { partNo?: number; difficulty?: number; partGroup?: "listening" | "reading" };
 
 // Question Types
 export type SessionQuestion = {

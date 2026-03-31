@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -32,7 +32,13 @@ function decodeEntities(text: string): string {
 }
 
 // Split text into sentences
-function splitSentences(text: string): string[] {
+function splitSentences(text: string, lang: string): string[] {
+  if (lang === "ja") {
+    return text
+      .split(/(?<=[。！？!?])\s*/)
+      .map((s) => decodeEntities(s.trim()))
+      .filter((s) => s.length > 5 && s.length < 400);
+  }
   return text
     .split(/(?<=[.!?])\s+/)
     .map((s) => decodeEntities(s.trim()))
@@ -50,7 +56,7 @@ function extractArticleText(html: string): string[] {
   while ((match = textBlockRegex.exec(html)) !== null) {
     const clean = match[1].replace(/<[^>]*>/g, "").trim();
     if (clean.length > 15) {
-      sentences.push(...splitSentences(clean));
+      sentences.push(...splitSentences(clean, "en"));
     }
   }
 
@@ -64,7 +70,7 @@ function extractArticleText(html: string): string[] {
       while ((pMatch = pRegex.exec(articleMatch[0])) !== null) {
         const clean = pMatch[1].replace(/<[^>]*>/g, "").trim();
         if (clean.length > 15 && !clean.startsWith("Getty") && !clean.startsWith("Image")) {
-          sentences.push(...splitSentences(clean));
+          sentences.push(...splitSentences(clean, "en"));
         }
       }
     }
@@ -77,7 +83,7 @@ function extractArticleText(html: string): string[] {
     while ((pMatch = pRegex.exec(html)) !== null) {
       const clean = pMatch[1].replace(/<[^>]*>/g, "").trim();
       if (clean.length > 15) {
-        sentences.push(...splitSentences(clean));
+        sentences.push(...splitSentences(clean, "en"));
       }
     }
   }
@@ -113,21 +119,59 @@ function parseRSSItems(xml: string, source: string): RSSItem[] {
 }
 
 // Free RSS feeds
-const RSS_FEEDS = [
+const RSS_FEEDS_EN = [
   { url: "https://feeds.bbci.co.uk/news/world/rss.xml", source: "BBC World News" },
   { url: "https://feeds.bbci.co.uk/news/technology/rss.xml", source: "BBC Technology" },
   { url: "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml", source: "BBC Science" },
   { url: "https://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business" },
 ];
 
-export async function GET() {
+const RSS_FEEDS_JA = [
+  { url: "https://www3.nhk.or.jp/rss/news/cat0.xml", source: "NHK ニュース" },
+  { url: "https://www3.nhk.or.jp/rss/news/cat1.xml", source: "NHK 社会" },
+  { url: "https://www3.nhk.or.jp/rss/news/cat3.xml", source: "NHK 科学・医療" },
+  { url: "https://www3.nhk.or.jp/rss/news/cat5.xml", source: "NHK 国際" },
+];
+
+// Extract article text from Japanese NHK HTML page
+function extractJapaneseArticleText(html: string): string[] {
+  const sentences: string[] = [];
+
+  // NHK articles use <p> and <div> with specific classes
+  const contentRegex = /<(?:p|div)[^>]*class="[^"]*(?:content--detail-body|body|article)[^"]*"[^>]*>([\s\S]*?)<\/(?:p|div)>/g;
+  let match;
+  while ((match = contentRegex.exec(html)) !== null) {
+    const clean = match[1].replace(/<[^>]*>/g, "").trim();
+    if (clean.length > 10) {
+      sentences.push(...splitSentences(clean, "ja"));
+    }
+  }
+
+  // Fallback: general paragraph extraction
+  if (sentences.length < 3) {
+    const pRegex = /<p[^>]*>([\s\S]*?)<\/p>/g;
+    let pMatch;
+    while ((pMatch = pRegex.exec(html)) !== null) {
+      const clean = pMatch[1].replace(/<[^>]*>/g, "").trim();
+      if (clean.length > 15 && /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/.test(clean)) {
+        sentences.push(...splitSentences(clean, "ja"));
+      }
+    }
+  }
+
+  return [...new Set(sentences)];
+}
+
+export async function GET(request: NextRequest) {
+  const lang = request.nextUrl.searchParams.get("lang") || "en";
+  const feeds = lang === "ja" ? RSS_FEEDS_JA : RSS_FEEDS_EN;
   try {
     // Step 1: Fetch all RSS feeds in parallel
     const feedResults = await Promise.allSettled(
-      RSS_FEEDS.map(async (feed) => {
+      feeds.map(async (feed) => {
         const res = await fetch(feed.url, {
           cache: "no-store",
-          headers: { "User-Agent": "ToeicPass/1.0" },
+          headers: { "User-Agent": "LangBoost/1.0" },
         });
         if (!res.ok) return [];
         const xml = await res.text();
@@ -157,11 +201,13 @@ export async function GET() {
         try {
           const res = await fetch(item.link, {
             next: { revalidate: 1800 },
-            headers: { "User-Agent": "ToeicPass/1.0" },
+            headers: { "User-Agent": "LangBoost/1.0" },
           });
           if (!res.ok) return null;
           const html = await res.text();
-          const fullSentences = extractArticleText(html);
+          const fullSentences = lang === "ja"
+            ? extractJapaneseArticleText(html)
+            : extractArticleText(html);
 
           // Use full article if we got enough sentences, otherwise fallback to RSS
           let sentences: string[];
@@ -170,7 +216,7 @@ export async function GET() {
             sentences = fullSentences;
           } else {
             // Fallback: use title + description
-            sentences = splitSentences(`${item.title}. ${item.description}`);
+            sentences = splitSentences(`${item.title}${lang === "ja" ? "\u3002" : ". "}${item.description}`, lang);
           }
 
           if (sentences.length < 2) return null;

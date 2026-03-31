@@ -6,6 +6,7 @@ import { useAuth } from "../hooks/useAuth";
 import { useSession } from "../hooks/useSession";
 import { useMistakes } from "../hooks/useMistakes";
 import { useVocab } from "../hooks/useVocab";
+import { useLearningCommandRunner } from "../hooks/useLearningCommandRunner";
 import { AppShell } from "./layout/AppShell";
 import { MistakesView } from "./mistakes/MistakesView";
 import { VocabView } from "./vocab/VocabView";
@@ -46,6 +47,15 @@ export function ClientHome() {
   const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const vocab = useVocab(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
 
+  const runner = useLearningCommandRunner({
+    requiresDiagnostic: false,
+    setActiveView,
+    setMessage: auth.setMessage,
+    startSession: session.startSession,
+    loadMistakes: mistakes.loadMistakes,
+    loadVocabularyCards: vocab.loadCards,
+  });
+
   const handleViewChange = useCallback((newView: ViewTab) => {
     if (!COMPACT_VIEWS.has(newView)) {
       setActiveView("shadowing");
@@ -58,13 +68,10 @@ export function ClientHome() {
   }, [activeView, session]);
 
   const handleStartMock = useCallback(async (message?: string) => {
-    const success = await session.startSession("mock");
-    if (!success) return;
-    setActiveView("mock");
-    if (message) {
-      auth.setMessage(message);
-    }
-  }, [session, auth]);
+    const ok = await runner.runAction("mock:start");
+    if (!ok) return;
+    if (message) auth.setMessage(message);
+  }, [runner, auth]);
 
   const handleSubmitSession = useCallback(async (options?: { allowPartial?: boolean }) => {
     const report = await session.submitSession(options);
@@ -115,7 +122,8 @@ export function ClientHome() {
     if (activeView === "vocab") {
       void vocab.loadCards();
     }
-  }, [activeView, mistakes, vocab]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeView, mistakes.loadMistakes, vocab.loadCards]);
 
   const renderView = () => {
     switch (activeView) {
@@ -189,6 +197,21 @@ export function ClientHome() {
     }
   };
 
+  if (!auth.isLoggedIn) {
+    return (
+      <LoginView
+        locale={locale}
+        credentials={auth.credentials}
+        isSubmitting={auth.isSubmitting}
+        message={auth.message}
+        onCredentialsChange={auth.updateCredentials}
+        onLogin={() => void handleLogin()}
+        onRegister={() => void handleRegisterAndLogin()}
+        onLocaleChange={setLocale}
+      />
+    );
+  }
+
   return (
     <AppShell
       activeView={activeView}
@@ -199,19 +222,7 @@ export function ClientHome() {
       locale={locale}
       onLocaleChange={setLocale}
     >
-      {auth.isLoggedIn ? (
-        renderView()
-      ) : (
-        <LoginView
-          locale={locale}
-          credentials={auth.credentials}
-          isSubmitting={auth.isSubmitting}
-          message={auth.message}
-          onCredentialsChange={auth.updateCredentials}
-          onLogin={() => void handleLogin()}
-          onRegister={() => void handleRegisterAndLogin()}
-        />
-      )}
+      {renderView()}
     </AppShell>
   );
 }

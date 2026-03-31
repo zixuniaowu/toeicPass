@@ -8,6 +8,7 @@ import { AdminController } from "./controllers/admin.controller";
 import { AuthController } from "./controllers/auth.controller";
 import { EnterpriseController } from "./controllers/enterprise.controller";
 import { LearningController } from "./controllers/learning.controller";
+import { PgStoreService } from "./pg-store.service";
 import { QueueService } from "./queue.service";
 import { RolesGuard } from "./roles.guard";
 import { AdminQuestionService } from "./services/admin-question.service";
@@ -16,6 +17,10 @@ import { EnterpriseIpService } from "./services/enterprise-ip.service";
 import { LearningConversationService } from "./services/learning-conversation.service";
 import { LearningDomainService } from "./services/learning-domain.service";
 import { StoreService } from "./store.service";
+
+const StoreProvider = process.env.DATABASE_URL
+  ? { provide: StoreService, useClass: PgStoreService }
+  : StoreService;
 
 @Module({
   imports: [
@@ -27,7 +32,7 @@ import { StoreService } from "./store.service";
   controllers: [AuthController, LearningController, AdminController, EnterpriseController],
   providers: [
     AppService,
-    StoreService,
+    StoreProvider,
     QueueService,
     AuthDomainService,
     AdminQuestionService,

@@ -22,6 +22,7 @@ import {
 import { QueueService } from "../queue.service";
 import { LearningConversationService } from "./learning-conversation.service";
 import { StoreService } from "../store.service";
+import { calculatePrediction, estimateRawCorrect, toToeicScaledListening, toToeicScaledReading } from "../scoring-policy";
 import { Attempt, AttemptItem, AttemptMode, Question, ReviewCard, VocabularyCard } from "../types";
 import { clamp, newId, nowIso } from "../utils";
 import { RequestContext } from "../context";
@@ -256,10 +257,10 @@ export class LearningDomainService {
     const readingItems = scoredItems.filter((item) => this.questionPart(item.questionId) >= 5);
     const lCorrect = listeningItems.filter((item) => item.isCorrect).length;
     const rCorrect = readingItems.filter((item) => item.isCorrect).length;
-    const rawListening = this.estimateRawCorrect(listeningItems, 100);
-    const rawReading = this.estimateRawCorrect(readingItems, 100);
-    const scoreL = this.toToeicScaledListening(rawListening);
-    const scoreR = this.toToeicScaledReading(rawReading);
+    const rawListening = estimateRawCorrect(listeningItems, 100);
+    const rawReading = estimateRawCorrect(readingItems, 100);
+    const scoreL = toToeicScaledListening(rawListening);
+    const scoreR = toToeicScaledReading(rawReading);
 
     attempt.submittedAt = nowIso();
     attempt.scoreL = scoreL;
@@ -1925,26 +1926,6 @@ export class LearningDomainService {
     return trusted.length >= 4 ? trusted : pool;
   }
 
-  private estimateRawCorrect(items: AttemptItem[], targetRaw: number): number {
-    if (items.length === 0) {
-      return 0;
-    }
-    const correct = items.filter((item) => item.isCorrect).length;
-    return clamp(Math.round((correct / items.length) * targetRaw), 0, targetRaw);
-  }
-
-  private toToeicScaledListening(rawCorrect: number): number {
-    const ratio = clamp(rawCorrect / 100, 0, 1);
-    const curved = Math.pow(ratio, 0.88);
-    return clamp(Math.round(5 + curved * 490), 5, 495);
-  }
-
-  private toToeicScaledReading(rawCorrect: number): number {
-    const ratio = clamp(rawCorrect / 100, 0, 1);
-    const curved = Math.pow(ratio, 0.9);
-    return clamp(Math.round(5 + curved * 490), 5, 495);
-  }
-
   private plusDays(days: number): string {
     const dt = new Date();
     dt.setDate(dt.getDate() + days);
@@ -2091,62 +2072,23 @@ export class LearningDomainService {
           (item.mode === "diagnostic" || item.mode === "mock" || item.mode === "practice"),
       )
       .sort((a, b) => (b.submittedAt ?? "").localeCompare(a.submittedAt ?? ""));
-    const representative = scoredAttempts.filter((item) => this.isAttemptRepresentative(item));
-    const completed = (representative.length > 0 ? representative : scoredAttempts).slice(0, 5);
 
-    const modeWeight: Record<AttemptMode, number> = {
-      diagnostic: 0.85,
-      practice: 0.7,
-      mock: 1.0,
-      ip_simulation: 0.95,
-    };
-    const weighted = completed.map((item, index) => {
-      const recency = Math.max(0.6, 1 - index * 0.1);
-      const quality = modeWeight[item.mode];
-      const weight = recency * quality;
-      return { score: item.scoreTotal ?? 0, weight };
+    const result = calculatePrediction({
+      baselineAnchor,
+      scoredAttempts: scoredAttempts.map((item) => ({
+        scoreTotal: item.scoreTotal ?? 0,
+        mode: item.mode,
+        isRepresentative: this.isAttemptRepresentative(item),
+      })),
     });
-    const weightedSum = weighted.reduce((sum, item) => sum + item.score * item.weight, 0);
-    const weightTotal = weighted.reduce((sum, item) => sum + item.weight, 0);
-    const computedBaseline = weightTotal > 0 ? Math.round(weightedSum / weightTotal) : baselineAnchor ?? 400;
-    const baseline =
-      typeof baselineAnchor === "number"
-        ? Math.round(computedBaseline * 0.65 + baselineAnchor * 0.35)
-        : computedBaseline;
-    const recent = completed[0]?.scoreTotal ?? baselineAnchor ?? baseline;
-    const trend = completed.length >= 2 ? recent - (completed[1]?.scoreTotal ?? recent) : 0;
-    let predictedTotal = clamp(Math.round(baseline * 0.7 + recent * 0.25 + trend * 0.05), 10, 990);
-    if (typeof baselineAnchor === "number" && completed.length < 3) {
-      // During low-sample periods, don't swing far below the known official baseline.
-      predictedTotal = Math.max(predictedTotal, baselineAnchor - 10);
-    }
-    if (typeof baselineAnchor === "number") {
-      // Even with more samples, keep prediction within a reasonable band around official baseline.
-      predictedTotal = clamp(predictedTotal, baselineAnchor - 60, baselineAnchor + 180);
-    }
 
-    const variance =
-      weighted.length <= 1
-        ? 0
-        : Math.round(
-            weighted.reduce((sum, item) => sum + (item.score - baseline) ** 2, 0) / weighted.length,
-          );
-    const stability = clamp(1 - variance / 30000, 0.35, 1);
-    const confidence = clamp(0.45 + completed.length * 0.07 * stability, 0.45, 0.93);
     const prediction = {
       id: newId(),
       tenantId: ctx.tenantId,
       userId: ctx.userId,
-      predictedTotal,
-      confidence,
-      factors: {
-        attemptsUsed: completed.length,
-        recentScore: recent,
-        baseline,
-        ...(typeof baselineAnchor === "number" ? { baselineAnchor } : {}),
-        trend,
-        variance,
-      },
+      predictedTotal: result.predictedTotal,
+      confidence: result.confidence,
+      factors: result.factors,
       createdAt: nowIso(),
     };
     this.store.predictions.push(prediction);

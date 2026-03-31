@@ -32,10 +32,10 @@ export function TopBar({
   return (
     <header className={styles.topbar}>
       <div className={styles.brand}>
-        <span className={styles.brandMark}>TP</span>
+        <span className={styles.brandMark}>LB</span>
         <div>
-          <p className={styles.brandTitle}>toeicPass</p>
-          <p className={styles.brandSub}>{isJa ? "英語スピーキング強化" : "英语口语强化"}</p>
+          <p className={styles.brandTitle}>LangBoost</p>
+          <p className={styles.brandSub}>{isJa ? "日本語・英語 スピーキング強化" : "日语 · 英语 口语强化平台"}</p>
         </div>
       </div>
 

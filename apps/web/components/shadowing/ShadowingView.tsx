@@ -8,6 +8,7 @@ import { annotateWords, type WordAnnotation } from "../../data/word-dictionary";
 import { getJapaneseReading } from "../../lib/japanese-reading";
 import { translateText } from "../../lib/translate";
 import tedLatestShadowing from "../../data/ted-latest-shadowing.json";
+import jaYoutubeShadowing from "../../data/japanese-youtube-shadowing.json";
 import { Card, CardContent } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
@@ -38,9 +39,12 @@ type YoutubeImportResponse = {
   }>;
 };
 
-const YOUTUBE_MATERIALS_STORAGE_KEY = "toeicpass.youtube-materials.v1";
+const YOUTUBE_MATERIALS_STORAGE_KEY_LEGACY = "toeicpass.youtube-materials.v1";
+const YOUTUBE_MATERIALS_STORAGE_KEY_EN = "toeicpass.youtube-materials.en.v1";
+const YOUTUBE_MATERIALS_STORAGE_KEY_JA = "toeicpass.youtube-materials.ja.v1";
 const YOUTUBE_PROGRESS_STORAGE_KEY = "toeicpass.youtube-material-progress.v1";
 const TED_SNAPSHOT_SYNC_KEY = "toeicpass.ted-latest.generated-at.v1";
+const JA_SNAPSHOT_SYNC_KEY = "toeicpass.ja-youtube.generated-at.v1";
 
 type MaterialProgressRecord = {
   currentIndex: number;
@@ -424,6 +428,15 @@ function parseTedSnapshotMaterials(): { generatedAt: string; materials: Shadowin
   return { generatedAt, materials };
 }
 
+function parseJaYoutubeSnapshotMaterials(): { materials: ShadowingMaterial[] } {
+  const snapshot = jaYoutubeShadowing as TedLatestSnapshot;
+  const items = Array.isArray(snapshot?.items) ? snapshot.items : [];
+  const materials = items
+    .map((item) => normalizeMaterialForStorage(item))
+    .filter((item) => item.sentences.length > 0);
+  return { materials };
+}
+
 function buildYoutubeEmbedUrl(videoId: string, startSec: number, endSec?: number): string {
   const params = new URLSearchParams({
     rel: "0",
@@ -468,12 +481,13 @@ function isPersistedVideoMaterial(material: ShadowingMaterial): boolean {
   return material.id.startsWith("youtube-") || material.id.startsWith("subtitle-");
 }
 
-function loadYoutubeMaterialsFromStorage(): ShadowingMaterial[] {
+function loadYoutubeMaterialsFromStorage(lang: TrainingLanguage): ShadowingMaterial[] {
   if (typeof window === "undefined") {
     return [];
   }
+  const key = lang === "ja" ? YOUTUBE_MATERIALS_STORAGE_KEY_JA : YOUTUBE_MATERIALS_STORAGE_KEY_EN;
   try {
-    const raw = window.localStorage.getItem(YOUTUBE_MATERIALS_STORAGE_KEY);
+    const raw = window.localStorage.getItem(key);
     if (!raw) {
       return [];
     }
@@ -487,14 +501,15 @@ function loadYoutubeMaterialsFromStorage(): ShadowingMaterial[] {
   }
 }
 
-function saveYoutubeMaterialsToStorage(materials: ShadowingMaterial[]): void {
+function saveYoutubeMaterialsToStorage(materials: ShadowingMaterial[], lang: TrainingLanguage): void {
   if (typeof window === "undefined") {
     return;
   }
+  const key = lang === "ja" ? YOUTUBE_MATERIALS_STORAGE_KEY_JA : YOUTUBE_MATERIALS_STORAGE_KEY_EN;
   const payload = materials
     .map((item) => normalizeMaterialForStorage(item))
     .slice(0, 30);
-  window.localStorage.setItem(YOUTUBE_MATERIALS_STORAGE_KEY, JSON.stringify(payload));
+  window.localStorage.setItem(key, JSON.stringify(payload));
 }
 
 function loadYoutubeProgressFromStorage(): Record<string, MaterialProgressRecord> {
@@ -566,7 +581,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const isJa = locale === "ja";
   const l = (zh: string, ja: string) => (isJa ? ja : zh);
 
-  const [trainingLanguage, setTrainingLanguage] = useState<TrainingLanguage>("en");
+  const [trainingLanguage, setTrainingLanguage] = useState<TrainingLanguage>("ja");
   const [viewMode, setViewMode] = useState<ViewMode>("materials");
   const [originMode, setOriginMode] = useState<ViewMode>("materials");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
@@ -612,6 +627,8 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const [jaWordGlossMap, setJaWordGlossMap] = useState<Record<string, string>>({});
   const translatingWordGlossRef = useRef<Set<string>>(new Set());
   const isJapaneseTraining = trainingLanguage === "ja";
+  const trainingLanguageRef = useRef(trainingLanguage);
+  trainingLanguageRef.current = trainingLanguage;
   const makeSentenceTranslationKey = useCallback(
     (materialId: string, sentenceId: number, text: string) => `${materialId}::${sentenceId}::${text}`,
     [],
@@ -808,20 +825,57 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   }, [activeMaterial]);
 
   useEffect(() => {
-    const storedMaterials = loadYoutubeMaterialsFromStorage();
-    const tedSnapshot = parseTedSnapshotMaterials();
-    let nextMaterials = storedMaterials;
-    if (typeof window !== "undefined" && tedSnapshot.materials.length > 0 && tedSnapshot.generatedAt) {
-      const syncedAt = String(window.localStorage.getItem(TED_SNAPSHOT_SYNC_KEY) ?? "").trim();
-      if (syncedAt !== tedSnapshot.generatedAt) {
-        nextMaterials = mergeSnapshotMaterials(tedSnapshot.materials, storedMaterials);
-        saveYoutubeMaterialsToStorage(nextMaterials);
-        window.localStorage.setItem(TED_SNAPSHOT_SYNC_KEY, tedSnapshot.generatedAt);
+    // One-time migration: split old combined key into EN/JA keys
+    if (typeof window !== "undefined") {
+      const legacy = window.localStorage.getItem(YOUTUBE_MATERIALS_STORAGE_KEY_LEGACY);
+      if (legacy) {
+        try {
+          const parsed: ShadowingMaterial[] = JSON.parse(legacy);
+          const enItems = parsed.filter((m) => !m.id?.startsWith("jp-"));
+          const jaItems = parsed.filter((m) => m.id?.startsWith("jp-"));
+          if (!window.localStorage.getItem(YOUTUBE_MATERIALS_STORAGE_KEY_EN) && enItems.length > 0) {
+            window.localStorage.setItem(YOUTUBE_MATERIALS_STORAGE_KEY_EN, JSON.stringify(enItems));
+          }
+          if (!window.localStorage.getItem(YOUTUBE_MATERIALS_STORAGE_KEY_JA) && jaItems.length > 0) {
+            window.localStorage.setItem(YOUTUBE_MATERIALS_STORAGE_KEY_JA, JSON.stringify(jaItems));
+          }
+        } catch { /* ignore corrupt data */ }
+        window.localStorage.removeItem(YOUTUBE_MATERIALS_STORAGE_KEY_LEGACY);
+      }
+    }
+    const storedMaterials = loadYoutubeMaterialsFromStorage(trainingLanguage);
+    // Clean up cross-language contamination (from earlier combined storage)
+    let nextMaterials = trainingLanguage === "en"
+      ? storedMaterials.filter((m) => !m.id?.startsWith("jp-"))
+      : storedMaterials;
+    if (nextMaterials.length !== storedMaterials.length) {
+      saveYoutubeMaterialsToStorage(nextMaterials, trainingLanguage);
+    }
+    if (trainingLanguage === "en") {
+      const tedSnapshot = parseTedSnapshotMaterials();
+      if (typeof window !== "undefined" && tedSnapshot.materials.length > 0 && tedSnapshot.generatedAt) {
+        const syncedAt = String(window.localStorage.getItem(TED_SNAPSHOT_SYNC_KEY) ?? "").trim();
+        if (syncedAt !== tedSnapshot.generatedAt) {
+          nextMaterials = mergeSnapshotMaterials(tedSnapshot.materials, storedMaterials);
+          saveYoutubeMaterialsToStorage(nextMaterials, "en");
+          window.localStorage.setItem(TED_SNAPSHOT_SYNC_KEY, tedSnapshot.generatedAt);
+        }
+      }
+    } else {
+      const jaSnapshot = parseJaYoutubeSnapshotMaterials();
+      if (typeof window !== "undefined" && jaSnapshot.materials.length > 0) {
+        const syncedAt = String(window.localStorage.getItem(JA_SNAPSHOT_SYNC_KEY) ?? "").trim();
+        const jaGeneratedAt = String((jaYoutubeShadowing as TedLatestSnapshot)?.generatedAt ?? "").trim();
+        if (jaGeneratedAt && syncedAt !== jaGeneratedAt) {
+          nextMaterials = mergeSnapshotMaterials(jaSnapshot.materials, storedMaterials);
+          saveYoutubeMaterialsToStorage(nextMaterials, "ja");
+          window.localStorage.setItem(JA_SNAPSHOT_SYNC_KEY, jaGeneratedAt);
+        }
       }
     }
     setSavedYoutubeMaterials(nextMaterials);
     setMaterialProgressMap(loadYoutubeProgressFromStorage());
-  }, []);
+  }, [trainingLanguage]);
 
   const speak = useCallback((text: string) => {
     if (!window.speechSynthesis) return;
@@ -995,7 +1049,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
         return true;
       });
       const next = [normalized, ...deduped].slice(0, 30);
-      saveYoutubeMaterialsToStorage(next);
+      saveYoutubeMaterialsToStorage(next, trainingLanguageRef.current);
       return next;
     });
   }, []);
@@ -1003,7 +1057,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const deleteYoutubeMaterial = useCallback((materialId: string) => {
     setSavedYoutubeMaterials((prev) => {
       const next = prev.filter((item) => item.id !== materialId);
-      saveYoutubeMaterialsToStorage(next);
+      saveYoutubeMaterialsToStorage(next, trainingLanguageRef.current);
       return next;
     });
     clearMaterialProgress(materialId);
@@ -1037,7 +1091,32 @@ export function ShadowingView({ locale }: { locale: Locale }) {
         deduped.push(item);
       });
       const next = deduped.slice(0, 60);
-      saveYoutubeMaterialsToStorage(next);
+      saveYoutubeMaterialsToStorage(next, "en");
+      return next;
+    });
+  }, []);
+
+  const handleImportJaYoutubeBatch = useCallback(() => {
+    const { materials } = parseJaYoutubeSnapshotMaterials();
+    if (materials.length === 0) {
+      setYoutubeError(l("未找到日语批量材料。", "日本語の一括素材が見つかりません。"));
+      return;
+    }
+    setYoutubeError("");
+    setSavedYoutubeMaterials((prev) => {
+      const merged = [...materials, ...prev.map((item) => normalizeMaterialForStorage(item))];
+      const deduped: ShadowingMaterial[] = [];
+      const seen = new Set<string>();
+      merged.forEach((item) => {
+        const key = item.youtubeVideoId ? `video:${item.youtubeVideoId}` : `id:${item.id}`;
+        if (seen.has(key)) {
+          return;
+        }
+        seen.add(key);
+        deduped.push(item);
+      });
+      const next = deduped.slice(0, 60);
+      saveYoutubeMaterialsToStorage(next, "ja");
       return next;
     });
   }, []);
@@ -1442,7 +1521,8 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const loadNews = useCallback(async () => {
     setIsLoadingNews(true);
     try {
-      const res = await fetch("/api/news");
+      const lang = trainingLanguage === "ja" ? "ja" : "en";
+      const res = await fetch(`/api/news?lang=${lang}`);
       const data = await res.json();
       if (data.articles && data.articles.length > 0) {
         const news: NewsMaterial[] = data.articles.map((a: { id: string; title: string; description: string; source: string; date: string; sentences: Array<{ id: number; text: string }> }) => ({
@@ -1461,14 +1541,14 @@ export function ShadowingView({ locale }: { locale: Locale }) {
         setNewsArticles(news);
       } else {
         // Fallback to static news if API fails
-        setNewsArticles(getDailyNews());
+        setNewsArticles(trainingLanguage === "ja" ? getDailyNewsJa() : getDailyNews());
       }
     } catch {
       // Fallback to static news on error
-      setNewsArticles(getDailyNews());
+      setNewsArticles(trainingLanguage === "ja" ? getDailyNewsJa() : getDailyNews());
     }
     setIsLoadingNews(false);
-  }, []);
+  }, [trainingLanguage]);
 
   const handleStartNews = useCallback((article: NewsMaterial) => {
     const material: ShadowingMaterial = {
@@ -1498,10 +1578,10 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const tedSnapshotGeneratedAt = tedSnapshot.generatedAt
     ? new Date(tedSnapshot.generatedAt).toLocaleString()
     : "";
-  const showEnglishExtraTabs = !isJapaneseTraining;
+  const showExtraTabs = true;
 
   // --- Material Selection Screen ---
-  if ((viewMode === "materials" || (showEnglishExtraTabs && (viewMode === "news" || viewMode === "youtube"))) && !activeMaterial) {
+  if ((viewMode === "materials" || (showExtraTabs && (viewMode === "news" || viewMode === "youtube"))) && !activeMaterial) {
     return (
       <div className={styles.container}>
         <div className={styles.header}>
@@ -1516,13 +1596,13 @@ export function ShadowingView({ locale }: { locale: Locale }) {
         <div className={styles.categoryFilter}>
           <button
             className={`${styles.categoryBtn} ${trainingLanguage === "en" ? styles.categoryBtnActive : ""}`}
-            onClick={() => setTrainingLanguage("en")}
+            onClick={() => { setTrainingLanguage("en"); setNewsArticles([]); }}
           >
             {l("英语口语强化", "英語スピーキング強化")}
           </button>
           <button
             className={`${styles.categoryBtn} ${trainingLanguage === "ja" ? styles.categoryBtnActive : ""}`}
-            onClick={() => setTrainingLanguage("ja")}
+            onClick={() => { setTrainingLanguage("ja"); setNewsArticles([]); }}
           >
             {l("日语口语强化", "日本語スピーキング強化")}
           </button>
@@ -1536,15 +1616,15 @@ export function ShadowingView({ locale }: { locale: Locale }) {
           >
             {l("经典材料", "定番素材")} ({baseMaterials.length})
           </button>
-          {showEnglishExtraTabs && (
+          {showExtraTabs && (
             <button
               className={`${styles.tab} ${viewMode === "news" ? styles.tabActive : ""}`}
-              onClick={() => { setViewMode("news"); if (newsArticles.length === 0) loadNews(); }}
+              onClick={() => { setViewMode("news"); if (newsArticles.length === 0) void loadNews(); }}
             >
               {l("每日新闻", "デイリーニュース")}
             </button>
           )}
-          {showEnglishExtraTabs && (
+          {showExtraTabs && (
             <button
               className={`${styles.tab} ${viewMode === "youtube" ? styles.tabActive : ""}`}
               onClick={() => setViewMode("youtube")}
@@ -1654,18 +1734,43 @@ export function ShadowingView({ locale }: { locale: Locale }) {
                   >
                     {youtubeImporting ? l("自动导入中...", "自動インポート中...") : l("一键抓字幕并自动导入", "字幕を取得して自動インポート")}
                   </Button>
-                  <Button
-                    variant="secondary"
-                    onClick={handleImportTedLatestBatch}
-                    disabled={youtubeImporting || tedSnapshot.materials.length === 0}
-                  >
-                    {l("一键导入 TED 最新10", "TED 最新10件を一括導入")}
-                  </Button>
+                  {isJapaneseTraining ? (
+                    <Button
+                      variant="secondary"
+                      onClick={handleImportJaYoutubeBatch}
+                      disabled={youtubeImporting}
+                    >
+                      {l("一键导入日语跟读素材 ×10", "日本語素材10件を一括導入")}
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="secondary"
+                      onClick={handleImportTedLatestBatch}
+                      disabled={youtubeImporting || tedSnapshot.materials.length === 0}
+                    >
+                      {l("一键导入 TED 最新10", "TED 最新10件を一括導入")}
+                    </Button>
+                  )}
                 </div>
 
                 <div className={styles.youtubeHint}>
-                  <p>{l("最省事：直接点「一键导入 TED 最新10」。", "最短手順：「TED 最新10件を一括導入」を押してください。")}</p>
-                  {tedSnapshotGeneratedAt && <p>{l("TED 批量包生成时间", "TED バッチ生成時刻")}：{tedSnapshotGeneratedAt}</p>}
+                  {isJapaneseTraining ? (
+                    <>
+                      <p>{l(
+                        "最省事：直接点「一键导入日语跟读素材 ×10」，包含日常会话、商务、旅行等场景。",
+                        "最短手順：「日本語素材10件を一括導入」を押してください。日常会話・ビジネス・旅行などの場面が含まれます。"
+                      )}</p>
+                      <p>{l(
+                        "也可以粘贴任意日语 YouTube 视频链接，自动抓取字幕。推荐频道：Yosuke Teaches Japanese、NHK World Japan、日本語の森",
+                        "YouTube 動画リンクを貼り付けて字幕を取得することもできます。おすすめ：Yosuke Teaches Japanese、NHK World Japan、日本語の森"
+                      )}</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>{l("最省事：直接点「一键导入 TED 最新10」。", "最短手順：「TED 最新10件を一括導入」を押してください。")}</p>
+                      {tedSnapshotGeneratedAt && <p>{l("TED 批量包生成时间", "TED バッチ生成時刻")}：{tedSnapshotGeneratedAt}</p>}
+                    </>
+                  )}
                 </div>
 
                 <div className={styles.savedMaterialsBlock}>
@@ -2381,6 +2486,91 @@ function formatSeconds(value: number): string {
     return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
   }
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
+function getDailyNewsJa(): NewsMaterial[] {
+  return [
+    {
+      id: "news-ja-tech",
+      title: "AI技術が日本の職場を変革",
+      titleCn: "AI技术变革日本职场",
+      source: "NHK ニュース",
+      date: new Date().toLocaleDateString(),
+      difficulty: 2,
+      sentences: [
+        { id: 1, text: "人工知能の急速な発展により、日本の多くの企業が業務の自動化を進めています。", translation: "随着人工智能的快速发展，日本许多企业正在推进业务自动化。" },
+        { id: 2, text: "特にカスタマーサービスや製造業での導入が加速しています。", translation: "特别是客户服务和制造业的导入正在加速。" },
+        { id: 3, text: "政府はAI人材の育成に力を入れる方針を示しました。", translation: "政府表示将致力于培养AI人才。" },
+        { id: 4, text: "一方で、雇用への影響を懸念する声も上がっています。", translation: "另一方面，也有人担忧对就业的影响。" },
+        { id: 5, text: "専門家は、AIと共存するためのスキルアップが重要だと指摘しています。", translation: "专家指出，提升与AI共存的技能非常重要。" },
+        { id: 6, text: "教育現場でもプログラミング教育の充実が求められています。", translation: "教育领域也要求充实编程教育。" },
+        { id: 7, text: "AI技術の倫理的な利用についても議論が活発化しています。", translation: "关于AI技术的伦理使用，讨论也日趋活跃。" },
+        { id: 8, text: "医療分野では、AI診断の精度が大幅に向上しました。", translation: "在医疗领域，AI诊断的精度大幅提升。" },
+        { id: 9, text: "今後もAI技術の進化に合わせた社会制度の整備が必要です。", translation: "今后也需要配合AI技术进化来完善社会制度。" },
+        { id: 10, text: "産業界と学術界の連携がますます重要になっています。", translation: "产学合作变得越来越重要。" },
+      ],
+    },
+    {
+      id: "news-ja-society",
+      title: "高齢化社会と地域コミュニティの再構築",
+      titleCn: "老龄化社会与地域社区的重建",
+      source: "NHK 社会",
+      date: new Date().toLocaleDateString(),
+      difficulty: 2,
+      sentences: [
+        { id: 1, text: "日本の高齢化率が過去最高を更新し、社会全体での対応が急務となっています。", translation: "日本老龄化率创历史新高，全社会的应对已迫在眉睫。" },
+        { id: 2, text: "地方では空き家問題が深刻化し、コミュニティの維持が課題です。", translation: "地方空房问题日益严重，维系社区成为课题。" },
+        { id: 3, text: "自治体は移住促進策やテレワーク支援を進めています。", translation: "地方政府正在推进促进移居和远程办公支持政策。" },
+        { id: 4, text: "高齢者の社会参加を促すボランティア活動が広がっています。", translation: "促进高龄者参与社会的志愿者活动正在扩大。" },
+        { id: 5, text: "介護ロボットの導入により、介護現場の負担軽減が期待されています。", translation: "引入护理机器人有望减轻护理现场的负担。" },
+        { id: 6, text: "子育て世代への支援も同時に強化する必要があります。", translation: "同时也需要加强对育儿一代的支援。" },
+        { id: 7, text: "多世代交流の場を設ける取り組みが注目されています。", translation: "设立多代交流场所的举措备受关注。" },
+        { id: 8, text: "デジタル技術を活用した見守りサービスが普及し始めています。", translation: "利用数字技术的守望服务开始普及。" },
+        { id: 9, text: "健康寿命の延伸が国の重要な政策課題となっています。", translation: "延长健康寿命已成为国家重要政策课题。" },
+        { id: 10, text: "地域の絆を取り戻すための新しい仕組みづくりが求められています。", translation: "人们正在寻求重建地域纽带的新机制。" },
+      ],
+    },
+    {
+      id: "news-ja-culture",
+      title: "日本の伝統文化とグローバル発信",
+      titleCn: "日本传统文化的全球传播",
+      source: "NHK 文化",
+      date: new Date().toLocaleDateString(),
+      difficulty: 1,
+      sentences: [
+        { id: 1, text: "日本のアニメや漫画は世界中で高い人気を誇っています。", translation: "日本动漫和漫画在全世界都享有很高人气。" },
+        { id: 2, text: "和食がユネスコ無形文化遺産に登録されてから、海外での関心がさらに高まりました。", translation: "和食被列入联合国教科文组织非物质文化遗产后，海外的关注进一步提高。" },
+        { id: 3, text: "茶道や生け花など、伝統的な文化体験を求める外国人観光客が増えています。", translation: "越来越多的外国游客寻求茶道和花道等传统文化体验。" },
+        { id: 4, text: "日本語学習者の数は年々増加しており、その動機の多くはポップカルチャーです。", translation: "日语学习者人数逐年增加，其动机多为流行文化。" },
+        { id: 5, text: "伝統工芸の後継者不足が深刻な問題となっています。", translation: "传统工艺后继者不足已成为严重问题。" },
+        { id: 6, text: "若い世代が伝統文化をSNSで発信する動きも活発です。", translation: "年轻一代通过社交媒体传播传统文化的活动也很活跃。" },
+        { id: 7, text: "地方の祭りや行事を国際的にPRする自治体が増えています。", translation: "越来越多的地方政府在国际上宣传当地的节日和活动。" },
+        { id: 8, text: "文化庁はクールジャパン戦略として海外展開を支援しています。", translation: "文化厅作为酷日本战略支持海外拓展。" },
+        { id: 9, text: "日本のおもてなし精神は海外からも高く評価されています。", translation: "日本的待客之道在海外也获得高度评价。" },
+        { id: 10, text: "伝統と革新の融合が新しい日本文化を生み出しています。", translation: "传统与革新的融合正在创造新的日本文化。" },
+      ],
+    },
+    {
+      id: "news-ja-business",
+      title: "日本企業のグローバル展開最新動向",
+      titleCn: "日本企业全球化最新动向",
+      source: "NHK ビジネス",
+      date: new Date().toLocaleDateString(),
+      difficulty: 3,
+      sentences: [
+        { id: 1, text: "円安の影響で日本の輸出企業の業績が好調です。", translation: "受日元贬值影响，日本出口企业业绩良好。" },
+        { id: 2, text: "半導体産業への大規模投資が国家戦略として進められています。", translation: "对半导体产业的大规模投资正作为国家战略推进。" },
+        { id: 3, text: "スタートアップ企業の育成に向けた支援制度が拡充されています。", translation: "培育初创企业的支援制度正在扩充。" },
+        { id: 4, text: "リモートワークの定着により、オフィス需要に変化が見られます。", translation: "随着远程办公的普及，办公需求出现变化。" },
+        { id: 5, text: "サステナビリティ経営が企業価値を左右する時代になりました。", translation: "可持续经营已成为左右企业价值的时代。" },
+        { id: 6, text: "人手不足を背景に、外国人労働者の受け入れが拡大しています。", translation: "以劳动力短缺为背景，接受外国劳动者正在扩大。" },
+        { id: 7, text: "デジタルトランスフォーメーションが中小企業にも浸透し始めています。", translation: "数字化转型也开始渗透到中小企业。" },
+        { id: 8, text: "物流業界では二〇二四年問題への対応が急がれています。", translation: "物流行业正在紧急应对2024年问题。" },
+        { id: 9, text: "ESG投資の拡大により、環境に配慮した経営が求められています。", translation: "随着ESG投资的扩大，企业被要求注重环境的经营。" },
+        { id: 10, text: "国際的な競争力を強化するため、産学官の連携が不可欠です。", translation: "为强化国际竞争力，产学官合作不可或缺。" },
+      ],
+    },
+  ];
 }
 
 function getDifficultyVariant(d: number): "success" | "warning" | "error" {

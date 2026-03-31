@@ -1,13 +1,6 @@
-export type LearningPartGroup = "listening" | "reading";
+import type { LearningActionCommand, LearningPartGroup } from "@toeicpass/shared";
 
-export type LearningActionCommand =
-  | "practice:start"
-  | "diagnostic:start"
-  | "mock:start"
-  | "review:start"
-  | "mistakes:start"
-  | "vocab:start"
-  | "shadowing:start";
+export type { LearningActionCommand, LearningPartGroup } from "@toeicpass/shared";
 
 type ParsedLearningAction = {
   command: LearningActionCommand;
@@ -20,7 +13,8 @@ const LEARNING_ACTION_ALIASES: Record<string, LearningActionCommand> = {
   practice: "practice:start",
   diagnostic: "diagnostic:start",
   mock: "mock:start",
-  review: "review:start",
+  review: "mistakes:start",
+  "review:start": "mistakes:start",
   mistakes: "mistakes:start",
   vocab: "vocab:start",
   shadowing: "shadowing:start",
@@ -30,7 +24,6 @@ const ALLOWED_COMMANDS = new Set<LearningActionCommand>([
   "practice:start",
   "diagnostic:start",
   "mock:start",
-  "review:start",
   "mistakes:start",
   "vocab:start",
   "shadowing:start",

@@ -1,6 +1,8 @@
 import type { ShadowingMaterial } from "./shadowing-materials";
+import { JAPANESE_SHADOWING_MATERIALS_EXPANDED } from "./japanese-shadowing-materials-expanded";
 
 export const JAPANESE_SHADOWING_MATERIALS: ShadowingMaterial[] = [
+  ...JAPANESE_SHADOWING_MATERIALS_EXPANDED,
   {
     id: "jp-daily-cafe",
     title: "日常会話・カフェと買い物",

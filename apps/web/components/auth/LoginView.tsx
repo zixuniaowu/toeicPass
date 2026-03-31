@@ -15,22 +15,28 @@ interface LoginViewProps {
   onCredentialsChange: (updates: Partial<AuthCredentials>) => void;
   onLogin: () => void;
   onRegister: () => void;
+  onLocaleChange?: (locale: Locale) => void;
 }
 
 const COPY = {
   zh: {
     overviewAriaLabel: "product-overview",
-    eyebrow: "toeicPass",
-    brandTitle: "英语口语强化",
-    brandDesc: "模拟考试、跟读、错题强化、背单词集中在一个工作流里，不在功能间反复跳转。",
+    eyebrow: "LangBoost",
+    brandTitle: "日语 · 英语 口语强化平台",
+    brandDesc: "跟读训练、模拟考试、错题强化、词汇复习——日语与英语口语提升一站搞定。",
     features: [
-      "2 小时整卷模拟，自动沉淀错题",
-      "错题复盘可直接回到训练路径",
-      "间隔重复词卡，按到期优先学习",
-      "句级跟读 + 发音反馈，提升听说联动",
+      "日语跟读 + 每日新闻 + YouTube 导入，母语沉浸",
+      "2 小时整卷模拟，自动沉淀错题到错题库",
+      "间隔重复词卡，按到期自动排优先级",
+      "句级跟读 + 实时发音对比，练出口语肌肉记忆",
+    ],
+    stats: [
+      { value: "JP+EN", label: "双语训练" },
+      { value: "2000+", label: "练习题" },
+      { value: "SRS", label: "间隔重复" },
     ],
     formEyebrow: "Welcome Back",
-    formTitle: "登录 toeicPass",
+    formTitle: "登录 LangBoost",
     formSubtitle: "输入账号后即可进入精简学习模式",
     passwordPlaceholder: "请输入密码",
     loginLoading: "处理中...",
@@ -46,17 +52,22 @@ const COPY = {
   },
   ja: {
     overviewAriaLabel: "product-overview-ja",
-    eyebrow: "toeicPass",
-    brandTitle: "英語スピーキング強化",
-    brandDesc: "模擬試験・シャドーイング・ミス復習・単語学習を 1 つの流れにまとめ、画面を行き来せずに進めます。",
+    eyebrow: "LangBoost",
+    brandTitle: "日本語・英語 スピーキング強化",
+    brandDesc: "模擬試験・シャドーイング・ミス復習・単語学習を 1 つの流れにまとめ、日本語・英語のスピーキング力を高めます。",
     features: [
+      "日本語シャドーイング＋デイリーニュース＋YouTube 取込",
       "2 時間の模擬試験でミス問題を自動蓄積",
-      "ミス復習からそのまま再演習に戻れる",
       "間隔反復カードで期限到来の単語を優先学習",
       "文単位シャドーイングと発音フィードバック",
     ],
+    stats: [
+      { value: "JP+EN", label: "二か国語" },
+      { value: "2000+", label: "練習問題" },
+      { value: "SRS", label: "間隔反復" },
+    ],
     formEyebrow: "Welcome Back",
-    formTitle: "toeicPass ログイン",
+    formTitle: "LangBoost ログイン",
     formSubtitle: "アカウント情報を入力すると集中学習モードに入れます",
     passwordPlaceholder: "パスワードを入力",
     loginLoading: "処理中...",
@@ -80,11 +91,30 @@ export function LoginView({
   onCredentialsChange,
   onLogin,
   onRegister,
+  onLocaleChange,
 }: LoginViewProps) {
   const copy = COPY[locale];
 
   return (
     <div className={styles.page}>
+      {onLocaleChange && (
+        <div className={styles.localeSwitcher}>
+          <button
+            type="button"
+            className={`${styles.localeBtn} ${locale === "zh" ? styles.localeBtnActive : ""}`}
+            onClick={() => onLocaleChange("zh")}
+          >
+            中文
+          </button>
+          <button
+            type="button"
+            className={`${styles.localeBtn} ${locale === "ja" ? styles.localeBtnActive : ""}`}
+            onClick={() => onLocaleChange("ja")}
+          >
+            日本語
+          </button>
+        </div>
+      )}
       <section className={styles.brandPanel} aria-label={copy.overviewAriaLabel}>
         <p className={styles.eyebrow}>{copy.eyebrow}</p>
         <h1 className={styles.brandTitle}>{copy.brandTitle}</h1>
@@ -94,6 +124,14 @@ export function LoginView({
             <li key={feature}>{feature}</li>
           ))}
         </ul>
+        <div className={styles.statRow}>
+          {copy.stats.map((stat) => (
+            <div key={stat.label} className={styles.statItem}>
+              <span className={styles.statValue}>{stat.value}</span>
+              <span className={styles.statLabel}>{stat.label}</span>
+            </div>
+          ))}
+        </div>
       </section>
 
       <Card className={styles.formCard} variant="elevated" padding="lg">

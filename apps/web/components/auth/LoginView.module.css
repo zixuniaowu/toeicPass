@@ -1,122 +1,377 @@
-.page {
-  width: min(1120px, 100%);
-  margin: clamp(32px, 7vh, 76px) auto;
-  min-height: min(760px, 82vh);
-  display: grid;
-  grid-template-columns: minmax(280px, 1fr) minmax(360px, 520px);
-  gap: clamp(20px, 3vw, 42px);
-  align-items: stretch;
-}
+/* ─────────────────────────────────────────────
+   LoginView – Rich deep-navy with colour mesh
+   Softer palette, glassmorphism, visual depth
+   ───────────────────────────────────────────── */
 
-.brandPanel {
+.page {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: linear-gradient(150deg, #0d1b2a 0%, #122140 35%, #162950 60%, #0f1e36 100%);
   position: relative;
-  border-radius: 28px;
-  padding: clamp(24px, 3vw, 44px);
-  border: 1px solid rgba(142, 173, 226, 0.4);
-  background:
-    radial-gradient(circle at 18% 12%, rgba(35, 115, 255, 0.25), transparent 34%),
-    radial-gradient(circle at 86% 88%, rgba(7, 196, 160, 0.2), transparent 36%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(244, 249, 255, 0.93));
-  box-shadow:
-    0 24px 45px rgba(15, 23, 42, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72);
   overflow: hidden;
 }
 
+/* Soft grid pattern */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg, transparent, transparent 79px,
+      rgba(100, 160, 255, 0.02) 79px, rgba(100, 160, 255, 0.02) 80px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 79px,
+      rgba(100, 160, 255, 0.02) 79px, rgba(100, 160, 255, 0.02) 80px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Large ambient glow — warm blue, top-left */
+.page::after {
+  content: "";
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  left: -12%;
+  top: -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.14) 0%, rgba(59, 130, 246, 0.04) 45%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+  animation: driftBlob1 22s ease-in-out infinite alternate;
+}
+
+@keyframes driftBlob1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(50px, 35px) scale(1.06); }
+}
+
+/* ── Locale Switcher ── */
+.localeSwitcher {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 10;
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 3px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.localeBtn {
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.32);
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.localeBtn:hover {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.localeBtnActive {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.1);
+}
+
+/* ── Brand Panel ── */
+.brandPanel {
+  position: relative;
+  z-index: 1;
+  padding: clamp(48px, 5vw, 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: panelSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes panelSlideIn {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Decorative blobs behind brand panel */
 .brandPanel::before {
   content: "";
   position: absolute;
-  width: 220px;
-  height: 220px;
-  right: -60px;
-  top: -80px;
+  width: 520px;
+  height: 520px;
+  right: -200px;
+  top: -140px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(64, 123, 255, 0.2), rgba(64, 123, 255, 0));
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.09), transparent 65%);
   pointer-events: none;
+  animation: driftBlob2 18s ease-in-out infinite alternate;
+}
+
+.brandPanel::after {
+  content: "";
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  left: -8%;
+  bottom: -100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.07), transparent 65%);
+  pointer-events: none;
+  animation: driftBlob2 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes driftBlob2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(18px, -14px) scale(1.05); }
 }
 
 .eyebrow {
+  position: relative;
   margin: 0;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.16em;
-  color: #2b5ea8;
+  letter-spacing: 0.3em;
+  color: #60a5fa;
   text-transform: uppercase;
 }
 
 .brandTitle {
-  margin: 12px 0 0;
+  position: relative;
+  margin: 20px 0 0;
   font-family: var(--font-display);
-  font-size: clamp(30px, 3.2vw, 42px);
-  line-height: 1.12;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.08;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #07182f;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 0%, #a5d0fc 55%, #60a5fa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .brandDesc {
-  margin: 18px 0 0;
-  max-width: 56ch;
-  color: #365170;
-  font-size: 16px;
-  line-height: 1.72;
+  position: relative;
+  margin: 24px 0 0;
+  max-width: 54ch;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 15.5px;
+  line-height: 1.85;
 }
 
+/* Decorative divider */
 .featureList {
-  margin: 26px 0 0;
-  padding: 0;
+  position: relative;
+  margin: 44px 0 0;
+  padding: 44px 0 0;
   list-style: none;
   display: grid;
-  gap: 12px;
+  gap: 10px;
+}
+
+.featureList::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 2px;
+  background: linear-gradient(90deg, #60a5fa, rgba(139, 92, 246, 0.6));
+  border-radius: 2px;
 }
 
 .featureList li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 11px 14px;
+  gap: 14px;
+  padding: 14px 18px;
   border-radius: 12px;
-  border: 1px solid rgba(180, 205, 240, 0.5);
-  background: rgba(255, 255, 255, 0.68);
-  color: #123555;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.025);
+  color: rgba(255, 255, 255, 0.62);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.featureList li:hover {
+  border-color: rgba(96, 165, 250, 0.18);
+  background: rgba(96, 165, 250, 0.04);
+  transform: translateX(4px);
 }
 
 .featureList li::before {
-  content: "●";
-  color: #1d6bff;
-  font-size: 12px;
+  content: "";
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #60a5fa;
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.45);
 }
 
+/* ── Stat Row ── */
+.statRow {
+  position: relative;
+  margin: 36px 0 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.statItem {
+  flex: 1;
+  min-width: 100px;
+  padding: 18px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.025);
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.statItem:hover {
+  border-color: rgba(96, 165, 250, 0.14);
+  background: rgba(96, 165, 250, 0.03);
+}
+
+.statValue {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: #93c5fd;
+  line-height: 1.2;
+}
+
+.statLabel {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Form Card ── */
 .formCard {
-  border-radius: 28px;
-  border: 1px solid rgba(146, 170, 211, 0.44);
-  box-shadow:
-    0 26px 44px rgba(15, 23, 42, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.76);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 251, 255, 0.95)),
-    radial-gradient(circle at 100% 0%, rgba(82, 141, 255, 0.12), transparent 42%);
+  position: relative;
+  z-index: 1;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: -24px 0 80px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(48px) saturate(1.2);
+  -webkit-backdrop-filter: blur(48px) saturate(1.2);
+  padding: clamp(36px, 4.5vw, 56px) clamp(28px, 3.5vw, 48px);
+  animation: cardEntry 0.5s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  overflow-y: auto;
+
+  /* Override design tokens for dark theme */
+  --color-text: rgba(255, 255, 255, 0.68);
+  --color-ink: rgba(255, 255, 255, 0.88);
+  --color-muted: rgba(255, 255, 255, 0.28);
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+  --color-primary-gradient: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #818cf8 100%);
+  --color-primary-gradient-hover: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #6366f1 100%);
+  --shadow-glow: 0 0 0 3px rgba(96, 165, 250, 0.14);
+  --color-background: rgba(15, 23, 42, 0.85);
+}
+
+/* Gradient accent line along left border */
+.formCard::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(96, 165, 250, 0.28), rgba(139, 92, 246, 0.18), transparent);
+  pointer-events: none;
+}
+
+/* Input dark overrides */
+.formCard :global(input) {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.formCard :global(input):focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.formCard :global(input)::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+/* CardTitle gradient text for dark bg */
+.formHeader h2 {
+  background: linear-gradient(135deg, #ffffff 0%, #a5d0fc 55%, #818cf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Secondary button dark theme */
+.actions button {
+  background: rgba(255, 255, 255, 0.04);
+  color: #93c5fd;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.actions button:hover:not(:disabled) {
+  background: rgba(96, 165, 250, 0.08);
+  border-color: rgba(96, 165, 250, 0.18);
+}
+
+.actions button:disabled {
+  opacity: 0.5;
+}
+
+@keyframes cardEntry {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 .formHeader {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .formEyebrow {
   margin: 0 0 8px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #3b5f93;
+  letter-spacing: 0.2em;
+  color: #60a5fa;
   text-transform: uppercase;
 }
 
 .formSubtitle {
-  margin: 10px 0 0;
-  color: #51698a;
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.32);
   font-size: 14px;
+  line-height: 1.6;
 }
 
 .formBody {
@@ -129,43 +384,44 @@
 }
 
 .loginAction {
-  margin-top: var(--space-1);
+  margin-top: var(--space-3);
 }
 
 .demoNotice {
-  border: 1px solid rgba(170, 194, 230, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
-  background: rgba(248, 252, 255, 0.82);
-  padding: 11px 13px;
-  color: #355273;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px 14px;
+  color: rgba(255, 255, 255, 0.28);
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .advanced {
-  border: 1px solid rgba(175, 198, 233, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-lg);
   padding: var(--space-4);
-  background: rgba(251, 254, 255, 0.76);
+  background: rgba(255, 255, 255, 0.015);
   transition: all var(--transition-normal);
 }
 
 .advanced[open] {
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: var(--shadow-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(96, 165, 250, 0.12);
 }
 
 .advanced summary {
   cursor: pointer;
   font-weight: 700;
-  color: #112e4c;
+  color: rgba(255, 255, 255, 0.42);
   outline: none;
   border-radius: var(--radius-sm);
   transition: color var(--transition-fast);
+  font-size: 14px;
 }
 
 .advanced summary:hover {
-  color: #1656b8;
+  color: #60a5fa;
 }
 
 .grid {
@@ -176,24 +432,29 @@
   animation: fadeInUp 0.36s ease forwards;
 }
 
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .actions {
   margin-top: var(--space-4);
 }
 
 .tip {
-  margin: var(--space-1) 0 0;
-  color: #5b718e;
-  font-size: 13px;
-  line-height: 1.6;
+  margin: var(--space-2) 0 0;
+  color: rgba(255, 255, 255, 0.22);
+  font-size: 12.5px;
+  line-height: 1.65;
 }
 
 .message {
   margin: var(--space-2) 0 0;
-  padding: 11px 12px;
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.24);
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
   border-radius: var(--radius-md);
-  color: #d12837;
+  color: #fca5a5;
   font-size: 13px;
   font-weight: 600;
 }
@@ -202,30 +463,51 @@
   display: none;
 }
 
+/* ── Responsive ── */
 @media (max-width: 980px) {
   .page {
     grid-template-columns: 1fr;
-    min-height: unset;
-    margin: 28px auto 40px;
+    min-height: auto;
   }
 
   .brandPanel {
-    order: 2;
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .formCard {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .formCard::before {
+    display: none;
+  }
+
+  .statRow {
+    gap: 8px;
+  }
+
+  .statItem {
+    min-width: 80px;
+    padding: 12px;
   }
 }
 
 @media (max-width: 760px) {
   .page {
-    margin: 20px auto 32px;
-    gap: 16px;
+    gap: 0;
   }
 
-  .brandPanel,
+  .brandPanel {
+    padding: var(--space-6) var(--space-5);
+  }
+
   .formCard {
-    border-radius: 18px;
+    padding: var(--space-6) var(--space-5);
   }
 
   .brandTitle {
-    font-size: 30px;
+    font-size: 28px;
   }
 }

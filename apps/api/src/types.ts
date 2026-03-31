@@ -1,4 +1,5 @@
-export type Role = "learner" | "coach" | "tenant_admin" | "super_admin";
+export type { Role } from "@toeicpass/shared";
+import type { Role } from "@toeicpass/shared";
 
 export interface Tenant {
   id: string;

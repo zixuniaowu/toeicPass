@@ -33,7 +33,6 @@ function isSupportedAction(action: string): boolean {
     "practice:start",
     "diagnostic:start",
     "mock:start",
-    "review:start",
     "mistakes:start",
     "vocab:start",
     "shadowing:start",
@@ -601,34 +600,6 @@ describe("toeicPass e2e", () => {
           .set("Authorization", authHeader);
         expect(start.status).toBe(201);
         expect(start.body.questions.length).toBeGreaterThan(0);
-        return;
-      }
-
-      if (command === "review:start") {
-        const dueCards = await request(app.getHttpServer())
-          .get("/api/v1/review/cards/due")
-          .set("x-tenant-code", tenantCode)
-          .set("Authorization", authHeader);
-        expect(dueCards.status).toBe(200);
-        const dueQuestionIds = dueCards.body
-          .map((card: { question?: { id?: string } }) => card.question?.id)
-          .filter((id: string | undefined): id is string => Boolean(id));
-        if (dueQuestionIds.length === 0) {
-          const fallback = await request(app.getHttpServer())
-            .get("/api/v1/mistakes/library")
-            .set("x-tenant-code", tenantCode)
-            .set("Authorization", authHeader);
-          expect(fallback.status).toBe(200);
-          return;
-        }
-
-        const drill = await request(app.getHttpServer())
-          .post("/api/v1/practice/sessions/mistakes/start")
-          .set("x-tenant-code", tenantCode)
-          .set("Authorization", authHeader)
-          .send({ questionIds: dueQuestionIds.slice(0, 20), limit: 12 });
-        expect(drill.status).toBe(201);
-        expect(drill.body.questions.length).toBeGreaterThan(0);
         return;
       }
 

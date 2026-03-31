@@ -15,8 +15,8 @@ const displayFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "toeicPass",
-  description: "英语口语强化",
+  title: "LangBoost — 日语 · 英语 口语强化平台",
+  description: "跟读训练、模拟考试、错题强化、词汇复习，日语与英语口语提升一站搞定",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

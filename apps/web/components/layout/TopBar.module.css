@@ -5,64 +5,74 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-6);
-  padding: var(--space-4) var(--space-5);
-  border: 1px solid rgba(184, 205, 236, 0.88);
-  border-radius: 18px;
-  background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.96), rgba(247, 252, 255, 0.93)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.74));
-  backdrop-filter: blur(10px);
+  gap: var(--space-5);
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: 20px;
+  background: rgba(13, 27, 42, 0.85);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
   box-shadow:
-    0 14px 34px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.76);
+    0 8px 32px -8px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(96, 165, 250, 0.06) inset;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  flex-shrink: 0;
 }
 
 .brandMark {
-  width: 44px;
-  height: 44px;
-  border-radius: 15px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, #052a74, #2463eb 55%, #35b8ff);
+  background: linear-gradient(145deg, #1e40af, #3b82f6 60%, #60a5fa);
   color: #fff;
-  font-weight: 700;
-  font-size: var(--text-lg);
-  box-shadow: 0 12px 24px rgba(36, 99, 235, 0.35);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.brandMark:hover {
+  transform: scale(1.05);
 }
 
 .brandTitle {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--text-xl);
-  letter-spacing: 0.01em;
-  color: #0f172a;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: #e2e8f0;
 }
 
 .brandSub {
   margin: 0;
-  font-size: 13px;
-  color: #516177;
-  letter-spacing: 0.02em;
+  font-size: 15px;
+  color: rgba(148, 197, 253, 0.55);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .tabs {
   display: flex;
-  gap: 10px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding: 3px 0;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  padding: 3px;
   scrollbar-width: none;
-  max-width: calc(100vw - 420px);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  border: 1px solid rgba(96, 165, 250, 0.1);
 }
 
 .tabs::-webkit-scrollbar {
@@ -70,120 +80,132 @@
 }
 
 .tab {
-  flex: 0 0 auto;
-  padding: 10px 14px;
-  border: 1px solid rgba(189, 204, 224, 0.74);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.88);
-  color: #3b4553;
-  font-size: 15px;
+  flex: 1;
+  position: relative;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 11px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
   font-weight: 600;
   line-height: 1;
+  text-align: center;
+  white-space: nowrap;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tab:hover {
-  color: #0b1f49;
-  background: #f4f8ff;
-  border-color: #aec4e6;
-  transform: translateY(-1px);
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .active {
-  background: linear-gradient(135deg, #0b2a7a, #2362e9 56%, #1da8ff);
-  color: #fff;
-  border-color: #1950cb;
-  box-shadow: 0 9px 16px rgba(29, 84, 212, 0.28);
+  background: rgba(96, 165, 250, 0.15);
+  color: #93c5fd;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(96, 165, 250, 0.2);
 }
 
 .badge {
   flex: 0 0 auto;
-  padding: 9px 12px;
+  padding: 9px 18px;
   border-radius: 10px;
-  font-size: var(--text-sm);
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   border: 1px solid transparent;
+  letter-spacing: 0.02em;
 }
 
 .badge.on {
-  background: #eaf8ef;
-  color: #0f5132;
-  border-color: #b6e8c8;
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
 .badge.off {
-  background: #fff7de;
-  color: #7a4a00;
-  border-color: #f7da92;
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.2);
 }
 
 .actions {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  flex-shrink: 0;
 }
 
 .localeSwitch {
   display: inline-flex;
   align-items: center;
-  border: 1px solid #cfdced;
-  border-radius: 999px;
-  background: #f7fbff;
+  border: 1px solid rgba(96, 165, 250, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
   padding: 2px;
 }
 
 .localeBtn {
   border: none;
   background: transparent;
-  color: #355171;
-  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 18px;
   font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 999px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .localeBtnActive {
-  background: #0f61f2;
+  background: #3b82f6;
   color: #fff;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
 }
 
 .logout {
-  border: 1px solid #cfdced;
+  border: 1px solid rgba(96, 165, 250, 0.12);
   border-radius: 10px;
-  background: #ffffff;
-  color: #1f334d;
-  padding: 8px 12px;
-  font-size: var(--text-sm);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.55);
+  padding: 10px 20px;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .logout:hover {
-  background: #f5f9ff;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
 }
 
-@media (max-width: 1180px) {
-  .tabs {
-    max-width: calc(100vw - 290px);
-  }
-}
+
 
 @media (max-width: 760px) {
   .topbar {
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
+    align-items: stretch;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .brand {
+    justify-content: center;
   }
 
   .actions {
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: var(--space-2);
   }
 
   .tabs {
     max-width: 100%;
+    justify-content: center;
   }
 }
