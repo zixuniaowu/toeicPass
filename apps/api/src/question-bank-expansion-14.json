@@ -1,0 +1,562 @@
+﻿{
+  "questions": [
+
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman want to find out?",
+      "context": "W: Hi, I'm calling from GreenTech Solutions. We submitted a proposal for the solar panel installation project last month. I was wondering if a decision has been made.\nM: I believe the review committee met yesterday, but I haven't received the results yet.\nW: Would it be possible to get an update by the end of the week?\nM: I'll follow up with the committee and get back to you.",
+      "explanation": "The woman wants to find out whether a decision has been made on their project proposal.",
+      "options": [
+        { "key": "A", "text": "The cost of a new project." },
+        { "key": "B", "text": "The status of a submitted proposal." },
+        { "key": "C", "text": "The location of a meeting." },
+        { "key": "D", "text": "The name of a committee member." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man imply about the deadline?",
+      "context": "W: The design team wants two more weeks to finalize the product packaging.\nM: Two weeks? That would push us past the manufacturing deadline.\nW: They say the current design doesn't reflect the updated brand guidelines.\nM: I understand, but we'll have to find a way to make it work within one week.",
+      "explanation": "The man implies the two-week request is unacceptable because it would delay manufacturing, so they must finish sooner.",
+      "options": [
+        { "key": "A", "text": "It has already been extended." },
+        { "key": "B", "text": "It cannot be pushed back further." },
+        { "key": "C", "text": "It was set by the design team." },
+        { "key": "D", "text": "It doesn't apply to this project." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man ask the woman for?",
+      "context": "M: I need to prepare a presentation for the investors meeting next Tuesday. Could you send me the latest financial projections?\nW: Sure, I updated them this morning. I'll email them to you within the hour.\nM: Great. Also, do you have the market analysis report from last quarter?\nW: I'll include that as well.",
+      "explanation": "The man asks for the latest financial projections and the market analysis report for his investor presentation.",
+      "options": [
+        { "key": "A", "text": "A list of investor names." },
+        { "key": "B", "text": "Financial projections and a market report." },
+        { "key": "C", "text": "A conference room reservation." },
+        { "key": "D", "text": "Feedback on his presentation slides." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "Where are the speakers?",
+      "context": "W: The patient in Room 302 is asking about discharge paperwork.\nM: I'll bring it up after I finish checking vitals on this floor.\nW: Also, Dr. Kim wants you to update the chart for the patient who came in this morning.\nM: Okay, I'll do that right after the discharge.",
+      "explanation": "The mention of patients, rooms, discharge paperwork, and vitals indicates the speakers are in a hospital.",
+      "options": [
+        { "key": "A", "text": "At a pharmacy." },
+        { "key": "B", "text": "At a hospital." },
+        { "key": "C", "text": "At a fitness center." },
+        { "key": "D", "text": "At an insurance office." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman mean when she says, 'That ship has sailed'?",
+      "context": "M: Should we try to get a booth at the International Food Expo in June?\nW: That ship has sailed. Registration closed two months ago, and there's already a waiting list.\nM: What about the Regional Food Fair in August instead?\nW: That's a good backup. I'll look into their pricing and send you the details.",
+      "explanation": "The woman means the opportunity to register for the Food Expo has passed and is no longer available.",
+      "options": [
+        { "key": "A", "text": "The event was moved overseas." },
+        { "key": "B", "text": "The registration deadline has passed." },
+        { "key": "C", "text": "The shipping costs are too high." },
+        { "key": "D", "text": "The booth design was rejected." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man plan to do?",
+      "context": "W: How are things going with the office supply vendor? Are we still getting good rates?\nM: Actually, their prices went up ten percent this quarter. I'm going to request quotes from a few other vendors for comparison.\nW: That's a smart move. Make sure to check references too.\nM: Will do. I'll have the comparison ready by next Friday.",
+      "explanation": "The man plans to request quotes from alternative vendors to compare prices.",
+      "options": [
+        { "key": "A", "text": "Negotiate a longer contract." },
+        { "key": "B", "text": "Get quotes from other vendors." },
+        { "key": "C", "text": "Reduce the supply order." },
+        { "key": "D", "text": "Switch to online ordering." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What is the woman concerned about?",
+      "context": "M: The new employee orientation is set for next Monday. We're expecting twelve new hires.\nW: That's great, but I'm worried we won't have enough training materials printed in time. The printer has been acting up.\nM: I can send the files to the copy center down the street. They usually have a quick turnaround.\nW: Perfect. Could you take care of that today?",
+      "explanation": "The woman is concerned about not having enough training materials printed because of printer issues.",
+      "options": [
+        { "key": "A", "text": "Too many new hires at once." },
+        { "key": "B", "text": "Not enough printed training materials." },
+        { "key": "C", "text": "The orientation room is too small." },
+        { "key": "D", "text": "The welcome presentation isn't ready." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What can be inferred about the project?",
+      "context": "W: The client just approved the final mockup for the mobile app. We can start development now.\nM: Finally! It took three rounds of revisions to get here.\nW: I know, but at least the scope is clearly defined now. No more surprises.\nM: Let's schedule a kickoff meeting with the dev team for Thursday.",
+      "explanation": "The project went through extensive client revisions, suggesting the requirements were initially unclear but are now finalized.",
+      "options": [
+        { "key": "A", "text": "It was completed ahead of schedule." },
+        { "key": "B", "text": "Its requirements took time to finalize." },
+        { "key": "C", "text": "It was canceled by the client." },
+        { "key": "D", "text": "It has no defined budget." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What will the man do tomorrow?",
+      "context": "W: Are you available for the staff meeting tomorrow at ten?\nM: I'll be at the construction site in the morning for the foundation inspection. I should be back by two.\nW: Then let's reschedule the meeting to two-thirty. Does that work for everyone else?\nM: I think so. I'll send out an updated calendar invite.",
+      "explanation": "The man will be at the construction site for a foundation inspection tomorrow morning.",
+      "options": [
+        { "key": "A", "text": "Attend a training seminar." },
+        { "key": "B", "text": "Inspect a construction site." },
+        { "key": "C", "text": "Meet with a client for lunch." },
+        { "key": "D", "text": "Work from home." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman say about the new policy?",
+      "context": "M: Did you see the email about the new travel reimbursement policy?\nW: Yes. They've simplified it quite a bit. You just upload your receipts through the app now instead of filling out paper forms.\nM: That's much more convenient. Is there still a daily meal limit?\nW: Yes, it's thirty-five dollars per day for domestic travel and fifty for international.",
+      "explanation": "The woman says the new policy is simpler, using an app for receipt uploads instead of paper forms.",
+      "options": [
+        { "key": "A", "text": "It eliminates meal reimbursements." },
+        { "key": "B", "text": "It simplifies the receipt submission process." },
+        { "key": "C", "text": "It only applies to international travel." },
+        { "key": "D", "text": "It increases approval wait times." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "Why does the man say, 'Better safe than sorry'?",
+      "context": "W: Do you think we need to hire a security consultant for the product launch event?\nM: Better safe than sorry. We'll have over five hundred guests, including media and VIPs.\nW: Good point. I'll get some quotes this week.\nM: Make sure they have experience with large corporate events.",
+      "explanation": "The man uses the expression to suggest it's wise to hire security as a precaution given the scale of the event.",
+      "options": [
+        { "key": "A", "text": "There have been security incidents before." },
+        { "key": "B", "text": "It's wise to take precautions for a large event." },
+        { "key": "C", "text": "The budget can't cover security." },
+        { "key": "D", "text": "The venue provides its own security." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man offer?",
+      "context": "W: I'm struggling to fit all the data into the quarterly report. There's just too much information.\nM: Would it help if I created some charts and graphs? Visual summaries might make it more digestible.\nW: That would be very helpful. Can you have them ready by Thursday?\nM: I'll get them to you by Wednesday evening.",
+      "explanation": "The man offers to create charts and graphs to help visualize the data for the quarterly report.",
+      "options": [
+        { "key": "A", "text": "To write the entire report." },
+        { "key": "B", "text": "To create visual data summaries." },
+        { "key": "C", "text": "To extend the deadline." },
+        { "key": "D", "text": "To reduce the data requirements." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What problem is discussed?",
+      "context": "M: We've been getting a lot of returns on the Model X laptop this month.\nW: Really? What's the most common complaint?\nM: Battery life. Customers say it's draining much faster than advertised.\nW: We should escalate this to the engineering team and issue a firmware update if possible.",
+      "explanation": "The problem is that customers are returning laptops due to battery life being shorter than advertised.",
+      "options": [
+        { "key": "A", "text": "A software compatibility issue." },
+        { "key": "B", "text": "Poor battery performance on a laptop model." },
+        { "key": "C", "text": "A shipping delay for new products." },
+        { "key": "D", "text": "A pricing error on the website." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman suggest about the conference?",
+      "context": "M: We have budget for two people to attend the National Marketing Conference this September.\nW: Instead of sending two people to one conference, why not send one person to this one and another to the Digital Advertising Summit in October? We'd get broader industry exposure.\nM: That's an interesting approach. Who would you recommend?\nW: I'd suggest Sandra for the marketing conference and David for the digital summit, given their specialties.",
+      "explanation": "The woman suggests splitting attendance between two conferences to get broader industry coverage.",
+      "options": [
+        { "key": "A", "text": "It should be canceled due to budget." },
+        { "key": "B", "text": "Attendance should be split across two events." },
+        { "key": "C", "text": "The entire team should attend." },
+        { "key": "D", "text": "It isn't relevant to their industry." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What is the woman looking for?",
+      "context": "W: Excuse me, I'm supposed to meet with Mr. Harrison in the Legal Department, but I can't seem to find his office.\nM: Mr. Harrison moved to the new wing last week. Go down this hallway and take the elevator to the fourth floor. His office is room four-twelve.\nW: Thank you. Is there a visitors' badge I need to pick up?\nM: Yes, please sign in at the security desk by the elevators.",
+      "explanation": "The woman is looking for Mr. Harrison's office in the Legal Department.",
+      "options": [
+        { "key": "A", "text": "The cafeteria." },
+        { "key": "B", "text": "A specific person's office." },
+        { "key": "C", "text": "The conference room." },
+        { "key": "D", "text": "The parking garage." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "When will the shipment arrive?",
+      "context": "M: I just got an update from the logistics company. Our shipment of office chairs is delayed.\nW: How long of a delay are we talking about?\nM: They said it will arrive next Wednesday instead of Friday.\nW: That's five extra days. We need to let the team know so they can plan accordingly.",
+      "explanation": "The shipment will arrive next Wednesday, delayed from the originally planned Friday.",
+      "options": [
+        { "key": "A", "text": "This Friday." },
+        { "key": "B", "text": "Next Wednesday." },
+        { "key": "C", "text": "In two weeks." },
+        { "key": "D", "text": "Tomorrow morning." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man imply about the candidate?",
+      "context": "W: What did you think of the last candidate we interviewed for the project manager position?\nM: Her technical skills are strong, but I'm not sure she has enough leadership experience for a team of twenty.\nW: We could pair her with a senior mentor for the first few months.\nM: That could work. Let's discuss it with HR before making a final decision.",
+      "explanation": "The man implies the candidate is technically capable but may lack the leadership experience needed for managing a large team.",
+      "options": [
+        { "key": "A", "text": "She is overqualified for the role." },
+        { "key": "B", "text": "She may need support with leadership." },
+        { "key": "C", "text": "She should apply for a different position." },
+        { "key": "D", "text": "She performed poorly in the interview." }
+      ],
+      "correctKey": "B"
+    },
+
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What change is the company making?",
+      "context": "INTERNAL NOTICE\n\nEffective May 1, all office locations will transition from disposable cups and plates in break rooms to reusable dishware. Each floor will be equipped with a commercial dishwasher. Employees are encouraged to rinse their items and place them in the designated bins.\n\nThis initiative is part of our Zero Waste by 2028 commitment and is expected to eliminate approximately 40,000 single-use items per month across all locations.\n\nThank you for doing your part.\n— Sustainability Committee",
+      "explanation": "The company is switching from disposable cups and plates to reusable dishware in break rooms.",
+      "options": [
+        { "key": "A", "text": "Closing several office locations." },
+        { "key": "B", "text": "Replacing disposable items with reusable dishware." },
+        { "key": "C", "text": "Hiring a new cleaning service." },
+        { "key": "D", "text": "Eliminating break rooms." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What should employees do if they find a problem?",
+      "context": "QUALITY ASSURANCE REMINDER\n\nTo: All Assembly Line Staff\nFrom: QA Manager, Patricia Reeves\n\nAs we increase production to meet holiday demand, please remember that quality standards remain our top priority. If you notice any defect during assembly—no matter how minor—stop the line and tag the unit for inspection. Do not attempt to fix it yourself.\n\nA QA inspector will be on each floor during all shifts this month. Use the red call buttons at your station to request immediate assistance.\n\nThank you for your attention to quality.",
+      "explanation": "Employees should stop the line and tag the defective unit for inspection rather than trying to fix it.",
+      "options": [
+        { "key": "A", "text": "Fix the defect immediately." },
+        { "key": "B", "text": "Stop the line and tag the unit." },
+        { "key": "C", "text": "Continue working and report later." },
+        { "key": "D", "text": "Move the item to a separate area." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about the hotel?",
+      "context": "GUEST REVIEW — The Harborview Inn\n★★★★★\n\nStayed here for three nights during a business trip. The room was spotless, and the bed was one of the most comfortable I've ever slept in. The rooftop restaurant has stunning views of the harbor, and the seafood risotto was exceptional. Staff went above and beyond—the concierge booked last-minute theater tickets and even arranged a car when my ride fell through. Will definitely be my go-to hotel in this city.\n\n— James K., verified guest",
+      "explanation": "The glowing five-star review praising cleanliness, food, views, and exceptional staff suggests the hotel provides premium service.",
+      "options": [
+        { "key": "A", "text": "It is a budget hotel." },
+        { "key": "B", "text": "It provides high-quality service." },
+        { "key": "C", "text": "It is under renovation." },
+        { "key": "D", "text": "It is located far from the city center." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the announcement say about parking?",
+      "context": "CONCERT AT RIVERSIDE AMPHITHEATER\nSaturday, May 10 — Gates open at 5:00 PM\n\nReminders for attendees:\n• No outside food or beverages allowed.\n• Clear bag policy in effect (bags must be transparent).\n• On-site parking is $15 per vehicle. Cash and card accepted.\n• Free shuttle service runs every 15 minutes from the downtown transit center.\n• Re-entry is not permitted after exiting the venue.\n\nFor the full schedule and artist lineup, visit riversideamp.com.",
+      "explanation": "On-site parking costs $15 per vehicle, with cash and card accepted.",
+      "options": [
+        { "key": "A", "text": "It is included with the ticket." },
+        { "key": "B", "text": "It costs $15 per vehicle." },
+        { "key": "C", "text": "It is not available on-site." },
+        { "key": "D", "text": "It requires advance reservation." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-main-idea",
+      "difficulty": 3,
+      "stem": "What is the main purpose of the letter?",
+      "context": "Dear Mr. Tanaka,\n\nOn behalf of Crestfall Consulting, I want to express our sincere gratitude for your partnership over the past five years. Your company's commitment to innovation has made every project we've collaborated on a success.\n\nAs we enter a new phase of growth, we'd like to discuss expanding our service agreement to include data analytics consulting. I believe this would complement the strategy work we already do together.\n\nWould you be available for a call next week to explore this opportunity?\n\nWarm regards,\nElena Vasquez\nManaging Partner, Crestfall Consulting",
+      "explanation": "The letter thanks Mr. Tanaka and proposes expanding the business relationship to include data analytics consulting.",
+      "options": [
+        { "key": "A", "text": "To end a business relationship." },
+        { "key": "B", "text": "To propose expanding a partnership." },
+        { "key": "C", "text": "To request payment for services." },
+        { "key": "D", "text": "To apologize for a project delay." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What is offered to participants?",
+      "context": "WEBINAR: SMALL BUSINESS TAX STRATEGIES FOR 2026\nHosted by Patterson & Associates CPA Firm\n\nDate: Thursday, April 17 | 12:00 PM – 1:30 PM (EDT)\nFormat: Online via Zoom (link provided upon registration)\nCost: Free\n\nTopics covered:\n• Maximizing deductions for home-based businesses\n• Quarterly estimated tax payments\n• Retirement plan options for self-employed individuals\n• Record-keeping best practices\n\nAll registrants will receive a free downloadable tax planning checklist and a 30-minute complimentary consultation with one of our CPAs.\n\nRegister at pattersonCPA.com/webinar.",
+      "explanation": "Participants receive a free tax planning checklist and a complimentary 30-minute CPA consultation.",
+      "options": [
+        { "key": "A", "text": "A year of free tax filing." },
+        { "key": "B", "text": "A checklist and a free consultation." },
+        { "key": "C", "text": "Discounted accounting software." },
+        { "key": "D", "text": "A printed tax guide mailed to their home." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about the company's growth?",
+      "context": "From: Tom Nguyen, VP Operations\nTo: All Regional Managers\nSubject: Warehouse Expansion Plan\n\nTeam,\n\nDue to a 35% increase in order volume over the past 12 months, our current warehouse capacity is nearly maxed out. We've signed a lease for a 60,000-square-foot facility in Memphis that will serve as our central distribution hub for the Southeast region.\n\nHiring for the new facility begins in June, with an initial team of 85 warehouse staff. Full operations are planned for September.\n\nI'll be visiting each region next month to discuss how this affects local logistics. Please prepare your Q2 capacity projections.\n\nTom",
+      "explanation": "A 35% order volume increase and a new large warehouse suggest the company is growing rapidly.",
+      "options": [
+        { "key": "A", "text": "It is downsizing operations." },
+        { "key": "B", "text": "It is expanding due to increased demand." },
+        { "key": "C", "text": "It is closing its Southeast operations." },
+        { "key": "D", "text": "It is transitioning to a digital-only model." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What is the coupon valid for?",
+      "context": "—————————————————\nFRESH BAKE CAFÉ\n$5 OFF any purchase of $25 or more\n—————————————————\n\nPresent this coupon at the register. Valid at all Fresh Bake Café locations.\n\nTerms:\n• One coupon per customer per visit.\n• Cannot be combined with other offers or promotions.\n• Valid on dine-in, takeout, and catering orders.\n• Excludes gift card purchases.\n• Expires: April 30, 2026\n\nThank you for choosing Fresh Bake Café! Visit freshbakecafe.com for our full menu.",
+      "explanation": "The coupon gives $5 off any purchase of $25 or more, valid for dine-in, takeout, and catering.",
+      "options": [
+        { "key": "A", "text": "A free dessert with any meal." },
+        { "key": "B", "text": "$5 off purchases of $25 or more." },
+        { "key": "C", "text": "Buy one, get one free entrees." },
+        { "key": "D", "text": "Free delivery on online orders." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What is the main reason for the policy change?",
+      "context": "POLICY UPDATE: REMOTE WORK GUIDELINES\n\nEffective June 1, 2026\n\nAfter analyzing productivity data from the past 18 months and gathering input from employee surveys, the executive team has decided to adopt a permanent hybrid work model. Employees in eligible roles may work remotely up to three days per week.\n\nKey guidelines:\n• Managers must approve remote work schedules in advance.\n• Employees must be available during core hours (10 AM–3 PM).\n• All remote workers must use the company VPN for secure access.\n• In-person attendance is required for team meetings and client-facing events.\n\nThis change reflects our commitment to flexibility while maintaining collaboration and security.\n\nHR Department",
+      "explanation": "The policy change is based on productivity data analysis and employee survey feedback supporting remote work.",
+      "options": [
+        { "key": "A", "text": "To reduce office space costs." },
+        { "key": "B", "text": "Productivity data and employee feedback support it." },
+        { "key": "C", "text": "Government regulations require it." },
+        { "key": "D", "text": "All employees requested full remote work." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Who should applicants contact for more information?",
+      "context": "INTERNSHIP OPPORTUNITY\nSilverline Architecture Firm — Summer 2026\n\nWe are accepting applications for our Summer Internship Program (June–August). Interns will work alongside senior architects on residential and commercial projects, gaining hands-on experience in design, drafting, and client presentations.\n\nRequirements:\n• Currently enrolled in an accredited architecture program\n• Proficient in AutoCAD and SketchUp\n• Available full-time (40 hours/week) for 10 weeks\n\nStipend: $4,000 for the program duration\nDeadline: April 25, 2026\n\nSubmit portfolio and resume to internships@silverlinearch.com.\nQuestions? Contact Program Coordinator Amy Chen at a.chen@silverlinearch.com or 555-0219.",
+      "explanation": "Applicants should contact Program Coordinator Amy Chen for more information.",
+      "options": [
+        { "key": "A", "text": "The company's HR department." },
+        { "key": "B", "text": "Program Coordinator Amy Chen." },
+        { "key": "C", "text": "A senior architect." },
+        { "key": "D", "text": "The admissions office." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-main-idea",
+      "difficulty": 3,
+      "stem": "What is the article mainly about?",
+      "context": "SUPPLY CHAIN WEEKLY — March 28\n\nThe global shipping industry is undergoing a significant transformation as major carriers invest in autonomous cargo vessels. Maersk, the world's second-largest container shipping company, this week unveiled a prototype autonomous ship capable of crossing the Pacific without a crew on board. The vessel uses AI-powered navigation, satellite communication, and advanced sensor arrays to avoid obstacles.\n\nWhile fully autonomous oceanic shipping is still years away from commercial deployment, industry experts say the technology could reduce shipping costs by up to 20% and address a growing shortage of qualified maritime workers.",
+      "explanation": "The article discusses the development of autonomous cargo ships and their potential impact on the shipping industry.",
+      "options": [
+        { "key": "A", "text": "Rising fuel prices in shipping." },
+        { "key": "B", "text": "The development of autonomous cargo vessels." },
+        { "key": "C", "text": "New environmental regulations for ships." },
+        { "key": "D", "text": "A decline in global trade volume." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the schedule show about Tuesday?",
+      "context": "MAPLE STREET COMMUNITY POOL — SUMMER SCHEDULE\nJune 1 through August 31\n\n| Day       | Lap Swim      | Open Swim      | Swim Lessons   |\n|-----------|---------------|----------------|----------------|\n| Monday    | 6-8 AM        | 12-6 PM        | 9-11 AM        |\n| Tuesday   | 6-8 AM        | 12-6 PM        | CLOSED          |\n| Wednesday | 6-8 AM        | 12-6 PM        | 9-11 AM        |\n| Thursday  | 6-8 AM        | 12-6 PM        | CLOSED          |\n| Friday    | 6-8 AM        | 12-8 PM        | 9-11 AM        |\n| Sat-Sun   | 8-10 AM       | 10 AM-6 PM     | CLOSED          |\n\nAll swimmers must show a valid membership card. Day passes: $8/adult, $5/child.",
+      "explanation": "On Tuesday, lap swim is 6-8 AM and open swim is 12-6 PM, but swim lessons are closed.",
+      "options": [
+        { "key": "A", "text": "The pool is closed all day." },
+        { "key": "B", "text": "No swim lessons are offered." },
+        { "key": "C", "text": "Open swim starts at 10 AM." },
+        { "key": "D", "text": "Lap swim runs until noon." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "What does the email imply about the client relationship?",
+      "context": "From: Nathan Brooks <n.brooks@meridianpr.com>\nTo: Claire Dawson <c.dawson@meridianpr.com>\nSubject: Orion Biotech Account\n\nClaire,\n\nJust got off the phone with Orion Biotech's marketing director. They're extremely happy with the press coverage we generated for their product launch—it exceeded their expectations. She mentioned they're planning two more product releases this year and want us to handle PR for both.\n\nAlso, she asked if we offer social media management. I told her we've recently expanded into that area. Could you prepare a package proposal to send by Friday?\n\nThanks,\nNathan",
+      "explanation": "The client is very satisfied and wants to expand the engagement, implying a strong and growing relationship.",
+      "options": [
+        { "key": "A", "text": "The client is considering other PR firms." },
+        { "key": "B", "text": "The client relationship is strong and expanding." },
+        { "key": "C", "text": "The client has reduced their budget." },
+        { "key": "D", "text": "The account is being transferred to another team." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the travel advisory recommend?",
+      "context": "TRAVEL ADVISORY — Northeast Region\nIssued: March 30, 2026\n\nA major winter storm is expected to impact the Northeast region from Tuesday evening through Thursday morning. Anticipated conditions include heavy snowfall (12-18 inches), strong winds, and icy road conditions.\n\nRecommendations:\n• Postpone non-essential travel during the storm period.\n• If travel is necessary, carry an emergency kit (blankets, water, flashlight, phone charger).\n• Check flight status before departing for the airport.\n• Allow extra commute time on Thursday as roads may still be icy.\n\nFor real-time updates, visit weather.gov/northeast.",
+      "explanation": "The advisory recommends postponing non-essential travel during the storm period.",
+      "options": [
+        { "key": "A", "text": "Stock up on food for two weeks." },
+        { "key": "B", "text": "Postpone non-essential travel." },
+        { "key": "C", "text": "Evacuate the affected area." },
+        { "key": "D", "text": "Work from the office during the storm." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the program include?",
+      "context": "EMPLOYEE WELLNESS PROGRAM — Spring Session\n\nWe're excited to launch our updated Employee Wellness Program!\n\nAvailable to all full-time employees at no cost:\n• Weekly yoga classes (Wednesdays, 12:15 PM, Wellness Room)\n• Monthly nutrition workshops with registered dietitian\n• Annual biometric health screening\n• Access to meditation app (premium subscription covered)\n• $200 annual fitness reimbursement (gym, equipment, or classes)\n\nSign up through the HR portal by April 5 to participate in the spring session.\n\nQuestions? Ask the Wellness Team at wellness@company.com.",
+      "explanation": "The program includes yoga classes, nutrition workshops, health screening, meditation app, and fitness reimbursement.",
+      "options": [
+        { "key": "A", "text": "Paid time off for exercise." },
+        { "key": "B", "text": "A fitness reimbursement and wellness activities." },
+        { "key": "C", "text": "A company gym membership." },
+        { "key": "D", "text": "Free meals in the cafeteria." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "What is implied about the renovation project?",
+      "context": "From: Sara Hoffman, Project Director\nTo: Renovation Steering Committee\nSubject: Phase 2 Budget Review\n\nCommittee members,\n\nI need to flag that Phase 2 of the headquarters renovation is now 18% over the approved budget. The primary drivers are unexpected asbestos remediation in the east wing ($280,000) and rising material costs for custom fixtures. I've identified some savings by switching to standard fixtures in non-public areas, but we'll still need an additional $150,000 to complete on schedule.\n\nI've prepared three options—full scope with added budget, reduced scope to stay on budget, and phased completion—for your review at Thursday's meeting.\n\nSara",
+      "explanation": "The project being 18% over budget with unexpected costs implies it has encountered significant, unforeseen complications.",
+      "options": [
+        { "key": "A", "text": "It is ahead of schedule." },
+        { "key": "B", "text": "It has run into unexpected complications." },
+        { "key": "C", "text": "It has been permanently halted." },
+        { "key": "D", "text": "It is under budget." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the service guarantee?",
+      "context": "RAPIDFIX APPLIANCE REPAIR\nFast. Reliable. Affordable.\n\nWe repair all major household appliances:\n✓ Refrigerators  ✓ Washing machines  ✓ Dryers\n✓ Dishwashers  ✓ Ovens  ✓ Microwaves\n\nOur Promise:\n• Same-day service for calls received before noon\n• Upfront pricing — no hidden fees\n• 90-day warranty on all parts and labor\n• Licensed and insured technicians\n\nCall 555-0398 or book online at rapidfixrepair.com.\nServing the greater metro area for over 15 years.",
+      "explanation": "The service guarantees same-day service for calls before noon, upfront pricing, and a 90-day warranty.",
+      "options": [
+        { "key": "A", "text": "Free replacement appliances." },
+        { "key": "B", "text": "Same-day service and a 90-day warranty." },
+        { "key": "C", "text": "A lifetime guarantee on all repairs." },
+        { "key": "D", "text": "24-hour emergency repairs." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-main-idea",
+      "difficulty": 3,
+      "stem": "What is the main topic of the report?",
+      "context": "ANNUAL SUSTAINABILITY REPORT SUMMARY — GreenPath Industries\n\nKey achievements in 2025:\n• Reduced carbon emissions by 22% (exceeding our 15% target)\n• Diverted 87% of waste from landfill through recycling and composting\n• Installed solar panels at three manufacturing plants, generating 30% of on-site energy\n• Achieved zero safety incidents across all facilities for the first time\n• Launched community partnerships with 12 schools for environmental education\n\nLooking ahead to 2026, our priorities include transitioning our vehicle fleet to electric, achieving ISO 14001 certification for all sites, and expanding our water conservation program.",
+      "explanation": "The report summarizes the company's sustainability achievements in 2025 and outlines priorities for 2026.",
+      "options": [
+        { "key": "A", "text": "Financial performance results." },
+        { "key": "B", "text": "Environmental sustainability progress." },
+        { "key": "C", "text": "Employee satisfaction survey results." },
+        { "key": "D", "text": "Product development milestones." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What is the maximum group size for the tour?",
+      "context": "GUIDED WALKING TOUR: HISTORIC DOWNTOWN\nExplore 200 years of history in 90 minutes!\n\nTour Details:\n• Duration: 90 minutes (approximately 1.5 miles walking)\n• Start: Corner of Main Street and Elm Avenue (look for the blue umbrella)\n• Days: Wednesday, Friday, and Saturday at 10:00 AM\n• Price: $18/adult, $12/student, children under 6 free\n• Maximum group size: 15 people per tour\n\nHighlights include the Old Courthouse, the 1820 Merchant's Row, the Underground Railroad stop, and the renovated waterfront.\n\nReservations required. Book at historicdowntowntours.com or call 555-0167.",
+      "explanation": "The maximum group size is 15 people per tour.",
+      "options": [
+        { "key": "A", "text": "10 people." },
+        { "key": "B", "text": "15 people." },
+        { "key": "C", "text": "20 people." },
+        { "key": "D", "text": "25 people." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "What is suggested about the new product line?",
+      "context": "From: Marketing Director\nTo: Executive Team\nSubject: EcoClean Product Line — Launch Results\n\nTeam,\n\nThe first month of sales for our EcoClean product line has exceeded all expectations. Revenue reached $2.4 million against a projected $1.5 million. The all-purpose cleaner is our top seller, followed by the laundry detergent.\n\nSocial media engagement has been exceptional—our launch video reached 5 million views organically. We've also received unsolicited partnership inquiries from two major retail chains.\n\nI recommend we accelerate the timeline for the next three products in the pipeline.\n\nRegards,\nDiana",
+      "explanation": "Revenue exceeding projections by 60%, viral social media, and retailer interest suggest the product line is very successful.",
+      "options": [
+        { "key": "A", "text": "It needs more marketing investment." },
+        { "key": "B", "text": "It has been extremely well received." },
+        { "key": "C", "text": "It should be discontinued." },
+        { "key": "D", "text": "It appeals only to a niche market." }
+      ],
+      "correctKey": "B"
+    }
+
+  ]
+}
