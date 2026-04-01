@@ -1,0 +1,1101 @@
+{
+  "questions": [
+
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man want to do?",
+      "context": "M: I'd like to exchange this jacket for a larger size.\nW: Sure, do you have the receipt?\nM: Yes, here it is. I bought it last weekend.\nW: Let me check if we have your size in stock.",
+      "explanation": "The man wants to exchange the jacket for a larger size, as he directly states this request.",
+      "options": [
+        { "key": "A", "text": "Return a jacket for a refund." },
+        { "key": "B", "text": "Exchange a jacket for a different size." },
+        { "key": "C", "text": "Purchase a new jacket." },
+        { "key": "D", "text": "Have a jacket repaired." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman ask the man to do?",
+      "context": "W: Could you pick up the catering order on your way back from the meeting?\nM: Sure, which restaurant is it from?\nW: Bella's Kitchen on Pine Street. The order is under our company name.\nM: Got it. I should be there around noon.",
+      "explanation": "The woman asks the man to pick up a catering order from a restaurant on his way back.",
+      "options": [
+        { "key": "A", "text": "Make a restaurant reservation." },
+        { "key": "B", "text": "Pick up a food order." },
+        { "key": "C", "text": "Deliver documents to a client." },
+        { "key": "D", "text": "Cancel a meeting." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "Where does the man most likely work?",
+      "context": "W: I'm having trouble with my laptop screen. It keeps flickering.\nM: Let me take a look. When did this start happening?\nW: Just this morning. It was fine yesterday.\nM: It might be a loose connection. I'll run a quick diagnostic test.",
+      "explanation": "The man's response—offering to run a diagnostic test on the laptop—indicates he works in IT support or technical support.",
+      "options": [
+        { "key": "A", "text": "At a retail store." },
+        { "key": "B", "text": "At an IT support department." },
+        { "key": "C", "text": "At a shipping company." },
+        { "key": "D", "text": "At an accounting firm." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What problem does the man mention?",
+      "context": "M: I scheduled the conference room for our team meeting, but it looks like someone else already booked it.\nW: That happens a lot with the new booking system. Did you try the room on the fifth floor?\nM: Not yet. I'll check if it's available.\nW: If not, we could always use the lounge area. It should be free.",
+      "explanation": "The man mentions that the conference room he booked was already reserved by someone else, creating a scheduling conflict.",
+      "options": [
+        { "key": "A", "text": "A document was printed incorrectly." },
+        { "key": "B", "text": "A room reservation conflict." },
+        { "key": "C", "text": "A meeting was cancelled." },
+        { "key": "D", "text": "A colleague is absent." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What will the woman probably do next?",
+      "context": "M: The sales figures for last quarter look great. Should we include them in the investor presentation?\nW: Absolutely. I'll add a comparison chart showing the year-over-year growth.\nM: Good idea. Can you have it ready by three o'clock?\nW: I'll start on it right away.",
+      "explanation": "The woman says she'll start right away on creating a comparison chart for the investor presentation.",
+      "options": [
+        { "key": "A", "text": "Schedule a meeting with investors." },
+        { "key": "B", "text": "Create a chart for the presentation." },
+        { "key": "C", "text": "Send the sales report to the manager." },
+        { "key": "D", "text": "Review the budget proposal." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "Why is the woman concerned?",
+      "context": "W: Have you seen the weather forecast for Saturday? They're predicting heavy rain.\nM: That could be a problem for the outdoor charity event.\nW: Exactly. We don't have a backup plan for an indoor venue.\nM: Let me call the community center to see if they have space available.",
+      "explanation": "The woman is concerned because there is no indoor backup venue if it rains on the day of the outdoor charity event.",
+      "options": [
+        { "key": "A", "text": "A delivery was damaged by rain." },
+        { "key": "B", "text": "An outdoor event has no rain contingency." },
+        { "key": "C", "text": "The charity raised less money than expected." },
+        { "key": "D", "text": "A speaker cancelled at the last minute." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man offer to do?",
+      "context": "W: I'm not sure how to fill out this expense reimbursement form. It's different from the old one.\nM: I just completed mine yesterday. I can walk you through it.\nW: That would be great. I especially need help with the receipt attachment section.\nM: No problem. Pull up the form and I'll guide you step by step.",
+      "explanation": "The man offers to help the woman fill out the expense reimbursement form since he just went through the same process.",
+      "options": [
+        { "key": "A", "text": "Submit the form on her behalf." },
+        { "key": "B", "text": "Help her complete the form." },
+        { "key": "C", "text": "Contact the finance department." },
+        { "key": "D", "text": "Print a copy of the instructions." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman mean when she says, 'That's cutting it close'?",
+      "context": "M: The supplier confirmed they can deliver the materials by Thursday.\nW: That's cutting it close. The installation is scheduled for Friday morning.\nM: I know, but they assured me delivery by noon at the latest.\nW: Let's have a backup supplier ready just in case.",
+      "explanation": "The woman means that Thursday delivery leaves very little time before the Friday installation, making the timeline risky.",
+      "options": [
+        { "key": "A", "text": "The delivery is ahead of schedule." },
+        { "key": "B", "text": "The timeline allows very little margin." },
+        { "key": "C", "text": "The price is close to their budget." },
+        { "key": "D", "text": "The supplier is located nearby." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man suggest?",
+      "context": "W: We need to find a way to reduce our shipping costs. They've gone up twenty percent this year.\nM: What about negotiating volume discounts with our current carrier?\nW: I tried that already, but they weren't willing to lower the rates.\nM: Then maybe we should get quotes from other shipping companies.",
+      "explanation": "After learning the current carrier won't negotiate, the man suggests getting quotes from alternative shipping companies.",
+      "options": [
+        { "key": "A", "text": "Reduce the number of shipments." },
+        { "key": "B", "text": "Compare rates with other carriers." },
+        { "key": "C", "text": "Ship products by air instead." },
+        { "key": "D", "text": "Pass shipping costs to customers." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What are the speakers discussing?",
+      "context": "M: I got an email saying our office internet will be upgraded this weekend.\nW: That's good news. The current connection has been really slow lately.\nM: They said there might be a brief outage Saturday morning during the switch.\nW: That shouldn't be a problem since nobody works on Saturdays.",
+      "explanation": "The speakers are discussing a planned internet upgrade for their office and a potential brief outage.",
+      "options": [
+        { "key": "A", "text": "A change in work schedules." },
+        { "key": "B", "text": "An office internet upgrade." },
+        { "key": "C", "text": "A software installation." },
+        { "key": "D", "text": "A building renovation." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman imply about the deadline?",
+      "context": "M: The client wants the revised design by next Wednesday.\nW: That's going to be tough. We haven't even received their feedback on the first draft yet.\nM: I'll follow up with them today and try to get their comments by tomorrow.\nW: Even then, three days might not be enough if they want major changes.",
+      "explanation": "The woman implies that the Wednesday deadline may not be realistic, especially if the client requests significant revisions.",
+      "options": [
+        { "key": "A", "text": "It has already been extended once." },
+        { "key": "B", "text": "It may be difficult to meet." },
+        { "key": "C", "text": "It was set by the design team." },
+        { "key": "D", "text": "It is the same as the original deadline." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man say about the new employee?",
+      "context": "W: How is the new marketing coordinator doing?\nM: She's picking things up really quickly. She already redesigned the product catalog.\nW: That's impressive for the first week. Have you assigned her to any client accounts yet?\nM: Not yet, but I plan to next week after her orientation is complete.",
+      "explanation": "The man says the new employee is learning quickly and has already completed a significant task in her first week.",
+      "options": [
+        { "key": "A", "text": "She needs more training." },
+        { "key": "B", "text": "She is adapting quickly." },
+        { "key": "C", "text": "She was transferred from another branch." },
+        { "key": "D", "text": "She has already met all the clients." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What will the speakers most likely do next?",
+      "context": "W: The trade show starts in two weeks, and we still don't have our booth design finalized.\nM: I know. The graphics team has been swamped with other projects.\nW: Should we hire an outside design firm to help?\nM: That might be the best option at this point. I'll get some proposals by tomorrow.",
+      "explanation": "The man agrees to get proposals from outside design firms by tomorrow to help finalize the trade show booth.",
+      "options": [
+        { "key": "A", "text": "Cancel their booth at the trade show." },
+        { "key": "B", "text": "Contact outside firms for design help." },
+        { "key": "C", "text": "Postpone the trade show." },
+        { "key": "D", "text": "Ask the graphics team to work overtime." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman recommend?",
+      "context": "M: I'm trying to decide which project management tool to use for the new team.\nW: I'd suggest trying Trello. It's intuitive and works well for smaller teams.\nM: Is that what your department uses?\nW: We switched to it last year, and it's really improved our workflow.",
+      "explanation": "The woman recommends Trello because her department has had a positive experience with it.",
+      "options": [
+        { "key": "A", "text": "Hiring an additional team member." },
+        { "key": "B", "text": "Using a specific project management tool." },
+        { "key": "C", "text": "Attending a project management seminar." },
+        { "key": "D", "text": "Creating a custom management system." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What is the man worried about?",
+      "context": "M: I just found out our main competitor dropped their prices by fifteen percent.\nW: That's aggressive. Do you think it'll affect our sales?\nM: It could, especially with the holiday season coming up. Customers will be comparing prices.\nW: Maybe we should focus on emphasizing our product quality and customer service instead of matching their prices.",
+      "explanation": "The man is worried that the competitor's significant price reduction could negatively impact their sales during the holiday season.",
+      "options": [
+        { "key": "A", "text": "A supply chain disruption." },
+        { "key": "B", "text": "The impact of a competitor's price cut." },
+        { "key": "C", "text": "A decline in product quality." },
+        { "key": "D", "text": "An employee shortage during the holidays." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman say about the training program?",
+      "context": "M: Did you attend the leadership training last Tuesday?\nW: Yes, it was very useful. The instructor covered conflict resolution and team motivation techniques.\nM: I missed it because of a client meeting. Will it be offered again?\nW: They're planning another session next month. I'll forward you the registration link.",
+      "explanation": "The woman found the training program very useful and mentions that another session will be offered next month.",
+      "options": [
+        { "key": "A", "text": "It was cancelled due to low attendance." },
+        { "key": "B", "text": "It was informative and will be repeated." },
+        { "key": "C", "text": "It was too long." },
+        { "key": "D", "text": "It focused on technical skills." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man plan to do about the feedback?",
+      "context": "W: Several customers have complained about the new packaging. They say the boxes are too difficult to open.\nM: That's concerning. We invested a lot in the redesign. I'll bring it up at the product review meeting tomorrow.\nW: We should also get feedback from the design team on possible modifications.\nM: Agreed. I'll schedule a meeting with them for Thursday.",
+      "explanation": "The man plans to raise the customer complaints at the product review meeting and also schedule a separate meeting with the design team.",
+      "options": [
+        { "key": "A", "text": "Ignore the complaints and continue production." },
+        { "key": "B", "text": "Discuss the issue at upcoming meetings." },
+        { "key": "C", "text": "Offer refunds to dissatisfied customers." },
+        { "key": "D", "text": "Return to the original packaging immediately." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "Why is the man calling?",
+      "context": "M: Hello, I'm calling to check on the status of my order. I placed it online five days ago.\nW: I'd be happy to look into that. Could you give me your order number?\nM: It's four-seven-eight-three-two-one.\nW: Let me pull that up. It looks like your order shipped yesterday and should arrive by Friday.",
+      "explanation": "The man is calling to check the delivery status of an order he placed five days ago.",
+      "options": [
+        { "key": "A", "text": "To cancel an order." },
+        { "key": "B", "text": "To check an order status." },
+        { "key": "C", "text": "To request a return label." },
+        { "key": "D", "text": "To change his shipping address." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman imply about the report?",
+      "context": "M: Have you had a chance to review the quarterly financial report?\nW: I started looking at it, but some of the figures in the revenue section don't match our internal records.\nM: That's odd. Which numbers are off?\nW: I'll send you a marked-up copy this afternoon so you can see the discrepancies.",
+      "explanation": "The woman implies that the report contains inaccuracies in the revenue section that need to be corrected.",
+      "options": [
+        { "key": "A", "text": "It is ready for distribution." },
+        { "key": "B", "text": "It contains some inaccurate data." },
+        { "key": "C", "text": "It needs to be reformatted." },
+        { "key": "D", "text": "It was submitted late." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man ask about?",
+      "context": "M: I heard the company is offering a tuition reimbursement program. Do you know the details?\nW: Yes, they'll cover up to five thousand dollars per year for job-related courses.\nM: That's great. Is there a minimum grade requirement?\nW: You need to earn at least a B to qualify for reimbursement.",
+      "explanation": "The man is asking about the details of the company's tuition reimbursement program.",
+      "options": [
+        { "key": "A", "text": "A vacation policy." },
+        { "key": "B", "text": "An education benefits program." },
+        { "key": "C", "text": "A retirement plan." },
+        { "key": "D", "text": "A health insurance plan." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man suggest the woman do?",
+      "context": "W: I've been trying to reach the vendor all week, but they never return my calls.\nM: Have you tried emailing them? Sometimes they respond faster that way.\nW: I did send an email two days ago, but no reply yet.\nM: At that point, I'd recommend contacting their regional manager directly. I have his number if you need it.",
+      "explanation": "The man suggests the woman escalate the issue by contacting the vendor's regional manager directly.",
+      "options": [
+        { "key": "A", "text": "Switch to a different vendor." },
+        { "key": "B", "text": "Contact the vendor's manager." },
+        { "key": "C", "text": "Visit the vendor's office in person." },
+        { "key": "D", "text": "Wait another week for a response." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What are the speakers mainly discussing?",
+      "context": "M: Have you decided where to hold the year-end awards ceremony?\nW: We're looking at two options—the Grand Hotel ballroom or the rooftop venue at the Park Tower.\nM: The rooftop sounds nice, but it might be too cold in December.\nW: That's a good point. Let me check if the Grand Hotel has any dates open.",
+      "explanation": "The speakers are discussing the venue selection for the year-end awards ceremony.",
+      "options": [
+        { "key": "A", "text": "A holiday travel plan." },
+        { "key": "B", "text": "A venue for an awards event." },
+        { "key": "C", "text": "A new hotel opening." },
+        { "key": "D", "text": "A building renovation project." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman say she needs to do?",
+      "context": "M: Are you ready for the product demonstration this afternoon?\nW: Almost, but I still need to test the software on the presentation laptop to make sure it runs smoothly.\nM: The IT team set it up this morning. It should be in the demo room.\nW: I'll go check it now. Better to catch any issues before the client arrives.",
+      "explanation": "The woman needs to test the software on the presentation laptop before the product demonstration.",
+      "options": [
+        { "key": "A", "text": "Order a new laptop." },
+        { "key": "B", "text": "Test software on the demo equipment." },
+        { "key": "C", "text": "Print handouts for the audience." },
+        { "key": "D", "text": "Call the client to reschedule." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man say about the parking situation?",
+      "context": "W: I was fifteen minutes late this morning because I couldn't find a parking space.\nM: I know, ever since they closed the north lot for construction, parking has been terrible.\nW: Do you know when it will reopen?\nM: The facilities department said it should be back open by the end of next month.",
+      "explanation": "The man explains that parking has been difficult because the north lot is closed for construction, but it should reopen by month's end.",
+      "options": [
+        { "key": "A", "text": "New parking meters have been installed." },
+        { "key": "B", "text": "A parking lot is temporarily closed." },
+        { "key": "C", "text": "The parking garage rates have increased." },
+        { "key": "D", "text": "Employees must buy parking permits." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman ask the man to check?",
+      "context": "W: I sent out the press release about the acquisition, but I want to make sure the financial details are accurate.\nM: Which details are you concerned about?\nW: The acquisition price and the expected completion date. Could you verify those with the CFO's office?\nM: Sure, I'll call them right now and get back to you.",
+      "explanation": "The woman asks the man to verify the acquisition price and expected completion date with the CFO's office.",
+      "options": [
+        { "key": "A", "text": "Market research data." },
+        { "key": "B", "text": "Financial details in a press release." },
+        { "key": "C", "text": "A product specifications sheet." },
+        { "key": "D", "text": "Employee benefit information." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What will happen next Tuesday?",
+      "context": "M: Don't forget, the office will be inspected for fire safety compliance next Tuesday.\nW: Thanks for the reminder. Is there anything we need to do to prepare?\nM: Just make sure all hallways and exits are clear of boxes and equipment.\nW: I'll send an email to the whole floor about it today.",
+      "explanation": "A fire safety compliance inspection is scheduled for next Tuesday at their office.",
+      "options": [
+        { "key": "A", "text": "A team-building workshop." },
+        { "key": "B", "text": "A fire safety inspection." },
+        { "key": "C", "text": "A company holiday party." },
+        { "key": "D", "text": "A new employee orientation." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "Why does the man say, 'That changes things'?",
+      "context": "W: I just heard from the client that they want to add three more product features to the project scope.\nM: That changes things. We'll need more time and probably more resources.\nW: I know. Should we request a deadline extension?\nM: Yes, and we should also adjust our cost estimate before the next meeting.",
+      "explanation": "The man says 'That changes things' because the added features will require more time, resources, and a revised cost estimate, significantly altering the project plan.",
+      "options": [
+        { "key": "A", "text": "He is pleased with the additions." },
+        { "key": "B", "text": "The project scope expansion affects planning." },
+        { "key": "C", "text": "He wants to remove some features." },
+        { "key": "D", "text": "The client cancelled the project." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "Where are the speakers most likely going?",
+      "context": "M: The cab should be here in five minutes. Do you have the presentation materials?\nW: Yes, I've got everything. The client's office is about a twenty-minute ride from here.\nM: Perfect. I also brought extra copies of the proposal in case they need them.\nW: Good thinking. Let's head downstairs to the lobby.",
+      "explanation": "The speakers are about to take a cab to a client's office for a presentation, as they mention presentation materials and the client's location.",
+      "options": [
+        { "key": "A", "text": "To a restaurant for lunch." },
+        { "key": "B", "text": "To a client's office." },
+        { "key": "C", "text": "To the airport." },
+        { "key": "D", "text": "To a team meeting." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman mean when she says, 'I'm two minds about it'?",
+      "context": "M: Have you decided whether to accept the transfer to the Tokyo office?\nW: I'm of two minds about it. It's a great career opportunity, but my children are settled in school here.\nM: That's a tough decision. When do you need to give them an answer?\nW: By the end of the month. I'm going to discuss it with my family this weekend.",
+      "explanation": "The woman means she is indecisive about the transfer—she sees both advantages and disadvantages and hasn't made a decision yet.",
+      "options": [
+        { "key": "A", "text": "She has already accepted the transfer." },
+        { "key": "B", "text": "She is undecided about the opportunity." },
+        { "key": "C", "text": "She has declined the offer." },
+        { "key": "D", "text": "She wants a higher salary." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man say about the photocopier?",
+      "context": "W: I need to make a hundred copies of this handbook for the orientation.\nM: The photocopier near the break room is out of toner. You'll need to use the one on the third floor.\nW: Is there a lot of toner left in that one?\nM: It was just refilled yesterday, so it should be fine.",
+      "explanation": "The man says the nearby photocopier is out of toner but the one on the third floor was recently refilled.",
+      "options": [
+        { "key": "A", "text": "It has been replaced with a new model." },
+        { "key": "B", "text": "The nearest one is out of toner." },
+        { "key": "C", "text": "It is reserved for management use only." },
+        { "key": "D", "text": "It is currently being repaired." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman suggest about the marketing campaign?",
+      "context": "M: I'm thinking of launching the new marketing campaign on social media first.\nW: That could work, but I'd also suggest running a small test campaign before the full launch.\nM: What kind of test do you have in mind?\nW: A limited ad buy targeting a specific region. That way we can measure response before committing the full budget.",
+      "explanation": "The woman suggests running a small regional test campaign before committing to the full marketing launch.",
+      "options": [
+        { "key": "A", "text": "Cancel the campaign entirely." },
+        { "key": "B", "text": "Test it in a limited market first." },
+        { "key": "C", "text": "Focus only on print advertising." },
+        { "key": "D", "text": "Hire an outside agency immediately." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman want to know?",
+      "context": "W: I noticed a charge on my corporate card that I don't recognize. It's from a company called TechServe.\nM: That might be from the software subscription I renewed last month.\nW: Could you confirm that? I need to make sure all charges are accounted for before I submit my expense report.\nM: Let me check my records. I'll email you the invoice.",
+      "explanation": "The woman wants to confirm whether an unfamiliar charge on her corporate card is legitimate before submitting her expense report.",
+      "options": [
+        { "key": "A", "text": "The location of a meeting." },
+        { "key": "B", "text": "The source of an unfamiliar charge." },
+        { "key": "C", "text": "The deadline for a project." },
+        { "key": "D", "text": "The name of a new vendor." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man indicate about the warehouse?",
+      "context": "W: How are things going at the new warehouse facility?\nM: The setup is almost complete, but we're still waiting for the shelving units to be installed.\nW: When do you expect them to be finished?\nM: The contractor said by next Wednesday, but I wouldn't be surprised if it takes a few extra days.",
+      "explanation": "The man indicates that the warehouse setup is nearly complete but the shelving installation may take longer than the contractor estimated.",
+      "options": [
+        { "key": "A", "text": "It is fully operational." },
+        { "key": "B", "text": "It is almost ready but behind schedule." },
+        { "key": "C", "text": "It needs to be relocated." },
+        { "key": "D", "text": "It is too small for current needs." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman need for the meeting?",
+      "context": "W: I have a video conference with the overseas team at four o'clock. Can I use your webcam?\nM: Sure, but the built-in microphone doesn't work very well. You might want to use a headset too.\nW: Good to know. Do you have one I could borrow?\nM: Yes, it's in my desk drawer. I'll bring it to you in a few minutes.",
+      "explanation": "The woman needs a webcam and headset for a video conference with the overseas team.",
+      "options": [
+        { "key": "A", "text": "A projector and screen." },
+        { "key": "B", "text": "A webcam and headset." },
+        { "key": "C", "text": "A printed agenda." },
+        { "key": "D", "text": "A conference room key." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man imply about the company policy?",
+      "context": "W: Can I work from home next Friday? I have a plumber coming to fix a leak.\nM: Normally that would be fine, but we just got a memo saying all employees need to be on-site for the next two weeks.\nW: Is that because of the audit?\nM: Yes, the auditors want to interview staff in person, so everyone needs to be available.",
+      "explanation": "The man implies that the normal work-from-home policy has been temporarily suspended due to an upcoming in-person audit.",
+      "options": [
+        { "key": "A", "text": "It allows unlimited remote work." },
+        { "key": "B", "text": "It has been temporarily changed." },
+        { "key": "C", "text": "It requires manager approval for overtime." },
+        { "key": "D", "text": "It was updated last year." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman say about the conference?",
+      "context": "M: Are you planning to attend the technology conference in Seattle next month?\nW: I'd like to, but the registration fee is quite expensive—six hundred dollars.\nM: Really? I thought our department had a professional development budget for things like that.\nW: It does, but we've already used most of it this quarter. I'll check if there's anything left.",
+      "explanation": "The woman says the conference registration fee is expensive and she's not sure if there's enough remaining budget to cover it.",
+      "options": [
+        { "key": "A", "text": "It has been rescheduled." },
+        { "key": "B", "text": "The registration fee is high." },
+        { "key": "C", "text": "She is presenting at the conference." },
+        { "key": "D", "text": "The company is sponsoring the event." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "Why does the woman mention the focus group?",
+      "context": "M: Our website traffic has dropped significantly over the last three months.\nW: We ran a focus group last week, and participants said the site is hard to navigate.\nM: Did they have specific suggestions for improvement?\nW: Several people mentioned the search function and the menu layout. I'll share the full report with you.",
+      "explanation": "The woman mentions the focus group to provide evidence that user experience issues are likely causing the drop in website traffic.",
+      "options": [
+        { "key": "A", "text": "To explain why traffic has decreased." },
+        { "key": "B", "text": "To request additional funding." },
+        { "key": "C", "text": "To postpone the website launch." },
+        { "key": "D", "text": "To announce a new product feature." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What did the woman do yesterday?",
+      "context": "M: How did the factory tour with the investors go yesterday?\nW: It went really well. They were impressed by our automated assembly line.\nM: Did they ask about expanding production capacity?\nW: Yes, and I showed them the plans for the new wing we're building.",
+      "explanation": "Yesterday, the woman gave investors a tour of the factory and showed them expansion plans.",
+      "options": [
+        { "key": "A", "text": "She attended a job interview." },
+        { "key": "B", "text": "She gave investors a factory tour." },
+        { "key": "C", "text": "She submitted a budget proposal." },
+        { "key": "D", "text": "She trained new factory workers." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man think about the proposal?",
+      "context": "W: I've drafted a proposal to offer flexible working hours for all employees.\nM: I think it's a great idea in principle, but we need to address how it would work for departments that require shift coverage.\nW: That's a fair point. Maybe we could offer it only to departments where coverage isn't an issue.\nM: That could work. Let's discuss it with the department heads first.",
+      "explanation": "The man thinks the proposal is good overall but has practical concerns about departments that need continuous shift coverage.",
+      "options": [
+        { "key": "A", "text": "It should be rejected entirely." },
+        { "key": "B", "text": "It is good but needs some adjustments." },
+        { "key": "C", "text": "It should be implemented immediately." },
+        { "key": "D", "text": "It is not relevant to their company." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man plan to do this afternoon?",
+      "context": "W: The client samples arrived this morning. Have you had a chance to inspect them?\nM: Not yet, but I'm planning to go through them after lunch with the quality team.\nW: Let me know if any of them don't meet our specifications.\nM: Will do. I'll have a report ready by five o'clock.",
+      "explanation": "The man plans to inspect the client samples with the quality team this afternoon and prepare a report by five o'clock.",
+      "options": [
+        { "key": "A", "text": "Visit a client's office." },
+        { "key": "B", "text": "Inspect product samples." },
+        { "key": "C", "text": "Attend a training workshop." },
+        { "key": "D", "text": "Interview job candidates." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman say about the branch office?",
+      "context": "M: How's the expansion going at the branch office in Portland?\nW: It's been slower than expected. We've had trouble finding qualified candidates for the technical positions.\nM: Have you tried working with a recruiting agency?\nW: We started working with one last week. They've already sent over a few promising resumes.",
+      "explanation": "The woman says the branch office expansion has been delayed due to difficulty hiring qualified technical staff, though a recruiting agency is now helping.",
+      "options": [
+        { "key": "A", "text": "It is closing down." },
+        { "key": "B", "text": "Its expansion is behind schedule." },
+        { "key": "C", "text": "It has exceeded its sales targets." },
+        { "key": "D", "text": "It recently moved to a new location." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What are the speakers planning?",
+      "context": "M: We should organize a team lunch for Jennifer's promotion. She's been with the company for ten years.\nW: That's a wonderful idea. Should we do it at a restaurant or order in?\nM: A restaurant would be nicer. How about that Italian place she likes?\nW: Perfect. I'll make a reservation for Friday. What time works for the team?",
+      "explanation": "The speakers are planning a team lunch at a restaurant to celebrate Jennifer's promotion.",
+      "options": [
+        { "key": "A", "text": "A client appreciation event." },
+        { "key": "B", "text": "A celebration lunch for a colleague." },
+        { "key": "C", "text": "A department budget review." },
+        { "key": "D", "text": "A farewell party for a departing employee." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What can be inferred about the speakers?",
+      "context": "W: I noticed the new security system requires fingerprint scanning to enter the building.\nM: Yes, all employees need to register their fingerprints at the security desk by Friday.\nW: Is this replacing the key card system entirely?\nM: Not completely. Key cards will still work for the parking garage and gym, but building access will require fingerprint verification.",
+      "explanation": "The speakers are employees at the same company and are discussing changes to the building's security access system.",
+      "options": [
+        { "key": "A", "text": "They work at a security company." },
+        { "key": "B", "text": "They are colleagues at the same office." },
+        { "key": "C", "text": "They are installing the security system." },
+        { "key": "D", "text": "They are visiting the building for the first time." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman tell the man?",
+      "context": "M: Could you tell me when the next express bus to downtown leaves?\nW: The next one departs at two fifteen from Bay Three.\nM: And how long does it take to reach the central station?\nW: About twenty-five minutes, unless there's heavy traffic.",
+      "explanation": "The woman tells the man that the next express bus leaves at 2:15 from Bay Three and the ride takes about 25 minutes.",
+      "options": [
+        { "key": "A", "text": "The bus service has been suspended." },
+        { "key": "B", "text": "The departure time and travel duration." },
+        { "key": "C", "text": "A ticket price increase." },
+        { "key": "D", "text": "A route change effective today." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man recommend about the product?",
+      "context": "W: Which laptop model would you recommend for someone who mostly does graphic design?\nM: For graphic design, I'd suggest the ProLine X1. It has a high-resolution display and a powerful graphics card.\nW: How does it compare in price to the CompactPro series?\nM: It's about two hundred dollars more, but the display quality is significantly better for design work.",
+      "explanation": "The man recommends the ProLine X1 because its high-resolution display and graphics card are better suited for graphic design.",
+      "options": [
+        { "key": "A", "text": "The cheapest model available." },
+        { "key": "B", "text": "A model with superior display quality." },
+        { "key": "C", "text": "A refurbished laptop." },
+        { "key": "D", "text": "A desktop computer instead." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What will the man do before the end of the day?",
+      "context": "W: Have you finished writing the job descriptions for the new positions?\nM: I've completed two out of four. I should have the others done before I leave today.\nW: Great, because I want to post them on the job boards tomorrow morning.\nM: I'll email you the final versions by five thirty at the latest.",
+      "explanation": "The man will finish writing the remaining job descriptions and email them by 5:30 PM.",
+      "options": [
+        { "key": "A", "text": "Interview candidates." },
+        { "key": "B", "text": "Complete and send job descriptions." },
+        { "key": "C", "text": "Update the company website." },
+        { "key": "D", "text": "Meet with the HR director." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman say about the survey results?",
+      "context": "M: Did the employee satisfaction survey reveal anything unexpected?\nW: Actually, yes. While overall satisfaction is high, a large number of respondents said they want more opportunities for professional growth.\nM: That's interesting. Any ideas on how to address that?\nW: I think we could expand our internal training programs and create a mentorship initiative.",
+      "explanation": "The woman says the survey showed high overall satisfaction but also revealed a strong demand for more professional development opportunities.",
+      "options": [
+        { "key": "A", "text": "Most employees want higher salaries." },
+        { "key": "B", "text": "Employees want more growth opportunities." },
+        { "key": "C", "text": "The response rate was very low." },
+        { "key": "D", "text": "Employees are unhappy with management." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "Where does this conversation take place?",
+      "context": "M: I'd like to deposit this check into my savings account, please.\nW: Of course. Do you have your account number?\nM: Yes, it's on my debit card. Here you go.\nW: Thank you. The deposit will be available by tomorrow morning.",
+      "explanation": "The conversation takes place at a bank, as the man is making a deposit into his savings account with the help of a teller.",
+      "options": [
+        { "key": "A", "text": "At a post office." },
+        { "key": "B", "text": "At a bank." },
+        { "key": "C", "text": "At an insurance office." },
+        { "key": "D", "text": "At an investment firm." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "Why does the woman say, 'Let's not get ahead of ourselves'?",
+      "context": "M: This new product could be a huge success. Maybe we should start planning international distribution right away.\nW: Let's not get ahead of ourselves. We haven't even launched domestically yet.\nM: You're right. I just got excited by the early test results.\nW: I understand, but let's focus on a strong domestic launch first, and then consider expanding.",
+      "explanation": "The woman says this to caution against planning too far ahead—they should focus on the domestic launch before thinking about international distribution.",
+      "options": [
+        { "key": "A", "text": "She wants to cancel the product launch." },
+        { "key": "B", "text": "She thinks they should proceed step by step." },
+        { "key": "C", "text": "She disagrees with the test results." },
+        { "key": "D", "text": "She wants to hire more staff first." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man say he received?",
+      "context": "M: I just got a call from the landlord. He's increasing the office rent by ten percent starting in April.\nW: That's a significant increase. Can we negotiate?\nM: I tried, but he said the rates are non-negotiable.\nW: We might need to consider looking at other office spaces in the area.",
+      "explanation": "The man says he received a call from the landlord about a ten-percent rent increase.",
+      "options": [
+        { "key": "A", "text": "A customer complaint." },
+        { "key": "B", "text": "A notice of a rent increase." },
+        { "key": "C", "text": "A shipment confirmation email." },
+        { "key": "D", "text": "A job application." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman want to improve?",
+      "context": "W: I've been thinking about how we can make our onboarding process more effective.\nM: What changes do you have in mind?\nW: Currently, new hires spend the first week just reading manuals. I want to add hands-on workshops and assign each person a mentor from their team.\nM: That would definitely make the experience more engaging. Want me to help design the workshop curriculum?",
+      "explanation": "The woman wants to improve the employee onboarding process by adding hands-on workshops and a mentorship component.",
+      "options": [
+        { "key": "A", "text": "The office cafeteria menu." },
+        { "key": "B", "text": "The new employee onboarding experience." },
+        { "key": "C", "text": "The payroll processing speed." },
+        { "key": "D", "text": "The annual review schedule." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What did the man forget to do?",
+      "context": "W: Did you send the invitations for the board meeting next week?\nM: Oh, I completely forgot. I've been so busy with the quarterly review.\nW: You should send them today—the board members need at least five days' notice.\nM: I'll do it right now and include the agenda as an attachment.",
+      "explanation": "The man forgot to send the invitations for the board meeting. He plans to send them immediately.",
+      "options": [
+        { "key": "A", "text": "Book a conference room." },
+        { "key": "B", "text": "Send meeting invitations." },
+        { "key": "C", "text": "Order lunch for the meeting." },
+        { "key": "D", "text": "Print copies of the agenda." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man say about the merger?",
+      "context": "W: Have you heard any updates about the merger with Hargrove Industries?\nM: The deal is still in negotiations. Both sides are trying to agree on the valuation.\nW: Do you think it will go through?\nM: It's hard to say. If they can't agree on terms by the end of the quarter, the whole thing could fall apart.",
+      "explanation": "The man says the merger is still being negotiated and could fail if the two sides cannot agree on valuation terms in time.",
+      "options": [
+        { "key": "A", "text": "It has been completed successfully." },
+        { "key": "B", "text": "It is uncertain and still in negotiation." },
+        { "key": "C", "text": "It was cancelled last week." },
+        { "key": "D", "text": "It requires government approval." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman ask about the hotel?",
+      "context": "W: I need to book a hotel for the conference in Miami. Does the company have a preferred hotel?\nM: Yes, we have a corporate rate at the Bayfront Suites. It's very close to the convention center.\nW: How much is the corporate rate?\nM: It's one hundred and forty-five dollars per night, which includes breakfast.",
+      "explanation": "The woman asks whether the company has a preferred hotel for her trip and inquires about the corporate rate.",
+      "options": [
+        { "key": "A", "text": "The hotel's cancellation policy." },
+        { "key": "B", "text": "The company's preferred hotel and rate." },
+        { "key": "C", "text": "The hotel's pool hours." },
+        { "key": "D", "text": "Available room upgrades." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What has the woman been working on?",
+      "context": "M: You look exhausted. Is everything okay?\nW: I've been working on the environmental impact assessment for the new factory site. It's a massive report.\nM: Do you need any help with the research portion?\nW: That would be amazing. I still need data on local water quality and wildlife habitats.",
+      "explanation": "The woman has been working on an environmental impact assessment for a proposed new factory location.",
+      "options": [
+        { "key": "A", "text": "A budget forecast for next quarter." },
+        { "key": "B", "text": "An environmental impact report." },
+        { "key": "C", "text": "A customer satisfaction survey." },
+        { "key": "D", "text": "A new product design." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman say about the order?",
+      "context": "M: I notice we're running low on printer paper. Should I place an order?\nW: I actually placed one yesterday. It should arrive by Thursday.\nM: Great. Did you also order ink cartridges? We're almost out of those too.\nW: Yes, I ordered both. The invoice is on your desk if you want to check it.",
+      "explanation": "The woman says she already placed an order for printer paper and ink cartridges yesterday, and it should arrive by Thursday.",
+      "options": [
+        { "key": "A", "text": "It was delivered with the wrong items." },
+        { "key": "B", "text": "It has already been placed." },
+        { "key": "C", "text": "It needs manager approval." },
+        { "key": "D", "text": "It was cancelled due to budget cuts." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man mean when he says, 'That's a tall order'?",
+      "context": "W: The CEO wants us to increase customer retention by twenty-five percent in the next six months.\nM: That's a tall order. We'd need to completely overhaul our loyalty program.\nW: I agree, but I think it's achievable if we focus on personalization and faster response times.\nM: You're right. Let's start by analyzing the current churn data.",
+      "explanation": "When the man says 'That's a tall order,' he means the goal is very ambitious and challenging to achieve in the given timeframe.",
+      "options": [
+        { "key": "A", "text": "The goal is very ambitious." },
+        { "key": "B", "text": "An order was placed incorrectly." },
+        { "key": "C", "text": "The CEO has a new directive." },
+        { "key": "D", "text": "The team needs more members." }
+      ],
+      "correctKey": "A"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What is the woman's problem?",
+      "context": "W: I've been waiting for a call back from the insurance company for three days.\nM: That's frustrating. Have you tried reaching them through their online chat?\nW: I didn't know they had one. Where can I find it?\nM: Go to their website and look for the 'Contact Us' section. The chat option is usually available during business hours.",
+      "explanation": "The woman's problem is that the insurance company hasn't returned her calls for three days.",
+      "options": [
+        { "key": "A", "text": "Her insurance claim was denied." },
+        { "key": "B", "text": "She hasn't received a callback." },
+        { "key": "C", "text": "She lost her insurance documents." },
+        { "key": "D", "text": "Her policy premium increased." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman say about the workshop location?",
+      "context": "M: I was thinking of holding the customer service workshop at the downtown training center.\nW: Actually, I'd suggest doing it at the Lakeside Conference Center instead. It has better audio-visual equipment and the rooms are more spacious.\nM: Good point, but isn't Lakeside more expensive?\nW: A little, but the quality of the facilities makes it worth the extra cost.",
+      "explanation": "The woman recommends the Lakeside Conference Center because it has better AV equipment and more spacious rooms, despite being slightly more expensive.",
+      "options": [
+        { "key": "A", "text": "It is being renovated." },
+        { "key": "B", "text": "A better-equipped venue is available." },
+        { "key": "C", "text": "It is too far from the office." },
+        { "key": "D", "text": "It is fully booked for the month." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man say about the delivery?",
+      "context": "W: Were you expecting a delivery from Pacific Office Supplies today?\nM: Yes, I ordered new desk organizers for the team. They were supposed to arrive by noon.\nW: The receptionist said a package arrived about an hour ago. It's at the front desk.\nM: Great, I'll go pick it up. Thanks for letting me know.",
+      "explanation": "The man says he ordered desk organizers that were expected to arrive today, and they've arrived at the front desk.",
+      "options": [
+        { "key": "A", "text": "It was sent to the wrong address." },
+        { "key": "B", "text": "It has arrived at the front desk." },
+        { "key": "C", "text": "It was delayed by a week." },
+        { "key": "D", "text": "It contained the wrong items." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman suggest for future events?",
+      "context": "M: The turnout at last week's networking event was lower than expected.\nW: I think we need to promote these events earlier. We only sent out invitations a week before.\nM: You're right. What lead time do you think we need?\nW: At least three weeks. That gives people enough time to clear their schedules.",
+      "explanation": "The woman suggests promoting events with at least three weeks' advance notice to improve attendance.",
+      "options": [
+        { "key": "A", "text": "Charge an admission fee." },
+        { "key": "B", "text": "Send invitations further in advance." },
+        { "key": "C", "text": "Hold events on weekends instead." },
+        { "key": "D", "text": "Reduce the number of events per year." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman ask about the form?",
+      "context": "W: I'm filling out the new vendor registration form. Do I need to include a tax identification number?\nM: Yes, that's required for all vendors. It's in section three of the form.\nW: Do we also need to attach a copy of our business license?\nM: Yes, along with proof of insurance. Everything is listed in the checklist at the end.",
+      "explanation": "The woman asks whether a tax identification number and business license are needed for the vendor registration form.",
+      "options": [
+        { "key": "A", "text": "Where to mail the form." },
+        { "key": "B", "text": "What documents are required." },
+        { "key": "C", "text": "When the deadline is." },
+        { "key": "D", "text": "Who approved the form design." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What can be inferred about the company?",
+      "context": "M: I see we've opened three new locations in the past year alone.\nW: Yes, and there are plans for two more in the first quarter of next year.\nM: The demand has really exceeded our forecasts. Are we hiring enough staff to keep up?\nW: HR is running accelerated recruiting campaigns in all new markets.",
+      "explanation": "The company has been expanding rapidly, opening multiple new locations and actively recruiting to meet growing demand.",
+      "options": [
+        { "key": "A", "text": "It is downsizing its operations." },
+        { "key": "B", "text": "It is experiencing rapid growth." },
+        { "key": "C", "text": "It is merging with a competitor." },
+        { "key": "D", "text": "It is moving to a new headquarters." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the man want to confirm?",
+      "context": "M: The annual health screening is scheduled for next Thursday, right?\nW: Yes, from nine A.M. to three P.M. in the first-floor conference room.\nM: Do I need to make an appointment, or is it walk-in?\nW: It's walk-in, but mornings tend to be less crowded if you want to avoid waiting.",
+      "explanation": "The man wants to confirm the date and logistics of the annual health screening.",
+      "options": [
+        { "key": "A", "text": "His vacation schedule." },
+        { "key": "B", "text": "The details of a health screening." },
+        { "key": "C", "text": "A medical insurance claim." },
+        { "key": "D", "text": "An employee wellness workshop." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman imply about the project timeline?",
+      "context": "M: The client approved the project timeline, so we're all set to start development next week.\nW: That's great, but I noticed the testing phase is only scheduled for one week. That seems too short for a project this complex.\nM: You think we need more time for testing?\nW: Definitely. If we find bugs late in the process, fixing them under time pressure could lead to more problems.",
+      "explanation": "The woman implies that one week of testing is insufficient for the project's complexity and could risk quality issues.",
+      "options": [
+        { "key": "A", "text": "It is ahead of schedule." },
+        { "key": "B", "text": "The testing phase should be longer." },
+        { "key": "C", "text": "It has been approved by all stakeholders." },
+        { "key": "D", "text": "No changes are needed." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What is the man having trouble with?",
+      "context": "M: I can't seem to connect to the wireless network in the meeting room.\nW: Have you tried the guest network? The password is on the whiteboard.\nM: I tried that, but it keeps saying 'authentication failed.'\nW: Let me call IT. There might be an issue with the access point in that room.",
+      "explanation": "The man is having trouble connecting to the wireless network in the meeting room.",
+      "options": [
+        { "key": "A", "text": "Finding a parking space." },
+        { "key": "B", "text": "Connecting to a wireless network." },
+        { "key": "C", "text": "Installing new software." },
+        { "key": "D", "text": "Printing a large document." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man think about the training budget?",
+      "context": "W: We've allocated fifteen thousand dollars for professional training this year.\nM: Given the size of our department, that might not cover everyone. We have twenty-five employees.\nW: Do you think we should request a larger budget?\nM: Either that, or we prioritize based on development goals and rotate who attends each quarter.",
+      "explanation": "The man thinks the training budget may be insufficient for the department size and suggests either increasing it or prioritizing participants.",
+      "options": [
+        { "key": "A", "text": "It is more than enough." },
+        { "key": "B", "text": "It may not be sufficient for everyone." },
+        { "key": "C", "text": "It should be used for equipment instead." },
+        { "key": "D", "text": "It was reduced from last year." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman tell the man about the event?",
+      "context": "M: Are there any seats left for the guest speaker event this Friday?\nW: I'm sorry, but the event is fully booked. We had to close registration yesterday.\nM: That's disappointing. Will the presentation be recorded?\nW: Yes, a recording will be posted on the company intranet by Monday.",
+      "explanation": "The woman tells the man the event is fully booked but a recording will be available on the intranet.",
+      "options": [
+        { "key": "A", "text": "It has been rescheduled." },
+        { "key": "B", "text": "It is fully booked." },
+        { "key": "C", "text": "It requires a registration fee." },
+        { "key": "D", "text": "It has been moved to a larger room." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man suggest about the budget report?",
+      "context": "W: I finished the draft of the annual budget report, but the projections section still needs work.\nM: Why don't you ask someone from the analytics team to review the numbers? They're really good with forecasting models.\nW: That's a great idea. Do you know who's available this week?\nM: Alex mentioned he has some free time. I'll introduce you.",
+      "explanation": "The man suggests having someone from the analytics team review the projections section of the budget report.",
+      "options": [
+        { "key": "A", "text": "Delete the projections section entirely." },
+        { "key": "B", "text": "Get analytics support for the forecasting." },
+        { "key": "C", "text": "Submit it without the projections." },
+        { "key": "D", "text": "Use last year's numbers as a placeholder." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What does the woman need to do before the trip?",
+      "context": "M: Are you all set for the business trip to Berlin next week?\nW: Almost. I still need to get my travel visa processed. I submitted the application but haven't heard back yet.\nM: You might want to check the processing time on the consulate's website.\nW: I'll do that today. I also need to book a hotel once the visa is confirmed.",
+      "explanation": "The woman needs to get her travel visa processed and book a hotel before the business trip to Berlin.",
+      "options": [
+        { "key": "A", "text": "Cancel her current reservations." },
+        { "key": "B", "text": "Obtain a travel visa and book a hotel." },
+        { "key": "C", "text": "Complete a training certificate." },
+        { "key": "D", "text": "Submit her expense report." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the man want to change about the newsletter?",
+      "context": "M: I think our monthly newsletter could use a refresh. The current design looks a bit dated.\nW: I agree. What changes are you thinking of?\nM: A cleaner layout, more visuals, and an interactive section where readers can submit questions or feedback.\nW: That sounds like a big improvement. Should I get a quote from the design agency?",
+      "explanation": "The man wants to update the newsletter with a cleaner layout, more visuals, and an interactive reader section.",
+      "options": [
+        { "key": "A", "text": "Reduce it from monthly to quarterly." },
+        { "key": "B", "text": "Modernize its design and add interactivity." },
+        { "key": "C", "text": "Distribute it only digitally." },
+        { "key": "D", "text": "Remove the feedback section." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 2,
+      "stem": "What did the man do last week?",
+      "context": "W: How did the visit to the new supplier's factory in Osaka go?\nM: It was very productive. Their production quality is excellent, and they can meet our volume requirements.\nW: Did you discuss pricing?\nM: Yes, they offered us a competitive rate. I'll present the details at our team meeting tomorrow.",
+      "explanation": "Last week, the man visited a new supplier's factory in Osaka to evaluate production quality and discuss pricing.",
+      "options": [
+        { "key": "A", "text": "Attended a product launch event." },
+        { "key": "B", "text": "Visited a potential supplier's factory." },
+        { "key": "C", "text": "Conducted employee interviews." },
+        { "key": "D", "text": "Organized a company retreat." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 3,
+      "skillTag": "short-conversation",
+      "difficulty": 3,
+      "stem": "What does the woman plan to propose?",
+      "context": "W: I've been reviewing our customer feedback, and I noticed a recurring theme—people want faster delivery options.\nM: That's not surprising. Many of our competitors now offer next-day delivery.\nW: I'm going to propose that we partner with a third-party logistics provider to offer expedited shipping.\nM: Good idea. Do you have any companies in mind?\nW: I've been researching a few. I'll have a recommendation ready by next week.",
+      "explanation": "The woman plans to propose partnering with a third-party logistics provider to offer faster delivery to customers.",
+      "options": [
+        { "key": "A", "text": "Raising product prices." },
+        { "key": "B", "text": "Partnering with a logistics company." },
+        { "key": "C", "text": "Closing a distribution center." },
+        { "key": "D", "text": "Reducing the product range." }
+      ],
+      "correctKey": "B"
+    }
+
+  ]
+}

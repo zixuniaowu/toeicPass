@@ -36,6 +36,7 @@ import * as questionBankExpansion7 from "./question-bank-expansion-7.json";
 import * as questionBankExpansion8 from "./question-bank-expansion-8.json";
 import * as questionBankExpansion9 from "./question-bank-expansion-9.json";
 import * as questionBankExpansion10 from "./question-bank-expansion-10.json";
+import * as questionBankExpansion11 from "./question-bank-expansion-11.json";
 import * as vocabSeedData from "./vocab-seed.json";
 import * as vocabSeedData1 from "./vocab-seed-1.json";
 import * as vocabSeedData2 from "./vocab-seed-2.json";
@@ -1036,6 +1037,10 @@ export class StoreService {
         __source: "bank" as const,
       })),
       ...((questionBankExpansion10 as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
+        ...item,
+        __source: "bank" as const,
+      })),
+      ...((questionBankExpansion11 as { questions?: ImportedQuestion[] }).questions ?? []).map((item) => ({
         ...item,
         __source: "bank" as const,
       })),
