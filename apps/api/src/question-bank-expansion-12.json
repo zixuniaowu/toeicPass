@@ -1,0 +1,1162 @@
+{
+  "questions": [
+
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What is the main purpose of the announcement?",
+      "context": "Good morning, shoppers. Welcome to GreenMart. We'd like to let you know that all fresh produce is twenty percent off today only. This includes fruits, vegetables, and herbs from our organic section. Please visit aisle five to take advantage of this special promotion. Thank you for shopping with us.",
+      "explanation": "The announcement is informing shoppers about a one-day promotional discount on fresh produce.",
+      "options": [
+        { "key": "A", "text": "To announce a store closing time change." },
+        { "key": "B", "text": "To promote a discount on fresh produce." },
+        { "key": "C", "text": "To introduce a new store section." },
+        { "key": "D", "text": "To advertise a loyalty card program." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What should listeners do if they need assistance?",
+      "context": "Thank you for calling Riverside Dental Clinic. Our regular office hours are Monday through Friday, eight A.M. to five P.M. If you need to schedule or change an appointment, please press one. For billing inquiries, press two. If you need to speak with a staff member, please stay on the line and someone will be with you shortly.",
+      "explanation": "Listeners who need assistance should stay on the line to speak with a staff member.",
+      "options": [
+        { "key": "A", "text": "Press one on their phone." },
+        { "key": "B", "text": "Leave a voicemail message." },
+        { "key": "C", "text": "Stay on the line." },
+        { "key": "D", "text": "Call back during business hours." }
+      ],
+      "correctKey": "C"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What change is the speaker announcing?",
+      "context": "Attention all employees. Starting next Monday, the employee parking lot on the east side will be closed for resurfacing. During the two-week construction period, please use the overflow parking area behind Building C. Shuttle buses will run every ten minutes between the overflow lot and the main entrance. We apologize for the inconvenience.",
+      "explanation": "The speaker is announcing a temporary closure of the east parking lot for resurfacing, with alternative parking and shuttle service.",
+      "options": [
+        { "key": "A", "text": "New parking fees will be introduced." },
+        { "key": "B", "text": "A parking lot will be temporarily closed." },
+        { "key": "C", "text": "Office hours are being extended." },
+        { "key": "D", "text": "A new building is being constructed." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What type of event is being described?",
+      "context": "Ladies and gentlemen, welcome to the fifteenth annual Westfield Business Awards Dinner. Tonight we celebrate the achievements of the region's most innovative companies and entrepreneurs. Before we begin the awards ceremony, please enjoy dinner, which will be served in approximately ten minutes. Our keynote speaker, Dr. Linda Park, will address the audience after the main course.",
+      "explanation": "The speaker is welcoming attendees to a business awards dinner event.",
+      "options": [
+        { "key": "A", "text": "A product launch party." },
+        { "key": "B", "text": "A business awards dinner." },
+        { "key": "C", "text": "A company annual meeting." },
+        { "key": "D", "text": "A charity fundraising gala." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker ask listeners to do?",
+      "context": "Hello everyone, this is a reminder from the facilities department. The fire alarm test that was originally scheduled for this Thursday has been moved to next Tuesday at two P.M. When the alarm sounds, please do not evacuate the building. The test should last approximately five minutes. If you have any questions, please contact the facilities team at extension four-two-one-zero.",
+      "explanation": "The speaker asks listeners not to evacuate when the fire alarm sounds during the test next Tuesday.",
+      "options": [
+        { "key": "A", "text": "Evacuate immediately when the alarm sounds." },
+        { "key": "B", "text": "Remain in the building during the test." },
+        { "key": "C", "text": "Report to the assembly point." },
+        { "key": "D", "text": "Shut down their computers." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "Who most likely is the speaker?",
+      "context": "Good afternoon, passengers. This is your captain speaking. We are currently cruising at an altitude of thirty-five thousand feet and should arrive at our destination in approximately two hours. The weather in Miami is clear and sunny with a temperature of twenty-eight degrees Celsius. Please keep your seatbelts fastened while seated. Our flight attendants will begin the beverage service shortly.",
+      "explanation": "The speaker identifies himself as the captain addressing passengers on an airplane.",
+      "options": [
+        { "key": "A", "text": "A bus driver." },
+        { "key": "B", "text": "An airline pilot." },
+        { "key": "C", "text": "A train conductor." },
+        { "key": "D", "text": "A tour guide." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker say about the new policy?",
+      "context": "I'd like to take a few minutes to discuss our updated travel reimbursement policy. Effective the first of next month, all domestic flights must be booked at least fourteen days in advance to qualify for reimbursement. International flights require twenty-one days' advance booking. Exceptions will only be granted with written approval from a department head. The full policy document has been uploaded to the company intranet.",
+      "explanation": "The new policy requires advance booking for flights to qualify for reimbursement: 14 days for domestic and 21 days for international travel.",
+      "options": [
+        { "key": "A", "text": "It eliminates all travel reimbursements." },
+        { "key": "B", "text": "It requires advance booking for reimbursement." },
+        { "key": "C", "text": "It applies only to senior management." },
+        { "key": "D", "text": "It reduces the per-diem allowance." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What is being advertised?",
+      "context": "Are you looking for a reliable moving service? Citywide Movers is here to help. Whether you're moving across town or across the state, our professional team handles everything from packing to delivery. We offer free estimates and weekend availability. Call us at five-five-five-oh-nine-three-two to schedule your free consultation today.",
+      "explanation": "A moving service company is advertising its packing and delivery services with free estimates.",
+      "options": [
+        { "key": "A", "text": "An apartment complex." },
+        { "key": "B", "text": "A moving service." },
+        { "key": "C", "text": "A storage facility." },
+        { "key": "D", "text": "A cleaning company." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What problem does the speaker mention?",
+      "context": "Good morning, this is Martin from building management. I'm calling to let you know that the water supply to the seventh and eighth floors will be shut off tomorrow between nine A.M. and one P.M. for emergency pipe repairs. We recommend filling water bottles beforehand. Restrooms on the sixth floor will remain available during this time. We apologize for the short notice.",
+      "explanation": "The speaker mentions that the water supply will be shut off for emergency pipe repairs on the seventh and eighth floors.",
+      "options": [
+        { "key": "A", "text": "The elevator is out of service." },
+        { "key": "B", "text": "Pipes need emergency repairs." },
+        { "key": "C", "text": "The heating system is broken." },
+        { "key": "D", "text": "The fire alarm needs replacement." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What does the speaker say about the workshop?",
+      "context": "Thank you all for signing up for the Excel Advanced Workshop. The session will be held this Saturday from ten A.M. to four P.M. in Training Room B. Please bring your laptops with the latest version of Excel installed. Lunch will be provided. If you need to cancel, please do so at least twenty-four hours in advance so we can offer your spot to someone on the waitlist.",
+      "explanation": "The speaker provides logistical details about the Excel workshop: date, time, location, requirements, and cancellation policy.",
+      "options": [
+        { "key": "A", "text": "It has been postponed." },
+        { "key": "B", "text": "Participants should bring their own laptops." },
+        { "key": "C", "text": "It is only for managers." },
+        { "key": "D", "text": "It will be held online." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker encourage listeners to do?",
+      "context": "As part of our commitment to sustainability, we are launching a company-wide recycling initiative starting next week. Separate bins for paper, plastic, and glass will be placed near every break room on each floor. We've also partnered with a local composting service for food waste. I encourage everyone to review the recycling guidelines posted in the break rooms and do your part to reduce our environmental footprint.",
+      "explanation": "The speaker encourages employees to review the recycling guidelines and participate in the new company-wide recycling initiative.",
+      "options": [
+        { "key": "A", "text": "Donate to an environmental charity." },
+        { "key": "B", "text": "Follow new recycling guidelines." },
+        { "key": "C", "text": "Volunteer for a park cleanup." },
+        { "key": "D", "text": "Reduce electricity usage at home." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "Where is this announcement most likely being made?",
+      "context": "Attention visitors. The museum will be closing in thirty minutes. Please make your way toward the exits at this time. The gift shop on the ground floor will remain open for an additional fifteen minutes. Don't forget to pick up a brochure about our upcoming exhibition on Renaissance Art, which opens February first. Thank you for visiting the Metropolitan Art Museum today.",
+      "explanation": "The announcement is being made at a museum, as the speaker mentions the museum closing, gift shop, and upcoming art exhibition.",
+      "options": [
+        { "key": "A", "text": "At a library." },
+        { "key": "B", "text": "At a museum." },
+        { "key": "C", "text": "At a theater." },
+        { "key": "D", "text": "At a shopping mall." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker plan to do next quarter?",
+      "context": "Thank you all for a successful third quarter. Our revenue grew by twelve percent compared to the same period last year, and we exceeded our customer acquisition targets. Looking ahead, we plan to expand into two new regional markets and launch a premium subscription tier. I'll be sharing the detailed roadmap at next week's all-hands meeting, but I wanted to highlight these priorities early.",
+      "explanation": "The speaker plans to expand into two new regional markets and launch a premium subscription tier next quarter.",
+      "options": [
+        { "key": "A", "text": "Reduce the workforce." },
+        { "key": "B", "text": "Enter new markets and launch a new product tier." },
+        { "key": "C", "text": "Close several regional offices." },
+        { "key": "D", "text": "Merge with a competitor." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What does the speaker want the audience to know?",
+      "context": "Good evening, everyone, and welcome to tonight's performance of The Glass Garden at the Harmon Theater. Please silence your cell phones before the show begins. Photography and video recording are not permitted during the performance. The show will run approximately two hours with a fifteen-minute intermission. Concessions are available in the lobby. Enjoy the show.",
+      "explanation": "The speaker wants the audience to silence phones, not take photos/videos, and be aware of the show's duration and intermission.",
+      "options": [
+        { "key": "A", "text": "The theater is undergoing renovation." },
+        { "key": "B", "text": "Theater rules and performance details." },
+        { "key": "C", "text": "A schedule change for the performance." },
+        { "key": "D", "text": "The cancellation of the intermission." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What is the speaker's main concern?",
+      "context": "I wanted to bring up an issue with our customer support response times. Over the past month, our average response time has increased from four hours to nearly eight hours. This is largely due to a twenty-percent increase in support tickets following the product update. We need to either hire additional support staff or implement an automated chatbot to handle routine inquiries. I'd like your input on which approach to take.",
+      "explanation": "The speaker's main concern is that customer support response times have doubled, and a solution is needed—either hiring more staff or using automation.",
+      "options": [
+        { "key": "A", "text": "A decline in product quality." },
+        { "key": "B", "text": "Slower customer support response times." },
+        { "key": "C", "text": "A decrease in sales revenue." },
+        { "key": "D", "text": "Rising office rent costs." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What does the speaker say about the construction?",
+      "context": "Attention tenants. The lobby renovation project will begin on March first and is expected to be completed by the end of April. During this period, please use the side entrance on Oak Street to enter and exit the building. The elevators will not be affected. We appreciate your patience, and we're confident the updated lobby will be worth the wait.",
+      "explanation": "The speaker says the lobby renovation will last two months, and tenants should use the side entrance during construction.",
+      "options": [
+        { "key": "A", "text": "It will be completed by the end of February." },
+        { "key": "B", "text": "It will require using an alternate entrance." },
+        { "key": "C", "text": "It will affect elevator service." },
+        { "key": "D", "text": "It has been cancelled." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "Why does the speaker mention a survey?",
+      "context": "Before I wrap up, I'd like to remind everyone about the annual workplace satisfaction survey. It was sent to your email yesterday, and we'd really appreciate it if you could complete it by the end of this week. Your feedback directly influences the changes we make to our work environment and benefits package. Last year's results led to the introduction of flexible Fridays and the on-site yoga program. So your responses truly matter.",
+      "explanation": "The speaker mentions the survey to encourage participation by showing that past feedback led to real workplace improvements.",
+      "options": [
+        { "key": "A", "text": "To announce a new benefits package." },
+        { "key": "B", "text": "To encourage employees to provide feedback." },
+        { "key": "C", "text": "To share the results with clients." },
+        { "key": "D", "text": "To comply with a government regulation." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What is the purpose of the message?",
+      "context": "Hi, this is Angela from Dr. Patel's office. I'm calling to confirm your appointment for this Thursday at ten-thirty A.M. Please arrive fifteen minutes early to fill out the updated patient forms. If you need to reschedule, please call us back at five-five-five-oh-seven-one-four before the end of the day tomorrow. We look forward to seeing you.",
+      "explanation": "The message is to confirm a medical appointment and remind the patient to arrive early for paperwork.",
+      "options": [
+        { "key": "A", "text": "To cancel an appointment." },
+        { "key": "B", "text": "To confirm an appointment." },
+        { "key": "C", "text": "To provide test results." },
+        { "key": "D", "text": "To schedule a follow-up visit." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker say will happen in April?",
+      "context": "I'm pleased to announce that we've finalized a partnership with Global Tech Solutions to modernize our IT infrastructure. The project will kick off in April with a complete upgrade of our server systems, followed by a migration to cloud-based storage in the summer. This will significantly improve data security and system performance. A series of training sessions will be offered to help everyone transition smoothly.",
+      "explanation": "In April, the server systems will be completely upgraded as the first phase of the IT modernization partnership.",
+      "options": [
+        { "key": "A", "text": "The company will relocate its offices." },
+        { "key": "B", "text": "Server systems will be upgraded." },
+        { "key": "C", "text": "A new CEO will be appointed." },
+        { "key": "D", "text": "The cloud migration will be completed." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What does the speaker recommend?",
+      "context": "This is a public service announcement from the National Weather Service. A severe thunderstorm warning has been issued for the greater metropolitan area from three P.M. to nine P.M. today. Residents are advised to stay indoors and avoid unnecessary travel. Heavy rainfall, strong winds, and possible hail are expected. Please secure any outdoor furniture or loose items. Stay tuned to local media for updates.",
+      "explanation": "The speaker recommends staying indoors and avoiding unnecessary travel due to the severe thunderstorm warning.",
+      "options": [
+        { "key": "A", "text": "Prepare an emergency supply kit." },
+        { "key": "B", "text": "Stay indoors and avoid travel." },
+        { "key": "C", "text": "Evacuate the area immediately." },
+        { "key": "D", "text": "Report flooding to local authorities." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What benefit does the speaker highlight?",
+      "context": "I'm excited to introduce our new corporate wellness program, which launches on the first of next month. Employees will receive a three-hundred-dollar annual wellness stipend that can be used toward gym memberships, fitness classes, or approved wellness activities. In addition, we've negotiated a corporate discount at three local gyms. Sign-up details will be emailed to everyone this Friday. We believe investing in your health leads to a happier, more productive workplace.",
+      "explanation": "The speaker highlights a three-hundred-dollar annual wellness stipend as a key benefit of the new corporate wellness program.",
+      "options": [
+        { "key": "A", "text": "An extra week of paid leave." },
+        { "key": "B", "text": "A financial stipend for wellness activities." },
+        { "key": "C", "text": "Free daily catered lunches." },
+        { "key": "D", "text": "A reduced work schedule on Fridays." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What time does the store close today?",
+      "context": "Attention shoppers. Thank you for visiting Anderson's Department Store. Please note that today, due to the holiday, we will be closing at six P.M. instead of our usual nine P.M. closing time. Our customer service desk will stop accepting returns at five-thirty. We will resume regular hours tomorrow. Thank you for your understanding.",
+      "explanation": "The store will close at 6 P.M. today instead of the usual 9 P.M. due to the holiday.",
+      "options": [
+        { "key": "A", "text": "At five P.M." },
+        { "key": "B", "text": "At six P.M." },
+        { "key": "C", "text": "At eight P.M." },
+        { "key": "D", "text": "At nine P.M." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What is the speaker's profession?",
+      "context": "Welcome to today's open house at twenty-two Maple Drive. This charming three-bedroom home features an updated kitchen with granite countertops, hardwood floors throughout, and a spacious backyard. The property is located in the top-rated Greenfield school district and is just a ten-minute drive from downtown. I'll be here until four o'clock if you have any questions. My business cards are on the table by the entrance.",
+      "explanation": "The speaker is a real estate agent showing a property at an open house event.",
+      "options": [
+        { "key": "A", "text": "A building contractor." },
+        { "key": "B", "text": "A real estate agent." },
+        { "key": "C", "text": "A home inspector." },
+        { "key": "D", "text": "An interior designer." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What is the speaker announcing?",
+      "context": "I have some great news to share. After months of planning, our new cafeteria is officially opening next Monday. The cafeteria will offer a variety of hot and cold meals, salads, and beverages at subsidized prices. Hours of operation will be eleven A.M. to two P.M., Monday through Friday. A grand opening menu with special items will be available during the first week.",
+      "explanation": "The speaker is announcing the opening of a new company cafeteria with subsidized meals.",
+      "options": [
+        { "key": "A", "text": "A change in work hours." },
+        { "key": "B", "text": "The opening of a new cafeteria." },
+        { "key": "C", "text": "A holiday office closure." },
+        { "key": "D", "text": "An update to the dress code." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker suggest about the budget?",
+      "context": "Looking at our department budget for the next fiscal year, I believe we need to reallocate funds from the travel category to training and development. Last year, we spent forty thousand dollars on conference travel, but only twenty thousand on staff training. Given our ambitious growth plans, having a well-trained team is more critical than attending conferences. I'd like to propose shifting fifteen thousand from travel to training, which still leaves us with a reasonable conference budget.",
+      "explanation": "The speaker suggests reducing the travel budget and reallocating funds to staff training and development.",
+      "options": [
+        { "key": "A", "text": "All conference attendance should be eliminated." },
+        { "key": "B", "text": "More funds should be allocated to training." },
+        { "key": "C", "text": "The total budget should be increased." },
+        { "key": "D", "text": "Travel expenses should be doubled." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What problem does the speaker report?",
+      "context": "Good morning, commuters. This is your Metro Transit update for Wednesday, November eighth. Due to a signal malfunction at Central Station, trains on the Blue Line are experiencing delays of approximately fifteen to twenty minutes in both directions. If you need to travel between Central and Riverside stations, shuttle buses are available at the street level. We expect service to return to normal by eleven A.M.",
+      "explanation": "The speaker reports a signal malfunction at Central Station causing Blue Line train delays of 15-20 minutes.",
+      "options": [
+        { "key": "A", "text": "A bus route has been permanently cancelled." },
+        { "key": "B", "text": "Train delays due to a signal malfunction." },
+        { "key": "C", "text": "A fare increase taking effect today." },
+        { "key": "D", "text": "Construction blocking the main road." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker say about the software update?",
+      "context": "This Friday, the IT department will be rolling out a major update to our project management software. The update adds new features including real-time collaboration, automated progress tracking, and an improved dashboard. The system will be unavailable from midnight to six A.M. during the update. When you log in on Friday morning, you'll need to reset your password and complete a brief tutorial. If you experience any issues, please submit a help desk ticket.",
+      "explanation": "The speaker says the software update will add new features, require a brief outage, and users will need to reset their passwords afterward.",
+      "options": [
+        { "key": "A", "text": "It has been postponed indefinitely." },
+        { "key": "B", "text": "It requires a password reset and brief downtime." },
+        { "key": "C", "text": "It is optional for employees." },
+        { "key": "D", "text": "It removes the dashboard feature." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What does the speaker say about the course?",
+      "context": "Welcome to Introduction to Business Finance. My name is Professor Harris. This course meets every Tuesday and Thursday from nine to ten-thirty. We'll cover topics including budgeting, financial statements, investment basics, and risk management. The required textbook is available at the campus bookstore and online. Please have the first three chapters read by next Tuesday's class.",
+      "explanation": "The speaker provides details about the course schedule, topics, and reading assignments.",
+      "options": [
+        { "key": "A", "text": "It has been moved to an online format." },
+        { "key": "B", "text": "Students should prepare reading for the next class." },
+        { "key": "C", "text": "Attendance is optional." },
+        { "key": "D", "text": "It requires prior accounting knowledge." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What is the speaker's opinion about the prototype?",
+      "context": "I've spent the last week testing the prototype for our new wearable fitness tracker, and overall I'm impressed. The battery life exceeds our target by about fifteen percent, and the heart rate sensor is very accurate. However, I have two concerns. First, the wristband material feels slightly stiff and could be uncomfortable during long workouts. Second, the display is hard to read in direct sunlight. I recommend we address both issues before moving to mass production.",
+      "explanation": "The speaker is mostly positive about the prototype but recommends fixing the wristband comfort and display visibility before production.",
+      "options": [
+        { "key": "A", "text": "It is ready for immediate release." },
+        { "key": "B", "text": "It is promising but needs refinements." },
+        { "key": "C", "text": "It should be completely redesigned." },
+        { "key": "D", "text": "It failed all performance tests." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What will happen at three P.M.?",
+      "context": "Attention conference attendees. The afternoon schedule has been slightly adjusted. The panel discussion on renewable energy that was originally at two P.M. will now start at two-thirty. At three P.M., there will be a networking session in the Grand Ballroom with complimentary refreshments. The closing keynote by Dr. Chen will follow at four-fifteen in the main auditorium. Updated programs are available at the information desk.",
+      "explanation": "At three P.M., a networking session with complimentary refreshments will be held in the Grand Ballroom.",
+      "options": [
+        { "key": "A", "text": "A keynote speech will begin." },
+        { "key": "B", "text": "A networking session will take place." },
+        { "key": "C", "text": "The conference will end." },
+        { "key": "D", "text": "A panel discussion will start." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker say about the new hiring process?",
+      "context": "I'd like to update you on changes to our hiring process. Starting in January, all candidates will go through a standardized four-stage interview process: an initial phone screen, a skills assessment, a team interview, and a final meeting with the hiring manager. This replaces the current inconsistent approach where each department had its own process. We expect this to reduce time-to-hire by about thirty percent and improve the quality of our hires.",
+      "explanation": "The speaker says the new standardized four-stage hiring process will replace inconsistent department-level processes to reduce hiring time and improve quality.",
+      "options": [
+        { "key": "A", "text": "It eliminates in-person interviews." },
+        { "key": "B", "text": "It standardizes the process across departments." },
+        { "key": "C", "text": "It requires all candidates to relocate." },
+        { "key": "D", "text": "It is only for senior-level positions." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "Where is the speaker most likely giving this talk?",
+      "context": "Thank you for choosing Sun Coast Tours. Today's guided tour of the historic downtown district will last approximately ninety minutes. We'll visit the Old Cathedral, the Maritime Museum, and the Governor's Mansion. Please stay with the group and feel free to take photos along the way. This is a walking tour, so please make sure you have comfortable shoes. Does everyone have their audio headsets? Let's get started.",
+      "explanation": "The speaker is a tour guide addressing tourists at the starting point of a walking tour in a historic downtown area.",
+      "options": [
+        { "key": "A", "text": "In a hotel lobby." },
+        { "key": "B", "text": "At the beginning of a walking tour." },
+        { "key": "C", "text": "At an airport check-in counter." },
+        { "key": "D", "text": "On a cruise ship." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What challenge does the speaker identify?",
+      "context": "As we expand our operations into Southeast Asia, one of the biggest challenges we face is localizing our mobile app. Currently, the app is available only in English, Spanish, and Mandarin. To succeed in the new markets, we need to add Thai, Vietnamese, and Bahasa Indonesian within the next six months. The localization team is already at capacity, so we'll need to contract with external translation agencies. I've prepared a cost analysis and timeline, which I'll walk you through now.",
+      "explanation": "The main challenge is localizing the mobile app into three new languages within six months while the internal team is at capacity.",
+      "options": [
+        { "key": "A", "text": "Finding office space in Southeast Asia." },
+        { "key": "B", "text": "Adding multiple language versions of the app." },
+        { "key": "C", "text": "Recruiting local management staff." },
+        { "key": "D", "text": "Complying with export regulations." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What is the speaker explaining?",
+      "context": "For those of you who are new, let me quickly explain how the intern evaluation process works. At the end of each month, your supervisor will complete a performance review form. You'll meet one-on-one to discuss your progress, strengths, and areas for improvement. At the end of the summer, a final evaluation will determine whether you receive a full-time job offer. Please take the process seriously and be proactive about seeking feedback.",
+      "explanation": "The speaker is explaining the monthly and final evaluation process for interns and its connection to potential full-time offers.",
+      "options": [
+        { "key": "A", "text": "The company vacation policy." },
+        { "key": "B", "text": "The intern performance review process." },
+        { "key": "C", "text": "The company organizational chart." },
+        { "key": "D", "text": "The employee stock option plan." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "Why is the speaker calling?",
+      "context": "Hello, Mr. Thompson. This is Rachel from Crestfield Insurance. I'm calling regarding your recent auto insurance claim. We've completed our assessment, and your claim has been approved. The reimbursement of two thousand three hundred dollars will be deposited into your account within five to seven business days. However, please note that your deductible of five hundred dollars has already been subtracted from the total. If you have any questions, please call me back at extension three-seven-nine.",
+      "explanation": "The speaker is calling to notify Mr. Thompson that his auto insurance claim has been approved and to provide details about the reimbursement.",
+      "options": [
+        { "key": "A", "text": "To sell a new insurance policy." },
+        { "key": "B", "text": "To inform about a claim approval." },
+        { "key": "C", "text": "To request additional documentation." },
+        { "key": "D", "text": "To schedule a vehicle inspection." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What does the speaker say about the parking garage?",
+      "context": "Attention, please. The rooftop level of the parking garage is currently closed due to ice hazard. Maintenance is applying salt treatment, and we expect the level to reopen by noon. In the meantime, additional spaces are available on levels two and three. Please drive carefully on the ramps as conditions may be slippery. Thank you for your cooperation.",
+      "explanation": "The speaker says the rooftop level of the parking garage is temporarily closed due to icy conditions but will reopen at noon.",
+      "options": [
+        { "key": "A", "text": "It is being demolished." },
+        { "key": "B", "text": "Its rooftop level is temporarily closed." },
+        { "key": "C", "text": "New parking rates are in effect." },
+        { "key": "D", "text": "It has reached full capacity." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker imply about the competition?",
+      "context": "I've been analyzing our market position, and the data shows that two of our competitors have launched subscription-based pricing models in the last quarter. Their customer retention rates have increased significantly as a result. If we don't adapt our pricing strategy soon, we risk losing market share. I'm recommending that we pilot a subscription model in one of our smaller markets to test customer response before a full rollout.",
+      "explanation": "The speaker implies that competitors are gaining an advantage with subscription models, and the company needs to adapt or risk losing market share.",
+      "options": [
+        { "key": "A", "text": "Competitors are reducing their prices." },
+        { "key": "B", "text": "Competitors' new pricing models are succeeding." },
+        { "key": "C", "text": "The competition is exiting the market." },
+        { "key": "D", "text": "Competitors are copying the company's approach." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 2,
+      "stem": "What will listeners receive?",
+      "context": "Thank you for attending today's product demonstration. As a token of our appreciation, each attendee will receive a complimentary sample kit containing our three newest skincare products. You can pick these up at the registration table on your way out. We've also included a twenty-percent discount coupon for your next purchase at any of our retail locations. We hope you enjoyed the presentation.",
+      "explanation": "Listeners will receive a complimentary sample kit of skincare products and a twenty-percent discount coupon.",
+      "options": [
+        { "key": "A", "text": "A full-sized product." },
+        { "key": "B", "text": "A sample kit and a discount coupon." },
+        { "key": "C", "text": "A gift card." },
+        { "key": "D", "text": "A free subscription." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 4,
+      "skillTag": "short-talk",
+      "difficulty": 3,
+      "stem": "What does the speaker warn about?",
+      "context": "Before we finalize the vendor contract, I want to raise a concern. The proposed pricing looks attractive, but the payment terms require us to pay fifty percent upfront and the remaining fifty percent within thirty days of delivery. Given that this vendor is new and hasn't been through our vetting process, I'd recommend we negotiate for a smaller upfront payment—perhaps twenty percent—and hold the balance until we've verified the quality of the first shipment. This protects us if the vendor fails to meet our standards.",
+      "explanation": "The speaker warns about the risk of paying too much upfront to an unvetted vendor and recommends protecting the company with adjusted payment terms.",
+      "options": [
+        { "key": "A", "text": "The vendor's products are defective." },
+        { "key": "B", "text": "The payment terms carry too much risk." },
+        { "key": "C", "text": "The contract expires too soon." },
+        { "key": "D", "text": "The vendor's prices are too high." }
+      ],
+      "correctKey": "B"
+    },
+
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What is the purpose of the email?",
+      "context": "From: HR Department <hr@globaltech.com>\nTo: All Employees\nSubject: Updated Vacation Policy\n\nDear Team,\n\nWe are writing to inform you that effective January 1, the company's vacation policy has been updated. Under the new policy, all full-time employees are entitled to 18 paid vacation days per year, up from 15. Unused days may be carried over to the following year, up to a maximum of 5 days.\n\nAdditionally, we are introducing two additional personal days that may be used without advance notice. Please review the full policy document on the company intranet.\n\nBest regards,\nHR Department",
+      "explanation": "The email's purpose is to notify employees about changes to the vacation policy, including increased days and new personal days.",
+      "options": [
+        { "key": "A", "text": "To request feedback on a proposed policy." },
+        { "key": "B", "text": "To announce changes to the vacation policy." },
+        { "key": "C", "text": "To schedule individual meetings with employees." },
+        { "key": "D", "text": "To remind employees to use their vacation days." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "How many vacation days do employees now receive?",
+      "context": "From: HR Department <hr@globaltech.com>\nTo: All Employees\nSubject: Updated Vacation Policy\n\nDear Team,\n\nWe are writing to inform you that effective January 1, the company's vacation policy has been updated. Under the new policy, all full-time employees are entitled to 18 paid vacation days per year, up from 15. Unused days may be carried over to the following year, up to a maximum of 5 days.\n\nAdditionally, we are introducing two additional personal days that may be used without advance notice. Please review the full policy document on the company intranet.\n\nBest regards,\nHR Department",
+      "explanation": "The email states that full-time employees now receive 18 paid vacation days per year, increased from the previous 15.",
+      "options": [
+        { "key": "A", "text": "15 days." },
+        { "key": "B", "text": "18 days." },
+        { "key": "C", "text": "20 days." },
+        { "key": "D", "text": "25 days." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What is indicated about the training workshop?",
+      "context": "MEMO\n\nTo: All Sales Department Staff\nFrom: David Park, Sales Director\nDate: March 15\nRe: Advanced Negotiation Skills Workshop\n\nA two-day workshop on advanced negotiation techniques will be held on April 3-4 at the Harbor Conference Center. The workshop will be led by Dr. Amanda Liu, an internationally recognized negotiation expert who has consulted for Fortune 500 companies.\n\nAttendance is mandatory for all sales representatives. Travel and accommodation costs will be covered by the department. Please register with your team lead by March 25. A pre-workshop reading packet will be distributed via email one week before the event.\n\nNote: The workshop was originally scheduled for March 20-21 but was postponed due to a scheduling conflict with the quarterly review meeting.",
+      "explanation": "The workshop was rescheduled from March 20-21 to April 3-4 due to a conflict with the quarterly review meeting.",
+      "options": [
+        { "key": "A", "text": "It is optional for senior staff." },
+        { "key": "B", "text": "It was rescheduled from its original date." },
+        { "key": "C", "text": "It will be held at company headquarters." },
+        { "key": "D", "text": "Participants must pay their own travel costs." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about the workshop leader?",
+      "context": "MEMO\n\nTo: All Sales Department Staff\nFrom: David Park, Sales Director\nDate: March 15\nRe: Advanced Negotiation Skills Workshop\n\nA two-day workshop on advanced negotiation techniques will be held on April 3-4 at the Harbor Conference Center. The workshop will be led by Dr. Amanda Liu, an internationally recognized negotiation expert who has consulted for Fortune 500 companies.\n\nAttendance is mandatory for all sales representatives. Travel and accommodation costs will be covered by the department. Please register with your team lead by March 25. A pre-workshop reading packet will be distributed via email one week before the event.\n\nNote: The workshop was originally scheduled for March 20-21 but was postponed due to a scheduling conflict with the quarterly review meeting.",
+      "explanation": "Dr. Amanda Liu is described as internationally recognized and having consulted for Fortune 500 companies, implying she has extensive experience and credibility.",
+      "options": [
+        { "key": "A", "text": "She is a new employee at the company." },
+        { "key": "B", "text": "She has significant professional experience." },
+        { "key": "C", "text": "She specializes in marketing strategy." },
+        { "key": "D", "text": "She will attend the quarterly review." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What is being announced?",
+      "context": "NOTICE\n\nEast Bay Community Center\n\nWe are pleased to announce that our swimming pool will reopen on Saturday, June 1, after undergoing extensive renovations. Improvements include a new filtration system, expanded deck area, and updated changing rooms.\n\nPool Hours:\nMonday–Friday: 6:00 A.M. – 9:00 P.M.\nSaturday–Sunday: 8:00 A.M. – 7:00 P.M.\n\nMembership renewal can be done online at www.eastbaycenter.org or in person at the front desk. Current members receive a 15% discount on annual renewal.\n\nFor questions, contact the recreation office at (555) 321-8765.",
+      "explanation": "The notice announces the reopening of the community center's swimming pool after renovations.",
+      "options": [
+        { "key": "A", "text": "A new community center location." },
+        { "key": "B", "text": "The reopening of a renovated pool." },
+        { "key": "C", "text": "A membership fee increase." },
+        { "key": "D", "text": "New pool safety regulations." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What discount is available to current members?",
+      "context": "NOTICE\n\nEast Bay Community Center\n\nWe are pleased to announce that our swimming pool will reopen on Saturday, June 1, after undergoing extensive renovations. Improvements include a new filtration system, expanded deck area, and updated changing rooms.\n\nPool Hours:\nMonday–Friday: 6:00 A.M. – 9:00 P.M.\nSaturday–Sunday: 8:00 A.M. – 7:00 P.M.\n\nMembership renewal can be done online at www.eastbaycenter.org or in person at the front desk. Current members receive a 15% discount on annual renewal.\n\nFor questions, contact the recreation office at (555) 321-8765.",
+      "explanation": "Current members receive a 15% discount on their annual membership renewal.",
+      "options": [
+        { "key": "A", "text": "10% off daily passes." },
+        { "key": "B", "text": "15% off annual renewal." },
+        { "key": "C", "text": "20% off swimming lessons." },
+        { "key": "D", "text": "25% off equipment rental." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What position is being advertised?",
+      "context": "JOB POSTING\n\nPosition: Senior Data Analyst\nDepartment: Business Intelligence\nLocation: Chicago, IL (Hybrid – 3 days in office)\nSalary Range: $85,000 – $105,000\n\nNorthgate Analytics is seeking a Senior Data Analyst to join our growing Business Intelligence team. The ideal candidate will have 5+ years of experience in data analysis, proficiency in SQL and Python, and strong communication skills for presenting insights to non-technical stakeholders.\n\nResponsibilities:\n• Develop and maintain dashboards and reports using Tableau\n• Collaborate with product and marketing teams to identify trends\n• Lead data quality improvement initiatives\n• Mentor junior analysts\n\nRequirements:\n• Bachelor's degree in Statistics, Computer Science, or related field\n• Experience with cloud data warehouses (Snowflake, BigQuery)\n• Master's degree preferred but not required\n\nTo apply, submit your resume and cover letter to careers@northgate-analytics.com by April 15.",
+      "explanation": "The job posting is advertising a Senior Data Analyst position in the Business Intelligence department.",
+      "options": [
+        { "key": "A", "text": "Junior Software Developer." },
+        { "key": "B", "text": "Senior Data Analyst." },
+        { "key": "C", "text": "Marketing Manager." },
+        { "key": "D", "text": "Database Administrator." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about the work arrangement?",
+      "context": "JOB POSTING\n\nPosition: Senior Data Analyst\nDepartment: Business Intelligence\nLocation: Chicago, IL (Hybrid – 3 days in office)\nSalary Range: $85,000 – $105,000\n\nNorthgate Analytics is seeking a Senior Data Analyst to join our growing Business Intelligence team. The ideal candidate will have 5+ years of experience in data analysis, proficiency in SQL and Python, and strong communication skills for presenting insights to non-technical stakeholders.\n\nResponsibilities:\n• Develop and maintain dashboards and reports using Tableau\n• Collaborate with product and marketing teams to identify trends\n• Lead data quality improvement initiatives\n• Mentor junior analysts\n\nRequirements:\n• Bachelor's degree in Statistics, Computer Science, or related field\n• Experience with cloud data warehouses (Snowflake, BigQuery)\n• Master's degree preferred but not required\n\nTo apply, submit your resume and cover letter to careers@northgate-analytics.com by April 15.",
+      "explanation": "The position is listed as 'Hybrid – 3 days in office,' meaning the employee can work from home two days a week.",
+      "options": [
+        { "key": "A", "text": "The position is fully remote." },
+        { "key": "B", "text": "Employees can work from home part of the week." },
+        { "key": "C", "text": "The office is open only on weekends." },
+        { "key": "D", "text": "Relocation assistance is provided." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What service does the company provide?",
+      "context": "CleanPro Janitorial Services\n\nKeeping your workspace spotless since 2005.\n\nOur Services:\n• Daily office cleaning (vacuuming, dusting, restroom sanitation)\n• Weekly deep cleaning (carpet shampooing, window washing)\n• Post-construction cleanup\n• Special event setup and teardown\n\nWhy Choose CleanPro?\n✓ Fully insured and bonded\n✓ Eco-friendly cleaning products\n✓ Flexible scheduling – evenings and weekends available\n✓ Free on-site consultation and estimate\n\nContact us today for a customized service plan.\nPhone: (555) 890-2345\nEmail: info@cleanproservices.com",
+      "explanation": "CleanPro provides janitorial and cleaning services for offices, including daily cleaning, deep cleaning, and event cleanup.",
+      "options": [
+        { "key": "A", "text": "Office furniture rental." },
+        { "key": "B", "text": "Commercial cleaning services." },
+        { "key": "C", "text": "Building security." },
+        { "key": "D", "text": "Interior design consulting." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the advertisement highlight about the products?",
+      "context": "CleanPro Janitorial Services\n\nKeeping your workspace spotless since 2005.\n\nOur Services:\n• Daily office cleaning (vacuuming, dusting, restroom sanitation)\n• Weekly deep cleaning (carpet shampooing, window washing)\n• Post-construction cleanup\n• Special event setup and teardown\n\nWhy Choose CleanPro?\n✓ Fully insured and bonded\n✓ Eco-friendly cleaning products\n✓ Flexible scheduling – evenings and weekends available\n✓ Free on-site consultation and estimate\n\nContact us today for a customized service plan.\nPhone: (555) 890-2345\nEmail: info@cleanproservices.com",
+      "explanation": "The advertisement highlights that CleanPro uses eco-friendly cleaning products.",
+      "options": [
+        { "key": "A", "text": "They are imported from overseas." },
+        { "key": "B", "text": "They are environmentally friendly." },
+        { "key": "C", "text": "They are the cheapest on the market." },
+        { "key": "D", "text": "They are only available in bulk." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What is the main topic of the article?",
+      "context": "Business Today – March Issue\n\nRemote Work Is Here to Stay, Survey Finds\n\nA recent survey of 2,500 companies across North America found that 72% plan to maintain some form of remote or hybrid work arrangements permanently, even as pandemic restrictions have fully lifted. The survey, conducted by the National Business Research Institute, also revealed that companies offering flexible work options reported 18% lower employee turnover compared to those requiring full-time office attendance.\n\n\"Employees have made it clear that flexibility is a priority,\" said Dr. Kevin Rhodes, the institute's director. \"Companies that fail to adapt risk losing top talent to competitors who offer more attractive work-life balance.\"\n\nHowever, the survey also noted concerns. About 40% of managers reported challenges in maintaining team cohesion with remote workers, and 35% cited difficulties in monitoring productivity.",
+      "explanation": "The article discusses survey findings showing that most companies plan to continue offering remote or hybrid work options permanently.",
+      "options": [
+        { "key": "A", "text": "A decline in remote work adoption." },
+        { "key": "B", "text": "The permanence of remote work arrangements." },
+        { "key": "C", "text": "New government regulations on office space." },
+        { "key": "D", "text": "Technology solutions for virtual offices." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about companies that require full-time office attendance?",
+      "context": "Business Today – March Issue\n\nRemote Work Is Here to Stay, Survey Finds\n\nA recent survey of 2,500 companies across North America found that 72% plan to maintain some form of remote or hybrid work arrangements permanently, even as pandemic restrictions have fully lifted. The survey, conducted by the National Business Research Institute, also revealed that companies offering flexible work options reported 18% lower employee turnover compared to those requiring full-time office attendance.\n\n\"Employees have made it clear that flexibility is a priority,\" said Dr. Kevin Rhodes, the institute's director. \"Companies that fail to adapt risk losing top talent to competitors who offer more attractive work-life balance.\"\n\nHowever, the survey also noted concerns. About 40% of managers reported challenges in maintaining team cohesion with remote workers, and 35% cited difficulties in monitoring productivity.",
+      "explanation": "The article states that companies with flexible options have 18% lower turnover, implying companies requiring full-time attendance experience higher employee turnover.",
+      "options": [
+        { "key": "A", "text": "They have the highest revenue." },
+        { "key": "B", "text": "They may have higher employee turnover." },
+        { "key": "C", "text": "They are mostly technology companies." },
+        { "key": "D", "text": "They do not offer competitive salaries." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the notice say about the bus routes?",
+      "context": "PUBLIC NOTICE\n\nCity of Lakewood Transit Authority\n\nEffective April 1, the following bus route changes will take effect:\n\n• Route 15: Will be extended to include stops at Riverside Medical Center and Oak Hills Mall.\n• Route 22: Service frequency will increase from every 30 minutes to every 20 minutes during peak hours (7–9 A.M. and 5–7 P.M.).\n• Route 8: Will be discontinued due to low ridership. Riders are encouraged to use Route 15 as an alternative.\n\nUpdated route maps and schedules are available at all transit stations and on our website at www.lakewoodtransit.org.\n\nFor questions or concerns, please call (555) 676-4321 or email info@lakewoodtransit.org.",
+      "explanation": "The notice announces several bus route changes including an extended route, increased frequency, and one discontinued route.",
+      "options": [
+        { "key": "A", "text": "All routes are temporarily suspended." },
+        { "key": "B", "text": "Some routes are being changed or discontinued." },
+        { "key": "C", "text": "Fares are being reduced for all routes." },
+        { "key": "D", "text": "New express routes are being introduced." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "Why is Route 8 being discontinued?",
+      "context": "PUBLIC NOTICE\n\nCity of Lakewood Transit Authority\n\nEffective April 1, the following bus route changes will take effect:\n\n• Route 15: Will be extended to include stops at Riverside Medical Center and Oak Hills Mall.\n• Route 22: Service frequency will increase from every 30 minutes to every 20 minutes during peak hours (7–9 A.M. and 5–7 P.M.).\n• Route 8: Will be discontinued due to low ridership. Riders are encouraged to use Route 15 as an alternative.\n\nUpdated route maps and schedules are available at all transit stations and on our website at www.lakewoodtransit.org.\n\nFor questions or concerns, please call (555) 676-4321 or email info@lakewoodtransit.org.",
+      "explanation": "Route 8 is being discontinued because of low ridership, and riders are directed to use Route 15 instead.",
+      "options": [
+        { "key": "A", "text": "The roads are under construction." },
+        { "key": "B", "text": "Not enough people use it." },
+        { "key": "C", "text": "The buses need repairs." },
+        { "key": "D", "text": "A new subway line replaced it." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What does Mr. Chen request in the email?",
+      "context": "From: Wei Chen <w.chen@meridiangroup.com>\nTo: Lisa Tanaka <l.tanaka@meridiangroup.com>\nDate: May 10\nSubject: Supplier Contract Review\n\nHi Lisa,\n\nI've attached the draft contract from Pinnacle Supply Co. for your review. The terms look reasonable overall, but I have concerns about the delivery penalty clause in Section 7. It allows the supplier up to 14 days of delay without penalty, which seems too generous given our just-in-time inventory needs.\n\nCould you review this section and propose revised language that better protects our interests? I'd also appreciate if you could check the warranty terms in Section 12.\n\nWe need to finalize this by May 20 to meet the procurement deadline. Let me know if you need any additional background information.\n\nThanks,\nWei",
+      "explanation": "Mr. Chen requests that Lisa review and propose revised language for the delivery penalty clause and also check the warranty terms.",
+      "options": [
+        { "key": "A", "text": "Sign the contract immediately." },
+        { "key": "B", "text": "Review specific contract sections and suggest changes." },
+        { "key": "C", "text": "Contact the supplier to cancel the deal." },
+        { "key": "D", "text": "Schedule a meeting with the legal department." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "What can be inferred about Meridian Group's inventory approach?",
+      "context": "From: Wei Chen <w.chen@meridiangroup.com>\nTo: Lisa Tanaka <l.tanaka@meridiangroup.com>\nDate: May 10\nSubject: Supplier Contract Review\n\nHi Lisa,\n\nI've attached the draft contract from Pinnacle Supply Co. for your review. The terms look reasonable overall, but I have concerns about the delivery penalty clause in Section 7. It allows the supplier up to 14 days of delay without penalty, which seems too generous given our just-in-time inventory needs.\n\nCould you review this section and propose revised language that better protects our interests? I'd also appreciate if you could check the warranty terms in Section 12.\n\nWe need to finalize this by May 20 to meet the procurement deadline. Let me know if you need any additional background information.\n\nThanks,\nWei",
+      "explanation": "Mr. Chen mentions 'just-in-time inventory needs,' meaning the company keeps minimal stock and relies on timely deliveries, making delivery delays particularly problematic.",
+      "options": [
+        { "key": "A", "text": "They keep large quantities of backup stock." },
+        { "key": "B", "text": "They depend on punctual deliveries." },
+        { "key": "C", "text": "They manufacture their own materials." },
+        { "key": "D", "text": "They order supplies only once a year." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What is the purpose of the notice?",
+      "context": "RESIDENT NOTICE\n\nMaple Ridge Apartments\n\nDear Residents,\n\nPlease be advised that the annual pest control treatment will take place on Saturday, May 18, between 8:00 A.M. and 2:00 P.M. All units in Buildings A through D will be treated.\n\nResidents are asked to:\n• Remove food items from kitchen counters and open shelves\n• Ensure all pets are kept in a separate room or removed from the unit during treatment\n• Leave windows slightly open for ventilation after treatment\n\nThe treatment products used are EPA-approved and safe for residential use. If you have specific health concerns, please contact the management office at (555) 432-1098 before May 15.\n\nThank you for your cooperation.\nMaple Ridge Management",
+      "explanation": "The notice informs residents about scheduled annual pest control treatment and provides preparation instructions.",
+      "options": [
+        { "key": "A", "text": "To announce a rent increase." },
+        { "key": "B", "text": "To inform about scheduled pest control." },
+        { "key": "C", "text": "To introduce new building rules." },
+        { "key": "D", "text": "To invite residents to a community event." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What should pet owners do?",
+      "context": "RESIDENT NOTICE\n\nMaple Ridge Apartments\n\nDear Residents,\n\nPlease be advised that the annual pest control treatment will take place on Saturday, May 18, between 8:00 A.M. and 2:00 P.M. All units in Buildings A through D will be treated.\n\nResidents are asked to:\n• Remove food items from kitchen counters and open shelves\n• Ensure all pets are kept in a separate room or removed from the unit during treatment\n• Leave windows slightly open for ventilation after treatment\n\nThe treatment products used are EPA-approved and safe for residential use. If you have specific health concerns, please contact the management office at (555) 432-1098 before May 15.\n\nThank you for your cooperation.\nMaple Ridge Management",
+      "explanation": "Pet owners should keep their pets in a separate room or remove them from the unit during the pest control treatment.",
+      "options": [
+        { "key": "A", "text": "Register their pets with management." },
+        { "key": "B", "text": "Keep pets in a separate room or remove them." },
+        { "key": "C", "text": "Take pets to the veterinarian." },
+        { "key": "D", "text": "Report the number of pets they own." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What is the main purpose of the report?",
+      "context": "QUARTERLY PERFORMANCE REPORT\n\nPrepared by: Jennifer Walters, Regional Manager\nPeriod: Q1 (January – March)\nRegion: Midwest\n\nSummary:\nThe Midwest region achieved $4.2 million in sales revenue in Q1, representing a 9% increase over the same period last year. This exceeded our quarterly target of $3.8 million by 10.5%.\n\nKey Highlights:\n• New client acquisitions: 47 (up from 31 in Q1 last year)\n• Client retention rate: 94% (industry average: 88%)\n• Top-performing product line: Enterprise Cloud Solutions ($1.8M)\n\nChallenges:\n• Two senior sales representatives resigned in February, creating a temporary staffing gap.\n• Shipping delays from the central warehouse impacted delivery timelines for 12 clients.\n\nOutlook:\nWe expect continued growth in Q2, supported by the launch of the new Analytics Pro suite. Recruiting for the open positions is underway, with two candidates in the final interview stage.",
+      "explanation": "The report summarizes the Midwest region's Q1 sales performance, key achievements, challenges, and outlook.",
+      "options": [
+        { "key": "A", "text": "To request budget approval." },
+        { "key": "B", "text": "To summarize quarterly sales performance." },
+        { "key": "C", "text": "To announce staff changes." },
+        { "key": "D", "text": "To propose a new marketing strategy." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What challenge did the region face?",
+      "context": "QUARTERLY PERFORMANCE REPORT\n\nPrepared by: Jennifer Walters, Regional Manager\nPeriod: Q1 (January – March)\nRegion: Midwest\n\nSummary:\nThe Midwest region achieved $4.2 million in sales revenue in Q1, representing a 9% increase over the same period last year. This exceeded our quarterly target of $3.8 million by 10.5%.\n\nKey Highlights:\n• New client acquisitions: 47 (up from 31 in Q1 last year)\n• Client retention rate: 94% (industry average: 88%)\n• Top-performing product line: Enterprise Cloud Solutions ($1.8M)\n\nChallenges:\n• Two senior sales representatives resigned in February, creating a temporary staffing gap.\n• Shipping delays from the central warehouse impacted delivery timelines for 12 clients.\n\nOutlook:\nWe expect continued growth in Q2, supported by the launch of the new Analytics Pro suite. Recruiting for the open positions is underway, with two candidates in the final interview stage.",
+      "explanation": "The region faced staffing challenges when two senior sales representatives resigned, along with shipping delays affecting client deliveries.",
+      "options": [
+        { "key": "A", "text": "The office lease was not renewed." },
+        { "key": "B", "text": "Staff resignations created a temporary gap." },
+        { "key": "C", "text": "A major client cancelled their contract." },
+        { "key": "D", "text": "The product line was discontinued." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the schedule show?",
+      "context": "CONFERENCE SCHEDULE\n\nMidwest Business Innovation Summit\nDate: Friday, June 7\nVenue: Grand Lakeside Convention Center\n\n8:00 – 8:30 A.M.    Registration and Coffee\n8:30 – 9:15 A.M.    Opening Keynote: \"The Future of AI in Business\" – Dr. Sarah Kim\n9:30 – 10:30 A.M.   Panel: \"Building Resilient Supply Chains\" – Room A\n9:30 – 10:30 A.M.   Workshop: \"Data-Driven Decision Making\" – Room B\n10:45 – 11:45 A.M.  Panel: \"Sustainability in Manufacturing\" – Room A\n10:45 – 11:45 A.M.  Workshop: \"Customer Experience Design\" – Room B\n12:00 – 1:00 P.M.   Networking Lunch (Main Hall)\n1:15 – 2:15 P.M.    Panel: \"Funding Your Startup\" – Room A\n1:15 – 2:15 P.M.    Workshop: \"Effective Remote Leadership\" – Room B\n2:30 – 3:15 P.M.    Closing Keynote: \"Innovation in a Post-Pandemic World\" – Mark Russell\n3:15 – 3:30 P.M.    Closing Remarks",
+      "explanation": "The schedule shows the agenda for the Midwest Business Innovation Summit, with keynotes, panels, workshops, and networking lunch.",
+      "options": [
+        { "key": "A", "text": "A weekly office meeting agenda." },
+        { "key": "B", "text": "A conference day agenda with sessions." },
+        { "key": "C", "text": "A university course timetable." },
+        { "key": "D", "text": "A project milestone timeline." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What happens at noon?",
+      "context": "CONFERENCE SCHEDULE\n\nMidwest Business Innovation Summit\nDate: Friday, June 7\nVenue: Grand Lakeside Convention Center\n\n8:00 – 8:30 A.M.    Registration and Coffee\n8:30 – 9:15 A.M.    Opening Keynote: \"The Future of AI in Business\" – Dr. Sarah Kim\n9:30 – 10:30 A.M.   Panel: \"Building Resilient Supply Chains\" – Room A\n9:30 – 10:30 A.M.   Workshop: \"Data-Driven Decision Making\" – Room B\n10:45 – 11:45 A.M.  Panel: \"Sustainability in Manufacturing\" – Room A\n10:45 – 11:45 A.M.  Workshop: \"Customer Experience Design\" – Room B\n12:00 – 1:00 P.M.   Networking Lunch (Main Hall)\n1:15 – 2:15 P.M.    Panel: \"Funding Your Startup\" – Room A\n1:15 – 2:15 P.M.    Workshop: \"Effective Remote Leadership\" – Room B\n2:30 – 3:15 P.M.    Closing Keynote: \"Innovation in a Post-Pandemic World\" – Mark Russell\n3:15 – 3:30 P.M.    Closing Remarks",
+      "explanation": "At noon (12:00 P.M.), a networking lunch takes place in the Main Hall.",
+      "options": [
+        { "key": "A", "text": "The closing keynote begins." },
+        { "key": "B", "text": "A networking lunch starts." },
+        { "key": "C", "text": "Registration opens." },
+        { "key": "D", "text": "A workshop on leadership begins." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What does the letter say about the warranty?",
+      "context": "Apex Electronics\n147 Tech Boulevard\nSan Jose, CA 95110\n\nMarch 22\n\nMs. Catherine Brooks\n582 Elm Street\nPortland, OR 97205\n\nDear Ms. Brooks,\n\nThank you for contacting us regarding the malfunction of your Apex Pro 5000 laptop. We understand how frustrating this must be, and we want to resolve the issue promptly.\n\nAfter reviewing your purchase records, we can confirm that your laptop is still under warranty, which covers hardware defects for 24 months from the date of purchase. Since the issue you described—a non-responsive touchscreen—falls under hardware defects, the repair will be covered at no charge.\n\nPlease bring the laptop to any authorized Apex service center, along with your proof of purchase. The expected repair time is 5 to 7 business days. If the issue cannot be repaired, we will provide a replacement unit of equal or greater value.\n\nSincerely,\nJames Nguyen\nCustomer Service Manager\nApex Electronics",
+      "explanation": "The letter states the warranty covers hardware defects for 24 months and the touchscreen repair will be free since it's a covered defect.",
+      "options": [
+        { "key": "A", "text": "It has already expired." },
+        { "key": "B", "text": "It covers the reported hardware defect." },
+        { "key": "C", "text": "It only covers software issues." },
+        { "key": "D", "text": "It requires an additional fee to activate." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What will happen if the laptop cannot be repaired?",
+      "context": "Apex Electronics\n147 Tech Boulevard\nSan Jose, CA 95110\n\nMarch 22\n\nMs. Catherine Brooks\n582 Elm Street\nPortland, OR 97205\n\nDear Ms. Brooks,\n\nThank you for contacting us regarding the malfunction of your Apex Pro 5000 laptop. We understand how frustrating this must be, and we want to resolve the issue promptly.\n\nAfter reviewing your purchase records, we can confirm that your laptop is still under warranty, which covers hardware defects for 24 months from the date of purchase. Since the issue you described—a non-responsive touchscreen—falls under hardware defects, the repair will be covered at no charge.\n\nPlease bring the laptop to any authorized Apex service center, along with your proof of purchase. The expected repair time is 5 to 7 business days. If the issue cannot be repaired, we will provide a replacement unit of equal or greater value.\n\nSincerely,\nJames Nguyen\nCustomer Service Manager\nApex Electronics",
+      "explanation": "If the laptop cannot be repaired, the company will provide a replacement unit of equal or greater value.",
+      "options": [
+        { "key": "A", "text": "A full refund will be issued." },
+        { "key": "B", "text": "A replacement unit will be provided." },
+        { "key": "C", "text": "Store credit will be applied." },
+        { "key": "D", "text": "An extended warranty will be offered." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What is being promoted?",
+      "context": "GRAND OPENING!\n\nSunrise Fitness Studio\n321 Harbor View Drive\n\nJoin us for our grand opening on Saturday, April 5!\n\nSpecial Offers:\n• First month FREE for all new members who sign up on opening day\n• 25% off annual memberships through April 30\n• Free fitness assessment for the first 100 visitors\n\nFacilities:\n• State-of-the-art cardio and strength equipment\n• Heated swimming pool\n• Yoga and spinning studios\n• Personal training available\n\nOperating Hours:\nMonday – Friday: 5:00 A.M. – 10:00 P.M.\nSaturday – Sunday: 7:00 A.M. – 8:00 P.M.\n\nVisit www.sunrisefitness.com or call (555) 789-0123 for more information.",
+      "explanation": "The advertisement promotes the grand opening of Sunrise Fitness Studio with special membership offers and facility information.",
+      "options": [
+        { "key": "A", "text": "A sports equipment sale." },
+        { "key": "B", "text": "A new fitness studio opening." },
+        { "key": "C", "text": "A health food store." },
+        { "key": "D", "text": "A running race event." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What offer is available only on opening day?",
+      "context": "GRAND OPENING!\n\nSunrise Fitness Studio\n321 Harbor View Drive\n\nJoin us for our grand opening on Saturday, April 5!\n\nSpecial Offers:\n• First month FREE for all new members who sign up on opening day\n• 25% off annual memberships through April 30\n• Free fitness assessment for the first 100 visitors\n\nFacilities:\n• State-of-the-art cardio and strength equipment\n• Heated swimming pool\n• Yoga and spinning studios\n• Personal training available\n\nOperating Hours:\nMonday – Friday: 5:00 A.M. – 10:00 P.M.\nSaturday – Sunday: 7:00 A.M. – 8:00 P.M.\n\nVisit www.sunrisefitness.com or call (555) 789-0123 for more information.",
+      "explanation": "New members who sign up specifically on opening day (April 5) get their first month free.",
+      "options": [
+        { "key": "A", "text": "25% off annual memberships." },
+        { "key": "B", "text": "A free first month of membership." },
+        { "key": "C", "text": "Free personal training sessions." },
+        { "key": "D", "text": "A complimentary swimming pass." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What does the memo ask employees to do?",
+      "context": "MEMO\n\nTo: All Departments\nFrom: Sarah Mitchell, Chief Operating Officer\nDate: February 8\nRe: End-of-Year Inventory Count\n\nAs part of our annual financial closing process, a mandatory physical inventory count will be conducted on February 22-23. Each department is responsible for counting and recording all company assets within their area, including equipment, furniture, and electronic devices.\n\nDepartment managers should:\n1. Assign two team members to conduct the count\n2. Use the standardized inventory form (available on the intranet)\n3. Submit completed forms to the Finance Department by February 28\n4. Report any missing or damaged items immediately\n\nThe Finance Department will reconcile the physical count with our asset register. Any discrepancies will be investigated. Last year, the process identified $45,000 in unaccounted assets, which highlighted the importance of accurate record-keeping.\n\nPlease treat this as a priority. Contact the Finance Department at ext. 2500 with any questions.",
+      "explanation": "The memo asks employees to conduct a physical inventory count of company assets, use standardized forms, and submit results to Finance by February 28.",
+      "options": [
+        { "key": "A", "text": "Submit purchase requests for new equipment." },
+        { "key": "B", "text": "Participate in a physical inventory count." },
+        { "key": "C", "text": "Attend a budgeting workshop." },
+        { "key": "D", "text": "Complete an employee satisfaction survey." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-inference",
+      "difficulty": 3,
+      "stem": "Why does the memo mention last year's results?",
+      "context": "MEMO\n\nTo: All Departments\nFrom: Sarah Mitchell, Chief Operating Officer\nDate: February 8\nRe: End-of-Year Inventory Count\n\nAs part of our annual financial closing process, a mandatory physical inventory count will be conducted on February 22-23. Each department is responsible for counting and recording all company assets within their area, including equipment, furniture, and electronic devices.\n\nDepartment managers should:\n1. Assign two team members to conduct the count\n2. Use the standardized inventory form (available on the intranet)\n3. Submit completed forms to the Finance Department by February 28\n4. Report any missing or damaged items immediately\n\nThe Finance Department will reconcile the physical count with our asset register. Any discrepancies will be investigated. Last year, the process identified $45,000 in unaccounted assets, which highlighted the importance of accurate record-keeping.\n\nPlease treat this as a priority. Contact the Finance Department at ext. 2500 with any questions.",
+      "explanation": "Last year's results are mentioned to emphasize why accurate inventory counting matters—$45,000 in unaccounted assets demonstrates that discrepancies are a real and significant concern.",
+      "options": [
+        { "key": "A", "text": "To celebrate the team's achievement." },
+        { "key": "B", "text": "To stress the importance of accurate counting." },
+        { "key": "C", "text": "To justify a budget increase." },
+        { "key": "D", "text": "To blame a specific department." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the email request?",
+      "context": "From: Karen Holt <k.holt@crestview.com>\nTo: IT Support <support@crestview.com>\nDate: September 3\nSubject: New Employee Equipment Setup\n\nHi IT Team,\n\nWe have three new employees joining the Marketing Department on September 15. Could you please prepare the following for each of them:\n\n• A laptop with standard software suite (Microsoft Office, Adobe Creative Cloud, Slack)\n• An external monitor (24-inch preferred)\n• A desk phone with voicemail setup\n• Network credentials and email accounts\n\nTheir assigned desks are M-401, M-402, and M-403. I've attached the new employees' information forms with their names and positions.\n\nPlease confirm that everything will be ready by September 13, two days before their start date.\n\nThank you,\nKaren Holt\nMarketing Department Manager",
+      "explanation": "The email requests IT Support to set up equipment, software, and network access for three new employees before their start date.",
+      "options": [
+        { "key": "A", "text": "Repair a broken laptop." },
+        { "key": "B", "text": "Set up workstations for new employees." },
+        { "key": "C", "text": "Order new printers for the department." },
+        { "key": "D", "text": "Upgrade the marketing software." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "When should the equipment be ready?",
+      "context": "From: Karen Holt <k.holt@crestview.com>\nTo: IT Support <support@crestview.com>\nDate: September 3\nSubject: New Employee Equipment Setup\n\nHi IT Team,\n\nWe have three new employees joining the Marketing Department on September 15. Could you please prepare the following for each of them:\n\n• A laptop with standard software suite (Microsoft Office, Adobe Creative Cloud, Slack)\n• An external monitor (24-inch preferred)\n• A desk phone with voicemail setup\n• Network credentials and email accounts\n\nTheir assigned desks are M-401, M-402, and M-403. I've attached the new employees' information forms with their names and positions.\n\nPlease confirm that everything will be ready by September 13, two days before their start date.\n\nThank you,\nKaren Holt\nMarketing Department Manager",
+      "explanation": "The equipment should be ready by September 13, which is two days before the new employees' September 15 start date.",
+      "options": [
+        { "key": "A", "text": "September 3." },
+        { "key": "B", "text": "September 13." },
+        { "key": "C", "text": "September 15." },
+        { "key": "D", "text": "September 20." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-main-idea",
+      "difficulty": 3,
+      "stem": "What is the article mainly about?",
+      "context": "The Daily Business Herald – April 12\n\nLocal Bakery Expands to Three New Locations\n\nSweetRise Bakery, a family-owned business that started as a small neighborhood shop in 2015, announced plans to open three new locations across the metropolitan area by the end of this year. The expansion will create approximately 45 new jobs.\n\n\"We've been overwhelmed by the demand,\" said owner Maria Gonzalez. \"Our customers have been asking us to open closer to their neighborhoods, and we're finally in a position to make that happen.\"\n\nThe new locations will be in Westfield Plaza, Downtown Crossing, and Northgate Mall. Each store will feature the full bakery menu plus a new café section offering specialty coffee and light lunches.\n\nThe expansion is being funded through a combination of bank loans and a recent investment from Horizon Growth Partners, a local venture firm. Construction on the first location is expected to begin in May.",
+      "explanation": "The article is mainly about SweetRise Bakery's plans to expand by opening three new locations, creating jobs and adding café sections.",
+      "options": [
+        { "key": "A", "text": "New food safety regulations for bakeries." },
+        { "key": "B", "text": "A bakery's business expansion plans." },
+        { "key": "C", "text": "A review of popular bakeries in the city." },
+        { "key": "D", "text": "A bakery competition at a local fair." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "How is the expansion being financed?",
+      "context": "The Daily Business Herald – April 12\n\nLocal Bakery Expands to Three New Locations\n\nSweetRise Bakery, a family-owned business that started as a small neighborhood shop in 2015, announced plans to open three new locations across the metropolitan area by the end of this year. The expansion will create approximately 45 new jobs.\n\n\"We've been overwhelmed by the demand,\" said owner Maria Gonzalez. \"Our customers have been asking us to open closer to their neighborhoods, and we're finally in a position to make that happen.\"\n\nThe new locations will be in Westfield Plaza, Downtown Crossing, and Northgate Mall. Each store will feature the full bakery menu plus a new café section offering specialty coffee and light lunches.\n\nThe expansion is being funded through a combination of bank loans and a recent investment from Horizon Growth Partners, a local venture firm. Construction on the first location is expected to begin in May.",
+      "explanation": "The expansion is financed through a combination of bank loans and investment from Horizon Growth Partners, a local venture firm.",
+      "options": [
+        { "key": "A", "text": "Through a crowdfunding campaign." },
+        { "key": "B", "text": "Through bank loans and venture investment." },
+        { "key": "C", "text": "Through a government grant." },
+        { "key": "D", "text": "Entirely from personal savings." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What does the policy cover?",
+      "context": "EMPLOYEE HANDBOOK EXCERPT\n\nSection 4: Professional Development Policy\n\nAt Brightpath Solutions, we are committed to supporting employee growth. The following professional development benefits are available to all full-time employees who have completed at least one year of service:\n\n• Tuition Reimbursement: Up to $5,000 per year for approved courses at accredited institutions.\n• Conference Attendance: Up to two conferences per year, with registration, travel, and hotel expenses covered (maximum $3,000 total).\n• Online Learning: Free access to LinkedIn Learning and Coursera Business subscriptions.\n• Certification Support: Full reimbursement for first-attempt certification exams related to the employee's role.\n\nTo apply, submit a Professional Development Request Form to your manager at least 30 days before the start of the course, conference, or exam. Approval is subject to departmental budget availability.\n\nFor the complete policy, refer to the HR portal under \"Benefits & Development.\"",
+      "explanation": "The policy covers professional development benefits including tuition reimbursement, conference attendance, online learning, and certification support.",
+      "options": [
+        { "key": "A", "text": "Health insurance benefits." },
+        { "key": "B", "text": "Employee professional development support." },
+        { "key": "C", "text": "Retirement plan options." },
+        { "key": "D", "text": "Parental leave eligibility." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What is required to access these benefits?",
+      "context": "EMPLOYEE HANDBOOK EXCERPT\n\nSection 4: Professional Development Policy\n\nAt Brightpath Solutions, we are committed to supporting employee growth. The following professional development benefits are available to all full-time employees who have completed at least one year of service:\n\n• Tuition Reimbursement: Up to $5,000 per year for approved courses at accredited institutions.\n• Conference Attendance: Up to two conferences per year, with registration, travel, and hotel expenses covered (maximum $3,000 total).\n• Online Learning: Free access to LinkedIn Learning and Coursera Business subscriptions.\n• Certification Support: Full reimbursement for first-attempt certification exams related to the employee's role.\n\nTo apply, submit a Professional Development Request Form to your manager at least 30 days before the start of the course, conference, or exam. Approval is subject to departmental budget availability.\n\nFor the complete policy, refer to the HR portal under \"Benefits & Development.\"",
+      "explanation": "Employees must be full-time with at least one year of service, and they need to submit a request form at least 30 days in advance.",
+      "options": [
+        { "key": "A", "text": "Supervisor recommendation only." },
+        { "key": "B", "text": "Full-time status and at least one year of service." },
+        { "key": "C", "text": "A minimum performance rating of A." },
+        { "key": "D", "text": "Completion of a mandatory training program." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What is being announced in the notice?",
+      "context": "TENANT NOTICE\n\nCentral Tower Office Complex\n\nDear Tenants,\n\nWe are pleased to announce that a new food court will open on the ground floor of Central Tower on April 15. The food court will feature six vendors offering a variety of cuisines, including Italian, Japanese, Mexican, and plant-based options.\n\nFood Court Hours:\nMonday – Friday: 7:00 A.M. – 8:00 P.M.\nSaturday: 9:00 A.M. – 5:00 P.M.\nSunday: Closed\n\nTenants with valid building ID cards will receive a 10% discount at all food court vendors for the first month. A seating area with 80 seats is available, along with a dedicated space for takeout orders to reduce wait times.\n\nWe hope this new addition will be a convenient and enjoyable amenity for everyone in the building.\n\nCentral Tower Management",
+      "explanation": "The notice announces the opening of a new food court on the ground floor of the Central Tower Office Complex.",
+      "options": [
+        { "key": "A", "text": "A building security upgrade." },
+        { "key": "B", "text": "A new food court opening." },
+        { "key": "C", "text": "A change in parking regulations." },
+        { "key": "D", "text": "An elevator maintenance schedule." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 2,
+      "stem": "What benefit do tenants receive?",
+      "context": "TENANT NOTICE\n\nCentral Tower Office Complex\n\nDear Tenants,\n\nWe are pleased to announce that a new food court will open on the ground floor of Central Tower on April 15. The food court will feature six vendors offering a variety of cuisines, including Italian, Japanese, Mexican, and plant-based options.\n\nFood Court Hours:\nMonday – Friday: 7:00 A.M. – 8:00 P.M.\nSaturday: 9:00 A.M. – 5:00 P.M.\nSunday: Closed\n\nTenants with valid building ID cards will receive a 10% discount at all food court vendors for the first month. A seating area with 80 seats is available, along with a dedicated space for takeout orders to reduce wait times.\n\nWe hope this new addition will be a convenient and enjoyable amenity for everyone in the building.\n\nCentral Tower Management",
+      "explanation": "Tenants with valid building ID cards receive a 10% discount at all food court vendors during the first month.",
+      "options": [
+        { "key": "A", "text": "Free meals for two weeks." },
+        { "key": "B", "text": "A 10% discount for one month." },
+        { "key": "C", "text": "Reserved seating in the food court." },
+        { "key": "D", "text": "A complimentary parking pass." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What does the review say about the hotel's location?",
+      "context": "GUEST REVIEW – Harbor Point Hotel\n\nReviewed by: Tomoko Yamada\nDate: August 15\nRating: ★★★★☆\n\nI stayed at Harbor Point Hotel for three nights during a business trip to San Francisco. The location is excellent—just a five-minute walk from the financial district and two blocks from the Bay Street metro station. Several good restaurants are within walking distance.\n\nThe room was clean and well-maintained, though slightly smaller than expected for the price ($220/night). The bed was very comfortable, and the soundproofing was impressive given the downtown location. Wi-Fi was fast and reliable.\n\nThe breakfast buffet offered a good variety, but the coffee could be better. Front desk staff were professional and checked me in quickly. One minor issue: the gym equipment was somewhat outdated.\n\nOverall, I'd recommend this hotel for business travelers who value convenience and a central location over luxury amenities.",
+      "explanation": "The review praises the hotel's location as excellent, near the financial district and metro station with restaurants within walking distance.",
+      "options": [
+        { "key": "A", "text": "It is far from public transportation." },
+        { "key": "B", "text": "It is conveniently close to the business district." },
+        { "key": "C", "text": "It is in a quiet residential neighborhood." },
+        { "key": "D", "text": "It is near the airport." }
+      ],
+      "correctKey": "B"
+    },
+    {
+      "partNo": 7,
+      "skillTag": "reading-detail",
+      "difficulty": 3,
+      "stem": "What criticism does the reviewer mention?",
+      "context": "GUEST REVIEW – Harbor Point Hotel\n\nReviewed by: Tomoko Yamada\nDate: August 15\nRating: ★★★★☆\n\nI stayed at Harbor Point Hotel for three nights during a business trip to San Francisco. The location is excellent—just a five-minute walk from the financial district and two blocks from the Bay Street metro station. Several good restaurants are within walking distance.\n\nThe room was clean and well-maintained, though slightly smaller than expected for the price ($220/night). The bed was very comfortable, and the soundproofing was impressive given the downtown location. Wi-Fi was fast and reliable.\n\nThe breakfast buffet offered a good variety, but the coffee could be better. Front desk staff were professional and checked me in quickly. One minor issue: the gym equipment was somewhat outdated.\n\nOverall, I'd recommend this hotel for business travelers who value convenience and a central location over luxury amenities.",
+      "explanation": "The reviewer mentions several minor criticisms: the room was smaller than expected for the price, the coffee quality was poor, and the gym equipment was outdated.",
+      "options": [
+        { "key": "A", "text": "The Wi-Fi was unreliable." },
+        { "key": "B", "text": "The gym equipment was outdated." },
+        { "key": "C", "text": "The front desk was unhelpful." },
+        { "key": "D", "text": "The location was inconvenient." }
+      ],
+      "correctKey": "B"
+    }
+
+  ]
+}
