@@ -8,6 +8,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { FlashCard } from "./FlashCard";
 import { SelectionPronunciation } from "../ui/SelectionPronunciation";
+import { CardSkeleton } from "../ui/Skeleton";
 import styles from "./VocabView.module.css";
 
 interface VocabViewProps {
@@ -363,10 +364,17 @@ export function VocabView({
         {tab === "study" && (
           <div className={styles.studyArea}>
             {studyCards.length === 0 ? (
-              <div className={styles.emptyStudy}>
-                <h3>{copy.emptyTitle}</h3>
-                <p>{copy.emptyHint}</p>
-              </div>
+              isLoading ? (
+                <div className={styles.emptyStudy}>
+                  <CardSkeleton />
+                  <CardSkeleton />
+                </div>
+              ) : (
+                <div className={styles.emptyStudy}>
+                  <h3>{copy.emptyTitle}</h3>
+                  <p>{copy.emptyHint}</p>
+                </div>
+              )
             ) : (
               <>
                 {dueCount > 0 && (

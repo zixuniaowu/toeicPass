@@ -8,6 +8,7 @@ import { Button } from "../ui/Button";
 import { Select } from "../ui/Select";
 import { Input } from "../ui/Input";
 import { MistakeCard } from "./MistakeCard";
+import { CardSkeleton } from "../ui/Skeleton";
 import styles from "./MistakesView.module.css";
 
 const PAGE_SIZE = 20;
@@ -180,7 +181,13 @@ export function MistakesView({
           <p className={styles.mappingHint}>{copy.guideHint}</p>
         </div>
 
-        {isLoading && <p className={styles.empty}>{copy.loading}</p>}
+        {isLoading && (
+          <div className={styles.list}>
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </div>
+        )}
 
         {!isLoading && filteredMistakes.length === 0 && (
           <p className={styles.empty}>{copy.empty}</p>

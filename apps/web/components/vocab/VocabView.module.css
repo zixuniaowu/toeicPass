@@ -78,6 +78,12 @@
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kpi:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.08);
 }
 
 .kpiHighlight {
@@ -146,6 +152,12 @@
   text-align: center;
   padding: var(--space-8) var(--space-4);
   color: var(--color-muted);
+  animation: emptyFadeIn 0.4s ease-out;
+}
+
+@keyframes emptyFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .emptyStudy h3 {
@@ -279,6 +291,10 @@
   color: var(--color-primary);
 }
 
+.chip:active {
+  transform: scale(0.95);
+}
+
 .chipActive {
   background: var(--color-primary);
   color: white;
@@ -303,6 +319,12 @@
   background: var(--color-surface, white);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.wordItem:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 8px -2px rgba(59, 130, 246, 0.12);
 }
 
 .wordMain {
