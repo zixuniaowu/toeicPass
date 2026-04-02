@@ -163,7 +163,7 @@ export function LoginView({
           </div>
 
           <div className={styles.loginAction}>
-            <Button onClick={onLogin} disabled={isSubmitting} fullWidth size="lg">
+            <Button onClick={onLogin} loading={isSubmitting} fullWidth size="lg">
               {isSubmitting ? copy.loginLoading : copy.loginButton}
             </Button>
           </div>
@@ -193,7 +193,7 @@ export function LoginView({
               />
             </div>
             <div className={styles.actions}>
-              <Button variant="secondary" onClick={onRegister} disabled={isSubmitting} fullWidth>
+              <Button variant="secondary" onClick={onRegister} loading={isSubmitting} fullWidth>
                 {isSubmitting ? copy.registerLoading : copy.registerButton}
               </Button>
             </div>

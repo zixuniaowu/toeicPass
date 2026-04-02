@@ -170,7 +170,7 @@ export function PracticeView({
               </Button>
             </div>
 
-            <Button fullWidth onClick={onSubmit} disabled={isSubmitting}>
+            <Button fullWidth onClick={onSubmit} loading={isSubmitting}>
               {isSubmitting ? "提交中..." : "提交本次训练"}
             </Button>
           </div>

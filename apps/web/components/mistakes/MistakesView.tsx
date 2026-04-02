@@ -123,7 +123,7 @@ export function MistakesView({
     <Card>
       <CardHeader>
         <CardTitle as="h1">{copy.title}</CardTitle>
-        <Button variant="secondary" onClick={onRefresh}>
+        <Button variant="secondary" onClick={onRefresh} loading={isLoading}>
           {isLoading ? copy.refreshing : copy.refresh}
         </Button>
       </CardHeader>

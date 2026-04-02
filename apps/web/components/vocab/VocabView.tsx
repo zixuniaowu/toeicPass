@@ -352,7 +352,7 @@ export function VocabView({
           {copy.tabStats}
         </button>
         <div className={styles.tabActions}>
-          <Button variant="secondary" onClick={onRefresh} disabled={isLoading}>
+          <Button variant="secondary" onClick={onRefresh} loading={isLoading}>
             {isLoading ? copy.refreshing : copy.refresh}
           </Button>
         </div>

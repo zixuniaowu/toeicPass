@@ -7,9 +7,11 @@ interface FooterProps {
 }
 
 export function Footer({ message }: FooterProps) {
+  if (!message) return null;
+
   return (
     <footer className={styles.footer}>
-      <p>{message}</p>
+      <p key={message} className={styles.messageText}>{message}</p>
     </footer>
   );
 }

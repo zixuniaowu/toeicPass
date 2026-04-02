@@ -7,11 +7,23 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  animation: footerFadeIn 0.3s ease-out;
 }
 
-.footer p {
+.messageText {
   margin: 0;
   font-size: 13px;
   color: rgba(148, 197, 253, 0.45);
   line-height: 1.5;
+  animation: messageFadeIn 0.4s ease-out;
+}
+
+@keyframes footerFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes messageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
