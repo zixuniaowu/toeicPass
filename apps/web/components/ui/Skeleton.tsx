@@ -35,10 +35,10 @@ export function Skeleton({
 export function CardSkeleton() {
   return (
     <div className={styles.cardSkeleton}>
-      <div className={`${styles.skeleton} ${styles.text}`} style={{ width: "40%", height: "24px" }} />
-      <div className={`${styles.skeleton} ${styles.text}`} style={{ width: "100%", height: "16px" }} />
-      <div className={`${styles.skeleton} ${styles.text}`} style={{ width: "80%", height: "16px" }} />
-      <div className={`${styles.skeleton} ${styles.text}`} style={{ width: "60%", height: "16px" }} />
+      <div className={`${styles.skeleton} ${styles.text} ${styles.lineTitle}`} />
+      <div className={`${styles.skeleton} ${styles.text} ${styles.lineFull}`} />
+      <div className={`${styles.skeleton} ${styles.text} ${styles.lineMedium}`} />
+      <div className={`${styles.skeleton} ${styles.text} ${styles.lineShort}`} />
     </div>
   );
 }
@@ -46,11 +46,11 @@ export function CardSkeleton() {
 export function QuestionSkeleton() {
   return (
     <div className={styles.questionSkeleton}>
-      <div className={`${styles.skeleton} ${styles.text}`} style={{ width: "70%", height: "22px" }} />
-      <div className={`${styles.skeleton} ${styles.text}`} style={{ width: "100%", height: "18px" }} />
+      <div className={`${styles.skeleton} ${styles.text} ${styles.questionTitle}`} />
+      <div className={`${styles.skeleton} ${styles.text} ${styles.questionLine}`} />
       <div className={styles.optionsSkeleton}>
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className={`${styles.skeleton} ${styles.rectangular}`} style={{ height: "52px" }} />
+          <div key={i} className={`${styles.skeleton} ${styles.rectangular} ${styles.optionLine}`} />
         ))}
       </div>
     </div>

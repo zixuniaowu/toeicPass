@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import type { Locale, ViewTab } from "../types";
 import { useAuth } from "../hooks/useAuth";
 import { useSession } from "../hooks/useSession";
@@ -8,12 +8,23 @@ import { useMistakes } from "../hooks/useMistakes";
 import { useVocab } from "../hooks/useVocab";
 import { useLearningCommandRunner } from "../hooks/useLearningCommandRunner";
 import { AppShell } from "./layout/AppShell";
-import { MistakesView } from "./mistakes/MistakesView";
-import { VocabView } from "./vocab/VocabView";
-import { ShadowingView } from "./shadowing/ShadowingView";
-import { MockExamView } from "./mock/MockExamView";
+import { CardSkeleton } from "./ui/Skeleton";
 import { LoginView } from "./auth/LoginView";
 import { ViewErrorBoundary } from "./error/ViewErrorBoundary";
+
+const MistakesView = lazy(() => import("./mistakes/MistakesView").then(m => ({ default: m.MistakesView })));
+const VocabView = lazy(() => import("./vocab/VocabView").then(m => ({ default: m.VocabView })));
+const ShadowingView = lazy(() => import("./shadowing/ShadowingView").then(m => ({ default: m.ShadowingView })));
+const MockExamView = lazy(() => import("./mock/MockExamView").then(m => ({ default: m.MockExamView })));
+
+function ViewFallback() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "16px 0" }}>
+      <CardSkeleton />
+      <CardSkeleton />
+    </div>
+  );
+}
 
 const COMPACT_VIEWS = new Set<ViewTab>(["shadowing", "mock", "mistakes", "vocab"]);
 
@@ -222,7 +233,9 @@ export function ClientHome() {
       locale={locale}
       onLocaleChange={setLocale}
     >
-      {renderView()}
+      <Suspense fallback={<ViewFallback />}>
+        {renderView()}
+      </Suspense>
     </AppShell>
   );
 }

@@ -13,7 +13,7 @@
     "dev:api": "npm run -w apps/api start:dev",
     "dev:web": "npm run -w apps/web start || (npm run -w apps/web build && npm run -w apps/web start)",
     "dev:web:hot": "npm run -w apps/web dev",
-    "test": "npm run -w apps/api test",
+    "test": "npm run -w apps/api test && npm run -w apps/web test",
     "test:e2e": "npm run -w apps/api test:e2e",
     "lint": "npm run -w apps/api lint && npm run -w apps/web lint",
     "db:migrate": "npm run -w apps/api db:migrate"

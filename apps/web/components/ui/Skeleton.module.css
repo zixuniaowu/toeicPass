@@ -48,6 +48,15 @@
   gap: var(--space-3);
 }
 
+/* Fixed-size skeleton variants for CardSkeleton and QuestionSkeleton */
+.lineTitle { width: 40%; height: 24px; }
+.lineFull { width: 100%; height: 16px; }
+.lineMedium { width: 80%; height: 16px; }
+.lineShort { width: 60%; height: 16px; }
+.questionTitle { width: 70%; height: 22px; }
+.questionLine { width: 100%; height: 18px; }
+.optionLine { height: 52px; }
+
 @keyframes shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
