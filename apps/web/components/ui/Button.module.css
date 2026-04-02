@@ -131,3 +131,27 @@
 .fullWidth {
   width: 100%;
 }
+
+/* Loading state */
+.loading {
+  cursor: wait;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+.loadingText {
+  opacity: 0.7;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

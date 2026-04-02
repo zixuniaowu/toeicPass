@@ -180,6 +180,22 @@
   background: #dc2626;
 }
 
+.timerBarWarning {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+}
+
+.timerBarCritical {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+  animation: timerPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2); }
+  50% { box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.35); }
+}
+
 .timerActions {
   display: flex;
   justify-content: space-between;

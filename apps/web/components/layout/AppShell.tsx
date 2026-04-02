@@ -38,7 +38,7 @@ export function AppShell({
           locale={locale}
           onLocaleChange={onLocaleChange}
         />
-        <main className={styles.main}>{children}</main>
+        <main key={activeView} className={styles.main}>{children}</main>
         <Footer message={message} />
       </div>
     </div>

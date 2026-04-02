@@ -347,7 +347,7 @@ export function MockExamView({
         <button className={styles.exitFullscreenBtn} onClick={handleExitFullscreen}>{copy.exitFullscreen}</button>
       )}
       {/* Timer bar */}
-      <div className={styles.timerBar}>
+      <div className={`${styles.timerBar} ${isTimeCritical ? styles.timerBarCritical : isTimeWarning ? styles.timerBarWarning : ""}`}>
         <div className={styles.timerInfo}>
           <span className={`${styles.timerDisplay} ${isTimeCritical ? styles.timerCritical : isTimeWarning ? styles.timerWarning : ""}`}>
             {formatTime(timerMs)}
@@ -412,7 +412,7 @@ export function MockExamView({
             </Button>
           </div>
 
-          <Button fullWidth onClick={() => onSubmit({ allowPartial: true })} disabled={isSubmitting}>
+          <Button fullWidth onClick={() => onSubmit({ allowPartial: true })} loading={isSubmitting}>
             {isSubmitting ? copy.submitting : copy.submitPaper(answeredCount, totalQuestions)}
           </Button>
         </div>
