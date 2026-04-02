@@ -121,3 +121,71 @@ export function defaultSkillTag(partNo: number): string {
   if (partNo === 6) return "text-completion";
   return "reading-comprehension";
 }
+
+export function normalizeSkillTag(tag: string, partNo: number): string {
+  if (!tag) return defaultSkillTag(partNo);
+
+  const CANONICAL: Record<number, Record<string, string>> = {
+    2: { "short-response": "question-response" },
+    3: {
+      "short-conversation": "conversation-detail",
+      "conversation-location": "conversation-detail",
+      "conversation-action": "conversation-detail",
+      "conversation-purpose": "conversation-detail",
+      "conversation-problem": "conversation-detail",
+      "conversation-topic": "conversation-detail",
+      "conversation-reason": "conversation-detail",
+      "conversation-suggestion": "conversation-detail",
+      "conversation-situation": "conversation-detail",
+      "conversation-inference": "conversation-detail",
+    },
+    4: {
+      "short-talk": "talk-detail",
+      "talk-purpose": "talk-detail", "talk-location": "talk-detail",
+      "talk-instruction": "talk-detail", "talk-rule": "talk-detail",
+      "talk-audience": "talk-detail", "talk-topic": "talk-detail",
+      "talk-benefit": "talk-detail", "talk-reason": "talk-detail",
+      "talk-main-idea": "talk-detail", "talk-requirement": "talk-detail",
+      "talk-condition": "talk-detail", "talk-suggestion": "talk-detail",
+      "talk-inference": "talk-detail",
+    },
+    5: {
+      "grammar-preposition": "grammar", "grammar-preposition-time": "grammar",
+      "grammar-participle": "grammar",
+      "grammar-adverb": "grammar", "grammar-passive": "grammar",
+      "grammar-conjunction": "grammar", "grammar-conditional": "grammar",
+      "grammar-inversion": "grammar", "grammar-verb": "grammar",
+      "grammar-article": "grammar", "grammar-comparative": "grammar",
+      "grammar-infinitive": "grammar", "grammar-gerund": "grammar",
+      "grammar-relative": "grammar", "grammar-subject-verb": "grammar",
+      "grammar-pronoun": "grammar", "grammar-tense": "grammar",
+      "grammar-agreement": "grammar", "grammar-comparison": "grammar",
+      "grammar-modal": "grammar", "grammar-vocabulary": "grammar",
+      "grammar-word-form": "grammar",
+      "prepositions": "grammar", "verb-forms": "grammar",
+      "adverb-placement": "grammar", "verb-tense": "grammar",
+      "conjunctions": "grammar", "verb-patterns": "grammar",
+      "adverbs": "grammar", "conditionals": "grammar",
+      "sentence-structure": "grammar", "incomplete-sentence": "grammar",
+      "vocabulary-phrasal": "vocabulary", "vocabulary-collocation": "vocabulary",
+      "vocabulary-word-form": "vocabulary", "phrasal-verbs": "vocabulary",
+      "collocations": "vocabulary", "word-form": "vocabulary",
+      "vocab-collocation": "vocabulary", "vocab-in-context": "vocabulary",
+    },
+    7: {
+      "reading-purpose": "reading-inference", "reading-vocabulary": "reading-detail",
+      "reading-sequence": "reading-detail", "reading-calculation": "reading-detail",
+      "reading-reference": "reading-detail", "reading-audience": "reading-inference",
+      "reading-classification": "reading-detail", "reading-comparison": "reading-detail",
+      "reading-source": "reading-detail", "reading-reason": "reading-inference",
+      "reading-requirement": "reading-detail", "reading-suggestion": "reading-detail",
+      "reading-comprehension": "reading-main-idea",
+      "reading-insert-text": "reading-detail", "reading-pragmatics": "reading-inference",
+      "vocab-in-context": "reading-detail",
+    },
+  };
+
+  const partMap = CANONICAL[partNo];
+  if (partMap && partMap[tag]) return partMap[tag];
+  return tag;
+}

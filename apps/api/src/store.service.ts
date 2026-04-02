@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import { dirname, resolve } from "path";
 import { listeningMediaFor, normalizeListeningMediaUrl } from "./listening-media";
-import { defaultSkillTag, normalizePart1Image, padOptionsToFour } from "./question-normalize";
+import { defaultSkillTag, normalizePart1Image, normalizeSkillTag, padOptionsToFour } from "./question-normalize";
 import { extractPassageAndStem, normalizeReadingContext } from "./reading-context";
 import {
   Attempt,
@@ -51,6 +51,7 @@ type ImportedQuestion = {
   difficulty?: number;
   stem?: string;
   passage?: string;
+  context?: string;
   explanation?: string;
   mediaUrl?: string;
   imageUrl?: string;
@@ -568,7 +569,7 @@ export class StoreService {
       {
         partNo: 3,
         skillTag: "conversation-detail",
-        difficulty: 4,
+        difficulty: 3,
         stem: "What will the man do next in the conversation?",
         explanation: "Listen for commitment phrases such as 'I will send'.",
         mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-3.mp3",
@@ -583,7 +584,7 @@ export class StoreService {
       },
       {
         partNo: 4,
-        skillTag: "talk-purpose",
+        skillTag: "talk-detail",
         difficulty: 2,
         stem: "A company announcement explains changes to building access. What is the purpose of the talk?",
         explanation: "The core purpose is to inform employees of a new policy.",
@@ -631,7 +632,7 @@ export class StoreService {
       },
       {
         partNo: 5,
-        skillTag: "grammar-pronoun",
+        skillTag: "grammar",
         difficulty: 2,
         stem: "The manager asked all staff to submit ___ travel receipts by Monday.",
         explanation: "Plural subject 'all staff' pairs with possessive pronoun 'their'.",
@@ -645,7 +646,7 @@ export class StoreService {
       },
       {
         partNo: 5,
-        skillTag: "grammar-conjunction",
+        skillTag: "grammar",
         difficulty: 3,
         stem: "Our sales team has grown rapidly, ___ we need additional office space.",
         explanation: "Cause-effect relationship requires a result conjunction.",
@@ -702,7 +703,7 @@ export class StoreService {
       {
         partNo: 6,
         skillTag: "text-completion",
-        difficulty: 4,
+        difficulty: 3,
         stem: "Complete the memo: 'The cafeteria will close at 2 p.m. on Friday. ___'",
         explanation: "The best continuation offers an alternative arrangement.",
         options: [
@@ -743,8 +744,8 @@ export class StoreService {
       },
       {
         partNo: 7,
-        skillTag: "reading-purpose",
-        difficulty: 4,
+        skillTag: "reading-inference",
+        difficulty: 3,
         stem: "Web notice excerpt: 'Starting July 1, all training requests must be entered through the HR portal.' Why was this notice written?",
         explanation: "This is a policy update with a required new process.",
         options: [
@@ -758,7 +759,7 @@ export class StoreService {
       {
         partNo: 7,
         skillTag: "reading-detail",
-        difficulty: 4,
+        difficulty: 3,
         stem: "Memo excerpt: 'The supplier confirmed that shipment 114B will arrive on Thursday, one day earlier than expected.' What is true?",
         explanation: "The memo explicitly states delivery is one day earlier.",
         options: [
@@ -771,7 +772,7 @@ export class StoreService {
       },
       {
         partNo: 5,
-        skillTag: "grammar-preposition",
+        skillTag: "grammar",
         difficulty: 2,
         stem: "The report must be submitted ___ Friday.",
         explanation: "Use 'by' to indicate a deadline no later than Friday.",
@@ -866,8 +867,8 @@ export class StoreService {
       }
       const correctKey = options[correctIndex].key;
 
-      const normalizedDifficulty = Math.max(1, Math.min(5, Number(raw.difficulty ?? 3)));
-      const skillTag = String(raw.skillTag ?? "").trim() || defaultSkillTag(partNo);
+      const normalizedDifficulty = Math.max(1, Math.min(3, Number(raw.difficulty ?? 2)));
+      const skillTag = normalizeSkillTag(String(raw.skillTag ?? "").trim(), partNo);
       const explanation =
         String(raw.explanation ?? "")
           .replace(/Real TOEIC/gi, "TOEIC-style")
@@ -886,7 +887,8 @@ export class StoreService {
               options.map((opt) => opt.text),
             )
           : String(raw.imageUrl ?? "").trim() || undefined;
-      const parsed = extractPassageAndStem(partNo, stem, String(raw.passage ?? "").trim() || undefined);
+      const rawPassage = String(raw.passage ?? raw.context ?? "").trim() || undefined;
+      const parsed = extractPassageAndStem(partNo, stem, rawPassage);
       const normalizedReading = normalizeReadingContext(
         partNo,
         parsed.stem,
@@ -1122,6 +1124,9 @@ export class StoreService {
       );
       question.stem = normalizedReading.stem;
       question.passage = normalizedReading.passage;
+
+      question.skillTag = normalizeSkillTag(question.skillTag, question.partNo);
+      question.difficulty = Math.max(1, Math.min(3, question.difficulty));
 
       const stemKey = question.stem.trim().toLowerCase();
       if (officialStems.has(stemKey)) {
