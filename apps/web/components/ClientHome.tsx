@@ -95,7 +95,7 @@ export function ClientHome() {
   const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const vocab = useVocab(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const analytics = useAnalytics(auth.getRequestOptions);
-  const conversation = useConversation(auth.ensureSession, auth.getRequestOptions, auth.setMessage);
+  const conversation = useConversation(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
 
   // Bridge auth.message changes into toast notifications
   const lastMessageRef = useRef("");
@@ -112,6 +112,7 @@ export function ClientHome() {
   }, [auth.message, toast]);
 
   const runner = useLearningCommandRunner({
+    locale,
     requiresDiagnostic: false,
     setActiveView,
     setMessage: auth.setMessage,
@@ -345,6 +346,7 @@ export function ClientHome() {
       case "mistakes":
         return (
           <ViewErrorBoundary
+            locale={locale}
             title={COPY[locale].mistakeBoundaryTitle}
             hint={COPY[locale].mistakeBoundaryHint}
           >
@@ -496,7 +498,7 @@ export function ClientHome() {
       locale={locale}
       onLocaleChange={setLocale}
     >
-      <ViewErrorBoundary>
+      <ViewErrorBoundary locale={locale}>
         <Suspense fallback={<ViewFallback />}>
           {renderView()}
         </Suspense>

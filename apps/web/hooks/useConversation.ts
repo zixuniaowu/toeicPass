@@ -1,6 +1,17 @@
 import { useState, useCallback, useEffect } from "react";
-import type { ConversationScenario, ConversationMessage, ConversationSession } from "../types";
+import type { ConversationScenario, ConversationMessage, ConversationSession, Locale } from "../types";
 import * as api from "../lib/api";
+
+const MSG = {
+  zh: {
+    loginRequired: "对话失败：请先登录。",
+    aiFallback: (err: string) => `AI 服务暂不可用，已切换本地练习模式: ${err}`,
+  },
+  ja: {
+    loginRequired: "会話に失敗しました：先にログインしてください。",
+    aiFallback: (err: string) => `AIサービスが利用できません。ローカルモードに切り替えました: ${err}`,
+  },
+} as const;
 
 // TOEIC-relevant conversation scenarios
 const SCENARIOS: ConversationScenario[] = [
@@ -83,7 +94,8 @@ const newId = () => Math.random().toString(36).slice(2, 11);
 export function useConversation(
   ensureSession: () => Promise<string | null>,
   getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
-  setMessage: (message: string) => void
+  setMessage: (message: string) => void,
+  locale: Locale = "zh"
 ) {
   const [scenarios] = useState<ConversationScenario[]>(SCENARIOS);
   const [remoteScenarios, setRemoteScenarios] = useState<ConversationScenario[]>(SCENARIOS);
@@ -147,7 +159,7 @@ export function useConversation(
     try {
       const token = await ensureSession();
       if (!token) {
-        setMessage("对话失败：请先登录。");
+        setMessage(MSG[locale].loginRequired);
         return;
       }
 
@@ -173,7 +185,7 @@ export function useConversation(
       const corrections = response.success ? response.corrections : fallback.corrections;
       const suggestions = response.success ? response.suggestions : fallback.suggestions;
       if (!response.success) {
-        setMessage(`AI 服务暂不可用，已切换本地练习模式: ${response.error ?? "unknown error"}`);
+        setMessage(MSG[locale].aiFallback(response.error ?? "unknown error"));
       }
 
       const assistantMessage: ConversationMessage = {

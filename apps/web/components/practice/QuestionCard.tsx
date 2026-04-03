@@ -8,6 +8,57 @@ import { SelectionPronunciation } from "../ui/SelectionPronunciation";
 import { Button } from "../ui/Button";
 import styles from "./QuestionCard.module.css";
 
+const COPY = {
+  zh: {
+    noCorrectKey: "当前题目未返回标准答案，请刷新后重开训练。",
+    correctAnswer: "正确答案",
+    optionAnalysis: "选项解析",
+    correct: "正确",
+    incorrect: "错误",
+    matchesKey: "与题干/音频关键信息一致",
+    mismatchesKey: "与题干/音频关键信息不一致",
+    audioMatched: "听力题目音频（题目匹配）",
+    audioTts: "听力题目朗读（官方文本）",
+    ttsPlay12: "播放题目（仅听音频作答）",
+    ttsPlayMatch: "播放题目（与当前题目匹配）",
+    ttsPlayFallback: "播放官方文本朗读（无原始音频）",
+    passageScript: "官方脚本文本（非原始音频）",
+    passageRef: "参考材料",
+    listenPrompt: (choices: string) => `请听音频后，仅按 ${choices} 作答。`,
+    answerRevealed: "答案与解析已显示",
+    revealAnswer: "查看答案与解析",
+    selectFirst: "请先选择答案",
+    correctLabel: "正确答案：",
+    noCorrectInSession: "当前会话未返回正确答案，请刷新后重开本次训练。",
+    yourAnswer: "你的答案：",
+    explanation: "详细解释",
+  },
+  ja: {
+    noCorrectKey: "この問題の正解が返されませんでした。更新して再開してください。",
+    correctAnswer: "正解",
+    optionAnalysis: "選択肢の解析",
+    correct: "正解",
+    incorrect: "不正解",
+    matchesKey: "設問/音声のキー情報と一致",
+    mismatchesKey: "設問/音声のキー情報と不一致",
+    audioMatched: "リスニング音声（問題に対応）",
+    audioTts: "リスニング読み上げ（公式テキスト）",
+    ttsPlay12: "問題を再生（音声のみで回答）",
+    ttsPlayMatch: "問題を再生（現在の問題に対応）",
+    ttsPlayFallback: "公式テキスト読み上げ（元の音声なし）",
+    passageScript: "公式スクリプト（元の音声なし）",
+    passageRef: "参考資料",
+    listenPrompt: (choices: string) => `音声を聞いてから ${choices} で回答してください。`,
+    answerRevealed: "解答と解説を表示済み",
+    revealAnswer: "解答と解説を見る",
+    selectFirst: "先に回答を選んでください",
+    correctLabel: "正解：",
+    noCorrectInSession: "このセッションで正解が返されませんでした。更新して再開してください。",
+    yourAnswer: "あなたの回答：",
+    explanation: "詳しい解説",
+  },
+} as const;
+
 interface QuestionCardProps {
   question: SessionQuestion;
   locale?: Locale;
@@ -17,19 +68,20 @@ interface QuestionCardProps {
   onRevealAnswer: () => void;
 }
 
-function fallbackExplanation(question: SessionQuestion): string {
+function fallbackExplanation(question: SessionQuestion, locale: Locale): string {
+  const t = COPY[locale];
   if (!question.correctKey) {
-    return "当前题目未返回标准答案，请刷新后重开训练。";
+    return t.noCorrectKey;
   }
   const lines = [
-    `正确答案：${question.correctKey}`,
-    "选项解析：",
+    `${t.correctAnswer}：${question.correctKey}`,
+    `${t.optionAnalysis}：`,
     ...question.options.map((opt) => {
-      const verdict = opt.key === question.correctKey ? "正确" : "错误";
+      const verdict = opt.key === question.correctKey ? t.correct : t.incorrect;
       const reason =
         opt.key === question.correctKey
-          ? "与题干/音频关键信息一致"
-          : "与题干/音频关键信息不一致";
+          ? t.matchesKey
+          : t.mismatchesKey;
       return `${opt.key}. ${opt.text}（${verdict}：${reason}）`;
     }),
   ];
@@ -69,12 +121,13 @@ export function QuestionCard({
     ? question.options.find((opt) => opt.key === selectedAnswer)
     : undefined;
   const canRevealAnswer = Boolean(selectedAnswer);
-  const explanationText = question.explanation?.trim() || fallbackExplanation(question);
+  const explanationText = question.explanation?.trim() || fallbackExplanation(question, locale);
   const textScopeRef = useRef<HTMLDivElement | null>(null);
+  const t = COPY[locale];
   const passageLabel =
     isListening && !question.mediaUrl
-      ? "官方脚本文本（非原始音频）"
-      : "参考材料";
+      ? t.passageScript
+      : t.passageRef;
 
   // Keyboard shortcuts: A/B/C/D to select, Enter to reveal answer
   const validKeys = question.options.map((opt) => opt.key);
@@ -116,14 +169,15 @@ export function QuestionCard({
       {isListening && (question.mediaUrl || ttsText) && (
         <AudioPlayer
           src={question.mediaUrl}
-          label={question.mediaUrl ? "听力题目音频（题目匹配）" : "听力题目朗读（官方文本）"}
+          label={question.mediaUrl ? t.audioMatched : t.audioTts}
+          locale={locale}
           ttsText={ttsText}
           ttsLabel={
             question.mediaUrl
               ? question.partNo <= 2
-                ? "播放题目（仅听音频作答）"
-                : "播放题目（与当前题目匹配）"
-              : "播放官方文本朗读（无原始音频）"
+                ? t.ttsPlay12
+                : t.ttsPlayMatch
+              : t.ttsPlayFallback
           }
         />
       )}
@@ -136,7 +190,7 @@ export function QuestionCard({
       )}
 
       {hideStem ? (
-        <p className={styles.listeningPrompt}>请听音频后，仅按 {choicePrompt} 作答。</p>
+        <p className={styles.listeningPrompt}>{t.listenPrompt(choicePrompt)}</p>
       ) : (
         <p className={styles.stem}>{question.stem}</p>
       )}
@@ -161,28 +215,28 @@ export function QuestionCard({
           disabled={isAnswerRevealed || !canRevealAnswer}
         >
           {isAnswerRevealed
-            ? "答案与解析已显示"
+            ? t.answerRevealed
             : canRevealAnswer
-              ? "查看答案与解析"
-              : "请先选择答案"}
+              ? t.revealAnswer
+              : t.selectFirst}
         </Button>
       </div>
 
       {isAnswerRevealed && (
         <div className={styles.answerPanel}>
           <p className={styles.answerLine}>
-            <strong>正确答案：</strong>
+            <strong>{t.correctLabel}</strong>
             {question.correctKey
               ? `${question.correctKey}. ${correctOption?.text ?? ""}`.trim()
-              : "当前会话未返回正确答案，请刷新后重开本次训练。"}
+              : t.noCorrectInSession}
           </p>
           <p className={styles.answerLine}>
-            <strong>你的答案：</strong>
+            <strong>{t.yourAnswer}</strong>
             {selectedAnswer
               ? `${selectedAnswer}. ${selectedOption?.text ?? ""}`.trim()
               : "—"}
           </p>
-          <p className={styles.answerLabel}>详细解释</p>
+          <p className={styles.answerLabel}>{t.explanation}</p>
           <p className={styles.answerExplanation}>{explanationText}</p>
         </div>
       )}

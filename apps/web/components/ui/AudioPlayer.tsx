@@ -3,12 +3,40 @@
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import styles from "./AudioPlayer.module.css";
 
+const COPY = {
+  zh: {
+    defaultTtsLabel: "题干朗读（匹配当前题目）",
+    clipSliced: "已切片为题目音频",
+    clipSlicing: "正在切分题目音频...",
+    clipFailed: "切片失败，已启用片段播放控制",
+    noTtsSupport: "当前浏览器不支持语音朗读。",
+    ttsFailed: "朗读失败，请重试。",
+    audioClip: "音频片段",
+    replay: "重新播放",
+    play: "播放朗读",
+    stop: "停止",
+  },
+  ja: {
+    defaultTtsLabel: "設問読み上げ（現在の問題に対応）",
+    clipSliced: "問題用にクリップ済み",
+    clipSlicing: "音声をクリップ中...",
+    clipFailed: "クリップに失敗、フル再生に切替",
+    noTtsSupport: "お使いのブラウザは音声読み上げに対応していません。",
+    ttsFailed: "読み上げに失敗しました。再度お試しください。",
+    audioClip: "音声クリップ",
+    replay: "もう一度再生",
+    play: "読み上げ再生",
+    stop: "停止",
+  },
+} as const;
+
 interface AudioPlayerProps {
   src?: string;
   label?: string;
   compact?: boolean;
   ttsText?: string;
   ttsLabel?: string;
+  locale?: "zh" | "ja";
 }
 
 type ClipRange = {
@@ -117,7 +145,9 @@ async function buildClipBlobUrl(range: ClipRange): Promise<string> {
 }
 
 export const AudioPlayer = forwardRef<HTMLAudioElement, AudioPlayerProps>(
-  ({ src, label, compact = false, ttsText, ttsLabel = "题干朗读（匹配当前题目）" }, ref) => {
+  ({ src, label, compact = false, ttsText, ttsLabel, locale = "zh" }, ref) => {
+    const t = COPY[locale];
+    const resolvedTtsLabel = ttsLabel ?? t.defaultTtsLabel;
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [ttsError, setTtsError] = useState<string>("");
     const [resolvedSrc, setResolvedSrc] = useState<string | undefined>(undefined);
@@ -145,13 +175,13 @@ export const AudioPlayer = forwardRef<HTMLAudioElement, AudioPlayerProps>(
       const cached = clipBlobCache.get(clipKey);
       if (cached) {
         setResolvedSrc(cached);
-        setClipStatusText("已切片为题目音频");
+        setClipStatusText(t.clipSliced);
         return;
       }
 
       let disposed = false;
       setResolvedSrc(sourceUrl);
-      setClipStatusText("正在切分题目音频...");
+      setClipStatusText(t.clipSlicing);
 
       let pending = clipBlobPromiseCache.get(clipKey);
       if (!pending) {
@@ -166,14 +196,14 @@ export const AudioPlayer = forwardRef<HTMLAudioElement, AudioPlayerProps>(
             return;
           }
           setResolvedSrc(blobUrl);
-          setClipStatusText("已切片为题目音频");
+          setClipStatusText(t.clipSliced);
         })
         .catch(() => {
           if (disposed) {
             return;
           }
           setResolvedSrc(sourceUrl);
-          setClipStatusText("切片失败，已启用片段播放控制");
+          setClipStatusText(t.clipFailed);
         })
         .finally(() => {
           if (clipBlobPromiseCache.get(clipKey) === pending) {
@@ -265,7 +295,7 @@ export const AudioPlayer = forwardRef<HTMLAudioElement, AudioPlayerProps>(
         return;
       }
       if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-        setTtsError("当前浏览器不支持语音朗读。");
+        setTtsError(t.noTtsSupport);
         return;
       }
       setTtsError("");
@@ -280,7 +310,7 @@ export const AudioPlayer = forwardRef<HTMLAudioElement, AudioPlayerProps>(
       };
       utterance.onerror = () => {
         setIsSpeaking(false);
-        setTtsError("朗读失败，请重试。");
+        setTtsError(t.ttsFailed);
       };
       utterRef.current = utterance;
       window.speechSynthesis.speak(utterance);
@@ -292,17 +322,17 @@ export const AudioPlayer = forwardRef<HTMLAudioElement, AudioPlayerProps>(
         {label && <p className={styles.label}>{label}</p>}
         {clipRange && typeof clipRange.start === "number" && typeof clipRange.end === "number" && (
           <p className={styles.clipMeta}>
-            音频片段：{formatSec(clipRange.start)} - {formatSec(clipRange.end)}
+            {t.audioClip}：{formatSec(clipRange.start)} - {formatSec(clipRange.end)}
           </p>
         )}
         {clipStatusText && <p className={styles.clipHint}>{clipStatusText}</p>}
         {ttsText && (
           <div className={styles.ttsBlock}>
             <div className={styles.ttsHeader}>
-              <p className={styles.ttsLabel}>{ttsLabel}</p>
+              <p className={styles.ttsLabel}>{resolvedTtsLabel}</p>
               <div className={styles.ttsActions}>
                 <button className={styles.ttsButton} onClick={startTts} type="button">
-                  {isSpeaking ? "重新播放" : "播放朗读"}
+                  {isSpeaking ? t.replay : t.play}
                 </button>
                 <button
                   className={`${styles.ttsButton} ${styles.ttsStop}`}
@@ -310,7 +340,7 @@ export const AudioPlayer = forwardRef<HTMLAudioElement, AudioPlayerProps>(
                   type="button"
                   disabled={!isSpeaking}
                 >
-                  停止
+                  {t.stop}
                 </button>
               </div>
             </div>

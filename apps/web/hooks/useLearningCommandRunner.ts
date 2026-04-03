@@ -1,14 +1,26 @@
 "use client";
 
 import { useCallback } from "react";
-import type { NextTask, SessionFilters, SessionMode, ViewTab } from "../types";
+import type { NextTask, SessionFilters, SessionMode, ViewTab, Locale } from "../types";
 import {
   parseLearningAction,
   resolvePartGroupFromPart,
   resolveViewTabForPart,
 } from "../lib/learning-action";
 
+const COPY = {
+  zh: {
+    unsupported: (action: string) => `暂不支持该任务动作: ${action}`,
+    diagnosticRequired: "请先完成 20 题自测，再开启完整训练计划。",
+  },
+  ja: {
+    unsupported: (action: string) => `未対応のアクション: ${action}`,
+    diagnosticRequired: "まず20問の診断テストを完了してください。",
+  },
+} as const;
+
 type RunnerDeps = {
+  locale?: Locale;
   requiresDiagnostic: boolean;
   setActiveView: (view: ViewTab) => void;
   setMessage: (msg: string) => void;
@@ -18,6 +30,7 @@ type RunnerDeps = {
 };
 
 export function useLearningCommandRunner({
+  locale = "zh",
   requiresDiagnostic,
   setActiveView,
   setMessage,
@@ -31,9 +44,10 @@ export function useLearningCommandRunner({
 
   const runAction = useCallback(
     async (action: string): Promise<boolean> => {
+      const t = COPY[locale];
       const parsedAction = parseLearningAction(action);
       if (!parsedAction) {
-        setMessage(`暂不支持该任务动作: ${action}`);
+        setMessage(t.unsupported(action));
         return false;
       }
 
@@ -41,7 +55,7 @@ export function useLearningCommandRunner({
       const { partNo, difficulty, partGroup } = filters;
 
       if (requiresDiagnostic && command !== "diagnostic:start") {
-        setMessage("请先完成 20 题自测，再开启完整训练计划。");
+        setMessage(t.diagnosticRequired);
         setActiveView("dashboard");
         return false;
       }
@@ -108,10 +122,11 @@ export function useLearningCommandRunner({
         return true;
       }
 
-      setMessage(`暂不支持该任务动作: ${action}`);
+      setMessage(t.unsupported(action));
       return false;
     },
     [
+      locale,
       loadMistakes,
       loadVocabularyCards,
       openPracticeViewForPart,
