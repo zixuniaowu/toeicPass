@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { Locale } from "../../types";
 import type { AuthCredentials } from "../../hooks/useAuth";
+import type { ThemeMode } from "../ClientHome";
 import { API_BASE } from "../../lib/api";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/Card";
 import { Button } from "../ui/Button";
@@ -24,6 +25,10 @@ const COPY = {
     saveGoal: "\u4fdd\u5b58\u76ee\u6807",
     system: "\u7cfb\u7edf\u72b6\u6001",
     viewEndpoints: "\u67e5\u770b\u7aef\u70b9",
+    theme: "\u4e3b\u9898",
+    themeLight: "\u6d45\u8272",
+    themeDark: "\u6df1\u8272",
+    themeAuto: "\u8ddf\u968f\u7cfb\u7edf",
   },
   ja: {
     title: "\u30a2\u30ab\u30a6\u30f3\u30c8\u3068\u76ee\u6a19\u8a2d\u5b9a",
@@ -39,6 +44,10 @@ const COPY = {
     saveGoal: "\u76ee\u6a19\u4fdd\u5b58",
     system: "\u30b7\u30b9\u30c6\u30e0\u30b9\u30c6\u30fc\u30bf\u30b9",
     viewEndpoints: "\u30a8\u30f3\u30c9\u30dd\u30a4\u30f3\u30c8\u4e00\u89a7",
+    theme: "\u30c6\u30fc\u30de",
+    themeLight: "\u30e9\u30a4\u30c8",
+    themeDark: "\u30c0\u30fc\u30af",
+    themeAuto: "\u30b7\u30b9\u30c6\u30e0\u306b\u5408\u308f\u305b\u308b",
   },
 } as const;
 
@@ -48,6 +57,8 @@ interface SettingsViewProps {
   currentScore: number;
   goalScore: number;
   goalDate: string;
+  theme: ThemeMode;
+  onThemeChange: (theme: ThemeMode) => void;
   onCredentialsChange: (updates: Partial<AuthCredentials>) => void;
   onCurrentScoreChange: (score: number) => void;
   onGoalScoreChange: (score: number) => void;
@@ -64,6 +75,8 @@ export function SettingsView({
   currentScore,
   goalScore,
   goalDate,
+  theme,
+  onThemeChange,
   onCredentialsChange,
   onCurrentScoreChange,
   onGoalScoreChange,
@@ -148,6 +161,21 @@ export function SettingsView({
               <Button variant="secondary" onClick={onApplyNinetyDayGoal}>{t.quickFill}</Button>
               <Button onClick={onSaveGoal}>{t.saveGoal}</Button>
             </div>
+          </div>
+        </div>
+
+        <div className={styles.box}>
+          <h3>{t.theme}</h3>
+          <div className={styles.themeToggle}>
+            {(["light", "dark", "auto"] as const).map((m) => (
+              <button
+                key={m}
+                className={`${styles.themeBtn} ${theme === m ? styles.themeBtnActive : ""}`}
+                onClick={() => onThemeChange(m)}
+              >
+                {m === "light" ? `☀️ ${t.themeLight}` : m === "dark" ? `🌙 ${t.themeDark}` : `💻 ${t.themeAuto}`}
+              </button>
+            ))}
           </div>
         </div>
 

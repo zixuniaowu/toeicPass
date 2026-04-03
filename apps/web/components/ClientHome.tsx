@@ -65,6 +65,8 @@ const COPY = {
   },
 } as const;
 
+export type ThemeMode = "light" | "dark" | "auto";
+
 export function ClientHome() {
   const [activeView, setActiveView] = useState<ViewTab>("dashboard");
   const [locale, setLocale] = useState<Locale>(() => {
@@ -72,6 +74,12 @@ export function ClientHome() {
       return (localStorage.getItem("lb.locale") as Locale) || "zh";
     }
     return "zh";
+  });
+  const [theme, setTheme] = useState<ThemeMode>(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("lb.theme") as ThemeMode) || "auto";
+    }
+    return "auto";
   });
 
   // Goal settings state for SettingsView
@@ -116,6 +124,37 @@ export function ClientHome() {
   useEffect(() => {
     localStorage.setItem("lb.locale", locale);
   }, [locale]);
+
+  // Apply and persist theme
+  useEffect(() => {
+    localStorage.setItem("lb.theme", theme);
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.setAttribute("data-theme", "dark");
+    } else if (theme === "light") {
+      root.removeAttribute("data-theme");
+    } else {
+      // auto: follow system preference
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (prefersDark) {
+        root.setAttribute("data-theme", "dark");
+      } else {
+        root.removeAttribute("data-theme");
+      }
+    }
+  }, [theme]);
+
+  // Listen for system theme changes when in auto mode
+  useEffect(() => {
+    if (theme !== "auto") return;
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = (e: MediaQueryListEvent) => {
+      document.documentElement.setAttribute("data-theme", e.matches ? "dark" : "");
+      if (!e.matches) document.documentElement.removeAttribute("data-theme");
+    };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, [theme]);
 
   // Auto-load analytics on login and when dashboard becomes active
   useEffect(() => {
@@ -289,6 +328,8 @@ export function ClientHome() {
             currentScore={currentScoreInput}
             goalScore={goalScore}
             goalDate={goalDate}
+            theme={theme}
+            onThemeChange={setTheme}
             onCredentialsChange={auth.updateCredentials}
             onCurrentScoreChange={setCurrentScoreInput}
             onGoalScoreChange={setGoalScore}
