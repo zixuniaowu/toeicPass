@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import type { Locale, OptionKey, SessionQuestion } from "../../types";
 import { isListeningPart } from "../../types";
 import { AudioPlayer } from "../ui/AudioPlayer";
@@ -75,6 +75,31 @@ export function QuestionCard({
     isListening && !question.mediaUrl
       ? "官方脚本文本（非原始音频）"
       : "参考材料";
+
+  // Keyboard shortcuts: A/B/C/D to select, Enter to reveal answer
+  const validKeys = question.options.map((opt) => opt.key);
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      // Skip if user is typing in an input/textarea
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+
+      const upper = e.key.toUpperCase() as OptionKey;
+      if (validKeys.includes(upper)) {
+        e.preventDefault();
+        onSelectAnswer(upper);
+      } else if (e.key === "Enter" && canRevealAnswer && !isAnswerRevealed) {
+        e.preventDefault();
+        onRevealAnswer();
+      }
+    },
+    [validKeys, onSelectAnswer, canRevealAnswer, isAnswerRevealed, onRevealAnswer],
+  );
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
 
   return (
     <div className={styles.card} ref={textScopeRef}>

@@ -194,6 +194,29 @@ export function MockExamView({
     exitFullscreen();
   }, []);
 
+  // Keyboard navigation: ArrowLeft/ArrowRight for prev/next question
+  const handleNavKey = useCallback(
+    (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      if (!currentQuestion) return;
+
+      if (e.key === "ArrowLeft" && currentQuestionIndex > 0) {
+        e.preventDefault();
+        onPrevious();
+      } else if (e.key === "ArrowRight" && currentQuestionIndex < totalQuestions - 1) {
+        e.preventDefault();
+        onNext();
+      }
+    },
+    [currentQuestion, currentQuestionIndex, totalQuestions, onPrevious, onNext],
+  );
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleNavKey);
+    return () => window.removeEventListener("keydown", handleNavKey);
+  }, [handleNavKey]);
+
   const formatTime = (ms: number) => {
     const totalSeconds = Math.floor(ms / 1000);
     const minutes = Math.floor(totalSeconds / 60);

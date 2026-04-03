@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import type { ActiveSession, Locale, SessionQuestion, OptionKey } from "../../types";
 import { LISTENING_PARTS, READING_PARTS, isListeningPart } from "../../types";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/Card";
@@ -133,6 +133,29 @@ export function PracticeView({
   useEffect(() => {
     setRevealedAnswers({});
   }, [activeSession?.attemptId]);
+
+  // Keyboard navigation: ArrowLeft/ArrowRight for prev/next question
+  const handleNavKey = useCallback(
+    (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      if (!currentQuestion) return;
+
+      if (e.key === "ArrowLeft" && currentQuestionIndex > 0) {
+        e.preventDefault();
+        onPrevious();
+      } else if (e.key === "ArrowRight" && currentQuestionIndex < totalQuestions - 1) {
+        e.preventDefault();
+        onNext();
+      }
+    },
+    [currentQuestion, currentQuestionIndex, totalQuestions, onPrevious, onNext],
+  );
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleNavKey);
+    return () => window.removeEventListener("keydown", handleNavKey);
+  }, [handleNavKey]);
 
   const partsMap = {
     listening: LISTENING_PARTS,
