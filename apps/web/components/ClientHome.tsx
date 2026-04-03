@@ -23,6 +23,7 @@ const ShadowingView = lazy(() => import("./shadowing/ShadowingView").then(m => (
 const MockExamView = lazy(() => import("./mock/MockExamView").then(m => ({ default: m.MockExamView })));
 const DashboardView = lazy(() => import("./dashboard/DashboardView").then(m => ({ default: m.DashboardView })));
 const SettingsView = lazy(() => import("./settings/SettingsView").then(m => ({ default: m.SettingsView })));
+const PracticeView = lazy(() => import("./practice/PracticeView").then(m => ({ default: m.PracticeView })));
 
 function ViewFallback() {
   return (
@@ -33,7 +34,9 @@ function ViewFallback() {
   );
 }
 
-const VALID_VIEWS = new Set<ViewTab>(TABS.map(t => t.key));
+const NAV_VIEWS = new Set<ViewTab>(TABS.map(t => t.key));
+const PRACTICE_VIEWS = new Set<ViewTab>(["listening", "grammar", "textcompletion", "reading"]);
+const ALL_VIEWS = new Set<ViewTab>([...NAV_VIEWS, ...PRACTICE_VIEWS]);
 
 const COPY = {
   zh: {
@@ -73,6 +76,8 @@ export function ClientHome() {
   const [goalScore, setGoalScore] = useState(800);
   const [goalDate, setGoalDate] = useState("");
   const [currentScoreInput, setCurrentScoreInput] = useState(400);
+  // Practice view state
+  const [practicePartFilter, setPracticePartFilter] = useState("all");
 
   const auth = useAuth(locale);
   const toast = useToast();
@@ -128,8 +133,11 @@ export function ClientHome() {
   }, [analytics.analytics?.goal]);
 
   const handleViewChange = useCallback((newView: ViewTab) => {
-    if (!VALID_VIEWS.has(newView)) return;
+    if (!ALL_VIEWS.has(newView)) return;
     if (activeView === "mock" && newView !== "mock") {
+      session.resetSession();
+    }
+    if (PRACTICE_VIEWS.has(activeView) && !PRACTICE_VIEWS.has(newView)) {
       session.resetSession();
     }
     setActiveView(newView);
@@ -204,6 +212,35 @@ export function ClientHome() {
     d.setDate(d.getDate() + 90);
     setGoalDate(d.toISOString().slice(0, 10));
   }, []);
+
+  const practiceFiltersForView = useCallback((view: ViewTab): { partNo?: number; partGroup?: "listening" | "reading" } => {
+    switch (view) {
+      case "listening": return { partGroup: "listening" };
+      case "grammar": return { partNo: 5 };
+      case "textcompletion": return { partNo: 6 };
+      case "reading": return { partNo: 7 };
+      default: return {};
+    }
+  }, []);
+
+  const handleStartPractice = useCallback(async () => {
+    const filters = practiceFiltersForView(activeView);
+    if (practicePartFilter !== "all") {
+      filters.partNo = Number(practicePartFilter);
+      delete filters.partGroup;
+    }
+    await session.startSession("practice", filters);
+  }, [activeView, practicePartFilter, session, practiceFiltersForView]);
+
+  const handleSubmitPractice = useCallback(async () => {
+    const report = await session.submitSession();
+    if (!report) return;
+    await mistakes.loadMistakes();
+    toast.show(COPY[locale].submitDone, "success");
+    if (typeof report.scoreTotal === "number") {
+      analytics.updateLatestScore(report.scoreTotal);
+    }
+  }, [session, mistakes, toast, locale, analytics]);
 
   const handleRunTask = useCallback(async (task: NextTask): Promise<boolean> => {
     return runner.runAction(task.action);
@@ -321,6 +358,30 @@ export function ClientHome() {
             onPrevious={session.goToPrevious}
             onNext={session.goToNext}
             onSubmit={handleSubmitSession}
+          />
+        );
+      case "listening":
+      case "grammar":
+      case "textcompletion":
+      case "reading":
+        return (
+          <PracticeView
+            type={activeView as "listening" | "grammar" | "textcompletion" | "reading"}
+            activeSession={session.activeSession}
+            currentQuestion={session.currentQuestion}
+            currentQuestionIndex={session.currentQuestionIndex}
+            totalQuestions={session.totalQuestions}
+            answeredCount={session.answeredCount}
+            answerMap={session.answerMap}
+            practiceHint={session.practiceHint}
+            isSubmitting={session.isSubmitting}
+            partFilter={practicePartFilter}
+            onPartFilterChange={setPracticePartFilter}
+            onStartPractice={() => void handleStartPractice()}
+            onSelectAnswer={session.selectAnswer}
+            onPrevious={session.goToPrevious}
+            onNext={session.goToNext}
+            onSubmit={() => void handleSubmitPractice()}
           />
         );
       default:

@@ -1,0 +1,7 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "npm -w apps/api": true,
+        "npx jest": true,
+        "Set-Content": true
+    }
+}
