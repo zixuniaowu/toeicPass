@@ -37,8 +37,11 @@ const COPY = {
     englishDef: "English Definition",
     tags: (tags: string) => `Tags: ${tags}`,
     unknown: "不认识",
+    unknownHint: "→ 几分钟后重现",
     familiar: "有点印象",
+    familiarHint: "→ 1-3天后复习",
     mastered: "完全掌握",
+    masteredHint: "→ 延长间隔",
   },
   ja: {
     currentCard: "現在のカード",
@@ -58,8 +61,11 @@ const COPY = {
     englishDef: "English Definition",
     tags: (tags: string) => `Tags: ${tags}`,
     unknown: "わからない",
+    unknownHint: "→ 数分後に再出題",
     familiar: "少し分かる",
+    familiarHint: "→ 1〜3日後に復習",
     mastered: "完全に覚えた",
+    masteredHint: "→ 間隔を延長",
   },
 } as const;
 
@@ -226,15 +232,18 @@ export function FlashCard({
       )}
 
       <div className={styles.gradeRow}>
-        <Button variant="secondary" onClick={() => onGrade(1)} disabled={isGrading}>
-          {copy.unknown}
-        </Button>
-        <Button variant="secondary" onClick={() => onGrade(3)} disabled={isGrading}>
-          {copy.familiar}
-        </Button>
-        <Button onClick={() => onGrade(5)} disabled={isGrading}>
-          {copy.mastered}
-        </Button>
+        <button className={styles.gradeBtn} onClick={() => onGrade(1)} disabled={isGrading}>
+          <span className={styles.gradeBtnLabel}>{copy.unknown}</span>
+          <span className={styles.gradeBtnHint}>{copy.unknownHint}</span>
+        </button>
+        <button className={styles.gradeBtn} onClick={() => onGrade(3)} disabled={isGrading}>
+          <span className={styles.gradeBtnLabel}>{copy.familiar}</span>
+          <span className={styles.gradeBtnHint}>{copy.familiarHint}</span>
+        </button>
+        <button className={`${styles.gradeBtn} ${styles.gradeBtnPrimary}`} onClick={() => onGrade(5)} disabled={isGrading}>
+          <span className={styles.gradeBtnLabel}>{copy.mastered}</span>
+          <span className={styles.gradeBtnHint}>{copy.masteredHint}</span>
+        </button>
       </div>
     </div>
   );

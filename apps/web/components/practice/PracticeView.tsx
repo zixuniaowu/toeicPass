@@ -227,6 +227,14 @@ export function PracticeView({
               }
             />
 
+            {/* Progress bar */}
+            <div className={styles.progressBar}>
+              <div
+                className={styles.progressBarFill}
+                style={{ width: `${totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0}%` }}
+              />
+            </div>
+
             <div className={styles.navigation}>
               <Button
                 variant="secondary"

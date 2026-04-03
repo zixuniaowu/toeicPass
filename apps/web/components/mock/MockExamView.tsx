@@ -160,7 +160,9 @@ export function MockExamView({
   const copy = COPY[locale];
   const [timerMs, setTimerMs] = useState(MOCK_DURATION_MS);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
-  const [showQuestionNav, setShowQuestionNav] = useState(false);
+  const [showQuestionNav, setShowQuestionNav] = useState(
+    typeof window !== "undefined" ? window.innerWidth >= 760 : false,
+  );
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
@@ -507,6 +509,14 @@ export function MockExamView({
       {/* Question area */}
       {currentQuestion && (
         <div className={styles.examBody}>
+          {/* Question progress bar */}
+          <div className={styles.questionProgressBar}>
+            <div
+              className={styles.questionProgressFill}
+              style={{ width: `${totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0}%` }}
+            />
+          </div>
+
           <div className={styles.questionHeader}>
             <h2>{copy.questionIndex(currentQuestionIndex + 1, totalQuestions)}</h2>
             <span className={styles.partBadge}>Part {currentQuestion.partNo}</span>

@@ -19,6 +19,8 @@
   --color-warning-light: #fffbeb;
   --color-error: #dc2626;
   --color-error-light: #fef2f2;
+  --color-disabled: #9ca3af;
+  --color-disabled-bg: #f3f4f6;
 
   /* Surfaces */
   --color-surface: #ffffff;
@@ -92,6 +94,8 @@
   --color-warning-light: #451a03;
   --color-error: #f87171;
   --color-error-light: #450a0a;
+  --color-disabled: #6b7280;
+  --color-disabled-bg: #1f2937;
 
   /* Surfaces */
   --color-surface: #1f2937;

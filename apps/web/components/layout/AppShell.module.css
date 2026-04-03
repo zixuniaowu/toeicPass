@@ -5,6 +5,11 @@
     linear-gradient(180deg, #0d1b2a 0%, #122140 80px, #1a2d4a 160px, #e8edf4 320px, var(--color-background) 480px);
 }
 
+:global([data-theme="dark"]) .shell {
+  background:
+    linear-gradient(180deg, #0a0f1a 0%, #0d1526 80px, #111827 160px, #111827 320px, var(--color-background) 480px);
+}
+
 .content {
   width: 100%;
   min-height: 100vh;

@@ -211,7 +211,7 @@
   padding: var(--space-1) var(--space-3);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: white;
+  background: var(--color-surface);
   font-size: var(--text-sm);
   color: var(--color-primary);
   cursor: pointer;
@@ -220,7 +220,7 @@
 
 .navToggle:hover {
   border-color: var(--color-primary);
-  background: #f0f6ff;
+  background: var(--color-primary-light);
 }
 
 /* Question Navigation */
@@ -243,7 +243,7 @@
   justify-content: center;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: white;
+  background: var(--color-surface);
   font-size: var(--text-sm);
   color: var(--color-muted);
   cursor: pointer;
@@ -262,9 +262,9 @@
 }
 
 .qNumAnswered {
-  background: #dbeafe;
-  border-color: #93c5fd;
-  color: #1d4ed8;
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .qNumCurrent.qNumAnswered {
@@ -304,6 +304,21 @@
   display: flex;
   gap: var(--space-3);
   justify-content: center;
+}
+
+/* Question progress bar */
+.questionProgressBar {
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.questionProgressFill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 3px;
+  transition: width 0.3s ease;
 }
 
 /* Result Screen */

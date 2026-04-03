@@ -13,10 +13,10 @@
 .diagnosticBanner {
   margin: 0 0 var(--space-4);
   padding: var(--space-3);
-  border: 1px solid #c8d9f0;
+  border: 1px solid var(--color-primary);
   border-radius: 10px;
-  background: #eef6ff;
-  color: #1f3f66;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
   font-size: var(--text-sm);
   font-weight: 600;
 }
@@ -65,6 +65,21 @@
   font-size: var(--text-base);
   color: var(--color-muted);
   font-weight: 500;
+}
+
+/* Progress bar */
+.progressBar {
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 3px;
+  transition: width 0.3s ease;
 }
 
 .navigation {
