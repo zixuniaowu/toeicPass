@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useCallback } from "react";
 import { TABS, type Locale, type ViewTab } from "../../types";
 import styles from "./TopBar.module.css";
 
@@ -13,10 +14,12 @@ interface TopBarProps {
 }
 
 const TAB_LABEL_JA: Partial<Record<ViewTab, string>> = {
+  dashboard: "ダッシュボード",
   shadowing: "シャドーイング",
   mock: "模擬試験",
   mistakes: "ミスノート",
   vocab: "単語帳",
+  settings: "設定",
 };
 
 export function TopBar({
@@ -28,6 +31,12 @@ export function TopBar({
   onLocaleChange,
 }: TopBarProps) {
   const isJa = locale === "ja";
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleTabClick = useCallback((key: ViewTab) => {
+    onViewChange(key);
+    setMenuOpen(false);
+  }, [onViewChange]);
 
   return (
     <header className={styles.topbar}>
@@ -40,17 +49,27 @@ export function TopBar({
       </div>
 
       {isLoggedIn && (
-        <nav className={styles.tabs}>
-          {TABS.map((tab) => (
-            <button
-              key={tab.key}
-              className={`${styles.tab} ${activeView === tab.key ? styles.active : ""}`}
-              onClick={() => onViewChange(tab.key)}
-            >
-              {isJa ? TAB_LABEL_JA[tab.key] ?? tab.label : tab.label}
-            </button>
-          ))}
-        </nav>
+        <>
+          <button
+            type="button"
+            className={styles.hamburger}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation"
+          >
+            <span className={`${styles.hamburgerLine} ${menuOpen ? styles.hamburgerOpen : ""}`} />
+          </button>
+          <nav className={`${styles.tabs} ${menuOpen ? styles.tabsOpen : ""}`}>
+            {TABS.map((tab) => (
+              <button
+                key={tab.key}
+                className={`${styles.tab} ${activeView === tab.key ? styles.active : ""}`}
+                onClick={() => handleTabClick(tab.key)}
+              >
+                {isJa ? TAB_LABEL_JA[tab.key] ?? tab.label : tab.label}
+              </button>
+            ))}
+          </nav>
+        </>
       )}
 
       <div className={styles.actions}>
@@ -69,9 +88,6 @@ export function TopBar({
           >
             日本語
           </button>
-        </div>
-        <div className={`${styles.badge} ${isLoggedIn ? styles.on : styles.off}`}>
-          {isLoggedIn ? (isJa ? "ログイン済み" : "已登录") : isJa ? "未ログイン" : "未登录"}
         </div>
         {isLoggedIn && onLogout && (
           <button type="button" className={styles.logout} onClick={onLogout}>

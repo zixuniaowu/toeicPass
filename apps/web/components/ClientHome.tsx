@@ -1,21 +1,28 @@
 "use client";
 
-import { useState, useEffect, useCallback, lazy, Suspense } from "react";
-import type { Locale, ViewTab } from "../types";
+import { useState, useEffect, useCallback, useRef, lazy, Suspense } from "react";
+import type { Locale, ViewTab, NextTask } from "../types";
+import { TABS } from "../types";
 import { useAuth } from "../hooks/useAuth";
 import { useSession } from "../hooks/useSession";
 import { useMistakes } from "../hooks/useMistakes";
 import { useVocab } from "../hooks/useVocab";
+import { useAnalytics } from "../hooks/useAnalytics";
 import { useLearningCommandRunner } from "../hooks/useLearningCommandRunner";
 import { AppShell } from "./layout/AppShell";
 import { CardSkeleton } from "./ui/Skeleton";
 import { LoginView } from "./auth/LoginView";
 import { ViewErrorBoundary } from "./error/ViewErrorBoundary";
+import { ToastContainer } from "./ui/Toast";
+import { useToast } from "../hooks/useToast";
+import * as api from "../lib/api";
 
 const MistakesView = lazy(() => import("./mistakes/MistakesView").then(m => ({ default: m.MistakesView })));
 const VocabView = lazy(() => import("./vocab/VocabView").then(m => ({ default: m.VocabView })));
 const ShadowingView = lazy(() => import("./shadowing/ShadowingView").then(m => ({ default: m.ShadowingView })));
 const MockExamView = lazy(() => import("./mock/MockExamView").then(m => ({ default: m.MockExamView })));
+const DashboardView = lazy(() => import("./dashboard/DashboardView").then(m => ({ default: m.DashboardView })));
+const SettingsView = lazy(() => import("./settings/SettingsView").then(m => ({ default: m.SettingsView })));
 
 function ViewFallback() {
   return (
@@ -26,37 +33,67 @@ function ViewFallback() {
   );
 }
 
-const COMPACT_VIEWS = new Set<ViewTab>(["shadowing", "mock", "mistakes", "vocab"]);
+const VALID_VIEWS = new Set<ViewTab>(TABS.map(t => t.key));
 
 const COPY = {
   zh: {
-    submitDone: "已完成模拟考试，已切换到错题集。",
-    registerSuccess: "注册并登录成功。",
-    jumpMockPart: (partNo: number) => `已切换到模拟考试，优先复练 Part ${partNo}。`,
-    jumpMockBatch: (count: number) => `已切换到模拟考试，建议优先复练 ${count} 道错题。`,
-    jumpMockSingle: "已切换到模拟考试，建议优先复练这道错题。",
-    mistakeBoundaryTitle: "错题库加载失败",
-    mistakeBoundaryHint: "错题数据存在异常字段。你可以先点“刷新错题”，系统会尽量自动修复并继续加载。",
+    submitDone: "\u5df2\u5b8c\u6210\u6a21\u62df\u8003\u8bd5\uff0c\u5df2\u5207\u6362\u5230\u9519\u9898\u96c6\u3002",
+    registerSuccess: "\u6ce8\u518c\u5e76\u767b\u5f55\u6210\u529f\u3002",
+    jumpMockPart: (partNo: number) => `\u5df2\u5207\u6362\u5230\u6a21\u62df\u8003\u8bd5\uff0c\u4f18\u5148\u590d\u7ec3 Part ${partNo}\u3002`,
+    jumpMockBatch: (count: number) => `\u5df2\u5207\u6362\u5230\u6a21\u62df\u8003\u8bd5\uff0c\u5efa\u8bae\u4f18\u5148\u590d\u7ec3 ${count} \u9053\u9519\u9898\u3002`,
+    jumpMockSingle: "\u5df2\u5207\u6362\u5230\u6a21\u62df\u8003\u8bd5\uff0c\u5efa\u8bae\u4f18\u5148\u590d\u7ec3\u8fd9\u9053\u9519\u9898\u3002",
+    mistakeBoundaryTitle: "\u9519\u9898\u5e93\u52a0\u8f7d\u5931\u8d25",
+    mistakeBoundaryHint: "\u9519\u9898\u6570\u636e\u5b58\u5728\u5f02\u5e38\u5b57\u6bb5\u3002\u4f60\u53ef\u4ee5\u5148\u70b9\u201c\u5237\u65b0\u9519\u9898\u201d\uff0c\u7cfb\u7edf\u4f1a\u5c3d\u91cf\u81ea\u52a8\u4fee\u590d\u5e76\u7ee7\u7eed\u52a0\u8f7d\u3002",
+    goalSaved: "\u76ee\u6807\u5df2\u4fdd\u5b58\u3002",
+    goalFailed: "\u76ee\u6807\u4fdd\u5b58\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5\u3002",
   },
   ja: {
-    submitDone: "模擬試験を完了しました。ミスノートに切り替えました。",
-    registerSuccess: "登録とログインが完了しました。",
-    jumpMockPart: (partNo: number) => `模擬試験に切り替えました。Part ${partNo} を優先して復習してください。`,
-    jumpMockBatch: (count: number) => `模擬試験に切り替えました。まずは ${count} 問のミスを復習しましょう。`,
-    jumpMockSingle: "模擬試験に切り替えました。このミス問題を優先して復習しましょう。",
-    mistakeBoundaryTitle: "ミスノートの読み込みに失敗しました",
-    mistakeBoundaryHint: "データに不整合がある可能性があります。「ミスを更新」を押して再読み込みしてください。",
+    submitDone: "\u6a21\u64ec\u8a66\u9a13\u3092\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\u30df\u30b9\u30ce\u30fc\u30c8\u306b\u5207\u308a\u66ff\u3048\u307e\u3057\u305f\u3002",
+    registerSuccess: "\u767b\u9332\u3068\u30ed\u30b0\u30a4\u30f3\u304c\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002",
+    jumpMockPart: (partNo: number) => `\u6a21\u64ec\u8a66\u9a13\u306b\u5207\u308a\u66ff\u3048\u307e\u3057\u305f\u3002Part ${partNo} \u3092\u512a\u5148\u3057\u3066\u5fa9\u7fd2\u3057\u3066\u304f\u3060\u3055\u3044\u3002`,
+    jumpMockBatch: (count: number) => `\u6a21\u64ec\u8a66\u9a13\u306b\u5207\u308a\u66ff\u3048\u307e\u3057\u305f\u3002\u307e\u305a\u306f ${count} \u554f\u306e\u30df\u30b9\u3092\u5fa9\u7fd2\u3057\u307e\u3057\u3087\u3046\u3002`,
+    jumpMockSingle: "\u6a21\u64ec\u8a66\u9a13\u306b\u5207\u308a\u66ff\u3048\u307e\u3057\u305f\u3002\u3053\u306e\u30df\u30b9\u554f\u984c\u3092\u512a\u5148\u3057\u3066\u5fa9\u7fd2\u3057\u307e\u3057\u3087\u3046\u3002",
+    mistakeBoundaryTitle: "\u30df\u30b9\u30ce\u30fc\u30c8\u306e\u8aad\u307f\u8fbc\u307f\u306b\u5931\u6557\u3057\u307e\u3057\u305f",
+    mistakeBoundaryHint: "\u30c7\u30fc\u30bf\u306b\u4e0d\u6574\u5408\u304c\u3042\u308b\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\u300c\u30df\u30b9\u3092\u66f4\u65b0\u300d\u3092\u62bc\u3057\u3066\u518d\u8aad\u307f\u8fbc\u307f\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+    goalSaved: "\u76ee\u6a19\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
+    goalFailed: "\u76ee\u6a19\u306e\u4fdd\u5b58\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
   },
 } as const;
 
 export function ClientHome() {
-  const [activeView, setActiveView] = useState<ViewTab>("shadowing");
-  const [locale, setLocale] = useState<Locale>("zh");
+  const [activeView, setActiveView] = useState<ViewTab>("dashboard");
+  const [locale, setLocale] = useState<Locale>(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("lb.locale") as Locale) || "zh";
+    }
+    return "zh";
+  });
+
+  // Goal settings state for SettingsView
+  const [goalScore, setGoalScore] = useState(800);
+  const [goalDate, setGoalDate] = useState("");
+  const [currentScoreInput, setCurrentScoreInput] = useState(400);
 
   const auth = useAuth(locale);
+  const toast = useToast();
   const session = useSession(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const vocab = useVocab(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
+  const analytics = useAnalytics(auth.getRequestOptions);
+
+  // Bridge auth.message changes into toast notifications
+  const lastMessageRef = useRef("");
+  useEffect(() => {
+    if (auth.message && auth.message !== lastMessageRef.current) {
+      lastMessageRef.current = auth.message;
+      const variant = auth.message.includes("\u5931\u8d25") || auth.message.includes("\u5931\u6557") || auth.message.includes("error") || auth.message.includes("Error")
+        ? "error" as const
+        : auth.message.includes("\u6210\u529f") || auth.message.includes("\u5b8c\u4e86") || auth.message.includes("\u5b8c\u6210")
+          ? "success" as const
+          : "info" as const;
+      toast.show(auth.message, variant);
+    }
+  }, [auth.message, toast]);
 
   const runner = useLearningCommandRunner({
     requiresDiagnostic: false,
@@ -67,11 +104,31 @@ export function ClientHome() {
     loadVocabularyCards: vocab.loadCards,
   });
 
-  const handleViewChange = useCallback((newView: ViewTab) => {
-    if (!COMPACT_VIEWS.has(newView)) {
-      setActiveView("shadowing");
-      return;
+  // Persist locale
+  useEffect(() => {
+    localStorage.setItem("lb.locale", locale);
+  }, [locale]);
+
+  // Auto-load analytics on login and when dashboard becomes active
+  useEffect(() => {
+    if (auth.isLoggedIn && activeView === "dashboard") {
+      void analytics.refreshAll(auth.token);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auth.isLoggedIn, activeView]);
+
+  // Sync goal settings from analytics
+  useEffect(() => {
+    if (analytics.analytics?.goal) {
+      const g = analytics.analytics.goal;
+      if (typeof g.targetScore === "number") setGoalScore(g.targetScore);
+      if (g.targetExamDate) setGoalDate(g.targetExamDate);
+      if (typeof g.baselineScore === "number") setCurrentScoreInput(g.baselineScore);
+    }
+  }, [analytics.analytics?.goal]);
+
+  const handleViewChange = useCallback((newView: ViewTab) => {
+    if (!VALID_VIEWS.has(newView)) return;
     if (activeView === "mock" && newView !== "mock") {
       session.resetSession();
     }
@@ -90,12 +147,15 @@ export function ClientHome() {
     setActiveView("mistakes");
     await mistakes.loadMistakes();
     auth.setMessage(COPY[locale].submitDone);
-  }, [session, mistakes, auth, locale]);
+    if (typeof report.scoreTotal === "number") {
+      analytics.updateLatestScore(report.scoreTotal);
+    }
+  }, [session, mistakes, auth, locale, analytics]);
 
   const handleLogin = useCallback(async () => {
     const token = await auth.login();
     if (!token) return;
-    setActiveView("shadowing");
+    setActiveView("dashboard");
   }, [auth]);
 
   const handleRegisterAndLogin = useCallback(async () => {
@@ -104,12 +164,12 @@ export function ClientHome() {
     const token = await auth.login(true);
     if (!token) return;
     auth.setMessage(COPY[locale].registerSuccess);
-    setActiveView("shadowing");
+    setActiveView("dashboard");
   }, [auth, locale]);
 
   const handleLogout = useCallback(() => {
     session.resetSession();
-    setActiveView("shadowing");
+    setActiveView("dashboard");
     auth.logout();
   }, [auth, session]);
 
@@ -126,6 +186,29 @@ export function ClientHome() {
     await handleStartMock(COPY[locale].jumpMockSingle);
   }, [handleStartMock, locale]);
 
+  const handleSaveGoal = useCallback(async () => {
+    const opts = auth.getRequestOptions();
+    if (!opts.token) return;
+    const result = await api.createGoal(goalScore, goalDate, currentScoreInput, opts);
+    if (result.success) {
+      auth.setMessage(COPY[locale].goalSaved);
+      void analytics.refreshAll(auth.token);
+    } else {
+      auth.setMessage(COPY[locale].goalFailed);
+    }
+  }, [auth, goalScore, goalDate, currentScoreInput, locale, analytics]);
+
+  const handleApplyNinetyDayGoal = useCallback(() => {
+    setGoalScore(800);
+    const d = new Date();
+    d.setDate(d.getDate() + 90);
+    setGoalDate(d.toISOString().slice(0, 10));
+  }, []);
+
+  const handleRunTask = useCallback(async (task: NextTask): Promise<boolean> => {
+    return runner.runAction(task.action);
+  }, [runner]);
+
   useEffect(() => {
     if (activeView === "mistakes") {
       void mistakes.loadMistakes();
@@ -138,6 +221,42 @@ export function ClientHome() {
 
   const renderView = () => {
     switch (activeView) {
+      case "dashboard":
+        return (
+          <DashboardView
+            analytics={analytics.analytics}
+            nextTasks={analytics.nextTasks}
+            dailyPlan={analytics.dailyPlan}
+            currentScore={analytics.currentScore}
+            predictedScore={analytics.predictedScore}
+            currentGap={analytics.currentGap}
+            accuracyLabel={analytics.accuracyLabel}
+            avgTimeLabel={analytics.avgTimeLabel}
+            isSyncing={analytics.isSyncing}
+            onRefresh={() => void analytics.refreshAll(auth.token)}
+            onStartDiagnostic={() => void runner.runAction("diagnostic:start")}
+            onViewChange={handleViewChange}
+            onRunTask={handleRunTask}
+            onRunAction={(action: string) => runner.runAction(action)}
+          />
+        );
+      case "settings":
+        return (
+          <SettingsView
+            credentials={auth.credentials}
+            currentScore={currentScoreInput}
+            goalScore={goalScore}
+            goalDate={goalDate}
+            onCredentialsChange={auth.updateCredentials}
+            onCurrentScoreChange={setCurrentScoreInput}
+            onGoalScoreChange={setGoalScore}
+            onGoalDateChange={setGoalDate}
+            onRegister={() => void auth.register()}
+            onLogin={() => void auth.login()}
+            onApplyNinetyDayGoal={handleApplyNinetyDayGoal}
+            onSaveGoal={() => void handleSaveGoal()}
+          />
+        );
       case "shadowing":
         return <ShadowingView locale={locale} />;
       case "mistakes":
@@ -185,7 +304,6 @@ export function ClientHome() {
           />
         );
       case "mock":
-      default:
         return (
           <MockExamView
             locale={locale}
@@ -205,21 +323,43 @@ export function ClientHome() {
             onSubmit={handleSubmitSession}
           />
         );
+      default:
+        return (
+          <DashboardView
+            analytics={analytics.analytics}
+            nextTasks={analytics.nextTasks}
+            dailyPlan={analytics.dailyPlan}
+            currentScore={analytics.currentScore}
+            predictedScore={analytics.predictedScore}
+            currentGap={analytics.currentGap}
+            accuracyLabel={analytics.accuracyLabel}
+            avgTimeLabel={analytics.avgTimeLabel}
+            isSyncing={analytics.isSyncing}
+            onRefresh={() => void analytics.refreshAll(auth.token)}
+            onStartDiagnostic={() => void runner.runAction("diagnostic:start")}
+            onViewChange={handleViewChange}
+            onRunTask={handleRunTask}
+            onRunAction={(action: string) => runner.runAction(action)}
+          />
+        );
     }
   };
 
   if (!auth.isLoggedIn) {
     return (
-      <LoginView
-        locale={locale}
-        credentials={auth.credentials}
-        isSubmitting={auth.isSubmitting}
-        message={auth.message}
-        onCredentialsChange={auth.updateCredentials}
-        onLogin={() => void handleLogin()}
-        onRegister={() => void handleRegisterAndLogin()}
-        onLocaleChange={setLocale}
-      />
+      <>
+        <LoginView
+          locale={locale}
+          credentials={auth.credentials}
+          isSubmitting={auth.isSubmitting}
+          message={auth.message}
+          onCredentialsChange={auth.updateCredentials}
+          onLogin={() => void handleLogin()}
+          onRegister={() => void handleRegisterAndLogin()}
+          onLocaleChange={setLocale}
+        />
+        <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
+      </>
     );
   }
 
@@ -236,6 +376,7 @@ export function ClientHome() {
       <Suspense fallback={<ViewFallback />}>
         {renderView()}
       </Suspense>
+      <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
     </AppShell>
   );
 }

@@ -28,10 +28,38 @@ const DEFAULT_CREDENTIALS: AuthCredentials = {
 
 const byLocale = (locale: Locale, zh: string, ja: string) => (locale === "ja" ? ja : zh);
 
+const STORAGE_KEY_TOKEN = "lb.token";
+const STORAGE_KEY_TENANT = "lb.tenantCode";
+
+function safeGetItem(key: string): string | null {
+  try { return localStorage.getItem(key); } catch { return null; }
+}
+
+function safeSetItem(key: string, value: string): void {
+  try { localStorage.setItem(key, value); } catch { /* noop */ }
+}
+
+function safeRemoveItem(key: string): void {
+  try { localStorage.removeItem(key); } catch { /* noop */ }
+}
+
+function loadStoredToken(): string {
+  if (typeof window === "undefined") return "";
+  return safeGetItem(STORAGE_KEY_TOKEN) ?? "";
+}
+
+function loadStoredTenant(): string {
+  if (typeof window === "undefined") return DEFAULT_CREDENTIALS.tenantCode;
+  return safeGetItem(STORAGE_KEY_TENANT) ?? DEFAULT_CREDENTIALS.tenantCode;
+}
+
 export function useAuth(locale: Locale) {
-  const tenantCodeRef = useRef<string>(DEFAULT_CREDENTIALS.tenantCode);
-  const [token, setToken] = useState<string>("");
-  const [credentials, setCredentials] = useState<AuthCredentials>(DEFAULT_CREDENTIALS);
+  const tenantCodeRef = useRef<string>(loadStoredTenant());
+  const [token, setToken] = useState<string>(loadStoredToken);
+  const [credentials, setCredentials] = useState<AuthCredentials>(() => ({
+    ...DEFAULT_CREDENTIALS,
+    tenantCode: loadStoredTenant(),
+  }));
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string>(
     byLocale(locale, "请先登录。首次使用可先注册账号。", "先にログインしてください。初回は登録から開始できます。"),
@@ -39,6 +67,15 @@ export function useAuth(locale: Locale) {
 
   const isLoggedIn = Boolean(token);
   const authHeader = useMemo(() => (token ? `Bearer ${token}` : null), [token]);
+
+  // Persist token to localStorage
+  useEffect(() => {
+    if (token) {
+      safeSetItem(STORAGE_KEY_TOKEN, token);
+    } else {
+      safeRemoveItem(STORAGE_KEY_TOKEN);
+    }
+  }, [token]);
 
   useEffect(() => {
     if (!token) {
@@ -123,6 +160,7 @@ export function useAuth(locale: Locale) {
           if (resolvedTenantCode) {
             tenantCodeRef.current = resolvedTenantCode;
             setCredentials((prev) => ({ ...prev, tenantCode: resolvedTenantCode }));
+            safeSetItem(STORAGE_KEY_TENANT, resolvedTenantCode);
           }
           setToken(result.token);
           if (!silent) setMessage(byLocale(locale, "登录成功。", "ログイン成功。"));
@@ -154,6 +192,8 @@ export function useAuth(locale: Locale) {
 
   const logout = useCallback(() => {
     setToken("");
+    safeRemoveItem(STORAGE_KEY_TOKEN);
+    safeRemoveItem(STORAGE_KEY_TENANT);
     setMessage(byLocale(locale, "已退出登录。请使用账号重新登录。", "ログアウトしました。アカウントで再ログインしてください。"));
   }, [locale]);
 
