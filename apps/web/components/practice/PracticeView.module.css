@@ -82,6 +82,16 @@
   color: var(--color-muted);
 }
 
+@media (max-width: 1024px) {
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .session {
+    padding: var(--space-4);
+  }
+}
+
 @media (max-width: 760px) {
   .filters {
     grid-template-columns: 1fr;

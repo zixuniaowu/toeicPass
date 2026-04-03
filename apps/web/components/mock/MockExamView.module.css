@@ -518,3 +518,25 @@
   font-size: var(--text-lg);
   font-weight: 600;
 }
+
+@media (max-width: 760px) {
+  .examInfo {
+    grid-template-columns: 1fr;
+  }
+
+  .scoreBreakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .statsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .partRow {
+    grid-template-columns: 50px 1fr 80px;
+  }
+
+  .totalScore strong {
+    font-size: 3rem;
+  }
+}

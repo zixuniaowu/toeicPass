@@ -854,6 +854,24 @@
 
 }
 
+@media (max-width: 1024px) {
+  .focusIntro {
+    padding: var(--space-4);
+  }
+
+  .kpi {
+    padding: var(--space-4);
+  }
+
+  .actions {
+    padding: var(--space-4);
+  }
+
+  .dailyToolbar {
+    flex-wrap: wrap;
+  }
+}
+
 @media (max-width: 760px) {
   .kpiGrid,
   .statsGrid {
