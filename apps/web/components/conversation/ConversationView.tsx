@@ -1,13 +1,59 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
-import type { ConversationScenario, ConversationSession } from "../../types";
+import type { ConversationScenario, ConversationSession, Locale } from "../../types";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
 import styles from "./ConversationView.module.css";
 
+const COPY = {
+  zh: {
+    heading: "AI 英语对话练习",
+    subtitle: "选择一个场景，开始和 AI 进行英语对话练习",
+    start: "开始对话练习",
+    end: "结束对话",
+    corrections: "纠错：",
+    suggestions: "建议：",
+    placeholderRecording: "正在录音，请讲话...",
+    placeholderInput: "用英语输入你的回复或点击录音...",
+    stopRec: "⏹️ 停止",
+    startRec: "🎤 录音",
+    send: "发送",
+    tipsTitle: "练习技巧",
+    tips: [
+      "像真实对话一样自然地回复",
+      "尽量使用完整的句子来练习",
+      "注意 AI 给出的纠错和建议",
+      "多练习 TOEIC 常见场景用语",
+    ],
+    speechUnsupported: "浏览器不支持语音识别，请使用 Chrome 浏览器",
+  },
+  ja: {
+    heading: "AI 英会話練習",
+    subtitle: "シナリオを選んで、AI と英会話を練習しましょう",
+    start: "会話を始める",
+    end: "会話を終了",
+    corrections: "修正：",
+    suggestions: "提案：",
+    placeholderRecording: "録音中です。話してください...",
+    placeholderInput: "英語で返答を入力するか、録音ボタンを押してください...",
+    stopRec: "⏹️ 停止",
+    startRec: "🎤 録音",
+    send: "送信",
+    tipsTitle: "練習のコツ",
+    tips: [
+      "実際の会話のように自然に返答しましょう",
+      "できるだけ完全な文で練習しましょう",
+      "AI のフィードバックや提案に注目しましょう",
+      "TOEIC でよく出るシーン表現を積極的に使いましょう",
+    ],
+    speechUnsupported: "お使いのブラウザは音声認識に対応していません。Chrome をご利用ください。",
+  },
+} as const;
+
 type ConversationViewProps = {
+  locale: Locale;
   scenarios: ConversationScenario[];
   activeSession: ConversationSession | null;
   isLoading: boolean;
@@ -19,6 +65,7 @@ type ConversationViewProps = {
 };
 
 export function ConversationView({
+  locale,
   scenarios,
   activeSession,
   isLoading,
@@ -28,6 +75,7 @@ export function ConversationView({
   onSendMessage,
   onEndSession,
 }: ConversationViewProps) {
+  const t = COPY[locale];
   const [isRecording, setIsRecording] = useState(false);
   const recognitionRef = useRef<any>(null);
 
@@ -49,7 +97,7 @@ export function ConversationView({
 
     const SpeechRecognitionAPI = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechRecognitionAPI) {
-      alert("浏览器不支持语音识别，请使用 Chrome 浏览器");
+      alert(t.speechUnsupported);
       return;
     }
 
@@ -105,8 +153,8 @@ export function ConversationView({
     return (
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>AI 英语对话练习</h2>
-          <p className={styles.subtitle}>选择一个场景，开始和 AI 进行英语对话练习</p>
+          <h2>{t.heading}</h2>
+          <p className={styles.subtitle}>{t.subtitle}</p>
         </div>
 
         <div className={styles.scenarioGrid}>
@@ -124,7 +172,7 @@ export function ConversationView({
                 <Badge variant="info">{getCategoryLabel(scenario.category)}</Badge>
               </div>
               <Button onClick={() => onStartSession(scenario.id)} className={styles.startBtn}>
-                开始对话练习
+                {t.start}
               </Button>
             </Card>
           ))}
@@ -144,7 +192,7 @@ export function ConversationView({
           <span className={styles.titleCn}>{scenario?.titleCn}</span>
         </div>
         <Button variant="secondary" onClick={onEndSession}>
-          结束对话
+          {t.end}
         </Button>
       </div>
 
@@ -158,7 +206,7 @@ export function ConversationView({
               <div className={styles.messageContent}>{message.content}</div>
               {message.corrections && message.corrections.length > 0 && (
                 <div className={styles.corrections}>
-                  <strong>纠错：</strong>
+                  <strong>{t.corrections}</strong>
                   <ul>
                     {message.corrections.map((c, i) => (
                       <li key={i}>{c}</li>
@@ -168,7 +216,7 @@ export function ConversationView({
               )}
               {message.suggestions && message.suggestions.length > 0 && (
                 <div className={styles.suggestions}>
-                  <strong>建议：</strong>
+                  <strong>{t.suggestions}</strong>
                   <ul>
                     {message.suggestions.map((s, i) => (
                       <li key={i}>{s}</li>
@@ -194,7 +242,7 @@ export function ConversationView({
             value={inputText}
             onChange={(e) => onInputChange(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={isRecording ? "正在录音，请讲话..." : "用英语输入你的回复或点击录音..."}
+            placeholder={isRecording ? t.placeholderRecording : t.placeholderInput}
             className={styles.textInput}
             disabled={isLoading}
             rows={2}
@@ -206,22 +254,21 @@ export function ConversationView({
               onClick={toggleRecording}
               disabled={isLoading}
             >
-              {isRecording ? "⏹️ 停止" : "🎤 录音"}
+              {isRecording ? t.stopRec : t.startRec}
             </Button>
             <Button type="submit" disabled={!inputText.trim() || isLoading}>
-              发送
+              {t.send}
             </Button>
           </div>
         </form>
       </Card>
 
       <div className={styles.tips}>
-        <h4>练习技巧</h4>
+        <h4>{t.tipsTitle}</h4>
         <ul>
-          <li>像真实对话一样自然地回复</li>
-          <li>尽量使用完整的句子来练习</li>
-          <li>注意 AI 给出的纠错和建议</li>
-          <li>多练习 TOEIC 常见场景用语</li>
+          {t.tips.map((tip, i) => (
+            <li key={i}>{tip}</li>
+          ))}
         </ul>
       </div>
     </div>

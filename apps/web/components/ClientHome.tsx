@@ -368,6 +368,7 @@ export function ClientHome() {
       case "conversation":
         return (
           <ConversationView
+            locale={locale}
             scenarios={conversation.scenarios}
             activeSession={conversation.activeSession}
             isLoading={conversation.isLoading}

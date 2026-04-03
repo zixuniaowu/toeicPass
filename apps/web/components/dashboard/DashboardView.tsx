@@ -26,6 +26,7 @@ const COPY = {
     reading: "\u9605\u8bfb\u8bad\u7ec3",
     grammar: "\u8bed\u6cd5\u8bad\u7ec3",
     mistakeBank: "\u9519\u9898\u5e93",
+    conversation: "AI \u5bf9\u8bdd",
     planTitle: "\u6bcf\u65e5\u6253\u5361\u8ba1\u5212",
     streakLabel: (streak: number) => `\u8fde\u7eed\u5b66\u4e60 ${streak} \u5929`,
     syncing: "\u540c\u6b65\u4e2d",
@@ -65,6 +66,7 @@ const COPY = {
     reading: "\u30ea\u30fc\u30c7\u30a3\u30f3\u30b0",
     grammar: "\u6587\u6cd5",
     mistakeBank: "\u30df\u30b9\u30ce\u30fc\u30c8",
+    conversation: "AI \u4f1a\u8a71",
     planTitle: "\u6bce\u65e5\u30c1\u30a7\u30c3\u30af\u30a4\u30f3\u8a08\u753b",
     streakLabel: (streak: number) => `${streak} \u65e5\u9023\u7d9a\u5b66\u7fd2`,
     syncing: "\u540c\u671f\u4e2d",
@@ -393,6 +395,7 @@ export function DashboardView({
             <Button variant="secondary" onClick={() => onViewChange("grammar")}>{t.grammar}</Button>
             <Button variant="secondary" onClick={() => onViewChange("reading")}>{t.reading}</Button>
             <Button variant="secondary" onClick={() => onViewChange("mistakes")}>{t.mistakeBank}</Button>
+            <Button variant="secondary" onClick={() => onViewChange("conversation")}>{t.conversation}</Button>
           </div>
 
           <div className={styles.planBoard}>
