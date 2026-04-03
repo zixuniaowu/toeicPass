@@ -1,12 +1,94 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import type { AnalyticsOverview, DailyPlan, NextTask, ViewTab, WeeklyPlanDay } from "../../types";
+import type { AnalyticsOverview, DailyPlan, Locale, NextTask, ViewTab, WeeklyPlanDay } from "../../types";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/Card";
 import { Button } from "../ui/Button";
 import styles from "./DashboardView.module.css";
 
+const COPY = {
+  zh: {
+    title: "\u5b66\u4e60\u6982\u89c8",
+    refresh: "\u5237\u65b0\u6570\u636e",
+    focusTitle: "\u6bcf\u65e5\u6253\u5361\u6a21\u5f0f",
+    focusHint: "\u6b65\u9aa4\uff1a\u9009\u65e5\u671f \u2192 \u70b9\u201c\u5f00\u59cb\u4e0b\u4e00\u4e2a\u4efb\u52a1\u201d \u2192 \u5b8c\u6210\u540e\u52fe\u9009\u6253\u5361\u3002",
+    currentScore: "\u5f53\u524d\u603b\u5206",
+    predicted: "\u9884\u6d4b\u5206\u6570",
+    gap: "\u76ee\u6807\u5dee\u8ddd",
+    accuracy: "\u8bad\u7ec3\u6b63\u786e\u7387",
+    paceCritical: "\u5f53\u524d\u76ee\u6807\u8282\u594f\u504f\u7d27\uff0c\u5efa\u8bae\u7acb\u5373\u63d0\u5347\u6bcf\u5468\u505a\u9898\u91cf\u548c\u6a21\u8003\u9891\u7387\u3002",
+    paceRisk: "\u76ee\u6807\u6709\u538b\u529b\uff0c\u5efa\u8bae\u6bcf\u5468\u589e\u52a0\u5f31\u9879\u5f3a\u5316\u5e76\u4fdd\u8bc1\u81f3\u5c11\u4e00\u6b21\u6a21\u8003\u3002",
+    paceGood: "\u76ee\u6807\u8282\u594f\u53ef\u8fbe\u6210\uff0c\u7ee7\u7eed\u4fdd\u6301\u5f53\u524d\u8bad\u7ec3\u5f3a\u5ea6\u3002",
+    paceLabel: "\u51b2\u5206\u8282\u594f",
+    paceDaysTo: (days: number | string, gain: number | string) => `\u8ddd\u8003\u8bd5 ${days} \u5929 \xb7 \u6bcf\u5468\u9700\u63d0\u5347 ${gain} \u5206\u3002`,
+    startDiagnostic: "\u5f00\u59cb\u8bca\u65ad",
+    listening: "\u542c\u529b\u8bad\u7ec3",
+    reading: "\u9605\u8bfb\u8bad\u7ec3",
+    grammar: "\u8bed\u6cd5\u8bad\u7ec3",
+    mistakeBank: "\u9519\u9898\u5e93",
+    planTitle: "\u6bcf\u65e5\u6253\u5361\u8ba1\u5212",
+    streakLabel: (streak: number) => `\u8fde\u7eed\u5b66\u4e60 ${streak} \u5929`,
+    syncing: "\u540c\u6b65\u4e2d",
+    checkedIn: "\u5df2\u6253\u5361",
+    pending: "\u5f85\u6253\u5361",
+    min: "\u5206\u949f",
+    taskOf: (done: number, total: number) => `\u4efb\u52a1 ${done}/${total}`,
+    completionRate: (pct: number) => `\u5b8c\u6210\u7387 ${pct}%`,
+    avgTime: "\u5e73\u5747\u7528\u65f6",
+    running: "\u6267\u884c\u4e2d...",
+    startNext: "\u5f00\u59cb\u4e0b\u4e00\u4e2a\u4efb\u52a1",
+    allDone: "\u4eca\u65e5\u5df2\u5b8c\u6210",
+    emptyPlan: "\u4eca\u5929\u8fd8\u6ca1\u6709\u751f\u6210\u4efb\u52a1\uff0c\u5148\u70b9\u4e00\u6b21\u201c\u5f00\u59cb\u8bca\u65ad\u201d\u3002",
+    done: "\u5df2\u6253\u5361",
+    notDone: "\u672a\u6253\u5361",
+    viewPoints: "\u67e5\u770b\u4efb\u52a1\u8981\u70b9",
+    start: "\u5f00\u59cb",
+    manualCheck: "\u624b\u52a8\u6253\u5361",
+    taskFailed: "\u4efb\u52a1\u6267\u884c\u5931\u8d25\uff0c\u8bf7\u770b\u9876\u90e8\u63d0\u793a\u540e\u91cd\u8bd5\u3002",
+  },
+  ja: {
+    title: "\u5b66\u7fd2\u6982\u8981",
+    refresh: "\u30c7\u30fc\u30bf\u66f4\u65b0",
+    focusTitle: "\u6bce\u65e5\u30c1\u30a7\u30c3\u30af\u30a4\u30f3",
+    focusHint: "\u624b\u9806\uff1a\u65e5\u4ed8\u9078\u629e \u2192 \u300c\u6b21\u306e\u30bf\u30b9\u30af\u3092\u958b\u59cb\u300d \u2192 \u5b8c\u4e86\u5f8c\u30c1\u30a7\u30c3\u30af\u3002",
+    currentScore: "\u73fe\u5728\u30b9\u30b3\u30a2",
+    predicted: "\u4e88\u6e2c\u30b9\u30b3\u30a2",
+    gap: "\u76ee\u6a19\u307e\u3067",
+    accuracy: "\u6b63\u7b54\u7387",
+    paceCritical: "\u76ee\u6a19\u30da\u30fc\u30b9\u304c\u53b3\u3057\u3044\u3067\u3059\u3002\u6bcf\u9031\u306e\u7df4\u7fd2\u91cf\u3068\u6a21\u8a66\u983b\u5ea6\u3092\u5897\u3084\u3057\u307e\u3057\u3087\u3046\u3002",
+    paceRisk: "\u76ee\u6a19\u306b\u5727\u304c\u304b\u304b\u3063\u3066\u3044\u307e\u3059\u3002\u5f31\u70b9\u5f37\u5316\u3068\u9031\u4e00\u56de\u306e\u6a21\u8a66\u3092\u304a\u3059\u3059\u3081\u3057\u307e\u3059\u3002",
+    paceGood: "\u76ee\u6a19\u30da\u30fc\u30b9\u306f\u9054\u6210\u53ef\u80fd\u3067\u3059\u3002\u3053\u306e\u307e\u307e\u7d9a\u3051\u307e\u3057\u3087\u3046\u3002",
+    paceLabel: "\u30b9\u30b3\u30a2\u30da\u30fc\u30b9",
+    paceDaysTo: (days: number | string, gain: number | string) => `\u8a66\u9a13\u307e\u3067 ${days} \u65e5 \xb7 \u6bce\u9031 ${gain} \u70b9\u30a2\u30c3\u30d7\u304c\u5fc5\u8981\u3067\u3059\u3002`,
+    startDiagnostic: "\u8a3a\u65ad\u958b\u59cb",
+    listening: "\u30ea\u30b9\u30cb\u30f3\u30b0",
+    reading: "\u30ea\u30fc\u30c7\u30a3\u30f3\u30b0",
+    grammar: "\u6587\u6cd5",
+    mistakeBank: "\u30df\u30b9\u30ce\u30fc\u30c8",
+    planTitle: "\u6bce\u65e5\u30c1\u30a7\u30c3\u30af\u30a4\u30f3\u8a08\u753b",
+    streakLabel: (streak: number) => `${streak} \u65e5\u9023\u7d9a\u5b66\u7fd2`,
+    syncing: "\u540c\u671f\u4e2d",
+    checkedIn: "\u30c1\u30a7\u30c3\u30af\u6e08",
+    pending: "\u672a\u30c1\u30a7\u30c3\u30af",
+    min: "\u5206",
+    taskOf: (done: number, total: number) => `\u30bf\u30b9\u30af ${done}/${total}`,
+    completionRate: (pct: number) => `\u5b8c\u4e86\u7387 ${pct}%`,
+    avgTime: "\u5e73\u5747\u6240\u8981\u6642\u9593",
+    running: "\u5b9f\u884c\u4e2d...",
+    startNext: "\u6b21\u306e\u30bf\u30b9\u30af\u3092\u958b\u59cb",
+    allDone: "\u672c\u65e5\u5b8c\u4e86",
+    emptyPlan: "\u4eca\u65e5\u306e\u30bf\u30b9\u30af\u304c\u307e\u3060\u751f\u6210\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002\u307e\u305a\u300c\u8a3a\u65ad\u958b\u59cb\u300d\u3092\u62bc\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+    done: "\u30c1\u30a7\u30c3\u30af\u6e08",
+    notDone: "\u672a\u30c1\u30a7\u30c3\u30af",
+    viewPoints: "\u30bf\u30b9\u30af\u306e\u30dd\u30a4\u30f3\u30c8",
+    start: "\u958b\u59cb",
+    manualCheck: "\u624b\u52d5\u30c1\u30a7\u30c3\u30af",
+    taskFailed: "\u30bf\u30b9\u30af\u306e\u5b9f\u884c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u4e0a\u90e8\u306e\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u78ba\u8a8d\u3057\u3066\u518d\u8a66\u884c\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  },
+} as const;
+
 interface DashboardViewProps {
+  locale: Locale;
   analytics: AnalyticsOverview | null;
   nextTasks: NextTask[];
   dailyPlan: DailyPlan | null;
@@ -39,6 +121,7 @@ type RenderTask = {
 };
 
 export function DashboardView({
+  locale,
   analytics,
   nextTasks,
   dailyPlan,
@@ -55,6 +138,7 @@ export function DashboardView({
   onRunAction,
   progressStorageKey,
 }: DashboardViewProps) {
+  const t = COPY[locale];
   const pace = analytics?.goalPace;
   const showPace = Boolean(pace) && pace?.status !== "no_goal";
   const paceClass =
@@ -65,10 +149,10 @@ export function DashboardView({
         : styles.paceGood;
   const paceText =
     pace?.status === "critical"
-      ? "当前目标节奏偏紧，建议立即提升每周做题量和模考频率。"
+      ? t.paceCritical
       : pace?.status === "at_risk"
-        ? "目标有压力，建议每周增加弱项强化并保证至少一次模考。"
-        : "目标节奏可达成，继续保持当前训练强度。";
+        ? t.paceRisk
+        : t.paceGood;
 
   const weekSchedule = dailyPlan?.weekSchedule ?? [];
   const priorityTasks = nextTasks.slice(0, 3);
@@ -194,8 +278,8 @@ export function DashboardView({
 
   const checkedInText =
     selectedTaskStats.total > 0 && selectedTaskStats.done === selectedTaskStats.total
-      ? "已打卡"
-      : "待打卡";
+      ? t.checkedIn
+      : t.pending;
 
   const selectedTotalMinutes =
     isTodaySelected && dailyPlan && dailyPlan.blocks.length > 0
@@ -262,59 +346,60 @@ export function DashboardView({
     <div className={styles.dashboard}>
       <Card>
         <CardHeader>
-          <CardTitle as="h1">学习概览</CardTitle>
+          <CardTitle as="h1">{t.title}</CardTitle>
           <Button variant="secondary" onClick={onRefresh}>
-            刷新数据
+            {t.refresh}
           </Button>
         </CardHeader>
 
         <CardContent>
           <div className={styles.focusIntro}>
-            <h2>每日打卡模式</h2>
-            <p>步骤：选日期 → 点“开始下一个任务” → 完成后勾选打卡。</p>
+            <h2>{t.focusTitle}</h2>
+            <p>{t.focusHint}</p>
           </div>
 
           <div className={styles.kpiGrid}>
             <div className={styles.kpi}>
-              <span>当前总分</span>
+              <span>{t.currentScore}</span>
               <strong>{currentScore ?? "--"}</strong>
             </div>
             <div className={styles.kpi}>
-              <span>预测分数</span>
+              <span>{t.predicted}</span>
               <strong>{predictedScore ?? "--"}</strong>
             </div>
             <div className={styles.kpi}>
-              <span>目标差距</span>
+              <span>{t.gap}</span>
               <strong>{currentGap}</strong>
             </div>
             <div className={styles.kpi}>
-              <span>训练正确率</span>
+              <span>{t.accuracy}</span>
               <strong>{accuracyLabel}</strong>
             </div>
           </div>
 
           {showPace && (
             <div className={`${styles.paceBanner} ${paceClass}`}>
-              <strong>冲分节奏</strong>
+              <strong>{t.paceLabel}</strong>
               <span>
-                距考试 {pace?.daysToExam ?? "--"} 天 · 每周需提升 {pace?.requiredWeeklyGain ?? "--"} 分。
+                {t.paceDaysTo(pace?.daysToExam ?? "--", pace?.requiredWeeklyGain ?? "--")}
               </span>
               <p>{paceText}</p>
             </div>
           )}
 
           <div className={styles.actions}>
-            <Button onClick={onStartDiagnostic}>开始诊断</Button>
-            <Button variant="secondary" onClick={() => onViewChange("listening")}>听力训练</Button>
-            <Button variant="secondary" onClick={() => onViewChange("reading")}>阅读训练</Button>
-            <Button variant="secondary" onClick={() => onViewChange("mistakes")}>错题库</Button>
+            <Button onClick={onStartDiagnostic}>{t.startDiagnostic}</Button>
+            <Button variant="secondary" onClick={() => onViewChange("listening")}>{t.listening}</Button>
+            <Button variant="secondary" onClick={() => onViewChange("grammar")}>{t.grammar}</Button>
+            <Button variant="secondary" onClick={() => onViewChange("reading")}>{t.reading}</Button>
+            <Button variant="secondary" onClick={() => onViewChange("mistakes")}>{t.mistakeBank}</Button>
           </div>
 
           <div className={styles.planBoard}>
             <div className={styles.planTitleRow}>
-              <h2>每日打卡计划</h2>
+              <h2>{t.planTitle}</h2>
               <span className={styles.progressBadge}>
-                连续学习 {analytics?.currentStreak ?? 0} 天 · {isSyncing ? "同步中" : checkedInText}
+                {t.streakLabel(analytics?.currentStreak ?? 0)} · {isSyncing ? t.syncing : checkedInText}
               </span>
             </div>
 
@@ -325,7 +410,7 @@ export function DashboardView({
                   const progress = getDayTaskProgress(day);
                   const checkinLabel =
                     progress.total > 0 && progress.done === progress.total
-                      ? "已打卡"
+                      ? t.checkedIn
                       : `${progress.done}/${progress.total}`;
 
                   return (
@@ -336,7 +421,7 @@ export function DashboardView({
                       onClick={() => setSelectedDate(day.date)}
                     >
                       <span>{day.dayLabel} · {day.date.slice(5)}</span>
-                      <span className={styles.quickDayMeta}>{day.totalMinutes} 分钟 · {checkinLabel}</span>
+                      <span className={styles.quickDayMeta}>{day.totalMinutes} {t.min} · {checkinLabel}</span>
                     </button>
                   );
                 })}
@@ -345,10 +430,10 @@ export function DashboardView({
 
             <div className={styles.dailyToolbar}>
               <Button onClick={() => void runNextPendingTask()} disabled={!nextPendingTask || Boolean(runningTaskKey)}>
-                {runningTaskKey ? "执行中..." : nextPendingTask ? "开始下一个任务" : "今日已完成"}
+                {runningTaskKey ? t.running : nextPendingTask ? t.startNext : t.allDone}
               </Button>
               <span className={styles.dailyMeta}>
-                {selectedDate || "--"} {selectedDay?.dayLabel ?? ""} · {selectedTotalMinutes} 分钟
+                {selectedDate || "--"} {selectedDay?.dayLabel ?? ""} · {selectedTotalMinutes} {t.min}
               </span>
             </div>
 
@@ -357,13 +442,13 @@ export function DashboardView({
             </div>
 
             <div className={styles.planMetaRow}>
-              <span>任务 {selectedTaskStats.done}/{selectedTaskStats.total}</span>
-              <span>完成率 {selectedTaskStats.pct}%</span>
-              <span>平均用时 {avgTimeLabel}</span>
+              <span>{t.taskOf(selectedTaskStats.done, selectedTaskStats.total)}</span>
+              <span>{t.completionRate(selectedTaskStats.pct)}</span>
+              <span>{t.avgTime} {avgTimeLabel}</span>
             </div>
 
             {renderTasks.length === 0 ? (
-              <p className={styles.empty}>今天还没有生成任务，先点一次“开始诊断”。</p>
+              <p className={styles.empty}>{t.emptyPlan}</p>
             ) : (
               <div className={styles.planList}>
                 {renderTasks.map((task, index) => {
@@ -375,9 +460,9 @@ export function DashboardView({
                           {index + 1}. {task.title}
                         </strong>
                         <div className={styles.planHeaderRight}>
-                          <span>{task.minutes} 分钟</span>
+                          <span>{task.minutes} {t.min}</span>
                           <span className={done ? styles.statusDone : styles.statusTodo}>
-                            {done ? "已打卡" : "未打卡"}
+                            {done ? t.done : t.notDone}
                           </span>
                         </div>
                       </div>
@@ -386,7 +471,7 @@ export function DashboardView({
 
                       {task.previews.length > 0 && (
                         <details className={styles.taskDetails}>
-                          <summary>查看任务要点</summary>
+                          <summary>{t.viewPoints}</summary>
                           <ul className={styles.taskPreviewList}>
                             {task.previews.map((preview, previewIndex) => (
                               <li key={`${task.id}-preview-${previewIndex}`}>{preview}</li>
@@ -401,7 +486,7 @@ export function DashboardView({
                           onClick={() => void runTask(task)}
                           disabled={Boolean(runningTaskKey)}
                         >
-                          {runningTaskKey === task.progressKey ? "执行中..." : "开始"}
+                          {runningTaskKey === task.progressKey ? t.running : t.start}
                         </Button>
                         <label className={styles.doneToggle}>
                           <input
@@ -409,11 +494,11 @@ export function DashboardView({
                             checked={done}
                             onChange={() => toggleProgress(task.progressKey)}
                           />
-                          手动打卡
+                          {t.manualCheck}
                         </label>
                       </div>
                       {failedTaskKey === task.progressKey && (
-                        <p className={styles.taskRunError}>任务执行失败，请看顶部提示后重试。</p>
+                        <p className={styles.taskRunError}>{t.taskFailed}</p>
                       )}
                     </div>
                   );

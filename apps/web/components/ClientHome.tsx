@@ -261,6 +261,7 @@ export function ClientHome() {
       case "dashboard":
         return (
           <DashboardView
+            locale={locale}
             analytics={analytics.analytics}
             nextTasks={analytics.nextTasks}
             dailyPlan={analytics.dailyPlan}
@@ -280,6 +281,7 @@ export function ClientHome() {
       case "settings":
         return (
           <SettingsView
+            locale={locale}
             credentials={auth.credentials}
             currentScore={currentScoreInput}
             goalScore={goalScore}
@@ -367,6 +369,7 @@ export function ClientHome() {
         return (
           <PracticeView
             type={activeView as "listening" | "grammar" | "textcompletion" | "reading"}
+            locale={locale}
             activeSession={session.activeSession}
             currentQuestion={session.currentQuestion}
             currentQuestionIndex={session.currentQuestionIndex}
@@ -387,6 +390,7 @@ export function ClientHome() {
       default:
         return (
           <DashboardView
+            locale={locale}
             analytics={analytics.analytics}
             nextTasks={analytics.nextTasks}
             dailyPlan={analytics.dailyPlan}

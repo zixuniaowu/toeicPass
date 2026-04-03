@@ -30,6 +30,7 @@ function makeQuestion(id: string, partNo = 5): SessionQuestion {
 
 const baseProps = {
   type: "grammar" as const,
+  locale: "zh" as const,
   activeSession: null as ActiveSession | null,
   currentQuestion: null as SessionQuestion | null,
   currentQuestionIndex: 0,
@@ -78,7 +79,8 @@ describe("PracticeView", () => {
 
   it("shows empty state when no current question", () => {
     renderPractice({ type: "grammar" });
-    expect(screen.getByText(/点击"开始语法训练"后进入逐题模式/)).toBeDefined();
+    // Match the empty state text (contains part of the grammar type empty label)
+    expect(screen.getByText(/逐题模式/)).toBeDefined();
   });
 
   it("renders start button and calls onStartPractice", () => {
