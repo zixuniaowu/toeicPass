@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import type { ActiveSession, Locale, OptionKey, SessionQuestion, SubmitReport } from "../../types";
 import { isListeningPart } from "../../types";
 import { Button } from "../ui/Button";
+import { AudioPlayer } from "../ui/AudioPlayer";
 import { QuestionCard } from "../practice/QuestionCard";
 import styles from "./MockExamView.module.css";
 
@@ -82,6 +83,11 @@ const COPY = {
     next: "下一题",
     submitting: "提交中...",
     submitPaper: (answered: number, total: number) => `提交试卷 (${answered}/${total} 已答)`,
+    reviewInteractive: "逐题回顾错题",
+    backToResults: "返回成绩单",
+    reviewProgress: (current: number, total: number) => `错题 ${current} / ${total}`,
+    reviewPrev: "上一题",
+    reviewNext: "下一题",
   },
   ja: {
     startTitle: "TOEIC 模擬試験",
@@ -126,6 +132,11 @@ const COPY = {
     next: "次の問題",
     submitting: "提出中...",
     submitPaper: (answered: number, total: number) => `答案を提出 (${answered}/${total} 解答済み)`,
+    reviewInteractive: "ミス問題を1問ずつ確認",
+    backToResults: "成績表に戻る",
+    reviewProgress: (current: number, total: number) => `ミス ${current} / ${total}`,
+    reviewPrev: "前の問題",
+    reviewNext: "次の問題",
   },
 } as const;
 
@@ -151,8 +162,16 @@ export function MockExamView({
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [showQuestionNav, setShowQuestionNav] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [reviewMode, setReviewMode] = useState(false);
+  const [reviewIndex, setReviewIndex] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Wrong items for interactive review
+  const wrongItems = useMemo(
+    () => (sessionResult ? sessionResult.review.filter((r) => !r.isCorrect) : []),
+    [sessionResult],
+  );
 
   // Timer logic
   useEffect(() => {
@@ -276,6 +295,70 @@ export function MockExamView({
     const listeningCorrect = listeningItems.filter((r) => r.isCorrect).length;
     const readingCorrect = readingItems.filter((r) => r.isCorrect).length;
 
+    // Interactive step-through review mode
+    if (reviewMode && wrongItems.length > 0) {
+      const item = wrongItems[reviewIndex];
+      return (
+        <div ref={containerRef} className={`${styles.container} ${isFullscreen ? styles.fullscreen : ""}`}>
+          <div className={styles.reviewScreen}>
+            <div className={styles.reviewHeader}>
+              <button className={styles.reviewBackBtn} onClick={() => setReviewMode(false)}>
+                ← {copy.backToResults}
+              </button>
+              <span className={styles.reviewProgress}>
+                {copy.reviewProgress(reviewIndex + 1, wrongItems.length)}
+              </span>
+            </div>
+
+            <div className={styles.reviewCard}>
+              <div className={styles.reviewPartBadge}>Part {item.partNo}</div>
+              <p className={styles.reviewStem}>{item.stem}</p>
+
+              {item.mediaUrl && (
+                <AudioPlayer src={item.mediaUrl} locale={locale} compact />
+              )}
+
+              <div className={styles.reviewAnswers}>
+                <div className={styles.reviewAnswerWrong}>
+                  <span className={styles.reviewAnswerLabel}>{copy.yourAnswer}</span>
+                  <strong>{item.selectedKey ?? copy.unanswered}</strong>
+                </div>
+                <div className={styles.reviewAnswerCorrect}>
+                  <span className={styles.reviewAnswerLabel}>{copy.correctAnswer}</span>
+                  <strong>{item.correctKey}</strong>
+                </div>
+              </div>
+
+              <div className={styles.reviewExplanation}>
+                <p>{item.explanation}</p>
+              </div>
+            </div>
+
+            <div className={styles.reviewNav}>
+              <Button
+                variant="secondary"
+                onClick={() => setReviewIndex((i) => Math.max(0, i - 1))}
+                disabled={reviewIndex === 0}
+              >
+                {copy.reviewPrev}
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => setReviewIndex((i) => Math.min(wrongItems.length - 1, i + 1))}
+                disabled={reviewIndex >= wrongItems.length - 1}
+              >
+                {copy.reviewNext}
+              </Button>
+            </div>
+
+            <Button fullWidth variant="secondary" onClick={() => setReviewMode(false)}>
+              {copy.backToResults}
+            </Button>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div ref={containerRef} className={`${styles.container} ${isFullscreen ? styles.fullscreen : ""}`}>
         {isFullscreen && (
@@ -338,7 +421,16 @@ export function MockExamView({
           {/* Wrong answers review */}
           <div className={styles.wrongSection}>
             <h3>{copy.mistakeReview}</h3>
-            {sessionResult.review.filter((r) => !r.isCorrect).map((item) => (
+            {wrongItems.length > 0 && (
+              <Button
+                fullWidth
+                variant="secondary"
+                onClick={() => { setReviewIndex(0); setReviewMode(true); }}
+              >
+                {copy.reviewInteractive} ({wrongItems.length})
+              </Button>
+            )}
+            {wrongItems.map((item) => (
               <div key={item.questionId} className={styles.wrongItem}>
                 <div className={styles.wrongHeader}>
                   <span className={styles.wrongPart}>Part {item.partNo}</span>
@@ -350,7 +442,7 @@ export function MockExamView({
                 <p className={styles.wrongExplanation}>{item.explanation}</p>
               </div>
             ))}
-            {sessionResult.review.filter((r) => !r.isCorrect).length === 0 && (
+            {wrongItems.length === 0 && (
               <p className={styles.allCorrect}>{copy.allCorrect}</p>
             )}
           </div>
