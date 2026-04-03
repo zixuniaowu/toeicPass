@@ -5,6 +5,7 @@ import { useAuth } from "../hooks/useAuth";
 vi.mock("../lib/api", () => ({
   register: vi.fn(),
   login: vi.fn(),
+  setOnUnauthorized: vi.fn(),
 }));
 
 import * as api from "../lib/api";

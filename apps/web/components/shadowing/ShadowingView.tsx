@@ -403,19 +403,23 @@ function buildScriptTextFromSentences(sentences: ShadowingMaterial["sentences"])
     .join("\n");
 }
 
-function withSubtitleFallbackHint(rawMessage: string): string {
-  const message = String(rawMessage || "自动导入失败。").trim();
+function withSubtitleFallbackHint(rawMessage: string, isJa = false): string {
+  const fallbackDefault = isJa ? "自動インポートに失敗しました。" : "自动导入失败。";
+  const message = String(rawMessage || fallbackDefault).trim();
   if (/srt|vtt|字幕文件/i.test(message)) {
     return message;
   }
-  return `${message} 你可以改用下方 SRT/VTT 字幕文件导入。`;
+  const hint = isJa
+    ? `${message} 下の SRT/VTT 字幕ファイルインポートもご利用いただけます。`
+    : `${message} 你可以改用下方 SRT/VTT 字幕文件导入。`;
+  return hint;
 }
 
-function titleFromSubtitleFile(fileName: string): string {
+function titleFromSubtitleFile(fileName: string, isJa = false): string {
   const title = String(fileName ?? "")
     .replace(/\.(srt|vtt)$/i, "")
     .trim();
-  return title || "字幕文件跟读";
+  return title || (isJa ? "字幕ファイルシャドーイング" : "字幕文件跟读");
 }
 
 function parseTedSnapshotMaterials(): { generatedAt: string; materials: ShadowingMaterial[] } {
@@ -1328,7 +1332,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
       });
       const payload = (await response.json()) as YoutubeImportResponse;
       if (!response.ok || !payload.success) {
-        setYoutubeError(withSubtitleFallbackHint(payload.error || l("自动导入失败。", "自動インポートに失敗しました。")));
+        setYoutubeError(withSubtitleFallbackHint(payload.error || l("自动导入失败。", "自動インポートに失敗しました。"), isJa));
         return;
       }
       const videoId = payload.videoId ? String(payload.videoId) : parseYoutubeVideoId(input);
@@ -1354,7 +1358,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
       setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
       handleStart(autoMaterial);
     } catch (error) {
-      setYoutubeError(withSubtitleFallbackHint(error instanceof Error ? error.message : l("自动导入失败。", "自動インポートに失敗しました。")));
+      setYoutubeError(withSubtitleFallbackHint(error instanceof Error ? error.message : l("自动导入失败。", "自動インポートに失敗しました。"), isJa));
     } finally {
       setYoutubeImporting(false);
     }
@@ -1386,7 +1390,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
       }
 
       const maybeVideoId = parseYoutubeVideoId(youtubeUrlInput);
-      const fallbackTitle = youtubeTitleInput.trim() || titleFromSubtitleFile(file.name);
+      const fallbackTitle = youtubeTitleInput.trim() || titleFromSubtitleFile(file.name, isJa);
       const response = await fetch("/api/youtube-subtitles", {
         method: "POST",
         headers: {

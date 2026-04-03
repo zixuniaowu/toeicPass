@@ -3,6 +3,7 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import type { Locale } from "../types";
 import * as api from "../lib/api";
+import { setOnUnauthorized } from "../lib/api";
 
 export type AuthCredentials = {
   tenantCode: string;
@@ -195,6 +196,17 @@ export function useAuth(locale: Locale) {
     safeRemoveItem(STORAGE_KEY_TOKEN);
     safeRemoveItem(STORAGE_KEY_TENANT);
     setMessage(byLocale(locale, "已退出登录。请使用账号重新登录。", "ログアウトしました。アカウントで再ログインしてください。"));
+  }, [locale]);
+
+  // Auto-logout on 401 Unauthorized responses from the API layer
+  useEffect(() => {
+    setOnUnauthorized(() => {
+      setToken("");
+      safeRemoveItem(STORAGE_KEY_TOKEN);
+      safeRemoveItem(STORAGE_KEY_TENANT);
+      setMessage(byLocale(locale, "登录已过期，请重新登录。", "セッションの有効期限が切れました。再ログインしてください。"));
+    });
+    return () => setOnUnauthorized(null);
   }, [locale]);
 
   const getRequestOptions = useCallback(

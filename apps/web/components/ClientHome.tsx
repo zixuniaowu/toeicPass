@@ -8,6 +8,7 @@ import { useSession } from "../hooks/useSession";
 import { useMistakes } from "../hooks/useMistakes";
 import { useVocab } from "../hooks/useVocab";
 import { useAnalytics } from "../hooks/useAnalytics";
+import { useConversation } from "../hooks/useConversation";
 import { useLearningCommandRunner } from "../hooks/useLearningCommandRunner";
 import { AppShell } from "./layout/AppShell";
 import { CardSkeleton } from "./ui/Skeleton";
@@ -24,6 +25,7 @@ const MockExamView = lazy(() => import("./mock/MockExamView").then(m => ({ defau
 const DashboardView = lazy(() => import("./dashboard/DashboardView").then(m => ({ default: m.DashboardView })));
 const SettingsView = lazy(() => import("./settings/SettingsView").then(m => ({ default: m.SettingsView })));
 const PracticeView = lazy(() => import("./practice/PracticeView").then(m => ({ default: m.PracticeView })));
+const ConversationView = lazy(() => import("./conversation/ConversationView").then(m => ({ default: m.ConversationView })));
 
 function ViewFallback() {
   return (
@@ -85,6 +87,7 @@ export function ClientHome() {
   const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const vocab = useVocab(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const analytics = useAnalytics(auth.getRequestOptions);
+  const conversation = useConversation(auth.ensureSession, auth.getRequestOptions, auth.setMessage);
 
   // Bridge auth.message changes into toast notifications
   const lastMessageRef = useRef("");
@@ -362,6 +365,19 @@ export function ClientHome() {
             onSubmit={handleSubmitSession}
           />
         );
+      case "conversation":
+        return (
+          <ConversationView
+            scenarios={conversation.scenarios}
+            activeSession={conversation.activeSession}
+            isLoading={conversation.isLoading}
+            inputText={conversation.inputText}
+            onInputChange={conversation.setInputText}
+            onStartSession={conversation.startSession}
+            onSendMessage={conversation.sendMessage}
+            onEndSession={conversation.endSession}
+          />
+        );
       case "listening":
       case "grammar":
       case "textcompletion":
@@ -438,9 +454,11 @@ export function ClientHome() {
       locale={locale}
       onLocaleChange={setLocale}
     >
-      <Suspense fallback={<ViewFallback />}>
-        {renderView()}
-      </Suspense>
+      <ViewErrorBoundary>
+        <Suspense fallback={<ViewFallback />}>
+          {renderView()}
+        </Suspense>
+      </ViewErrorBoundary>
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
     </AppShell>
   );

@@ -21,6 +21,20 @@ type RequestOptions = {
   tenantCode?: string;
 };
 
+/** Listener called when any API request returns 401 Unauthorized. */
+let onUnauthorized: (() => void) | null = null;
+
+/** Register a global callback for 401 responses (auto-logout). */
+export function setOnUnauthorized(cb: (() => void) | null): void {
+  onUnauthorized = cb;
+}
+
+function handleUnauthorized(res: Response): void {
+  if (res.status === 401 && onUnauthorized) {
+    onUnauthorized();
+  }
+}
+
 const createHeaders = (options: RequestOptions): HeadersInit => {
   const headers: HeadersInit = {
     "Content-Type": "application/json",
@@ -104,7 +118,7 @@ export async function fetchAnalyticsOverview(
     method: "GET",
     headers: createHeaders(options),
   });
-  if (!res.ok) return null;
+  if (!res.ok) { handleUnauthorized(res); return null; }
   return res.json();
 }
 
@@ -113,7 +127,7 @@ export async function fetchNextTasks(options: RequestOptions): Promise<NextTask[
     method: "GET",
     headers: createHeaders(options),
   });
-  if (!res.ok) return [];
+  if (!res.ok) { handleUnauthorized(res); return []; }
   const payload = (await res.json()) as { tasks?: NextTask[] };
   return payload.tasks ?? [];
 }
@@ -123,7 +137,7 @@ export async function fetchDailyPlan(options: RequestOptions): Promise<DailyPlan
     method: "GET",
     headers: createHeaders(options),
   });
-  if (!res.ok) return null;
+  if (!res.ok) { handleUnauthorized(res); return null; }
   return (await res.json()) as DailyPlan;
 }
 
@@ -134,7 +148,7 @@ export async function fetchPrediction(
     method: "GET",
     headers: createHeaders(options),
   });
-  if (!res.ok) return null;
+  if (!res.ok) { handleUnauthorized(res); return null; }
   const json = (await res.json()) as { predictedTotal?: number } | null;
   return json?.predictedTotal ?? null;
 }
@@ -170,6 +184,7 @@ export async function startSession(
   });
 
   if (!res.ok) {
+    handleUnauthorized(res);
     return { success: false, error: await parseApiError(res) };
   }
 
@@ -191,6 +206,7 @@ export async function startMistakeDrillSession(
   });
 
   if (!res.ok) {
+    handleUnauthorized(res);
     return { success: false, error: await parseApiError(res) };
   }
 
@@ -218,6 +234,7 @@ export async function submitSession(
   });
 
   if (!res.ok) {
+    handleUnauthorized(res);
     return { success: false, error: await parseApiError(res) };
   }
 
@@ -231,7 +248,7 @@ export async function fetchDueCards(options: RequestOptions): Promise<DueCard[]>
     method: "GET",
     headers: createHeaders(options),
   });
-  if (!res.ok) return [];
+  if (!res.ok) { handleUnauthorized(res); return []; }
   return res.json();
 }
 
@@ -243,7 +260,7 @@ export async function fetchMistakeLibrary(
     method: "GET",
     headers: createHeaders(options),
   });
-  if (!res.ok) return [];
+  if (!res.ok) { handleUnauthorized(res); return []; }
   return res.json();
 }
 
@@ -259,6 +276,7 @@ export async function saveMistakeNote(
     body: JSON.stringify({ note, rootCause }),
   });
   if (!res.ok) {
+    handleUnauthorized(res);
     return { success: false, error: await parseApiError(res) };
   }
   return { success: true };
@@ -272,7 +290,7 @@ export async function fetchVocabularyCards(
     method: "GET",
     headers: createHeaders(options),
   });
-  if (!res.ok) return null;
+  if (!res.ok) { handleUnauthorized(res); return null; }
   return res.json();
 }
 
@@ -287,6 +305,7 @@ export async function gradeVocabularyCard(
     body: JSON.stringify({ grade }),
   });
   if (!res.ok) {
+    handleUnauthorized(res);
     return { success: false, error: await parseApiError(res) };
   }
   return { success: true };
@@ -309,6 +328,7 @@ export async function createGoal(
     }),
   });
   if (!res.ok) {
+    handleUnauthorized(res);
     return { success: false, error: await parseApiError(res) };
   }
   return { success: true };
@@ -322,7 +342,7 @@ export async function fetchConversationScenarios(
     method: "GET",
     headers: createHeaders(options),
   });
-  if (!res.ok) return [];
+  if (!res.ok) { handleUnauthorized(res); return []; }
   return res.json();
 }
 
@@ -336,6 +356,7 @@ export async function fetchConversationReply(
     body: JSON.stringify(payload),
   });
   if (!res.ok) {
+    handleUnauthorized(res);
     return { success: false, error: await parseApiError(res) };
   }
   const json = (await res.json()) as {

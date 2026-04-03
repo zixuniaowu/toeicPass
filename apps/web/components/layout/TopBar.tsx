@@ -17,6 +17,7 @@ const TAB_LABEL_JA: Partial<Record<ViewTab, string>> = {
   dashboard: "ダッシュボード",
   shadowing: "シャドーイング",
   mock: "模擬試験",
+  conversation: "AI 会話",
   mistakes: "ミスノート",
   vocab: "単語帳",
   settings: "設定",
