@@ -157,6 +157,11 @@ export function PracticeView({
     return () => window.removeEventListener("keydown", handleNavKey);
   }, [handleNavKey]);
 
+  // Scroll to top when question changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentQuestionIndex]);
+
   const partsMap = {
     listening: LISTENING_PARTS,
     grammar: [5] as const,

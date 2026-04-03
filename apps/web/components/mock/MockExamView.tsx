@@ -236,6 +236,11 @@ export function MockExamView({
     return () => window.removeEventListener("keydown", handleNavKey);
   }, [handleNavKey]);
 
+  // Scroll to top when question changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentQuestionIndex]);
+
   const formatTime = (ms: number) => {
     const totalSeconds = Math.floor(ms / 1000);
     const minutes = Math.floor(totalSeconds / 60);
