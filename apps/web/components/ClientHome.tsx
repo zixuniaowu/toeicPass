@@ -51,6 +51,8 @@ const COPY = {
     mistakeBoundaryHint: "\u9519\u9898\u6570\u636e\u5b58\u5728\u5f02\u5e38\u5b57\u6bb5\u3002\u4f60\u53ef\u4ee5\u5148\u70b9\u201c\u5237\u65b0\u9519\u9898\u201d\uff0c\u7cfb\u7edf\u4f1a\u5c3d\u91cf\u81ea\u52a8\u4fee\u590d\u5e76\u7ee7\u7eed\u52a0\u8f7d\u3002",
     goalSaved: "\u76ee\u6807\u5df2\u4fdd\u5b58\u3002",
     goalFailed: "\u76ee\u6807\u4fdd\u5b58\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5\u3002",
+    confirmLeaveExam: "模拟考试尚未提交，确定要离开吗？",
+    confirmLeavePractice: "当前练习尚未完成，确定要离开吗？",
   },
   ja: {
     submitDone: "\u6a21\u64ec\u8a66\u9a13\u3092\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\u30df\u30b9\u30ce\u30fc\u30c8\u306b\u5207\u308a\u66ff\u3048\u307e\u3057\u305f\u3002",
@@ -62,13 +64,23 @@ const COPY = {
     mistakeBoundaryHint: "\u30c7\u30fc\u30bf\u306b\u4e0d\u6574\u5408\u304c\u3042\u308b\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\u300c\u30df\u30b9\u3092\u66f4\u65b0\u300d\u3092\u62bc\u3057\u3066\u518d\u8aad\u307f\u8fbc\u307f\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
     goalSaved: "\u76ee\u6a19\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
     goalFailed: "\u76ee\u6a19\u306e\u4fdd\u5b58\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
+    confirmLeaveExam: "模擬試験がまだ提出されていません。本当に離れますか？",
+    confirmLeavePractice: "練習がまだ完了していません。本当に離れますか？",
   },
 } as const;
 
 export type ThemeMode = "light" | "dark" | "auto";
 
 export function ClientHome() {
-  const [activeView, setActiveView] = useState<ViewTab>("dashboard");
+  const [activeView, setActiveView] = useState<ViewTab>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("lb.view") as ViewTab | null;
+      if (saved && ["dashboard", "listening", "grammar", "textcompletion", "reading", "shadowing", "mock", "conversation", "mistakes", "vocab", "writing", "settings"].includes(saved)) {
+        return saved;
+      }
+    }
+    return "dashboard";
+  });
   const [locale, setLocale] = useState<Locale>(() => {
     if (typeof window !== "undefined") {
       return (localStorage.getItem("lb.locale") as Locale) || "zh";
@@ -126,6 +138,11 @@ export function ClientHome() {
     localStorage.setItem("lb.locale", locale);
   }, [locale]);
 
+  // Persist active view
+  useEffect(() => {
+    localStorage.setItem("lb.view", activeView);
+  }, [activeView]);
+
   // Apply and persist theme
   useEffect(() => {
     localStorage.setItem("lb.theme", theme);
@@ -157,6 +174,14 @@ export function ClientHome() {
     return () => mq.removeEventListener("change", handler);
   }, [theme]);
 
+  // Warn before closing tab during active session
+  useEffect(() => {
+    if (!session.activeSession || session.sessionResult) return;
+    const handler = (e: BeforeUnloadEvent) => { e.preventDefault(); };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [session.activeSession, session.sessionResult]);
+
   // Auto-load analytics on login and when dashboard becomes active
   useEffect(() => {
     if (auth.isLoggedIn && activeView === "dashboard") {
@@ -177,14 +202,21 @@ export function ClientHome() {
 
   const handleViewChange = useCallback((newView: ViewTab) => {
     if (!ALL_VIEWS.has(newView)) return;
-    if (activeView === "mock" && newView !== "mock") {
+    // Confirm before leaving active exam/practice with unsaved progress
+    if (activeView === "mock" && newView !== "mock" && session.activeSession && !session.sessionResult) {
+      if (!window.confirm(COPY[locale].confirmLeaveExam)) return;
+      session.resetSession();
+    } else if (activeView === "mock" && newView !== "mock") {
       session.resetSession();
     }
-    if (PRACTICE_VIEWS.has(activeView) && !PRACTICE_VIEWS.has(newView)) {
+    if (PRACTICE_VIEWS.has(activeView) && !PRACTICE_VIEWS.has(newView) && session.activeSession) {
+      if (!window.confirm(COPY[locale].confirmLeavePractice)) return;
+      session.resetSession();
+    } else if (PRACTICE_VIEWS.has(activeView) && !PRACTICE_VIEWS.has(newView)) {
       session.resetSession();
     }
     setActiveView(newView);
-  }, [activeView, session]);
+  }, [activeView, session, locale]);
 
   const handleStartMock = useCallback(async (message?: string) => {
     const ok = await runner.runAction("mock:start");
@@ -195,7 +227,7 @@ export function ClientHome() {
   const handleSubmitSession = useCallback(async (options?: { allowPartial?: boolean }) => {
     const report = await session.submitSession(options);
     if (!report) return;
-    setActiveView("mistakes");
+    // Stay on mock view to show results + interactive review; load mistakes in background
     await mistakes.loadMistakes();
     auth.setMessage(COPY[locale].submitDone);
     if (typeof report.scoreTotal === "number") {
