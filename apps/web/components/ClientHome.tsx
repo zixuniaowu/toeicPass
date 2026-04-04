@@ -83,9 +83,9 @@ export function ClientHome() {
   });
   const [locale, setLocale] = useState<Locale>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("lb.locale") as Locale) || "zh";
+      return (localStorage.getItem("lb.locale") as Locale) || "ja";
     }
-    return "zh";
+    return "ja";
   });
   const [theme, setTheme] = useState<ThemeMode>(() => {
     if (typeof window !== "undefined") {

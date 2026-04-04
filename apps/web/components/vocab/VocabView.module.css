@@ -23,9 +23,9 @@
   display: inline-flex;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #eef6ff;
-  border: 1px solid #c7daf2;
-  color: #1e3a8a;
+  background: var(--color-primary-light);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.25);
+  color: var(--color-primary);
   font-size: var(--text-sm);
   font-weight: 600;
 }
@@ -41,9 +41,9 @@
   margin-bottom: var(--space-4);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);
-  border: 1px solid #c7daf2;
-  background: #eef6ff;
-  color: #1e3a8a;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.25);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
 }
 
 .dailyTargetBanner strong {
@@ -58,9 +58,9 @@
   margin-bottom: var(--space-4);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);
-  border: 1px solid #d5e7d8;
-  background: #edf8ef;
-  color: #166534;
+  border: 1px solid rgba(var(--color-success-rgb), 0.25);
+  background: var(--color-success-light);
+  color: var(--color-success);
   font-size: var(--text-sm);
   font-weight: 600;
 }
@@ -88,7 +88,7 @@
 
 .kpiHighlight {
   border-color: var(--color-primary);
-  background: #f0f6ff;
+  background: var(--color-primary-light);
 }
 
 .kpi span {
@@ -184,7 +184,7 @@
 .scopeButton {
   border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--color-surface);
   color: var(--color-muted);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -279,7 +279,7 @@
   padding: var(--space-1) var(--space-3);
   border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: white;
+  background: var(--color-surface);
   font-size: var(--text-sm);
   color: var(--color-muted);
   cursor: pointer;
@@ -323,8 +323,8 @@
 }
 
 .wordItem:hover {
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 2px 8px -2px rgba(59, 130, 246, 0.12);
+  border-color: rgba(var(--color-primary-rgb), 0.3);
+  box-shadow: 0 2px 8px -2px rgba(var(--color-primary-rgb), 0.12);
 }
 
 .wordMain {
@@ -348,7 +348,7 @@
 
 .wordIpa {
   font-size: var(--text-sm);
-  color: #1e3a8a;
+  color: var(--color-primary);
   font-weight: 600;
 }
 
@@ -356,24 +356,24 @@
   font-size: var(--text-xs, 0.75rem);
   padding: 2px 8px;
   border-radius: 10px;
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--color-warning-light);
+  color: var(--color-warning);
 }
 
 .wordMastered {
   font-size: var(--text-xs, 0.75rem);
   padding: 2px 8px;
   border-radius: 10px;
-  background: #d1fae5;
-  color: #065f46;
+  background: var(--color-success-light);
+  color: var(--color-success);
 }
 
 .wordSpeak {
   margin-left: auto;
-  border: 1px solid #9eb8db;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.35);
   border-radius: 8px;
-  background: #ffffff;
-  color: #1f3960;
+  background: var(--color-surface);
+  color: var(--color-primary);
   font-size: 12px;
   font-weight: 700;
   padding: 4px 10px;
@@ -381,7 +381,7 @@
 }
 
 .wordSpeak:hover {
-  background: #eef4ff;
+  background: var(--color-primary-light);
 }
 
 .wordDef {
@@ -394,7 +394,7 @@
 .wordDefCn {
   margin: 0 0 var(--space-1);
   font-size: var(--text-sm);
-  color: #0f4b8f;
+  color: var(--color-primary);
   font-weight: 600;
 }
 
@@ -457,18 +457,18 @@
 .barTrack {
   display: flex;
   height: 24px;
-  background: #e2e8f0;
+  background: var(--color-border);
   border-radius: 12px;
   overflow: hidden;
 }
 
 .barMastered {
-  background: #10b981;
+  background: var(--color-success);
   transition: width 0.5s ease;
 }
 
 .barLearning {
-  background: #3b82f6;
+  background: var(--color-primary);
   transition: width 0.5s ease;
 }
 
@@ -479,17 +479,17 @@
 }
 
 .legendMastered {
-  color: #10b981;
+  color: var(--color-success);
   font-weight: 500;
 }
 
 .legendLearning {
-  color: #3b82f6;
+  color: var(--color-primary);
   font-weight: 500;
 }
 
 .legendDue {
-  color: #f59e0b;
+  color: var(--color-warning);
   font-weight: 500;
 }
 
@@ -533,7 +533,7 @@
 
 .miniBarFill {
   height: 100%;
-  background: #10b981;
+  background: var(--color-success);
   border-radius: 3px;
   transition: width 0.5s ease;
 }

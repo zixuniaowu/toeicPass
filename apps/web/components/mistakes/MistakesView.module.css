@@ -43,27 +43,27 @@
   margin: var(--space-4) 0;
   padding: var(--space-4);
   border-radius: var(--radius-lg);
-  border: 1px solid #d6e4f8;
-  background: linear-gradient(180deg, #f8fbff, #f2f8ff);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.25);
+  background: linear-gradient(180deg, var(--color-surface), var(--color-primary-light));
   display: grid;
   gap: 6px;
 }
 
 .guide strong {
-  color: #0f172a;
+  color: var(--color-ink);
   font-size: var(--text-base);
 }
 
 .guide p {
   margin: 0;
-  color: #334155;
+  color: var(--color-text);
   font-size: var(--text-sm);
   line-height: 1.6;
 }
 
 .mappingHint {
   font-weight: 600;
-  color: #1e3a5f !important;
+  color: var(--color-primary) !important;
 }
 
 .empty {

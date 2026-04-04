@@ -14,21 +14,21 @@
 }
 
 .success {
-  background: #dcfce7;
-  color: #166534;
+  background: var(--color-success-light);
+  color: var(--color-success);
 }
 
 .warning {
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--color-warning-light);
+  color: var(--color-warning);
 }
 
 .error {
-  background: #fee2e2;
-  color: #991b1b;
+  background: var(--color-error-light);
+  color: var(--color-error);
 }
 
 .info {
-  background: #dbeafe;
-  color: #1e40af;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
 }

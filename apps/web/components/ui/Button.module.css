@@ -55,16 +55,16 @@
 }
 
 .secondary {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--color-surface);
   backdrop-filter: var(--backdrop-blur);
   -webkit-backdrop-filter: var(--backdrop-blur);
   color: var(--color-ink);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
 }
 
 .secondary:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--color-surface-elevated);
   border-color: var(--color-border);
   box-shadow: var(--shadow-md);
 }
@@ -76,7 +76,7 @@
 }
 
 .ghost:hover:not(:disabled) {
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(var(--color-primary-rgb), 0.08);
   color: var(--color-primary);
 }
 
@@ -98,15 +98,15 @@
 }
 
 .destructive {
-  background: rgba(239, 68, 68, 0.9);
+  background: rgba(var(--color-error-rgb), 0.9);
   color: #fff;
   border: none;
   box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .destructive:hover:not(:disabled) {
-  background: #dc2626;
-  box-shadow: var(--shadow-md), 0 0 15px rgba(239, 68, 68, 0.4);
+  background: var(--color-error);
+  box-shadow: var(--shadow-md), 0 0 15px rgba(var(--color-error-rgb), 0.4);
 }
 
 /* Sizes */

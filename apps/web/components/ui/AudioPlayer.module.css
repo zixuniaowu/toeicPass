@@ -1,7 +1,7 @@
 .wrapper {
-  border: 1px solid #ccdbf1;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: linear-gradient(135deg, #ffffff, #f7fbff);
+  background: var(--color-surface);
   padding: var(--space-4);
 }
 
@@ -13,7 +13,7 @@
   margin: 0 0 var(--space-2);
   font-size: var(--text-base);
   font-weight: 600;
-  color: #1f2f46;
+  color: var(--color-ink);
 }
 
 .clipMeta {
@@ -21,9 +21,9 @@
   display: inline-flex;
   padding: 2px 8px;
   border-radius: 999px;
-  border: 1px solid #c8d9f0;
-  background: #eff6ff;
-  color: #1e3a8a;
+  border: 1px solid var(--color-border);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
   font-size: 12px;
   font-weight: 700;
 }
@@ -31,15 +31,15 @@
 .clipHint {
   margin: 0 0 var(--space-3);
   font-size: 12px;
-  color: #334155;
+  color: var(--color-muted);
 }
 
 .ttsBlock {
   margin-bottom: var(--space-3);
   padding: var(--space-3);
-  border: 1px solid #d6e3f6;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #f8fbff;
+  background: var(--color-background);
 }
 
 .ttsHeader {
@@ -53,7 +53,7 @@
   margin: 0;
   font-size: var(--text-sm);
   font-weight: 600;
-  color: #31465f;
+  color: var(--color-text);
 }
 
 .ttsActions {
@@ -62,9 +62,9 @@
 }
 
 .ttsButton {
-  border: 1px solid #9eb8db;
-  background: #ffffff;
-  color: #1f3960;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
   border-radius: 8px;
   padding: 6px 10px;
   font-size: 13px;
@@ -73,7 +73,7 @@
 }
 
 .ttsButton:hover:not(:disabled) {
-  background: #edf4ff;
+  background: var(--color-primary-light);
 }
 
 .ttsButton:disabled {
@@ -82,14 +82,14 @@
 }
 
 .ttsStop {
-  border-color: #d6a2a2;
-  color: #7f1d1d;
+  border-color: var(--color-error);
+  color: var(--color-error);
 }
 
 .ttsError {
   margin: var(--space-2) 0 0;
   font-size: 13px;
-  color: #a11f1f;
+  color: var(--color-error);
 }
 
 .audio {

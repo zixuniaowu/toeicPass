@@ -88,12 +88,12 @@
 }
 
 .option.correct {
-  background: #dcfce7;
+  background: var(--color-success-light);
   border-color: var(--color-success);
 }
 
 .option.wrong {
-  background: #fee2e2;
+  background: var(--color-error-light);
   border-color: var(--color-error);
 }
 

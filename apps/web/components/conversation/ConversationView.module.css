@@ -95,7 +95,7 @@
 .userMessage {
   align-self: flex-end;
   background: var(--color-primary);
-  color: white;
+  color: #fff;
 }
 
 .assistantMessage {
@@ -118,11 +118,11 @@
 }
 
 .corrections {
-  color: #dc2626;
+  color: var(--color-error);
 }
 
 .suggestions {
-  color: #059669;
+  color: var(--color-success);
 }
 
 .corrections ul,
