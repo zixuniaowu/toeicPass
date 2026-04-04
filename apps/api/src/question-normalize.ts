@@ -2,6 +2,7 @@ import {
   buildQuestionCorpus,
   isKnownPart1Image,
   isPart1ImageMatch,
+  isPart1QuestionStrongMatch,
   resolvePart1ImageFromQuestion,
 } from "./question-quality";
 
@@ -9,6 +10,7 @@ export function normalizePart1Image(
   imageUrl: string | undefined,
   stem: string,
   optionTexts: string[],
+  correctOptionText?: string,
 ): string | undefined {
   const normalizedImageUrl = imageUrl?.trim();
   const corpus = buildQuestionCorpus(stem, optionTexts);
@@ -19,12 +21,21 @@ export function normalizePart1Image(
       return normalizedImageUrl;
     }
     if (isPart1ImageMatch(normalizedImageUrl, corpus)) {
-      return normalizedImageUrl;
+      if (!correctOptionText || isPart1QuestionStrongMatch(normalizedImageUrl, stem, optionTexts, correctOptionText)) {
+        return normalizedImageUrl;
+      }
     }
-    return derived ?? syntheticPart1ImageFromStem(stem);
   }
 
-  return derived ?? syntheticPart1ImageFromStem(stem);
+  if (derived) {
+    if (isPart1ImageMatch(derived, corpus)) {
+      if (!correctOptionText || isPart1QuestionStrongMatch(derived, stem, optionTexts, correctOptionText)) {
+        return derived;
+      }
+    }
+  }
+
+  return syntheticPart1ImageFromStem(stem);
 }
 
 export function syntheticPart1ImageFromStem(stem: string): string {

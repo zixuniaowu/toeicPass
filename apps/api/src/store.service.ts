@@ -885,6 +885,7 @@ export class StoreService {
               String(raw.imageUrl ?? "").trim() || undefined,
               stem,
               options.map((opt) => opt.text),
+              options.find((opt) => opt.key === correctKey)?.text,
             )
           : String(raw.imageUrl ?? "").trim() || undefined;
       const rawPassage = String(raw.passage ?? raw.context ?? "").trim() || undefined;
@@ -1112,6 +1113,7 @@ export class StoreService {
           question.imageUrl,
           question.stem,
           question.options.map((opt) => opt.text),
+          question.options.find((opt) => opt.isCorrect)?.text,
         );
       }
 

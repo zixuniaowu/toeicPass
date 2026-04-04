@@ -4,7 +4,7 @@ export type Locale = _Locale;
 export type SessionMode = _SessionMode;
 export type SessionFilters = _SessionFilters;
 export type LoginResponse = { accessToken: string; tenantCode: string };
-export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "shadowing" | "mock" | "conversation" | "mistakes" | "vocab" | "writing" | "settings";
+export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "shadowing" | "mock" | "mistakes" | "vocab" | "writing" | "conversation" | "settings";
 export type OptionKey = "A" | "B" | "C" | "D";
 
 // Question Types
@@ -204,10 +204,9 @@ export const ALL_PARTS = [1, 2, 3, 4, 5, 6, 7] as const;
 export const DIFFICULTY_OPTIONS = [1, 2, 3, 4, 5] as const;
 
 export const TABS: Array<{ key: ViewTab; label: string; group?: string }> = [
-  { key: "dashboard", label: "学习总览", group: "home" },
   { key: "shadowing", label: "跟读练习", group: "practice" },
   { key: "mock", label: "模拟考试", group: "practice" },
-  { key: "conversation", label: "AI 对话", group: "practice" },
+  { key: "writing", label: "写作练习", group: "practice" },
   { key: "mistakes", label: "错题集", group: "review" },
   { key: "vocab", label: "背单词", group: "review" },
   { key: "settings", label: "设置", group: "system" },

@@ -137,6 +137,9 @@ export function buildQuestionCorpus(stem: string, optionTexts: string[]): string
 
 function part1RuleFromImage(imageUrl: string): Part1Rule | undefined {
   const lowered = imageUrl.toLowerCase();
+  if (lowered.startsWith("data:")) {
+    return undefined;
+  }
   return PART1_RULES.find((rule) => lowered.includes(rule.token));
 }
 
@@ -192,7 +195,13 @@ export function resolvePart1ImageFromQuestion(stem: string, optionTexts: string[
       bestRule = rule;
     }
   });
-  return bestRule?.imageUrl;
+  if (!bestRule || bestScore < 2) {
+    return undefined;
+  }
+  if (!bestRule.strictPattern.test(corpus.toLowerCase())) {
+    return undefined;
+  }
+  return bestRule.imageUrl;
 }
 
 export function isQuestionLikePrompt(text: string): boolean {

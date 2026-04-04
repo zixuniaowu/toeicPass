@@ -14,10 +14,9 @@ interface TopBarProps {
 }
 
 const TAB_LABEL_JA: Partial<Record<ViewTab, string>> = {
-  dashboard: "ダッシュボード",
   shadowing: "シャドーイング",
   mock: "模擬試験",
-  conversation: "AI 会話",
+  writing: "ライティング",
   mistakes: "ミスノート",
   vocab: "単語帳",
   settings: "設定",
@@ -56,6 +55,7 @@ export function TopBar({
             className={styles.hamburger}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation"
+            aria-expanded={menuOpen}
           >
             <span className={`${styles.hamburgerLine} ${menuOpen ? styles.hamburgerOpen : ""}`} />
           </button>

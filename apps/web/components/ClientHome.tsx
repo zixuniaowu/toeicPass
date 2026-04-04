@@ -8,7 +8,6 @@ import { useSession } from "../hooks/useSession";
 import { useMistakes } from "../hooks/useMistakes";
 import { useVocab } from "../hooks/useVocab";
 import { useAnalytics } from "../hooks/useAnalytics";
-import { useConversation } from "../hooks/useConversation";
 import { useLearningCommandRunner } from "../hooks/useLearningCommandRunner";
 import { AppShell } from "./layout/AppShell";
 import { CardSkeleton } from "./ui/Skeleton";
@@ -22,10 +21,11 @@ const MistakesView = lazy(() => import("./mistakes/MistakesView").then(m => ({ d
 const VocabView = lazy(() => import("./vocab/VocabView").then(m => ({ default: m.VocabView })));
 const ShadowingView = lazy(() => import("./shadowing/ShadowingView").then(m => ({ default: m.ShadowingView })));
 const MockExamView = lazy(() => import("./mock/MockExamView").then(m => ({ default: m.MockExamView })));
-const DashboardView = lazy(() => import("./dashboard/DashboardView").then(m => ({ default: m.DashboardView })));
+
 const SettingsView = lazy(() => import("./settings/SettingsView").then(m => ({ default: m.SettingsView })));
 const PracticeView = lazy(() => import("./practice/PracticeView").then(m => ({ default: m.PracticeView })));
-const ConversationView = lazy(() => import("./conversation/ConversationView").then(m => ({ default: m.ConversationView })));
+const WritingView = lazy(() => import("./writing/WritingView").then(m => ({ default: m.WritingView })));
+
 
 function ViewFallback() {
   return (
@@ -75,11 +75,11 @@ export function ClientHome() {
   const [activeView, setActiveView] = useState<ViewTab>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("lb.view") as ViewTab | null;
-      if (saved && ["dashboard", "listening", "grammar", "textcompletion", "reading", "shadowing", "mock", "conversation", "mistakes", "vocab", "writing", "settings"].includes(saved)) {
+      if (saved && ["listening", "grammar", "textcompletion", "reading", "shadowing", "mock", "mistakes", "vocab", "writing", "settings"].includes(saved)) {
         return saved;
       }
     }
-    return "dashboard";
+    return "shadowing";
   });
   const [locale, setLocale] = useState<Locale>(() => {
     if (typeof window !== "undefined") {
@@ -107,7 +107,7 @@ export function ClientHome() {
   const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const vocab = useVocab(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const analytics = useAnalytics(auth.getRequestOptions);
-  const conversation = useConversation(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
+
 
   // Bridge auth.message changes into toast notifications
   const lastMessageRef = useRef("");
@@ -182,13 +182,13 @@ export function ClientHome() {
     return () => window.removeEventListener("beforeunload", handler);
   }, [session.activeSession, session.sessionResult]);
 
-  // Auto-load analytics on login and when dashboard becomes active
+  // Auto-load analytics on login
   useEffect(() => {
-    if (auth.isLoggedIn && activeView === "dashboard") {
+    if (auth.isLoggedIn) {
       void analytics.refreshAll(auth.token);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth.isLoggedIn, activeView]);
+  }, [auth.isLoggedIn]);
 
   // Sync goal settings from analytics
   useEffect(() => {
@@ -238,7 +238,7 @@ export function ClientHome() {
   const handleLogin = useCallback(async () => {
     const token = await auth.login();
     if (!token) return;
-    setActiveView("dashboard");
+    setActiveView("shadowing");
   }, [auth]);
 
   const handleRegisterAndLogin = useCallback(async () => {
@@ -247,12 +247,12 @@ export function ClientHome() {
     const token = await auth.login(true);
     if (!token) return;
     auth.setMessage(COPY[locale].registerSuccess);
-    setActiveView("dashboard");
+    setActiveView("shadowing");
   }, [auth, locale]);
 
   const handleLogout = useCallback(() => {
     session.resetSession();
-    setActiveView("dashboard");
+    setActiveView("shadowing");
     auth.logout();
   }, [auth, session]);
 
@@ -333,26 +333,6 @@ export function ClientHome() {
 
   const renderView = () => {
     switch (activeView) {
-      case "dashboard":
-        return (
-          <DashboardView
-            locale={locale}
-            analytics={analytics.analytics}
-            nextTasks={analytics.nextTasks}
-            dailyPlan={analytics.dailyPlan}
-            currentScore={analytics.currentScore}
-            predictedScore={analytics.predictedScore}
-            currentGap={analytics.currentGap}
-            accuracyLabel={analytics.accuracyLabel}
-            avgTimeLabel={analytics.avgTimeLabel}
-            isSyncing={analytics.isSyncing}
-            onRefresh={() => void analytics.refreshAll(auth.token)}
-            onStartDiagnostic={() => void runner.runAction("diagnostic:start")}
-            onViewChange={handleViewChange}
-            onRunTask={handleRunTask}
-            onRunAction={(action: string) => runner.runAction(action)}
-          />
-        );
       case "settings":
         return (
           <SettingsView
@@ -440,20 +420,6 @@ export function ClientHome() {
             onSubmit={handleSubmitSession}
           />
         );
-      case "conversation":
-        return (
-          <ConversationView
-            locale={locale}
-            scenarios={conversation.scenarios}
-            activeSession={conversation.activeSession}
-            isLoading={conversation.isLoading}
-            inputText={conversation.inputText}
-            onInputChange={conversation.setInputText}
-            onStartSession={conversation.startSession}
-            onSendMessage={conversation.sendMessage}
-            onEndSession={conversation.endSession}
-          />
-        );
       case "listening":
       case "grammar":
       case "textcompletion":
@@ -479,26 +445,16 @@ export function ClientHome() {
             onSubmit={() => void handleSubmitPractice()}
           />
         );
-      default:
+      case "writing":
         return (
-          <DashboardView
+          <WritingView
             locale={locale}
-            analytics={analytics.analytics}
-            nextTasks={analytics.nextTasks}
-            dailyPlan={analytics.dailyPlan}
-            currentScore={analytics.currentScore}
-            predictedScore={analytics.predictedScore}
-            currentGap={analytics.currentGap}
-            accuracyLabel={analytics.accuracyLabel}
-            avgTimeLabel={analytics.avgTimeLabel}
-            isSyncing={analytics.isSyncing}
-            onRefresh={() => void analytics.refreshAll(auth.token)}
-            onStartDiagnostic={() => void runner.runAction("diagnostic:start")}
-            onViewChange={handleViewChange}
-            onRunTask={handleRunTask}
-            onRunAction={(action: string) => runner.runAction(action)}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
           />
         );
+      default:
+        return <ShadowingView locale={locale} />;
     }
   };
 

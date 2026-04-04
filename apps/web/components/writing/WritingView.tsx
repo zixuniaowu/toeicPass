@@ -50,6 +50,7 @@ export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
   const [text, setText] = useState("");
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [result, setResult] = useState<WritingResult | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const t = COPY[locale];
 
   const wordCount = text.split(/\s+/).filter(Boolean).length;
@@ -58,6 +59,7 @@ export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
     if (!text.trim() || !token) return;
     setIsEvaluating(true);
     setResult(null);
+    setErrorMsg(null);
     try {
       const res = await fetch(`${API_BASE}/writing/evaluate`, {
         method: "POST",
@@ -68,10 +70,15 @@ export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
         },
         body: JSON.stringify({ text }),
       });
+      if (!res.ok) {
+        setErrorMsg(t.submitFailed);
+        return;
+      }
       const data = await res.json();
       setResult(data);
     } catch (error) {
       console.error("Evaluation failed", error);
+      setErrorMsg(t.submitFailed);
     } finally {
       setIsEvaluating(false);
     }
@@ -101,6 +108,10 @@ export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
             </Button>
           </div>
         </Card>
+
+        {errorMsg && (
+          <p style={{ color: "var(--color-error, #dc2626)", fontWeight: 500 }}>{errorMsg}</p>
+        )}
 
         {result && (
           <Card className={styles.resultCard}>

@@ -585,7 +585,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const isJa = locale === "ja";
   const l = (zh: string, ja: string) => (isJa ? ja : zh);
 
-  const [trainingLanguage, setTrainingLanguage] = useState<TrainingLanguage>("ja");
+  const [trainingLanguage, setTrainingLanguage] = useState<TrainingLanguage>("en");
   const [viewMode, setViewMode] = useState<ViewMode>("materials");
   const [originMode, setOriginMode] = useState<ViewMode>("materials");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
