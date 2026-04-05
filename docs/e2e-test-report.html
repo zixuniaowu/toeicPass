@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>toeicPass E2E Test Report</title>
+<style>
+  :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --green: #3fb950; --red: #f85149; --blue: #58a6ff; --yellow: #d29922; --purple: #bc8cff; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 2rem; line-height: 1.6; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { color: #fff; font-size: 2rem; margin-bottom: 0.5rem; }
+  .subtitle { color: #8b949e; margin-bottom: 2rem; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .summary-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; text-align: center; }
+  .summary-card .number { font-size: 2.5rem; font-weight: bold; }
+  .summary-card .label { color: #8b949e; font-size: 0.85rem; margin-top: 0.25rem; }
+  .pass { color: var(--green); }
+  .fail { color: var(--red); }
+  .info { color: var(--blue); }
+  .warn { color: var(--yellow); }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+  .badge-pass { background: rgba(63,185,80,0.15); color: var(--green); }
+  .badge-new { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+  .section-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .section-header h2 { font-size: 1.1rem; color: #fff; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 0.6rem 1.5rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: #8b949e; font-weight: 500; font-size: 0.85rem; }
+  td { font-size: 0.9rem; }
+  tr:last-child td { border-bottom: none; }
+  .icon-pass { color: var(--green); }
+  .icon-pass::before { content: "✓ "; }
+  .time { color: #8b949e; font-size: 0.85rem; }
+  .coverage-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; width: 100%; }
+  .coverage-fill { height: 100%; background: var(--green); border-radius: 4px; }
+  .coverage-row { display: flex; align-items: center; gap: 0.75rem; }
+  .coverage-pct { min-width: 45px; text-align: right; font-weight: 600; font-size: 0.85rem; }
+  .footer { margin-top: 2rem; text-align: center; color: #484f58; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🧪 toeicPass E2E Test Report</h1>
+<p class="subtitle">Generated: 2026-04-06 | Branch: main | Commit: b47a52f</p>
+
+<!-- Summary Cards -->
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="number pass">254</div>
+    <div class="label">Total Tests Passed</div>
+  </div>
+  <div class="summary-card">
+    <div class="number pass">0</div>
+    <div class="label">Failed Tests</div>
+  </div>
+  <div class="summary-card">
+    <div class="number info">19</div>
+    <div class="label">Test Files</div>
+  </div>
+  <div class="summary-card">
+    <div class="number warn">32.4s</div>
+    <div class="label">Total Duration</div>
+  </div>
+</div>
+
+<!-- API Test Results -->
+<div class="section">
+  <div class="section-header">
+    <h2>🔧 API E2E Tests (NestJS + Jest)</h2>
+    <span class="badge badge-pass">62 / 62 PASSED</span>
+  </div>
+  <table>
+    <thead><tr><th>Test Suite</th><th>Tests</th><th>Status</th><th>Duration</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>auth.e2e-spec.ts</td>
+        <td>4</td>
+        <td><span class="icon-pass">Passed</span></td>
+        <td class="time">~1.1s</td>
+        <td>Register, login, profile, bad password</td>
+      </tr>
+      <tr>
+        <td>learning.e2e-spec.ts</td>
+        <td>14</td>
+        <td><span class="icon-pass">Passed</span></td>
+        <td class="time">~1.0s</td>
+        <td>Goals, diagnostic, practice P1-P7, mock exam, vocab, mistakes</td>
+      </tr>
+      <tr>
+        <td>enterprise.e2e-spec.ts</td>
+        <td>5</td>
+        <td><span class="icon-pass">Passed</span></td>
+        <td class="time">~0.1s</td>
+        <td>IP campaigns, candidates, sessions, check-in, results</td>
+      </tr>
+      <tr>
+        <td>app.e2e-spec.ts</td>
+        <td>3</td>
+        <td><span class="icon-pass">Passed</span></td>
+        <td class="time">~3.2s</td>
+        <td>Integration: register → learn → enterprise lifecycle</td>
+      </tr>
+      <tr>
+        <td>subscription.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+        <td>16</td>
+        <td><span class="icon-pass">Passed</span></td>
+        <td class="time">~0.2s</td>
+        <td>Plans, subscribe, cancel, usage, ads, ad events, admin CRUD</td>
+      </tr>
+      <tr>
+        <td>conversation.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+        <td>7</td>
+        <td><span class="icon-pass">Passed</span></td>
+        <td class="time">~0.1s</td>
+        <td>AI scenarios, reply generation, writing evaluation</td>
+      </tr>
+      <tr>
+        <td>grammar.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+        <td>5</td>
+        <td><span class="icon-pass">Passed</span></td>
+        <td class="time">~0.1s</td>
+        <td>Grammar cards listing, SM-2 grading, invalid grade rejection</td>
+      </tr>
+      <tr>
+        <td>oauth.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+        <td>8</td>
+        <td><span class="icon-pass">Passed</span></td>
+        <td class="time">~0.1s</td>
+        <td>Provider validation, OAuth error handling</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Web Test Results -->
+<div class="section">
+  <div class="section-header">
+    <h2>🌐 Web Frontend Tests (Next.js + Vitest)</h2>
+    <span class="badge badge-pass">192 / 192 PASSED</span>
+  </div>
+  <table>
+    <thead><tr><th>Test Suite</th><th>Tests</th><th>Status</th><th>Duration</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>learning-action.test.ts</td><td>36</td><td><span class="icon-pass">Passed</span></td><td class="time">25ms</td><td>Learning action logic</td></tr>
+      <tr><td>useAuth.test.ts</td><td>14</td><td><span class="icon-pass">Passed</span></td><td class="time">204ms</td><td>Auth hook: login, register, logout, errors</td></tr>
+      <tr><td>useLearningCommandRunner.test.ts</td><td>25</td><td><span class="icon-pass">Passed</span></td><td class="time">266ms</td><td>Command runner for learning actions</td></tr>
+      <tr><td>api.test.ts</td><td>11</td><td><span class="icon-pass">Passed</span></td><td class="time">64ms</td><td>API client fetch wrapper</td></tr>
+      <tr><td>useSession.test.ts</td><td>14</td><td><span class="icon-pass">Passed</span></td><td class="time">267ms</td><td>Session management hook</td></tr>
+      <tr><td>useAnalytics.test.ts</td><td>20</td><td><span class="icon-pass">Passed</span></td><td class="time">219ms</td><td>Analytics data fetching</td></tr>
+      <tr><td>useVocab.test.ts</td><td>12</td><td><span class="icon-pass">Passed</span></td><td class="time">138ms</td><td>Vocabulary card management</td></tr>
+      <tr><td>useMistakes.test.ts</td><td>10</td><td><span class="icon-pass">Passed</span></td><td class="time">188ms</td><td>Mistake library operations</td></tr>
+      <tr><td>components.test.tsx</td><td>18</td><td><span class="icon-pass">Passed</span></td><td class="time">738ms</td><td>UI component rendering</td></tr>
+      <tr><td>LoginView.test.tsx</td><td>15</td><td><span class="icon-pass">Passed</span></td><td class="time">1059ms</td><td>Login/register form interactions</td></tr>
+      <tr><td>PracticeView.test.tsx</td><td>17</td><td><span class="icon-pass">Passed</span></td><td class="time">968ms</td><td>Practice session UI flows</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Endpoint Coverage -->
+<div class="section">
+  <div class="section-header">
+    <h2>📊 API Endpoint Coverage</h2>
+    <span class="badge badge-pass">100%</span>
+  </div>
+  <table>
+    <thead><tr><th>Domain</th><th>Endpoints</th><th>Coverage</th><th></th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Auth (register, login, profile)</td>
+        <td>3</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>auth.e2e-spec.ts</td>
+      </tr>
+      <tr>
+        <td>OAuth (social login)</td>
+        <td>1</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>oauth.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+      </tr>
+      <tr>
+        <td>Learning (goals, diagnostic, practice, mock)</td>
+        <td>10</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>learning.e2e-spec.ts</td>
+      </tr>
+      <tr>
+        <td>Vocabulary Cards</td>
+        <td>3</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>learning.e2e-spec.ts</td>
+      </tr>
+      <tr>
+        <td>Grammar Cards</td>
+        <td>2</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>grammar.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+      </tr>
+      <tr>
+        <td>Mistake Library</td>
+        <td>3</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>learning.e2e-spec.ts</td>
+      </tr>
+      <tr>
+        <td>AI Conversation</td>
+        <td>2</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>conversation.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+      </tr>
+      <tr>
+        <td>Writing Evaluation</td>
+        <td>1</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>conversation.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+      </tr>
+      <tr>
+        <td>Subscription (plans, profile, subscribe, cancel)</td>
+        <td>6</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>subscription.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+      </tr>
+      <tr>
+        <td>Ad System (list, filter, events, admin CRUD)</td>
+        <td>5</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>subscription.e2e-spec.ts <span class="badge badge-new">NEW</span></td>
+      </tr>
+      <tr>
+        <td>Enterprise IP (campaigns, candidates, sessions)</td>
+        <td>5</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>enterprise.e2e-spec.ts</td>
+      </tr>
+      <tr>
+        <td>Analytics (trends, prediction)</td>
+        <td>3</td>
+        <td>
+          <div class="coverage-row">
+            <div class="coverage-bar" style="width:120px"><div class="coverage-fill" style="width:100%"></div></div>
+            <span class="coverage-pct pass">100%</span>
+          </div>
+        </td>
+        <td>learning.e2e-spec.ts</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- New Tests Detail -->
+<div class="section">
+  <div class="section-header">
+    <h2>🆕 New Test Cases Added (36 tests in 4 files)</h2>
+  </div>
+  <table>
+    <thead><tr><th>#</th><th>File</th><th>Test Case</th><th>Status</th></tr></thead>
+    <tbody>
+      <!-- Subscription -->
+      <tr><td>1</td><td rowspan="16">subscription.e2e-spec.ts</td><td>lists available plans (no auth required)</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>2</td><td>gets user profile with plan info</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>3</td><td>subscribes to a plan</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>4</td><td>rejects invalid plan code</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>5</td><td>gets usage and features</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>6</td><td>cancels subscription</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>7</td><td>gets ads for user</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>8</td><td>gets ads filtered by slot</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>9</td><td>records an ad event</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>10</td><td>admin lists all ads</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>11</td><td>admin gets ad stats</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>12</td><td>admin creates an ad</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>13</td><td>admin updates an ad</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>14</td><td>admin deletes an ad</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>15</td><td>rejects unauthenticated access to profile</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>16</td><td>rejects unauthenticated access to ads</td><td><span class="icon-pass"></span></td></tr>
+      <!-- Conversation -->
+      <tr><td>17</td><td rowspan="7">conversation.e2e-spec.ts</td><td>lists conversation scenarios</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>18</td><td>generates a conversation reply</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>19</td><td>generates reply with conversation history</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>20</td><td>rejects reply with missing scenarioId</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>21</td><td>rejects reply with empty text</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>22</td><td>evaluates a writing submission</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>23</td><td>rejects writing evaluation with empty text</td><td><span class="icon-pass"></span></td></tr>
+      <!-- Grammar -->
+      <tr><td>24</td><td rowspan="5">grammar.e2e-spec.ts</td><td>lists grammar cards with summary</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>25</td><td>grammar cards have SM-2 fields</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>26</td><td>grades a grammar card (grade 3 = remembered)</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>27</td><td>grades a grammar card (grade 1 = forgotten)</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>28</td><td>rejects invalid grade value</td><td><span class="icon-pass"></span></td></tr>
+      <!-- OAuth -->
+      <tr><td>29</td><td rowspan="8">oauth.e2e-spec.ts</td><td>rejects unsupported OAuth provider</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>30</td><td>rejects empty provider</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>31</td><td>rejects empty code</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>32</td><td>rejects missing provider field</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>33</td><td>rejects missing code field</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>34</td><td>google login returns error when server not configured</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>35</td><td>wechat login returns error when server not configured</td><td><span class="icon-pass"></span></td></tr>
+      <tr><td>36</td><td>line login returns error when server not configured</td><td><span class="icon-pass"></span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Test Architecture -->
+<div class="section">
+  <div class="section-header">
+    <h2>🏗️ Test Architecture</h2>
+  </div>
+  <div style="padding: 1.5rem;">
+    <table>
+      <tr><th style="width:180px">API Framework</th><td>Jest + supertest against NestJS test module</td></tr>
+      <tr><th>Web Framework</th><td>Vitest + @testing-library/react</td></tr>
+      <tr><th>Database</th><td>PGLite in-memory (no external DB required)</td></tr>
+      <tr><th>Test Isolation</th><td>Each spec file creates its own NestJS app + fresh store</td></tr>
+      <tr><th>Auth Pattern</th><td>registerAndLogin() helper → JWT token → auth header</td></tr>
+      <tr><th>Tenant Isolation</th><td>Unique tenantCode per test suite (e.g., "sub-test", "grammar-test")</td></tr>
+      <tr><th>AI Conversation</th><td>Rule-based fallback (no external API in test environment)</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  <p>toeicPass E2E Test Report — All 254 tests passed across 19 test files</p>
+  <p>API: 8 suites / 62 tests (20.3s) — Web: 11 suites / 192 tests (12.1s)</p>
+</div>
+
+</div>
+</body>
+</html>
