@@ -14,6 +14,8 @@ export interface User {
   passwordHash: string;
   displayName: string;
   isActive: boolean;
+  oauthProvider?: string;
+  oauthProviderId?: string;
   createdAt: string;
 }
 
@@ -120,6 +122,32 @@ export interface VocabularyCard {
   example: string;
   sourcePart: number;
   tags: string[];
+  easeFactor: number;
+  intervalDays: number;
+  dueAt: string;
+  lastGrade?: number;
+  cefrLevel?: string;
+  difficulty?: number;
+  scoreBand?: string;
+  createdAt: string;
+}
+
+export interface GrammarCard {
+  id: string;
+  tenantId: string;
+  userId: string;
+  ruleId: string;
+  title: string;
+  titleCn: string;
+  titleJa: string;
+  category: string;
+  explanation: string;
+  explanationCn: string;
+  explanationJa: string;
+  examples: string[];
+  sourcePart: number;
+  difficulty: number;
+  cefrLevel?: string;
   easeFactor: number;
   intervalDays: number;
   dueAt: string;
@@ -235,4 +263,90 @@ export interface ConversationMessage {
   timestamp: string;
   corrections?: string[];
   suggestions?: string[];
+}
+
+// ===== Subscription & Monetization =====
+
+export type PlanCode = "free" | "basic" | "premium" | "enterprise";
+export type SubscriptionStatus = "active" | "cancelled" | "expired" | "past_due";
+export type BillingCycle = "monthly" | "yearly" | "lifetime";
+
+export interface PlanFeatures {
+  daily_practice_sessions: number;  // -1 = unlimited
+  daily_mock_tests: number;
+  daily_questions: number;
+  vocab_cards: number;
+  ai_conversations: number;
+  show_ads: boolean;
+  explanation_detail: "basic" | "full";
+  score_prediction: boolean;
+  export_data: boolean;
+}
+
+export interface SubscriptionPlan {
+  id: string;
+  code: PlanCode;
+  nameEn: string;
+  nameZh: string;
+  nameJa: string;
+  priceMonthly: number;   // cents
+  priceYearly: number;
+  currency: string;
+  features: PlanFeatures;
+  sortOrder: number;
+  isActive: boolean;
+  createdAt: string;
+}
+
+export interface UserSubscription {
+  id: string;
+  userId: string;
+  planId: string;
+  status: SubscriptionStatus;
+  billingCycle: BillingCycle;
+  startedAt: string;
+  expiresAt?: string;
+  cancelledAt?: string;
+  paymentProvider?: string;
+  paymentProviderId?: string;
+  createdAt: string;
+}
+
+export interface DailyUsage {
+  id: string;
+  tenantId: string;
+  userId: string;
+  usageDate: string;
+  practiceSessions: number;
+  mockTests: number;
+  questionsAnswered: number;
+  vocabReviews: number;
+  aiConversations: number;
+}
+
+export type AdSlot = "banner_top" | "interstitial" | "native_feed" | "reward_video";
+
+export interface AdPlacement {
+  id: string;
+  slot: AdSlot;
+  title: string;
+  imageUrl?: string;
+  linkUrl: string;
+  ctaText: string;
+  priority: number;
+  targetPlans: PlanCode[];
+  isActive: boolean;
+  impressions: number;
+  clicks: number;
+  startsAt?: string;
+  expiresAt?: string;
+  createdAt: string;
+}
+
+export interface AdEvent {
+  id: string;
+  placementId: string;
+  userId?: string;
+  eventType: "impression" | "click" | "dismiss" | "reward_complete";
+  createdAt: string;
 }

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@toeicpass/conversation-ai — Documentation</title>
+  <style>
+    :root {
+      --brand: #8250df;
+      --brand-dark: #6639ba;
+      --brand-light: #fbefff;
+      --text: #1f2328;
+      --text-secondary: #656d76;
+      --surface: #ffffff;
+      --bg: #f6f8fa;
+      --border: #d0d7de;
+      --border-muted: #d8dee4;
+      --code-bg: #f6f8fa;
+      --code-text: #6639ba;
+      --sidebar-w: 260px;
+      --header-h: 56px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif; font-size: 15px; line-height: 1.6; color: var(--text); background: var(--bg); }
+
+    .doc-header { position: fixed; top: 0; left: 0; right: 0; height: var(--header-h); background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; z-index: 100; }
+    .doc-header .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; color: var(--text); text-decoration: none; }
+    .doc-header .logo-mark { background: var(--brand); color: #fff; width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; }
+    .doc-header .version { margin-left: auto; color: var(--text-secondary); font-size: 0.82rem; }
+
+    .sidebar { position: fixed; top: var(--header-h); left: 0; bottom: 0; width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border); overflow-y: auto; padding: 20px 0; z-index: 90; }
+    .sidebar-section { padding: 0 16px; margin-bottom: 20px; }
+    .sidebar-title { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); padding: 8px 0 6px; }
+    .sidebar a { display: block; padding: 5px 12px; margin: 1px 0; font-size: 0.86rem; color: var(--text); text-decoration: none; border-radius: 6px; transition: background 0.15s; }
+    .sidebar a:hover { background: var(--bg); }
+
+    .main { margin-left: var(--sidebar-w); margin-top: var(--header-h); min-height: calc(100vh - var(--header-h)); }
+    .content { padding: 40px 48px 80px; max-width: 100%; }
+
+    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    h1 + p { margin-top: 12px; }
+    h2 { font-size: 1.4rem; font-weight: 600; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-muted); }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 32px 0 10px; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 4px; }
+
+    code { background: var(--code-bg); color: var(--code-text); padding: 2px 6px; border-radius: 4px; font-family: 'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; font-size: 0.88em; }
+    pre { background: #24292f; color: #e6edf3; padding: 16px 20px; border-radius: 8px; overflow-x: auto; margin: 12px 0 20px; font-size: 0.84rem; line-height: 1.55; border: 1px solid #30363d; }
+    pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+    table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 0.9rem; }
+    th, td { padding: 8px 12px; text-align: left; border: 1px solid var(--border-muted); }
+    th { background: var(--bg); font-weight: 600; white-space: nowrap; }
+
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; margin-right: 4px; vertical-align: middle; }
+    .badge-backend { background: #dafbe1; color: #1a7f37; }
+    .badge-frontend { background: #ddf4ff; color: #0969da; }
+    .badge-types { background: #fff8c5; color: #9a6700; }
+    .badge-voice { background: #fbefff; color: #8250df; }
+
+    .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .card { background: var(--surface); border: 1px solid var(--border-muted); border-radius: 8px; padding: 20px; }
+    .card h4 { margin: 0 0 8px; font-size: 1rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    .file-tree { font-family: 'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; font-size: 0.84rem; line-height: 1.9; background: var(--surface); border: 1px solid var(--border-muted); border-radius: 8px; padding: 16px 20px; margin: 12px 0 20px; }
+    .file-tree .dir { color: var(--brand); font-weight: 600; }
+    .file-tree .desc { color: var(--text-secondary); }
+
+    .flow-diagram { margin: 20px 0; }
+    .flow-row { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+    .flow-box { border: 2px solid var(--border); border-radius: 8px; padding: 10px 16px; font-size: 0.88rem; font-weight: 600; min-width: 200px; }
+    .flow-box.pkg { border-color: var(--brand); background: var(--brand-light); color: var(--brand-dark); }
+    .flow-box.app { border-color: #d4a72c; background: #fff8c5; color: #7c4a00; }
+    .flow-arrow { color: var(--text-secondary); font-size: 1.2rem; }
+    .flow-box small { font-weight: 400; font-size: 0.78rem; display: block; }
+
+    .callout { border: 1px solid var(--border-muted); border-left: 4px solid var(--brand); border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 16px 0; background: var(--brand-light); font-size: 0.9rem; }
+    .callout strong { color: var(--brand-dark); }
+
+    .doc-footer { border-top: 1px solid var(--border-muted); padding: 24px 48px; color: var(--text-secondary); font-size: 0.82rem; display: flex; justify-content: space-between; }
+
+    @media (max-width: 960px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .content { padding: 24px 20px 60px; }
+      .card-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="doc-header">
+  <a href="#" class="logo">
+    <span class="logo-mark">AI</span>
+    @toeicpass/conversation-ai
+  </a>
+  <span class="version">v1.0.0</span>
+</header>
+
+<nav class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Getting Started</div>
+    <a href="#overview">Overview</a>
+    <a href="#installation">Installation</a>
+    <a href="#architecture">Architecture</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">API Reference</div>
+    <a href="#file-structure">File Structure</a>
+    <a href="#core-types">Core Types</a>
+    <a href="#conversation-service">ConversationService</a>
+    <a href="#scenarios">Built-in Scenarios</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Frontend</div>
+    <a href="#conversation-view">ConversationView</a>
+    <a href="#api-functions">ConversationApiFunctions</a>
+    <a href="#voice-features">Voice Features</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Integration</div>
+    <a href="#di-pattern">Dependency Injection</a>
+    <a href="#backend-usage">Backend Usage</a>
+    <a href="#frontend-usage">Frontend Usage</a>
+    <a href="#thin-wrapper">Thin Wrapper Pattern</a>
+    <a href="#config">Configuration</a>
+    <a href="#cross-project">Cross-Project Reuse</a>
+  </div>
+</nav>
+
+<main class="main">
+<div class="content">
+
+  <h1 id="overview">@toeicpass/conversation-ai</h1>
+  <p>
+    <span class="badge badge-backend">Backend</span>
+    <span class="badge badge-frontend">Frontend</span>
+    <span class="badge badge-types">Types</span>
+    <span class="badge badge-voice">Voice</span>
+  </p>
+  <p>An AI-powered voice conversation module for English language practice. Provides a conversation engine with built-in TOEIC scenarios, Google Gemini API integration with automatic rule-based fallback, and a complete full-screen voice chat UI with speech recognition and synthesis.</p>
+
+  <h3>Key Features</h3>
+  <ul>
+    <li><strong>8 built-in TOEIC scenarios</strong> covering office, restaurant, airport, hotel, shopping, meeting, phone, and interview contexts</li>
+    <li><strong>Google Gemini 2.0 Flash</strong> integration for natural AI responses</li>
+    <li><strong>Automatic fallback</strong> to rule-based engine when no API key is configured</li>
+    <li><strong>Grammar corrections</strong> included in AI responses</li>
+    <li><strong>Conversation suggestions</strong> to help learners continue</li>
+    <li><strong>Full-screen voice chat UI</strong> optimized for mobile</li>
+    <li><strong>Speech-to-text</strong> via Web Speech API (SpeechRecognition)</li>
+    <li><strong>Text-to-speech</strong> via Web Speech API (SpeechSynthesis)</li>
+    <li><strong>No external dependencies</strong> — plain TypeScript backend, React frontend</li>
+  </ul>
+
+  <!-- ── Installation ── -->
+  <h2 id="installation">Installation</h2>
+
+  <h3>As an npm Workspace Package</h3>
+  <pre><code># Copy or symlink the package into your monorepo
+packages/
+  conversation-ai/    ← this package
+
+# Add to your root package.json workspaces
+{
+  "workspaces": ["packages/*", "apps/*"]
+}
+
+# Install to create symlinks
+npm install
+
+# Import in your code
+import { ConversationService } from "@toeicpass/conversation-ai";
+import { ConversationView } from "@toeicpass/conversation-ai/web";</code></pre>
+
+  <h3>As an npm Package (Private Registry)</h3>
+  <pre><code>npm install @toeicpass/conversation-ai --registry https://your-registry.example.com</code></pre>
+
+  <!-- ── Architecture ── -->
+  <h2 id="architecture">Architecture</h2>
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <div class="flow-box app">Your Backend<small>NestJS / Express / etc.</small></div>
+      <span class="flow-arrow">→ import →</span>
+      <div class="flow-box pkg">@toeicpass/conversation-ai<small>ConversationService + Types</small></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-box app">Your Frontend<small>React / Next.js / etc.</small></div>
+      <span class="flow-arrow">→ import →</span>
+      <div class="flow-box pkg">@toeicpass/conversation-ai/web<small>ConversationView + Types</small></div>
+    </div>
+  </div>
+  <p>The package exports two entry points:</p>
+  <ul>
+    <li><code>@toeicpass/conversation-ai</code> &mdash; Backend: ConversationService, types, default scenarios</li>
+    <li><code>@toeicpass/conversation-ai/web</code> &mdash; Frontend: ConversationView component, prop type interfaces</li>
+  </ul>
+
+  <!-- ── File Structure ── -->
+  <h2 id="file-structure">File Structure</h2>
+  <div class="file-tree">
+    <span class="dir">packages/conversation-ai/</span><br>
+    ├── package.json <span class="desc">&mdash; name: @toeicpass/conversation-ai</span><br>
+    ├── tsconfig.json<br>
+    ├── README.md<br>
+    ├── <span class="dir">src/</span> <span class="desc">&mdash; Backend entry point</span><br>
+    │&nbsp;&nbsp; ├── index.ts <span class="desc">&mdash; Barrel export</span><br>
+    │&nbsp;&nbsp; ├── types.ts <span class="desc">&mdash; All type definitions</span><br>
+    │&nbsp;&nbsp; ├── conversation.service.ts <span class="desc">&mdash; Core ConversationService class</span><br>
+    │&nbsp;&nbsp; └── scenarios.ts <span class="desc">&mdash; 8 default TOEIC scenarios</span><br>
+    └── <span class="dir">web/</span> <span class="desc">&mdash; Frontend entry point</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;├── index.ts <span class="desc">&mdash; Barrel export</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;├── types.ts <span class="desc">&mdash; ConversationApiFunctions, ConversationViewProps</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;├── speech-recognition.d.ts <span class="desc">&mdash; Web Speech API type definitions</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;├── ConversationView.tsx <span class="desc">&mdash; Full-screen voice chat UI component</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;└── ConversationView.module.css <span class="desc">&mdash; Styles (440 lines)</span>
+  </div>
+
+  <!-- ── Core Types ── -->
+  <h2 id="core-types">Core Types</h2>
+  <table>
+    <tr><th>Type</th><th>Description</th></tr>
+    <tr><td><code>ConversationScenario</code></td><td>Scenario definition: id, title, titleCn, description, context, difficulty (1-3), category (string)</td></tr>
+    <tr><td><code>ConversationMessage</code></td><td>Chat message: role (user / assistant / system), content, corrections? (string[]), suggestions? (string[])</td></tr>
+    <tr><td><code>ConversationSession</code></td><td>Active session: scenarioId, messages[], startedAt</td></tr>
+    <tr><td><code>ConversationReplyInput</code></td><td>User input payload: scenarioId, text, history? (ConversationMessage[])</td></tr>
+    <tr><td><code>ConversationReplyResult</code></td><td>AI response: content (string), corrections (string[]), suggestions (string[])</td></tr>
+    <tr><td><code>ConversationServiceConfig</code></td><td>Configuration: geminiApiKey? (string), modelName? (string, default: "gemini-2.0-flash")</td></tr>
+    <tr><td><code>ConversationApiFunctions</code></td><td>Frontend injection interface: fetchScenarios() + sendReply(payload)</td></tr>
+    <tr><td><code>ConversationViewProps</code></td><td>Component props: locale, api (ConversationApiFunctions)</td></tr>
+  </table>
+
+  <!-- ── ConversationService ── -->
+  <h2 id="conversation-service">ConversationService</h2>
+  <p>The core backend class providing scenario listing and AI reply generation.</p>
+
+  <table>
+    <tr><th>Method</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+    <tr><td><code>listScenarios()</code></td><td>&mdash;</td><td>ConversationScenario[]</td><td>Returns all 8 built-in TOEIC conversation scenarios.</td></tr>
+    <tr><td><code>generateReply()</code></td><td>ConversationReplyInput</td><td>Promise&lt;ConversationReplyResult&gt;</td><td>Generates an AI response using Gemini API or rule-based fallback. Includes grammar corrections and conversation suggestions.</td></tr>
+  </table>
+
+  <h3>AI Engine Selection</h3>
+  <div class="card-row">
+    <div class="card">
+      <h4>Google Gemini (Primary)</h4>
+      <p>When <code>geminiApiKey</code> is provided, the service calls the Gemini 2.0 Flash API with a specialized English tutoring prompt. Responses include natural conversation, grammar corrections, and follow-up suggestions.</p>
+    </div>
+    <div class="card">
+      <h4>Rule-Based Fallback</h4>
+      <p>When no API key is available, the service uses a built-in rule engine that generates contextually appropriate responses based on the scenario's context field. No network calls required.</p>
+    </div>
+  </div>
+
+  <!-- ── Scenarios ── -->
+  <h2 id="scenarios">Built-in Scenarios</h2>
+  <table>
+    <tr><th>ID</th><th>Name</th><th>Category</th><th>Difficulty</th><th>Context</th></tr>
+    <tr><td><code>office-small-talk</code></td><td>Office Small Talk</td><td>office</td><td>1</td><td>Casual workplace conversation between colleagues</td></tr>
+    <tr><td><code>restaurant-order</code></td><td>Restaurant Order</td><td>restaurant</td><td>1</td><td>Ordering food at a restaurant</td></tr>
+    <tr><td><code>airport-checkin</code></td><td>Airport Check-in</td><td>airport</td><td>2</td><td>Checking in at an airport counter</td></tr>
+    <tr><td><code>hotel-reservation</code></td><td>Hotel Reservation</td><td>hotel</td><td>2</td><td>Making or modifying a hotel reservation</td></tr>
+    <tr><td><code>shopping</code></td><td>Shopping</td><td>shopping</td><td>1</td><td>Shopping at a store, asking about products</td></tr>
+    <tr><td><code>business-meeting</code></td><td>Business Meeting</td><td>meeting</td><td>3</td><td>Participating in a formal business meeting</td></tr>
+    <tr><td><code>phone-call</code></td><td>Phone Call</td><td>phone</td><td>2</td><td>Making or receiving a business phone call</td></tr>
+    <tr><td><code>job-interview</code></td><td>Job Interview</td><td>interview</td><td>3</td><td>Answering questions in a job interview</td></tr>
+  </table>
+
+  <!-- ── ConversationView ── -->
+  <h2 id="conversation-view">ConversationView Component</h2>
+  <p>A full-screen React component providing the complete voice chat experience.</p>
+
+  <h3>Features</h3>
+  <ul>
+    <li>Scenario selection screen with difficulty indicators</li>
+    <li>Full-screen chat interface with large, readable text</li>
+    <li>Press-and-hold microphone button for voice input</li>
+    <li>Automatic text-to-speech for AI responses</li>
+    <li>Inline grammar correction highlights</li>
+    <li>Suggested follow-up responses</li>
+    <li>Session reset and scenario switching</li>
+    <li>Locale-aware labels (English and Chinese supported)</li>
+  </ul>
+
+  <h3>Props</h3>
+  <table>
+    <tr><th>Prop</th><th>Type</th><th>Required</th><th>Description</th></tr>
+    <tr><td><code>locale</code></td><td><code>"en" | "zh"</code></td><td>Yes</td><td>UI language for labels and instructions</td></tr>
+    <tr><td><code>api</code></td><td><code>ConversationApiFunctions</code></td><td>Yes</td><td>API function injection</td></tr>
+  </table>
+
+  <!-- ── API Functions ── -->
+  <h3 id="api-functions">ConversationApiFunctions Interface</h3>
+  <pre><code>interface ConversationApiFunctions {
+  fetchScenarios(): Promise&lt;ConversationScenario[]&gt;;
+  sendReply(payload: ConversationReplyInput): Promise&lt;ConversationReplyResult&gt;;
+}</code></pre>
+
+  <!-- ── Voice Features ── -->
+  <h2 id="voice-features">Voice Features</h2>
+  <div class="callout">
+    <strong>Browser Native APIs</strong> &mdash; No third-party libraries required. Voice features use the Web Speech API, which is supported in Chrome, Edge, Safari, and most modern browsers.
+  </div>
+
+  <h3>Speech-to-Text (Input)</h3>
+  <p>Uses the <code>SpeechRecognition</code> API. The user presses and holds the microphone button to speak. Recognition results are displayed in the chat as user messages. The <code>speech-recognition.d.ts</code> file provides TypeScript type definitions for the browser API.</p>
+
+  <h3>Text-to-Speech (Output)</h3>
+  <p>Uses the <code>SpeechSynthesis</code> API. AI responses are automatically read aloud after being received. The component selects an English voice from the available system voices.</p>
+
+  <!-- ── DI Pattern ── -->
+  <h2 id="di-pattern">Dependency Injection Pattern</h2>
+  <div class="card-row">
+    <div class="card">
+      <h4>Backend: Configuration Injection</h4>
+      <p>The <code>ConversationService</code> constructor accepts an optional <code>ConversationServiceConfig</code>. The Gemini API key and model name are configurable. No network library is bundled.</p>
+      <pre><code>const service = new ConversationService({
+  geminiApiKey: "your-key",
+  modelName: "gemini-2.0-flash",
+});</code></pre>
+    </div>
+    <div class="card">
+      <h4>Frontend: API Function Injection</h4>
+      <p>The <code>ConversationView</code> component receives an <code>api</code> prop with two async functions. It never calls <code>fetch</code> or any HTTP client directly.</p>
+      <pre><code>&lt;ConversationView
+  locale="en"
+  api={{
+    fetchScenarios: myFetchFn,
+    sendReply: myReplyFn,
+  }}
+/&gt;</code></pre>
+    </div>
+  </div>
+
+  <!-- ── Backend Usage ── -->
+  <h2 id="backend-usage">Backend Usage</h2>
+  <pre><code>import { ConversationService } from "@toeicpass/conversation-ai";
+
+// Create service — Gemini is used when API key is provided
+const service = new ConversationService({
+  geminiApiKey: process.env.GEMINI_API_KEY, // optional
+  modelName: "gemini-2.0-flash",            // optional, this is the default
+});
+
+// List all available scenarios
+const scenarios = service.listScenarios();
+// → [{ id: "office-small-talk", title: "Office Small Talk", ... }, ...]
+
+// Generate an AI reply
+const result = await service.generateReply({
+  scenarioId: "restaurant-order",
+  text: "I'd like to order the grilled salmon, please.",
+  history: [
+    { role: "assistant", content: "Welcome! What can I get for you today?" },
+  ],
+});
+
+console.log(result.content);
+// → "Great choice! The grilled salmon is one of our most popular dishes. ..."
+
+console.log(result.corrections);
+// → [] (no errors in this input)
+
+console.log(result.suggestions);
+// → ["Could I also see the wine menu?", "What sides come with that?"]</code></pre>
+
+  <h3>Without API Key (Rule-Based Fallback)</h3>
+  <pre><code>// No API key → automatic rule-based fallback
+const service = new ConversationService({});
+// OR
+const service = new ConversationService();
+
+const result = await service.generateReply({
+  scenarioId: "office-small-talk",
+  text: "How was your weekend?",
+  history: [],
+});
+// Still returns content, corrections, and suggestions
+// using built-in rules based on scenario context</code></pre>
+
+  <!-- ── Frontend Usage ── -->
+  <h2 id="frontend-usage">Frontend Usage</h2>
+  <pre><code>import { ConversationView } from "@toeicpass/conversation-ai/web";
+import type { ConversationApiFunctions } from "@toeicpass/conversation-ai/web";
+
+// Define API functions pointing to your backend endpoints
+const api: ConversationApiFunctions = {
+  fetchScenarios: () =&gt;
+    fetch("/api/v1/conversation/scenarios", {
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(r =&gt; r.json()),
+
+  sendReply: (payload) =&gt;
+    fetch("/api/v1/conversation/reply", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payload),
+    }).then(r =&gt; r.json()),
+};
+
+// Render the full-screen voice chat
+function ConversationPage() {
+  return &lt;ConversationView locale="en" api={api} /&gt;;
+}</code></pre>
+
+  <!-- ── Thin Wrapper ── -->
+  <h2 id="thin-wrapper">Thin Wrapper Pattern</h2>
+  <p>In the toeicPass project, the component is wrapped in a ~26-line file that binds authentication tokens:</p>
+  <pre><code>// apps/web/components/conversation/ConversationView.tsx
+"use client";
+import { useMemo } from "react";
+import * as api from "../../lib/api";
+import { ConversationView as ConversationViewBase } from "@toeicpass/conversation-ai/web";
+import type { ConversationApiFunctions } from "@toeicpass/conversation-ai/web";
+
+export function ConversationView({ locale, token, tenantCode }) {
+  const conversationApi = useMemo&lt;ConversationApiFunctions&gt;(() =&gt; ({
+    fetchScenarios: () =&gt; api.fetchConversationScenarios({ token, tenantCode }),
+    sendReply: (payload) =&gt; api.fetchConversationReply(payload, { token, tenantCode }),
+  }), [token, tenantCode]);
+
+  return &lt;ConversationViewBase locale={locale} api={conversationApi} /&gt;;
+}</code></pre>
+
+  <!-- ── Config ── -->
+  <h2 id="config">Configuration</h2>
+
+  <h3>TypeScript Path Mapping</h3>
+  <pre><code>// tsconfig.json (consumer apps)
+{
+  "compilerOptions": {
+    "paths": {
+      "@toeicpass/conversation-ai": ["../../packages/conversation-ai/src"],
+      "@toeicpass/conversation-ai/web": ["../../packages/conversation-ai/web"]
+    }
+  }
+}</code></pre>
+
+  <h3>Jest Module Mapping</h3>
+  <pre><code>{
+  "moduleNameMapper": {
+    "^@toeicpass/conversation-ai$": "&lt;rootDir&gt;/../../packages/conversation-ai/src"
+  }
+}</code></pre>
+
+  <h3>Vitest / Vite Aliases</h3>
+  <pre><code>resolve: {
+  alias: {
+    "@toeicpass/conversation-ai/web": path.resolve(__dirname, "../../packages/conversation-ai/web"),
+    "@toeicpass/conversation-ai": path.resolve(__dirname, "../../packages/conversation-ai/src"),
+  },
+}</code></pre>
+
+  <h3>Environment Variables</h3>
+  <table>
+    <tr><th>Variable</th><th>Purpose</th><th>Default</th></tr>
+    <tr><td><code>GEMINI_API_KEY</code></td><td>Google Gemini API key for AI responses</td><td>Not set — uses rule-based fallback engine</td></tr>
+  </table>
+
+  <!-- ── Cross-Project ── -->
+  <h2 id="cross-project">Cross-Project Reuse</h2>
+  <ol>
+    <li>Copy <code>packages/conversation-ai/</code> into your new project's packages directory</li>
+    <li>Add it to <code>package.json</code> workspaces and run <code>npm install</code></li>
+    <li>Backend: Create a <code>ConversationService</code> instance, expose <code>/scenarios</code> and <code>/reply</code> endpoints</li>
+    <li>Frontend: Import <code>ConversationView</code>, create a <code>ConversationApiFunctions</code> object pointing to your API</li>
+    <li>Configure TypeScript paths and test framework aliases</li>
+  </ol>
+  <div class="callout">
+    <strong>Minimal integration effort.</strong> The backend service is a single class with no dependencies. The frontend is one React component with one CSS module. Total integration typically requires implementing just 2 API endpoints and one wrapper component.
+  </div>
+
+</div>
+<footer class="doc-footer">
+  <span>@toeicpass/conversation-ai Documentation</span>
+  <span>v1.0.0</span>
+</footer>
+</main>
+
+</body>
+</html>

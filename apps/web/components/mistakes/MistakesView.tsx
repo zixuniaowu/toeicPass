@@ -9,6 +9,7 @@ import { Select } from "../ui/Select";
 import { Input } from "../ui/Input";
 import { MistakeCard } from "./MistakeCard";
 import { CardSkeleton } from "../ui/Skeleton";
+import { NativeFeedAd } from "../ads/NativeFeedAd";
 import styles from "./MistakesView.module.css";
 
 const PAGE_SIZE = 20;
@@ -32,6 +33,9 @@ interface MistakesViewProps {
   onPractice: (partNo: number) => void;
   onPracticeFiltered: (payload: { questionIds: string[]; partNo?: number }) => void;
   onPracticeQuestion: (questionId: string, partNo?: number) => void;
+  showAds?: boolean;
+  token?: string;
+  tenantCode?: string;
 }
 
 const COPY = {
@@ -96,6 +100,9 @@ export function MistakesView({
   onPractice,
   onPracticeFiltered,
   onPracticeQuestion,
+  showAds = false,
+  token = "",
+  tenantCode = "",
 }: MistakesViewProps) {
   const copy = COPY[locale];
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
@@ -215,6 +222,11 @@ export function MistakesView({
             />
           ))}
         </div>
+
+        {showAds && (
+          <NativeFeedAd locale={locale} token={token} tenantCode={tenantCode} showAds={showAds} />
+        )}
+
         {!isLoading && hasMore && (
           <div className={styles.listFooter}>
             <Button variant="secondary" onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}>

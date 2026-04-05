@@ -13,6 +13,10 @@ export default defineConfig({
   resolve: {
     alias: {
       "@toeicpass/shared": path.resolve(__dirname, "../../packages/shared/src"),
+      "@toeicpass/ad-system/web": path.resolve(__dirname, "../../packages/ad-system/web"),
+      "@toeicpass/ad-system": path.resolve(__dirname, "../../packages/ad-system/src"),
+      "@toeicpass/conversation-ai/web": path.resolve(__dirname, "../../packages/conversation-ai/web"),
+      "@toeicpass/conversation-ai": path.resolve(__dirname, "../../packages/conversation-ai/src"),
     },
   },
 });

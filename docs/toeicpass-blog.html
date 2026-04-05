@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toeicPass — TOEIC 学習アプリの全機能紹介</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --card: #334155;
+      --accent: #38bdf8;
+      --accent2: #a78bfa;
+      --accent3: #34d399;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: #475569;
+      --code-bg: #0d1117;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 50%, #1a1a2e 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(56,189,248,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 50%, rgba(167,139,250,0.06) 0%, transparent 50%);
+      animation: float 20s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-20px, 10px); }
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .hero .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .hero-badges a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-badges a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(56,189,248,0.3);
+    }
+    .badge-hf {
+      background: rgba(255,214,0,0.15);
+      color: #ffd600;
+      border: 1px solid rgba(255,214,0,0.3);
+    }
+    .badge-gh {
+      background: rgba(255,255,255,0.08);
+      color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .badge-zenn {
+      background: rgba(56,189,248,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(56,189,248,0.3);
+    }
+
+    /* Main */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* Section */
+    section {
+      margin-top: 56px;
+    }
+    section > h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    section > h2 .icon { font-size: 1.5rem; }
+    h3 {
+      font-size: 1.2rem;
+      color: var(--accent2);
+      margin: 28px 0 12px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    /* Feature cards */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.2s, border-color 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+    .feature-card .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .feature-card h4 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Image gallery */
+    .img-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .img-gallery figure {
+      background: var(--card);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .img-gallery img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .img-gallery figcaption {
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Full-width image */
+    .img-full {
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .img-full img {
+      width: 100%;
+      display: block;
+    }
+    .img-full figcaption {
+      padding: 10px 16px;
+      background: var(--surface);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Code block */
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 14px 0;
+    }
+    code {
+      font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+      color: #7dd3fc;
+    }
+    pre code { color: #e2e8f0; }
+    .kw { color: #c084fc; }
+    .str { color: #86efac; }
+    .cm { color: #64748b; }
+    .num { color: #fbbf24; }
+    .fn { color: #7dd3fc; }
+    .type { color: #f9a8d4; }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.9rem;
+    }
+    th {
+      background: var(--card);
+      color: var(--accent);
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--accent);
+      font-weight: 600;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    tr:hover td { background: rgba(56,189,248,0.04); }
+
+    /* Info box */
+    .info-box {
+      background: rgba(56,189,248,0.08);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    .info-box.warn {
+      background: rgba(251,191,36,0.08);
+      border-left-color: #fbbf24;
+    }
+    .info-box strong {
+      color: var(--accent);
+    }
+    .info-box.warn strong {
+      color: #fbbf24;
+    }
+
+    /* Architecture diagram */
+    .arch-box {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin: 20px 0;
+      font-family: 'Cascadia Code', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      white-space: pre;
+      overflow-x: auto;
+      color: var(--text-muted);
+    }
+
+    /* Stats bar */
+    .stats-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .stat-item {
+      flex: 1;
+      min-width: 140px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-item .num {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-item .label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Badge inline */
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 4px;
+    }
+    .tag-blue { background: rgba(56,189,248,0.15); color: var(--accent); }
+    .tag-purple { background: rgba(167,139,250,0.15); color: var(--accent2); }
+    .tag-green { background: rgba(52,211,153,0.15); color: var(--accent3); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.7rem; }
+      .hero .subtitle { font-size: 1rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .img-gallery { grid-template-columns: 1fr 1fr; }
+      .stats-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <h1>🎧 toeicPass</h1>
+  <p class="subtitle">
+    シャドーイング・単語・文法・模擬試験・AI 会話 ── すべてを1つに統合した<br>
+    オープンソース TOEIC 学習プラットフォーム
+  </p>
+  <div class="hero-badges">
+    <a class="badge-hf" href="https://huggingface.co/spaces/peanutao/toeicPass" target="_blank">
+      🤗 Hugging Face で試す
+    </a>
+    <a class="badge-gh" href="https://github.com/peanutao/toeicPass" target="_blank">
+      ⭐ GitHub
+    </a>
+    <a class="badge-zenn" href="https://zenn.dev/" target="_blank">
+      📝 Zenn 記事
+    </a>
+  </div>
+</header>
+
+<main>
+
+<!-- ==================== OVERVIEW ==================== -->
+<section>
+  <h2><span class="icon">📋</span> 機能概要</h2>
+  <p>toeicPass は TOEIC スコアアップに必要な学習サイクル「聞く → 真似る → 覚える → 解く → 見直す」をワンストップで提供する Web アプリです。Next.js 15 + NestJS のモノレポで構築し、Hugging Face Spaces にデプロイしています。</p>
+
+  <div class="stats-row">
+    <div class="stat-item"><div class="num">7</div><div class="label">TOEIC パート対応</div></div>
+    <div class="stat-item"><div class="num">3000+</div><div class="label">問題数</div></div>
+    <div class="stat-item"><div class="num">500+</div><div class="label">単語カード</div></div>
+    <div class="stat-item"><div class="num">8</div><div class="label">AI 会話シナリオ</div></div>
+    <div class="stat-item"><div class="num">3</div><div class="label">対応言語</div></div>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="card-icon">🎧</div>
+      <h4>シャドーイング</h4>
+      <p>TED・YouTube・ドラマ・ニュースの英語素材を文単位で跟读。Web Speech API で発話認識も搭載。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">📖</div>
+      <h4>単語学習</h4>
+      <p>SM-2 間隔反復アルゴリズムのフラッシュカード。デイリー目標・ CEFR レベル・スコア帯別管理。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">📝</div>
+      <h4>文法練習</h4>
+      <p>TOEIC Part 5〜7 頻出文法ルールを英・中・日の 3 言語で解説するカード学習。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">🎯</div>
+      <h4>パート別練習</h4>
+      <p>Part 1〜7 のアダプティブ問題演習。写真描写・リスニング・読解、すべてに対応。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">📊</div>
+      <h4>模擬試験</h4>
+      <p>200 問・120 分のフル模試。TOEIC スコア換算・パート別結果分析付き。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">❌</div>
+      <h4>間違いノート</h4>
+      <p>誤答を自動収集 → 根因タグ（語彙/文法/論理/不注意）→ 類似問題ドリル。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">🤖</div>
+      <h4>AI 音声会話</h4>
+      <p>8 つの TOEIC シナリオで英語音声チャット。Gemini 2.0 Flash + ルールベースフォールバック。</p>
+    </div>
+    <div class="feature-card">
+      <div class="card-icon">✍️</div>
+      <h4>ライティング評価</h4>
+      <p>自由テキスト入力 → AI が語彙・文法・構成をスコア評価 → 改善提案。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SHADOWING ==================== -->
+<section>
+  <h2><span class="icon">🎧</span> シャドーイング（跟读練習）</h2>
+
+  <p>シャドーイングとは、英語の音声を聞きながら少し遅れて同じ内容を声に出す練習法です。toeicPass では、さまざまなジャンルの英語素材を<strong>文単位で区切り</strong>、「聞く → 繰り返す」サイクルをアプリ上で完結させています。</p>
+
+  <h3>素材ライブラリー</h3>
+  <table>
+    <thead>
+      <tr><th>ソース</th><th>内容</th><th>難易度</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>🎤 Steve Jobs</td><td>スタンフォード大学卒業スピーチ (2005)</td><td><span class="tag tag-blue">★★☆</span></td></tr>
+      <tr><td>🎙️ TED Talks</td><td>最新 TED トークの自動同期</td><td><span class="tag tag-blue">★★☆</span></td></tr>
+      <tr><td>📺 YouTube</td><td>日本語話者向け英語トレーニング動画</td><td><span class="tag tag-green">★☆☆</span></td></tr>
+      <tr><td>🎬 ドラマ / ニュース</td><td>ネイティブ速度の実用的素材</td><td><span class="tag tag-purple">★★★</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>主要機能</h3>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h4>📍 文単位再生</h4>
+      <p>各文に開始/終了秒が設定され、特定区間だけをループ再生可能。</p>
+    </div>
+    <div class="feature-card">
+      <h4>🔤 単語アノテーション</h4>
+      <p>テキスト内の単語をクリック → IPA（国際音声記号）+ 日本語・中国語の意味がポップアップ。</p>
+    </div>
+    <div class="feature-card">
+      <h4>🎙️ 音声認識</h4>
+      <p>Web Speech API でブラウザネイティブの音声認識。外部ライブラリ不要。</p>
+    </div>
+    <div class="feature-card">
+      <h4>🔊 TTS 読み上げ</h4>
+      <p>SpeechSynthesis API でテキスト選択 → 発音を自動再生。</p>
+    </div>
+  </div>
+
+  <h3>技術実装</h3>
+  <pre><code><span class="cm">// 素材データ構造（各文にタイムスタンプ付き）</span>
+{
+  <span class="str">"id"</span>: <span class="str">"steve-jobs-stanford"</span>,
+  <span class="str">"title"</span>: <span class="str">"Steve Jobs' Stanford Commencement Address"</span>,
+  <span class="str">"difficulty"</span>: <span class="num">2</span>,
+  <span class="str">"segments"</span>: [
+    {
+      <span class="str">"text"</span>: <span class="str">"I am honored to be with you today..."</span>,
+      <span class="str">"translation"</span>: <span class="str">"今日皆さんとご一緒できて光栄です..."</span>,
+      <span class="str">"startSec"</span>: <span class="num">0</span>,
+      <span class="str">"endSec"</span>: <span class="num">5.2</span>
+    }
+  ]
+}</code></pre>
+
+  <pre><code><span class="cm">// Web Speech API による音声認識</span>
+<span class="kw">const</span> recognition = <span class="kw">new</span> (<span class="fn">window.SpeechRecognition</span>
+  || <span class="fn">window.webkitSpeechRecognition</span>)();
+recognition.<span class="fn">lang</span> = <span class="str">"en-US"</span>;
+recognition.<span class="fn">interimResults</span> = <span class="kw">true</span>;
+
+recognition.<span class="fn">onresult</span> = (event) => {
+  <span class="kw">const</span> transcript = event.results[<span class="num">0</span>][<span class="num">0</span>].transcript;
+  <span class="cm">// ユーザーの発話テキストを取得 → 原文と比較</span>
+};</code></pre>
+</section>
+
+<!-- ==================== VOCABULARY ==================== -->
+<section>
+  <h2><span class="icon">📖</span> 単語学習（ボキャブラリー）</h2>
+
+  <p>TOEIC 頻出単語を <strong>SM-2 間隔反復アルゴリズム</strong> でフラッシュカード学習します。毎日の復習対象が自動計算され、「忘れた → 間隔短縮、覚えた → 間隔延長」で効率的な記憶定着を実現します。</p>
+
+  <h3>カードメタデータ</h3>
+  <p>各カードには以下の情報が付与されています：</p>
+  <table>
+    <thead>
+      <tr><th>フィールド</th><th>説明</th><th>例</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>term</code></td><td>英単語</td><td>accommodate</td></tr>
+      <tr><td><code>pos</code></td><td>品詞</td><td>verb</td></tr>
+      <tr><td><code>definition</code></td><td>英語定義</td><td>to provide lodging or room for</td></tr>
+      <tr><td><code>definitionJa</code></td><td>日本語定義</td><td>〜を収容する、〜に対応する</td></tr>
+      <tr><td><code>definitionCn</code></td><td>中国語定義</td><td>容纳；适应</td></tr>
+      <tr><td><code>example</code></td><td>例文</td><td>The hotel can accommodate 500 guests.</td></tr>
+      <tr><td><code>cefrLevel</code></td><td>CEFR レベル</td><td>B2</td></tr>
+      <tr><td><code>scoreBand</code></td><td>目標スコア帯</td><td>730</td></tr>
+      <tr><td><code>sourcePart</code></td><td>TOEIC パート</td><td>5</td></tr>
+    </tbody>
+  </table>
+
+  <h3>SM-2 アルゴリズム</h3>
+  <div class="info-box">
+    <strong>SM-2 の原理:</strong> 覚えた → 間隔を延ばす（easeFactor × intervalDays）、忘れた → 短くする（intervalDays = 1）。最大間隔は試験対策のため 30 日にキャップ。
+  </div>
+
+  <pre><code><span class="cm">// SM-2 評価ロジック</span>
+Grade <span class="num">1</span> (忘れた)   → intervalDays = <span class="num">1</span>,  easeFactor -= <span class="num">0.2</span>
+Grade <span class="num">2</span> (うろ覚え) → intervalDays = <span class="num">1</span>,  easeFactor -= <span class="num">0.1</span>
+Grade <span class="num">3</span> (覚えた)   → intervalDays × easeFactor, easeFactor += <span class="num">0.1</span>
+
+<span class="cm">// easeFactor は 1.3 以下にはならない（下限ガード）</span></code></pre>
+
+  <h3>3 つのタブ UI</h3>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h4>📚 Study</h4>
+      <p>今日の復習対象カードをまとめて表示。デイリー目標つき。カードめくり → 3段階評価。</p>
+    </div>
+    <div class="feature-card">
+      <h4>🔍 Browse</h4>
+      <p>全カードのリスト。パート別・スコア帯別・状態別フィルター。テキスト検索・ソート対応。</p>
+    </div>
+    <div class="feature-card">
+      <h4>📊 Stats</h4>
+      <p>マスター率・パート別分布・スコア帯別分布・EF ファクター分布グラフ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GRAMMAR ==================== -->
+<section>
+  <h2><span class="icon">📝</span> 文法練習</h2>
+
+  <p>TOEIC Part 5〜7 で頻出する文法ルールをカード形式で学習します。各ルールには英語・中国語・日本語の <strong>3 言語で解説</strong> が付いています。</p>
+
+  <h3>主なカテゴリ</h3>
+  <table>
+    <thead>
+      <tr><th>カテゴリ</th><th>内容</th><th>TOEIC パート</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>主語-動詞一致</td><td>三人称単数の -s、集合名詞</td><td>Part 5</td></tr>
+      <tr><td>時制の一致</td><td>現在完了 vs 過去形、未来表現</td><td>Part 5, 6</td></tr>
+      <tr><td>関係代名詞</td><td>who / which / that の使い分け</td><td>Part 5, 6</td></tr>
+      <tr><td>修飾語の配置</td><td>形容詞の語順、分詞構文</td><td>Part 5</td></tr>
+      <tr><td>動詞の形</td><td>動名詞 vs 不定詞、使役動詞</td><td>Part 5, 6</td></tr>
+      <tr><td>前置詞・コロケーション</td><td>in charge of, due to, 等</td><td>Part 5, 6, 7</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <strong>UI 共有:</strong> 文法カードは単語カードの <code>FlashCard.tsx</code> コンポーネントを再利用。同じ SM-2 アルゴリズムで復習間隔を管理し、文法ルールの定着を促します。
+  </div>
+</section>
+
+<!-- ==================== PRACTICE & MOCK ==================== -->
+<section>
+  <h2><span class="icon">🎯</span> パート別練習 & 模擬試験</h2>
+
+  <h3>全 7 パートに対応</h3>
+  <p>TOEIC の各パートに最適化された問題演習 UI を提供しています。問題データは 15 以上の JSON ファイルに数千問格納されています。</p>
+
+  <table>
+    <thead>
+      <tr><th>パート</th><th>形式</th><th>UI 特徴</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Part 1</td><td>写真描写</td><td>画像表示 + 4 択音声選択</td></tr>
+      <tr><td>Part 2</td><td>応答問題</td><td>音声 + 3 択</td></tr>
+      <tr><td>Part 3</td><td>会話問題</td><td>音声 + 会話パッセージ + 複数設問</td></tr>
+      <tr><td>Part 4</td><td>説明文問題</td><td>音声 + 説明パッセージ + 複数設問</td></tr>
+      <tr><td>Part 5</td><td>短文穴埋め</td><td>英文 + 4 択</td></tr>
+      <tr><td>Part 6</td><td>長文穴埋め</td><td>パッセージ + 複数穴埋め</td></tr>
+      <tr><td>Part 7</td><td>読解問題</td><td>長文 + 複数設問</td></tr>
+    </tbody>
+  </table>
+
+  <h3>TOEIC Part 1 問題の写真素材</h3>
+  <div class="img-gallery">
+    <figure>
+      <img src="../apps/web/public/assets/images/toeic-official/sample-st05-part1-q1.jpg" alt="Part 1 写真描写問題 1">
+      <figcaption>Part 1 サンプル問題 — 作業場面</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/toeic-official/sample-st05-part1-q2.jpg" alt="Part 1 写真描写問題 2">
+      <figcaption>Part 1 サンプル問題 — 日常場面</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/toeic-official/sample-st05-part3-q43-graphic.jpg" alt="Part 3 グラフィック問題">
+      <figcaption>Part 3 図表問題 — 価格表</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/toeic-official/sample-st05-part4-q82-graphic.jpg" alt="Part 4 グラフィック問題">
+      <figcaption>Part 4 図表問題 — データ表</figcaption>
+    </figure>
+  </div>
+
+  <h3>リスニング写真素材</h3>
+  <div class="img-gallery">
+    <figure>
+      <img src="../apps/web/public/assets/images/listening/part1-office-meeting.jpg" alt="オフィスミーティング">
+      <figcaption>Office Meeting</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/listening/part1-airport-terminal.jpg" alt="空港ターミナル">
+      <figcaption>Airport Terminal</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/listening/part1-classroom-students.jpg" alt="教室">
+      <figcaption>Classroom</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/listening/part1-restaurant-dining.jpg" alt="レストラン">
+      <figcaption>Restaurant Dining</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/listening/part1-library-reading.jpg" alt="図書館">
+      <figcaption>Library Reading</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/listening/part1-construction-site.jpg" alt="建設現場">
+      <figcaption>Construction Site</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/listening/part1-kitchen-cooking.jpg" alt="キッチン">
+      <figcaption>Kitchen Cooking</figcaption>
+    </figure>
+    <figure>
+      <img src="../apps/web/public/assets/images/listening/part1-warehouse-boxes.jpg" alt="倉庫">
+      <figcaption>Warehouse</figcaption>
+    </figure>
+  </div>
+
+  <h3>模擬試験（フル模試）</h3>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h4>⏱️ 120 分タイマー</h4>
+      <p>本番同様の時間制限。時間切れで自動終了。フルスクリーンモード対応。</p>
+    </div>
+    <div class="feature-card">
+      <h4>📊 スコア換算</h4>
+      <p>450〜990 点の TOEIC 公式スコアレンジで換算。パート別正答率も表示。</p>
+    </div>
+    <div class="feature-card">
+      <h4>🔄 即時復習</h4>
+      <p>試験終了後、間違えた問題を即座に復習。解説付き。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MISTAKES ==================== -->
+<section>
+  <h2><span class="icon">❌</span> 間違いノート</h2>
+
+  <p>練習・模試で間違えた問題を自動収集し、体系的に管理します。</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h4>🏷️ 根因タグ</h4>
+      <p>語彙不足 / 文法ミス / 論理理解不足 / 不注意 の 4 分類で根本原因をタグ付け。</p>
+    </div>
+    <div class="feature-card">
+      <h4>📝 メモ機能</h4>
+      <p>各ミスに回避策メモを自由記入。「次回は○○に注意」の自分用コメント。</p>
+    </div>
+    <div class="feature-card">
+      <h4>🎯 類似問題ドリル</h4>
+      <p>「この問題に似た問題を練習」ボタンで、弱点に集中した反復学習。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AI FEATURES ==================== -->
+<section>
+  <h2><span class="icon">🤖</span> AI 活用機能</h2>
+
+  <h3>AI 音声会話</h3>
+  <p>8 つの TOEIC 頻出シナリオ（オフィス雑談、レストラン注文、空港チェックイン、ホテル予約、ショッピング、ビジネス会議、電話応対、面接）で英語音声チャットを行います。</p>
+
+  <table>
+    <thead>
+      <tr><th>シナリオ</th><th>カテゴリ</th><th>難易度</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Office Small Talk</td><td>オフィス</td><td><span class="tag tag-green">★☆☆</span></td></tr>
+      <tr><td>Restaurant Order</td><td>レストラン</td><td><span class="tag tag-green">★☆☆</span></td></tr>
+      <tr><td>Airport Check-in</td><td>空港</td><td><span class="tag tag-blue">★★☆</span></td></tr>
+      <tr><td>Hotel Reservation</td><td>ホテル</td><td><span class="tag tag-blue">★★☆</span></td></tr>
+      <tr><td>Business Meeting</td><td>会議</td><td><span class="tag tag-purple">★★★</span></td></tr>
+      <tr><td>Job Interview</td><td>面接</td><td><span class="tag tag-purple">★★★</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <strong>フォールバック:</strong> Gemini API キーがない場合でも、ルールベースの応答バンクにフォールバックして動作します。開発者は <code>npm install</code> → <code>npm run dev</code> だけで全機能を確認できます。
+  </div>
+
+  <h3>AI ライティング評価</h3>
+  <p>自由テキストを入力すると、AI が語彙・文法・構成を分析し、スコアと具体的な改善提案を返却します。TOEIC のメール作成やレポート作成の練習に最適です。</p>
+</section>
+
+<!-- ==================== TECH STACK ==================== -->
+<section>
+  <h2><span class="icon">⚙️</span> 技術スタック</h2>
+
+  <div class="arch-box">toeicPass モノレポ構成
+├─ apps/api/      NestJS バックエンド (Port 8001)
+│   ├─ controllers/   HTTP エントリポイント
+│   ├─ services/      ドメインロジック
+│   ├─ *.json         問題バンク (15+ ファイル, 3000+ 問)
+│   └─ test/          E2E テスト (Jest + PGLite)
+│
+├─ apps/web/      Next.js フロントエンド (Port 8000)
+│   ├─ app/           ファイルベースルーティング
+│   ├─ components/    学習コンポーネント群
+│   │   ├─ shadowing/   シャドーイング
+│   │   ├─ vocab/       フラッシュカード
+│   │   ├─ practice/    パート別練習
+│   │   ├─ mock/        模擬試験
+│   │   ├─ mistakes/    間違いノート
+│   │   └─ writing/     ライティング評価
+│   ├─ data/          素材データ (TED, YouTube, etc.)
+│   └─ test/          ユニットテスト (Vitest)
+│
+├─ packages/
+│   ├─ shared/        共通型定義
+│   ├─ ad-system/     広告配信パッケージ
+│   └─ conversation-ai/  AI会話パッケージ
+│
+└─ db/            PostgreSQL スキーマ + マイグレーション</div>
+
+  <table>
+    <thead>
+      <tr><th>レイヤー</th><th>技術</th><th>用途</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Frontend</td><td>Next.js 15, React, TypeScript</td><td>SSR + クライアントレンダリング</td></tr>
+      <tr><td>Backend</td><td>NestJS, TypeScript</td><td>REST API, JWT 認証, RBAC</td></tr>
+      <tr><td>Database</td><td>PostgreSQL / PGLite</td><td>テスト時はインメモリ DB</td></tr>
+      <tr><td>AI</td><td>Google Gemini 2.0 Flash</td><td>会話・ライティング評価</td></tr>
+      <tr><td>音声</td><td>Web Speech API</td><td>STT (音声認識) + TTS (音声合成)</td></tr>
+      <tr><td>認証</td><td>JWT + OAuth2</td><td>Google / WeChat / LINE ログイン</td></tr>
+      <tr><td>CI/CD</td><td>GitHub Actions</td><td>Hugging Face Spaces 自動デプロイ</td></tr>
+      <tr><td>テスト</td><td>Jest (API) + Vitest (Web)</td><td>E2E + ユニットテスト</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==================== i18n ==================== -->
+<section>
+  <h2><span class="icon">🌏</span> 多言語対応</h2>
+
+  <p>toeicPass は<strong>中国語（簡体字）</strong>と<strong>日本語</strong>に完全対応しています。UI ラベルだけでなく、単語の定義、文法の解説、シャドーイング素材の翻訳もすべて多言語で提供。</p>
+
+  <pre><code><span class="cm">// i18n 設定例</span>
+<span class="kw">const</span> I18N = {
+  <span class="str">"zh"</span>: {
+    title: <span class="str">"AI 语音对话"</span>,
+    hold:  <span class="str">"按住说话"</span>,
+    corrections: <span class="str">"纠正"</span>,
+    suggestions: <span class="str">"建议"</span>,
+  },
+  <span class="str">"ja"</span>: {
+    title: <span class="str">"AI 音声会話"</span>,
+    hold:  <span class="str">"押して話す"</span>,
+    corrections: <span class="str">"修正"</span>,
+    suggestions: <span class="str">"アドバイス"</span>,
+  },
+};</code></pre>
+</section>
+
+<!-- ==================== GETTING STARTED ==================== -->
+<section>
+  <h2><span class="icon">🚀</span> 使い方</h2>
+
+  <h3>Hugging Face で即座に試す</h3>
+  <div class="info-box">
+    <strong>ブラウザだけで OK:</strong> <a href="https://huggingface.co/spaces/peanutao/toeicPass" style="color: var(--accent);">huggingface.co/spaces/peanutao/toeicPass</a> にアクセスするだけで、インストール不要ですべての機能を試せます。
+  </div>
+
+  <h3>ローカル開発</h3>
+  <pre><code><span class="cm"># リポジトリをクローン</span>
+git clone https://github.com/peanutao/toeicPass.git
+<span class="kw">cd</span> toeicPass
+
+<span class="cm"># 依存関係インストール</span>
+npm install
+
+<span class="cm"># 開発サーバー起動（API: 8001, Web: 8000）</span>
+npm run dev
+
+<span class="cm"># テスト実行</span>
+npm test          <span class="cm"># API E2E テスト (26 テスト)</span>
+npm -w apps/web exec vitest  <span class="cm"># Web ユニットテスト (192 テスト)</span></code></pre>
+
+  <div class="info-box warn">
+    <strong>注意:</strong> <code>GEMINI_API_KEY</code> 環境変数を設定しなくても、AI 会話はルールベースフォールバックで動作します。本格利用には <a href="https://ai.google.dev/" style="color: #fbbf24;">Google AI Studio</a> で API キーを取得してください。
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    🎧 toeicPass — Open Source TOEIC Learning Platform<br>
+    <a href="https://huggingface.co/spaces/peanutao/toeicPass">🤗 Hugging Face</a> ・
+    <a href="https://github.com/peanutao/toeicPass">GitHub</a> ・
+    <a href="https://zenn.dev/">Zenn</a>
+  </p>
+</footer>
+
+</body>
+</html>

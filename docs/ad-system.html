@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@toeicpass/ad-system — Documentation</title>
+  <style>
+    :root {
+      --brand: #0969da;
+      --brand-dark: #0550ae;
+      --brand-light: #ddf4ff;
+      --text: #1f2328;
+      --text-secondary: #656d76;
+      --surface: #ffffff;
+      --bg: #f6f8fa;
+      --border: #d0d7de;
+      --border-muted: #d8dee4;
+      --code-bg: #f6f8fa;
+      --code-text: #0550ae;
+      --sidebar-w: 260px;
+      --header-h: 56px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif; font-size: 15px; line-height: 1.6; color: var(--text); background: var(--bg); }
+
+    /* ── Header ── */
+    .doc-header { position: fixed; top: 0; left: 0; right: 0; height: var(--header-h); background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; z-index: 100; }
+    .doc-header .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; color: var(--text); text-decoration: none; }
+    .doc-header .logo-mark { background: #1a7f37; color: #fff; width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; }
+    .doc-header .version { margin-left: auto; color: var(--text-secondary); font-size: 0.82rem; }
+
+    /* ── Sidebar ── */
+    .sidebar { position: fixed; top: var(--header-h); left: 0; bottom: 0; width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border); overflow-y: auto; padding: 20px 0; z-index: 90; }
+    .sidebar-section { padding: 0 16px; margin-bottom: 20px; }
+    .sidebar-title { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); padding: 8px 0 6px; }
+    .sidebar a { display: block; padding: 5px 12px; margin: 1px 0; font-size: 0.86rem; color: var(--text); text-decoration: none; border-radius: 6px; transition: background 0.15s; }
+    .sidebar a:hover { background: var(--bg); }
+
+    /* ── Main ── */
+    .main { margin-left: var(--sidebar-w); margin-top: var(--header-h); min-height: calc(100vh - var(--header-h)); }
+    .content { padding: 40px 48px 80px; max-width: 100%; }
+
+    /* ── Typography ── */
+    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    h1 + p { margin-top: 12px; }
+    h2 { font-size: 1.4rem; font-weight: 600; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-muted); }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 32px 0 10px; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 4px; }
+
+    /* ── Code ── */
+    code { background: var(--code-bg); color: var(--code-text); padding: 2px 6px; border-radius: 4px; font-family: 'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; font-size: 0.88em; }
+    pre { background: #24292f; color: #e6edf3; padding: 16px 20px; border-radius: 8px; overflow-x: auto; margin: 12px 0 20px; font-size: 0.84rem; line-height: 1.55; border: 1px solid #30363d; }
+    pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+    /* ── Table ── */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 0.9rem; }
+    th, td { padding: 8px 12px; text-align: left; border: 1px solid var(--border-muted); }
+    th { background: var(--bg); font-weight: 600; white-space: nowrap; }
+
+    /* ── Badge ── */
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; margin-right: 4px; vertical-align: middle; }
+    .badge-backend { background: #dafbe1; color: #1a7f37; }
+    .badge-frontend { background: #ddf4ff; color: #0969da; }
+    .badge-types { background: #fff8c5; color: #9a6700; }
+
+    /* ── Card ── */
+    .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .card { background: var(--surface); border: 1px solid var(--border-muted); border-radius: 8px; padding: 20px; }
+    .card h4 { margin: 0 0 8px; font-size: 1rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* ── File Tree ── */
+    .file-tree { font-family: 'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; font-size: 0.84rem; line-height: 1.9; background: var(--surface); border: 1px solid var(--border-muted); border-radius: 8px; padding: 16px 20px; margin: 12px 0 20px; }
+    .file-tree .dir { color: var(--brand); font-weight: 600; }
+    .file-tree .desc { color: var(--text-secondary); }
+
+    /* ── Flow ── */
+    .flow-diagram { margin: 20px 0; }
+    .flow-row { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+    .flow-box { border: 2px solid var(--border); border-radius: 8px; padding: 10px 16px; font-size: 0.88rem; font-weight: 600; min-width: 200px; }
+    .flow-box.pkg { border-color: var(--brand); background: var(--brand-light); color: var(--brand-dark); }
+    .flow-box.app { border-color: #d4a72c; background: #fff8c5; color: #7c4a00; }
+    .flow-arrow { color: var(--text-secondary); font-size: 1.2rem; }
+    .flow-box small { font-weight: 400; font-size: 0.78rem; display: block; }
+
+    /* ── Callout ── */
+    .callout { border: 1px solid var(--border-muted); border-left: 4px solid var(--brand); border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 16px 0; background: var(--brand-light); font-size: 0.9rem; }
+    .callout strong { color: var(--brand-dark); }
+
+    /* ── Footer ── */
+    .doc-footer { border-top: 1px solid var(--border-muted); padding: 24px 48px; color: var(--text-secondary); font-size: 0.82rem; display: flex; justify-content: space-between; }
+
+    @media (max-width: 960px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .content { padding: 24px 20px 60px; }
+      .card-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="doc-header">
+  <a href="#" class="logo">
+    <span class="logo-mark">AD</span>
+    @toeicpass/ad-system
+  </a>
+  <span class="version">v1.0.0</span>
+</header>
+
+<nav class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-title">Getting Started</div>
+    <a href="#overview">Overview</a>
+    <a href="#installation">Installation</a>
+    <a href="#architecture">Architecture</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">API Reference</div>
+    <a href="#file-structure">File Structure</a>
+    <a href="#core-types">Core Types</a>
+    <a href="#ad-service">AdService</a>
+    <a href="#seed-data">Seed Data</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Frontend</div>
+    <a href="#components">Components</a>
+    <a href="#display-modes">Display Modes</a>
+    <a href="#ad-api-functions">AdApiFunctions</a>
+    <a href="#admin-panel">Admin Panel</a>
+    <a href="#adsense">Google AdSense</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-title">Integration</div>
+    <a href="#di-pattern">Dependency Injection</a>
+    <a href="#backend-usage">Backend Usage</a>
+    <a href="#frontend-usage">Frontend Usage</a>
+    <a href="#thin-wrapper">Thin Wrapper Pattern</a>
+    <a href="#config">Configuration</a>
+    <a href="#cross-project">Cross-Project Reuse</a>
+  </div>
+</nav>
+
+<main class="main">
+<div class="content">
+
+  <h1 id="overview">@toeicpass/ad-system</h1>
+  <p>
+    <span class="badge badge-backend">Backend</span>
+    <span class="badge badge-frontend">Frontend</span>
+    <span class="badge badge-types">Types</span>
+  </p>
+  <p>A complete, self-contained advertising module providing ad delivery, display, event tracking, and administration. Designed for dependency injection &mdash; no framework or HTTP client dependency. Works with any backend storage and any frontend fetch layer.</p>
+
+  <h3>Key Features</h3>
+  <ul>
+    <li><strong>4 ad slot types</strong> &mdash; banner_top, interstitial, native_feed, reward_video</li>
+    <li><strong>Plan-based targeting</strong> &mdash; ads target specific subscription plans (free, basic, premium, enterprise)</li>
+    <li><strong>Event tracking</strong> &mdash; impression, click, dismiss, reward_complete</li>
+    <li><strong>Auto-rotating banner carousel</strong> with dot indicators</li>
+    <li><strong>In-feed ad list</strong> showing all native_feed ads</li>
+    <li><strong>Fullscreen interstitial</strong> with countdown auto-close</li>
+    <li><strong>Rewarded video</strong> with completion callback</li>
+    <li><strong>Admin CRUD panel</strong> with statistics dashboard</li>
+    <li><strong>Google AdSense compatibility</strong> via slot mapping</li>
+    <li><strong>10 built-in seed ads</strong> including 3 Hugging Face promotions</li>
+  </ul>
+
+  <!-- ── Installation ── -->
+  <h2 id="installation">Installation</h2>
+
+  <h3>As an npm Workspace Package</h3>
+  <pre><code># Copy or symlink the package into your monorepo
+packages/
+  ad-system/    ← this package
+
+# Add to your root package.json workspaces
+{
+  "workspaces": ["packages/*", "apps/*"]
+}
+
+# Install to create symlinks
+npm install
+
+# Import in your code
+import { AdService, DEFAULT_AD_SEEDS } from "@toeicpass/ad-system";
+import { AdBanner, NativeFeedAd } from "@toeicpass/ad-system/web";</code></pre>
+
+  <h3>As an npm Package (Private Registry)</h3>
+  <pre><code>npm install @toeicpass/ad-system --registry https://your-registry.example.com</code></pre>
+
+  <!-- ── Architecture ── -->
+  <h2 id="architecture">Architecture</h2>
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <div class="flow-box app">Your Backend<small>NestJS / Express / etc.</small></div>
+      <span class="flow-arrow">→ import →</span>
+      <div class="flow-box pkg">@toeicpass/ad-system<small>AdService + Types</small></div>
+    </div>
+    <div class="flow-row">
+      <div class="flow-box app">Your Frontend<small>React / Next.js / etc.</small></div>
+      <span class="flow-arrow">→ import →</span>
+      <div class="flow-box pkg">@toeicpass/ad-system/web<small>Components + Types</small></div>
+    </div>
+  </div>
+  <p>The package exports two entry points:</p>
+  <ul>
+    <li><code>@toeicpass/ad-system</code> &mdash; Backend: <code>AdService</code>, types, seed data</li>
+    <li><code>@toeicpass/ad-system/web</code> &mdash; Frontend: React components, prop type interfaces</li>
+  </ul>
+
+  <!-- ── File Structure ── -->
+  <h2 id="file-structure">File Structure</h2>
+  <div class="file-tree">
+    <span class="dir">packages/ad-system/</span><br>
+    ├── package.json <span class="desc">&mdash; name: @toeicpass/ad-system</span><br>
+    ├── tsconfig.json<br>
+    ├── README.md<br>
+    ├── <span class="dir">src/</span> <span class="desc">&mdash; Backend entry point</span><br>
+    │&nbsp;&nbsp; ├── index.ts <span class="desc">&mdash; Barrel export</span><br>
+    │&nbsp;&nbsp; ├── types.ts <span class="desc">&mdash; All type definitions</span><br>
+    │&nbsp;&nbsp; ├── ad.service.ts <span class="desc">&mdash; Core AdService class</span><br>
+    │&nbsp;&nbsp; └── seeds.ts <span class="desc">&mdash; DEFAULT_AD_SEEDS (10 entries)</span><br>
+    └── <span class="dir">web/</span> <span class="desc">&mdash; Frontend entry point</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;├── index.ts <span class="desc">&mdash; Barrel export</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;├── types.ts <span class="desc">&mdash; AdApiFunctions, AdminAdApiFunctions, component props</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;├── <span class="dir">lib/</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp; └── ad-provider.ts <span class="desc">&mdash; Google AdSense slot mapping</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;└── <span class="dir">components/</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── AdBanner.tsx + .module.css <span class="desc">&mdash; Banner carousel</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── NativeFeedAd.tsx + .module.css <span class="desc">&mdash; In-feed list</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── InterstitialAd.tsx + .module.css <span class="desc">&mdash; Fullscreen overlay</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── RewardVideoAd.tsx + .module.css <span class="desc">&mdash; Rewarded video</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── GoogleAdUnit.tsx <span class="desc">&mdash; AdSense native unit</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── AdManagerView.tsx + .module.css <span class="desc">&mdash; Admin CRUD panel</span>
+  </div>
+
+  <!-- ── Core Types ── -->
+  <h2 id="core-types">Core Types</h2>
+  <table>
+    <tr><th>Type</th><th>Description</th></tr>
+    <tr><td><code>AdSlot</code></td><td><code>"banner_top" | "interstitial" | "native_feed" | "reward_video"</code></td></tr>
+    <tr><td><code>AdEventType</code></td><td><code>"impression" | "click" | "dismiss" | "reward_complete"</code></td></tr>
+    <tr><td><code>AdPlacement</code></td><td>Ad record: id, slot, title, imageUrl?, linkUrl, ctaText, priority, targetPlans (string[]), isActive, impressions, clicks, startsAt?, expiresAt?, createdAt</td></tr>
+    <tr><td><code>AdEvent</code></td><td>Event record: id, placementId, userId, eventType, createdAt</td></tr>
+    <tr><td><code>AdStats</code></td><td>Aggregated statistics: total, active, totalImpressions, totalClicks, clickRate, bySlot, recentEvents</td></tr>
+    <tr><td><code>IAdStore</code></td><td>Storage interface — host application implements this for data persistence</td></tr>
+    <tr><td><code>AdServiceConfig</code></td><td>Service config: generateId(), nowIso()</td></tr>
+    <tr><td><code>CreateAdInput</code></td><td>Input for creating an ad placement</td></tr>
+    <tr><td><code>UpdateAdInput</code></td><td>Input for updating an ad placement (all fields optional)</td></tr>
+    <tr><td><code>RecordAdEventInput</code></td><td>Input for recording an ad event</td></tr>
+  </table>
+
+  <h3>IAdStore Interface</h3>
+  <pre><code>interface IAdStore {
+  adPlacements: AdPlacement[];
+  adEvents: AdEvent[];
+  persistSnapshot(): void;
+}</code></pre>
+  <p>The host application must implement this interface. Backing store can be in-memory arrays, PostgreSQL, MongoDB, Redis, or any database.</p>
+
+  <!-- ── AdService ── -->
+  <h2 id="ad-service">AdService</h2>
+  <p>The core backend class. All methods are synchronous except where noted.</p>
+
+  <table>
+    <tr><th>Method</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+    <tr><td><code>getAdsForUser()</code></td><td>planCode, slot?</td><td>AdPlacement[]</td><td>Returns active ads targeting the user's plan, optionally filtered by slot. Sorted by priority (desc).</td></tr>
+    <tr><td><code>recordAdEvent()</code></td><td>placementId, userId, eventType</td><td>AdEvent</td><td>Records an impression, click, dismiss, or reward_complete event. Updates placement counters.</td></tr>
+    <tr><td><code>listAllAds()</code></td><td>&mdash;</td><td>AdPlacement[]</td><td>Returns all ad placements (admin).</td></tr>
+    <tr><td><code>getAdStats()</code></td><td>&mdash;</td><td>AdStats</td><td>Returns aggregated statistics across all ads.</td></tr>
+    <tr><td><code>createAd()</code></td><td>CreateAdInput</td><td>AdPlacement</td><td>Creates a new ad placement.</td></tr>
+    <tr><td><code>updateAd()</code></td><td>id, UpdateAdInput</td><td>AdPlacement | null</td><td>Updates an existing ad. Returns null if not found.</td></tr>
+    <tr><td><code>deleteAd()</code></td><td>id</td><td>boolean</td><td>Deletes an ad. Returns false if not found.</td></tr>
+    <tr><td><code>seedIfEmpty()</code></td><td>seeds</td><td>void</td><td>Populates store with seed data only when <code>adPlacements</code> is empty.</td></tr>
+  </table>
+
+  <!-- ── Seed Data ── -->
+  <h2 id="seed-data">Seed Data</h2>
+  <p><code>DEFAULT_AD_SEEDS</code> contains 10 pre-configured ad placements:</p>
+  <table>
+    <tr><th>#</th><th>Title</th><th>Slot</th><th>Target Plans</th></tr>
+    <tr><td>1</td><td>TOEIC Official Practice Test</td><td>banner_top</td><td>free, basic</td></tr>
+    <tr><td>2</td><td>Premium Vocabulary Course</td><td>native_feed</td><td>free</td></tr>
+    <tr><td>3</td><td>Study Abroad Program</td><td>interstitial</td><td>free, basic</td></tr>
+    <tr><td>4</td><td>Business English Course</td><td>banner_top</td><td>free</td></tr>
+    <tr><td>5</td><td>TOEIC Score Guarantee</td><td>reward_video</td><td>free, basic, premium</td></tr>
+    <tr><td>6</td><td>Online Tutoring Service</td><td>native_feed</td><td>free, basic</td></tr>
+    <tr><td>7</td><td>English Learning App</td><td>banner_top</td><td>free</td></tr>
+    <tr><td>8</td><td>Hugging Face — AI Models</td><td>native_feed</td><td>free, basic, premium</td></tr>
+    <tr><td>9</td><td>Hugging Face Spaces — Deploy AI</td><td>banner_top</td><td>free, basic</td></tr>
+    <tr><td>10</td><td>Hugging Face — Open Source AI</td><td>interstitial</td><td>free, basic, premium</td></tr>
+  </table>
+
+  <!-- ── Components ── -->
+  <h2 id="components">Frontend Components</h2>
+
+  <h3 id="display-modes">Display Modes</h3>
+  <table>
+    <tr><th>Component</th><th>Slot</th><th>Display Mode</th></tr>
+    <tr><td><code>AdBanner</code></td><td>banner_top</td><td>Auto-rotating carousel (5-second interval) with dot indicators. Dismissed ads are removed from rotation. Clicking an ad opens the link and records a click event.</td></tr>
+    <tr><td><code>NativeFeedAd</code></td><td>native_feed</td><td>Vertical list showing all native_feed ads. Each item includes thumbnail, title, and CTA button.</td></tr>
+    <tr><td><code>InterstitialAd</code></td><td>interstitial</td><td>Fullscreen overlay with countdown progress bar. Auto-closes after a configurable duration or on manual dismiss.</td></tr>
+    <tr><td><code>RewardVideoAd</code></td><td>reward_video</td><td>Rewarded video popup with countdown. Provides <code>onRewardEarned</code> and <code>onSkip</code> callbacks.</td></tr>
+    <tr><td><code>GoogleAdUnit</code></td><td>Any</td><td>Google AdSense integration component. Renders an AdSense ad unit if <code>NEXT_PUBLIC_ADSENSE_CLIENT</code> is configured.</td></tr>
+    <tr><td><code>AdManagerView</code></td><td>All</td><td>Full admin panel — list, create, edit, delete ads + statistics dashboard with click rates per slot.</td></tr>
+  </table>
+
+  <!-- ── AdApiFunctions ── -->
+  <h3 id="ad-api-functions">AdApiFunctions Interface</h3>
+  <pre><code>interface AdApiFunctions {
+  fetchAds(slot?: string): Promise&lt;AdPlacement[]&gt;;
+  recordAdEvent(placementId: string, eventType: string): Promise&lt;void&gt;;
+}</code></pre>
+  <p>All user-facing components (<code>AdBanner</code>, <code>NativeFeedAd</code>, <code>InterstitialAd</code>, <code>RewardVideoAd</code>) accept an <code>api: AdApiFunctions</code> prop.</p>
+
+  <!-- ── Admin Panel ── -->
+  <h3 id="admin-panel">AdminAdApiFunctions Interface</h3>
+  <pre><code>interface AdminAdApiFunctions extends AdApiFunctions {
+  fetchAdminAds(): Promise&lt;AdPlacement[]&gt;;
+  fetchAdStats(): Promise&lt;AdStats&gt;;
+  createAd(input: CreateAdInput): Promise&lt;AdPlacement&gt;;
+  updateAd(id: string, input: UpdateAdInput): Promise&lt;AdPlacement&gt;;
+  deleteAd(id: string): Promise&lt;void&gt;;
+}</code></pre>
+  <p><code>AdManagerView</code> accepts <code>api: AdminAdApiFunctions</code> for the full admin experience.</p>
+
+  <!-- ── AdSense ── -->
+  <h3 id="adsense">Google AdSense Integration</h3>
+  <p>The <code>GoogleAdUnit</code> component renders AdSense ads when the <code>NEXT_PUBLIC_ADSENSE_CLIENT</code> environment variable is set. The <code>ad-provider.ts</code> file maps ad slots to AdSense slot IDs:</p>
+  <pre><code>// web/lib/ad-provider.ts
+const ADSENSE_SLOTS: Record&lt;AdSlot, string&gt; = {
+  banner_top: "1234567890",
+  native_feed: "2345678901",
+  interstitial: "3456789012",
+  reward_video: "4567890123",
+};</code></pre>
+
+  <!-- ── DI Pattern ── -->
+  <h2 id="di-pattern">Dependency Injection Pattern</h2>
+  <div class="card-row">
+    <div class="card">
+      <h4>Backend: Store Injection</h4>
+      <p>The <code>AdService</code> constructor accepts an <code>IAdStore</code> implementation and an <code>AdServiceConfig</code> object. No database driver or ORM is bundled.</p>
+      <pre><code>const service = new AdService(store, {
+  generateId: () =&gt; uuid(),
+  nowIso: () =&gt; new Date().toISOString(),
+});</code></pre>
+    </div>
+    <div class="card">
+      <h4>Frontend: API Function Injection</h4>
+      <p>Components receive an <code>api</code> prop containing async functions. They never call <code>fetch</code>, <code>axios</code>, or any HTTP client directly.</p>
+      <pre><code>&lt;AdBanner
+  locale="en"
+  showAds={true}
+  api={{
+    fetchAds: myFetchFn,
+    recordAdEvent: myTrackFn,
+  }}
+/&gt;</code></pre>
+    </div>
+  </div>
+
+  <!-- ── Backend Usage ── -->
+  <h2 id="backend-usage">Backend Usage</h2>
+  <pre><code>import { AdService, DEFAULT_AD_SEEDS } from "@toeicpass/ad-system";
+import type { IAdStore } from "@toeicpass/ad-system";
+
+// 1. Implement IAdStore
+const store: IAdStore = {
+  adPlacements: [],
+  adEvents: [],
+  persistSnapshot() { fs.writeFileSync("ads.json", JSON.stringify(this.adPlacements)); },
+};
+
+// 2. Create AdService
+const adService = new AdService(store, {
+  generateId: () =&gt; crypto.randomUUID(),
+  nowIso: () =&gt; new Date().toISOString(),
+});
+
+// 3. Seed (runs only when empty)
+adService.seedIfEmpty(DEFAULT_AD_SEEDS);
+
+// 4. Fetch ads for a user on the "free" plan
+const bannerAds = adService.getAdsForUser("free", "banner_top");
+const allAds = adService.getAdsForUser("free");
+
+// 5. Track events
+adService.recordAdEvent(bannerAds[0].id, "user_abc", "impression");
+adService.recordAdEvent(bannerAds[0].id, "user_abc", "click");
+
+// 6. Admin
+const stats = adService.getAdStats();
+const newAd = adService.createAd({
+  slot: "native_feed",
+  title: "New Product Launch",
+  linkUrl: "https://example.com",
+  ctaText: "Learn More",
+  targetPlans: ["free", "basic"],
+});
+adService.updateAd(newAd.id, { priority: 95 });
+adService.deleteAd(newAd.id);</code></pre>
+
+  <!-- ── Frontend Usage ── -->
+  <h2 id="frontend-usage">Frontend Usage</h2>
+  <pre><code>import { AdBanner, NativeFeedAd, InterstitialAd, RewardVideoAd, AdManagerView }
+  from "@toeicpass/ad-system/web";
+import type { AdApiFunctions, AdminAdApiFunctions } from "@toeicpass/ad-system/web";
+
+// Define API functions
+const adApi: AdApiFunctions = {
+  fetchAds: (slot) =&gt;
+    fetch(`/api/v1/ads?slot=${slot}`, { headers: { Authorization: `Bearer ${token}` } })
+      .then(r =&gt; r.json()),
+  recordAdEvent: (id, type) =&gt;
+    fetch("/api/v1/ads/event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ placementId: id, eventType: type }),
+    }).then(() =&gt; {}),
+};
+
+// Banner carousel at top of page
+&lt;AdBanner locale="en" showAds={true} slot="banner_top" api={adApi} /&gt;
+
+// In-feed ads within content
+&lt;NativeFeedAd locale="en" showAds={true} api={adApi} /&gt;
+
+// Fullscreen interstitial (triggered on navigation, etc.)
+&lt;InterstitialAd locale="en" showAds={true} api={adApi} autoCloseMs={8000} /&gt;
+
+// Rewarded video
+&lt;RewardVideoAd
+  locale="en"
+  showAds={true}
+  api={adApi}
+  onRewardEarned={() =&gt; grantBonus()}
+  onSkip={() =&gt; showMessage("Reward skipped")}
+/&gt;
+
+// Admin panel (requires admin API functions)
+&lt;AdManagerView locale="en" api={adminApi} /&gt;</code></pre>
+
+  <!-- ── Thin Wrapper ── -->
+  <h2 id="thin-wrapper">Thin Wrapper Pattern</h2>
+  <p>In the toeicPass project, each frontend component is wrapped in a ~27-line file that binds authentication tokens to the API functions:</p>
+  <pre><code>// apps/web/components/ads/AdBanner.tsx
+"use client";
+import { useMemo } from "react";
+import * as api from "../../lib/api";
+import { AdBanner as AdBannerBase } from "@toeicpass/ad-system/web";
+
+export function AdBanner({ locale, token, tenantCode, slot, showAds }) {
+  const adApi = useMemo(() =&gt; {
+    const opts = { token, tenantCode };
+    return {
+      fetchAds: (s) =&gt; api.fetchAds(opts, s),
+      recordAdEvent: (id, type) =&gt; api.recordAdEvent(id, type, opts),
+    };
+  }, [token, tenantCode]);
+
+  return &lt;AdBannerBase locale={locale} showAds={showAds} slot={slot} api={adApi} /&gt;;
+}</code></pre>
+  <p>This keeps the package decoupled from any specific auth mechanism while the app wrapper handles token injection.</p>
+
+  <!-- ── Config ── -->
+  <h2 id="config">Configuration</h2>
+
+  <h3>TypeScript Path Mapping</h3>
+  <pre><code>// tsconfig.json (apps that consume the package)
+{
+  "compilerOptions": {
+    "paths": {
+      "@toeicpass/ad-system": ["../../packages/ad-system/src"],
+      "@toeicpass/ad-system/web": ["../../packages/ad-system/web"]
+    }
+  }
+}</code></pre>
+
+  <h3>Jest Module Mapping</h3>
+  <pre><code>// jest.config.json or jest-e2e.json
+{
+  "moduleNameMapper": {
+    "^@toeicpass/ad-system$": "&lt;rootDir&gt;/../../packages/ad-system/src"
+  }
+}</code></pre>
+
+  <h3>Vitest / Vite Aliases</h3>
+  <pre><code>// vitest.config.ts
+resolve: {
+  alias: {
+    "@toeicpass/ad-system/web": path.resolve(__dirname, "../../packages/ad-system/web"),
+    "@toeicpass/ad-system": path.resolve(__dirname, "../../packages/ad-system/src"),
+  },
+}</code></pre>
+
+  <h3>Environment Variables</h3>
+  <table>
+    <tr><th>Variable</th><th>Purpose</th><th>Default</th></tr>
+    <tr><td><code>NEXT_PUBLIC_ADSENSE_CLIENT</code></td><td>Google AdSense client ID for GoogleAdUnit</td><td>Not set — AdSense ads not rendered</td></tr>
+  </table>
+
+  <!-- ── Cross-Project ── -->
+  <h2 id="cross-project">Cross-Project Reuse</h2>
+  <ol>
+    <li>Copy <code>packages/ad-system/</code> into your new project's packages directory</li>
+    <li>Add it to your <code>package.json</code> workspaces and run <code>npm install</code></li>
+    <li>Backend: Implement <code>IAdStore</code>, create an <code>AdService</code> instance, expose API endpoints</li>
+    <li>Frontend: Import components, create an <code>AdApiFunctions</code> object pointing to your API</li>
+    <li>Configure TypeScript paths and test framework aliases</li>
+  </ol>
+  <div class="callout">
+    <strong>Zero framework lock-in.</strong> The backend service is a plain TypeScript class. Frontend components are React-based but communicate with the host via injected functions, making the API layer fully pluggable.
+  </div>
+
+</div>
+<footer class="doc-footer">
+  <span>@toeicpass/ad-system Documentation</span>
+  <span>v1.0.0</span>
+</footer>
+</main>
+
+</body>
+</html>

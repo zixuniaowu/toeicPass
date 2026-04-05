@@ -1,0 +1,27 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--badge-color, #9ca3af);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--badge-color, #9ca3af);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.badge:hover {
+  background: color-mix(in srgb, var(--badge-color, #9ca3af) 10%, transparent);
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--badge-color, #9ca3af);
+}
+.label {
+  line-height: 1;
+}

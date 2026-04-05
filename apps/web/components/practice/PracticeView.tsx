@@ -7,6 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Select } from "../ui/Select";
 import { QuestionCard } from "./QuestionCard";
+import { NativeFeedAd } from "../ads/NativeFeedAd";
 import styles from "./PracticeView.module.css";
 
 type PracticeType = "listening" | "grammar" | "textcompletion" | "reading";
@@ -104,6 +105,9 @@ interface PracticeViewProps {
   onPrevious: () => void;
   onNext: () => void;
   onSubmit: () => void;
+  showAds?: boolean;
+  token?: string;
+  tenantCode?: string;
 }
 
 export function PracticeView({
@@ -124,6 +128,9 @@ export function PracticeView({
   onPrevious,
   onNext,
   onSubmit,
+  showAds = false,
+  token = "",
+  tenantCode = "",
 }: PracticeViewProps) {
   const isDiagnosticSession = activeSession?.mode === "diagnostic";
   const [revealedAnswers, setRevealedAnswers] = useState<Record<string, boolean>>({});
@@ -258,6 +265,10 @@ export function PracticeView({
             <Button fullWidth onClick={onSubmit} loading={isSubmitting}>
               {isSubmitting ? t.submitting : t.submit}
             </Button>
+
+            {showAds && (
+              <NativeFeedAd locale={locale} token={token} tenantCode={tenantCode} showAds={showAds} />
+            )}
           </div>
         )}
       </CardContent>

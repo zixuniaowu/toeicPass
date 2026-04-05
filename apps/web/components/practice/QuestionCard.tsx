@@ -236,8 +236,42 @@ export function QuestionCard({
               ? `${selectedAnswer}. ${selectedOption?.text ?? ""}`.trim()
               : "—"}
           </p>
+          {/* Filled sentence for Part 5 fill-in-the-blank */}
+          {question.partNo === 5 && question.stem?.includes("___") && correctOption && (
+            <div className={styles.filledSentence}>
+              <span className={styles.sentenceLabel}>
+                {locale === "ja" ? "完成文：" : "完整句子："}
+              </span>
+              {question.stem.replace(/___+/, correctOption.text)}
+            </div>
+          )}
+
           <p className={styles.answerLabel}>{t.explanation}</p>
           <p className={styles.answerExplanation}>{explanationText}</p>
+
+          {/* Option-by-option analysis for Part 5 */}
+          {question.partNo === 5 && (
+            <div className={styles.optionAnalysis}>
+              <p className={styles.analysisLabel}>
+                {locale === "ja" ? "選択肢の分析：" : "选项逐一分析："}
+              </p>
+              {question.options.map((opt) => {
+                const isCorrect = opt.key === question.correctKey;
+                return (
+                  <div
+                    key={opt.key}
+                    className={`${styles.optionRow} ${isCorrect ? styles.optionCorrect : styles.optionWrong}`}
+                  >
+                    <span className={styles.optionMarker}>
+                      {isCorrect ? "✓" : "✗"}
+                    </span>
+                    <span className={styles.optionKey}>{opt.key}.</span>
+                    <span className={styles.optionText}>{opt.text}</span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 

@@ -9,6 +9,7 @@ import { Button } from "../ui/Button";
 import { FlashCard } from "./FlashCard";
 import { SelectionPronunciation } from "../ui/SelectionPronunciation";
 import { CardSkeleton } from "../ui/Skeleton";
+import { NativeFeedAd } from "../ads/NativeFeedAd";
 import styles from "./VocabView.module.css";
 
 interface VocabViewProps {
@@ -23,6 +24,9 @@ interface VocabViewProps {
   onRefresh: () => void;
   onToggleReveal: (cardId: string) => void;
   onGrade: (cardId: string, grade: number) => void;
+  showAds?: boolean;
+  token?: string;
+  tenantCode?: string;
 }
 
 type VocabTab = "study" | "browse" | "stats";
@@ -30,7 +34,7 @@ type VocabTab = "study" | "browse" | "stats";
 const COPY = {
   zh: {
     headerTitle: "背单词",
-    subtitle: "TOEIC 核心词汇 - 间隔重复记忆",
+    subtitle: "TOEIC 核心词汇 - 按目标分数分级 · 间隔重复记忆",
     pronunciationHint: "可选中英文单词，查看音标并点击朗读。",
     dailyGoal: (count: number) => `今日打卡目标：先完成 ${count} 词`,
     dueHint: (due: number) => `当前到期共 ${due} 词。今天先做这一批，剩余词卡后续继续清理。`,
@@ -76,6 +80,7 @@ const COPY = {
     legendLearning: (count: number) => `学习中 ${count}`,
     legendDue: (count: number) => `待复习 ${count}`,
     partDist: "各 Part 词汇分布",
+    scoreDist: "目标分数词汇分布",
     wordsCount: (count: number) => `${count} 词`,
     memoryDifficulty: "记忆难度分布",
     diffHard: "困难 (EF < 2.0)",
@@ -91,7 +96,7 @@ const COPY = {
   },
   ja: {
     headerTitle: "単語学習",
-    subtitle: "TOEIC コア語彙 - 間隔反復で記憶定着",
+    subtitle: "TOEIC コア語彙 - 目標スコア別レベル · 間隔反復で記憶定着",
     pronunciationHint: "英語/中国語の語句を選択すると IPA と読み上げが使えます。",
     dailyGoal: (count: number) => `本日の目標：まず ${count} 語を完了`,
     dueHint: (due: number) => `復習期限は合計 ${due} 語。まずこのバッチを終えてから残りを進めます。`,
@@ -137,6 +142,7 @@ const COPY = {
     legendLearning: (count: number) => `学習中 ${count}`,
     legendDue: (count: number) => `要復習 ${count}`,
     partDist: "Part 別語彙分布",
+    scoreDist: "目標スコア別語彙分布",
     wordsCount: (count: number) => `${count} 語`,
     memoryDifficulty: "記憶難易度分布",
     diffHard: "難しい (EF < 2.0)",
@@ -164,15 +170,19 @@ export function VocabView({
   onRefresh,
   onToggleReveal,
   onGrade,
+  showAds = false,
+  token = "",
+  tenantCode = "",
 }: VocabViewProps) {
   const copy = COPY[locale];
   const selectionScopeRef = useRef<HTMLDivElement | null>(null);
   const [tab, setTab] = useState<VocabTab>("study");
   const [browseFilter, setBrowseFilter] = useState<"all" | "due" | "learning" | "mastered">("all");
   const [browsePartFilter, setBrowsePartFilter] = useState<string>("all");
+  const [browseScoreBand, setBrowseScoreBand] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [studyIndex, setStudyIndex] = useState(0);
-  const [studyScope, setStudyScope] = useState<"today" | "allDue" | "all">("today");
+  const [studyScope, setStudyScope] = useState<"today" | "allDue" | "all" | "600" | "700" | "800" | "900">("today");
   const [jaDefinitionMap, setJaDefinitionMap] = useState<Record<string, string>>({});
 
   const speak = (text: string) => {
@@ -202,10 +212,11 @@ export function VocabView({
         if (browseFilter === "learning" && (card.due || (card.intervalDays >= 14 && (card.lastGrade ?? 0) >= 4))) return false;
         if (browseFilter === "mastered" && !(card.intervalDays >= 14 && (card.lastGrade ?? 0) >= 4)) return false;
         if (browsePartFilter !== "all" && String(card.sourcePart) !== browsePartFilter) return false;
+        if (browseScoreBand !== "all" && (card.scoreBand ?? "600") !== browseScoreBand) return false;
         if (searchQuery && !card.term.toLowerCase().includes(searchQuery.toLowerCase()) && !card.definition.toLowerCase().includes(searchQuery.toLowerCase())) return false;
         return true;
       }),
-    [browseFilter, browsePartFilter, cards, searchQuery],
+    [browseFilter, browsePartFilter, browseScoreBand, cards, searchQuery],
   );
 
   // Study mode: default to today's target batch first
@@ -215,6 +226,9 @@ export function VocabView({
     }
     if (studyScope === "allDue" && dueCards.length > 0) {
       return dueCards;
+    }
+    if (["600", "700", "800", "900"].includes(studyScope)) {
+      return cards.filter((c) => (c.scoreBand ?? "600") === studyScope);
     }
     return cards;
   }, [studyScope, todayStudyCards, dueCards, cards]);
@@ -261,6 +275,15 @@ export function VocabView({
     const partMastered = partCards.filter((c) => c.intervalDays >= 14 && (c.lastGrade ?? 0) >= 4);
     return { part: p, total: partCards.length, due: partDue.length, mastered: partMastered.length };
   }).filter((s) => s.total > 0);
+
+  // Stats by score band
+  const scoreStats = ["600", "700", "800", "900"].map((band) => {
+    const bandCards = cards.filter((c) => (c.scoreBand ?? "600") === band);
+    const bandDue = bandCards.filter((c) => c.due);
+    const bandMastered = bandCards.filter((c) => c.intervalDays >= 14 && (c.lastGrade ?? 0) >= 4);
+    return { band, total: bandCards.length, due: bandDue.length, mastered: bandMastered.length };
+  }).filter((s) => s.total > 0);
+
   const visibleBrowseCards = useMemo(() => filteredCards.slice(0, 50), [filteredCards]);
 
   useEffect(() => {
@@ -402,6 +425,23 @@ export function VocabView({
                   </div>
                 )}
 
+                <div className={styles.scopeSwitch}>
+                  {(["600", "700", "800", "900"] as const).map((band) => {
+                    const bandCount = cards.filter((c) => (c.scoreBand ?? "600") === band).length;
+                    if (bandCount === 0) return null;
+                    return (
+                      <button
+                        key={band}
+                        type="button"
+                        className={`${styles.scopeButton} ${studyScope === band ? styles.scopeButtonActive : ""}`}
+                        onClick={() => { setStudyScope(band); setStudyIndex(0); }}
+                      >
+                        {band}{locale === "ja" ? "点" : "分"} ({bandCount})
+                      </button>
+                    );
+                  })}
+                </div>
+
                 {/* Progress bar */}
                 <div className={styles.studyProgress}>
                   <div className={styles.progressInfo}>
@@ -491,6 +531,23 @@ export function VocabView({
                   </button>
                 ))}
               </div>
+              <div className={styles.filterChips}>
+                <button
+                  className={`${styles.chip} ${browseScoreBand === "all" ? styles.chipActive : ""}`}
+                  onClick={() => setBrowseScoreBand("all")}
+                >
+                  {locale === "ja" ? "全スコア" : "全分数"}
+                </button>
+                {["600", "700", "800", "900"].map((band) => (
+                  <button
+                    key={band}
+                    className={`${styles.chip} ${browseScoreBand === band ? styles.chipActive : ""}`}
+                    onClick={() => setBrowseScoreBand(band)}
+                  >
+                    {band}{locale === "ja" ? "点" : "分"}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <p className={styles.filterCount}>{copy.filterCount(filteredCards.length)}</p>
@@ -527,6 +584,7 @@ export function VocabView({
                     {card.example && <p className={styles.wordExample}>{card.example}</p>}
                     <div className={styles.wordMeta}>
                       <span>Part {card.sourcePart}</span>
+                      {card.scoreBand && <span className={styles.scoreBadge}>{card.scoreBand}{locale === "ja" ? "点" : "分"}</span>}
                       <span>EF {card.easeFactor.toFixed(1)}</span>
                       <span>{copy.intervalDays(card.intervalDays)}</span>
                       {card.tags.length > 0 && <span>{card.tags.join(", ")}</span>}
@@ -536,6 +594,9 @@ export function VocabView({
               })}
               {filteredCards.length > 50 && (
                 <p className={styles.moreHint}>{copy.moreHint(filteredCards.length - 50)}</p>
+              )}
+              {showAds && (
+                <NativeFeedAd locale={locale} token={token} tenantCode={tenantCode} showAds={showAds} />
               )}
             </div>
           </div>
@@ -576,6 +637,28 @@ export function VocabView({
                 <div key={s.part} className={styles.partCard}>
                   <div className={styles.partHeader}>
                     <strong>Part {s.part}</strong>
+                    <span>{copy.wordsCount(s.total)}</span>
+                  </div>
+                  <div className={styles.miniBar}>
+                    <div className={styles.miniBarFill} style={{ width: s.total > 0 ? `${(s.mastered / s.total) * 100}%` : "0%" }} />
+                  </div>
+                  <div className={styles.partDetail}>
+                    <span>{copy.legendMastered(s.mastered)}</span>
+                    <span>{copy.legendDue(s.due)}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Score band breakdown */}
+          <div className={styles.statsSection}>
+            <h3>{copy.scoreDist}</h3>
+            <div className={styles.partGrid}>
+              {scoreStats.map((s) => (
+                <div key={s.band} className={styles.partCard}>
+                  <div className={styles.partHeader}>
+                    <strong>{s.band}{locale === "ja" ? "点" : "分"}</strong>
                     <span>{copy.wordsCount(s.total)}</span>
                   </div>
                   <div className={styles.miniBar}>

@@ -1172,6 +1172,16 @@ export class LearningDomainService {
         const dueCompare = a.dueAt.localeCompare(b.dueAt);
         return dueCompare !== 0 ? dueCompare : a.term.localeCompare(b.term);
       });
+
+    // Backfill scoreBand for cards that were created before score bands existed
+    const total = cards.length;
+    cards.forEach((card, i) => {
+      if (!card.scoreBand) {
+        const ratio = total > 0 ? i / total : 0;
+        card.scoreBand = ratio < 0.30 ? "600" : ratio < 0.60 ? "700" : ratio < 0.85 ? "800" : "900";
+      }
+    });
+
     const dueCount = cards.filter((card) => card.dueAt <= today).length;
     const masteredCount = cards.filter((card) => card.intervalDays >= 14 && (card.lastGrade ?? 0) >= 4).length;
     return {
@@ -1328,7 +1338,7 @@ export class LearningDomainService {
   generateConversationReply(
     _ctx: RequestContext,
     dto: ConversationReplyDto,
-  ): { content: string; corrections: string[]; suggestions: string[] } {
+  ): Promise<{ content: string; corrections: string[]; suggestions: string[] }> {
     return this.conversationService.generateConversationReply(dto);
   }
 

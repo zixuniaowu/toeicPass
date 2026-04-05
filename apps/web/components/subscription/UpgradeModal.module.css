@@ -1,0 +1,94 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+.modal {
+  background: var(--surface-card, #fff);
+  border-radius: 16px;
+  padding: 32px 28px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.reason {
+  font-size: 0.9rem;
+  color: #dc2626;
+  margin: 0 0 8px;
+  font-weight: 500;
+}
+.hint {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #666);
+  margin: 0 0 20px;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.upgradeBtn {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.upgradeBtn:hover {
+  opacity: 0.9;
+}
+.closeBtn {
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary, #666);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.closeBtn:hover {
+  color: var(--text-primary, #333);
+}
+
+.adHint {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #888);
+  margin: 4px 0 0;
+  text-align: center;
+}
+.watchAdBtn {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.watchAdBtn:hover {
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .modal {
+  background: #1e1e1e;
+}

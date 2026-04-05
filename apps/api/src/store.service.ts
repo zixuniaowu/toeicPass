@@ -9,6 +9,7 @@ import {
   AttemptItem,
   AuditLog,
   Goal,
+  GrammarCard,
   IpCampaign,
   IpCandidate,
   IpResult,
@@ -23,6 +24,12 @@ import {
   Tenant,
   User,
   VocabularyCard,
+  SubscriptionPlan,
+  PlanFeatures,
+  UserSubscription,
+  DailyUsage,
+  AdPlacement,
+  AdEvent,
 } from "./types";
 import { newId, nowIso } from "./utils";
 import * as questionBank from "./question-bank.json";
@@ -44,6 +51,22 @@ import * as questionBankExpansion15 from "./question-bank-expansion-15.json";
 import * as vocabSeedData from "./vocab-seed.json";
 import * as vocabSeedData1 from "./vocab-seed-1.json";
 import * as vocabSeedData2 from "./vocab-seed-2.json";
+import * as grammarSeedData from "./grammar-seed.json";
+
+type GrammarSeedRule = {
+  ruleId: string;
+  title: string;
+  titleCn: string;
+  titleJa: string;
+  category: string;
+  explanation: string;
+  explanationCn: string;
+  explanationJa: string;
+  examples: string[];
+  sourcePart: number;
+  difficulty: number;
+  cefrLevel?: string;
+};
 
 type ImportedQuestion = {
   partNo: number;
@@ -73,6 +96,19 @@ type VocabularySeedCard = {
   sourcePart: number;
   tags: string[];
 };
+
+/**
+ * Assign a TOEIC score band based on position in the seed list.
+ * First ~30% are 600-level (most common/essential), next ~30% are 700-level,
+ * next ~25% are 800-level, and the rest are 900-level.
+ */
+function assignScoreBand(index: number, total: number): string {
+  const ratio = total > 0 ? index / total : 0;
+  if (ratio < 0.30) return "600";
+  if (ratio < 0.60) return "700";
+  if (ratio < 0.85) return "800";
+  return "900";
+}
 
 const VOCAB_STOP_WORDS = new Set([
   "a",
@@ -266,6 +302,7 @@ export class StoreService {
   public mistakeNotes: MistakeNote[] = [];
   public reviewCards: ReviewCard[] = [];
   public vocabularyCards: VocabularyCard[] = [];
+  public grammarCards: GrammarCard[] = [];
   public predictions: ScorePrediction[] = [];
   public orgUnits: OrgUnit[] = [];
   public ipCampaigns: IpCampaign[] = [];
@@ -274,6 +311,11 @@ export class StoreService {
   public ipSessionCandidates: IpSessionCandidate[] = [];
   public ipResults: IpResult[] = [];
   public auditLogs: AuditLog[] = [];
+  public subscriptionPlans: SubscriptionPlan[] = [];
+  public userSubscriptions: UserSubscription[] = [];
+  public dailyUsage: DailyUsage[] = [];
+  public adPlacements: AdPlacement[] = [];
+  public adEvents: AdEvent[] = [];
 
   private readonly snapshotFile =
     process.env.STORE_SNAPSHOT_FILE ?? (process.env.NODE_ENV === "test" ? "" : ".runtime/store-snapshot.json");
@@ -289,6 +331,7 @@ export class StoreService {
       this.loadSnapshot();
       this.normalizeLearningHistory();
     }
+    this.ensureSeedSubscriptionPlans();
   }
 
   hasOfficialQuestionPack(): boolean {
@@ -321,6 +364,11 @@ export class StoreService {
         ipSessionCandidates: this.ipSessionCandidates,
         ipResults: this.ipResults,
         auditLogs: this.auditLogs,
+        subscriptionPlans: this.subscriptionPlans,
+        userSubscriptions: this.userSubscriptions,
+        dailyUsage: this.dailyUsage,
+        adPlacements: this.adPlacements,
+        adEvents: this.adEvents,
       },
     };
 
@@ -362,8 +410,87 @@ export class StoreService {
       this.ipSessionCandidates = Array.isArray(data.ipSessionCandidates) ? data.ipSessionCandidates : [];
       this.ipResults = Array.isArray(data.ipResults) ? data.ipResults : [];
       this.auditLogs = Array.isArray(data.auditLogs) ? data.auditLogs : [];
+      this.subscriptionPlans = Array.isArray(data.subscriptionPlans) ? data.subscriptionPlans : [];
+      this.userSubscriptions = Array.isArray(data.userSubscriptions) ? data.userSubscriptions : [];
+      this.dailyUsage = Array.isArray(data.dailyUsage) ? data.dailyUsage : [];
+      this.adPlacements = Array.isArray(data.adPlacements) ? data.adPlacements : [];
+      this.adEvents = Array.isArray(data.adEvents) ? data.adEvents : [];
     } catch {
       // Ignore invalid snapshot and continue with fresh in-memory state.
+    }
+  }
+
+  private ensureSeedSubscriptionPlans(): void {
+    if (this.subscriptionPlans.length > 0) return;
+    const now = nowIso();
+    const plans: Array<{ code: string; nameEn: string; nameZh: string; nameJa: string; priceMonthly: number; priceYearly: number; features: PlanFeatures; sortOrder: number }> = [
+      {
+        code: "free", nameEn: "Free", nameZh: "免费版", nameJa: "無料プラン",
+        priceMonthly: 0, priceYearly: 0, sortOrder: 0,
+        features: { daily_practice_sessions: 50, daily_mock_tests: 10, daily_questions: 500, vocab_cards: 100, ai_conversations: 3, show_ads: true, explanation_detail: "basic", score_prediction: false, export_data: false },
+      },
+      {
+        code: "basic", nameEn: "Basic", nameZh: "基础版", nameJa: "ベーシック",
+        priceMonthly: 999, priceYearly: 9990, sortOrder: 1,
+        features: { daily_practice_sessions: 10, daily_mock_tests: 1, daily_questions: 200, vocab_cards: 5000, ai_conversations: 5, show_ads: false, explanation_detail: "full", score_prediction: true, export_data: false },
+      },
+      {
+        code: "premium", nameEn: "Premium", nameZh: "高级版", nameJa: "プレミアム",
+        priceMonthly: 1999, priceYearly: 19990, sortOrder: 2,
+        features: { daily_practice_sessions: -1, daily_mock_tests: -1, daily_questions: -1, vocab_cards: -1, ai_conversations: -1, show_ads: false, explanation_detail: "full", score_prediction: true, export_data: true },
+      },
+      {
+        code: "enterprise", nameEn: "Enterprise", nameZh: "企业版", nameJa: "エンタープライズ",
+        priceMonthly: 0, priceYearly: 0, sortOrder: 3,
+        features: { daily_practice_sessions: -1, daily_mock_tests: -1, daily_questions: -1, vocab_cards: -1, ai_conversations: -1, show_ads: false, explanation_detail: "full", score_prediction: true, export_data: true },
+      },
+    ];
+    for (const p of plans) {
+      this.subscriptionPlans.push({
+        id: newId(),
+        code: p.code as SubscriptionPlan["code"],
+        nameEn: p.nameEn,
+        nameZh: p.nameZh,
+        nameJa: p.nameJa,
+        priceMonthly: p.priceMonthly,
+        priceYearly: p.priceYearly,
+        currency: "USD",
+        features: p.features as SubscriptionPlan["features"],
+        sortOrder: p.sortOrder,
+        isActive: true,
+        createdAt: now,
+      });
+    }
+    // Seed sample ads for free tier
+    const adSeeds: Array<{ slot: string; title: string; imageUrl?: string; linkUrl: string; ctaText: string; priority: number }> = [
+      { slot: "banner_top", title: "Upgrade to Premium", linkUrl: "#upgrade", ctaText: "Upgrade Now", priority: 100 },
+      { slot: "banner_top", title: "TOEIC 公式問題集 発売中", linkUrl: "https://example.com/toeic-book", ctaText: "詳しく見る", priority: 80 },
+      { slot: "interstitial", title: "TOEIC スコアアップ特訓コース", imageUrl: "https://placehold.co/600x400?text=TOEIC+Course", linkUrl: "https://example.com/course", ctaText: "無料体験", priority: 90 },
+      { slot: "interstitial", title: "英語学習アプリ プレミアム", imageUrl: "https://placehold.co/600x400?text=Premium+App", linkUrl: "#upgrade", ctaText: "今すぐアップグレード", priority: 85 },
+      { slot: "native_feed", title: "TOEIC 頻出単語帳 2025", imageUrl: "https://placehold.co/120x120?text=Vocab+Book", linkUrl: "https://example.com/vocab-book", ctaText: "チェックする →", priority: 70 },
+      { slot: "native_feed", title: "オンライン英会話 初月50%OFF", imageUrl: "https://placehold.co/120x120?text=English+Talk", linkUrl: "https://example.com/english-talk", ctaText: "キャンペーン詳細 →", priority: 75 },
+      { slot: "reward_video", title: "追加練習チャンスを獲得", linkUrl: "#reward", ctaText: "動画を見る", priority: 95 },
+      { slot: "banner_top", title: "Hugging Face - The AI community building the future", imageUrl: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg", linkUrl: "https://huggingface.co/", ctaText: "Visit Hugging Face 🤗", priority: 110 },
+      { slot: "native_feed", title: "Hugging Face Models - 開源AI模型庫", imageUrl: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg", linkUrl: "https://huggingface.co/models", ctaText: "探索AI模型 →", priority: 88 },
+      { slot: "interstitial", title: "Hugging Face Spaces - Build & Share AI Apps", imageUrl: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg", linkUrl: "https://huggingface.co/spaces", ctaText: "Try Spaces Free 🚀", priority: 92 },
+    ];
+    for (const ad of adSeeds) {
+      this.adPlacements.push({
+        id: newId(),
+        slot: ad.slot as AdPlacement["slot"],
+        title: ad.title,
+        imageUrl: ad.imageUrl,
+        linkUrl: ad.linkUrl,
+        ctaText: ad.ctaText,
+        priority: ad.priority,
+        targetPlans: ["free"],
+        isActive: true,
+        impressions: 0,
+        clicks: 0,
+        startsAt: undefined,
+        expiresAt: undefined,
+        createdAt: now,
+      });
     }
   }
 
@@ -1248,7 +1375,7 @@ export class StoreService {
     const seed = this.buildVocabularySeedCards();
     let queueIndex = userCards.length;
 
-    seed.forEach((item) => {
+    seed.forEach((item, seedIndex) => {
       const key = `${item.term.trim().toLowerCase()}::${item.pos.trim().toLowerCase()}`;
       if (existingKeys.has(key)) {
         return;
@@ -1263,6 +1390,7 @@ export class StoreService {
         example: item.example,
         sourcePart: item.sourcePart,
         tags: item.tags,
+        scoreBand: assignScoreBand(seedIndex, seed.length),
         easeFactor: 2.3,
         intervalDays: 0,
         dueAt: this.vocabularyDueDate(queueIndex),
@@ -1936,5 +2064,83 @@ export class StoreService {
       .forEach((card, index) => {
         card.dueAt = this.vocabularyDueDate(index);
       });
+  }
+
+  ensureSeedGrammarCards(tenantId: string, userId: string): void {
+    const userCards = this.grammarCards.filter(
+      (card) => card.tenantId === tenantId && card.userId === userId,
+    );
+    const existingRuleIds = new Set(userCards.map((c) => c.ruleId));
+    const rules = (grammarSeedData as { rules?: GrammarSeedRule[] }).rules ?? [];
+
+    rules.forEach((rule, index) => {
+      if (existingRuleIds.has(rule.ruleId)) {
+        return;
+      }
+      this.grammarCards.push({
+        id: newId(),
+        tenantId,
+        userId,
+        ruleId: rule.ruleId,
+        title: rule.title,
+        titleCn: rule.titleCn ?? "",
+        titleJa: rule.titleJa ?? "",
+        category: rule.category,
+        explanation: rule.explanation,
+        explanationCn: rule.explanationCn ?? "",
+        explanationJa: rule.explanationJa ?? "",
+        examples: rule.examples ?? [],
+        sourcePart: rule.sourcePart ?? 5,
+        difficulty: rule.difficulty ?? 3,
+        cefrLevel: rule.cefrLevel,
+        easeFactor: 2.3,
+        intervalDays: 0,
+        dueAt: this.vocabularyDueDate(index),
+        createdAt: nowIso(),
+      });
+      existingRuleIds.add(rule.ruleId);
+    });
+  }
+
+  getGrammarCards(tenantId: string, userId: string): GrammarCard[] {
+    this.ensureSeedGrammarCards(tenantId, userId);
+    return this.grammarCards
+      .filter((card) => card.tenantId === tenantId && card.userId === userId)
+      .sort((a, b) => a.difficulty - b.difficulty || a.title.localeCompare(b.title));
+  }
+
+  gradeGrammarCard(tenantId: string, userId: string, cardId: string, grade: number): GrammarCard | null {
+    const card = this.grammarCards.find(
+      (c) => c.id === cardId && c.tenantId === tenantId && c.userId === userId,
+    );
+    if (!card) {
+      return null;
+    }
+
+    // SM-2 algorithm (same as vocab cards)
+    const clampedGrade = Math.max(0, Math.min(5, grade));
+    let ef = card.easeFactor + (0.1 - (5 - clampedGrade) * (0.08 + (5 - clampedGrade) * 0.02));
+    ef = Math.max(1.3, ef);
+
+    let interval: number;
+    if (clampedGrade < 3) {
+      interval = 0;
+    } else if (card.intervalDays === 0) {
+      interval = 1;
+    } else if (card.intervalDays === 1) {
+      interval = 6;
+    } else {
+      interval = Math.round(card.intervalDays * ef);
+    }
+
+    card.easeFactor = ef;
+    card.intervalDays = interval;
+    card.lastGrade = clampedGrade;
+
+    const now = new Date();
+    now.setDate(now.getDate() + interval);
+    card.dueAt = now.toISOString().slice(0, 10);
+
+    return card;
   }
 }

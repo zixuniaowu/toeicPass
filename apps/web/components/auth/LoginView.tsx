@@ -15,6 +15,9 @@ interface LoginViewProps {
   onCredentialsChange: (updates: Partial<AuthCredentials>) => void;
   onLogin: () => void;
   onRegister: () => void;
+  onGoogleLogin?: () => void;
+  onWeChatLogin?: () => void;
+  onLineLogin?: () => void;
   onLocaleChange?: (locale: Locale) => void;
 }
 
@@ -49,6 +52,10 @@ const COPY = {
     registerButton: "注册并登录",
     registerTip: "注册会使用上方填写的 Email 和 Password。",
     accountTip: "注意：`demo / owner@demo.com` 常用于调试，通常包含历史数据，不适合作为第一天学习账号。",
+    googleLogin: "使用 Google 账号登录",
+    wechatLogin: "使用微信登录",
+    lineLogin: "使用 LINE 登录",
+    orDivider: "或者",
   },
   ja: {
     overviewAriaLabel: "product-overview-ja",
@@ -80,6 +87,10 @@ const COPY = {
     registerButton: "登録してログイン",
     registerTip: "登録時は上の Email と Password を使用します。",
     accountTip: "注意：`demo / owner@demo.com` は検証用で履歴データが多く、初日学習アカウントには不向きです。",
+    googleLogin: "Google アカウントでログイン",
+    wechatLogin: "WeChat でログイン",
+    lineLogin: "LINE でログイン",
+    orDivider: "または",
   },
 } as const;
 
@@ -91,6 +102,9 @@ export function LoginView({
   onCredentialsChange,
   onLogin,
   onRegister,
+  onGoogleLogin,
+  onWeChatLogin,
+  onLineLogin,
   onLocaleChange,
 }: LoginViewProps) {
   const copy = COPY[locale];
@@ -167,6 +181,42 @@ export function LoginView({
               {isSubmitting ? copy.loginLoading : copy.loginButton}
             </Button>
           </div>
+
+          {onGoogleLogin && (
+            <>
+              <div className={styles.divider}>
+                <span>{copy.orDivider}</span>
+              </div>
+              <div className={styles.oauthGroup}>
+                <button type="button" className={styles.oauthBtn} onClick={onGoogleLogin} disabled={isSubmitting} title="Google">
+                  <svg width="22" height="22" viewBox="0 0 48 48">
+                    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                  </svg>
+                </button>
+
+                {onWeChatLogin && (
+                  <button type="button" className={styles.oauthBtn} onClick={onWeChatLogin} disabled={isSubmitting} title="WeChat">
+                    <svg width="22" height="22" viewBox="0 0 48 48">
+                      <path fill="#09B83E" d="M24 2C11.85 2 2 10.95 2 22c0 6.15 3.15 11.6 8.05 15.15L8.4 43.5c-.15.55.4 1 .9.75l7.2-3.8c2.35.7 4.85 1.05 7.5 1.05 12.15 0 22-8.95 22-20S36.15 2 24 2z"/>
+                      <path fill="#fff" d="M16.5 18c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5zm15 0c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5z"/>
+                    </svg>
+                  </button>
+                )}
+
+                {onLineLogin && (
+                  <button type="button" className={styles.oauthBtn} onClick={onLineLogin} disabled={isSubmitting} title="LINE">
+                    <svg width="22" height="22" viewBox="0 0 48 48">
+                      <rect width="48" height="48" rx="12" fill="#06C755"/>
+                      <path fill="#fff" d="M40 22.38c0-7.18-7.18-13.02-16-13.02S8 15.2 8 22.38c0 6.44 5.72 11.83 13.44 12.85.52.11 1.23.35 1.41.8.16.41.1 1.05.05 1.47l-.23 1.36c-.07.41-.32 1.6 1.4.87s9.31-5.49 12.72-9.4C39.01 27.87 40 25.27 40 22.38z"/>
+                    </svg>
+                  </button>
+                )}
+              </div>
+            </>
+          )}
 
           <div className={styles.demoNotice}>{copy.demoNotice}</div>
 

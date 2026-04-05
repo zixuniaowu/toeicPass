@@ -9,12 +9,16 @@ import { useMistakes } from "../hooks/useMistakes";
 import { useVocab } from "../hooks/useVocab";
 import { useAnalytics } from "../hooks/useAnalytics";
 import { useLearningCommandRunner } from "../hooks/useLearningCommandRunner";
+import { useSubscription } from "../hooks/useSubscription";
 import { AppShell } from "./layout/AppShell";
 import { CardSkeleton } from "./ui/Skeleton";
 import { LoginView } from "./auth/LoginView";
 import { ViewErrorBoundary } from "./error/ViewErrorBoundary";
 import { ToastContainer } from "./ui/Toast";
 import { useToast } from "../hooks/useToast";
+import { AdBanner } from "./ads/AdBanner";
+import { InterstitialAd } from "./ads/InterstitialAd";
+import { NativeFeedAd } from "./ads/NativeFeedAd";
 import * as api from "../lib/api";
 
 const MistakesView = lazy(() => import("./mistakes/MistakesView").then(m => ({ default: m.MistakesView })));
@@ -24,7 +28,13 @@ const MockExamView = lazy(() => import("./mock/MockExamView").then(m => ({ defau
 
 const SettingsView = lazy(() => import("./settings/SettingsView").then(m => ({ default: m.SettingsView })));
 const PracticeView = lazy(() => import("./practice/PracticeView").then(m => ({ default: m.PracticeView })));
-const WritingView = lazy(() => import("./writing/WritingView").then(m => ({ default: m.WritingView })));
+const SubscriptionView = lazy(() => import("./subscription/SubscriptionView").then(m => ({ default: m.SubscriptionView })));
+const AdManagerView = lazy(() => import("./admin/AdManagerView").then(m => ({ default: m.AdManagerView })));
+const ConversationView = lazy(() => import("./conversation/ConversationView").then(m => ({ default: m.ConversationView })));
+
+const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ?? "";
+const WECHAT_APP_ID = process.env.NEXT_PUBLIC_WECHAT_APP_ID ?? "";
+const LINE_CHANNEL_ID = process.env.NEXT_PUBLIC_LINE_CHANNEL_ID ?? "";
 
 
 function ViewFallback() {
@@ -72,10 +82,13 @@ const COPY = {
 export type ThemeMode = "light" | "dark" | "auto";
 
 export function ClientHome() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+
   const [activeView, setActiveView] = useState<ViewTab>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("lb.view") as ViewTab | null;
-      if (saved && ["listening", "grammar", "textcompletion", "reading", "shadowing", "mock", "mistakes", "vocab", "writing", "settings"].includes(saved)) {
+      if (saved && ["listening", "grammar", "textcompletion", "reading", "shadowing", "mock", "mistakes", "vocab", "settings", "subscription"].includes(saved)) {
         return saved;
       }
     }
@@ -100,6 +113,8 @@ export function ClientHome() {
   const [currentScoreInput, setCurrentScoreInput] = useState(400);
   // Practice view state
   const [practicePartFilter, setPracticePartFilter] = useState("all");
+  // Interstitial ad state: show after session submit for free users
+  const [showInterstitial, setShowInterstitial] = useState(false);
 
   const auth = useAuth(locale);
   const toast = useToast();
@@ -107,6 +122,7 @@ export function ClientHome() {
   const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const vocab = useVocab(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const analytics = useAnalytics(auth.getRequestOptions);
+  const subscription = useSubscription(auth.getRequestOptions, auth.isLoggedIn);
 
 
   // Bridge auth.message changes into toast notifications
@@ -233,13 +249,87 @@ export function ClientHome() {
     if (typeof report.scoreTotal === "number") {
       analytics.updateLatestScore(report.scoreTotal);
     }
-  }, [session, mistakes, auth, locale, analytics]);
+    // Show interstitial ad for free users after mock submit
+    if (subscription.showAds) setShowInterstitial(true);
+  }, [session, mistakes, auth, locale, analytics, subscription.showAds]);
 
   const handleLogin = useCallback(async () => {
     const token = await auth.login();
     if (!token) return;
     setActiveView("shadowing");
   }, [auth]);
+
+  const handleGoogleLogin = useCallback(() => {
+    if (!GOOGLE_CLIENT_ID) {
+      const msg = locale === "ja"
+        ? "Google ログインを利用するには NEXT_PUBLIC_GOOGLE_CLIENT_ID を設定してください。"
+        : "使用 Google 登录需要配置 NEXT_PUBLIC_GOOGLE_CLIENT_ID 环境变量。";
+      alert(msg);
+      return;
+    }
+    const redirectUri = `${window.location.origin}/`;
+    const params = new URLSearchParams({
+      client_id: GOOGLE_CLIENT_ID,
+      redirect_uri: redirectUri,
+      response_type: "code",
+      scope: "openid email profile",
+      access_type: "offline",
+      prompt: "select_account",
+    });
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
+  }, [locale]);
+
+  const handleWeChatLogin = useCallback(() => {
+    if (!WECHAT_APP_ID) {
+      const msg = locale === "ja"
+        ? "WeChat ログインを利用するには NEXT_PUBLIC_WECHAT_APP_ID を設定してください。"
+        : "使用微信登录需要配置 NEXT_PUBLIC_WECHAT_APP_ID 环境变量。";
+      alert(msg);
+      return;
+    }
+    const redirectUri = encodeURIComponent(`${window.location.origin}/`);
+    window.location.href = `https://open.weixin.qq.com/connect/qrconnect?appid=${WECHAT_APP_ID}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_login&state=wechat#wechat_redirect`;
+  }, [locale]);
+
+  const handleLineLogin = useCallback(() => {
+    if (!LINE_CHANNEL_ID) {
+      const msg = locale === "ja"
+        ? "LINE ログインを利用するには NEXT_PUBLIC_LINE_CHANNEL_ID を設定してください。"
+        : "使用 LINE 登录需要配置 NEXT_PUBLIC_LINE_CHANNEL_ID 环境变量。";
+      alert(msg);
+      return;
+    }
+    const redirectUri = encodeURIComponent(`${window.location.origin}/`);
+    const state = crypto.randomUUID();
+    window.location.href = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${LINE_CHANNEL_ID}&redirect_uri=${redirectUri}&state=${state}&scope=profile%20openid%20email`;
+  }, [locale]);
+
+  // Handle OAuth redirect callback (Google, WeChat, LINE)
+  useEffect(() => {
+    if (auth.isLoggedIn) return;
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    if (!code) return;
+
+    // Determine provider from state or URL context
+    const state = params.get("state");
+    let provider = "google";
+    if (state === "wechat" || params.has("appid")) {
+      provider = "wechat";
+    } else if (state && state !== "wechat") {
+      // LINE sends a random state we generated
+      provider = "line";
+    }
+
+    // Clean up URL
+    window.history.replaceState({}, "", window.location.pathname);
+    const redirectUri = `${window.location.origin}/`;
+    void (async () => {
+      const token = await auth.googleLogin(code, redirectUri, provider);
+      if (token) setActiveView("shadowing");
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleRegisterAndLogin = useCallback(async () => {
     const registered = await auth.register();
@@ -315,7 +405,9 @@ export function ClientHome() {
     if (typeof report.scoreTotal === "number") {
       analytics.updateLatestScore(report.scoreTotal);
     }
-  }, [session, mistakes, toast, locale, analytics]);
+    // Show interstitial ad for free users after practice submit
+    if (subscription.showAds) setShowInterstitial(true);
+  }, [session, mistakes, toast, locale, analytics, subscription.showAds]);
 
   const handleRunTask = useCallback(async (task: NextTask): Promise<boolean> => {
     return runner.runAction(task.action);
@@ -353,6 +445,31 @@ export function ClientHome() {
             onSaveGoal={() => void handleSaveGoal()}
           />
         );
+      case "subscription":
+        return (
+          <SubscriptionView
+            locale={locale}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
+            onSubscribed={() => void subscription.refreshProfile()}
+          />
+        );
+      case "admin":
+        return (
+          <AdManagerView
+            locale={locale}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
+          />
+        );
+      case "conversation":
+        return (
+          <ConversationView
+            locale={locale}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
+          />
+        );
       case "shadowing":
         return <ShadowingView locale={locale} />;
       case "mistakes":
@@ -381,6 +498,9 @@ export function ClientHome() {
               onPractice={handleMistakePractice}
               onPracticeFiltered={handlePracticeFilteredMistakes}
               onPracticeQuestion={handlePracticeSingleMistake}
+              showAds={subscription.showAds}
+              token={auth.token}
+              tenantCode={auth.credentials.tenantCode}
             />
           </ViewErrorBoundary>
         );
@@ -398,6 +518,9 @@ export function ClientHome() {
             onRefresh={() => vocab.loadCards()}
             onToggleReveal={vocab.toggleReveal}
             onGrade={vocab.gradeCard}
+            showAds={subscription.showAds}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
           />
         );
       case "mock":
@@ -418,6 +541,9 @@ export function ClientHome() {
             onPrevious={session.goToPrevious}
             onNext={session.goToNext}
             onSubmit={handleSubmitSession}
+            showAds={subscription.showAds}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
           />
         );
       case "listening":
@@ -443,12 +569,33 @@ export function ClientHome() {
             onPrevious={session.goToPrevious}
             onNext={session.goToNext}
             onSubmit={() => void handleSubmitPractice()}
+            showAds={subscription.showAds}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
           />
         );
       case "writing":
+        // Redirect legacy "writing" to grammar practice
         return (
-          <WritingView
+          <PracticeView
+            type="grammar"
             locale={locale}
+            activeSession={session.activeSession}
+            currentQuestion={session.currentQuestion}
+            currentQuestionIndex={session.currentQuestionIndex}
+            totalQuestions={session.totalQuestions}
+            answeredCount={session.answeredCount}
+            answerMap={session.answerMap}
+            practiceHint={session.practiceHint}
+            isSubmitting={session.isSubmitting}
+            partFilter={practicePartFilter}
+            onPartFilterChange={setPracticePartFilter}
+            onStartPractice={() => void handleStartPractice()}
+            onSelectAnswer={session.selectAnswer}
+            onPrevious={session.goToPrevious}
+            onNext={session.goToNext}
+            onSubmit={() => void handleSubmitPractice()}
+            showAds={subscription.showAds}
             token={auth.token}
             tenantCode={auth.credentials.tenantCode}
           />
@@ -457,6 +604,11 @@ export function ClientHome() {
         return <ShadowingView locale={locale} />;
     }
   };
+
+  // Prevent SSR hydration mismatch: wait until mounted on client
+  if (!mounted) {
+    return null;
+  }
 
   if (!auth.isLoggedIn) {
     return (
@@ -469,6 +621,9 @@ export function ClientHome() {
           onCredentialsChange={auth.updateCredentials}
           onLogin={() => void handleLogin()}
           onRegister={() => void handleRegisterAndLogin()}
+          onGoogleLogin={handleGoogleLogin}
+          onWeChatLogin={handleWeChatLogin}
+          onLineLogin={handleLineLogin}
           onLocaleChange={setLocale}
         />
         <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
@@ -485,13 +640,41 @@ export function ClientHome() {
       onLogout={handleLogout}
       locale={locale}
       onLocaleChange={setLocale}
+      planCode={subscription.planCode}
+      isAdmin={subscription.isAdmin}
     >
+      {subscription.showAds && (
+        <AdBanner
+          locale={locale}
+          token={auth.token}
+          tenantCode={auth.credentials.tenantCode}
+          slot="banner_top"
+          showAds={subscription.showAds}
+        />
+      )}
       <ViewErrorBoundary locale={locale}>
         <Suspense fallback={<ViewFallback />}>
           {renderView()}
         </Suspense>
       </ViewErrorBoundary>
+      {subscription.showAds && (
+        <NativeFeedAd
+          locale={locale}
+          token={auth.token}
+          tenantCode={auth.credentials.tenantCode}
+          showAds={subscription.showAds}
+        />
+      )}
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
+      {showInterstitial && (
+        <InterstitialAd
+          locale={locale}
+          token={auth.token}
+          tenantCode={auth.credentials.tenantCode}
+          showAds={subscription.showAds}
+          onClose={() => setShowInterstitial(false)}
+        />
+      )}
     </AppShell>
   );
 }

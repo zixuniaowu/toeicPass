@@ -11,6 +11,7 @@ import {
   ImportIpResultsDto,
   LoginDto,
   MistakeNoteDto,
+  OAuthLoginDto,
   RegisterDto,
   StartMistakeDrillDto,
   SubmitAttemptDto,
@@ -20,9 +21,11 @@ import { AuthDomainService } from "./services/auth-domain.service";
 import { AdminQuestionService } from "./services/admin-question.service";
 import { EnterpriseIpService } from "./services/enterprise-ip.service";
 import { LearningDomainService } from "./services/learning-domain.service";
+import { SubscriptionService } from "./services/subscription.service";
 import { StoreService } from "./store.service";
 import { AttemptMode, ReviewCard } from "./types";
 import { newId, nowIso } from "./utils";
+import { BadRequestException } from "@nestjs/common";
 
 @Injectable()
 export class AppService {
@@ -32,6 +35,7 @@ export class AppService {
     private readonly adminQuestionService: AdminQuestionService,
     private readonly enterpriseIpService: EnterpriseIpService,
     private readonly learningDomainService: LearningDomainService,
+    private readonly subscriptionService: SubscriptionService,
   ) {}
 
   persistStore(): void {
@@ -65,6 +69,10 @@ export class AppService {
     return this.authDomain.refreshToken(userId);
   }
 
+  async oauthLogin(dto: OAuthLoginDto): Promise<{ accessToken: string; tenantCode: string; isNewUser: boolean }> {
+    return this.authDomain.oauthLogin(dto);
+  }
+
   getMe(ctx: RequestContext): {
     id: string;
     email: string;
@@ -88,7 +96,16 @@ export class AppService {
     mode: AttemptMode,
     filters?: { partNo?: number; difficulty?: number; partGroup?: "listening" | "reading" },
   ) {
-    return this.learningDomainService.startAttempt(ctx, mode, filters);
+    // Check subscription limits
+    const action = mode === "mock" ? "mock_test" : "practice_session";
+    const limitCheck = this.subscriptionService.checkLimit(ctx, action as "practice_session" | "mock_test");
+    if (!limitCheck.allowed) {
+      throw new BadRequestException(limitCheck.reason);
+    }
+    const result = this.learningDomainService.startAttempt(ctx, mode, filters);
+    // Track usage
+    this.subscriptionService.incrementUsage(ctx, mode === "mock" ? "mockTests" : "practiceSessions");
+    return result;
   }
 
   startMistakeDrill(ctx: RequestContext, dto: StartMistakeDrillDto) {
@@ -133,6 +150,32 @@ export class AppService {
 
   gradeVocabularyCard(ctx: RequestContext, cardId: string, dto: GradeCardDto) {
     return this.learningDomainService.gradeVocabularyCard(ctx, cardId, dto);
+  }
+
+  getGrammarCards(ctx: RequestContext) {
+    const cards = this.store.getGrammarCards(ctx.tenantId, ctx.userId);
+    const today = new Date().toISOString().slice(0, 10);
+    const dueCards = cards.filter((c) => c.dueAt <= today);
+    return {
+      summary: {
+        total: cards.length,
+        due: dueCards.length,
+        learning: cards.filter((c) => c.intervalDays > 0 && c.intervalDays < 14).length,
+        mastered: cards.filter((c) => c.intervalDays >= 14 && (c.lastGrade ?? 0) >= 4).length,
+      },
+      cards: cards.map((c) => ({
+        ...c,
+        due: c.dueAt <= today,
+      })),
+    };
+  }
+
+  gradeGrammarCard(ctx: RequestContext, cardId: string, dto: GradeCardDto) {
+    const card = this.store.gradeGrammarCard(ctx.tenantId, ctx.userId, cardId, dto.grade);
+    if (!card) {
+      throw new Error("Grammar card not found");
+    }
+    return { success: true };
   }
 
   getDueCards(ctx: RequestContext) {

@@ -4,7 +4,7 @@ export type Locale = _Locale;
 export type SessionMode = _SessionMode;
 export type SessionFilters = _SessionFilters;
 export type LoginResponse = { accessToken: string; tenantCode: string };
-export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "shadowing" | "mock" | "mistakes" | "vocab" | "writing" | "conversation" | "settings";
+export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "shadowing" | "mock" | "mistakes" | "vocab" | "writing" | "conversation" | "settings" | "subscription" | "admin";
 export type OptionKey = "A" | "B" | "C" | "D";
 
 // Question Types
@@ -178,6 +178,7 @@ export type VocabCard = {
   example: string;
   sourcePart: number;
   tags: string[];
+  scoreBand?: string;
   easeFactor: number;
   intervalDays: number;
   dueAt: string;
@@ -206,9 +207,12 @@ export const DIFFICULTY_OPTIONS = [1, 2, 3, 4, 5] as const;
 export const TABS: Array<{ key: ViewTab; label: string; group?: string }> = [
   { key: "shadowing", label: "跟读练习", group: "practice" },
   { key: "mock", label: "模拟考试", group: "practice" },
-  { key: "writing", label: "写作练习", group: "practice" },
+  { key: "grammar", label: "语法练习", group: "practice" },
+  { key: "conversation", label: "AI对话", group: "practice" },
   { key: "mistakes", label: "错题集", group: "review" },
   { key: "vocab", label: "背单词", group: "review" },
+  { key: "subscription", label: "会员", group: "system" },
+  { key: "admin", label: "广告管理", group: "system" },
   { key: "settings", label: "设置", group: "system" },
 ];
 
@@ -221,34 +225,62 @@ export const ROOT_CAUSE_OPTIONS = [
 ] as const;
 
 // Conversation Types
-export type ConversationScenario = {
-  id: string;
-  title: string;
-  titleCn: string;
-  description: string;
-  context: string;
-  difficulty: 1 | 2 | 3;
-  category: "office" | "restaurant" | "airport" | "hotel" | "shopping" | "meeting" | "phone" | "interview";
-};
-
-export type ConversationMessage = {
-  id: string;
-  role: "user" | "assistant" | "system";
-  content: string;
-  timestamp: string;
-  corrections?: string[];
-  suggestions?: string[];
-};
-
-export type ConversationSession = {
-  scenarioId: string;
-  messages: ConversationMessage[];
-  startedAt: string;
-  score?: number;
-  feedback?: string;
-};
+export type { ConversationScenario, ConversationMessage, ConversationSession } from "@toeicpass/conversation-ai";
 
 // Utility functions
 export const isListeningPart = (partNo: number): boolean => partNo >= 1 && partNo <= 4;
 export const toErrorMessage = (error: unknown): string =>
   error instanceof Error ? error.message : String(error);
+
+// ===== Subscription & Monetization =====
+
+export type PlanCode = "free" | "basic" | "premium" | "enterprise";
+
+export type PlanFeatures = {
+  daily_practice_sessions: number;
+  daily_mock_tests: number;
+  daily_questions: number;
+  vocab_cards: number;
+  ai_conversations: number;
+  show_ads: boolean;
+  explanation_detail: "basic" | "full";
+  score_prediction: boolean;
+  export_data: boolean;
+};
+
+export type SubscriptionPlan = {
+  id: string;
+  code: PlanCode;
+  nameEn: string;
+  nameZh: string;
+  nameJa: string;
+  priceMonthly: number;
+  priceYearly: number;
+  currency: string;
+  features: PlanFeatures;
+  sortOrder: number;
+};
+
+export type UserProfile = {
+  id: string;
+  email: string;
+  displayName: string;
+  roles: string[];
+  tenantId: string;
+  plan: {
+    code: PlanCode;
+    name: string;
+    features: PlanFeatures;
+    expiresAt?: string;
+    billingCycle?: string;
+  };
+  usage: {
+    practiceSessions: { used: number; limit: number };
+    mockTests: { used: number; limit: number };
+    questionsAnswered: { used: number; limit: number };
+    vocabReviews: { used: number; limit: number };
+    aiConversations: { used: number; limit: number };
+  };
+};
+
+export type { AdPlacement } from "@toeicpass/ad-system";

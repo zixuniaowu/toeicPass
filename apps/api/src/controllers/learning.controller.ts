@@ -112,6 +112,16 @@ export class LearningController {
     return this.appService.gradeVocabularyCard(toCtx(req), cardId, dto);
   }
 
+  @Get("learning/grammar/cards")
+  grammarCards(@Req() req: ReqShape) {
+    return this.appService.getGrammarCards(toCtx(req));
+  }
+
+  @Post("learning/grammar/cards/:cardId/grade")
+  gradeGrammarCard(@Req() req: ReqShape, @Param("cardId") cardId: string, @Body() dto: GradeCardDto) {
+    return this.appService.gradeGrammarCard(toCtx(req), cardId, dto);
+  }
+
   @Post("practice/sessions")
   startPractice(
     @Req() req: ReqShape,

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { TABS, type Locale, type ViewTab } from "../../types";
+import { TABS, type Locale, type ViewTab, type PlanCode } from "../../types";
+import { PlanBadge } from "../subscription/PlanBadge";
 import styles from "./TopBar.module.css";
 
 interface TopBarProps {
@@ -11,14 +12,19 @@ interface TopBarProps {
   onLogout?: () => void;
   locale: Locale;
   onLocaleChange: (locale: Locale) => void;
+  planCode?: PlanCode;
+  isAdmin?: boolean;
 }
 
 const TAB_LABEL_JA: Partial<Record<ViewTab, string>> = {
   shadowing: "シャドーイング",
   mock: "模擬試験",
-  writing: "ライティング",
+  grammar: "文法練習",
+  conversation: "AI会話",
   mistakes: "ミスノート",
   vocab: "単語帳",
+  subscription: "会員",
+  admin: "広告管理",
   settings: "設定",
 };
 
@@ -29,9 +35,14 @@ export function TopBar({
   onLogout,
   locale,
   onLocaleChange,
+  planCode,
+  isAdmin,
 }: TopBarProps) {
   const isJa = locale === "ja";
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Filter tabs: hide admin tab for non-admin users
+  const visibleTabs = TABS.filter((t) => t.key !== "admin" || isAdmin);
 
   const handleTabClick = useCallback((key: ViewTab) => {
     onViewChange(key);
@@ -60,7 +71,7 @@ export function TopBar({
             <span className={`${styles.hamburgerLine} ${menuOpen ? styles.hamburgerOpen : ""}`} />
           </button>
           <nav className={`${styles.tabs} ${menuOpen ? styles.tabsOpen : ""}`}>
-            {TABS.map((tab) => (
+            {visibleTabs.map((tab) => (
               <button
                 key={tab.key}
                 className={`${styles.tab} ${activeView === tab.key ? styles.active : ""}`}
@@ -90,6 +101,9 @@ export function TopBar({
             日本語
           </button>
         </div>
+        {isLoggedIn && planCode && (
+          <PlanBadge planCode={planCode} onClick={() => onViewChange("subscription")} />
+        )}
         {isLoggedIn && onLogout && (
           <button type="button" className={styles.logout} onClick={onLogout}>
             {isJa ? "ログアウト" : "退出登录"}

@@ -1,0 +1,277 @@
+.container {
+  padding: 0 16px 40px;
+  width: 100%;
+}
+.header {
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #888);
+  margin: 4px 0 0;
+}
+
+/* Stats grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.statCard {
+  background: var(--surface-card, #f8f8f8);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.statLabel {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #888);
+  margin-bottom: 4px;
+}
+.statValue {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* Section */
+.section {
+  margin-bottom: 24px;
+}
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.sectionTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+/* Slot breakdown */
+.slotGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.slotCard {
+  background: var(--surface-card, #f8f8f8);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 8px;
+  padding: 12px;
+}
+.slotName {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.slotStats {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--text-secondary, #888);
+}
+
+/* Buttons */
+.createBtn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #0f62fe;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.createBtn:hover { opacity: 0.9; }
+
+/* Form */
+.formCard {
+  background: var(--surface-card, #f8f8f8);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.formField label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary, #888);
+}
+.formField input,
+.formField select {
+  padding: 8px 10px;
+  border: 1px solid var(--border, #ccc);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  background: var(--surface-card, #fff);
+  color: var(--text-primary, #111);
+}
+.checkGroup {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.formActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.saveBtn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #10b981;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.saveBtn:hover { opacity: 0.9; }
+.cancelBtn {
+  padding: 8px 20px;
+  border: 1px solid var(--border, #ccc);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary, #444);
+  cursor: pointer;
+}
+
+/* Table */
+.tableWrapper {
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.table th {
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #888);
+  border-bottom: 2px solid var(--border, #e0e0e0);
+  white-space: nowrap;
+}
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border, #eee);
+  vertical-align: middle;
+}
+.table tr.inactive {
+  opacity: 0.5;
+}
+.slotBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.rowActions {
+  display: flex;
+  gap: 6px;
+}
+.editBtn {
+  padding: 4px 10px;
+  border: 1px solid #0f62fe;
+  border-radius: 4px;
+  background: transparent;
+  color: #0f62fe;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.editBtn:hover { background: #0f62fe; color: #fff; }
+.deleteBtn {
+  padding: 4px 10px;
+  border: 1px solid #dc2626;
+  border-radius: 4px;
+  background: transparent;
+  color: #dc2626;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.deleteBtn:hover { background: #dc2626; color: #fff; }
+
+.empty {
+  text-align: center;
+  color: var(--text-secondary, #888);
+  padding: 40px 0;
+}
+
+/* Event list */
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.eventItem {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  background: var(--surface-card, #f8f8f8);
+  border-radius: 6px;
+}
+.eventType {
+  font-weight: 600;
+  min-width: 60px;
+}
+.eventTime {
+  color: var(--text-secondary, #888);
+}
+.eventId {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: var(--text-secondary, #aaa);
+}
+
+/* Dark mode */
+[data-theme="dark"] .statCard,
+[data-theme="dark"] .slotCard,
+[data-theme="dark"] .formCard,
+[data-theme="dark"] .eventItem {
+  background: #1a1a1a;
+  border-color: #333;
+}
+[data-theme="dark"] .slotBadge {
+  background: #1e3a5f;
+  color: #7dd3fc;
+}
+[data-theme="dark"] .formField input,
+[data-theme="dark"] .formField select {
+  background: #1a1a1a;
+  border-color: #333;
+  color: #e0e0e0;
+}

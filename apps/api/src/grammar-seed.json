@@ -1,0 +1,362 @@
+{
+  "rules": [
+    {
+      "ruleId": "subject-verb-agreement",
+      "title": "Subject-Verb Agreement",
+      "titleCn": "主谓一致",
+      "titleJa": "主語と動詞の一致",
+      "category": "grammar-basics",
+      "explanation": "The verb must agree with the subject in number. Singular subjects take singular verbs; plural subjects take plural verbs.",
+      "explanationCn": "动词必须与主语在数上一致。单数主语用单数动词，复数主语用复数动词。",
+      "explanationJa": "動詞は主語と数の面で一致する必要があります。単数主語には単数動詞、複数主語には複数動詞を使います。",
+      "examples": [
+        "The manager (has/have) approved the budget. → has",
+        "The employees (is/are) attending the seminar. → are",
+        "Each of the reports (was/were) reviewed carefully. → was"
+      ],
+      "sourcePart": 5,
+      "difficulty": 2,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "tense-consistency",
+      "title": "Tense Consistency",
+      "titleCn": "时态一致性",
+      "titleJa": "時制の一貫性",
+      "category": "tenses",
+      "explanation": "Maintain consistent tense within a sentence or paragraph unless a time shift is logically required.",
+      "explanationCn": "在同一句子或段落中保持时态一致，除非逻辑上需要时间转换。",
+      "explanationJa": "論理的な時間の移行が必要でない限り、文または段落内で時制を一貫させます。",
+      "examples": [
+        "She reviewed the proposal and (submits/submitted) her comments. → submitted",
+        "By the time the client arrives, we (will have finished/finish) the presentation. → will have finished"
+      ],
+      "sourcePart": 5,
+      "difficulty": 3,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "relative-clauses",
+      "title": "Relative Clauses (who/which/that)",
+      "titleCn": "关系从句 (who/which/that)",
+      "titleJa": "関係節 (who/which/that)",
+      "category": "clauses",
+      "explanation": "Use 'who' for people, 'which' for things, and 'that' for both in defining clauses. Non-defining clauses use commas.",
+      "explanationCn": "who 用于人，which 用于物，that 可用于两者（限定性从句）。非限定性从句使用逗号。",
+      "explanationJa": "who は人、which は物、that は限定節で両方に使えます。非限定節ではカンマを使います。",
+      "examples": [
+        "The employee (who/which) submitted the report was promoted. → who",
+        "The building, (which/that) was constructed last year, has modern facilities. → which"
+      ],
+      "sourcePart": 5,
+      "difficulty": 3,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "gerunds-vs-infinitives",
+      "title": "Gerunds vs. Infinitives",
+      "titleCn": "动名词 vs. 不定式",
+      "titleJa": "動名詞 vs. 不定詞",
+      "category": "verb-forms",
+      "explanation": "Some verbs take gerunds (-ing), some take infinitives (to + verb), and some take both. This is a high-frequency TOEIC Part 5 topic.",
+      "explanationCn": "有些动词后接动名词(-ing)，有些接不定式(to + 动词)，有些两者皆可。这是 TOEIC Part 5 高频考点。",
+      "explanationJa": "一部の動詞は動名詞（-ing）、一部は不定詞（to＋動詞）、また両方を取る動詞もあります。TOEIC Part 5 の頻出トピックです。",
+      "examples": [
+        "She enjoys (to work/working) with international clients. → working",
+        "He decided (to accept/accepting) the job offer. → to accept",
+        "They continued (to discuss/discussing) the merger. → both correct"
+      ],
+      "sourcePart": 5,
+      "difficulty": 3,
+      "cefrLevel": "B2"
+    },
+    {
+      "ruleId": "parts-of-speech",
+      "title": "Parts of Speech (Word Form)",
+      "titleCn": "词性变换",
+      "titleJa": "品詞（語形変化）",
+      "category": "word-form",
+      "explanation": "Choose the correct word form (noun, verb, adjective, adverb) based on the grammatical role in the sentence. The most tested grammar point on TOEIC.",
+      "explanationCn": "根据句中语法角色选择正确的词性（名词、动词、形容词、副词）。TOEIC 最高频语法考点。",
+      "explanationJa": "文中の文法的役割に基づいて正しい品詞（名詞、動詞、形容詞、副詞）を選びます。TOEIC で最も出題される文法項目です。",
+      "examples": [
+        "The (success/successful/successfully) launch exceeded expectations. → successful",
+        "All participants must register (immediate/immediately). → immediately",
+        "Her (apply/application) was accepted last week. → application"
+      ],
+      "sourcePart": 5,
+      "difficulty": 2,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "prepositions-of-time-place",
+      "title": "Prepositions of Time and Place",
+      "titleCn": "时间与地点介词",
+      "titleJa": "時間と場所の前置詞",
+      "category": "prepositions",
+      "explanation": "Use 'at' for specific times/points, 'on' for days/dates, 'in' for months/years/long periods. For places: 'at' for specific points, 'on' for surfaces, 'in' for enclosed spaces.",
+      "explanationCn": "at 用于具体时刻/地点，on 用于日期/表面，in 用于月份/年份/封闭空间。",
+      "explanationJa": "at は特定の時刻/場所、on は日付/面、in は月/年/囲まれた空間に使います。",
+      "examples": [
+        "The meeting is scheduled (at/on/in) 3 p.m. → at",
+        "The conference will be held (at/on/in) Monday. → on",
+        "Sales increased (at/on/in) the third quarter. → in"
+      ],
+      "sourcePart": 5,
+      "difficulty": 2,
+      "cefrLevel": "A2"
+    },
+    {
+      "ruleId": "conditional-sentences",
+      "title": "Conditional Sentences (If-Clauses)",
+      "titleCn": "条件句",
+      "titleJa": "条件文（If 節）",
+      "category": "clauses",
+      "explanation": "Type 0: general truth (If + present, present). Type 1: real future (If + present, will + verb). Type 2: unreal present (If + past, would + verb). Type 3: unreal past (If + had + pp, would have + pp).",
+      "explanationCn": "零类：一般真理。一类：真实未来。二类：非真实现在（虚拟语气）。三类：非真实过去（虚拟语气）。",
+      "explanationJa": "ゼロ条件：一般的真理。第一条件：現実的な未来。第二条件：非現実的な現在（仮定法過去）。第三条件：非現実的な過去（仮定法過去完了）。",
+      "examples": [
+        "If we (receive/received) the shipment today, we will start production. → receive",
+        "If the budget (was/were) larger, we could hire more staff. → were",
+        "If they had arrived earlier, they (would have attended/would attend) the keynote. → would have attended"
+      ],
+      "sourcePart": 5,
+      "difficulty": 4,
+      "cefrLevel": "B2"
+    },
+    {
+      "ruleId": "passive-voice",
+      "title": "Passive Voice",
+      "titleCn": "被动语态",
+      "titleJa": "受動態",
+      "category": "verb-forms",
+      "explanation": "Formed with 'be + past participle'. Used when the action is more important than the doer, or when the doer is unknown.",
+      "explanationCn": "由 be + 过去分词构成。当动作比施动者重要，或施动者未知时使用。",
+      "explanationJa": "「be＋過去分詞」で構成します。動作が行為者より重要な場合や、行為者が不明な場合に使います。",
+      "examples": [
+        "The report (wrote/was written) by the marketing team. → was written",
+        "All expenses must (approve/be approved) by the manager. → be approved",
+        "The new policy (has implemented/has been implemented) company-wide. → has been implemented"
+      ],
+      "sourcePart": 5,
+      "difficulty": 3,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "comparative-superlative",
+      "title": "Comparatives and Superlatives",
+      "titleCn": "比较级与最高级",
+      "titleJa": "比較級と最上級",
+      "category": "adjectives",
+      "explanation": "Short adjectives: -er/-est. Long adjectives: more/most. Irregular forms: good→better→best, bad→worse→worst.",
+      "explanationCn": "短形容词加 -er/-est。长形容词用 more/most。不规则：good→better→best, bad→worse→worst。",
+      "explanationJa": "短い形容詞：-er/-est。長い形容詞：more/most。不規則: good→better→best, bad→worse→worst。",
+      "examples": [
+        "This quarter's revenue is (higher/more high) than last quarter's. → higher",
+        "The new software is (more efficient/efficienter) than the old version. → more efficient",
+        "That was the (most successful/successfulest) campaign in our history. → most successful"
+      ],
+      "sourcePart": 5,
+      "difficulty": 2,
+      "cefrLevel": "A2"
+    },
+    {
+      "ruleId": "conjunctions-transitions",
+      "title": "Conjunctions and Transitions",
+      "titleCn": "连词与过渡词",
+      "titleJa": "接続詞と移行語",
+      "category": "connectors",
+      "explanation": "Coordinating (and, but, or), subordinating (although, because, while), and transitional expressions (however, therefore, moreover). High-frequency on Part 5 and 6.",
+      "explanationCn": "并列连词（and, but, or）、从属连词（although, because, while）、过渡词（however, therefore, moreover）。Part 5/6 高频。",
+      "explanationJa": "等位接続詞（and, but, or）、従属接続詞（although, because, while）、移行表現（however, therefore, moreover）。Part 5/6 で頻出。",
+      "examples": [
+        "(Although/Despite) the delay, the project was completed on time. → Despite",
+        "Sales declined; (however/because), profits remained stable. → however",
+        "The proposal was rejected (because/because of) it lacked supporting data. → because"
+      ],
+      "sourcePart": 5,
+      "difficulty": 3,
+      "cefrLevel": "B2"
+    },
+    {
+      "ruleId": "articles-determiners",
+      "title": "Articles and Determiners",
+      "titleCn": "冠词与限定词",
+      "titleJa": "冠詞と限定詞",
+      "category": "grammar-basics",
+      "explanation": "Use 'a/an' for first mention or general reference, 'the' for specific/previously mentioned items, and no article for generalizations with plurals and uncountable nouns.",
+      "explanationCn": "a/an 用于首次提及或泛指，the 用于特指，复数名词或不可数名词泛指时不加冠词。",
+      "explanationJa": "a/an は初出または一般的な言及に、the は特定のものに使います。複数名詞や不可算名詞の一般化には冠詞不要です。",
+      "examples": [
+        "(A/The) meeting scheduled for Friday has been postponed. → The",
+        "She is looking for (a/the) qualified candidate for the position. → a",
+        "(—/The) Innovation is essential for business growth. → —"
+      ],
+      "sourcePart": 5,
+      "difficulty": 3,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "modals-obligation",
+      "title": "Modal Verbs (Obligation & Possibility)",
+      "titleCn": "情态动词（义务与可能）",
+      "titleJa": "法助動詞（義務と可能性）",
+      "category": "verb-forms",
+      "explanation": "must = strong obligation/certainty; should = advice/expectation; can = ability/permission; may/might = possibility; have to = external obligation.",
+      "explanationCn": "must = 强制义务/确定；should = 建议/期望；can = 能力/许可；may/might = 可能；have to = 外部义务。",
+      "explanationJa": "must = 強い義務/確信、should = 助言/期待、can = 能力/許可、may/might = 可能性、have to = 外的な義務。",
+      "examples": [
+        "All employees (must/should) wear safety gear in the factory. → must",
+        "You (may/must) want to review the contract before signing. → may",
+        "The shipment (should/can) arrive by Friday if sent today. → should"
+      ],
+      "sourcePart": 5,
+      "difficulty": 2,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "present-perfect-vs-past",
+      "title": "Present Perfect vs. Simple Past",
+      "titleCn": "现在完成时 vs. 一般过去时",
+      "titleJa": "現在完了 vs. 過去形",
+      "category": "tenses",
+      "explanation": "Present perfect = action relevant to now (has/have + pp). Simple past = completed at a specific past time. Clue words: 'since', 'for', 'yet' → present perfect; 'yesterday', 'last year', 'ago' → past.",
+      "explanationCn": "现在完成时 = 动作与现在有关（has/have + 过分）。一般过去时 = 在过去的具体时间完成。线索词：since/for/yet → 完成时；yesterday/last year/ago → 过去时。",
+      "explanationJa": "現在完了 = 現在に関連する動作（has/have＋過去分詞）。過去形 = 過去の特定の時点で完了した動作。ヒント語: since/for/yet → 現在完了、yesterday/last year/ago → 過去形。",
+      "examples": [
+        "She (has worked/worked) at the company since 2019. → has worked",
+        "The team (has submitted/submitted) the report last Friday. → submitted",
+        "We (haven't received/didn't receive) the shipment yet. → haven't received"
+      ],
+      "sourcePart": 5,
+      "difficulty": 3,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "causative-verbs",
+      "title": "Causative Verbs (have/get/make/let)",
+      "titleCn": "使役动词 (have/get/make/let)",
+      "titleJa": "使役動詞 (have/get/make/let)",
+      "category": "verb-forms",
+      "explanation": "have + object + bare infinitive / past participle; get + object + to-infinitive / past participle; make + object + bare infinitive; let + object + bare infinitive.",
+      "explanationCn": "have + 宾语 + 原形/过去分词；get + 宾语 + to 不定式/过去分词；make + 宾语 + 原形；let + 宾语 + 原形。",
+      "explanationJa": "have＋目的語＋原形/過去分詞、get＋目的語＋to不定詞/過去分詞、make＋目的語＋原形、let＋目的語＋原形。",
+      "examples": [
+        "The manager had the assistant (to prepare/prepare) the agenda. → prepare",
+        "We need to get the document (signed/to sign) by the director. → signed",
+        "The policy makes all staff (to submit/submit) travel requests in advance. → submit"
+      ],
+      "sourcePart": 5,
+      "difficulty": 4,
+      "cefrLevel": "B2"
+    },
+    {
+      "ruleId": "quantifiers",
+      "title": "Quantifiers (much/many/few/little)",
+      "titleCn": "数量词 (much/many/few/little)",
+      "titleJa": "数量詞 (much/many/few/little)",
+      "category": "grammar-basics",
+      "explanation": "much/little for uncountable nouns; many/few for countable nouns. 'A few' / 'a little' = positive sense (some); 'few' / 'little' = negative sense (almost none).",
+      "explanationCn": "much/little 用于不可数名词；many/few 用于可数名词。a few/a little = 有一些；few/little = 几乎没有。",
+      "explanationJa": "much/little は不可算名詞、many/few は可算名詞に使います。a few/a little = 少しある（肯定的）、few/little = ほとんどない（否定的）。",
+      "examples": [
+        "There is (much/many) interest in the new product line. → much",
+        "Only (a few/a little) participants have registered so far. → a few",
+        "The department has (few/little) budget remaining this quarter. → little"
+      ],
+      "sourcePart": 5,
+      "difficulty": 2,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "participial-adjectives",
+      "title": "Participial Adjectives (-ing vs. -ed)",
+      "titleCn": "分词形容词 (-ing vs. -ed)",
+      "titleJa": "分詞形容詞 (-ing vs. -ed)",
+      "category": "adjectives",
+      "explanation": "-ing adjectives describe the quality that causes a feeling; -ed adjectives describe the feeling experienced. Common pairs: interesting/interested, boring/bored, confusing/confused.",
+      "explanationCn": "-ing 形容词描述引起感觉的特征；-ed 形容词描述经历的感觉。常见对：interesting/interested, boring/bored。",
+      "explanationJa": "-ing 形容詞は感情を引き起こす性質、-ed 形容詞は経験する感情を表します。一般的な対: interesting/interested, boring/bored。",
+      "examples": [
+        "The presentation was very (interested/interesting). → interesting",
+        "The staff felt (motivated/motivating) after the workshop. → motivated",
+        "The (confused/confusing) instructions led to several errors. → confusing"
+      ],
+      "sourcePart": 5,
+      "difficulty": 2,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "noun-clauses",
+      "title": "Noun Clauses (that/what/whether)",
+      "titleCn": "名词性从句",
+      "titleJa": "名詞節 (that/what/whether)",
+      "category": "clauses",
+      "explanation": "Noun clauses function as subjects, objects, or complements. Introduced by 'that' (statements), 'what' (unknown things), 'whether/if' (yes/no questions).",
+      "explanationCn": "名词性从句充当主语、宾语或补语。that 引导陈述，what 引导未知事物，whether/if 引导是否问题。",
+      "explanationJa": "名詞節は主語、目的語、補語の役割を果たします。that（陳述）、what（不明なもの）、whether/if（はい/いいえの質問）で導入されます。",
+      "examples": [
+        "(That/What) the merger was approved surprised everyone. → That",
+        "Please confirm (whether/that) the goods have been shipped. → whether",
+        "The board discussed (what/that) changes should be implemented. → what"
+      ],
+      "sourcePart": 5,
+      "difficulty": 4,
+      "cefrLevel": "B2"
+    },
+    {
+      "ruleId": "adverb-placement",
+      "title": "Adverb Placement",
+      "titleCn": "副词位置",
+      "titleJa": "副詞の位置",
+      "category": "word-form",
+      "explanation": "Frequency adverbs (always, usually, often) go before the main verb but after 'be' or auxiliary verbs. Manner adverbs usually go after the verb/object.",
+      "explanationCn": "频率副词（always, usually, often）放在实义动词前、be 动词或助动词后。方式副词通常放在动词/宾语后。",
+      "explanationJa": "頻度副詞（always, usually, often）は本動詞の前、be動詞・助動詞の後に置きます。様態副詞は通常、動詞/目的語の後に置きます。",
+      "examples": [
+        "The team (frequently meets/meets frequently) to discuss progress. → frequently meets",
+        "She is (always/always is) prepared for client meetings. → always",
+        "He completed the project (efficient/efficiently). → efficiently"
+      ],
+      "sourcePart": 5,
+      "difficulty": 2,
+      "cefrLevel": "B1"
+    },
+    {
+      "ruleId": "phrasal-prepositions",
+      "title": "Phrasal Prepositions (in spite of, due to, etc.)",
+      "titleCn": "短语介词 (in spite of, due to 等)",
+      "titleJa": "句前置詞 (in spite of, due to 等)",
+      "category": "prepositions",
+      "explanation": "Common TOEIC phrasal prepositions: 'in spite of' / 'despite' + noun/gerund; 'due to' / 'because of' + noun; 'in addition to' + noun/gerund; 'prior to' + noun/gerund.",
+      "explanationCn": "TOEIC 常见短语介词：in spite of/despite + 名词/动名词；due to/because of + 名词；in addition to + 名词；prior to + 名词。",
+      "explanationJa": "TOEIC 頻出の句前置詞: in spite of/despite＋名詞/動名詞、due to/because of＋名詞、in addition to＋名詞、prior to＋名詞。",
+      "examples": [
+        "(Despite/Although) the heavy rain, the event continued as planned. → Despite",
+        "The delay was (due to/because) a supply chain disruption. → due to",
+        "(Prior to/Before that) the meeting, please review the agenda. → Prior to"
+      ],
+      "sourcePart": 5,
+      "difficulty": 3,
+      "cefrLevel": "B2"
+    },
+    {
+      "ruleId": "parallel-structure",
+      "title": "Parallel Structure",
+      "titleCn": "平行结构",
+      "titleJa": "並列構造",
+      "category": "grammar-basics",
+      "explanation": "Items in a list, comparison, or joined by conjunctions must have the same grammatical form (all nouns, all gerunds, all infinitives, etc.).",
+      "explanationCn": "列举、比较或由连词连接的项目必须具有相同的语法形式（全部名词、全部动名词或全部不定式等）。",
+      "explanationJa": "リスト、比較、または接続詞で結ばれた項目は、同じ文法形式（すべて名詞、すべて動名詞、すべて不定詞など）でなければなりません。",
+      "examples": [
+        "The job requires planning, (to organize/organizing), and leading projects. → organizing",
+        "She enjoys reading books, (to play/playing) tennis, and cooking. → playing",
+        "The product is durable, affordable, and (it is reliable/reliable). → reliable"
+      ],
+      "sourcePart": 5,
+      "difficulty": 3,
+      "cefrLevel": "B2"
+    }
+  ]
+}

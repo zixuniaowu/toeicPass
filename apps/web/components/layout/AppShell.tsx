@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import type { Locale, ViewTab } from "../../types";
+import type { Locale, ViewTab, PlanCode } from "../../types";
 import { TopBar } from "./TopBar";
 import { Footer } from "./Footer";
 import styles from "./AppShell.module.css";
@@ -15,6 +15,8 @@ interface AppShellProps {
   onLogout?: () => void;
   locale: Locale;
   onLocaleChange: (locale: Locale) => void;
+  planCode?: PlanCode;
+  isAdmin?: boolean;
 }
 
 export function AppShell({
@@ -26,6 +28,8 @@ export function AppShell({
   onLogout,
   locale,
   onLocaleChange,
+  planCode,
+  isAdmin,
 }: AppShellProps) {
   return (
     <div className={styles.shell}>
@@ -37,6 +41,8 @@ export function AppShell({
           onLogout={onLogout}
           locale={locale}
           onLocaleChange={onLocaleChange}
+          planCode={planCode}
+          isAdmin={isAdmin}
         />
         <main key={activeView} className={styles.main}>{children}</main>
         <Footer message={message} />

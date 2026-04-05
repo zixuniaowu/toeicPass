@@ -8,7 +8,7 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { AppService } from "../app.service";
-import { LoginDto, RegisterDto } from "../dto";
+import { LoginDto, OAuthLoginDto, RegisterDto } from "../dto";
 import { JwtAuthGuard } from "../jwt-auth.guard";
 import { ReqShape } from "../request-context";
 
@@ -27,6 +27,11 @@ export class AuthController {
       dto.tenantCode = tenantCode;
     }
     return this.appService.login(dto);
+  }
+
+  @Post("oauth/login")
+  oauthLogin(@Body() dto: OAuthLoginDto) {
+    return this.appService.oauthLogin(dto);
   }
 
   @Post("refresh")

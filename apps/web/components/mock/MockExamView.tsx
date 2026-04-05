@@ -6,6 +6,7 @@ import { isListeningPart } from "../../types";
 import { Button } from "../ui/Button";
 import { AudioPlayer } from "../ui/AudioPlayer";
 import { QuestionCard } from "../practice/QuestionCard";
+import { NativeFeedAd } from "../ads/NativeFeedAd";
 import styles from "./MockExamView.module.css";
 
 function enterFullscreen(el: HTMLElement) {
@@ -34,6 +35,9 @@ interface MockExamViewProps {
   onPrevious: () => void;
   onNext: () => void;
   onSubmit: (options?: { allowPartial?: boolean }) => void;
+  showAds?: boolean;
+  token?: string;
+  tenantCode?: string;
 }
 
 // Full TOEIC-style mock: 200 questions, 120 minutes.
@@ -156,6 +160,9 @@ export function MockExamView({
   onPrevious,
   onNext,
   onSubmit,
+  showAds = false,
+  token = "",
+  tenantCode = "",
 }: MockExamViewProps) {
   const copy = COPY[locale];
   const [timerMs, setTimerMs] = useState(MOCK_DURATION_MS);
@@ -404,6 +411,10 @@ export function MockExamView({
               <strong>{sessionResult.correct}/{sessionResult.answered}</strong>
             </div>
           </div>
+
+          {showAds && (
+            <NativeFeedAd locale={locale} token={token} tenantCode={tenantCode} showAds={showAds} />
+          )}
 
           {/* Per-part breakdown */}
           <div className={styles.partBreakdown}>

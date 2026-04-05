@@ -7,6 +7,7 @@ import {
   IsIn,
   IsInt,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   Max,
@@ -125,6 +126,24 @@ export class GradeCardDto {
   grade!: number;
 }
 
+export class OAuthLoginDto {
+  @IsString()
+  @IsNotEmpty()
+  provider!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  code!: string;
+
+  @IsOptional()
+  @IsString()
+  redirectUri?: string;
+
+  @IsOptional()
+  @IsString()
+  tenantCode?: string;
+}
+
 export class CreateQuestionDto {
   @IsInt()
   @Min(1)
@@ -238,6 +257,109 @@ export class IpResultRowDto {
   @Min(5)
   @Max(495)
   scoreR!: number;
+}
+
+// ===== Subscription =====
+
+export class SubscribeDto {
+  @IsIn(["free", "basic", "premium", "enterprise"])
+  planCode!: "free" | "basic" | "premium" | "enterprise";
+
+  @IsOptional()
+  @IsIn(["monthly", "yearly"])
+  billingCycle?: "monthly" | "yearly";
+
+  @IsOptional()
+  @IsString()
+  paymentToken?: string;
+}
+
+export class RecordAdEventDto {
+  @IsString()
+  @IsNotEmpty()
+  placementId!: string;
+
+  @IsIn(["impression", "click", "dismiss", "reward_complete"])
+  eventType!: "impression" | "click" | "dismiss" | "reward_complete";
+}
+
+export class CreateAdDto {
+  @IsString()
+  @IsNotEmpty()
+  slot!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  title!: string;
+
+  @IsOptional()
+  @IsString()
+  imageUrl?: string;
+
+  @IsString()
+  @IsNotEmpty()
+  linkUrl!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  ctaText!: string;
+
+  @IsNumber()
+  priority!: number;
+
+  @IsArray()
+  @IsString({ each: true })
+  targetPlans!: string[];
+
+  @IsOptional()
+  @IsString()
+  startsAt?: string;
+
+  @IsOptional()
+  @IsString()
+  expiresAt?: string;
+}
+
+export class UpdateAdDto {
+  @IsOptional()
+  @IsString()
+  slot?: string;
+
+  @IsOptional()
+  @IsString()
+  title?: string;
+
+  @IsOptional()
+  @IsString()
+  imageUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  linkUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  ctaText?: string;
+
+  @IsOptional()
+  @IsNumber()
+  priority?: number;
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  targetPlans?: string[];
+
+  @IsOptional()
+  isActive?: boolean;
+
+  @IsOptional()
+  @IsString()
+  startsAt?: string;
+
+  @IsOptional()
+  @IsString()
+  expiresAt?: string;
 }
 
 export class ConversationReplyDto {

@@ -209,6 +209,46 @@ export function useAuth(locale: Locale) {
     return () => setOnUnauthorized(null);
   }, [locale]);
 
+  const googleLogin = useCallback(
+    async (code: string, redirectUri: string, provider = "google"): Promise<string | null> => {
+      setIsSubmitting(true);
+      const providerLabel = provider === "wechat" ? "WeChat" : provider === "line" ? "LINE" : "Google";
+      try {
+        const result = await api.oauthLogin({
+          provider,
+          code,
+          redirectUri,
+          tenantCode: credentials.tenantCode.trim() || undefined,
+        });
+        if (!result.success || !result.token) {
+          setMessage(byLocale(locale, `${providerLabel} 登录失败: ${result.error}`, `${providerLabel} ログイン失敗: ${result.error}`));
+          return null;
+        }
+        const resolvedTenantCode = result.tenantCode ?? credentials.tenantCode.trim();
+        if (resolvedTenantCode) {
+          tenantCodeRef.current = resolvedTenantCode;
+          setCredentials((prev) => ({ ...prev, tenantCode: resolvedTenantCode }));
+          safeSetItem(STORAGE_KEY_TENANT, resolvedTenantCode);
+        }
+        setToken(result.token);
+        setMessage(byLocale(locale, `${providerLabel} 登录成功。`, `${providerLabel} ログインに成功しました。`));
+        return result.token;
+      } catch (error) {
+        setMessage(
+          byLocale(
+            locale,
+            `${providerLabel} 登录请求失败。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
+            `${providerLabel} ログインリクエストに失敗しました。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
+          ),
+        );
+        return null;
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [credentials.tenantCode, locale],
+  );
+
   const getRequestOptions = useCallback(
     (sessionToken?: string) => ({
       token: sessionToken ?? token,
@@ -228,6 +268,7 @@ export function useAuth(locale: Locale) {
     updateCredentials,
     register,
     login,
+    googleLogin,
     logout,
     ensureSession,
     getRequestOptions,

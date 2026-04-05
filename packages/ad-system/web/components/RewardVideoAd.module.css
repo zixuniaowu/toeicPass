@@ -1,0 +1,129 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--surface-card, #fff);
+  border-radius: 16px;
+  padding: 32px 24px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #666);
+  margin: 0 0 20px;
+}
+
+.reward {
+  font-size: 1rem;
+  color: #10b981;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.watchBtn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.watchBtn:hover {
+  opacity: 0.9;
+}
+
+.skipBtn {
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary, #888);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.skipBtn:hover {
+  color: var(--text-primary, #333);
+}
+
+.videoPlaceholder {
+  margin-bottom: 16px;
+}
+.videoBox {
+  width: 100%;
+  height: 160px;
+  background: #111;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.videoIcon {
+  font-size: 2rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.watchingText {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #888);
+  margin: 0 0 12px;
+}
+
+.progressWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: var(--surface-muted, #eee);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+  border-radius: 3px;
+  transition: width 1s linear;
+}
+.progressLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #999);
+}
+
+[data-theme="dark"] .modal {
+  background: #1e1e1e;
+}

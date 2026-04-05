@@ -12,6 +12,10 @@ import type {
   VocabularyPayload,
   OptionKey,
   ConversationScenario,
+  SubscriptionPlan,
+  UserProfile,
+  AdPlacement,
+  PlanCode,
 } from "../types";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8001/api/v1";
@@ -108,6 +112,24 @@ export async function login(payload: {
   }
   const json = (await res.json()) as LoginResponse;
   return { success: true, token: json.accessToken, tenantCode: json.tenantCode };
+}
+
+export async function oauthLogin(payload: {
+  provider: string;
+  code: string;
+  redirectUri?: string;
+  tenantCode?: string;
+}): Promise<{ success: boolean; token?: string; tenantCode?: string; isNewUser?: boolean; error?: string }> {
+  const res = await fetch(`${API_BASE}/auth/oauth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    return { success: false, error: await parseApiError(res) };
+  }
+  const json = (await res.json()) as { accessToken: string; tenantCode: string; isNewUser: boolean };
+  return { success: true, token: json.accessToken, tenantCode: json.tenantCode, isNewUser: json.isNewUser };
 }
 
 // Analytics API
@@ -332,6 +354,155 @@ export async function createGoal(
     return { success: false, error: await parseApiError(res) };
   }
   return { success: true };
+}
+
+// ===== Subscription & Monetization API =====
+
+export async function fetchPlans(): Promise<SubscriptionPlan[]> {
+  const res = await fetch(`${API_BASE}/plans`);
+  if (!res.ok) return [];
+  const json = (await res.json()) as { plans?: SubscriptionPlan[] };
+  return json.plans ?? [];
+}
+
+export async function fetchUserProfile(options: RequestOptions): Promise<UserProfile | null> {
+  const res = await fetch(`${API_BASE}/me/profile`, {
+    method: "GET",
+    headers: createHeaders(options),
+  });
+  if (!res.ok) { handleUnauthorized(res); return null; }
+  return res.json();
+}
+
+export async function subscribe(
+  planCode: PlanCode,
+  billingCycle: "monthly" | "yearly",
+  options: RequestOptions,
+): Promise<{ success: boolean; error?: string }> {
+  const res = await fetch(`${API_BASE}/me/subscribe`, {
+    method: "POST",
+    headers: createHeaders(options),
+    body: JSON.stringify({ planCode, billingCycle }),
+  });
+  if (!res.ok) {
+    handleUnauthorized(res);
+    return { success: false, error: await parseApiError(res) };
+  }
+  return { success: true };
+}
+
+export async function cancelSubscription(
+  options: RequestOptions,
+): Promise<{ success: boolean; error?: string }> {
+  const res = await fetch(`${API_BASE}/me/subscribe/cancel`, {
+    method: "POST",
+    headers: createHeaders(options),
+  });
+  if (!res.ok) {
+    handleUnauthorized(res);
+    return { success: false, error: await parseApiError(res) };
+  }
+  return { success: true };
+}
+
+export async function fetchAds(
+  options: RequestOptions,
+  slot?: string,
+): Promise<AdPlacement[]> {
+  const params = slot ? `?slot=${encodeURIComponent(slot)}` : "";
+  const res = await fetch(`${API_BASE}/ads${params}`, {
+    method: "GET",
+    headers: createHeaders(options),
+  });
+  if (!res.ok) { handleUnauthorized(res); return []; }
+  const json = (await res.json()) as { ads?: AdPlacement[] };
+  return json.ads ?? [];
+}
+
+export async function recordAdEvent(
+  placementId: string,
+  eventType: "impression" | "click" | "dismiss",
+  options: RequestOptions,
+): Promise<void> {
+  await fetch(`${API_BASE}/ads/event`, {
+    method: "POST",
+    headers: createHeaders(options),
+    body: JSON.stringify({ placementId, eventType }),
+  });
+}
+
+// Admin Ad Management API
+export async function fetchAdminAds(options: RequestOptions): Promise<AdPlacement[]> {
+  const res = await fetch(`${API_BASE}/admin/ads`, { headers: createHeaders(options) });
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.ads ?? [];
+}
+
+export interface AdStats {
+  totalPlacements: number;
+  activePlacements: number;
+  totalImpressions: number;
+  totalClicks: number;
+  ctr: number;
+  bySlot: Record<string, { count: number; impressions: number; clicks: number }>;
+  recentEvents: Array<{ id: string; placementId: string; eventType: string; createdAt: string }>;
+}
+
+export async function fetchAdStats(options: RequestOptions): Promise<AdStats | null> {
+  const res = await fetch(`${API_BASE}/admin/ads/stats`, { headers: createHeaders(options) });
+  if (!res.ok) return null;
+  return res.json();
+}
+
+export async function createAdPlacement(
+  data: {
+    slot: string;
+    title: string;
+    imageUrl?: string;
+    linkUrl: string;
+    ctaText: string;
+    priority: number;
+    targetPlans: string[];
+    startsAt?: string;
+    expiresAt?: string;
+  },
+  options: RequestOptions,
+): Promise<AdPlacement | null> {
+  const res = await fetch(`${API_BASE}/admin/ads`, {
+    method: "POST",
+    headers: createHeaders(options),
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) return null;
+  const json = await res.json();
+  return json.ad ?? null;
+}
+
+export async function updateAdPlacement(
+  adId: string,
+  data: Record<string, unknown>,
+  options: RequestOptions,
+): Promise<AdPlacement | null> {
+  const res = await fetch(`${API_BASE}/admin/ads/${encodeURIComponent(adId)}`, {
+    method: "PUT",
+    headers: createHeaders(options),
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) return null;
+  const json = await res.json();
+  return json.ad ?? null;
+}
+
+export async function deleteAdPlacement(
+  adId: string,
+  options: RequestOptions,
+): Promise<boolean> {
+  const res = await fetch(`${API_BASE}/admin/ads/${encodeURIComponent(adId)}`, {
+    method: "DELETE",
+    headers: createHeaders(options),
+  });
+  return res.ok;
 }
 
 // Conversation API

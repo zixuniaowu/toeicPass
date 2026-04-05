@@ -5,5 +5,9 @@
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
   },
-  "testEnvironment": "node"
+  "testEnvironment": "node",
+  "moduleNameMapper": {
+    "^@toeicpass/ad-system$": "<rootDir>/../../packages/ad-system/src",
+    "^@toeicpass/conversation-ai$": "<rootDir>/../../packages/conversation-ai/src"
+  }
 }

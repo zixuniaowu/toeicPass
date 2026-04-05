@@ -8,6 +8,7 @@ import { AdminController } from "./controllers/admin.controller";
 import { AuthController } from "./controllers/auth.controller";
 import { EnterpriseController } from "./controllers/enterprise.controller";
 import { LearningController } from "./controllers/learning.controller";
+import { SubscriptionController } from "./controllers/subscription.controller";
 import { PgStoreService } from "./pg-store.service";
 import { QueueService } from "./queue.service";
 import { RolesGuard } from "./roles.guard";
@@ -16,6 +17,7 @@ import { AuthDomainService } from "./services/auth-domain.service";
 import { EnterpriseIpService } from "./services/enterprise-ip.service";
 import { LearningConversationService } from "./services/learning-conversation.service";
 import { LearningDomainService } from "./services/learning-domain.service";
+import { SubscriptionService } from "./services/subscription.service";
 import { StoreService } from "./store.service";
 
 const StoreProvider = process.env.DATABASE_URL
@@ -29,7 +31,7 @@ const StoreProvider = process.env.DATABASE_URL
       signOptions: { expiresIn: "7d" },
     }),
   ],
-  controllers: [AuthController, LearningController, AdminController, EnterpriseController],
+  controllers: [AuthController, LearningController, AdminController, EnterpriseController, SubscriptionController],
   providers: [
     AppService,
     StoreProvider,
@@ -39,6 +41,7 @@ const StoreProvider = process.env.DATABASE_URL
     EnterpriseIpService,
     LearningConversationService,
     LearningDomainService,
+    SubscriptionService,
     JwtStrategy,
     TenantGuard,
     RolesGuard,

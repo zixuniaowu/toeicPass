@@ -16,7 +16,9 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "paths": {
-      "@toeicpass/shared": ["../../packages/shared/src"]
+      "@toeicpass/shared": ["../../packages/shared/src"],
+      "@toeicpass/ad-system": ["../../packages/ad-system/src"],
+      "@toeicpass/conversation-ai": ["../../packages/conversation-ai/src"]
     },
     "types": [
       "node",

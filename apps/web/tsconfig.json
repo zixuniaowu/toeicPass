@@ -14,7 +14,11 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@toeicpass/shared": ["../../packages/shared/src"]
+      "@toeicpass/shared": ["../../packages/shared/src"],
+      "@toeicpass/ad-system": ["../../packages/ad-system/src"],
+      "@toeicpass/ad-system/web": ["../../packages/ad-system/web"],
+      "@toeicpass/conversation-ai": ["../../packages/conversation-ai/src"],
+      "@toeicpass/conversation-ai/web": ["../../packages/conversation-ai/web"]
     },
     "plugins": [{ "name": "next" }]
   },
