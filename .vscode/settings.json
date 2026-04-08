@@ -12,6 +12,7 @@
         "/^node -e \"const d=require\\('\\./apps/api/src/question-bank\\.json'\\); console\\.log\\(typeof d, Array\\.isArray\\(d\\), Object\\.keys\\(d\\)\\.slice\\(0,5\\)\\)\"$/": {
             "approve": true,
             "matchCommandLine": true
-        }
+        },
+        "Test-Path": true
     }
 }
