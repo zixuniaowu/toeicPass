@@ -171,6 +171,19 @@ Playwright is already installed in the repo (`devDependencies` in root `package.
 
 **Use case**: Automate login flows, practice session interactions, quiz submissions, and learner dashboard workflows against the live Next.js frontend.
 
+## Skills (`.github/skills/`)
+
+Project-specific Copilot skills that provide domain context:
+
+| Skill | Trigger |
+|-------|---------|
+| `nestjs-api-development` | Creating API endpoints, controllers, services, guards, DTOs |
+| `nextjs-app-router` | Pages, layouts, client components, hydration, API proxy |
+| `docker-deployment` | Dockerfile changes, CI/CD, HF Spaces deployment issues |
+| `javascript-typescript-jest` | Writing or fixing Jest/Vitest tests |
+| `webapp-testing` | Playwright browser E2E tests |
+| `playwright-generate-test` | Auto-generating Playwright tests from scenarios |
+
 ## Additional Resources
 - Architecture: `docs/system-blueprint.md`
 - API contract: `docs/api-contract-v1.md`
