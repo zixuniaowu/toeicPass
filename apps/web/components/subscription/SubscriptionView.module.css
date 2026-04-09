@@ -124,7 +124,7 @@
 /* Plan cards */
 .planGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 16px;
 }
 .planCard {
@@ -294,4 +294,34 @@
 [data-theme="dark"] .usageSection {
   background: #1e1e1e;
   border-color: #333;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .header h2 {
+    font-size: 1.4rem;
+  }
+
+  .planCard {
+    padding: 20px 16px;
+  }
+
+  .priceAmount {
+    font-size: 1.6rem;
+  }
+
+  .billingToggle {
+    width: 100%;
+  }
+
+  .toggleBtn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 12px;
+  }
+
+  .subscribeBtn,
+  .cancelBtn {
+    min-height: 48px;
+  }
 }

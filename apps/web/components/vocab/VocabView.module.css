@@ -68,7 +68,7 @@
 /* KPI Grid */
 .kpiGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
   gap: var(--space-3);
   margin-bottom: var(--space-4);
 }
@@ -506,7 +506,7 @@
 /* Part grid */
 .partGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr));
   gap: var(--space-3);
 }
 
@@ -629,5 +629,28 @@
 
   .partGrid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .tabBar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tabBar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .studyNav {
+    flex-wrap: wrap;
+  }
+
+  .wordSpeak {
+    margin-left: 0;
   }
 }

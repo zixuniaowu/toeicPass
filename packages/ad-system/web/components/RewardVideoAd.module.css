@@ -127,3 +127,23 @@
 [data-theme="dark"] .modal {
   background: #1e1e1e;
 }
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .overlay {
+    padding: 12px;
+  }
+
+  .modal {
+    padding: 24px 18px;
+    max-width: 100%;
+  }
+
+  .watchBtn {
+    min-height: 48px;
+  }
+
+  .skipBtn {
+    min-height: 44px;
+  }
+}

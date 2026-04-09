@@ -423,6 +423,38 @@
     font-size: 1rem;
     padding: 12px 16px;
   }
+
+  .chatTopBar {
+    padding: 10px 14px;
+  }
+
+  .chatArea {
+    padding: 12px 14px;
+  }
+
+  .contextHint {
+    padding: 10px 14px;
+    font-size: 0.88rem;
+  }
+
+  .micBtn {
+    width: 68px;
+    height: 68px;
+  }
+
+  .micIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .bubble {
+    max-width: 92%;
+  }
+
+  .feedbackBlock {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
 }
 
 @media (min-width: 768px) {

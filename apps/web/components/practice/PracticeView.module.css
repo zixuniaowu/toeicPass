@@ -122,3 +122,41 @@
     gap: var(--space-3);
   }
 }
+
+@media (max-width: 480px) {
+  .session {
+    padding: var(--space-3);
+    gap: var(--space-4);
+  }
+
+  .sessionHeader h2 {
+    font-size: var(--text-xl);
+  }
+
+  .progress {
+    font-size: var(--text-base);
+  }
+
+  .diagnosticBanner {
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .session {
+    padding: var(--space-3);
+    gap: var(--space-4);
+  }
+
+  .sessionHeader h2 {
+    font-size: var(--text-xl);
+  }
+
+  .progress {
+    font-size: var(--text-base);
+  }
+
+  .diagnosticBanner {
+    font-size: var(--text-xs);
+  }
+}

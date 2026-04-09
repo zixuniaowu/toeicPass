@@ -35,3 +35,10 @@
   background: var(--color-background);
   cursor: not-allowed;
 }
+
+/* Prevent iOS zoom on focus (requires font-size >= 16px) */
+@media (max-width: 760px) {
+  .select {
+    font-size: 16px;
+  }
+}

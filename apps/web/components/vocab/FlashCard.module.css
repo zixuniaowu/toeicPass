@@ -147,15 +147,29 @@
 }
 
 @media (max-width: 760px) {
+  .card {
+    padding: var(--space-5);
+    gap: var(--space-4);
+  }
+
   .gradeRow {
     flex-direction: column;
   }
 
   .gradeBtn {
     min-width: unset;
+    min-height: 48px;
   }
 
   .term {
     font-size: var(--text-3xl);
+  }
+
+  .answer {
+    padding: var(--space-4);
+  }
+
+  .pronounceRow {
+    justify-content: center;
   }
 }

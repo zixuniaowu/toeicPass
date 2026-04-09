@@ -225,6 +225,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 44px;
+    height: 44px;
   }
 
   .tabs {
@@ -252,14 +254,16 @@
     gap: var(--space-1);
   }
 
-  .localeBtn {
-    padding: 5px 10px;
+  .logout {
+    padding: 8px 14px;
     font-size: 13px;
+    min-height: 40px;
   }
 
-  .logout {
+  .localeBtn {
     padding: 6px 12px;
     font-size: 13px;
+    min-height: 36px;
   }
 }
 

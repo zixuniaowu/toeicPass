@@ -683,3 +683,27 @@
   gap: var(--space-3);
   justify-content: center;
 }
+
+/* Small phone adjustments */
+@media (max-width: 480px) {
+  .reviewScreen {
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .reviewCard {
+    padding: var(--space-4);
+  }
+
+  .reviewAnswers {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewStem {
+    font-size: var(--text-base);
+  }
+
+  .reviewExplanation {
+    padding: var(--space-3);
+  }
+}

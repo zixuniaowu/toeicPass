@@ -92,3 +92,28 @@
 [data-theme="dark"] .modal {
   background: #1e1e1e;
 }
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .overlay {
+    padding: 12px;
+  }
+
+  .modal {
+    padding: 24px 18px;
+    max-width: 100%;
+  }
+
+  .upgradeBtn,
+  .watchAdBtn {
+    min-height: 48px;
+  }
+
+  .closeBtn {
+    min-height: 44px;
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+}
