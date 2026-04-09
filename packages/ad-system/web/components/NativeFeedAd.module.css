@@ -81,3 +81,19 @@
 [data-theme="dark"] .title {
   color: #e0e0e0;
 }
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .nativeAd {
+    padding: 10px 12px;
+  }
+
+  .thumb {
+    width: 48px;
+    height: 48px;
+  }
+
+  .title {
+    font-size: 0.82rem;
+  }
+}

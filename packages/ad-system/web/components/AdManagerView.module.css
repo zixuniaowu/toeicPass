@@ -19,7 +19,7 @@
 /* Stats grid */
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
   gap: 12px;
   margin-bottom: 24px;
 }
@@ -60,7 +60,7 @@
 /* Slot breakdown */
 .slotGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
   gap: 10px;
 }
 .slotCard {
@@ -104,7 +104,7 @@
 }
 .formGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
   gap: 12px;
 }
 .formField {
@@ -274,4 +274,29 @@
   background: #1a1a1a;
   border-color: #333;
   color: #e0e0e0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 8px 24px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .formCard {
+    padding: 14px;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    min-height: 44px;
+    padding: 8px 14px;
+  }
 }

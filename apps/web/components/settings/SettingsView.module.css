@@ -114,3 +114,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .box {
+    padding: var(--space-4);
+  }
+
+  .box h3 {
+    font-size: var(--text-lg);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .goalActions {
+    flex-direction: column;
+  }
+}

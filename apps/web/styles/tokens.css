@@ -69,13 +69,24 @@
   --text-base: 15px;
   --text-lg: 17px;
   --text-xl: 20px;
-  --text-2xl: 24px;
-  --text-3xl: 30px;
-  --text-4xl: 36px;
+  --text-2xl: clamp(20px, 4vw, 24px);
+  --text-3xl: clamp(24px, 5vw, 30px);
+  --text-4xl: clamp(28px, 6vw, 36px);
 
   /* Transitions */
   --transition-fast: 0.15s ease;
   --transition-normal: 0.2s ease;
+}
+
+/* Mobile-specific token overrides */
+@media (max-width: 480px) {
+  :root {
+    --space-6: 16px;
+    --space-8: 24px;
+    --space-10: 32px;
+    --space-12: 40px;
+    --space-16: 48px;
+  }
 }
 
 /* Dark Mode */

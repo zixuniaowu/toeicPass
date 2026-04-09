@@ -109,3 +109,18 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .toolbar {
+    gap: var(--space-3);
+  }
+
+  .summary strong {
+    font-size: var(--text-xl);
+  }
+
+  .guide {
+    margin: var(--space-3) 0;
+    padding: var(--space-3);
+  }
+}

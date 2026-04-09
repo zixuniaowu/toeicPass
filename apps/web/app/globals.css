@@ -1,4 +1,18 @@
 /* Import design tokens */
 @import "../styles/tokens.css";
 
-/* Legacy styles removed - now using CSS Modules and design tokens */
+/* Global box-sizing and mobile overflow prevention */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

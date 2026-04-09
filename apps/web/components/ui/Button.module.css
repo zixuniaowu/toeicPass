@@ -155,3 +155,15 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* Mobile touch targets */
+@media (max-width: 760px) {
+  .sm {
+    min-height: 44px;
+    padding: 10px var(--space-4);
+  }
+
+  .md {
+    min-height: 44px;
+  }
+}
