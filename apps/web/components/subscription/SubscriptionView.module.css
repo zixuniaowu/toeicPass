@@ -137,9 +137,11 @@
   position: relative;
   transition: box-shadow 0.2s, transform 0.2s;
 }
-.planCard:hover {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .planCard:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
 }
 .planCardCurrent {
   border-color: #0f62fe;

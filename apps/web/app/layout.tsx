@@ -24,6 +24,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  viewportFit: "cover",
 };
 
 const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;

@@ -41,8 +41,10 @@
   transition: transform 0.2s ease;
 }
 
-.brandMark:hover {
-  transform: scale(1.05);
+@media (hover: hover) {
+  .brandMark:hover {
+    transform: scale(1.05);
+  }
 }
 
 .brandTitle {
@@ -131,9 +133,11 @@
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tab:hover {
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.08);
+@media (hover: hover) {
+  .tab:hover {
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.08);
+  }
 }
 
 .active {
@@ -190,10 +194,12 @@
   transition: all 0.15s ease;
 }
 
-.logout:hover {
-  background: rgba(var(--color-error-rgb), 0.12);
-  border-color: rgba(var(--color-error-rgb), 0.25);
-  color: #fca5a5;
+@media (hover: hover) {
+  .logout:hover {
+    background: rgba(var(--color-error-rgb), 0.12);
+    border-color: rgba(var(--color-error-rgb), 0.25);
+    color: #fca5a5;
+  }
 }
 
 /* ── Mobile ── */

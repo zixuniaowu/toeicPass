@@ -1,6 +1,6 @@
 .shell {
   width: 100%;
-  min-height: 100vh;
+  min-height: var(--vh-full, 100vh);
   background:
     linear-gradient(180deg, #0d1b2a 0%, #122140 80px, #1a2d4a 160px, #e8edf4 320px, var(--color-background) 480px);
 }
@@ -12,8 +12,9 @@
 
 .content {
   width: 100%;
-  min-height: 100vh;
+  min-height: var(--vh-full, 100vh);
   padding: var(--space-4) var(--space-6);
+  padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: var(--space-5);

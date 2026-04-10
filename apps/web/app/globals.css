@@ -15,4 +15,38 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Safe area padding for notch devices (requires viewport-fit=cover) */
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fix 100vh on mobile: use dvh where supported */
+@supports (min-height: 100dvh) {
+  :root {
+    --vh-full: 100dvh;
+  }
+}
+@supports not (min-height: 100dvh) {
+  :root {
+    --vh-full: 100vh;
+  }
+}
+
+/* Prevent sticky hover on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch-only: active states provide feedback instead of hover */
+  a:active, button:active {
+    opacity: 0.7;
+  }
 }

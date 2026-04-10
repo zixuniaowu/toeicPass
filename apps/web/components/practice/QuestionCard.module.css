@@ -85,9 +85,11 @@
   user-select: text;
 }
 
-.option:hover {
-  border-color: var(--color-primary);
-  background: var(--color-primary-light, #eff6ff);
+@media (hover: hover) {
+  .option:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light, #eff6ff);
+  }
 }
 
 .option:active {

@@ -14,9 +14,11 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-.card:hover {
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 4px 12px -4px rgba(59, 130, 246, 0.1);
+@media (hover: hover) {
+  .card:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 12px -4px rgba(59, 130, 246, 0.1);
+  }
 }
 
 .header {

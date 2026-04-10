@@ -5,7 +5,7 @@
 
 .page {
   width: 100%;
-  min-height: 100vh;
+  min-height: var(--vh-full, 100vh);
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: linear-gradient(150deg, #0d1b2a 0%, #122140 35%, #162950 60%, #0f1e36 100%);
@@ -204,10 +204,12 @@
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.featureList li:hover {
-  border-color: rgba(96, 165, 250, 0.18);
-  background: rgba(96, 165, 250, 0.04);
-  transform: translateX(4px);
+@media (hover: hover) {
+  .featureList li:hover {
+    border-color: rgba(96, 165, 250, 0.18);
+    background: rgba(96, 165, 250, 0.04);
+    transform: translateX(4px);
+  }
 }
 
 .featureList li::before {
@@ -240,9 +242,11 @@
   transition: all 0.25s ease;
 }
 
-.statItem:hover {
-  border-color: rgba(96, 165, 250, 0.14);
-  background: rgba(96, 165, 250, 0.03);
+@media (hover: hover) {
+  .statItem:hover {
+    border-color: rgba(96, 165, 250, 0.14);
+    background: rgba(96, 165, 250, 0.03);
+  }
 }
 
 .statValue {
