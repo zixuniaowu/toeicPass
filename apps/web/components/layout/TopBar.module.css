@@ -58,7 +58,7 @@
 
 .brandSub {
   margin: 0;
-  font-size: 13px;
+  font-size: var(--text-xs);
   color: rgba(148, 197, 253, 0.55);
   letter-spacing: 0.04em;
   text-transform: uppercase;

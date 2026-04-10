@@ -116,6 +116,12 @@
 
 /* Mobile adjustments */
 @media (max-width: 480px) {
+  .dismiss {
+    width: 40px;
+    height: 40px;
+    font-size: 0.85rem;
+  }
+
   .dot {
     width: 12px;
     height: 12px;
