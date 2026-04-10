@@ -676,6 +676,7 @@
   font-size: var(--text-base);
   color: var(--color-text);
   line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
 .reviewNav {

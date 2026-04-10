@@ -13,7 +13,7 @@
 .messageText {
   margin: 0;
   font-size: 13px;
-  color: rgba(148, 197, 253, 0.45);
+  color: rgba(148, 197, 253, 0.6);
   line-height: 1.5;
   animation: messageFadeIn 0.4s ease-out;
 }

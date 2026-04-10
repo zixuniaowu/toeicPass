@@ -168,4 +168,8 @@
   .md {
     min-height: 44px;
   }
+
+  .lg {
+    min-height: 48px;
+  }
 }

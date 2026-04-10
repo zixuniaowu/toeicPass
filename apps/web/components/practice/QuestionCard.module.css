@@ -51,6 +51,7 @@
   line-height: 1.65;
   color: var(--color-text);
   user-select: text;
+  overflow-wrap: break-word;
 }
 
 .listeningPrompt {
