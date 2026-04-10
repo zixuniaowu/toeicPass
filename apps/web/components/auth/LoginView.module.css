@@ -195,7 +195,7 @@
   align-items: center;
   gap: 14px;
   padding: 14px 18px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.025);
   color: rgba(255, 255, 255, 0.62);
@@ -374,7 +374,7 @@
 .formSubtitle {
   margin: 8px 0 0;
   color: rgba(255, 255, 255, 0.32);
-  font-size: 14px;
+  font-size: var(--text-sm);
   line-height: 1.6;
 }
 
@@ -450,7 +450,7 @@
 
 .demoNotice {
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.02);
   padding: 12px 14px;
   color: rgba(255, 255, 255, 0.28);
@@ -478,7 +478,7 @@
   outline: none;
   border-radius: var(--radius-sm);
   transition: color var(--transition-fast);
-  font-size: 14px;
+  font-size: var(--text-sm);
 }
 
 .advanced summary:hover {

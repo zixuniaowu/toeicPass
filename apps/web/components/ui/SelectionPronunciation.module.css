@@ -4,7 +4,7 @@
   width: min(280px, 88vw);
   transform: translate(-50%, -100%);
   border: 1px solid rgba(var(--color-primary-rgb), 0.25);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   background: linear-gradient(180deg, var(--color-surface), var(--color-primary-light));
   box-shadow:
     0 12px 28px rgba(0, 0, 0, 0.18),
@@ -35,7 +35,7 @@
 
 .button {
   border: 1px solid rgba(var(--color-primary-rgb), 0.35);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--color-surface);
   color: var(--color-primary);
   padding: 5px 10px;

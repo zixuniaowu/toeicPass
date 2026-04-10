@@ -130,7 +130,7 @@
 .planCard {
   background: var(--surface-card, #fff);
   border: 1px solid var(--border, #e0e0e0);
-  border-radius: 16px;
+  border-radius: var(--radius-xl);
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
