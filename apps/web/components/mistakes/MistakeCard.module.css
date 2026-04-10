@@ -245,4 +245,8 @@
   .actions {
     flex-direction: column;
   }
+
+  .textarea {
+    font-size: 16px;
+  }
 }

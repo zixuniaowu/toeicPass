@@ -1497,4 +1497,8 @@
   .cinemaControlsLeft {
     display: none;
   }
+
+  .youtubeTextarea {
+    font-size: 16px;
+  }
 }

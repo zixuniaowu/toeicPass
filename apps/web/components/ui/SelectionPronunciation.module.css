@@ -1,6 +1,6 @@
 .popover {
   position: fixed;
-  z-index: 65;
+  z-index: 950;
   width: min(280px, 88vw);
   transform: translate(-50%, -100%);
   border: 1px solid rgba(var(--color-primary-rgb), 0.25);

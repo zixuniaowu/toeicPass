@@ -2,7 +2,7 @@
 
 .page {
   width: 100%;
-  min-height: calc(100vh - 80px);
+  min-height: calc(var(--vh-full, 100vh) - 80px);
   padding: 24px 20px 40px;
   display: flex;
   flex-direction: column;
@@ -96,7 +96,7 @@
 .chatPage {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 80px);
+  height: calc(var(--vh-full, 100vh) - 80px);
   width: 100%;
 }
 
@@ -488,5 +488,43 @@
 
   .contextHint {
     padding: 14px 32px;
+  }
+}
+
+/* Landscape: compress chat layout for short screens */
+@media (max-height: 500px) {
+  .chatTopBar {
+    padding: 6px 14px;
+  }
+
+  .contextHint {
+    padding: 6px 14px;
+    font-size: 0.82rem;
+  }
+
+  .micArea {
+    padding: 10px 0 16px;
+  }
+
+  .micBtn {
+    width: 56px;
+    height: 56px;
+  }
+
+  .micIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .micLabel {
+    display: none;
+  }
+
+  .topicGrid {
+    gap: 8px;
+  }
+
+  .topicCard {
+    padding: 12px 8px;
   }
 }
