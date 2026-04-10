@@ -81,9 +81,11 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.kpi:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.08);
+@media (hover: hover) {
+  .kpi:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.08);
+  }
 }
 
 .kpiHighlight {

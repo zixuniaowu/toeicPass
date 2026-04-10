@@ -707,3 +707,19 @@
     padding: var(--space-3);
   }
 }
+
+/* Landscape: compact layout for short screens */
+@media (max-height: 500px) {
+  .timerBar {
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .startScreen {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .questionNumber {
+    padding: var(--space-1) var(--space-4);
+  }
+}

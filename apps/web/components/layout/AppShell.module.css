@@ -41,3 +41,12 @@
     padding: var(--space-3) var(--space-4);
   }
 }
+
+/* Landscape: reduce vertical spacing */
+@media (max-height: 500px) {
+  .content {
+    padding: var(--space-2) var(--space-4);
+    padding-bottom: calc(var(--space-2) + env(safe-area-inset-bottom));
+    gap: var(--space-3);
+  }
+}

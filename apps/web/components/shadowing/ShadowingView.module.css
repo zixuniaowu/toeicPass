@@ -117,10 +117,12 @@
   overflow: hidden;
 }
 
-.materialCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px -12px rgba(var(--color-primary-rgb), 0.15);
-  border-color: rgba(var(--color-primary-rgb), 0.2);
+@media (hover: hover) {
+  .materialCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -12px rgba(var(--color-primary-rgb), 0.15);
+    border-color: rgba(var(--color-primary-rgb), 0.2);
+  }
 }
 
 .materialHeader h3 {
@@ -946,12 +948,14 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.02);
 }
 
-.savedMaterialItem:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow:
-    0 20px 40px -12px rgba(var(--color-primary-rgb), 0.18),
-    0 0 0 1px rgba(var(--color-primary-rgb), 0.08);
-  border-color: rgba(var(--color-primary-rgb), 0.15);
+@media (hover: hover) {
+  .savedMaterialItem:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow:
+      0 20px 40px -12px rgba(var(--color-primary-rgb), 0.18),
+      0 0 0 1px rgba(var(--color-primary-rgb), 0.08);
+    border-color: rgba(var(--color-primary-rgb), 0.15);
+  }
 }
 
 /* Thumbnail */
@@ -970,8 +974,10 @@
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.savedMaterialItem:hover .videoThumbnailWrap img {
-  transform: scale(1.08);
+@media (hover: hover) {
+  .savedMaterialItem:hover .videoThumbnailWrap img {
+    transform: scale(1.08);
+  }
 }
 
 .thumbnailOverlay {
@@ -990,8 +996,10 @@
   transition: opacity 0.35s ease;
 }
 
-.savedMaterialItem:hover .thumbnailOverlay {
-  opacity: 1;
+@media (hover: hover) {
+  .savedMaterialItem:hover .thumbnailOverlay {
+    opacity: 1;
+  }
 }
 
 .playIcon {
@@ -1010,10 +1018,12 @@
   transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.savedMaterialItem:hover .playIcon {
-  transform: scale(1);
-  background: rgba(var(--color-primary-rgb), 0.7);
-  border-color: rgba(255, 255, 255, 0.5);
+@media (hover: hover) {
+  .savedMaterialItem:hover .playIcon {
+    transform: scale(1);
+    background: rgba(var(--color-primary-rgb), 0.7);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 .playIcon svg {

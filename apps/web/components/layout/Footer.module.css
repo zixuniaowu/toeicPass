@@ -27,3 +27,13 @@
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+/* Dark mode: lighten border for visibility against dark background */
+:global([data-theme="dark"]) .footer {
+  border-color: rgba(96, 165, 250, 0.15);
+  background: rgba(17, 24, 39, 0.7);
+}
+
+:global([data-theme="dark"]) .messageText {
+  color: rgba(148, 197, 253, 0.55);
+}

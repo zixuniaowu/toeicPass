@@ -277,3 +277,27 @@
   from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Landscape: compact topbar for short screens */
+@media (max-height: 500px) {
+  .topbar {
+    padding: var(--space-2) var(--space-4);
+    top: var(--space-1);
+    border-radius: 12px;
+    gap: var(--space-2);
+  }
+
+  .brandMark {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .brandTitle { font-size: 15px; }
+  .brandSub { display: none; }
+
+  .tab {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}

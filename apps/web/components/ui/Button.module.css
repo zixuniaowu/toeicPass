@@ -27,8 +27,10 @@
   opacity: 1;
 }
 
-.button:hover:not(:disabled) {
-  transform: translateY(-2px) scale(1.02);
+@media (hover: hover) {
+  .button:hover:not(:disabled) {
+    transform: translateY(-2px) scale(1.02);
+  }
 }
 
 .button:active:not(:disabled) {

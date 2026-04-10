@@ -572,3 +572,26 @@
     font-size: 28px;
   }
 }
+
+/* Landscape: compress vertical spacing */
+@media (max-height: 600px) {
+  .brandPanel {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .formCard {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .featureList {
+    display: none;
+  }
+
+  .statRow {
+    margin-top: var(--space-3);
+  }
+
+  .brandTitle {
+    font-size: 24px;
+  }
+}
