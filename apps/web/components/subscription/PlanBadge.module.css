@@ -3,7 +3,7 @@
   align-items: center;
   gap: 5px;
   padding: 3px 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--badge-color, #9ca3af);
   background: transparent;
   cursor: pointer;

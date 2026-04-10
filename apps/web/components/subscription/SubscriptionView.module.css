@@ -21,7 +21,7 @@
   padding: 10px 16px;
   background: var(--surface-success, #e8f5e9);
   color: var(--text-success, #2e7d32);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   text-align: center;
   margin-bottom: 16px;
   font-size: 0.9rem;
@@ -33,7 +33,7 @@
   justify-content: center;
   gap: 4px;
   background: var(--surface-muted, #f0f0f0);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 4px;
   margin-bottom: 24px;
   width: fit-content;
@@ -72,7 +72,7 @@
 .usageSection {
   background: var(--surface-card, #fff);
   border: 1px solid var(--border, #e0e0e0);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 16px 20px;
   margin-bottom: 24px;
 }

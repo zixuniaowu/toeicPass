@@ -313,7 +313,7 @@
   border: 1px solid rgba(var(--color-primary-rgb), 0.15);
   border-radius: 999px;
   padding: 3px 12px;
-  font-size: 12px;
+  font-size: var(--text-xs);
   font-weight: 500;
   color: var(--color-primary);
 }
@@ -1063,7 +1063,7 @@
 }
 
 .savedMaterialInfo span {
-  font-size: 12px;
+  font-size: var(--text-xs);
   color: var(--color-muted);
   line-height: 1.4;
 }
@@ -1219,7 +1219,7 @@
 
 .cinemaLink {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 12px;
+  font-size: var(--text-xs);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -1271,7 +1271,7 @@
 
 .transcriptProgress {
   color: rgba(255, 255, 255, 0.4);
-  font-size: 12px;
+  font-size: var(--text-xs);
 }
 
 .transcriptList {
