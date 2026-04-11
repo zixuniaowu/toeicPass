@@ -643,6 +643,63 @@
   50% { opacity: 0.4; }
 }
 
+/* ── Mic Permission Banner ──────────────── */
+.micBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: var(--radius-lg);
+  color: #92400e;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .micBanner {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+}
+
+.micBannerIcon {
+  font-size: var(--text-xl);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.micBannerContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.micBannerContent strong {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: var(--text-base);
+}
+
+.micBannerContent p {
+  margin: 0;
+}
+
+.micBannerClose {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: var(--text-lg);
+  cursor: pointer;
+  padding: var(--space-1);
+  opacity: 0.6;
+  line-height: 1;
+}
+
+.micBannerClose:hover {
+  opacity: 1;
+}
+
 .recognizedText {
   padding: var(--space-3) var(--space-4);
   background: var(--color-surface);

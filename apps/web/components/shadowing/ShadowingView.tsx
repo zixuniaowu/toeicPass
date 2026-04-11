@@ -604,6 +604,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const [recognizedText, setRecognizedText] = useState("");
   const [compareResult, setCompareResult] = useState<{ words: CompareWord[]; accuracy: number } | null>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const [micPermission, setMicPermission] = useState<"unknown" | "granted" | "denied" | "prompt">("unknown");
 
   // Word annotation toggles
   const [showWordTranslation, setShowWordTranslation] = useState(false);
@@ -920,6 +921,22 @@ export function ShadowingView({ locale }: { locale: Locale }) {
     setAlwaysShowTranslation(false);
   }, [clearRecognition, stopSpeaking, trainingLanguage]);
 
+  const requestMicPermission = useCallback(async (): Promise<boolean> => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach((t) => t.stop());
+      setMicPermission("granted");
+      return true;
+    } catch {
+      setMicPermission("denied");
+      return false;
+    }
+  }, []);
+
+  const dismissMicBanner = useCallback(() => {
+    setMicPermission("unknown");
+  }, []);
+
   const startRecording = useCallback((originalText: string) => {
     const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognitionAPI) {
@@ -930,50 +947,55 @@ export function ShadowingView({ locale }: { locale: Locale }) {
     // Stop TTS if playing
     stopSpeaking();
 
-    const recognition = new SpeechRecognitionAPI();
-    recognition.lang = trainingLanguage === "ja" ? "ja-JP" : "en-US";
-    recognition.continuous = false;
-    recognition.interimResults = true;
-    recognition.maxAlternatives = 1;
+    // Pre-check microphone permission
+    requestMicPermission().then((granted) => {
+      if (!granted) return;
 
-    recognition.onstart = () => {
-      setIsRecording(true);
-      setRecognizedText("");
-      setCompareResult(null);
-    };
+      const recognition = new SpeechRecognitionAPI();
+      recognition.lang = trainingLanguage === "ja" ? "ja-JP" : "en-US";
+      recognition.continuous = false;
+      recognition.interimResults = true;
+      recognition.maxAlternatives = 1;
 
-    recognition.onresult = (event: SpeechRecognitionEvent) => {
-      let transcript = "";
-      for (let i = 0; i < event.results.length; i++) {
-        transcript += event.results[i][0].transcript;
-      }
-      setRecognizedText(transcript);
+      recognition.onstart = () => {
+        setIsRecording(true);
+        setRecognizedText("");
+        setCompareResult(null);
+      };
 
-      // If final result, do comparison
-      if (event.results[event.results.length - 1].isFinal) {
-        const result = compareWords(originalText, transcript, trainingLanguage);
-        setCompareResult(result);
-      }
-    };
+      recognition.onresult = (event: SpeechRecognitionEvent) => {
+        let transcript = "";
+        for (let i = 0; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        setRecognizedText(transcript);
 
-    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-      setIsRecording(false);
-      if (event.error === "no-speech") {
-        setRecognizedText(l("未检测到语音，请再试一次", "音声が検出されませんでした。もう一度試してください。"));
-      } else if (event.error === "not-allowed") {
-        setRecognizedText(l("麦克风权限被拒绝，请在浏览器设置中允许麦克风访问", "マイク権限が拒否されました。ブラウザ設定で許可してください。"));
-      } else {
-        setRecognizedText(`${l("识别出错", "認識エラー")}: ${event.error}`);
-      }
-    };
+        // If final result, do comparison
+        if (event.results[event.results.length - 1].isFinal) {
+          const result = compareWords(originalText, transcript, trainingLanguage);
+          setCompareResult(result);
+        }
+      };
 
-    recognition.onend = () => {
-      setIsRecording(false);
-    };
+      recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+        setIsRecording(false);
+        if (event.error === "no-speech") {
+          setRecognizedText(l("未检测到语音，请再试一次", "音声が検出されませんでした。もう一度試してください。"));
+        } else if (event.error === "not-allowed") {
+          setMicPermission("denied");
+        } else {
+          setRecognizedText(`${l("识别出错", "認識エラー")}: ${event.error}`);
+        }
+      };
 
-    recognitionRef.current = recognition;
-    recognition.start();
-  }, [l, stopSpeaking, trainingLanguage]);
+      recognition.onend = () => {
+        setIsRecording(false);
+      };
+
+      recognitionRef.current = recognition;
+      recognition.start();
+    });
+  }, [l, requestMicPermission, stopSpeaking, trainingLanguage]);
 
   const stopRecording = useCallback(() => {
     recognitionRef.current?.stop();
@@ -2119,6 +2141,19 @@ export function ShadowingView({ locale }: { locale: Locale }) {
 
                 {/* Recording section */}
                 <div className={styles.recordSection}>
+                  {micPermission === "denied" && (
+                    <div className={styles.micBanner}>
+                      <div className={styles.micBannerIcon}>🎙</div>
+                      <div className={styles.micBannerContent}>
+                        <strong>{l("需要麦克风权限", "マイクの許可が必要です")}</strong>
+                        <p>{l(
+                          "请点击浏览器地址栏左侧的🔒图标，将麦克风设为「允许」后刷新页面",
+                          "ブラウザのアドレスバー左の🔒アイコンをタップし、マイクを「許可」に変更してページを再読み込みしてください"
+                        )}</p>
+                      </div>
+                      <button className={styles.micBannerClose} onClick={dismissMicBanner} aria-label="Close">✕</button>
+                    </div>
+                  )}
                   <div className={styles.recordActions}>
                     {!isRecording ? (
                       <button
@@ -2288,6 +2323,19 @@ export function ShadowingView({ locale }: { locale: Locale }) {
               </div>
 
               <div className={styles.recordSection}>
+                {micPermission === "denied" && (
+                  <div className={styles.micBanner}>
+                    <div className={styles.micBannerIcon}>🎙</div>
+                    <div className={styles.micBannerContent}>
+                      <strong>{l("需要麦克风权限", "マイクの許可が必要です")}</strong>
+                      <p>{l(
+                        "请点击浏览器地址栏左侧的🔒图标，将麦克风设为「允许」后刷新页面",
+                        "ブラウザのアドレスバー左の🔒アイコンをタップし、マイクを「許可」に変更してページを再読み込みしてください"
+                      )}</p>
+                    </div>
+                    <button className={styles.micBannerClose} onClick={dismissMicBanner} aria-label="Close">✕</button>
+                  </div>
+                )}
                 <div className={styles.recordActions}>
                   {!isRecording ? (
                     <button className={styles.recordBtn} onClick={() => startRecording(sentence.text)} disabled={isSpeaking}>{`🎙 ${l("开始跟读", "シャドーイング開始")}`}</button>

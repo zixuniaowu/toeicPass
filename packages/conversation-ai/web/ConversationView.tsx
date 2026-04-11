@@ -26,7 +26,7 @@ const I18N = {
     suggestions: "建议",
     back: "返回",
     noMic: "浏览器不支持语音识别",
-    micDenied: "请允许麦克风权限",
+    micDenied: "请允许麦克风权限：点击地址栏🔒图标 → 麦克风 → 允许，然后刷新",
   },
   ja: {
     title: "AI 音声会話",
@@ -40,7 +40,7 @@ const I18N = {
     suggestions: "アドバイス",
     back: "戻る",
     noMic: "音声認識がサポートされていません",
-    micDenied: "マイク権限を許可してください",
+    micDenied: "マイクの許可が必要です：アドレスバーの🔒→マイク→許可に変更して再読み込み",
   },
 };
 
@@ -124,40 +124,47 @@ export function ConversationView({ locale, api }: ConversationViewProps) {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) { setMicError(t.noMic); return; }
 
-    const rec = new SR();
-    rec.lang = "en-US";
-    rec.continuous = false;
-    rec.interimResults = true;
-    recognitionRef.current = rec;
+    // Pre-check microphone permission
+    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+      stream.getTracks().forEach((tr) => tr.stop());
 
-    rec.onstart = () => { setRecording(true); setInterim(""); setMicError(null); };
+      const rec = new SR();
+      rec.lang = "en-US";
+      rec.continuous = false;
+      rec.interimResults = true;
+      recognitionRef.current = rec;
 
-    rec.onresult = (e: SpeechRecognitionEvent) => {
-      let final = "";
-      let partial = "";
-      for (let i = 0; i < e.results.length; i++) {
-        if (e.results[i].isFinal) {
-          final += e.results[i][0].transcript;
-        } else {
-          partial += e.results[i][0].transcript;
+      rec.onstart = () => { setRecording(true); setInterim(""); setMicError(null); };
+
+      rec.onresult = (e: SpeechRecognitionEvent) => {
+        let final = "";
+        let partial = "";
+        for (let i = 0; i < e.results.length; i++) {
+          if (e.results[i].isFinal) {
+            final += e.results[i][0].transcript;
+          } else {
+            partial += e.results[i][0].transcript;
+          }
         }
-      }
-      if (final) {
-        setInterim("");
-        void sendText(final);
-      } else {
-        setInterim(partial);
-      }
-    };
+        if (final) {
+          setInterim("");
+          void sendText(final);
+        } else {
+          setInterim(partial);
+        }
+      };
 
-    rec.onerror = (e: SpeechRecognitionErrorEvent) => {
-      setRecording(false);
-      if (e.error === "not-allowed") setMicError(t.micDenied);
-    };
+      rec.onerror = (e: SpeechRecognitionErrorEvent) => {
+        setRecording(false);
+        if (e.error === "not-allowed") setMicError(t.micDenied);
+      };
 
-    rec.onend = () => { setRecording(false); };
+      rec.onend = () => { setRecording(false); };
 
-    try { rec.start(); } catch { setMicError(t.noMic); }
+      try { rec.start(); } catch { setMicError(t.noMic); }
+    }).catch(() => {
+      setMicError(t.micDenied);
+    });
   }, [t, sendText]);
 
   const stopListening = useCallback(() => {
