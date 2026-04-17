@@ -13,6 +13,82 @@
             "approve": true,
             "matchCommandLine": true
         },
-        "Test-Path": true
+        "Test-Path": true,
+        "/^cd c:\\\\Users\\\\zixun\\\\dev\\\\toeicPass; node -e \"\nconst \\{ chromium \\} = require\\('playwright'\\);\n\\(async \\(\\) => \\{\n  const b = await chromium\\.launch\\(\\{ headless: true \\}\\);\n  const p = await b\\.newPage\\(\\);\n  await p\\.setViewportSize\\(\\{ width: 1280, height: 800 \\}\\);\n  await p\\.goto\\('http://localhost:8000', \\{ waitUntil: 'networkidle' \\}\\);\n  await p\\.waitForTimeout\\(2000\\);\n  // Get all button texts\n  const btns = await p\\.locator\\('button'\\)\\.allTextContents\\(\\);\n  console\\.log\\('Buttons:', JSON\\.stringify\\(btns\\)\\);\n  // Get all input labels\n  const inputs = await p\\.locator\\('input'\\)\\.evaluateAll\\(els => els\\.map\\(e => \\(\\{ type: e\\.type, placeholder: e\\.placeholder, id: e\\.id \\}\\)\\)\\);\n  console\\.log\\('Inputs:', JSON\\.stringify\\(inputs\\)\\);\n  await p\\.screenshot\\(\\{ path: 'tmp-login-debug\\.png', fullPage: true \\}\\);\n  await b\\.close\\(\\);\n  console\\.log\\('Done'\\);\n\\}\\)\\(\\);\n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node scripts/take-screenshots\\.mjs$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node scripts/debug-nav\\.cjs$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node scripts/take-blog-screenshots\\.mjs$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^if \\(Test-Path \"\\$env:USERPROFILE\\\\\\.huggingface\\\\token\"\\) \\{ Write-Host \"Found token file\"; Get-Content \"\\$env:USERPROFILE\\\\\\.huggingface\\\\token\" \\| Select-Object -First 1 \\| ForEach-Object \\{ \\$_\\.Substring\\(0, \\[Math\\]::Min\\(10, \\$_\\.Length\\)\\) \\+ \"\\.\\.\\.\" \\} \\} elseif \\(Test-Path \"\\$env:USERPROFILE\\\\\\.cache\\\\huggingface\\\\token\"\\) \\{ Write-Host \"Found cached token\"; Get-Content \"\\$env:USERPROFILE\\\\\\.cache\\\\huggingface\\\\token\" \\| Select-Object -First 1 \\| ForEach-Object \\{ \\$_\\.Substring\\(0, \\[Math\\]::Min\\(10, \\$_\\.Length\\)\\) \\+ \"\\.\\.\\.\" \\} \\} else \\{ Write-Host \"No HF token file found\" \\}$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node -e \"const d=require\\('\\./data/japanese-youtube-shadowing\\.json'\\); const sents=d\\.items\\.flatMap\\(i=>i\\.sentences\\); console\\.log\\('Total sentences:', sents\\.length\\); const lens=sents\\.map\\(s=>s\\.text\\.length\\); console\\.log\\('Avg len:', \\(lens\\.reduce\\(\\(a,b\\)=>a\\+b,0\\)/lens\\.length\\)\\.toFixed\\(1\\)\\); console\\.log\\('Max len:', Math\\.max\\(\\.\\.\\.lens\\)\\); console\\.log\\('Min len:', Math\\.min\\(\\.\\.\\.lens\\)\\); console\\.log\\('Over 40:', lens\\.filter\\(l=>l>40\\)\\.length\\); console\\.log\\('Over 50:', lens\\.filter\\(l=>l>50\\)\\.length\\); console\\.log\\('Over 60:', lens\\.filter\\(l=>l>60\\)\\.length\\); console\\.log\\(\\); console\\.log\\('Sample long sentences:'\\); sents\\.filter\\(s=>s\\.text\\.length>50\\)\\.slice\\(0,5\\)\\.forEach\\(s=>console\\.log\\(s\\.text\\.length, s\\.text\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node test-furigana\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd c:\\\\Users\\\\zixun\\\\dev\\\\toeicPass ; node -e \"\n\\(async \\(\\) => \\{\n  // Register\n  let resp = await fetch\\('http://localhost:8001/api/v1/auth/register', \\{\n    method: 'POST',\n    headers: \\{'Content-Type': 'application/json'\\},\n    body: JSON\\.stringify\\(\\{email:'test@test\\.com', password:'pass1234', displayName:'Test', tenantName:'TestTenant'\\}\\)\n  \\}\\);\n  console\\.log\\('Register:', resp\\.status, await resp\\.text\\(\\)\\);\n\n  // Login\n  resp = await fetch\\('http://localhost:8001/api/v1/auth/login', \\{\n    method: 'POST',\n    headers: \\{'Content-Type': 'application/json'\\},\n    body: JSON\\.stringify\\(\\{email:'test@test\\.com', password:'pass1234'\\}\\)\n  \\}\\);\n  console\\.log\\('Login:', resp\\.status, await resp\\.text\\(\\)\\);\n\\}\\)\\(\\)\n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd c:\\\\Users\\\\zixun\\\\dev\\\\toeicPass ; node -e \"\n\\(async \\(\\) => \\{\n  let resp = await fetch\\('http://localhost:8001/api/v1/auth/register', \\{\n    method: 'POST',\n    headers: \\{'Content-Type': 'application/json'\\},\n    body: JSON\\.stringify\\(\\{email:'test@test\\.com', password:'pass1234', displayName:'Test', tenantName:'TestTenant', tenantCode:'test'\\}\\)\n  \\}\\);\n  console\\.log\\('Register:', resp\\.status, await resp\\.text\\(\\)\\);\n  resp = await fetch\\('http://localhost:8001/api/v1/auth/login', \\{\n    method: 'POST',\n    headers: \\{'Content-Type': 'application/json'\\},\n    body: JSON\\.stringify\\(\\{email:'test@test\\.com', password:'pass1234'\\}\\)\n  \\}\\);\n  const data = JSON\\.parse\\(await resp\\.text\\(\\)\\);\n  console\\.log\\('Login:', resp\\.status, 'token:', data\\.token \\? data\\.token\\.substring\\(0,30\\) \\+ '\\.\\.\\.' : 'no token'\\);\n\\}\\)\\(\\)\n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd c:\\\\Users\\\\zixun\\\\dev\\\\toeicPass ; node -e \"\n\\(async \\(\\) => \\{\n  let resp = await fetch\\('http://localhost:8001/api/v1/auth/login', \\{\n    method: 'POST',\n    headers: \\{'Content-Type': 'application/json'\\},\n    body: JSON\\.stringify\\(\\{email:'test@test\\.com', password:'pass1234'\\}\\)\n  \\}\\);\n  const data = JSON\\.parse\\(await resp\\.text\\(\\)\\);\n  console\\.log\\('Login full response:', JSON\\.stringify\\(data\\)\\);\n\\}\\)\\(\\)\n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node test-english-yt\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd c:\\\\Users\\\\zixun\\\\dev\\\\toeicPass\\\\apps\\\\web ; node -e \"const d=require\\('\\./data/japanese-youtube-shadowing\\.json'\\); const m=d\\[0\\]; console\\.log\\('Title:', m\\.title\\); m\\.sentences\\.slice\\(0,10\\)\\.forEach\\(\\(s,i\\)=>console\\.log\\(i\\+1, JSON\\.stringify\\(s\\.text\\)\\.substring\\(0,120\\)\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node -e \"const d=require\\('\\./data/japanese-youtube-shadowing\\.json'\\); console\\.log\\(typeof d, Array\\.isArray\\(d\\), Object\\.keys\\(d\\)\\.slice\\(0,5\\)\\); if\\(Array\\.isArray\\(d\\)\\) console\\.log\\('len:', d\\.length\\); else console\\.log\\('keys:', Object\\.keys\\(d\\)\\.slice\\(0,10\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node -e \"const d=require\\('\\./data/japanese-youtube-shadowing\\.json'\\); const m=d\\.items\\[0\\]; console\\.log\\('Title:', m\\.title\\); m\\.sentences\\.slice\\(0,15\\)\\.forEach\\(\\(s,i\\)=>console\\.log\\(i\\+1, '\\|', s\\.text\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node -e \"const d=require\\('\\./data/japanese-youtube-shadowing\\.json'\\); d\\.items\\.forEach\\(\\(m,mi\\)=>\\{m\\.sentences\\.forEach\\(\\(s,si\\)=>\\{if\\(/\\[\\\\u4e00-\\\\u9faf\\]\\[\\\\u3040-\\\\u309f\\]\\{2,\\}\\[\\\\u4e00-\\\\u9faf\\]/\\.test\\(s\\.text\\)\\|\\|/\\[\\\\u4e00-\\\\u9faf\\]\\[\\\\u3040-\\\\u309f\\]\\{3,\\}/\\.test\\(s\\.text\\)&&!/\\[\\\\u3001\\\\u3002\\]/\\.test\\(s\\.text\\)\\)\\{\\}\\}\\)\\}\\); console\\.log\\('Checking for inline furigana patterns\\.\\.\\.'\\); let count=0; d\\.items\\.forEach\\(\\(m,mi\\)=>\\{m\\.sentences\\.forEach\\(\\(s,si\\)=>\\{const r=/\\[\\\\u4e00-\\\\u9faf\\]\\{1,4\\}\\[\\\\u3040-\\\\u309f\\]\\{2,6\\}\\[\\\\u4e00-\\\\u9faf\\]/g; const matches=s\\.text\\.match\\(r\\); if\\(matches\\)\\{count\\+\\+;if\\(count<=5\\)console\\.log\\('Material',mi,'Sent',si,':',s\\.text\\.substring\\(0,80\\),'matches:',matches\\.join\\(','\\)\\)\\}\\}\\)\\}\\); console\\.log\\('Total sentences with potential inline furigana:',count\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node -e \"const d=require\\('\\./data/japanese-youtube-shadowing\\.json'\\); const m=d\\.items\\[0\\]; console\\.log\\('ID:', m\\.youtubeVideoId\\); m\\.sentences\\.slice\\(0,20\\)\\.forEach\\(\\(s,i\\)=>console\\.log\\(i\\+1, '\\|', s\\.startSec\\.toFixed\\(1\\)\\+'-'\\+s\\.endSec\\.toFixed\\(1\\), '\\|', s\\.text\\.length\\+'c', '\\|', s\\.text\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node scripts/pull-japanese-youtube-shadowing\\.js --subs-only 2>&1 \\| Select-Object -Last 30$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd c:\\\\Users\\\\zixun\\\\dev\\\\toeicPass\\\\apps\\\\web ; node scripts/pull-japanese-youtube-shadowing\\.js --subs-only$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node -e \"const d=require\\('\\./data/japanese-youtube-shadowing\\.json'\\); const m=d\\.items\\[0\\]; console\\.log\\('Title:', m\\.title\\); m\\.sentences\\.slice\\(0,20\\)\\.forEach\\(\\(s,i\\)=>console\\.log\\(i\\+1, '\\|', s\\.startSec\\.toFixed\\(1\\)\\+'-'\\+s\\.endSec\\.toFixed\\(1\\), '\\|', s\\.text\\.length\\+'c', '\\|', s\\.text\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     }
 }

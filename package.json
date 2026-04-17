@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "TOEIC learning and enterprise IP test platform monorepo",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zixuniaowu/toeicPass.git"
+  },
+  "homepage": "https://huggingface.co/spaces/peanutao/toeicPass",
   "workspaces": [
     "apps/*",
     "packages/*"

@@ -28,6 +28,8 @@ export const viewport: Viewport = {
 };
 
 const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+const umamiId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+const umamiUrl = process.env.NEXT_PUBLIC_UMAMI_URL || "https://cloud.umami.is/script.js";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -38,6 +40,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Script
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
             crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        )}
+        {umamiId && (
+          <Script
+            src={umamiUrl}
+            data-website-id={umamiId}
             strategy="afterInteractive"
           />
         )}

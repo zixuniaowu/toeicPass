@@ -1,23 +1,27 @@
-# Facebook Post — toeicPass 宣伝用
+# Facebook 投稿 — toeicPass
 
-以下のテキストをそのまま Facebook に投稿してください。リンク URL は実際のものに差し替えてください。
+以下のテキストをそのまま Facebook に投稿してください。
 
 ---
 
-🎧 TOEIC 学習アプリ「toeicPass」を公開しました！
+🎧 TOEIC 学習を 1 つのアプリで完結 ──「toeicPass」をオープンソースで公開しました。
 
-シャドーイング・単語暗記・文法・パート別練習・200問フル模試・AI英会話 ── TOEIC 対策に必要なすべてを 1 つの Web アプリに詰め込みました。
+リスニングは A アプリ、単語は B アプリ、模試は C サイト……
+ツールが分散してモチベーションも分散する。そんな悩みを解決するために作りました。
 
-✅ TED / YouTube 素材でシャドーイング（音声認識付き）
-✅ SM-2 間隔反復のフラッシュカード — 500+ 語
-✅ Part 1〜7 対応の 3000+ 問題
-✅ AI 音声チャットで実践英会話（8 シナリオ）
-✅ ブラウザだけで動作、インストール不要
+🎙️ TED・YouTube 素材のシャドーイング（音声認識付き）
+📝 SM-2 間隔反復で 500+ 語の単語・文法フラッシュカード
+🎯 Part 1〜7 対応 3,000 問以上のアダプティブ問題演習
+📋 200 問 120 分のフル模試（スコア換算付き）
+💬 Gemini ベースの AI 英会話チャット（8 シナリオ）
+✍️ AI ライティング評価
 
-Next.js + NestJS + TypeScript で構築したオープンソースプロジェクトです。
+ブラウザだけで動作。インストール不要。日本語・中国語 UI 対応。
 
-🤗 今すぐ試す → https://huggingface.co/spaces/peanutao/toeicPass
-📝 技術解説（Zenn） → https://zenn.dev/
-⭐ GitHub → https://github.com/peanutao/toeicPass
+技術スタック: Next.js 15 + NestJS + TypeScript + PostgreSQL + Web Speech API
 
-#TOEIC #英語学習 #シャドーイング #Nextjs #NestJS #TypeScript #オープンソース #HuggingFace #AI英会話 #TOEIC対策
+🤗 デモを試す → https://huggingface.co/spaces/jackywangsh/toeicPass
+📝 技術解説（Zenn） → https://zenn.dev/wangsh/articles/d9483ccd23ad07
+⭐ GitHub → https://github.com/zixuniaowu/toeicPass
+
+#TOEIC #英語学習 #TOEIC対策 #シャドーイング #Nextjs #NestJS #TypeScript #WebSpeechAPI #AI英会話 #オープンソース #HuggingFace
