@@ -3,12 +3,13 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 
 const positionalArgs = process.argv.slice(2).filter((a) => !a.startsWith("--"));
-const CHANNEL_URL = positionalArgs[0] || "https://www.youtube.com/@sambonjuku/videos";
+const CHANNEL_URL = positionalArgs[0] || "https://www.youtube.com/@EasyJapanese/videos";
 const LIMIT = Number(positionalArgs[1] || 10);
 const DOWNLOAD_VIDEO = !process.argv.includes("--subs-only");
 const MAX_SENTENCES_PER_VIDEO = 60;
-const PAUSE_CUT_SECONDS = 1.0;
-const HARD_MAX_CHARS_PER_SENTENCE = 120;
+const PAUSE_CUT_SECONDS = 0.6;
+const HARD_MAX_CHARS_PER_SENTENCE = 45;
+const IDEAL_MAX_CHARS = 35;
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36";
 
@@ -58,9 +59,19 @@ function normalizeCaptionText(raw) {
     .replace(/&#39;/g, "'")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
+    // Remove inline furigana annotations like 収録（しゅうろく）or 収録(しゅうろく)
+    .replace(/([一-龯々ヶ]+)[（(]([ぁ-んァ-ヶー]+)[）)]/g, "$1")
+    // Remove inline fillers common in podcast dialogue
+    .replace(/(?:^|(?<=[。、！？!?\s]))(?:うん|ああ|あー|えー|えーと|えっと|まあ|んー|ふーん|へぇ|おー|はいはい|そうそう)(?=[。、！？!?\s]|$)/g, "")
     .replace(/\s+/g, " ")
     .trim();
 }
+
+/** Filler words common in Japanese podcast dialogue */
+const FILLER_RE = /^(うん|ああ|あー|えー|えーと|えっと|まあ|んー|ふーん|へぇ|おー|はいはい|そうそう|ねえ)$/;
+
+/** Conversational boundary markers for splitting long unpunctuated text */
+const CONV_SPLIT_RE = /(?:ね|よ|よね|けど|けれど|けれども|から|ので|のに|って|がね|んだ|んで|んですけど|ましたね|ますね|ですね|ですよ|ですけど|ました|ます|です|だよ|だね|だけど|なんだ|なんです|わけで|ことで)$/;
 
 function shouldDropSegment(text) {
   if (!text) return true;
@@ -68,6 +79,7 @@ function shouldDropSegment(text) {
   if (/^\([^)]*\)$/.test(text)) return true;
   if (/^（[^）]*）$/.test(text)) return true;
   if (/^♪+$/.test(text)) return true;
+  if (FILLER_RE.test(text)) return true;
   return false;
 }
 
@@ -194,10 +206,15 @@ function stitchSegmentsToSentences(segments) {
     const gapSec = next ? Math.max(0, next.startSec - segment.endSec) : 0;
     const endsWithStrongPunc = /[。！？!?]$/.test(segment.text);
     const endsWithWeakPunc = /[、,;；：:]$/.test(segment.text);
+    const endsWithConversationalMarker = CONV_SPLIT_RE.test(bufferText);
     const isHardTooLong = bufferText.length >= HARD_MAX_CHARS_PER_SENTENCE;
+    const isIdealTooLong = bufferText.length >= IDEAL_MAX_CHARS && endsWithConversationalMarker;
+    const isSoftTooLong = bufferText.length >= 25 && endsWithConversationalMarker && gapSec >= 0.2;
     const shouldCut =
       endsWithStrongPunc ||
-      (gapSec >= PAUSE_CUT_SECONDS && bufferText.length >= 8 && (endsWithWeakPunc || gapSec >= 1.5)) ||
+      (gapSec >= PAUSE_CUT_SECONDS && bufferText.length >= 6 && (endsWithWeakPunc || gapSec >= 0.8)) ||
+      isSoftTooLong ||
+      isIdealTooLong ||
       isHardTooLong;
     if (shouldCut) {
       flush();
@@ -242,23 +259,49 @@ function stitchSegmentsToSentences(segments) {
     if (parts.length <= 1) {
       // Try splitting on 、
       const commaParts = item.text.split(/(?<=[、])/).filter((p) => p.trim());
-      if (commaParts.length <= 1) {
-        splitLong.push(item);
+      if (commaParts.length > 1) {
+        const duration = Math.max(0.4, item.endSec - item.startSec);
+        let cursor = item.startSec;
+        commaParts.forEach((part, idx) => {
+          const ratio = part.length / item.text.length;
+          const partDur = idx === commaParts.length - 1 ? item.endSec - cursor : duration * ratio;
+          splitLong.push({
+            ...item,
+            text: normalizeCaptionText(part),
+            startSec: cursor,
+            endSec: Math.max(cursor + 0.2, cursor + partDur),
+          });
+          cursor += partDur;
+        });
         return;
       }
-      const duration = Math.max(0.4, item.endSec - item.startSec);
-      let cursor = item.startSec;
-      commaParts.forEach((part, idx) => {
-        const ratio = part.length / item.text.length;
-        const partDur = idx === commaParts.length - 1 ? item.endSec - cursor : duration * ratio;
-        splitLong.push({
-          ...item,
-          text: normalizeCaptionText(part),
-          startSec: cursor,
-          endSec: Math.max(cursor + 0.2, cursor + partDur),
+      // Try splitting on conversational markers
+      const markerParts = item.text.split(/(?<=ね|よね|けど|から|です|ました|ます|んだ)(?=.{8,})/).filter((p) => p.trim());
+      if (markerParts.length > 1) {
+        const duration = Math.max(0.4, item.endSec - item.startSec);
+        let cursor = item.startSec;
+        markerParts.forEach((part, idx) => {
+          const ratio = part.length / item.text.length;
+          const partDur = idx === markerParts.length - 1 ? item.endSec - cursor : duration * ratio;
+          splitLong.push({
+            ...item,
+            text: normalizeCaptionText(part),
+            startSec: cursor,
+            endSec: Math.max(cursor + 0.2, cursor + partDur),
+          });
+          cursor += partDur;
         });
-        cursor += partDur;
-      });
+        return;
+      }
+      // Last resort: hard split at HARD_MAX
+      if (item.text.length > HARD_MAX_CHARS_PER_SENTENCE) {
+        const mid = Math.floor(item.text.length / 2);
+        const midSec = item.startSec + (item.endSec - item.startSec) / 2;
+        splitLong.push({ ...item, text: normalizeCaptionText(item.text.slice(0, mid)), endSec: midSec });
+        splitLong.push({ ...item, text: normalizeCaptionText(item.text.slice(mid)), startSec: midSec });
+        return;
+      }
+      splitLong.push(item);
       return;
     }
     const duration = Math.max(0.4, item.endSec - item.startSec);
@@ -276,8 +319,29 @@ function stitchSegmentsToSentences(segments) {
     });
   });
 
+  // Second merge pass: fix fragments created by splitting
+  const reMerged = [];
+  splitLong.forEach((item) => {
+    const previous = reMerged[reMerged.length - 1];
+    if (!previous) {
+      reMerged.push({ ...item });
+      return;
+    }
+    if (item.text.length < 8 && previous.text.length + item.text.length <= HARD_MAX_CHARS_PER_SENTENCE) {
+      previous.text = normalizeCaptionText(previous.text + item.text);
+      previous.endSec = Math.max(previous.endSec, item.endSec);
+      return;
+    }
+    if (previous.text.length < 8 && previous.text.length + item.text.length <= HARD_MAX_CHARS_PER_SENTENCE) {
+      previous.text = normalizeCaptionText(previous.text + item.text);
+      previous.endSec = Math.max(previous.endSec, item.endSec);
+      return;
+    }
+    reMerged.push({ ...item });
+  });
+
   // Remove pure noise, clean up and re-index
-  return splitLong
+  return reMerged
     .filter((item) => {
       const text = normalizeCaptionText(item.text);
       if (!text || text.length < 2) return false;

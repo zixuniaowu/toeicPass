@@ -5,7 +5,7 @@ import type { Locale } from "../../types";
 import { SHADOWING_MATERIALS, type ShadowingMaterial } from "../../data/shadowing-materials";
 import { JAPANESE_SHADOWING_MATERIALS } from "../../data/japanese-shadowing-materials";
 import { annotateWords, type WordAnnotation } from "../../data/word-dictionary";
-import { getJapaneseReading } from "../../lib/japanese-reading";
+import { getJapaneseReading, type JapaneseReadingToken } from "../../lib/japanese-reading";
 import { translateText } from "../../lib/translate";
 import tedLatestShadowing from "../../data/ted-latest-shadowing.json";
 import jaYoutubeShadowing from "../../data/japanese-youtube-shadowing.json";
@@ -627,6 +627,8 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const translatingJpWordGlossRef = useRef<Set<string>>(new Set());
   const [jpWordReadingMap, setJpWordReadingMap] = useState<Record<string, string>>({});
   const translatingJpWordReadingRef = useRef<Set<string>>(new Set());
+  const [jpSentenceTokensMap, setJpSentenceTokensMap] = useState<Record<string, JapaneseReadingToken[]>>({});
+  const fetchingSentenceTokensRef = useRef<Set<string>>(new Set());
   const [jaSentenceMap, setJaSentenceMap] = useState<Record<string, string>>({});
   const translatingSentenceSetRef = useRef<Set<string>>(new Set());
   const [jaWordGlossMap, setJaWordGlossMap] = useState<Record<string, string>>({});
@@ -774,6 +776,33 @@ export function ShadowingView({ locale }: { locale: Locale }) {
         });
     },
     [jpWordReadingMap, makeWordGlossKey, trainingLanguage],
+  );
+
+  const ensureSentenceTokens = useCallback(
+    (sentenceText: string) => {
+      if (trainingLanguage !== "ja") return;
+      const key = sentenceText.trim();
+      if (!key || jpSentenceTokensMap[key] || fetchingSentenceTokensRef.current.has(key)) return;
+      fetchingSentenceTokensRef.current.add(key);
+      void getJapaneseReading(key)
+        .then((result) => {
+          if (result.tokens && result.tokens.length > 0) {
+            setJpSentenceTokensMap((prev) => ({ ...prev, [key]: result.tokens }));
+          }
+        })
+        .finally(() => {
+          fetchingSentenceTokensRef.current.delete(key);
+        });
+    },
+    [jpSentenceTokensMap, trainingLanguage],
+  );
+
+  const getSentenceTokens = useCallback(
+    (sentenceText: string): JapaneseReadingToken[] | null => {
+      if (trainingLanguage !== "ja") return null;
+      return jpSentenceTokensMap[sentenceText.trim()] ?? null;
+    },
+    [jpSentenceTokensMap, trainingLanguage],
   );
 
   const getWordGloss = useCallback(
@@ -1220,6 +1249,9 @@ export function ShadowingView({ locale }: { locale: Locale }) {
     if (!currentSentence?.text) {
       return;
     }
+    // Fetch sentence-level tokens for per-kanji furigana
+    ensureSentenceTokens(currentSentence.text);
+    // Fallback: also fetch per-word readings
     getAnnotatedWords(currentSentence.text)
       .slice(0, 24)
       .forEach((word) => ensureJapaneseWordReading(word));
@@ -1227,6 +1259,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
     activeMaterial,
     currentIndex,
     ensureJapaneseWordReading,
+    ensureSentenceTokens,
     getAnnotatedWords,
     showReading,
     trainingLanguage,
@@ -1895,6 +1928,64 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const progress = completedSet.size;
   const total = activeMaterial.sentences.length;
   const showPronunciationHint = trainingLanguage === "en" ? showIPA : showReading;
+
+  // Helper: render sentence with per-kanji ruby furigana or word annotations
+  const renderAnnotatedSentence = (text: string) => {
+    const tokens = showReading ? getSentenceTokens(text) : null;
+    // If we have sentence-level tokens and showReading, use ruby for per-kanji furigana
+    if (trainingLanguage === "ja" && showReading && tokens && tokens.length > 0) {
+      return (
+        <div className={styles.annotatedSentence}>
+          <p className={styles.sentenceText} style={{ lineHeight: "2.2" }}>
+            {tokens.map((token, i) =>
+              token.hasKanji && token.reading ? (
+                <ruby key={i} style={{ rubyPosition: "over" }}>
+                  {token.surface}
+                  <rt style={{ fontSize: "0.55em", color: "#888" }}>{token.reading}</rt>
+                </ruby>
+              ) : (
+                <span key={i}>{token.surface}</span>
+              ),
+            )}
+          </p>
+          {showWordTranslation && (
+            <div className={styles.annotatedSentence} style={{ marginTop: "0.5rem" }}>
+              {getAnnotatedWords(text).map((w, i) => {
+                const gloss = getWordGloss(w);
+                if (!gloss) return null;
+                return (
+                  <span key={i} className={styles.annotatedWord}>
+                    <span className={styles.wordMain}>{w.word}</span>
+                    <span className={styles.wordCN}>{gloss}</span>
+                  </span>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      );
+    }
+    // Fallback: existing word-level approach
+    return (
+      <div className={styles.annotatedSentence}>
+        {getAnnotatedWords(text).map((w, i) => {
+          const gloss = getWordGloss(w);
+          const reading = getJapaneseWordReading(w);
+          const canShowGloss = showWordTranslation && Boolean(gloss);
+          return (
+            <span key={i} className={styles.annotatedWord}>
+              <span className={styles.wordMain}>{w.word}</span>
+              {trainingLanguage === "en" && showIPA && w.ipa && <span className={styles.wordIPA}>{w.ipa}</span>}
+              {trainingLanguage === "ja" && showReading && containsKanji(w.word) && reading && (
+                <span className={styles.wordIPA}>{reading}</span>
+              )}
+              {canShowGloss && <span className={styles.wordCN}>{gloss}</span>}
+            </span>
+          );
+        })}
+      </div>
+    );
+  };
   const isYoutubeMaterial = Boolean(activeMaterial.youtubeVideoId);
   const sentenceRangeText =
     typeof sentence.startSec === "number" && typeof sentence.endSec === "number"
@@ -1959,14 +2050,25 @@ export function ShadowingView({ locale }: { locale: Locale }) {
                       />
                       <span>{l("双语", "対訳")}</span>
                     </label>
-                    <label className={styles.cinemaToggle}>
-                      <input
-                        type="checkbox"
-                        checked={showIPA}
-                        onChange={(e) => setShowIPA(e.target.checked)}
-                      />
-                      <span>{l("音标", "IPA")}</span>
-                    </label>
+                    {trainingLanguage === "ja" ? (
+                      <label className={styles.cinemaToggle}>
+                        <input
+                          type="checkbox"
+                          checked={showReading}
+                          onChange={(e) => setShowReading(e.target.checked)}
+                        />
+                        <span>{l("假名", "ふりがな")}</span>
+                      </label>
+                    ) : (
+                      <label className={styles.cinemaToggle}>
+                        <input
+                          type="checkbox"
+                          checked={showIPA}
+                          onChange={(e) => setShowIPA(e.target.checked)}
+                        />
+                        <span>{l("音标", "IPA")}</span>
+                      </label>
+                    )}
                     <label className={styles.cinemaToggle}>
                       <input
                         type="checkbox"
@@ -2118,23 +2220,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
                   {!showWordTranslation && !showPronunciationHint ? (
                     <p className={styles.sentenceText}>{sentence.text}</p>
                   ) : (
-                    <div className={styles.annotatedSentence}>
-                      {getAnnotatedWords(sentence.text).map((w, i) => {
-                        const gloss = getWordGloss(w);
-                        const reading = getJapaneseWordReading(w);
-                        const canShowGloss = showWordTranslation && Boolean(gloss);
-                        return (
-                          <span key={i} className={styles.annotatedWord}>
-                            <span className={styles.wordMain}>{w.word}</span>
-                            {trainingLanguage === "en" && showIPA && w.ipa && <span className={styles.wordIPA}>{w.ipa}</span>}
-                            {trainingLanguage === "ja" && showReading && containsKanji(w.word) && reading && (
-                              <span className={styles.wordIPA}>{reading}</span>
-                            )}
-                            {canShowGloss && <span className={styles.wordCN}>{gloss}</span>}
-                          </span>
-                        );
-                      })}
-                    </div>
+                    renderAnnotatedSentence(sentence.text)
                   )}
                   <SelectionPronunciation scopeRef={selectionScopeRef} locale={locale} learningLanguage={trainingLanguage} />
                 </div>
@@ -2301,23 +2387,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
                 {!showWordTranslation && !showPronunciationHint ? (
                   <p className={styles.sentenceText}>{sentence.text}</p>
                 ) : (
-                  <div className={styles.annotatedSentence}>
-                    {getAnnotatedWords(sentence.text).map((w, i) => {
-                      const gloss = getWordGloss(w);
-                      const reading = getJapaneseWordReading(w);
-                      const canShowGloss = showWordTranslation && Boolean(gloss);
-                      return (
-                        <span key={i} className={styles.annotatedWord}>
-                          <span className={styles.wordMain}>{w.word}</span>
-                          {trainingLanguage === "en" && showIPA && w.ipa && <span className={styles.wordIPA}>{w.ipa}</span>}
-                          {trainingLanguage === "ja" && showReading && containsKanji(w.word) && reading && (
-                            <span className={styles.wordIPA}>{reading}</span>
-                          )}
-                          {canShowGloss && <span className={styles.wordCN}>{gloss}</span>}
-                        </span>
-                      );
-                    })}
-                  </div>
+                  renderAnnotatedSentence(sentence.text)
                 )}
                 <SelectionPronunciation scopeRef={selectionScopeRef} locale={locale} learningLanguage={trainingLanguage} />
               </div>
