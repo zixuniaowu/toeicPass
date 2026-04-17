@@ -71,7 +71,13 @@ function normalizeCaptionText(raw) {
 const FILLER_RE = /^(うん|ああ|あー|えー|えーと|えっと|まあ|んー|ふーん|へぇ|おー|はいはい|そうそう|ねえ)$/;
 
 /** Conversational boundary markers for splitting long unpunctuated text */
-const CONV_SPLIT_RE = /(?:ね|よ|よね|けど|けれど|けれども|から|ので|のに|って|がね|んだ|んで|んですけど|ましたね|ますね|ですね|ですよ|ですけど|ました|ます|です|だよ|だね|だけど|なんだ|なんです|わけで|ことで)$/;
+const CONV_SPLIT_RE = /(?:ね|よ|よね|けど|けれど|けれども|から|ので|のに|って|がね|んだ|んで|んですけど|ましたね|ますね|ですね|ですよ|ですけど|ました|ます|です|だよ|だね|だけど|なんだ|なんです|わけで|ことで|かね|のかな|かな|だな)$/;
+
+/** Patterns that commonly START a new utterance or thought */
+const RESTART_RE = /^(はい|それで|それが|それは|でも|だから|もう|今日|今年|この|あの|あと|じゃ|じゃあ|やっぱ|やっぱり|まぁ|まあ|実は|何か|確か|ところで|例えば|つまり|要するに|ちなみに)/;
+
+/** Short standalone reactions/back-channel that mark speaker turns */
+const REACTION_RE = /^(はい|ね|うん|そうだね|そうですね|確かに|確かにね|なるほど|本当|本当に|そっか|そっかそっか|いいね)$/;
 
 function shouldDropSegment(text) {
   if (!text) return true;
@@ -196,6 +202,27 @@ function stitchSegmentsToSentences(segments) {
   };
 
   segments.forEach((segment, index) => {
+    const incomingText = normalizeCaptionText(segment.text);
+
+    // Pre-append cut: flush buffer when a speaker turn or new utterance is detected
+    if (bufferText) {
+      const bufferEndsWithMarker = CONV_SPLIT_RE.test(bufferText);
+      // If the entire buffer IS a standalone reaction, isolate it before non-reaction content
+      if (REACTION_RE.test(bufferText) && !REACTION_RE.test(incomingText)) {
+        flush();
+      }
+      // Incoming is a standalone reaction (はい, そうだね, etc.) → flush first
+      else if (bufferText.length >= 4 && REACTION_RE.test(incomingText)) {
+        if (bufferEndsWithMarker || bufferText.length >= 12) {
+          flush();
+        }
+      }
+      // Incoming starts a new thought (それで, でも, この, etc.) → flush first
+      else if (bufferText.length >= 8 && bufferEndsWithMarker && RESTART_RE.test(incomingText)) {
+        flush();
+      }
+    }
+
     if (!bufferText) {
       bufferStartSec = segment.startSec;
     }
@@ -209,11 +236,13 @@ function stitchSegmentsToSentences(segments) {
     const endsWithConversationalMarker = CONV_SPLIT_RE.test(bufferText);
     const isHardTooLong = bufferText.length >= HARD_MAX_CHARS_PER_SENTENCE;
     const isIdealTooLong = bufferText.length >= IDEAL_MAX_CHARS && endsWithConversationalMarker;
-    const isSoftTooLong = bufferText.length >= 25 && endsWithConversationalMarker && gapSec >= 0.2;
+    const isSoftTooLong = bufferText.length >= 15 && endsWithConversationalMarker && gapSec >= 0.15;
+    const isMarkerWithGap = endsWithConversationalMarker && bufferText.length >= 8 && gapSec >= 0.25;
     const shouldCut =
       endsWithStrongPunc ||
       (gapSec >= PAUSE_CUT_SECONDS && bufferText.length >= 6 && (endsWithWeakPunc || gapSec >= 0.8)) ||
       isSoftTooLong ||
+      isMarkerWithGap ||
       isIdealTooLong ||
       isHardTooLong;
     if (shouldCut) {
