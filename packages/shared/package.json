@@ -1,7 +1,34 @@
 {
   "name": "@toeicpass/shared",
   "version": "1.0.0",
-  "private": true,
-  "main": "src/index.ts",
-  "types": "src/index.ts"
+  "description": "Shared type definitions and constants for the toeicPass ecosystem — learning actions, session types, roles, locales",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zixuniaowu/toeicPass.git",
+    "directory": "packages/shared"
+  },
+  "keywords": [
+    "toeic",
+    "shared",
+    "types",
+    "learning",
+    "rbac",
+    "locale"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit"
+  }
 }

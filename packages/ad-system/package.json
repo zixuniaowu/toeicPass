@@ -1,12 +1,41 @@
 {
   "name": "@toeicpass/ad-system",
   "version": "1.0.0",
-  "private": true,
-  "description": "Reusable ad placement, serving, and analytics module (backend + frontend)",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "description": "Reusable ad placement, serving, and analytics module — backend service + React frontend components. Zero framework coupling on backend; React peer dependency on frontend.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zixuniaowu/toeicPass",
+    "directory": "packages/ad-system"
+  },
+  "keywords": ["ads", "advertising", "ad-serving", "analytics", "react", "typescript", "adsense"],
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./web": "./web/index.ts"
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./web": {
+      "types": "./dist/web/index.d.ts",
+      "default": "./dist/web/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": ["dist/", "LICENSE", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "react-dom": { "optional": true }
   }
 }
