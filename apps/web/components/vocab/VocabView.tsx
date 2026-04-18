@@ -158,6 +158,31 @@ const COPY = {
   },
 } as const;
 
+const POS_LABELS: Record<string, Record<string, string>> = {
+  zh: {
+    noun: "名词", verb: "动词", adj: "形容词", adv: "副词",
+    adjective: "形容词", adverb: "副词", preposition: "介词",
+    conjunction: "连词", pronoun: "代词", interjection: "感叹词",
+    phrase: "短语", idiom: "惯用语", "phrasal verb": "短语动词",
+    n: "名词", v: "动词", "n.": "名词", "v.": "动词",
+    "adj.": "形容词", "adv.": "副词", "prep.": "介词",
+  },
+  ja: {
+    noun: "名詞", verb: "動詞", adj: "形容詞", adv: "副詞",
+    adjective: "形容詞", adverb: "副詞", preposition: "前置詞",
+    conjunction: "接続詞", pronoun: "代名詞", interjection: "感嘆詞",
+    phrase: "フレーズ", idiom: "慣用句", "phrasal verb": "句動詞",
+    n: "名詞", v: "動詞", "n.": "名詞", "v.": "動詞",
+    "adj.": "形容詞", "adv.": "副詞", "prep.": "前置詞",
+  },
+};
+
+function localizePos(pos: string, locale: "zh" | "ja"): string {
+  const lower = pos.trim().toLowerCase();
+  const label = POS_LABELS[locale]?.[lower];
+  return label ? `${label} (${pos})` : pos;
+}
+
 export function VocabView({
   locale,
   cards,
@@ -184,6 +209,7 @@ export function VocabView({
   const [studyIndex, setStudyIndex] = useState(0);
   const [studyScope, setStudyScope] = useState<"today" | "allDue" | "all" | "600" | "700" | "800" | "900">("today");
   const [jaDefinitionMap, setJaDefinitionMap] = useState<Record<string, string>>({});
+  const [exampleTransMap, setExampleTransMap] = useState<Record<string, string>>({});
 
   const speak = (text: string) => {
     if (!text || typeof window === "undefined" || !("speechSynthesis" in window)) {
@@ -322,6 +348,42 @@ export function VocabView({
       cancelled = true;
     };
   }, [jaDefinitionMap, locale, visibleBrowseCards]);
+
+  // Translate example sentences for browse list
+  useEffect(() => {
+    const pendingCards = visibleBrowseCards.filter(
+      (card) => card.example && !exampleTransMap[card.id],
+    );
+    if (pendingCards.length === 0) {
+      return;
+    }
+    let cancelled = false;
+    const targetLang = locale === "ja" ? "ja" : "zh-CN";
+    void Promise.all(
+      pendingCards.map(async (card) => {
+        const example = String(card.example ?? "").trim();
+        if (!example) {
+          return [card.id, ""] as const;
+        }
+        const translated = await translateText(example, targetLang as "ja" | "zh-CN", "en");
+        return [card.id, translated] as const;
+      }),
+    ).then((entries) => {
+      if (cancelled) {
+        return;
+      }
+      setExampleTransMap((prev) => {
+        const next = { ...prev };
+        entries.forEach(([id, translated]) => {
+          next[id] = translated;
+        });
+        return next;
+      });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [exampleTransMap, locale, visibleBrowseCards]);
 
   return (
     <div className={styles.container}>
@@ -563,7 +625,7 @@ export function VocabView({
                     <div className={styles.wordMain}>
                       <strong className={styles.wordTerm}>{card.term}</strong>
                       {annotation?.ipa && <span className={styles.wordIpa}>{annotation.ipa}</span>}
-                      <span className={styles.wordPos}>{card.pos}</span>
+                      <span className={styles.wordPos}>{localizePos(card.pos, locale)}</span>
                       {card.due && <span className={styles.wordDue}>{copy.dueBadge}</span>}
                       {card.intervalDays >= 14 && (card.lastGrade ?? 0) >= 4 && <span className={styles.wordMastered}>{copy.masteredBadge}</span>}
                       <button
@@ -581,7 +643,14 @@ export function VocabView({
                         : `${copy.chineseDef}：${localizedDefinition ?? copy.noChineseDef}`}
                     </p>
                     <p className={styles.wordDef}>{card.definition}</p>
-                    {card.example && <p className={styles.wordExample}>{card.example}</p>}
+                    {card.example && (
+                      <>
+                        <p className={styles.wordExample}>{card.example}</p>
+                        <p className={styles.wordExampleTrans}>
+                          {exampleTransMap[card.id] ?? copy.translating}
+                        </p>
+                      </>
+                    )}
                     <div className={styles.wordMeta}>
                       <span>Part {card.sourcePart}</span>
                       {card.scoreBand && <span className={styles.scoreBadge}>{card.scoreBand}{locale === "ja" ? "点" : "分"}</span>}

@@ -18,6 +18,31 @@ interface FlashCardProps {
   onGrade: (grade: number) => void;
 }
 
+const POS_LABELS: Record<string, Record<string, string>> = {
+  zh: {
+    noun: "名词", verb: "动词", adj: "形容词", adv: "副词",
+    adjective: "形容词", adverb: "副词", preposition: "介词",
+    conjunction: "连词", pronoun: "代词", interjection: "感叹词",
+    phrase: "短语", idiom: "惯用语", "phrasal verb": "短语动词",
+    n: "名词", v: "动词", "n.": "名词", "v.": "动词",
+    "adj.": "形容词", "adv.": "副词", "prep.": "介词",
+  },
+  ja: {
+    noun: "名詞", verb: "動詞", adj: "形容詞", adv: "副詞",
+    adjective: "形容詞", adverb: "副詞", preposition: "前置詞",
+    conjunction: "接続詞", pronoun: "代名詞", interjection: "感嘆詞",
+    phrase: "フレーズ", idiom: "慣用句", "phrasal verb": "句動詞",
+    n: "名詞", v: "動詞", "n.": "名詞", "v.": "動詞",
+    "adj.": "形容詞", "adv.": "副詞", "prep.": "前置詞",
+  },
+};
+
+function localizePos(pos: string, locale: "zh" | "ja"): string {
+  const lower = pos.trim().toLowerCase();
+  const label = POS_LABELS[locale]?.[lower];
+  return label ? `${label} (${pos})` : pos;
+}
+
 const COPY = {
   zh: {
     currentCard: "当前词卡",
@@ -35,6 +60,8 @@ const COPY = {
     noChineseDef: "词典暂未收录该词中文释义，可先看英文解释。",
     translating: "翻译中...",
     englishDef: "English Definition",
+    exampleLabel: "例句",
+    exampleTransLabel: "例句翻译",
     tags: (tags: string) => `Tags: ${tags}`,
     unknown: "不认识",
     unknownHint: "→ 几分钟后重现",
@@ -59,6 +86,8 @@ const COPY = {
     noChineseDef: "辞書に中国語訳がありません。先に英語定義を確認してください。",
     translating: "翻訳中...",
     englishDef: "English Definition",
+    exampleLabel: "例文",
+    exampleTransLabel: "例文訳",
     tags: (tags: string) => `Tags: ${tags}`,
     unknown: "わからない",
     unknownHint: "→ 数分後に再出題",
@@ -83,6 +112,8 @@ export function FlashCard({
   const [isLoadingIpa, setIsLoadingIpa] = useState(false);
   const [localizedDefinition, setLocalizedDefinition] = useState<string | null>(null);
   const [isTranslatingDefinition, setIsTranslatingDefinition] = useState(false);
+  const [translatedExample, setTranslatedExample] = useState<string | null>(null);
+  const [isTranslatingExample, setIsTranslatingExample] = useState(false);
   const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
   const termInfo = annotateTerm(card.term);
 
@@ -178,6 +209,33 @@ export function FlashCard({
     };
   }, [baseDefinition, locale]);
 
+  // Translate example sentence for user's locale
+  useEffect(() => {
+    const example = String(card.example ?? "").trim();
+    if (!example) {
+      setTranslatedExample(null);
+      setIsTranslatingExample(false);
+      return;
+    }
+    let cancelled = false;
+    setIsTranslatingExample(true);
+    const targetLang = locale === "ja" ? "ja" : "zh-CN";
+    void translateText(example, targetLang as "ja" | "zh-CN", "en")
+      .then((result) => {
+        if (!cancelled) {
+          setTranslatedExample(result);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setIsTranslatingExample(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [card.example, locale]);
+
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -188,7 +246,7 @@ export function FlashCard({
             {displayIpa ?? (isLoadingIpa ? copy.loadingIpa : copy.noIpa)}
           </p>
           <span className={styles.meta}>
-            {card.pos} · Part {card.sourcePart}
+            {localizePos(card.pos, locale)} · Part {card.sourcePart}
           </span>
         </div>
         <Badge variant={card.due ? "warning" : "info"}>
@@ -220,13 +278,16 @@ export function FlashCard({
               ? (isTranslatingDefinition ? copy.translating : (localizedDefinition ?? baseDefinition))
               : (chineseDefinition ?? copy.noChineseDef)}
           </p>
-          {englishDefinition && (
+          <p className={styles.defLabel}>{copy.englishDef}</p>
+          <p>{englishDefinition ?? card.definition}</p>
+          {card.example && (
             <>
-              <p className={styles.defLabel}>{copy.englishDef}</p>
-              <p>{englishDefinition}</p>
+              <p className={styles.defLabel}>{copy.exampleLabel}</p>
+              <p className={styles.example}>{card.example}</p>
+              <p className={styles.defLabel}>{copy.exampleTransLabel}</p>
+              <p>{isTranslatingExample ? copy.translating : (translatedExample ?? card.example)}</p>
             </>
           )}
-          <p className={styles.example}>{card.example}</p>
           <p className={styles.tags}>{copy.tags(card.tags.join(", "))}</p>
         </div>
       )}

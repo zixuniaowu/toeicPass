@@ -401,10 +401,17 @@
 }
 
 .wordExample {
-  margin: 0 0 var(--space-2);
+  margin: 0 0 var(--space-1);
   font-size: var(--text-sm);
   color: var(--color-muted);
   font-style: italic;
+  line-height: 1.5;
+}
+
+.wordExampleTrans {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text);
   line-height: 1.5;
 }
 
