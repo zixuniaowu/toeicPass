@@ -1,97 +1,137 @@
-# LangBoost — 日语 · 英语 口语强化平台
+# LangBoost — Japanese & English Speaking Practice Platform
 
-[**🚀 Live Demo on Hugging Face**](https://huggingface.co/spaces/jackywangsh/toeicPass)
+[**Live Demo on Hugging Face**](https://huggingface.co/spaces/jackywangsh/toeicPass) · [**GitHub**](https://github.com/zixuniaowu/toeicPass)
 
-AI 驱动的多语言口语练习平台，支持日语和英语跟读训练、语法强化、词汇复习、模拟考试、错题本、AI 会话等功能。
+An AI-powered multilingual speaking practice platform with sentence-by-sentence shadowing, tap-to-translate, pronunciation feedback, grammar drills, vocabulary flashcards, mock exams, and AI conversation.
 
-## ✨ 主要功能
+![Shadowing Practice](docs/images/shadowing-practice.png)
 
-### 🎧 跟读训练 (Shadowing)
-- **YouTube 跟读** — 自动拉取 YouTube 字幕，逐句跟读练习
-- **日语ふりがな** — 自动标注假名，支持开关切换
-- **英语 IPA 音标** — 逐词音标显示
-- **语音识别** — 实时录音对比，纠正发音
-- **Cinema 模式** — 沉浸式视频+字幕分屏练习
-- **TED 演讲 / 新闻跟读** — 每日更新素材
+---
 
-### 📝 TOEIC 备考
-- Part 1-7 分项练习，自适应难度
-- 模拟考试 + 分数换算 + 分项反馈
-- 错题本 + 间隔重复卡片
-- AI 图解析 + 成绩预测
+## Key Features
 
-### 🗣 AI 会话
-- AI 驱动的错误分析和解释
-- 多轮会话，实时口语练习
+### Shadowing Training
 
-### 📊 学习分析
-- 各 Part 正确率、速度、留存率趋势
-- 成绩预测 + 瓶颈预警
+The core feature of LangBoost is **sentence-by-sentence shadowing** for both Japanese and English:
 
-## 技术架构
+- **YouTube Shadowing** — Automatically fetches YouTube subtitles for sentence-by-sentence repeat-after practice
+- **Tap-to-Translate** — Tap any word in the subtitle to see its translation and hear its pronunciation instantly
+- **Japanese Furigana** — Auto-annotated readings (ふりがな) above kanji, togglable on/off
+- **English IPA Phonetics** — Per-word IPA transcription displayed inline
+- **Speech Recognition** — Record your voice, compare against the original, and get pronunciation feedback
+- **Cinema Mode** — Immersive split-screen layout with video + highlighted subtitles
+- **Curated Content** — TED Talks, news, drama dialogues, famous speeches (Steve Jobs, Simon Sinek, etc.)
+- **Daily News Feed** — Fresh shadowing materials updated regularly
+
+![AI Conversation](docs/images/ai-conversation.png)
+
+### AI Conversation
+
+Practice real-world scenarios with AI-powered dialogue:
+
+- Office meetings, restaurant orders, airport check-in, job interviews, and more
+- Multi-turn conversation with real-time speaking practice
+- AI-driven error analysis and explanations
+
+### TOEIC Exam Prep
+
+- Part 1–7 section practice with adaptive difficulty
+- Full mock exams with score conversion and per-section feedback
+- Mistake notebook with spaced repetition cards
+- Score prediction and plateau alerts
+
+### Vocabulary & Grammar
+
+- SRS-based flashcards for vocabulary review
+- Grammar drills with structured exercises
+- Spaced repetition scheduling for optimal retention
+
+### Learning Analytics
+
+- Accuracy, pace, and retention trends per section
+- Score prediction using recent mock data and error distribution
+- Schedule deviation and plateau alerts
+
+---
+
+## Screenshots
+
+| Shadowing Materials | AI Conversation |
+|:---:|:---:|
+| ![Shadowing](docs/images/shadowing-practice.png) | ![AI Chat](docs/images/ai-conversation.png) |
+
+| Vocabulary Flashcards | Grammar Practice |
+|:---:|:---:|
+| ![Vocab](docs/images/vocab-flashcard.png) | ![Grammar](docs/images/grammar-practice.png) |
+
+---
+
+## Architecture
 
 ```
 langboost/
 ├── apps/
-│   ├── api/          NestJS REST API (port 8001)
-│   └── web/          Next.js 15 frontend (port 8000)
+│   ├── api/               NestJS REST API (port 8001)
+│   └── web/               Next.js 15 frontend (port 8000)
 ├── packages/
-│   ├── ad-system/    广告系统
-│   ├── conversation-ai/  AI 会话引擎
-│   └── shared/       共享类型
-├── db/               PostgreSQL schema + migrations
-└── docs/             架构文档
+│   ├── ad-system/         Ad placement system
+│   ├── conversation-ai/   AI conversation engine
+│   └── shared/            Shared types & utilities
+├── db/                    PostgreSQL schema + migrations
+└── docs/                  Architecture & design docs
 ```
 
-| 层 | 技术栈 |
-|---|--------|
-| API | NestJS, TypeScript, JWT + RBAC, 多租户 |
+| Layer | Stack |
+|-------|-------|
+| API | NestJS, TypeScript, JWT + RBAC, multi-tenant |
 | Web | Next.js 15, React, CSS Modules |
 | DB | PostgreSQL 15+ (PGLite for tests) |
-| Analytics | Umami (隐私友好) |
+| Analytics | Umami (privacy-friendly) |
 | CI/CD | GitHub Actions → Hugging Face Spaces |
 | Container | Docker (Node 20) |
 
-## 快速开始
+---
+
+## Getting Started
 
 ```bash
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动开发服务器 (API + Web)
+# Start dev servers (API + Web)
 npm run dev
 
-# 或分别启动
+# Or start individually
 npm run dev:api      # API only (port 8001)
 npm run dev:web:hot  # Web only (port 8000)
 ```
 
-| URL | 说明 |
-|-----|------|
-| `http://localhost:8000` | Web 前端 |
-| `http://localhost:8001/api/v1` | API |
+| URL | Description |
+|-----|-------------|
+| `http://localhost:8000` | Web frontend |
+| `http://localhost:8001/api/v1` | REST API |
 
-## 常用命令
+## Commands
 
-| 命令 | 说明 |
-|------|------|
-| `npm run dev` | 开发模式 (API + Web) |
-| `npm run build` | 生产构建 |
-| `npm test` | 运行测试 |
-| `npm run lint` | TypeScript 类型检查 |
-| `npm run db:migrate` | 数据库迁移 |
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Development mode (API + Web) |
+| `npm run build` | Production build |
+| `npm test` | Run test suite |
+| `npm run lint` | TypeScript type checking |
+| `npm run db:migrate` | Run database migrations |
 
-## 环境变量
+## Environment Variables
 
-| 变量 | 默认值 | 说明 |
-|------|--------|------|
-| `PORT` | `8001` | API 端口 |
-| `JWT_SECRET` | `dev-secret` | JWT 签名密钥 |
-| `WEB_ORIGIN` | `http://localhost:3000` | CORS 允许来源 |
-| `DATABASE_URL` | — | PostgreSQL 连接字符串 |
-| `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | — | Umami 访客统计 ID |
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | `8001` | API listen port |
+| `JWT_SECRET` | `dev-secret` | JWT signing key |
+| `WEB_ORIGIN` | `http://localhost:3000` | CORS allowed origin |
+| `DATABASE_URL` | — | PostgreSQL connection string |
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | — | Umami analytics website ID |
 
-## 部署
+## Deployment
 
 ### Docker
 
@@ -102,20 +142,15 @@ docker run -p 7860:7860 langboost
 
 ### Hugging Face Spaces
 
-每次 push 到 `main` 自动同步到 Hugging Face Spaces。
+Every push to `main` auto-syncs to Hugging Face Spaces.
 
-需要的 GitHub secrets: `HF_TOKEN`, `HF_REPO_ID`
-
-## License
-
-MIT
+Required GitHub secrets: `HF_TOKEN`, `HF_REPO_ID`
 
 ## Documentation
 
 - [System Blueprint](docs/system-blueprint.md) — Architecture and product goals
 - [API Contract](docs/api-contract-v1.md) — REST API specification
 - [Official Question Sources](docs/official-question-sources.md) — Licensed content guidelines
-- [Official Question Pack](docs/official-question-pack.md) — Built-in TOEIC-style content
 
 ## License
 
