@@ -13,6 +13,7 @@ export type ShadowingSentence = {
   id: number;
   text: string;
   translation: string;
+  translationEn?: string;
   startSec?: number;
   endSec?: number;
 };

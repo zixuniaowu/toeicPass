@@ -465,6 +465,15 @@
   border-top: 1px solid rgba(var(--color-primary-rgb), 0.08);
 }
 
+.translationSecondary {
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--color-muted);
+  opacity: 0.7;
+  margin: 0;
+  padding-top: var(--space-1);
+}
+
 .translationDetails {
   cursor: pointer;
 }
@@ -1472,6 +1481,13 @@
   font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.5);
   line-height: 1.5;
+}
+
+.transcriptCnSecondary {
+  margin: 2px 0 0;
+  font-size: var(--text-xs, 11px);
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.4;
 }
 
 .transcriptTime {

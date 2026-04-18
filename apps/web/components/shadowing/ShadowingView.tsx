@@ -678,6 +678,10 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   const getSentenceTranslation = useCallback(
     (material: ShadowingMaterial, sentence: { id: number; text: string; translation?: string }) => {
       if (trainingLanguage === "ja") {
+        // Japanese study: show Chinese for zh locale, English for ja locale
+        if (locale === "ja") {
+          return (sentence as { translationEn?: string }).translationEn || sentence.translation || "";
+        }
         return sentence.translation ?? "";
       }
       if (locale !== "ja") {
@@ -687,6 +691,18 @@ export function ShadowingView({ locale }: { locale: Locale }) {
       return jaSentenceMap[key] ?? sentence.translation ?? "";
     },
     [jaSentenceMap, locale, makeSentenceTranslationKey, trainingLanguage],
+  );
+
+  // Secondary translation for Japanese training: the other language
+  const getSecondaryTranslation = useCallback(
+    (sentence: { id: number; text: string; translation?: string }) => {
+      if (trainingLanguage !== "ja") return "";
+      if (locale === "ja") {
+        return sentence.translation ?? ""; // Chinese as secondary
+      }
+      return (sentence as { translationEn?: string }).translationEn || ""; // English as secondary
+    },
+    [locale, trainingLanguage],
   );
 
   const makeWordGlossKey = useCallback((word: WordAnnotation) => {
@@ -1925,6 +1941,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
 
   const sentence = activeMaterial.sentences[currentIndex];
   const translatedSentence = getSentenceTranslation(activeMaterial, sentence);
+  const secondaryTranslation = getSecondaryTranslation(sentence);
   const progress = completedSet.size;
   const total = activeMaterial.sentences.length;
   const showPronunciationHint = trainingLanguage === "en" ? showIPA : showReading;
@@ -2166,10 +2183,16 @@ export function ShadowingView({ locale }: { locale: Locale }) {
                           if (!transcriptTranslation && locale !== "ja") {
                             return null;
                           }
+                          const transcriptSecondary = getSecondaryTranslation(s);
                           return (
-                            <p className={styles.transcriptCn}>
-                              {transcriptTranslation || l("翻译中...", "翻訳中...")}
-                            </p>
+                            <>
+                              <p className={styles.transcriptCn}>
+                                {transcriptTranslation || l("翻译中...", "翻訳中...")}
+                              </p>
+                              {transcriptSecondary && (
+                                <p className={styles.transcriptCnSecondary}>{transcriptSecondary}</p>
+                              )}
+                            </>
                           );
                         })()}
                       </div>
@@ -2318,10 +2341,14 @@ export function ShadowingView({ locale }: { locale: Locale }) {
                 {translatedSentence && alwaysShowTranslation && (
                   <p className={styles.translation}>{translatedSentence}</p>
                 )}
+                {secondaryTranslation && alwaysShowTranslation && (
+                  <p className={styles.translationSecondary}>{secondaryTranslation}</p>
+                )}
                 {translatedSentence && !alwaysShowTranslation && (
                   <details className={styles.translationDetails}>
                     <summary>{l("点击查看翻译", "訳を表示")}</summary>
                     <p className={styles.translation}>{translatedSentence}</p>
+                    {secondaryTranslation && <p className={styles.translationSecondary}>{secondaryTranslation}</p>}
                   </details>
                 )}
                 {!translatedSentence && (
@@ -2452,8 +2479,9 @@ export function ShadowingView({ locale }: { locale: Locale }) {
               </div>
 
               {translatedSentence && alwaysShowTranslation && <p className={styles.translation}>{translatedSentence}</p>}
+              {secondaryTranslation && alwaysShowTranslation && <p className={styles.translationSecondary}>{secondaryTranslation}</p>}
               {translatedSentence && !alwaysShowTranslation && (
-                <details className={styles.translationDetails}><summary>{l("点击查看翻译", "訳を表示")}</summary><p className={styles.translation}>{translatedSentence}</p></details>
+                <details className={styles.translationDetails}><summary>{l("点击查看翻译", "訳を表示")}</summary><p className={styles.translation}>{translatedSentence}</p>{secondaryTranslation && <p className={styles.translationSecondary}>{secondaryTranslation}</p>}</details>
               )}
               {!translatedSentence && <p className={styles.noTranslation}>{l("实时新闻暂无翻译，可使用「逐词释义」辅助理解", "ニュース文に翻訳がありません。「語釈」表示を使って理解してください。")}</p>}
             </CardContent>

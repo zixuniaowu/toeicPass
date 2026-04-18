@@ -404,22 +404,50 @@ async function translateSentenceToZh(text) {
     .trim();
 }
 
+async function translateSentenceToEn(text) {
+  const endpoint =
+    "https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=en&dt=t&q=" +
+    encodeURIComponent(text);
+  const response = await fetch(endpoint, {
+    headers: { "User-Agent": USER_AGENT },
+  });
+  if (!response.ok) {
+    return "";
+  }
+  const payload = await response.json();
+  const chunks = Array.isArray(payload?.[0]) ? payload[0] : [];
+  return chunks
+    .map((chunk) => String(chunk?.[0] || ""))
+    .join("")
+    .trim();
+}
+
 async function translateSentences(sentences) {
-  const cache = new Map();
+  const cacheZh = new Map();
+  const cacheEn = new Map();
   const translated = [];
   for (const sentence of sentences) {
     const key = sentence.text;
-    if (!cache.has(key)) {
+    if (!cacheZh.has(key)) {
       try {
         const translation = await translateSentenceToZh(key);
-        cache.set(key, translation);
+        cacheZh.set(key, translation);
       } catch {
-        cache.set(key, "");
+        cacheZh.set(key, "");
+      }
+    }
+    if (!cacheEn.has(key)) {
+      try {
+        const translationEn = await translateSentenceToEn(key);
+        cacheEn.set(key, translationEn);
+      } catch {
+        cacheEn.set(key, "");
       }
     }
     translated.push({
       ...sentence,
-      translation: cache.get(key) || "",
+      translation: cacheZh.get(key) || "",
+      translationEn: cacheEn.get(key) || "",
     });
   }
   return translated;

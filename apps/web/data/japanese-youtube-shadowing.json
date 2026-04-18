@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-17T13:59:22.299Z",
+  "generatedAt": "2026-04-18T06:32:09.600Z",
   "channelUrl": "https://www.youtube.com/@EasyJapanese/videos",
   "limit": 10,
-  "downloadVideo": false,
+  "downloadVideo": true,
   "outputRoot": "public/assets/youtube/ja-latest",
   "itemCount": 10,
   "failureCount": 0,
@@ -21,420 +21,480 @@
           "text": "はい皆さん こんばんは",
           "translation": "是的，大家晚上好",
           "startSec": 0.092,
-          "endSec": 2.668
+          "endSec": 2.668,
+          "translationEn": "Yes everyone, good evening"
         },
         {
           "id": 2,
           "text": "今収録したタイミングとあとはアップロードして あの動画が",
           "translation": "我刚刚录制的时间，其余部分已上传，该视频是",
           "startSec": 4.748,
-          "endSec": 9.539000000000001
+          "endSec": 9.539000000000001,
+          "translationEn": "The timing when I just recorded it and the rest are uploaded and that video is"
         },
         {
           "id": 3,
           "text": "公開されるタイミングがちょっと今開きがある状態なんですけど",
           "translation": "目前其发布时间还有些不确定。",
           "startSec": 9.539000000000001,
-          "endSec": 14.33
+          "endSec": 14.33,
+          "translationEn": "The timing of its release is currently a little uncertain."
         },
         {
           "id": 4,
           "text": "この現実の方というかねはい",
           "translation": "难道这个现实就是真的吗？",
           "startSec": 15.402,
-          "endSec": 18.01
+          "endSec": 18.01,
+          "translationEn": "Is it true that this reality is true?"
         },
         {
           "id": 5,
           "text": "今日は4月になりましたねなりましたよ",
           "translation": "今天是四月！",
           "startSec": 17.978,
-          "endSec": 21.118
+          "endSec": 21.118,
+          "translationEn": "Today is April!"
         },
         {
           "id": 6,
           "text": "4月1日はいということで 何か知らないうちになってましたけど",
           "translation": "4 月 1 日我答应了，不知不觉间，事情就发生了。",
           "startSec": 21.964,
-          "endSec": 28.906
+          "endSec": 28.906,
+          "translationEn": "I said yes on April 1st, and before I knew it, things were happening."
         },
         {
           "id": 7,
           "text": "やっぱり気持ちがいいというかそうだね",
           "translation": "我想毕竟感觉很好。",
           "startSec": 29.434,
-          "endSec": 32.946
+          "endSec": 32.946,
+          "translationEn": "I guess it feels good after all."
         },
         {
           "id": 8,
           "text": "何か1年の始まりみたいなものを感じますね",
           "translation": "感觉就像新的一年的开始。",
           "startSec": 33.282,
-          "endSec": 35.922
+          "endSec": 35.922,
+          "translationEn": "It feels like the beginning of a new year."
         },
         {
           "id": 9,
           "text": "何か前もいつも言ってるけど",
           "translation": "我以前也一直说过一些话。",
           "startSec": 38.306,
-          "endSec": 40.60648
+          "endSec": 40.60648,
+          "translationEn": "I've always said something before."
         },
         {
           "id": 10,
           "text": "厳密に言うと4月1日生まれの人まではこう 何て言うの 上の学年というかさ",
           "translation": "严格来说，4月1日出生的人算上等人。",
           "startSec": 40.60648,
-          "endSec": 47.154
+          "endSec": 47.154,
+          "translationEn": "Strictly speaking, people born on April 1st are considered upper grades."
         },
         {
           "id": 11,
           "text": "前の学年に入りますっていう話を前からしてるから",
           "translation": "我已经说过一段时间了，我将进入上一个学年。",
           "startSec": 47.458,
-          "endSec": 51.234
+          "endSec": 51.234,
+          "translationEn": "I've been saying for a while that I'll be entering the previous school year."
         },
         {
           "id": 12,
           "text": "そういうふうに考えたらもしかしたら4月2日からがスタートなのかな",
           "translation": "如果你这样想的话，也许会从4月2日开始。",
           "startSec": 52.958,
-          "endSec": 57.71
+          "endSec": 57.71,
+          "translationEn": "If you think about it that way, maybe it will start on April 2nd."
         },
         {
           "id": 13,
           "text": "そういう人もいるかもね",
           "translation": "可能有一些人是这样的。",
           "startSec": 58.142,
-          "endSec": 59.262
+          "endSec": 59.262,
+          "translationEn": "There may be some people like that."
         },
         {
           "id": 14,
           "text": "そういうのもあるんですけど",
           "translation": "但也有类似的事情。",
           "startSec": 60.206,
-          "endSec": 61.55
+          "endSec": 61.55,
+          "translationEn": "There are things like that though."
         },
         {
           "id": 15,
           "text": "やっぱり3月が終わって 4月が始まったっていうと",
           "translation": "毕竟，三月已经结束，四月已经开始。",
           "startSec": 61.71,
-          "endSec": 66.654
+          "endSec": 66.654,
+          "translationEn": "After all, March has ended and April has begun."
         },
         {
           "id": 16,
           "text": "何かどうしても気持ちとしては ちゃんとしなくてはという",
           "translation": "我觉得无论如何我都必须做正确的事情。",
           "startSec": 67.758,
-          "endSec": 70.686
+          "endSec": 70.686,
+          "translationEn": "I feel like I have to do something right no matter what."
         },
         {
           "id": 17,
           "text": "いうイメージがあるよねそうですね",
           "translation": "好像有这样的画面。",
           "startSec": 71.566,
-          "endSec": 74.19
+          "endSec": 74.19,
+          "translationEn": "It seems like there is an image of that."
         },
         {
           "id": 18,
           "text": "僕らはいつもお話してますけど",
           "translation": "我们总是说话",
           "startSec": 75.212,
-          "endSec": 79.844
+          "endSec": 79.844,
+          "translationEn": "we always talk"
         },
         {
           "id": 19,
           "text": "大体冬の時期は やることがあんまりないじゃないです",
           "translation": "一般来说，冬天没有什么可做的。",
           "startSec": 80.196,
-          "endSec": 85.47365957446809
+          "endSec": 85.47365957446809,
+          "translationEn": "Generally speaking, there isn't much to do during the winter."
         },
         {
           "id": 20,
           "text": "かほとんど 何て言うの 仕事はオフというかね",
           "translation": "或者差不多了，我怎么说呢，我下班了？",
           "startSec": 85.47365957446809,
-          "endSec": 90.118
+          "endSec": 90.118,
+          "translationEn": "Or almost, how can I say, I'm off work?"
         },
         {
           "id": 21,
           "text": "そういう状態なんですけど3月に入ったぐらいから 忙しくなりますよねそうですね",
           "translation": "情况是这样，但从三月初开始，事情似乎会变得忙碌起来。",
           "startSec": 90.45,
-          "endSec": 98.206
+          "endSec": 98.206,
+          "translationEn": "That's the situation, but it seems like things will get busy from the beginning of March."
         },
         {
           "id": 22,
           "text": "今日毎日何かしてません撮影とかさ最近はね",
           "translation": "最近我每天都没有做任何事，比如拍照。",
           "startSec": 98.206,
-          "endSec": 102.494
+          "endSec": 102.494,
+          "translationEn": "I haven't been doing anything every day lately, like taking pictures."
         },
         {
           "id": 23,
           "text": "やっぱり3月の卒業式に始まり",
           "translation": "毕竟，这一切都要从三月份的毕业典礼说起。",
           "startSec": 103.118,
-          "endSec": 106.712
+          "endSec": 106.712,
+          "translationEn": "After all, it all started with the graduation ceremony in March."
         },
         {
           "id": 24,
           "text": "桜が咲きましたとか 梅が咲きましたとかね",
           "translation": "樱花开了，梅花开了，等等。",
           "startSec": 109.032,
-          "endSec": 112.26400000000001
+          "endSec": 112.26400000000001,
+          "translationEn": "The cherry blossoms have bloomed, the plum blossoms have bloomed, etc."
         },
         {
           "id": 25,
           "text": "それで一気に忙しくなるわけなんですけど",
           "translation": "这就是为什么我一下子就忙起来了。",
           "startSec": 113.00999999999999,
-          "endSec": 115.218
+          "endSec": 115.218,
+          "translationEn": "That's why I get busy all at once."
         },
         {
           "id": 26,
           "text": "なんで僕らとしては何かこう3月から仕事いよいよ始まったなって思うんですけど",
           "translation": "为什么我们感觉三月份终于开始工作了？",
           "startSec": 117.066,
-          "endSec": 122.33
+          "endSec": 122.33,
+          "translationEn": "Why do we feel like work finally started in March?"
         },
         {
           "id": 27,
           "text": "やっぱ4月は一つの区切りとしてやっぱりね 今年 例えば小学校卒業して中学校行きますとかね",
           "translation": "毕竟四月是一个转折点，比如今年，人们小学毕业，升入初中。",
           "startSec": 122.89,
-          "endSec": 132.698
+          "endSec": 132.698,
+          "translationEn": "After all, April is a turning point.For example, this year, people graduate from elementary school and go to junior high school."
         },
         {
           "id": 28,
           "text": "そういう人たちの そういう人たちがそういう人の何か親たちというかね が SNSとかもね",
           "translation": "这类人就是那些人的父母，还有SNS。",
           "startSec": 133.114,
-          "endSec": 142.974
+          "endSec": 142.974,
+          "translationEn": "Those kinds of people are the parents of those people, and SNS."
         },
         {
           "id": 29,
           "text": "そういう投稿が多いですよねそうですね",
           "translation": "好像这样的帖子还有很多。",
           "startSec": 143.022,
-          "endSec": 145.55
+          "endSec": 145.55,
+          "translationEn": "It seems like there are a lot of posts like that."
         },
         {
           "id": 30,
           "text": "何か華やかなというかね",
           "translation": "这有点华丽，不是吗？",
           "startSec": 147.15,
-          "endSec": 148.36599999999999
+          "endSec": 148.36599999999999,
+          "translationEn": "It's kind of gorgeous, isn't it?"
         },
         {
           "id": 31,
           "text": "いいなと思いますね",
           "translation": "我觉得很好",
           "startSec": 150.078,
-          "endSec": 151.422
+          "endSec": 151.422,
+          "translationEn": "I think it's nice"
         },
         {
           "id": 32,
           "text": "僕はこないだ東京に行ってきたんですけど",
           "translation": "前几天我去了东京。",
           "startSec": 152.712,
-          "endSec": 155.864
+          "endSec": 155.864,
+          "translationEn": "I went to Tokyo the other day."
         },
         {
           "id": 33,
           "text": "東京は暖かくてですね",
           "translation": "东京很暖和，不是吗？",
           "startSec": 156.552,
-          "endSec": 158.40800000000002
+          "endSec": 158.40800000000002,
+          "translationEn": "It's warm in Tokyo, isn't it?"
         },
         {
           "id": 34,
           "text": "桜咲いてましたね",
           "translation": "樱花盛开了。",
           "startSec": 159.912,
-          "endSec": 161.32
+          "endSec": 161.32,
+          "translationEn": "The cherry blossoms were blooming."
         },
         {
           "id": 35,
           "text": "咲いてた やっぱり早いね綺麗に咲いてたね",
           "translation": "它正在开花。毕竟还早。它开得美丽极了。",
           "startSec": 162.6,
-          "endSec": 165.242
+          "endSec": 165.242,
+          "translationEn": "It was blooming. It was early after all. It was blooming beautifully."
         },
         {
           "id": 36,
           "text": "じゃあもう今が一番いい時期だねそうだね",
           "translation": "所以现在似乎是最好的时机。",
           "startSec": 167,
-          "endSec": 170.38
+          "endSec": 170.38,
+          "translationEn": "So now seems like the best time."
         },
         {
           "id": 37,
           "text": "うんうんまだ大丈夫かな今週ぐらいまでは大丈夫かなと思うんですけど",
           "translation": "是的，还好。我想这周之前都会好的。",
           "startSec": 170.14,
-          "endSec": 175.164
+          "endSec": 175.164,
+          "translationEn": "Yeah, it's still okay.I think it'll be okay until this week."
         },
         {
           "id": 38,
           "text": "ちょうどね 行った日が日曜日だったんですよはい",
           "translation": "我去的那天是周日吧？",
           "startSec": 177.368,
-          "endSec": 180.96800000000002
+          "endSec": 180.96800000000002,
+          "translationEn": "The day I went was Sunday, right?"
         },
         {
           "id": 39,
           "text": "それもあってか 公園とかでね",
           "translation": "也许这就是原因，在公园什么的。",
           "startSec": 180.936,
-          "endSec": 183.904
+          "endSec": 183.904,
+          "translationEn": "Maybe that's why, at the park or something."
         },
         {
           "id": 40,
           "text": "お花見をしてるような人たちがいっぱいいましたね",
           "translation": "周围有很多人，看起来像是在赏樱花。",
           "startSec": 184.48,
-          "endSec": 187.136
+          "endSec": 187.136,
+          "translationEn": "There were a lot of people who looked like they were cherry blossom viewing."
         },
         {
           "id": 41,
           "text": "最高だねちょっと寒いというかぐらいだったんだけどはい",
           "translation": "这很棒。天气有点冷，但是是的。",
           "startSec": 187.792,
-          "endSec": 194.724
+          "endSec": 194.724,
+          "translationEn": "It's great. It was a bit cold, but yes."
         },
         {
           "id": 42,
           "text": "そんな喜びを持ちながら帰ってきたら雪積もりましたねびっくりした本当に寒くてそうだね",
           "translation": "当我满心欢喜地回到家时，我惊讶地发现下雪了，天气真冷。",
           "startSec": 194.724,
-          "endSec": 204.59
+          "endSec": 204.59,
+          "translationEn": "When I returned home with such joy, I was surprised to find that it was snowing, it was really cold."
         },
         {
           "id": 43,
           "text": "今日は寒かったね",
           "translation": "今天很冷，不是吗？",
           "startSec": 204.59,
-          "endSec": 205.662
+          "endSec": 205.662,
+          "translationEn": "It was cold today, wasn't it?"
         },
         {
           "id": 44,
           "text": "まだまだ冬の服が手放せないですねそうだね",
           "translation": "看来你还离不开冬衣。",
           "startSec": 206.238,
-          "endSec": 209.79000000000002
+          "endSec": 209.79000000000002,
+          "translationEn": "It seems like you can't do without winter clothes yet."
         },
         {
           "id": 45,
           "text": "ちょっと油断をしてると",
-          "translation": "",
+          "translation": "如果你稍微放松警惕",
           "startSec": 210.19,
-          "endSec": 211.678
+          "endSec": 211.678,
+          "translationEn": "If you let your guard down a little"
         },
         {
           "id": 46,
           "text": "何かね風邪ひいちゃったりね",
           "translation": "我想我是感冒了还是怎么的。",
           "startSec": 212.478,
-          "endSec": 214.126
+          "endSec": 214.126,
+          "translationEn": "I guess I caught a cold or something."
         },
         {
           "id": 47,
           "text": "風邪ひいちゃったりとかね そういうことがあるんではい",
           "translation": "不会发生感冒之类的事情。",
           "startSec": 214.462,
-          "endSec": 217.42200000000003
+          "endSec": 217.42200000000003,
+          "translationEn": "Things like catching a cold don't happen."
         },
         {
           "id": 48,
           "text": "気をつけましょうそうですね",
           "translation": "我想我们应该小心",
           "startSec": 217.038,
-          "endSec": 218.686
+          "endSec": 218.686,
+          "translationEn": "I guess we should be careful"
         },
         {
           "id": 49,
           "text": "まあ4月ということなんですけど",
           "translation": "嗯，现在是四月了。",
           "startSec": 220.448,
-          "endSec": 222.86
+          "endSec": 222.86,
+          "translationEn": "Well, it's April."
         },
         {
           "id": 50,
           "text": "僕らの生活にもちょっと変化がやっぱりあるわけで",
           "translation": "毕竟，我们的生活发生了一些变化。",
           "startSec": 223.196,
-          "endSec": 228.298
+          "endSec": 228.298,
+          "translationEn": "After all, there are some changes in our lives."
         },
         {
           "id": 51,
           "text": "これからもまた楽しみたいなと思いますけど",
           "translation": "我希望将来能继续享受它。",
           "startSec": 229.69,
-          "endSec": 232.746
+          "endSec": 232.746,
+          "translationEn": "I hope to continue enjoying it in the future."
         },
         {
           "id": 52,
           "text": "まあいつもいつも4月に言ってる気がするけどはい",
           "translation": "嗯，我觉得我总是说现在是四月，但是是的。",
           "startSec": 234.07,
-          "endSec": 237.526
+          "endSec": 237.526,
+          "translationEn": "Well, I feel like I always say it's April, but yes."
         },
         {
           "id": 53,
           "text": "あの今年こそは ちょっと生活が落ち着くので",
           "translation": "今年，生活会平静一些。",
           "startSec": 237.686,
-          "endSec": 241.33
+          "endSec": 241.33,
+          "translationEn": "This year, life will be a little calmer."
         },
         {
           "id": 54,
           "text": "もうちょっとエピソードを更新できるようになるかなと思っていますが",
           "translation": "我希望我能多更新一些剧集。",
           "startSec": 241.818,
-          "endSec": 246.89
+          "endSec": 246.89,
+          "translationEn": "I hope I can update the episodes a little more."
         },
         {
           "id": 55,
           "text": "したいですね 本当にちゃんとね去年も同じこと言った気がする今年こそはそうですねそうだね",
           "translation": "我真的很想把它做好。我觉得我去年也说过同样的话，但我认为今年是真的。",
           "startSec": 247.848,
-          "endSec": 257.084
+          "endSec": 257.084,
+          "translationEn": "I really want to do it properly.I feel like I said the same thing last year, but I think it's true this year."
         },
         {
           "id": 56,
           "text": "そうなるといいなというふうには思いますけど",
           "translation": "我认为如果发生这种情况就好了。",
           "startSec": 256.956,
-          "endSec": 259.356
+          "endSec": 259.356,
+          "translationEn": "I think it would be good if that happens."
         },
         {
           "id": 57,
           "text": "1月1日の元旦のときに今年は 何回エピソード更新します",
           "translation": "今年1月1号元旦更新多少集？",
           "startSec": 259.884,
-          "endSec": 265.235625
+          "endSec": 265.235625,
+          "translationEn": "How many episodes will be updated this year on New Year's Day, January 1st?"
         },
         {
           "id": 58,
           "text": "みたいなやつを目標を上げてたじゃないですか",
           "translation": "你不是为了这样的事情吗？",
           "startSec": 265.235625,
-          "endSec": 269.398
+          "endSec": 269.398,
+          "translationEn": "Weren't you aiming for something like that?"
         },
         {
           "id": 59,
           "text": "言いましたで どうでしょう 多分",
           "translation": "我说，你觉得怎么样？或许",
           "startSec": 269.398,
-          "endSec": 272.832
+          "endSec": 272.832,
+          "translationEn": "I said, what do you think? Maybe"
         },
         {
           "id": 60,
           "text": "そんなにいい調子で来てはいないんじゃないかなと思うので",
           "translation": "我认为事情进展得不太顺利。",
           "startSec": 274,
-          "endSec": 277.536
+          "endSec": 277.536,
+          "translationEn": "I don't think things are going that well."
         }
       ]
     },
@@ -452,420 +512,480 @@
           "text": "はい皆さん こんばんははい",
           "translation": "是的，大家晚上好，是的",
           "startSec": 0.092,
-          "endSec": 5.02
+          "endSec": 5.02,
+          "translationEn": "Yes everyone Good evening Yes"
         },
         {
           "id": 2,
           "text": "結構前 そんな前じゃないんだけど",
           "translation": "很久以前，但不是很久以前",
           "startSec": 6.236,
-          "endSec": 8.316615384615384
+          "endSec": 8.316615384615384,
+          "translationEn": "Quite a while ago, but not that long ago"
         },
         {
           "id": 3,
           "text": "何かあのパソコンを買ったとか買わないとかっていう話をしたじゃないですか",
           "translation": "你不是说你买没买那台电脑吗？",
           "startSec": 8.316615384615384,
-          "endSec": 12.998
+          "endSec": 12.998,
+          "translationEn": "Didn't you talk about whether you bought that computer or not?"
         },
         {
           "id": 4,
           "text": "しました僕がこれなんですけど これなんですけど これを買うか買わないかを",
           "translation": "这就是我，但就是这样。我可以选择是否购买这个。",
           "startSec": 13.59,
-          "endSec": 20.754
+          "endSec": 20.754,
+          "translationEn": "This is me, but this is it. I have a choice whether to buy this or not."
         },
         {
           "id": 5,
           "text": "もうかなり悩んで",
           "translation": "我已经很担心了",
           "startSec": 22.562,
-          "endSec": 24.146
+          "endSec": 24.146,
+          "translationEn": "I'm already worried a lot"
         },
         {
           "id": 6,
           "text": "2 3年悩んで買おうかな やっぱやめよう 買おうかな やっぱやめようって2 3年悩んで",
           "translation": "想了两三年才想买，决定不买，想了两三年，不买了。",
           "startSec": 25.352,
-          "endSec": 31.372
+          "endSec": 31.372,
+          "translationEn": "I thought about buying it after thinking about it for 2 or 3 years.I decided not to buy it.I thought about not buying it for 2 or 3 years."
         },
         {
           "id": 7,
           "text": "で 買ったら不良品だったっていうので",
           "translation": "所以当我买的时候，我被告知这是一个有缺陷的产品。",
           "startSec": 33.534,
-          "endSec": 36.638
+          "endSec": 36.638,
+          "translationEn": "So when I bought it, I was told that it was a defective product."
         },
         {
           "id": 8,
           "text": "がっかりねがっかりして で またそれを買い直したみたいな",
           "translation": "失望，失望，我想我又买了。",
           "startSec": 37.278,
-          "endSec": 41.854
+          "endSec": 41.854,
+          "translationEn": "Disappointed, disappointed, I think I bought it again."
         },
         {
           "id": 9,
           "text": "ながーいこう 長々とこうね",
           "translation": "我们走很久吧。我们走很久吧。",
           "startSec": 44.19,
-          "endSec": 45.486
+          "endSec": 45.486,
+          "translationEn": "Let's go for a long time. Let's go for a long time."
         },
         {
           "id": 10,
           "text": "待って待って 買ったみたいな話をしたんですけどしましたね",
           "translation": "等等，等等，我说过要买它，但我还是买了。",
           "startSec": 45.918,
-          "endSec": 50.478
+          "endSec": 50.478,
+          "translationEn": "Wait, wait, I talked about buying it, but I did."
         },
         {
           "id": 11,
           "text": "何か最近 パソコン買いましたよねすぐに思って 思った2日後ぐらいに買いましたよね",
           "translation": "您最近买了一台电脑，对吗？你立刻考虑了一下，然后大约两天后就买了。",
           "startSec": 51.682,
-          "endSec": 60.748
+          "endSec": 60.748,
+          "translationEn": "You recently bought a computer, right? You thought about it right away, and then bought it about two days later."
         },
         {
           "id": 12,
           "text": "すぐ買いましたすぐ買って あのもう届いてはい",
           "translation": "我马上就买了。我马上就买了。已经到了。",
           "startSec": 60.748,
-          "endSec": 65.548
+          "endSec": 65.548,
+          "translationEn": "I bought it right away. I bought it right away. It's already arrived."
         },
         {
           "id": 13,
           "text": "そうだよねもうあの多分買おうって思ったのが",
           "translation": "没错，我正想买那个。",
           "startSec": 65.592,
-          "endSec": 69.096
+          "endSec": 69.096,
+          "translationEn": "That's right, I was thinking about buying that one."
         },
         {
           "id": 14,
           "text": "1週間前ぐらいじゃない",
           "translation": "不是大约一周前",
           "startSec": 69.95,
-          "endSec": 71.31
+          "endSec": 71.31,
+          "translationEn": "Not about a week ago"
         },
         {
           "id": 15,
           "text": "全く思ってなかったんですよもう届いたと",
           "translation": "我不知道它已经到了。",
           "startSec": 72.312,
-          "endSec": 76.55199999999999
+          "endSec": 76.55199999999999,
+          "translationEn": "I had no idea it had already arrived."
         },
         {
           "id": 16,
           "text": "ね 届いてたねいや何か なんでしょうね この感じは",
           "translation": "嗯，我猜是有什么，但这种感觉是……",
           "startSec": 77.916,
-          "endSec": 82.884
+          "endSec": 82.884,
+          "translationEn": "Well, I guess it's something, but this feeling is..."
         },
         {
           "id": 17,
           "text": "買った方がいいよっていうアドバイスをいただいてタイミングがね",
           "translation": "我收到了应该购买它的建议，所以时机是正确的。",
           "startSec": 83.86,
-          "endSec": 87.188
+          "endSec": 87.188,
+          "translationEn": "I received advice that I should buy it, so the timing was right."
         },
         {
           "id": 18,
           "text": "あ そっか 買おうって思ってすぐ買いました",
           "translation": "啊，原来如此，我就想买了，就买了。",
           "startSec": 88.994,
-          "endSec": 92.364
+          "endSec": 92.364,
+          "translationEn": "Ah, I see, I thought about buying it and bought it right away."
         },
         {
           "id": 19,
           "text": "いや何か いいね",
           "translation": "不，我喜欢一些东西",
           "startSec": 93.00399999999999,
-          "endSec": 95.896
+          "endSec": 95.896,
+          "translationEn": "No, I like something"
         },
         {
           "id": 20,
           "text": "いや ね やっぱり快適ですね 新しいパソコンね",
           "translation": "不，确实很舒服。这是一台新电脑。",
           "startSec": 96.452,
-          "endSec": 100.97999999999999
+          "endSec": 100.97999999999999,
+          "translationEn": "No, it's really comfortable. It's a new computer."
         },
         {
           "id": 21,
           "text": "まあそうだねかなり使ってたもんね 前のやつ",
           "translation": "嗯，是的，我经常使用前一个。",
           "startSec": 101.444,
-          "endSec": 104.548
+          "endSec": 104.548,
+          "translationEn": "Well, yeah, I used the previous one quite a bit."
         },
         {
           "id": 22,
           "text": "10年ぐらい使ってたんじゃない10年ぐらい使ったかもしれないですびっくりしました",
           "translation": "我大约有 10 年没有使用它了，我可能已经使用它大约 10 年了。我很惊讶。",
           "startSec": 106.336,
-          "endSec": 110.8
+          "endSec": 110.8,
+          "translationEn": "I wasn't using it for about 10 years, I might have been using it for about 10 years.I was surprised."
         },
         {
           "id": 23,
           "text": "何ていうのこう なんだ僕らそのYouTubeとかもやったり今してるけど",
           "translation": "你是什​​么意思？我们现在正在做 YouTube 之类的事情。",
           "startSec": 111.088,
-          "endSec": 115.696
+          "endSec": 115.696,
+          "translationEn": "What do you mean? We're doing YouTube and stuff like that right now."
         },
         {
           "id": 24,
           "text": "まあ写真屋さんなんで",
           "translation": "嗯，这是一家照相店。",
           "startSec": 116.72,
-          "endSec": 118.01599999999999
+          "endSec": 118.01599999999999,
+          "translationEn": "Well, it's a photo shop."
         },
         {
           "id": 25,
           "text": "画像編集とかそういうのとかやるんですけど",
           "translation": "我做图像编辑之类的事情。",
           "startSec": 118.9,
-          "endSec": 121.924
+          "endSec": 121.924,
+          "translationEn": "I do image editing and things like that."
         },
         {
           "id": 26,
           "text": "そういうので すごく大変な作業をするパソコンは別にあるんですよはい",
           "translation": "这就是为什么我有一台单独的计算机来完成极其困难的工作。",
           "startSec": 122.484,
-          "endSec": 129.75500000000002
+          "endSec": 129.75500000000002,
+          "translationEn": "That's why I have a separate computer that does extremely difficult work."
         },
         {
           "id": 27,
           "text": "まあそこにあるんですけど",
           "translation": "嗯，它就在那里。",
           "startSec": 129.97899999999998,
-          "endSec": 130.988
+          "endSec": 130.988,
+          "translationEn": "Well, it's there."
         },
         {
           "id": 28,
           "text": "あの だから まあいっかなとそうなんです",
           "translation": "这就是为什么我认为没关系。",
           "startSec": 132.668,
-          "endSec": 135.588
+          "endSec": 135.588,
+          "translationEn": "That's why I think it's okay."
         },
         {
           "id": 29,
           "text": "ちょっとメールのやり取りをしたりとか",
           "translation": "我们交换了一些电子邮件或其他东西。",
           "startSec": 136.88400000000001,
-          "endSec": 139.7
+          "endSec": 139.7,
+          "translationEn": "We exchanged some emails or something."
         },
         {
           "id": 30,
           "text": "事務的な経理とかね",
           "translation": "行政会计等",
           "startSec": 140.804,
-          "endSec": 143.108
+          "endSec": 143.108,
+          "translationEn": "Administrative accounting etc."
         },
         {
           "id": 31,
           "text": "そういうことをするあとは本当にちょっとした作業をするんだったらまあ古くてもいいかなと",
           "translation": "如果你真的要做一点工作之后，我认为老了也没关系。",
           "startSec": 144.088,
-          "endSec": 150.964
+          "endSec": 150.964,
+          "translationEn": "If you're really going to do a little work after doing that, I think it's okay to be old."
         },
         {
           "id": 32,
           "text": "このメインのそこに後ろにちょうどあるんですけど",
           "translation": "它就在这个主要的后面。",
           "startSec": 152.14,
-          "endSec": 155.708
+          "endSec": 155.708,
+          "translationEn": "It's right there in the back of this main one."
         },
         {
           "id": 33,
           "text": "でっかいディスプレイのね",
           "translation": "这是一个巨大的显示屏。",
           "startSec": 156.636,
-          "endSec": 158.09199999999998
+          "endSec": 158.09199999999998,
+          "translationEn": "It's a huge display."
         },
         {
           "id": 34,
           "text": "すごいこう いいやつはいすごくいいパソコンあるから まあいっかなと思って",
           "translation": "太棒了。我有一台非常好的电脑，所以我认为还可以。",
           "startSec": 159.02,
-          "endSec": 165.238
+          "endSec": 165.238,
+          "translationEn": "It's amazing. I have a really good computer, so I thought it was okay."
         },
         {
           "id": 35,
           "text": "あのこのいわゆるノート型のね あのやつは",
           "translation": "也就是所谓的笔记本式的东西。",
           "startSec": 167.632,
-          "endSec": 171.264
+          "endSec": 171.264,
+          "translationEn": "That so-called notebook type thing."
         },
         {
           "id": 36,
           "text": "変えずに僕も10年 あさみさんも10年ぐらい使ってきたんですけど変えたら快適ですね",
           "translation": "我用了10年没换，麻美也用了10年左右，不过换了会舒服一些。",
           "startSec": 172.098,
-          "endSec": 180.9
+          "endSec": 180.9,
+          "translationEn": "I've been using it for 10 years without changing it, and Asami has been using it for about 10 years, but it would be more comfortable if I changed it."
         },
         {
           "id": 37,
           "text": "いやあ さすがにね あの進化を感じましたそうだね",
           "translation": "嗯，果然，我听说你感受到了这种进化。",
           "startSec": 180.91,
-          "endSec": 186.59
+          "endSec": 186.59,
+          "translationEn": "Well, as expected, I heard that you felt that evolution."
         },
         {
           "id": 38,
           "text": "いや10年はさすがにですよね 何か早く変えたたらよかったなっていうのは思うんですけどまあね",
           "translation": "不，已经10年了。我希望早点改变一些事情，但是哦，好吧。",
           "startSec": 187.486,
-          "endSec": 197.25408163265305
+          "endSec": 197.25408163265305,
+          "translationEn": "No, it's been 10 years. I wish something had changed sooner, but oh well."
         },
         {
           "id": 39,
           "text": "逆によく10年も持ったなっていう感じです",
           "translation": "相反，我觉得我已经这样了10年了。",
           "startSec": 197.25408163265305,
-          "endSec": 201.18795918367346
+          "endSec": 201.18795918367346,
+          "translationEn": "On the contrary, I feel like I've had it for 10 years."
         },
         {
           "id": 40,
           "text": "あんまり難しいことはしなかったしね",
           "translation": "并不太难",
           "startSec": 201.18795918367346,
-          "endSec": 204.53175510204082
+          "endSec": 204.53175510204082,
+          "translationEn": "It wasn't too difficult"
         },
         {
           "id": 41,
           "text": "それでそうですね",
           "translation": "这是正确的",
           "startSec": 204.53175510204082,
-          "endSec": 206.302
+          "endSec": 206.302,
+          "translationEn": "That's right"
         },
         {
           "id": 42,
           "text": "まあそれで ぱっと買うじゃない",
           "translation": "嗯，这不是我立即购买它的原因。",
           "startSec": 206.302,
-          "endSec": 211.15
+          "endSec": 211.15,
+          "translationEn": "Well, that's not why I'd buy it right away."
         },
         {
           "id": 43,
           "text": "僕は結構何か今もいろいろ悩んでるんですけど",
           "translation": "我仍然担心很多事情。",
           "startSec": 212.26,
-          "endSec": 215.508
+          "endSec": 215.508,
+          "translationEn": "I'm still worried about a lot of things."
         },
         {
           "id": 44,
           "text": "買おうかな やめようかなみたいなずっと考えてる感じですね",
           "translation": "我感觉我一直在考虑要不要买。",
           "startSec": 216.11599999999999,
-          "endSec": 219.976
+          "endSec": 219.976,
+          "translationEn": "I feel like I keep thinking about whether I should buy it or not."
         },
         {
           "id": 45,
           "text": "まだあるんだいっぱいある大変だ僕の場合ははい",
           "translation": "还有很多。它太硬。就我而言，是的。",
           "startSec": 220.824,
-          "endSec": 227.29
+          "endSec": 227.29,
+          "translationEn": "There are still many. It's tough. In my case, yes."
         },
         {
           "id": 46,
           "text": "買おうか買わないかとか何かあっちの方がいいんじゃないかとかこれとこれ比べたらどうとか",
           "translation": "我是否应该购买它，是否有更好的东西，或者如何比较这个和这个。",
           "startSec": 228.122,
-          "endSec": 234.362
+          "endSec": 234.362,
+          "translationEn": "Whether I should buy it or not, whether something is better over there, or how to compare this to this."
         },
         {
           "id": 47,
           "text": "新しいやつが出るかもしれないとかなんだかんだすごいいろいろ言ってるうちに",
           "translation": "我已经说了很多事情，比如可能会有新的事情发生。",
           "startSec": 235.4,
-          "endSec": 240.2
+          "endSec": 240.2,
+          "translationEn": "I've been saying a lot of things like there might be a new one."
         },
         {
           "id": 48,
           "text": "何か時間がすごい経っちゃうパターンなんですよね",
           "translation": "这种模式似乎需要花费很多时间。",
           "startSec": 241.406,
-          "endSec": 244.318
+          "endSec": 244.318,
+          "translationEn": "It's a pattern that seems to take a lot of time."
         },
         {
           "id": 49,
           "text": "また次の出ますよね",
           "translation": "下次还会有一个。",
           "startSec": 244.718,
-          "endSec": 246.318
+          "endSec": 246.318,
+          "translationEn": "There will be another one next time."
         },
         {
           "id": 50,
           "text": "いや今って やっぱりこういう時代だから",
           "translation": "好吧，现在毕竟是时候了。",
           "startSec": 246.704,
-          "endSec": 250.688
+          "endSec": 250.688,
+          "translationEn": "Well, now is the time after all."
         },
         {
           "id": 51,
           "text": "例えばカメラでもパソコンでもスマートフォンでも何でもそうだけど",
           "translation": "例如相机、电脑、智能手机等。",
           "startSec": 250.88,
-          "endSec": 257.1783913043478
+          "endSec": 257.1783913043478,
+          "translationEn": "For example, cameras, computers, smartphones, etc."
         },
         {
           "id": 52,
           "text": "発売したらやった新製品やった",
           "translation": "当新产品发布时，我做了一个。",
           "startSec": 257.1783913043478,
-          "endSec": 260.226
+          "endSec": 260.226,
+          "translationEn": "I did a new product when it was released."
         },
         {
           "id": 53,
           "text": "ってなってもう1年後にまた新しいの出るじゃない大体そうなのよ大体そうですよね",
           "translation": "嗯，再过一年就不会再出新的了，对吧？情况大多如此。",
           "startSec": 260.257,
-          "endSec": 265.938
+          "endSec": 265.938,
+          "translationEn": "Well, a new one won't come out in another year, right? That's mostly the case."
         },
         {
           "id": 54,
           "text": "まあパソコンだったらまあ もうちょっとあるやつもあるかもしれないけど2年経つカメラとかもね",
           "translation": "好吧，如果它是一台计算机，那么可能会有一些拥有更多功能，例如已经存在两年的相机。",
           "startSec": 267.074,
-          "endSec": 273.108
+          "endSec": 273.108,
+          "translationEn": "Well, if it's a computer, well, there might be some that have more, like a camera that's been around for two years."
         },
         {
           "id": 55,
           "text": "2 3年たったら また次の機種が次の次のってなって デジタルだからどんどん古くなるじゃない",
           "translation": "两三年后，下一个模型将成为下一个模型，并且由于它是数字化的，因此它将变得过时。",
           "startSec": 273.62,
-          "endSec": 280.58
+          "endSec": 280.58,
+          "translationEn": "After 2 or 3 years, the next model will become the next one, and since it's digital, it will become outdated."
         },
         {
           "id": 56,
           "text": "そうそうそうだから何かそれが切なくてですねそうね悲しくてですね",
           "translation": "是的，没错，所以有一些悲伤，是的，这是悲伤的。",
           "startSec": 280.58,
-          "endSec": 286.02
+          "endSec": 286.02,
+          "translationEn": "Yes, that's right, so there's something sad about that, yes, it's sad."
         },
         {
           "id": 57,
           "text": "何か 僕は何かどちらかといえば1回買ったら ずっと使えるみたいなものの方が好きなんですよ",
           "translation": "如果有的话，我更喜欢一次性购买并永远使用的东西。",
           "startSec": 287.854,
-          "endSec": 293.51800000000003
+          "endSec": 293.51800000000003,
+          "translationEn": "If anything, I prefer things that I can buy once and use forever."
         },
         {
           "id": 58,
           "text": "わかるよこのマイクとかね",
           "translation": "我知道，就像这个麦克风。",
           "startSec": 293.61,
-          "endSec": 295.834
+          "endSec": 295.834,
+          "translationEn": "I know, like this microphone."
         },
         {
           "id": 59,
           "text": "もうずっと昔からミュージシャンがね歌を歌ったりするのに使ってたりするやつですけど",
           "translation": "这是音乐家长期以来用来演唱歌曲的东西。",
           "startSec": 297.638,
-          "endSec": 303.734
+          "endSec": 303.734,
+          "translationEn": "It's something that musicians have been using for singing songs for a long time."
         },
         {
           "id": 60,
           "text": "そういう方が好きかな",
           "translation": "我想我喜欢这样",
           "startSec": 304.23,
-          "endSec": 307.07
+          "endSec": 307.07,
+          "translationEn": "I guess I like it that way"
         }
       ]
     },
@@ -883,420 +1003,480 @@
           "text": "はい皆さん こんばんはまもなく4月になりますね早いですね",
           "translation": "大家好，马上就要四月了，不是吗？",
           "startSec": 0.242,
-          "endSec": 7.336896551724138
+          "endSec": 7.336896551724138,
+          "translationEn": "Hello everyone, it's almost April, isn't it?"
         },
         {
           "id": 2,
           "text": "何かやっぱり日本はね",
           "translation": "毕竟日本还是有一些东西的。",
           "startSec": 7.336620689655172,
-          "endSec": 9.333862068965518
+          "endSec": 9.333862068965518,
+          "translationEn": "There's something about Japan after all."
         },
         {
           "id": 3,
           "text": "いつもいつも言ってますけど",
           "translation": "我总是这么说",
           "startSec": 9.333862068965518,
-          "endSec": 12.13
+          "endSec": 12.13,
+          "translationEn": "I always say it"
         },
         {
           "id": 4,
           "text": "3月と4月の間も 1年の終わりと始まりっていうのがあるので",
           "translation": "三月和四月之间也有一年的结束和开始。",
           "startSec": 12.13,
-          "endSec": 17.922
+          "endSec": 17.922,
+          "translationEn": "There is also an end and a beginning of the year between March and April."
         },
         {
           "id": 5,
           "text": "何かこう 何て言ったらいいんでしょうね",
           "translation": "我应该说什么？",
           "startSec": 18.658,
-          "endSec": 21.134
+          "endSec": 21.134,
+          "translationEn": "What should I say?"
         },
         {
           "id": 6,
           "text": "姿勢を正すというかね",
           "translation": "我想我会纠正我的姿势。",
           "startSec": 21.438,
-          "endSec": 23.198
+          "endSec": 23.198,
+          "translationEn": "I guess I'll correct my posture."
         },
         {
           "id": 7,
           "text": "改めて4月から始まるっていう感覚があるんで",
           "translation": "我有预感，四月份又要开始了。",
           "startSec": 24,
-          "endSec": 28.224
+          "endSec": 28.224,
+          "translationEn": "I have a feeling that it will start again in April."
         },
         {
           "id": 8,
           "text": "僕はどっちかというと12月から",
           "translation": "如果有的话，我从十二月就开始了。",
           "startSec": 29.96,
-          "endSec": 33.25448979591837
+          "endSec": 33.25448979591837,
+          "translationEn": "I've been since December, if anything."
         },
         {
           "id": 9,
           "text": "1月になるその1年の終わり始まり お正月よりも3月4月の区切りの方が",
           "translation": "一月是岁末的开始，三四月间的休息比过年要好。",
           "startSec": 33.25448979591837,
-          "endSec": 40.722
+          "endSec": 40.722,
+          "translationEn": "January is the beginning of the end of the year, and the break between March and April is better than the New Year."
         },
         {
           "id": 10,
           "text": "何かこう 1年っていう感じがしますね確かにね",
           "translation": "确实感觉已经过去一年了。",
           "startSec": 42.766,
-          "endSec": 45.598
+          "endSec": 45.598,
+          "translationEn": "It definitely feels like it's been a year."
         },
         {
           "id": 11,
           "text": "何て言ったらいいんでしょうやっぱ学校とかがあるからその学校の頃ね1年生から",
           "translation": "我应该说什么？毕竟有一所学校，所以我从第一年开始就在那所学校。",
           "startSec": 46.878,
-          "endSec": 52.75105263157895
+          "endSec": 52.75105263157895,
+          "translationEn": "What should I say? After all, there was a school, so I was at that school, from the first year onwards."
         },
         {
           "id": 12,
           "text": "2年生になるとかさ高校生から",
           "translation": "从高中二年级学生开始",
           "startSec": 52.75105263157895,
-          "endSec": 55.14726315789474
+          "endSec": 55.14726315789474,
+          "translationEn": "From second year high school students"
         },
         {
           "id": 13,
           "text": "大学生になるっていうその区切りがやっぱ 3月と4月だったから",
           "translation": "毕竟，成为大学生的间歇期是在三月和四月。",
           "startSec": 55.14726315789474,
-          "endSec": 60.282
+          "endSec": 60.282,
+          "translationEn": "After all, the break in becoming a university student was in March and April."
         },
         {
           "id": 14,
           "text": "やっぱみんな多分 日本人はそっちの方がこう",
           "translation": "我想每个人都是这样，日本人也是这样。",
           "startSec": 60.992,
-          "endSec": 63.392
+          "endSec": 63.392,
+          "translationEn": "I guess everyone is like that, Japanese people are like that."
         },
         {
           "id": 15,
           "text": "1年間って感じてる人多いんじゃないかなそうだよね",
           "translation": "我想很多人都觉得这只是一年。",
           "startSec": 64.331,
-          "endSec": 67.996
+          "endSec": 67.996,
+          "translationEn": "I think there are a lot of people who feel like it's only one year."
         },
         {
           "id": 16,
           "text": "やっぱり卒業したりとかね 入学したりとかさみんなが変わっていくから",
           "translation": "毕竟，每个人在毕业或进入学校时都会发生变化。",
           "startSec": 67.996,
-          "endSec": 73.66
+          "endSec": 73.66,
+          "translationEn": "After all, everyone changes when they graduate or enter a school."
         },
         {
           "id": 17,
           "text": "会社とかもねそう",
           "translation": "我猜这也是一家公司。",
           "startSec": 74.012,
-          "endSec": 75.5
+          "endSec": 75.5,
+          "translationEn": "I guess it's a company too."
         },
         {
           "id": 18,
           "text": "そこで始まって終わりっていう感じだもんね",
           "translation": "感觉就像从那里开始和结束。",
           "startSec": 76.646,
-          "endSec": 79.81952112676056
+          "endSec": 79.81952112676056,
+          "translationEn": "It feels like it starts and ends there."
         },
         {
           "id": 19,
           "text": "そうそうそう１年間なので また今年も1年頑張ろうっていうようなね",
           "translation": "是啊，已经过去一年了，今年我还要继续努力。",
           "startSec": 79.81952112676056,
-          "endSec": 84.89715492957747
+          "endSec": 84.89715492957747,
+          "translationEn": "That's right, it's been a year, so I'm going to try my best again this year."
         },
         {
           "id": 20,
           "text": "そういう気持ちになりますねそうですね",
           "translation": "看来你就是这样的感觉。",
           "startSec": 84.89715492957747,
-          "endSec": 87.912
+          "endSec": 87.912,
+          "translationEn": "It seems like that's how you feel."
         },
         {
           "id": 21,
           "text": "今日はですね メールにいただいている質問ですね",
           "translation": "今天，这是我在电子邮件中收到的一个问题。",
           "startSec": 88.634,
-          "endSec": 91.97800000000001
+          "endSec": 91.97800000000001,
+          "translationEn": "Today, this is a question I received in an email."
         },
         {
           "id": 22,
           "text": "ありがとうございます",
           "translation": "谢谢",
           "startSec": 92.362,
-          "endSec": 93.882
+          "endSec": 93.882,
+          "translationEn": "thank you"
         },
         {
           "id": 23,
           "text": "いつもコメントいただいてるスタンリーさんからのコメントなんですけどはい",
           "translation": "这是斯坦利先生的评论，他总是收到评论，是的。",
           "startSec": 95.25800000000001,
-          "endSec": 101.25
+          "endSec": 101.25,
+          "translationEn": "This is a comment from Mr. Stanley, who always receives comments, yes."
         },
         {
           "id": 24,
           "text": "前にイントネーションとかね何とかなぁっていう言葉について質問いただいてた方ですけどはい",
           "translation": "之前有人问过我关于语调和其他词语的问题，但是是的。",
           "startSec": 102.72999999999999,
-          "endSec": 109.21
+          "endSec": 109.21,
+          "translationEn": "Someone previously asked me about intonation and other words, but yes."
         },
         {
           "id": 25,
           "text": "今回お伺いしたいのは「ちゃう」という動詞についてです",
           "translation": "这次我想问你关于动词“chau”的问题。",
           "startSec": 109.67,
-          "endSec": 113.894
+          "endSec": 113.894,
+          "translationEn": "This time I would like to ask you about the verb \"chau\"."
         },
         {
           "id": 26,
           "text": "これは動詞の「て形」に「しまう」がついたものが縮約された形なのでしょ",
           "translation": "这是动词“te”的缩写形式，加上“sakuma”。",
           "startSec": 114.83,
-          "endSec": 121.321
+          "endSec": 121.321,
+          "translationEn": "This is a contracted form of the verb ``te'' with ``sakuma'' added."
         },
         {
           "id": 27,
           "text": "うか例えば思ってしまうっていうのが 思っちゃうっていうふうになるやつね",
           "translation": "例如，当你思考某事时，它会变成“我开始思考某事。”",
           "startSec": 121.321,
-          "endSec": 127.812
+          "endSec": 127.812,
+          "translationEn": "For example, when you think something, it becomes something like, ``I start thinking about something.''"
         },
         {
           "id": 28,
           "text": "またカジュアルな会話でよく耳にするのです",
           "translation": "这句话也经常在闲聊中听到。",
           "startSec": 129.051,
-          "endSec": 131.83421428571427
+          "endSec": 131.83421428571427,
+          "translationEn": "It is also often heard in casual conversations."
         },
         {
           "id": 29,
           "text": "がどのような意味やニュアンスがあるのか詳しく教えていただけますでしょうか",
           "translation": "您能详细告诉我这句话的含义和细微差别吗？",
           "startSec": 131.83421428571427,
-          "endSec": 136.844
+          "endSec": 136.844,
+          "translationEn": "Could you please tell me in detail what the meaning and nuances are?"
         },
         {
           "id": 30,
           "text": "もしお時間がかかっても構いませんので先生のお考えをぜひお聞かせいただけたら幸いです",
           "translation": "如果您能花时间让我知道您的想法，我将不胜感激。",
           "startSec": 137.096,
-          "endSec": 143.416
+          "endSec": 143.416,
+          "translationEn": "I would appreciate it if you could take the time to let me know your thoughts."
         },
         {
           "id": 31,
           "text": "お忙しいところ恐れ入りますがご検討のほど よろしくお願いいたします",
           "translation": "对于给您带来的不便，我们深表歉意，但感谢您的考虑。",
           "startSec": 143.416,
-          "endSec": 148.10399999999998
+          "endSec": 148.10399999999998,
+          "translationEn": "We apologize for the inconvenience, but thank you for your consideration."
         },
         {
           "id": 32,
           "text": "ご丁寧にありがとうございますそうだね",
           "translation": "非常感谢您的好意。",
           "startSec": 149.192,
-          "endSec": 151.848
+          "endSec": 151.848,
+          "translationEn": "Thank you very much for your kindness."
         },
         {
           "id": 33,
           "text": "すごく綺麗な日本語で 私達も考えさせられるなと綺",
           "translation": "这是如此美丽的日语，它也让我们思考。",
           "startSec": 152.102,
-          "endSec": 156.747
+          "endSec": 156.747,
+          "translationEn": "It's such beautiful Japanese that it makes us think too."
         },
         {
           "id": 34,
           "text": "麗な日本語を書きましょうといつも僕も思いますけどね",
           "translation": "我一直认为我应该写出漂亮的日语。",
           "startSec": 156.747,
-          "endSec": 161.392
+          "endSec": 161.392,
+          "translationEn": "I always think that I should write beautiful Japanese."
         },
         {
           "id": 35,
           "text": "いやびっくりしました素晴らしいですはい",
           "translation": "不，我很惊讶。这很棒。是的。",
           "startSec": 161.392,
-          "endSec": 164.704
+          "endSec": 164.704,
+          "translationEn": "No, I was surprised. It's great. Yes."
         },
         {
           "id": 36,
           "text": "なるほどですね何とかちゃうっていう言葉ですね",
           "translation": "我懂了。这是一个表示某事将会完成的词。",
           "startSec": 164.862,
-          "endSec": 170.142
+          "endSec": 170.142,
+          "translationEn": "I see. It's a word that means something will be done."
         },
         {
           "id": 37,
           "text": "ちゃうというか しちゃうとかね",
           "translation": "或者我应该说，我会这么做。",
           "startSec": 170.35,
-          "endSec": 171.966
+          "endSec": 171.966,
+          "translationEn": "Or should I say, I'm going to do it."
         },
         {
           "id": 38,
           "text": "うんうんうんそういうところですねそうだね",
           "translation": "是的，是的，似乎是这样。",
           "startSec": 172.574,
-          "endSec": 178.774
+          "endSec": 178.774,
+          "translationEn": "Yes, yes, that seems to be the case."
         },
         {
           "id": 39,
           "text": "うんうんこれに関しては まさしくこのメールで書いていただいてる通り",
           "translation": "是的，这正是您在这封电子邮件中所写的内容。",
           "startSec": 178.774,
-          "endSec": 184.998
+          "endSec": 184.998,
+          "translationEn": "Yes, this is exactly what you wrote in this email."
         },
         {
           "id": 40,
           "text": "何とかしてしまう",
           "translation": "我会做点什么",
           "startSec": 187.042,
-          "endSec": 188.706
+          "endSec": 188.706,
+          "translationEn": "I'll do something"
         },
         {
           "id": 41,
           "text": "例えば 何だろう 食べてしまうとか 何でもいいんだけどね",
           "translation": "例如，我不知道吃什么，但什么都可以。",
           "startSec": 189.696,
-          "endSec": 198.556
+          "endSec": 198.556,
+          "translationEn": "For example, I don't know what to eat, but anything is fine."
         },
         {
           "id": 42,
           "text": "言ってしまうやってしまう",
           "translation": "我会说，我会做",
           "startSec": 199.276,
-          "endSec": 202.62
+          "endSec": 202.62,
+          "translationEn": "I'll say it, I'll do it"
         },
         {
           "id": 43,
           "text": "とか 何でもいい落としてしまうとかはいはいはい",
           "translation": "或者我会放弃任何东西，是的，是的，是的。",
           "startSec": 204.192,
-          "endSec": 208.648
+          "endSec": 208.648,
+          "translationEn": "Or I'll drop anything, yes, yes, yes."
         },
         {
           "id": 44,
           "text": "そういうのが全部 食べちゃう とか 行っちゃう",
           "translation": "我会把这些东西都吃掉或者走。",
           "startSec": 208.648,
-          "endSec": 213.10399999999998
+          "endSec": 213.10399999999998,
+          "translationEn": "I'll eat all those things or go."
         },
         {
           "id": 45,
           "text": "落としちゃうみたいなその まあそういうふうに変わるということですねそうですね",
           "translation": "就像丢掉它一样。嗯，事情就是这样改变的，对吧？",
           "startSec": 213.248,
-          "endSec": 220.086
+          "endSec": 220.086,
+          "translationEn": "It's like dropping it. Well, that's how it changes, right?"
         },
         {
           "id": 46,
           "text": "なので もう答えそのまま書いていただいてる形になっているのですが",
           "translation": "所以，答案已经写好了。",
           "startSec": 220.454,
-          "endSec": 227.844
+          "endSec": 227.844,
+          "translationEn": "So, the answer is already written as is."
         },
         {
           "id": 47,
           "text": "その意味やニュアンスっていうところですねうんうんうんうん",
           "translation": "这是关于含义和细微差别的。",
           "startSec": 229.86,
-          "endSec": 233.812
+          "endSec": 233.812,
+          "translationEn": "It's about the meaning and nuance."
         },
         {
           "id": 48,
           "text": "そうねカジュアルになるっていうところが一番あると思いますけど",
           "translation": "嗯，我认为最重要的是要休闲。",
           "startSec": 239.972,
-          "endSec": 245.392
+          "endSec": 245.392,
+          "translationEn": "Well, I think the most important thing is to be casual."
         },
         {
           "id": 49,
           "text": "そうだな 難しいですね これは",
           "translation": "是的，这很难。",
           "startSec": 246.92,
-          "endSec": 249.352
+          "endSec": 249.352,
+          "translationEn": "Yes, this is difficult."
         },
         {
           "id": 50,
           "text": "意味はそんなにっていうか 変わらないですよね",
           "translation": "意义并没有真正改变那么多，不是吗？",
           "startSec": 251.094,
-          "endSec": 254.47
+          "endSec": 254.47,
+          "translationEn": "The meaning doesn't really change that much, does it?"
         },
         {
           "id": 51,
           "text": "前も言った事あるんですけど",
           "translation": "我以前已经说过了。",
           "startSec": 255.302,
-          "endSec": 257.366
+          "endSec": 257.366,
+          "translationEn": "I've said it before."
         },
         {
           "id": 52,
           "text": "例えば こないだ何か 何か食べちゃいけないもん食べちゃってさみたいなはいはいはい",
           "translation": "例如，有一天我感觉自己吃了不该吃的东西。",
           "startSec": 257.51,
-          "endSec": 264.56399999999996
+          "endSec": 264.56399999999996,
+          "translationEn": "For example, the other day I felt like I ate something I shouldn't have."
         },
         {
           "id": 53,
           "text": "何とかちゃってっていうのは例えば正確に言えばもっと綺麗に言うとこ",
           "translation": "比如说，更准确地说，我想说出了点问题。",
           "startSec": 265.508,
-          "endSec": 270.59299999999996
+          "endSec": 270.59299999999996,
+          "translationEn": "For example, to be more precise, I would like to say that something has gone wrong."
         },
         {
           "id": 54,
           "text": "の間食べて 食べちゃいけないものを食べてしまってとかっていうこの",
           "translation": "当您吃了不应该吃的东西时就会发生这种情况。",
           "startSec": 270.59299999999996,
-          "endSec": 275.678
+          "endSec": 275.678,
+          "translationEn": "This happens when you eat something that you shouldn't eat."
         },
         {
           "id": 55,
           "text": "何とかしてしまってっていうのが 正式な言い方なんだけど",
           "translation": "官方的说法是我对此做了一些事情。",
           "startSec": 275.678,
-          "endSec": 279.118
+          "endSec": 279.118,
+          "translationEn": "The official way of saying it is that I did something about it."
         },
         {
           "id": 56,
           "text": "食べちゃってっていうことなるんだけど",
           "translation": "我想这意味着我已经把它全部吃完了。",
           "startSec": 279.51800000000003,
-          "endSec": 281.678
+          "endSec": 281.678,
+          "translationEn": "I guess that means I've eaten it all."
         },
         {
           "id": 57,
           "text": "日常の会話ではむしろ ちゃうというか 何とかしちゃう",
           "translation": "在日常谈话中，我宁愿说一些话或做一些事。",
           "startSec": 282.614,
-          "endSec": 287.782
+          "endSec": 287.782,
+          "translationEn": "In everyday conversation, I would rather say something or do something about it."
         },
         {
           "id": 58,
           "text": "何か 何だろうあれ落としちゃってとか切符忘れちゃって",
           "translation": "我想知道我是否掉了什么东西或者忘记了我的票。",
           "startSec": 290.664,
-          "endSec": 294.43399999999997
+          "endSec": 294.43399999999997,
+          "translationEn": "I wonder if I dropped something or forgot my ticket."
         },
         {
           "id": 59,
           "text": "財布忘れちゃってさとか何かお金を落としちゃってと",
           "translation": "我忘记带钱包或掉了一些钱。",
           "startSec": 295.032,
-          "endSec": 300.66700000000003
+          "endSec": 300.66700000000003,
+          "translationEn": "I forgot my wallet or dropped some money."
         },
         {
           "id": 60,
           "text": "かそういうことの方が 普段の会話では多いとそうだね",
           "translation": "看来这样的事情在日常对话中比较常见。",
           "startSec": 300.66700000000003,
-          "endSec": 306.302
+          "endSec": 306.302,
+          "translationEn": "It seems like things like that are more common in everyday conversations."
         }
       ]
     },
@@ -1314,420 +1494,480 @@
           "text": "はい皆さん こんばんは今日はですねはい",
           "translation": "是的，大家，今天晚上好。",
           "startSec": 0.812,
-          "endSec": 5.9319999999999995
+          "endSec": 5.9319999999999995,
+          "translationEn": "Yes everyone, good evening today."
         },
         {
           "id": 2,
           "text": "久しぶりにあの質問をやりたいと思います久しぶりですねそうだね",
           "translation": "我很长时间以来第一次问这个问题。已经有一段时间了，对吧？",
           "startSec": 5.516,
-          "endSec": 11.836
+          "endSec": 11.836,
+          "translationEn": "I'd like to ask that question for the first time in a while.It's been a while, right?"
         },
         {
           "id": 3,
           "text": "質問がいっぱい来ていてちょっと溜まっているんでち",
           "translation": "我收到了很多问题，所以我有点卡住了。",
           "startSec": 12.14,
-          "endSec": 16.106
+          "endSec": 16.106,
+          "translationEn": "I've been getting a lot of questions so I'm a little stuck."
         },
         {
           "id": 4,
           "text": "ょっとずつ回答していかないとなと思っているんですがやりましょう",
           "translation": "我觉得我需要回答一点，但我们还是回答吧。",
           "startSec": 16.106,
-          "endSec": 20.92
+          "endSec": 20.92,
+          "translationEn": "I feel like I need to answer a little bit, but let's do it."
         },
         {
           "id": 5,
           "text": "どれにしましょうかねこれにしようはい",
           "translation": "我应该选择哪个？我们就看这个吧。",
           "startSec": 22.104,
-          "endSec": 25.262
+          "endSec": 25.262,
+          "translationEn": "Which should I choose? Let's go with this one."
         },
         {
           "id": 6,
           "text": "読みますねお願いします",
           "translation": "请我读一下",
           "startSec": 29.352,
-          "endSec": 31.464
+          "endSec": 31.464,
+          "translationEn": "I'll read it please"
         },
         {
           "id": 7,
           "text": "「生々しい」の言葉の意味と使い方を説明していただけませんかとお話ですね",
           "translation": "我想知道你是否能解释一下“raw”这个词的含义和用法。",
           "startSec": 32.93,
-          "endSec": 40.364
+          "endSec": 40.364,
+          "translationEn": "I was wondering if you could explain the meaning and usage of the word \"raw\"."
         },
         {
           "id": 8,
           "text": "生々しいですねはい",
           "translation": "很生动 是的",
           "startSec": 40.364,
-          "endSec": 44.068
+          "endSec": 44.068,
+          "translationEn": "It's vivid yes"
         },
         {
           "id": 9,
           "text": "面白い言葉だなと思いましたねそうですね",
           "translation": "我觉得这个词很有趣，对吧？",
           "startSec": 44.9,
-          "endSec": 48.372
+          "endSec": 48.372,
+          "translationEn": "I thought it was an interesting word, right?"
         },
         {
           "id": 10,
           "text": "生々しいという言葉使いますか生々しい あんまり使わないですね",
           "translation": "你用生动这个词吗？我不使用“生动”这个词。",
           "startSec": 48.372,
-          "endSec": 56.396
+          "endSec": 56.396,
+          "translationEn": "Do you use the word vivid? I don't use the word vivid."
         },
         {
           "id": 11,
           "text": "なるほどね久しぶりに聞きましたし 言いました",
           "translation": "我明白了，我已经有一段时间没有听到了，我也这么说了。",
           "startSec": 57.356,
-          "endSec": 61.698
+          "endSec": 61.698,
+          "translationEn": "I see, it's been a while since I heard it, and I said it."
         },
         {
           "id": 12,
           "text": "確かに意味はわかるし 使いそうなんだけど実際に確かにこう 今 僕も口に出したのは",
           "translation": "我确实知道它的意思，而且我想我可能会使用它，但这就是我刚才所说的。",
           "startSec": 63.6,
-          "endSec": 74.818
+          "endSec": 74.818,
+          "translationEn": "I do know what it means, and I think I'll probably use it, but that's what I actually said just now."
         },
         {
           "id": 13,
           "text": "初めてではないと思うけど まああんまり口に出すことはないかもしれないね",
           "translation": "我认为这不是第一次，但我可能不会大声说出来。",
           "startSec": 76.386,
-          "endSec": 81.922
+          "endSec": 81.922,
+          "translationEn": "I don't think it's the first time, but I probably won't say it out loud."
         },
         {
           "id": 14,
           "text": "そう普通の会話とかでは使わないというかあんまり言わないかもしれないね",
           "translation": "是的，我在正常谈话中不使用它，或者也许我不经常说它。",
           "startSec": 81.922,
-          "endSec": 87.714
+          "endSec": 87.714,
+          "translationEn": "Yeah, I don't use it in normal conversation, or maybe I don't say it very often."
         },
         {
           "id": 15,
           "text": "意味わかります生々しい",
           "translation": "我明白你的意思，很生动",
           "startSec": 89.64,
-          "endSec": 91.624
+          "endSec": 91.624,
+          "translationEn": "I understand what you mean, it's vivid"
         },
         {
           "id": 16,
           "text": "うーんいろんな意味がありますよねそうですね",
           "translation": "嗯，看来寓意还挺多的。",
           "startSec": 93.02199999999999,
-          "endSec": 98.25999999999999
+          "endSec": 98.25999999999999,
+          "translationEn": "Well, it seems like it has a lot of meanings."
         },
         {
           "id": 17,
           "text": "あのね 多分これ難しいと思うんで 結構生々しいっていうの難しいです",
           "translation": "你知道，我认为这可能很困难，所以很难说它很形象。",
           "startSec": 100.104,
-          "endSec": 104.904
+          "endSec": 104.904,
+          "translationEn": "You know, I think this is probably difficult, so it's difficult to say it's quite graphic."
         },
         {
           "id": 18,
           "text": "そうこの質問者さんがどの生々しいの意味を言って",
           "translation": "对了，问这个问题的人说的图形是什么意思？",
           "startSec": 105.096,
-          "endSec": 111.042
+          "endSec": 111.042,
+          "translationEn": "That's right, what did the person asking this question mean by graphic?"
         },
         {
           "id": 19,
           "text": "説明してくださいっていうふうに言ってるかわかんないんだけど",
           "translation": "我不知道你是否要我解释一下。",
           "startSec": 111.426,
-          "endSec": 114.194
+          "endSec": 114.194,
+          "translationEn": "I don't know if you're asking me to explain."
         },
         {
           "id": 20,
           "text": "いくつかあってですねはい",
           "translation": "是的，有几个。",
           "startSec": 115.566,
-          "endSec": 118.956
+          "endSec": 118.956,
+          "translationEn": "Yes, there are several."
         },
         {
           "id": 21,
           "text": "これは ポジティブな言い方にもできるしネガティブな言い方に",
           "translation": "这可以用积极的方式来表达，也可以用消极的方式来表达。",
           "startSec": 119.372,
-          "endSec": 124.48500000000001
+          "endSec": 124.48500000000001,
+          "translationEn": "This can be said in a positive way or in a negative way."
         },
         {
           "id": 22,
           "text": "もできるその状況によって変わってくるということなんですねはい",
           "translation": "是的，这取决于具体情况。",
           "startSec": 124.48500000000001,
-          "endSec": 129.598
+          "endSec": 129.598,
+          "translationEn": "Yes, it depends on the situation."
         },
         {
           "id": 23,
           "text": "で まあ生っていうのはさ 何かこう生きているとか",
           "translation": "嗯，生活就是这样生活。",
           "startSec": 132.478,
-          "endSec": 136.359
+          "endSec": 136.359,
+          "translationEn": "Well, life is something like living like this."
         },
         {
           "id": 24,
           "text": "さ何かそのままのっていうのがあるじゃないそうだね",
           "translation": "似乎有这么一件事，本来就是这样的。",
           "startSec": 136.359,
-          "endSec": 140.24
+          "endSec": 140.24,
+          "translationEn": "It seems that there is such a thing as just the way it is."
         },
         {
           "id": 25,
           "text": "まあ例えば 生のお魚とかって言ったらこう お刺身とかねありますけど",
           "translation": "嗯，例如，当我们谈论生鱼时，就会有生鱼片之类的东西。",
           "startSec": 140.38400000000001,
-          "endSec": 145.28204255319153
+          "endSec": 145.28204255319153,
+          "translationEn": "Well, for example, when we talk about raw fish, there are things like sashimi."
         },
         {
           "id": 26,
           "text": "まあそのままの状態みたいな",
           "translation": "嗯，好像还是一样",
           "startSec": 145.28204255319153,
-          "endSec": 147.36
+          "endSec": 147.36,
+          "translationEn": "Well, it seems like it's still the same"
         },
         {
           "id": 27,
           "text": "言い方を日本で生ということをよく言うんですけど",
           "translation": "我经常说我住在日本。",
           "startSec": 148.126,
-          "endSec": 151.678
+          "endSec": 151.678,
+          "translationEn": "I often say that I live in Japan."
         },
         {
           "id": 28,
           "text": "まあそこから生々しいっていうふうに言うものがあって",
           "translation": "嗯，它有一些东西给人一种生动的感觉。",
           "startSec": 152.302,
-          "endSec": 155.886
+          "endSec": 155.886,
+          "translationEn": "Well, there's something about it that gives it a vivid feel."
         },
         {
           "id": 29,
           "text": "まああの本物っぽいとかそのままっぽいみたいな感じのニュアンスなんですねうんうんうん",
           "translation": "嗯，这是一种感觉的细微差别，就像它是真实的或只是那样。",
           "startSec": 156.372,
-          "endSec": 165.364
+          "endSec": 165.364,
+          "translationEn": "Well, it's a nuance of feeling like it's real or just like that."
         },
         {
           "id": 30,
           "text": "で よく使うのは 例えば 生々しい傷跡とかね",
           "translation": "例如，我经常将它用于诸如生动的疤痕之类的事情。",
           "startSec": 165.828,
-          "endSec": 173.204
+          "endSec": 173.204,
+          "translationEn": "And I often use it for things like vivid scars, for example."
         },
         {
           "id": 31,
           "text": "うんうんうんうん",
           "translation": "是啊是啊是啊",
           "startSec": 173.602,
-          "endSec": 174.962
+          "endSec": 174.962,
+          "translationEn": "Yeah yeah yeah yeah"
         },
         {
           "id": 32,
           "text": "あの 僕よく子供の頃によく怪我をしたんです転んだりとか",
           "translation": "你知道，我小时候经常受伤，比如摔倒。",
           "startSec": 175.906,
-          "endSec": 182.148
+          "endSec": 182.148,
+          "translationEn": "You know, I used to get injured a lot when I was a kid, like falling down."
         },
         {
           "id": 33,
           "text": "何か自転車で事故をしたりとかね",
           "translation": "比如自行车事故。",
           "startSec": 183.172,
-          "endSec": 185.316
+          "endSec": 185.316,
+          "translationEn": "Something like a bicycle accident."
         },
         {
           "id": 34,
           "text": "よく怪我をしてたんですけどはい",
           "translation": "我经常受伤，但是是的。",
           "startSec": 186.26,
-          "endSec": 189.14000000000001
+          "endSec": 189.14000000000001,
+          "translationEn": "I was often injured, but yes."
         },
         {
           "id": 35,
           "text": "傷 怪我したら傷ができるじゃないですか手とか足とかにねはい",
           "translation": "疤痕 当你受伤时，你的手和脚上都会留下疤痕，对吗？",
           "startSec": 190.718,
-          "endSec": 195.71
+          "endSec": 195.71,
+          "translationEn": "Scars When you get hurt, you get scars on your hands and feet, right?"
         },
         {
           "id": 36,
           "text": "それがまあ いかにも今傷がついたというか生々しい傷跡とかって言い方をするんですけど",
           "translation": "嗯，这就是我所说的疤痕，或者更确切地说是新鲜疤痕。",
           "startSec": 195.406,
-          "endSec": 202.524
+          "endSec": 202.524,
+          "translationEn": "Well, that's what I call a scar, or rather a fresh scar."
         },
         {
           "id": 37,
           "text": "まあ痛そうだなとか うわーってこう",
           "translation": "哇，看起来很痛苦。",
           "startSec": 203.66,
-          "endSec": 206.098
+          "endSec": 206.098,
+          "translationEn": "Wow, that looks like pain."
         },
         {
           "id": 38,
           "text": "まあそういうの嫌いな人もいるかなと思うんですけど",
           "translation": "嗯，我想有些人不喜欢这种事情。",
           "startSec": 207.746,
-          "endSec": 209.794
+          "endSec": 209.794,
+          "translationEn": "Well, I guess there are some people who don't like that kind of thing."
         },
         {
           "id": 39,
           "text": "まあ何ていうの そのうわーってなる感じ結構生々しいというかまあ何て言ったらいいんでしょうね",
           "translation": "嗯，我不知道该说什么，那种哇的感觉真是太生动了。",
           "startSec": 210.578,
-          "endSec": 218.65
+          "endSec": 218.65,
+          "translationEn": "Well, I don't know what to say, that Wow feeling is quite vivid."
         },
         {
           "id": 40,
           "text": "今怪我したばっかりみたいなこう フレッシュさというか そういう感",
           "translation": "就好像他刚刚受过伤，或者更确切地说，他感觉很新鲜。",
           "startSec": 219.466,
-          "endSec": 225.139
+          "endSec": 225.139,
+          "translationEn": "It's like he's just been injured, or rather, he feels fresh."
         },
         {
           "id": 41,
           "text": "じはいはいはいそれは どちらかと言えば 何かネガティブなっていうか",
           "translation": "是的，是的，这是相当消极的。",
           "startSec": 225.139,
-          "endSec": 230.812
+          "endSec": 230.812,
+          "translationEn": "Yes, yes, that's rather negative."
         },
         {
           "id": 42,
           "text": "いい方なんじゃないかなと思うんですよねそうですね",
           "translation": "我认为这是个好主意，对吧？",
           "startSec": 231.15800000000002,
-          "endSec": 233.87800000000001
+          "endSec": 233.87800000000001,
+          "translationEn": "I think it's a good idea, right?"
         },
         {
           "id": 43,
           "text": "ちょっとあの 見れないみたいなそうそうそうそうで もう",
           "translation": "好像看不出来啊，是啊，就是这样。",
           "startSec": 233.702,
-          "endSec": 239.349
+          "endSec": 239.349,
+          "translationEn": "It's like I can't see it, yeah, yeah, it's like that."
         },
         {
           "id": 44,
           "text": "1回その同じ系列でいくと例えば 誰かお話をしてますとはい",
           "translation": "如果您遵循同一条路线一次，例如，如果有人正在与您交谈，那么可以。",
           "startSec": 239.349,
-          "endSec": 244.996
+          "endSec": 244.996,
+          "translationEn": "If you follow the same line once, for example, if someone is talking to you, then yes."
         },
         {
           "id": 45,
           "text": "で こないだちょっと交通事故を見ちゃって",
           "translation": "所以，前几天我看到了一场交通事故。",
           "startSec": 244.612,
-          "endSec": 249.074
+          "endSec": 249.074,
+          "translationEn": "So, I saw a traffic accident the other day."
         },
         {
           "id": 46,
           "text": "見ちゃってさって",
           "translation": "看看它",
           "startSec": 250.152,
-          "endSec": 250.952
+          "endSec": 250.952,
+          "translationEn": "Just look at it"
         },
         {
           "id": 47,
           "text": "目の前で交通事故が起きたんだよとはい",
           "translation": "是的，一场车祸就发生在我的面前。",
           "startSec": 251.516,
-          "endSec": 254.65200000000002
+          "endSec": 254.65200000000002,
+          "translationEn": "Yes, a traffic accident happened right in front of me."
         },
         {
           "id": 48,
           "text": "で その話を ある人がすごく細かく説明してくれると",
           "translation": "然后有人很详细地解释了这个故事。",
           "startSec": 254.78,
-          "endSec": 260.192
+          "endSec": 260.192,
+          "translationEn": "Then someone explained the story in great detail."
         },
         {
           "id": 49,
           "text": "うんうんうん向こうから",
           "translation": "是啊是啊从另一边",
           "startSec": 261.04,
-          "endSec": 262.6702
+          "endSec": 262.6702,
+          "translationEn": "Yeah yeah yeah from the other side"
         },
         {
           "id": 50,
           "text": "トラックが走ってきて こっちには何かバイクの人がいて何とかかんとかって 細かく説明してくださったと",
           "translation": "一辆卡车驶过，还有一个骑自行车的人，详细地解释了一切。",
           "startSec": 262.6702,
-          "endSec": 269.932
+          "endSec": 269.932,
+          "translationEn": "A truck drove by, and there was someone on a bike, who explained everything in detail."
         },
         {
           "id": 51,
           "text": "そしたらもう聞いてるこっちの方が もう想像しちゃって",
           "translation": "然后，正在听的人开始想象。",
           "startSec": 270.668,
-          "endSec": 274.446
+          "endSec": 274.446,
+          "translationEn": "Then, the person who was already listening started imagining it."
         },
         {
           "id": 52,
           "text": "そうねこれはもう何ていうか あまりにも想像できてしまうというかリアルすぎて",
           "translation": "嗯，对此我能说什么呢？这实在是太难以想象了，或者说太真实了。",
           "startSec": 274.856,
-          "endSec": 283.162
+          "endSec": 283.162,
+          "translationEn": "Well, what can I say about this? It's too much to imagine, or rather it's too real."
         },
         {
           "id": 53,
           "text": "わあ ちょっと気持ち悪いなというかわあ生々しいなみたいな",
           "translation": "哇，有点恶心，看起来好形象。",
           "startSec": 284.362,
-          "endSec": 287.658
+          "endSec": 287.658,
+          "translationEn": "Wow, it's a bit disgusting, it seems so graphic."
         },
         {
           "id": 54,
           "text": "そういう 自分の目の前でその事故が起きてるかのように感じるぐらい生々しい説明だったから",
           "translation": "讲解的如此生动，感觉就像事故就发生在我眼前一样。",
           "startSec": 289.062,
-          "endSec": 295.94596923076926
+          "endSec": 295.94596923076926,
+          "translationEn": "The explanation was so vivid that it felt like the accident was happening right in front of my eyes."
         },
         {
           "id": 55,
           "text": "ちょっと もうちょっともういいかなみたいな",
           "translation": "我觉得这样好一点。",
           "startSec": 295.94596923076926,
-          "endSec": 299.468
+          "endSec": 299.468,
+          "translationEn": "I think it's a little bit better."
         },
         {
           "id": 56,
           "text": "ちょっとそれ以上聞きたくないとかっていうこともある確かに",
           "translation": "确实，有时候我不想再听下去了。",
           "startSec": 299.74,
-          "endSec": 303.6
+          "endSec": 303.6,
+          "translationEn": "It's true that there are times when I don't want to hear any more."
         },
         {
           "id": 57,
           "text": "そういうとき使うね",
           "translation": "我在这种情况下使用它。",
           "startSec": 303.488,
-          "endSec": 304.64
+          "endSec": 304.64,
+          "translationEn": "I use it in such cases."
         },
         {
           "id": 58,
           "text": "それはだからこう まあどちらもそうなんだけど",
           "translation": "这就是为什么，嗯，两者都是这样的。",
           "startSec": 304.64,
-          "endSec": 307.456
+          "endSec": 307.456,
+          "translationEn": "That's why, well, both are like that."
         },
         {
           "id": 59,
           "text": "何か目の前で起きてるようなっていうののネガティブな感じのとき",
           "translation": "当你感到消极时，就像有什么事情就发生在你面前一样。",
           "startSec": 307.648,
-          "endSec": 311.648
+          "endSec": 311.648,
+          "translationEn": "When you feel negative, like something is happening right in front of you."
         },
         {
           "id": 60,
           "text": "なるほどね逆に言えばですけど",
           "translation": "我看到，另一方面，",
           "startSec": 312.56,
-          "endSec": 315.584
+          "endSec": 315.584,
+          "translationEn": "I see, on the other hand,"
         }
       ]
     },
@@ -1745,420 +1985,480 @@
           "text": "はい皆さん こんばんは3月もだんだん終わりに近づいてきてますけれども",
           "translation": "大家晚上好，三月渐渐接近尾声。",
           "startSec": 0.392,
-          "endSec": 8.055
+          "endSec": 8.055,
+          "translationEn": "Good evening everyone, March is gradually coming to an end."
         },
         {
           "id": 2,
           "text": "お花見はしましたかお花見してないです",
           "translation": "你去看樱花了吗？我没有。",
           "startSec": 9.836,
-          "endSec": 14.492
+          "endSec": 14.492,
+          "translationEn": "Did you go to cherry blossom viewing? I haven't."
         },
         {
           "id": 3,
           "text": "最近ちょっと別々で行動してますけどねそうですねはい",
           "translation": "最近，我们的行为有点分开，但是是的。",
           "startSec": 16.228,
-          "endSec": 21.492
+          "endSec": 21.492,
+          "translationEn": "Lately, we've been acting a little separately, but yeah."
         },
         {
           "id": 4,
           "text": "僕は結構いろんなところを相変わらず動き回ってるっていう感じで",
           "translation": "我感觉我还在很多不同的地方走来走去。",
           "startSec": 21.38,
-          "endSec": 26.082
+          "endSec": 26.082,
+          "translationEn": "I feel like I'm still moving around in a lot of different places."
         },
         {
           "id": 5,
           "text": "お花見ってわけじゃないけど ちょっと桜は見ましたね",
           "translation": "我没有去看樱花，但确实看到了一些樱花。",
           "startSec": 29.09,
-          "endSec": 33.01
+          "endSec": 33.01,
+          "translationEn": "I didn't go to see the cherry blossoms, but I did see some cherry blossoms."
         },
         {
           "id": 6,
           "text": "そうですかまだね 何ていうの 満開っていう感じではないんですけど",
           "translation": "是这样吗？看起来还没有完全盛开。",
           "startSec": 33.316,
-          "endSec": 40.768
+          "endSec": 40.768,
+          "translationEn": "Is that so? It's not like it's in full bloom yet."
         },
         {
           "id": 7,
           "text": "一部の地域では ちょっとずつ桜が見えてきたかなっていう感じいよいよですねそうだね",
           "translation": "一些地区的樱花似乎已经开始慢慢绽放。",
           "startSec": 42.032,
-          "endSec": 50.054
+          "endSec": 50.054,
+          "translationEn": "It seems like cherry blossoms are starting to appear little by little in some areas."
         },
         {
           "id": 8,
           "text": "今年は何かこう 3月の最初の方にね",
           "translation": "今年我们会做什么？三月初。",
           "startSec": 50.278,
-          "endSec": 55.05
+          "endSec": 55.05,
+          "translationEn": "What will we do this year? At the beginning of March."
         },
         {
           "id": 9,
           "text": "頭に言ってた 桜がいつ咲くんじゃないかなっていうその開花予想っていうのが毎年あるんですけど",
           "translation": "每年，我都会预测自己告诉自己的樱花何时盛开。",
           "startSec": 55.254,
-          "endSec": 63.014
+          "endSec": 63.014,
+          "translationEn": "Every year, I make predictions about when the cherry blossoms I've been telling myself will bloom."
         },
         {
           "id": 10,
           "text": "何月何日ぐらいに咲いて で満開っていう一番綺麗なとこが何月何日ぐらいで",
           "translation": "它们在哪月哪日开花？何时盛开最美丽？",
           "startSec": 64.554,
-          "endSec": 72.718
+          "endSec": 72.718,
+          "translationEn": "What month and day do they bloom and when are they at their most beautiful in full bloom?"
         },
         {
           "id": 11,
           "text": "いつ頃 散っていくのかっていう話がよくあるんですけどはい",
           "translation": "人们经常谈论他们何时会解散，但确实如此。",
           "startSec": 73.582,
-          "endSec": 78.734
+          "endSec": 78.734,
+          "translationEn": "There is often talk about when they will disperse, but yes."
         },
         {
           "id": 12,
           "text": "今年はね 天気がいろいろありまして全く予想がずれてきてると",
           "translation": "今年天气变化多端，我的预测完全落空了。",
           "startSec": 78.494,
-          "endSec": 86.59
+          "endSec": 86.59,
+          "translationEn": "This year, there's been a lot of weather, and my predictions have been completely off."
         },
         {
           "id": 13,
           "text": "まあでもそうだな",
           "translation": "嗯，我想是这样",
           "startSec": 88.114,
-          "endSec": 89.826
+          "endSec": 89.826,
+          "translationEn": "Well, I guess so"
         },
         {
           "id": 14,
           "text": "この3月の一番最後の土日が一番見頃っていうところが出てくるかな",
           "translation": "不知道有没有地方的最佳赏花时间是3月的最后一个周六和周日呢？",
           "startSec": 89.826,
-          "endSec": 100.30199999999999
+          "endSec": 100.30199999999999,
+          "translationEn": "I wonder if there will be places where the best time to see the flowers is on the last Saturday and Sunday of March."
         },
         {
           "id": 15,
           "text": "あ そっか じゃあ今週末は賑わいそうですねそうだね",
           "translation": "啊，我明白了。看来这个周末会很忙。",
           "startSec": 100.862,
-          "endSec": 105.806
+          "endSec": 105.806,
+          "translationEn": "Ah, I see. Looks like it's going to be busy this weekend."
         },
         {
           "id": 16,
           "text": "あとは来週っていうところもあると思うし僕らの今いるところはまだまだ遅いんで",
           "translation": "我还认为可能是下周，而我们现在的情况仍然为时已晚。",
           "startSec": 105.934,
-          "endSec": 113.63
+          "endSec": 113.63,
+          "translationEn": "I also think it could be next week, and where we are now, it's still too late."
         },
         {
           "id": 17,
           "text": "もしかしたらその次の週になるかもしれないですねそうですね",
           "translation": "也许是下周。",
           "startSec": 114.066,
-          "endSec": 118.098
+          "endSec": 118.098,
+          "translationEn": "Maybe it will be the next week."
         },
         {
           "id": 18,
           "text": "最近やっぱりこう 急に暖かい いわゆる夏日みたいなね",
           "translation": "最近，天气突然变暖，就像我们所说的夏日一样。",
           "startSec": 119.02199999999999,
-          "endSec": 124.062
+          "endSec": 124.062,
+          "translationEn": "Lately, it's suddenly been getting warmer, like what we would call a summer day."
         },
         {
           "id": 19,
           "text": "25度とかね 超えてくるような日が出てきてるんで",
           "translation": "有时候气温会超过25度。",
           "startSec": 124.686,
-          "endSec": 129.07
+          "endSec": 129.07,
+          "translationEn": "There are days when the temperature exceeds 25 degrees."
         },
         {
           "id": 20,
           "text": "それ次第ではね あのまた桜が咲いてくるかなと思うんですけど",
           "translation": "据此，我认为樱花会再次盛开。",
           "startSec": 129.562,
-          "endSec": 133.578
+          "endSec": 133.578,
+          "translationEn": "Depending on that, I think the cherry blossoms will bloom again."
         },
         {
           "id": 21,
           "text": "東京とか あとは大阪とかも暖かいですけど",
           "translation": "东京和大阪也很温暖。",
           "startSec": 135.558,
-          "endSec": 139.788
+          "endSec": 139.788,
+          "translationEn": "Tokyo and Osaka are also warm."
         },
         {
           "id": 22,
           "text": "そういう暖かめの街は 早めに咲いてくると思うんですけどねそうですね",
           "translation": "我想，在这样一个温暖的城市里，花儿会开得更早。",
           "startSec": 140.332,
-          "endSec": 146.668
+          "endSec": 146.668,
+          "translationEn": "I think that in such a warm city, the flowers will bloom earlier."
         },
         {
           "id": 23,
           "text": "皆さんはもうお花見されましたでしょうか",
           "translation": "你见过樱花吗？",
           "startSec": 146.668,
-          "endSec": 149.212
+          "endSec": 149.212,
+          "translationEn": "Have you seen the cherry blossoms yet?"
         },
         {
           "id": 24,
           "text": "僕はですね この4月3月がとても忙しいっていう話はいつもしてるんですけど",
           "translation": "至于我，我总是谈论四月和三月是多么忙碌。",
           "startSec": 150.606,
-          "endSec": 156.602
+          "endSec": 156.602,
+          "translationEn": "As for me, I always talk about how busy these April and March months are."
         },
         {
           "id": 25,
           "text": "やっぱ桜の花と一緒に写真を撮りたいっていう特にあの外国から",
           "translation": "尤其是那些想和樱花合影的外国游客。",
           "startSec": 157.85,
-          "endSec": 164.22012765957447
+          "endSec": 164.22012765957447,
+          "translationEn": "Especially from those foreign countries who want to take pictures with cherry blossoms."
         },
         {
           "id": 26,
           "text": "来ていただいている観光客の皆さんから",
           "translation": "来自所有前来的游客",
           "startSec": 164.22012765957447,
-          "endSec": 168.174
+          "endSec": 168.174,
+          "translationEn": "From all the tourists who come"
         },
         {
           "id": 27,
           "text": "そういう写真をお願いされることが多くなってきてるんですけど",
           "translation": "我收到越来越多的索要此类照片的请求。",
           "startSec": 168.174,
-          "endSec": 171.502
+          "endSec": 171.502,
+          "translationEn": "I'm getting more and more requests for photos like this."
         },
         {
           "id": 28,
           "text": "今年は本当に難しいですね",
           "translation": "今年真的很难",
           "startSec": 172.516,
-          "endSec": 174.724
+          "endSec": 174.724,
+          "translationEn": "It's really difficult this year"
         },
         {
           "id": 29,
           "text": "やっぱり どこが咲いてるのかとかわからないですもんね",
           "translation": "毕竟，我们不知道花开在哪里。",
           "startSec": 175.284,
-          "endSec": 179.412
+          "endSec": 179.412,
+          "translationEn": "After all, we don't know where the flowers are blooming."
         },
         {
           "id": 30,
           "text": "どこも咲いてないっていう感じだねそっか",
           "translation": "感觉哪里都没有开花是吧？",
           "startSec": 180.5,
-          "endSec": 183.476
+          "endSec": 183.476,
+          "translationEn": "It feels like it's not blooming anywhere, right?"
         },
         {
           "id": 31,
           "text": "今はだんだん咲いてきてるけど",
           "translation": "不过现在已经开始开花了",
           "startSec": 183.076,
-          "endSec": 185.284
+          "endSec": 185.284,
+          "translationEn": "It's starting to bloom now though"
         },
         {
           "id": 32,
           "text": "3月の20日前後とかね",
           "translation": "3月20日左右",
           "startSec": 185.912,
-          "endSec": 189.192
+          "endSec": 189.192,
+          "translationEn": "Around the 20th of March"
         },
         {
           "id": 33,
           "text": "もう全然咲いてなかったから",
           "translation": "因为它已经不再开花了。",
           "startSec": 191.08,
-          "endSec": 193
+          "endSec": 193,
+          "translationEn": "Because it wasn't blooming at all anymore."
         },
         {
           "id": 34,
           "text": "ちょっとあの 咲いてないんですよねって言うことしかできなくてそうだね",
           "translation": "我只能说，它没有开花。",
           "startSec": 193.464,
-          "endSec": 198.47
+          "endSec": 198.47,
+          "translationEn": "All I can say is that it's not blooming."
         },
         {
           "id": 35,
           "text": "余裕がある人はいいですけど",
           "translation": "如果你能负担得起就好了",
           "startSec": 199.078,
-          "endSec": 200.87
+          "endSec": 200.87,
+          "translationEn": "Good if you can afford it"
         },
         {
           "id": 36,
           "text": "やっぱり海外旅行ね すると言えば大体そうね",
           "translation": "毕竟是出国旅游。",
           "startSec": 201.108,
-          "endSec": 207.918
+          "endSec": 207.918,
+          "translationEn": "After all, it's about traveling abroad."
         },
         {
           "id": 37,
           "text": "1週間もしくは 2週間はないかなっていう人が多いと思うんですよそうですね",
           "translation": "我想有很多人认为这需要一两周的时间。",
           "startSec": 208.388,
-          "endSec": 216.548
+          "endSec": 216.548,
+          "translationEn": "I think there are a lot of people who think it will take a week or two."
         },
         {
           "id": 38,
           "text": "で 飛行機とか取っちゃってるから",
           "translation": "所以我要坐飞机什么的。",
           "startSec": 217.824,
-          "endSec": 219.536
+          "endSec": 219.536,
+          "translationEn": "So I'm taking a plane or something."
         },
         {
           "id": 39,
           "text": "なかなか日程を 桜とかねそういうものに合わせて変えるってことはできないから",
           "translation": "改变日程以配合樱花或类似的事情并不容易。",
           "startSec": 220.176,
-          "endSec": 226.448
+          "endSec": 226.448,
+          "translationEn": "It's not easy to change the schedule to coincide with cherry blossoms or something like that."
         },
         {
           "id": 40,
           "text": "そこが難しいんですよね",
           "translation": "这就是困难的部分，不是吗？",
           "startSec": 227.14,
-          "endSec": 228.948
+          "endSec": 228.948,
+          "translationEn": "That's the difficult part, isn't it?"
         },
         {
           "id": 41,
           "text": "せっかく見に来てたのに 見れなかったっていうこともありますよね",
           "translation": "有时候，你千里迢迢而来，想要看到一些东西，却看不到它。",
           "startSec": 230.036,
-          "endSec": 234.388
+          "endSec": 234.388,
+          "translationEn": "There are times when you came all the way to see something but couldn't see it."
         },
         {
           "id": 42,
           "text": "あの日本に住んでる方であればね",
           "translation": "如果你住在那个日本。",
           "startSec": 234.872,
-          "endSec": 236.824
+          "endSec": 236.824,
+          "translationEn": "If you live in that Japan."
         },
         {
           "id": 43,
           "text": "じゃあまた来週にしましょうとかね",
           "translation": "好吧，我们下周再做一次吧。",
           "startSec": 237.488,
-          "endSec": 239.136
+          "endSec": 239.136,
+          "translationEn": "Well, let's do it again next week."
         },
         {
           "id": 44,
           "text": "そういうことが細かく調整ができるんですけど",
           "translation": "您可以对类似的事情进行微调。",
           "startSec": 239.56799999999998,
-          "endSec": 242.576
+          "endSec": 242.576,
+          "translationEn": "You can fine-tune things like that."
         },
         {
           "id": 45,
           "text": "なかなか難しいというところで最近は何かこう急にね",
           "translation": "这是相当困难的，但最近变得相当困难。",
           "startSec": 243.374,
-          "endSec": 247.61563265306123
+          "endSec": 247.61563265306123,
+          "translationEn": "It's quite difficult, but recently it's become quite difficult."
         },
         {
           "id": 46,
           "text": "変更があったりとか急にキャンセルがあったりとかね",
           "translation": "可能会有变更或突然取消。",
           "startSec": 247.61563265306123,
-          "endSec": 252.034
+          "endSec": 252.034,
+          "translationEn": "There may be changes or sudden cancellations."
         },
         {
           "id": 47,
           "text": "そういうのでかなり振り回されているとそうですね",
           "translation": "正因如此，他看起来似乎受到了很大的动摇。",
           "startSec": 252.53,
-          "endSec": 256.728
+          "endSec": 256.728,
+          "translationEn": "That's why it seems like he's being swayed quite a bit."
         },
         {
           "id": 48,
           "text": "できるだけお客さんのためにね",
-          "translation": "",
+          "translation": "尽可能为顾客着想",
           "startSec": 256.872,
-          "endSec": 258.68
+          "endSec": 258.68,
+          "translationEn": "As much as possible for the customers"
         },
         {
           "id": 49,
           "text": "いろいろなことをできることをしたいなと思ってますけどはい",
           "translation": "我想做各种各样的事情，但是是的。",
           "startSec": 259.144,
-          "endSec": 262.776
+          "endSec": 262.776,
+          "translationEn": "I would like to do various things, but yes."
         },
         {
           "id": 50,
           "text": "毎年のことながら この桜と何か天気に振り回されている状態ででも大変な時期を迎えてますね",
           "translation": "正如每年都会发生的那样，尽管我们受到樱花和天气的影响，但我们还是度过了一段艰难的时期。",
           "startSec": 263.288,
-          "endSec": 273.048
+          "endSec": 273.048,
+          "translationEn": "As it happens every year, we are having a difficult time even though we are at the mercy of the cherry blossoms and the weather."
         },
         {
           "id": 51,
           "text": "本当ですねまあでも お花見ね できる日があればあの日本に今ね観光客多いですからね",
           "translation": "确实如此，但是如果有一天能赏樱花的话，这几天日本的游客也很多。",
           "startSec": 273.048,
-          "endSec": 281.722
+          "endSec": 281.722,
+          "translationEn": "It's true, but if you have a day to enjoy the cherry blossoms, there are a lot of tourists in Japan these days."
         },
         {
           "id": 52,
           "text": "多分このチャンネル見ていただいてる方もたくさんの方がね今日本に来られてると思いますけど",
           "translation": "我确信观看该频道的许多人今天正在访问日本。",
           "startSec": 282.218,
-          "endSec": 288.186
+          "endSec": 288.186,
+          "translationEn": "I'm sure many of you who are watching this channel are visiting Japan today."
         },
         {
           "id": 53,
           "text": "お花見の機会があればぜひね楽しんで見ていただけたらなと思います",
           "translation": "如果您有机会观赏樱花，希望您能喜欢。",
           "startSec": 288.874,
-          "endSec": 293.69
+          "endSec": 293.69,
+          "translationEn": "If you have a chance to see the cherry blossoms, I hope you enjoy it."
         },
         {
           "id": 54,
           "text": "やっぱり綺麗ですからねそうだね",
           "translation": "我想毕竟它很美丽。",
           "startSec": 293.69,
-          "endSec": 295.962
+          "endSec": 295.962,
+          "translationEn": "I guess it's beautiful after all."
         },
         {
           "id": 55,
           "text": "今日はね たまたま今日は京都に行ってたんですけどはい",
           "translation": "今天，我刚好去了京都。",
           "startSec": 296.802,
-          "endSec": 302.01800000000003
+          "endSec": 302.01800000000003,
+          "translationEn": "Today, I just happened to go to Kyoto today."
         },
         {
           "id": 56,
           "text": "1ヶ所ね 1本だけ桜が咲いてたんですよ",
           "translation": "一处只有一棵樱花树在绽放。",
           "startSec": 302.738,
-          "endSec": 306.674
+          "endSec": 306.674,
+          "translationEn": "There was only one cherry tree blooming in one place."
         },
         {
           "id": 57,
           "text": "ほお 満開とは言わないけど 8分咲きってやつですかね",
           "translation": "Cheeks：我不会说它正在盛开，但它的盛开时间大约是8分钟。",
           "startSec": 307.442,
-          "endSec": 311.89
+          "endSec": 311.89,
+          "translationEn": "Cheeks: I wouldn't say it's in full bloom, but it's about 8 minutes in bloom."
         },
         {
           "id": 58,
           "text": "ほぼほぼ咲いているってやつなんですけど",
           "translation": "不过它已经快要开花了。",
           "startSec": 312.194,
-          "endSec": 314.498
+          "endSec": 314.498,
+          "translationEn": "It's almost in bloom though."
         },
         {
           "id": 59,
           "text": "それが1本だけ咲いてるところがあって",
           "translation": "有一个地方，只开着一朵。",
           "startSec": 315.634,
-          "endSec": 318.402
+          "endSec": 318.402,
+          "translationEn": "There is a place where only one of them is blooming."
         },
         {
           "id": 60,
           "text": "そこにもう何か100人ぐらい群がってましたね",
           "translation": "那里已经聚集了大约100人。",
           "startSec": 318.802,
-          "endSec": 323.122
+          "endSec": 323.122,
+          "translationEn": "There were already about 100 people gathered there."
         }
       ]
     },
@@ -2176,420 +2476,480 @@
           "text": "はい皆さん こんばんは今日はですねはい",
           "translation": "是的，大家，今天晚上好。",
           "startSec": 0.258,
-          "endSec": 5.601999999999999
+          "endSec": 5.601999999999999,
+          "translationEn": "Yes everyone, good evening today."
         },
         {
           "id": 2,
           "text": "最近忙しいっていうお話をしてるんですけど",
           "translation": "我一直在谈论我最近有多忙。",
           "startSec": 6.45,
-          "endSec": 9.138
+          "endSec": 9.138,
+          "translationEn": "I've been talking about how busy I've been lately."
         },
         {
           "id": 3,
           "text": "お客さんとのやり取りの中で 思ったことをというのを雑談なんですけど",
           "translation": "我们谈论与客户互动时的想法。",
           "startSec": 9.57,
-          "endSec": 16.024
+          "endSec": 16.024,
+          "translationEn": "We chat about what we thought during our interactions with customers."
         },
         {
           "id": 4,
           "text": "お話をしたいと思いますうんうんうん",
           "translation": "我想和你谈谈 是啊是啊",
           "startSec": 16.472,
-          "endSec": 19.8
+          "endSec": 19.8,
+          "translationEn": "I'd like to talk to you Yeah yeah yeah"
         },
         {
           "id": 5,
           "text": "いつもいつもお話しているんですけど",
           "translation": "我总是和你说话",
           "startSec": 20.644,
-          "endSec": 23.364
+          "endSec": 23.364,
+          "translationEn": "I'm always talking to you"
         },
         {
           "id": 6,
           "text": "僕らはね写真屋というか カメラマン フォトグラファーというかね",
           "translation": "我们是摄影师或者摄影师。",
           "startSec": 23.78,
-          "endSec": 29.14
+          "endSec": 29.14,
+          "translationEn": "We are photographers or photographers."
         },
         {
           "id": 7,
           "text": "そういう仕事をしてるんですね",
           "translation": "这就是你所做的",
           "startSec": 29.408,
-          "endSec": 30.912
+          "endSec": 30.912,
+          "translationEn": "That's what you do"
         },
         {
           "id": 8,
           "text": "で この時期は特に外国から",
           "translation": "每年的这个时候，尤其是来自国外的人。",
           "startSec": 32.128,
-          "endSec": 35.16436363636364
+          "endSec": 35.16436363636364,
+          "translationEn": "At this time of year, especially from abroad."
         },
         {
           "id": 9,
           "text": "来る観光客のお客さんの写真を撮ったりとか結婚式の写真を撮ったりとか プロポーズの写真を撮ったりとか してるんですねそうですね",
           "translation": "我听说他们会做一些事情，比如给来访的游客拍照、拍婚纱照、拍求婚照。",
           "startSec": 35.16436363636364,
-          "endSec": 47.26
+          "endSec": 47.26,
+          "translationEn": "I hear they do things like take pictures of visiting tourists, wedding pictures, and proposal pictures."
         },
         {
           "id": 10,
           "text": "その中で一番よくあるのが最近だと 桜はいつ咲きますかっていうやつそうだね",
           "translation": "最近最常见的问题似乎是“樱花什么时候开花？”",
           "startSec": 48.332,
-          "endSec": 56.858
+          "endSec": 56.858,
+          "translationEn": "The most common question recently seems to be, ``When will cherry blossoms bloom?''"
         },
         {
           "id": 11,
           "text": "これはね 大体予想ってあるんだけど",
           "translation": "这几乎是我所期望的。",
           "startSec": 57.178,
-          "endSec": 60.714
+          "endSec": 60.714,
+          "translationEn": "This is pretty much what I expected."
         },
         {
           "id": 12,
           "text": "その日に咲くかはまあわからないですよねそうなんですよ",
           "translation": "我不知道那天它是否会开花，但确实如此。",
           "startSec": 61.342,
-          "endSec": 65.117
+          "endSec": 65.117,
+          "translationEn": "I don't know if it will bloom on that day, but that's right."
         },
         {
           "id": 13,
           "text": "例えばさ 明日空いてますかとかって",
           "translation": "例如，你明天有空吗？",
           "startSec": 67.546,
-          "endSec": 71.45
+          "endSec": 71.45,
+          "translationEn": "For example, are you free tomorrow?"
         },
         {
           "id": 14,
           "text": "予約が来るわけじゃないっていうか急にそんなこと言われても難しいから",
           "translation": "虽说不是要预约，但是突然说这样的话也很难啊。",
           "startSec": 71.946,
-          "endSec": 76.49
+          "endSec": 76.49,
+          "translationEn": "It's not like I'm going to get a reservation, but it's difficult even if you suddenly say something like that."
         },
         {
           "id": 15,
           "text": "大体まあお客さんで半年前とか",
           "translation": "我是半年前的客户。",
           "startSec": 77.322,
-          "endSec": 80.87
+          "endSec": 80.87,
+          "translationEn": "I was a customer about half a year ago."
         },
         {
           "id": 16,
           "text": "1ヶ月 遅くても1ヶ月前とかに",
           "translation": "1个月，至少提前1个月",
           "startSec": 81.702,
-          "endSec": 84.55
+          "endSec": 84.55,
+          "translationEn": "1 month, at least 1 month in advance"
         },
         {
           "id": 17,
           "text": "僕らに写真撮ってくださいってお話をしてくれるんですよ",
           "translation": "他们要求我们和他们合影。",
           "startSec": 85.398,
-          "endSec": 88.054
+          "endSec": 88.054,
+          "translationEn": "They asked us to take pictures with them."
         },
         {
           "id": 18,
           "text": "そういうときに その日晴れますかみたいな方がいるんですけど",
           "translation": "每逢这种时候，就会有人问：“那天会是晴天吗？”",
           "startSec": 89.11,
-          "endSec": 94.5
+          "endSec": 94.5,
+          "translationEn": "At times like these, there are people who ask, ``Will it be sunny that day?''"
         },
         {
           "id": 19,
           "text": "いやそれはさすがに ね",
           "translation": "不，确实如此。",
           "startSec": 95.012,
-          "endSec": 98.006
+          "endSec": 98.006,
+          "translationEn": "No, that's true."
         },
         {
           "id": 20,
           "text": "半年先の例えば今で言えば9月の何日晴れますかみたいな感じでしょそうだよ",
           "translation": "例如，六个月后九月的哪一天将是晴天。",
           "startSec": 99.29599999999999,
-          "endSec": 107.422
+          "endSec": 107.422,
+          "translationEn": "For example, it would be like what day in September will be sunny six months from now."
         },
         {
           "id": 21,
           "text": "それさすがにちょっと難しいなと",
           "translation": "我认为这有点困难。",
           "startSec": 107.422,
-          "endSec": 109.678
+          "endSec": 109.678,
+          "translationEn": "I think that's a bit difficult."
         },
         {
           "id": 22,
           "text": "思うことがありましてでもまあ 2週間前ぐらいからはそういう話にもなってくるわけですよ",
           "translation": "我有一些事情要考虑，但这就是我们大约两周前以来一直在谈论的事情。",
           "startSec": 110.818,
-          "endSec": 119.976
+          "endSec": 119.976,
+          "translationEn": "I have something to think about, but that's what we've been talking about since about two weeks ago."
         },
         {
           "id": 23,
           "text": "予報がね出てくるからね天気予報が日本だと2週間予報みたいなやつがあって",
           "translation": "预测出来了。在日本，天气预报看起来像是两周的天气预报。",
           "startSec": 120.294,
-          "endSec": 128.582
+          "endSec": 128.582,
+          "translationEn": "Forecasts come out. In Japan, there are weather forecasts that look like two-week forecasts."
         },
         {
           "id": 24,
           "text": "大体2週間先の日まで一応天気予報が出るんですよ",
           "translation": "天气预报大约提前两周发布。",
           "startSec": 129.078,
-          "endSec": 132.438
+          "endSec": 132.438,
+          "translationEn": "Weather forecasts are issued for about two weeks in advance."
         },
         {
           "id": 25,
           "text": "で これ見るとこんな天気だねとかいう話になるんですけど",
           "translation": "所以当我看到这个时，我被告知天气就是这样。",
           "startSec": 137.754,
-          "endSec": 141.514
+          "endSec": 141.514,
+          "translationEn": "So when I look at this, I get told that the weather is like this."
         },
         {
           "id": 26,
           "text": "それってどう思います",
           "translation": "你对此有何看法？",
           "startSec": 142.32999999999998,
-          "endSec": 143.514
+          "endSec": 143.514,
+          "translationEn": "What do you think about that?"
         },
         {
           "id": 27,
           "text": "でも 何かまだわかんないよねって思っちゃうんですよすごい先だなって僕は思ってるんですけど",
           "translation": "但我觉得还有一些我们不知道的事情。我认为还有很长的路要走。",
           "startSec": 145.69,
-          "endSec": 151.14600000000002
+          "endSec": 151.14600000000002,
+          "translationEn": "But I feel like there's still something we don't know. I think there's a long way to go."
         },
         {
           "id": 28,
           "text": "そうだから出てるけど",
           "translation": "这就是我出去的原因",
           "startSec": 151.14600000000002,
-          "endSec": 153.018
+          "endSec": 153.018,
+          "translationEn": "That's why I'm out"
         },
         {
           "id": 29,
           "text": "あんまり信じてないというか",
           "translation": "我想我不太相信",
           "startSec": 153.3,
-          "endSec": 156.834
+          "endSec": 156.834,
+          "translationEn": "I guess I don't really believe it"
         },
         {
           "id": 30,
           "text": "あんまり参考にもならない感じはあるよねもっと日が近づいてから見ますね",
           "translation": "我感觉不太有帮助。临近这一天我会再看看。",
           "startSec": 158.144,
-          "endSec": 163.888
+          "endSec": 163.888,
+          "translationEn": "I feel like it's not very helpful. I'll look at it closer to the day."
         },
         {
           "id": 31,
           "text": "今の時期は まあそうは言っても",
           "translation": "好吧，即便如此，在每年的这个时候，",
           "startSec": 164.832,
-          "endSec": 167.734
+          "endSec": 167.734,
+          "translationEn": "Well, at this time of year, even so,"
         },
         {
           "id": 32,
           "text": "そうですかって感じだけど",
           "translation": "我觉得那是真的。",
           "startSec": 169.692,
-          "endSec": 171.132
+          "endSec": 171.132,
+          "translationEn": "I feel like that's true."
         },
         {
           "id": 33,
           "text": "台風が多くなるその 夏から秋にかけてっていうのは",
           "translation": "从夏季到秋季，台风较多，",
           "startSec": 171.756,
-          "endSec": 175.93200000000002
+          "endSec": 175.93200000000002,
+          "translationEn": "From summer to autumn, when there are many typhoons,"
         },
         {
           "id": 34,
           "text": "何か はい台風ができましたってなったらもう一気に何か予報も何もっていう",
           "translation": "如果有的话，台风已经形成，没有任何预报或任何东西。",
           "startSec": 176.764,
-          "endSec": 182.038
+          "endSec": 182.038,
+          "translationEn": "If something says yes, a typhoon has formed, there's no forecast or anything at all."
         },
         {
           "id": 35,
           "text": "そうそうそう一気に変わっちゃうから全然わかんないっていう感じなんだけどそうですね",
           "translation": "是的，一下子就变了，所以我好像完全不明白，但就是这样。",
           "startSec": 183.03,
-          "endSec": 187.894
+          "endSec": 187.894,
+          "translationEn": "Yeah, it changes all at once, so it's like I don't understand it at all, but that's right."
         },
         {
           "id": 36,
           "text": "だから結局は僕の感覚だと",
           "translation": "所以最后这只是我的感觉",
           "startSec": 189.05,
-          "endSec": 193.21
+          "endSec": 193.21,
+          "translationEn": "So in the end it's just my feeling"
         },
         {
           "id": 37,
           "text": "結局2日前ぐらいにならないとわかんないんじゃないかなと思っ",
           "translation": "最后，我想我们要到大约两天前才能知道。",
           "startSec": 194.074,
-          "endSec": 199.132
+          "endSec": 199.132,
+          "translationEn": "In the end, I think we won't know until about two days ago."
         },
         {
           "id": 38,
           "text": "てるもう絶対にこれで かなぁみたいな この天気かなみたいなことですよね",
           "translation": "肯定是这样的，像这样的天气，不是吗？",
           "startSec": 199.132,
-          "endSec": 206.138
+          "endSec": 206.138,
+          "translationEn": "It's definitely like this, like this weather, isn't it?"
         },
         {
           "id": 39,
           "text": "2日前でもわかんないときあるけど",
           "translation": "有时我什至都不知道 2天前",
           "startSec": 207.84199999999998,
-          "endSec": 210.338
+          "endSec": 210.338,
+          "translationEn": "Sometimes I don't know even 2 days ago"
         },
         {
           "id": 40,
           "text": "大体それぐらいまでいけば じゃあこの日の何時から",
           "translation": "如果你能做到这一点，那么你今天几点开始？",
           "startSec": 210.514,
-          "endSec": 214.09255319148937
+          "endSec": 214.09255319148937,
+          "translationEn": "If you can get to that point, then what time on this day do you start?"
         },
         {
           "id": 41,
           "text": "っていうふうにしましょうってのが確定したりとか",
           "translation": "我们决定应该做这样的事情。",
           "startSec": 214.09255319148937,
-          "endSec": 217.522
+          "endSec": 217.522,
+          "translationEn": "It was decided that we should do something like that."
         },
         {
           "id": 42,
           "text": "もし例えば 雨が降りそうだから",
           "translation": "例如，如果看起来要下雨",
           "startSec": 218.242,
-          "endSec": 220.81323076923076
+          "endSec": 220.81323076923076,
+          "translationEn": "For example, if it looks like it's going to rain"
         },
         {
           "id": 43,
           "text": "やめましょうっていうときも大体2日前ぐらいまでで決めましょうね",
           "translation": "即使您决定停止，也至少提前两天做出决定。",
           "startSec": 220.81323076923076,
-          "endSec": 226.1271076923077
+          "endSec": 226.1271076923077,
+          "translationEn": "Even if you decide to stop, make the decision at least two days in advance."
         },
         {
           "id": 44,
           "text": "っていうお話をいつもしてるんだけどはい",
-          "translation": "",
+          "translation": "是的，我们总是谈论这个。",
           "startSec": 226.1271076923077,
-          "endSec": 229.38400000000001
+          "endSec": 229.38400000000001,
+          "translationEn": "Yes, we always talk about that."
         },
         {
           "id": 45,
           "text": "結構面白いなって思うことがあって",
           "translation": "有时候我觉得还挺有趣的。",
           "startSec": 230.352,
-          "endSec": 232.32
+          "endSec": 232.32,
+          "translationEn": "Sometimes I think it's quite interesting."
         },
         {
           "id": 46,
           "text": "多分同じでしょ大体同じような感覚でいるじゃん それがそうね",
           "translation": "大概是一样的，我觉得差不多就是这样的感觉，就是这样。",
           "startSec": 234.058,
-          "endSec": 238.73
+          "endSec": 238.73,
+          "translationEn": "It's probably the same, I think it's pretty much the same feeling, that's it."
         },
         {
           "id": 47,
           "text": "でもその多分そのお客さんによってはいやもう1ヶ月先の天気予報 僕の国では出てるみたいな",
           "translation": "然而，这可能取决于客户，在我的国家似乎有下个月的天气预报。",
           "startSec": 238.73,
-          "endSec": 246.806
+          "endSec": 246.806,
+          "translationEn": "However, it probably depends on the customer, and in my country there seems to be a weather forecast for the next month."
         },
         {
           "id": 48,
           "text": "こういうふうなってるからこれ変更したいですっていう人もいるんだよなるほどね",
           "translation": "我看到有些人想要改变这一点，因为事实就是这样。",
           "startSec": 247.702,
-          "endSec": 251.6744
+          "endSec": 251.6744,
+          "translationEn": "I see that there are some people who want to change this because it is like this."
         },
         {
           "id": 49,
           "text": "何か早くないって思うまあね思うんだけど",
           "translation": "我想，我认为现在还不算太早。",
           "startSec": 251.6744,
-          "endSec": 255.66592
+          "endSec": 255.66592,
+          "translationEn": "I don't think it's too early, I guess."
         },
         {
           "id": 50,
           "text": "そこの感覚が 多分その違うんだ",
           "translation": "也许那种感觉是不一样的。",
           "startSec": 255.66592,
-          "endSec": 259.0272
+          "endSec": 259.0272,
+          "translationEn": "Maybe that feeling is different."
         },
         {
           "id": 51,
           "text": "ろうなとはいはいはい",
           "translation": "是是是是是是",
           "startSec": 259.0272,
-          "endSec": 261.128
+          "endSec": 261.128,
+          "translationEn": "Yes yes yes yes yes"
         },
         {
           "id": 52,
           "text": "常識が違うっていうかそうだね",
           "translation": "看来常识是不一样的。",
           "startSec": 261.128,
-          "endSec": 263.16
+          "endSec": 263.16,
+          "translationEn": "It seems like common sense is different."
         },
         {
           "id": 53,
           "text": "多分日本って 天気が変わりやすい国なんじゃないかなと思うんですよなるほど",
           "translation": "我想日本可能是一个天气容易变化的国家。我明白了。",
           "startSec": 264.072,
-          "endSec": 271.128
+          "endSec": 271.128,
+          "translationEn": "I think Japan is probably a country where the weather changes easily.I see."
         },
         {
           "id": 54,
           "text": "海に囲まれてるしそうだね",
           "translation": "看起来就像是被大海包围了一样。",
           "startSec": 271.16,
-          "endSec": 273.598
+          "endSec": 273.598,
+          "translationEn": "It seems like it's surrounded by the sea."
         },
         {
           "id": 55,
           "text": "寒かったり暑かったりも 何かすごい変わるじゃんう",
           "translation": "不管是冷还是热，有些东西都会发生很大的变化。",
           "startSec": 274.782,
-          "endSec": 277.854
+          "endSec": 277.854,
+          "translationEn": "Whether it's cold or hot, something will change a lot."
         },
         {
           "id": 56,
           "text": "んうんうんこの間 何か25度ぐらいあったと思ったら",
           "translation": "我以为前几天温度大约是25度。",
           "startSec": 277.854,
-          "endSec": 280.926
+          "endSec": 280.926,
+          "translationEn": "I thought it was about 25 degrees the other day."
         },
         {
           "id": 57,
           "text": "あの ちょっとね 数日前雪が降って",
           "translation": "嗯，前几天下雪了。",
           "startSec": 281.54200000000003,
-          "endSec": 284.598
+          "endSec": 284.598,
+          "translationEn": "Well, it snowed a few days ago."
         },
         {
           "id": 58,
           "text": "今週末また23度ぐらいになるらしいんですよそうなのだから 何か極端だなっていう本当だね",
           "translation": "显然这个周末气温将再次达到 23 度左右，所以确实是极端的情况。",
           "startSec": 285.046,
-          "endSec": 292.532
+          "endSec": 292.532,
+          "translationEn": "Apparently it's going to be around 23 degrees again this weekend, so it's true that it's something extreme."
         },
         {
           "id": 59,
           "text": "ちょっと読めないよねそういう国だっていうのもあるのかもしれないけど",
           "translation": "我看不懂，也许有这样的国家。",
           "startSec": 292.532,
-          "endSec": 297.636
+          "endSec": 297.636,
+          "translationEn": "I can't read it, maybe there are countries like that."
         },
         {
           "id": 60,
           "text": "もしかしたらその そのお客さんの国とかでは1ヶ",
           "translation": "也许该客户所在的国家/地区有一个。",
           "startSec": 298.612,
-          "endSec": 301.89200000000005
+          "endSec": 301.89200000000005,
+          "translationEn": "Maybe there is one in that customer's country."
         }
       ]
     },
@@ -2607,420 +2967,480 @@
           "text": "はい皆さん こんばんはえーとですねはい",
           "translation": "是的，大家晚上好，是的。",
           "startSec": 0.182,
-          "endSec": 5.254
+          "endSec": 5.254,
+          "translationEn": "Yes, everyone, good evening, yes."
         },
         {
           "id": 2,
           "text": "すっかり忘れていたんですけれども",
           "translation": "不过我已经完全忘记了。",
           "startSec": 5.222,
-          "endSec": 7.126
+          "endSec": 7.126,
+          "translationEn": "I had completely forgotten about it though."
         },
         {
           "id": 3,
           "text": "先日 誕生日がありまして 私のおめでとうございますはいそうですね",
           "translation": "前几天我过生日，我想祝贺你。",
           "startSec": 7.526,
-          "endSec": 15.606
+          "endSec": 15.606,
+          "translationEn": "I had a birthday the other day, and I would like to congratulate you."
         },
         {
           "id": 4,
           "text": "そのときのお話をしようかなと思ってます誕生日の日ね",
           "translation": "我想给你讲一个关于那段时间的故事。那是我的生日。",
           "startSec": 17.046,
-          "endSec": 20.502
+          "endSec": 20.502,
+          "translationEn": "I'm thinking of telling you a story about that time.It was my birthday."
         },
         {
           "id": 5,
           "text": "毎年 誕生日って言ったら何か気がついたらやってきて",
           "translation": "每年，当我说今天是我的生日时，我就会想起一些事情，然后就过来。",
           "startSec": 22.312,
-          "endSec": 27.888
+          "endSec": 27.888,
+          "translationEn": "Every year, when I say it's my birthday, something comes to my mind and I come over."
         },
         {
           "id": 6,
           "text": "何かあっという間に何か忘れていくというかあの前回のお話もしたんですけど",
           "translation": "上次我谈到一眨眼就忘记了事情。",
           "startSec": 29.026,
-          "endSec": 35.17
+          "endSec": 35.17,
+          "translationEn": "Last time I talked about forgetting things in the blink of an eye."
         },
         {
           "id": 7,
           "text": "3月って僕らすごい忙しいんですよそうですね",
           "translation": "看来三月我们很忙。",
           "startSec": 36.258,
-          "endSec": 41.916
+          "endSec": 41.916,
+          "translationEn": "It seems we are very busy in March."
         },
         {
           "id": 8,
           "text": "仕事がすごく忙しくて",
           "translation": "我工作很忙",
           "startSec": 41.916,
-          "endSec": 43.98
+          "endSec": 43.98,
+          "translationEn": "I'm very busy at work"
         },
         {
           "id": 9,
           "text": "子供のときもそうだったんですけど",
           "translation": "我小时候也是这样。",
           "startSec": 45.782,
-          "endSec": 48.31
+          "endSec": 48.31,
+          "translationEn": "It was the same when I was a child."
         },
         {
           "id": 10,
           "text": "3月は年度末ということで",
           "translation": "三月是财政年度的结束日。",
           "startSec": 50.364,
-          "endSec": 52.716
+          "endSec": 52.716,
+          "translationEn": "March is the end of the fiscal year."
         },
         {
           "id": 11,
           "text": "忙しいっていうのは前にもお話したと思うんですけど",
           "translation": "我想我之前提到过我很忙。",
           "startSec": 53.068,
-          "endSec": 55.932
+          "endSec": 55.932,
+          "translationEn": "I think I mentioned before that I'm busy."
         },
         {
           "id": 12,
           "text": "世の中で言う 12月の終わりみたいな感じに似てるとそうねいう感じですねはい",
           "translation": "和12月底世人所说的差不多吧？",
           "startSec": 57,
-          "endSec": 63.623999999999995
+          "endSec": 63.623999999999995,
+          "translationEn": "It's similar to what people say in the world at the end of December, right?"
         },
         {
           "id": 13,
           "text": "っていうので 大体卒業式とか",
           "translation": "所以通常是毕业典礼什么的。",
           "startSec": 63.528,
-          "endSec": 67.794
+          "endSec": 67.794,
+          "translationEn": "So it's usually a graduation ceremony or something."
         },
         {
           "id": 14,
           "text": "終業式っていう学校行事の日と 僕の誕生日っていつも重なるんですよ",
           "translation": "我的生日总是与学校举行闭幕式活动的日子一致。",
           "startSec": 69.114,
-          "endSec": 76.142
+          "endSec": 76.142,
+          "translationEn": "My birthday always coincides with the day of the school event called the closing ceremony."
         },
         {
           "id": 15,
           "text": "うんうんバタバタしてる日なんです確かに",
           "translation": "这绝对是忙碌的一天。",
           "startSec": 77.086,
-          "endSec": 80.39399999999999
+          "endSec": 80.39399999999999,
+          "translationEn": "It's definitely a hectic day."
         },
         {
           "id": 16,
           "text": "今日卒業式だねみたいな日なんですよ",
           "translation": "感觉今天是毕业典礼。",
           "startSec": 80.346,
-          "endSec": 83.1
+          "endSec": 83.1,
+          "translationEn": "It feels like today is a graduation ceremony."
         },
         {
           "id": 17,
           "text": "卒業式のお話こないだしてましたよねはい",
           "translation": "你开始谈论毕业典礼了，对吧？",
           "startSec": 83.452,
-          "endSec": 86.684
+          "endSec": 86.684,
+          "translationEn": "You started talking about the graduation ceremony, right?"
         },
         {
           "id": 18,
           "text": "そうなので いつも何か 忘れ去られてるというか そういう日なんですちょっと寂しいね",
           "translation": "所以有些事总是会被遗忘，或者说，就是那样的日子，所以有点悲伤。",
           "startSec": 86.46000000000001,
-          "endSec": 95.048
+          "endSec": 95.048,
+          "translationEn": "That's why something is always forgotten, or rather, it's those kind of days, so it's a bit sad."
         },
         {
           "id": 19,
           "text": "大人になってからも すごく忙しいっていうのがあって",
           "translation": "即使作为一个成年人，我仍然很忙。",
           "startSec": 97,
-          "endSec": 100.824
+          "endSec": 100.824,
+          "translationEn": "Even as an adult, I'm still very busy."
         },
         {
           "id": 20,
           "text": "僕らが出会ってからも誕生日はまあ一緒にお祝いしてもらってるんですけど",
           "translation": "即使我们认识之后，我们仍然一起庆祝生日。",
           "startSec": 102.47999999999999,
-          "endSec": 106.864
+          "endSec": 106.864,
+          "translationEn": "Even after we met, we've been celebrating birthdays together."
         },
         {
           "id": 21,
           "text": "何かどっかに仕事で行っててその仕事の先の人と一緒に 何",
           "translation": "当我去某个地方工作并与同事在一起时。",
           "startSec": 108.398,
-          "endSec": 113.146
+          "endSec": 113.146,
+          "translationEn": "When I went somewhere for work and was with the person I was working with."
         },
         {
           "id": 22,
           "text": "かご飯とか食べてて実は僕今日誕生日なんですよって言って",
           "translation": "吃饭的时候，我告诉他今天其实是我的生日。",
           "startSec": 113.146,
-          "endSec": 117.894
+          "endSec": 117.894,
+          "translationEn": "While we were eating, I told him that it was actually my birthday today."
         },
         {
           "id": 23,
           "text": "何だおめでとうみたいになることが多いよね",
           "translation": "我常常感到恭喜。",
           "startSec": 118.006,
-          "endSec": 120.39
+          "endSec": 120.39,
+          "translationEn": "I often feel like congratulations."
         },
         {
           "id": 24,
           "text": "突然ねそうそうそうなんだよみたいな",
           "translation": "突然之间，就好像，哦，是的，就是这样。",
           "startSec": 120.97,
-          "endSec": 123.418
+          "endSec": 123.418,
+          "translationEn": "All of a sudden, it's like, oh yeah, that's it."
         },
         {
           "id": 25,
           "text": "早く言ってくれればいいのにみたいな",
           "translation": "我希望你早点告诉我。",
           "startSec": 124.49,
-          "endSec": 126.394
+          "endSec": 126.394,
+          "translationEn": "I wish you'd told me sooner."
         },
         {
           "id": 26,
           "text": "でも忙しいときなんでみたいなね",
           "translation": "但我想知道为什么当我很忙的时候。",
           "startSec": 127.418,
-          "endSec": 129.145
+          "endSec": 129.145,
+          "translationEn": "But I wonder why when I'm busy."
         },
         {
           "id": 27,
           "text": "そういうパターンが多いんですけどはい",
           "translation": "是的，这样的模式有很多。",
           "startSec": 129.598,
-          "endSec": 132.286
+          "endSec": 132.286,
+          "translationEn": "Yes, there are many patterns like that."
         },
         {
           "id": 28,
           "text": "今年はですね 家族にお祝いをしてもらいましたはい",
           "translation": "今年，我让家人和我一起庆祝。",
           "startSec": 132.158,
-          "endSec": 136.86200000000002
+          "endSec": 136.86200000000002,
+          "translationEn": "This year, I had my family celebrate with me."
         },
         {
           "id": 29,
           "text": "今年ちょっと特徴として面白かったのが",
           "translation": "今年的一个有趣的特点是",
           "startSec": 137.89,
-          "endSec": 140.674
+          "endSec": 140.674,
+          "translationEn": "One interesting feature this year was"
         },
         {
           "id": 30,
           "text": "家に料理人の方を呼んで",
           "translation": "把厨师叫到你家",
           "startSec": 142.29,
-          "endSec": 145.49
+          "endSec": 145.49,
+          "translationEn": "call the cook to your house"
         },
         {
           "id": 31,
           "text": "ご飯作ってもらったんですよねそうなんですよ",
           "translation": "我有人给我做饭，对吗？",
           "startSec": 146.012,
-          "endSec": 149.244
+          "endSec": 149.244,
+          "translationEn": "I had someone make me a meal, right?"
         },
         {
           "id": 32,
           "text": "これはねなかなか面白かった特別なねそう",
           "translation": "这真的很有趣而且很特别。",
           "startSec": 149.57999999999998,
-          "endSec": 153.036
+          "endSec": 153.036,
+          "translationEn": "This was really interesting and special."
         },
         {
           "id": 33,
           "text": "日でした本当によかったよね",
           "translation": "我真的很高兴这是一天。",
           "startSec": 153.916,
-          "endSec": 157.212
+          "endSec": 157.212,
+          "translationEn": "I'm really glad it was a day."
         },
         {
           "id": 34,
           "text": "やっぱり子供たちがいるとさまだまだちっちゃいんで",
           "translation": "毕竟孩子还小。",
           "startSec": 157.724,
-          "endSec": 163.352
+          "endSec": 163.352,
+          "translationEn": "After all, children are still small."
         },
         {
           "id": 35,
           "text": "レストランとかに行くと 何か心配というか走り回ったりとか いろいろぶつかったりとかね",
           "translation": "当我去餐馆或其他地方时，我会担心一些事情，比如跑来跑去，撞到东西。",
           "startSec": 163.678,
-          "endSec": 172.478
+          "endSec": 172.478,
+          "translationEn": "When I go to a restaurant or something, I worry about something, like running around and bumping into things."
         },
         {
           "id": 36,
           "text": "するんで例えばレストランとかを貸し切りにしないとなかな",
           "translation": "例如，出租餐厅之类的东西会很困难。",
           "startSec": 172.82999999999998,
-          "endSec": 178.64299999999997
+          "endSec": 178.64299999999997,
+          "translationEn": "So, for example, it would be difficult to rent out a restaurant or something."
         },
         {
           "id": 37,
           "text": "か難しい貸し切りにしても何かお皿を割っちゃったりとかさ",
-          "translation": "即使你租的东西很困难，你也可能会打破盘子。",
+          "translation": "即使你在困难时期出租它，你也可能会打破盘子。",
           "startSec": 178.64299999999997,
-          "endSec": 184.456
+          "endSec": 184.456,
+          "translationEn": "Even if you rent it out for a difficult time, you might end up breaking a plate."
         },
         {
           "id": 38,
           "text": "そう気を遣うよね",
           "translation": "原来你这么细心",
           "startSec": 184.488,
-          "endSec": 185.848
+          "endSec": 185.848,
+          "translationEn": "That's how careful you are"
         },
         {
           "id": 39,
           "text": "結構ストレスがたまっちゃうんではい",
           "translation": "压力一定很大。",
           "startSec": 186.488,
-          "endSec": 189.592
+          "endSec": 189.592,
+          "translationEn": "It must be quite stressful."
         },
         {
           "id": 40,
           "text": "じゃあもう家にその料理作ってくれる人呼んじゃえばいいんじゃないのっていう話になってはい",
           "translation": "所以现在是我邀请某人到我家为我做饭的时候了。",
           "startSec": 189.704,
-          "endSec": 197.488
+          "endSec": 197.488,
+          "translationEn": "So now it's time for me to just invite someone to my house to cook the food for me."
         },
         {
           "id": 41,
           "text": "近所で活動されている 何て言ったらいいの料理人っていうかそうですね",
           "translation": "我想你可以称之为活跃在附近的厨师。",
           "startSec": 198.048,
-          "endSec": 203.90800000000002
+          "endSec": 203.90800000000002,
+          "translationEn": "I guess you could call it a chef who is active in the neighborhood."
         },
         {
           "id": 42,
           "text": "の方を呼びまして",
           "translation": "我打电话给你",
           "startSec": 204.356,
-          "endSec": 205.94
+          "endSec": 205.94,
+          "translationEn": "I'm calling you"
         },
         {
           "id": 43,
           "text": "で あの家で作ってもらったとはい",
           "translation": "是的，我在那所房子里做了它。",
           "startSec": 207.046,
-          "endSec": 210.47000000000003
+          "endSec": 210.47000000000003,
+          "translationEn": "And yes, I had it made at that house."
         },
         {
           "id": 44,
           "text": "何か初めての経験だったね",
           "translation": "这是第一次经历。",
           "startSec": 211.832,
-          "endSec": 213.352
+          "endSec": 213.352,
+          "translationEn": "It was something of a first experience."
         },
         {
           "id": 45,
           "text": "家だしそうそうそうどういう感じで進むのかなとか",
           "translation": "这是家，所以我想知道事情会怎样。",
           "startSec": 214.344,
-          "endSec": 219.496
+          "endSec": 219.496,
+          "translationEn": "It's home, so I wonder how things will go."
         },
         {
           "id": 46,
           "text": "何かちゃんとできるのかなって 不安だったんですけどね",
           "translation": "我担心自己无法做好任何事情。",
           "startSec": 220.392,
-          "endSec": 222.904
+          "endSec": 222.904,
+          "translationEn": "I was worried that I wouldn't be able to do anything properly."
         },
         {
           "id": 47,
           "text": "キッチンの使い勝手とかもあるからねそうそうそう",
           "translation": "还有使用厨房很方便吧？",
           "startSec": 223.94400000000002,
-          "endSec": 227.832
+          "endSec": 227.832,
+          "translationEn": "There's also the convenience of using the kitchen, right?"
         },
         {
           "id": 48,
           "text": "でも僕らは普段通り家で過ごしていて",
           "translation": "但我们还是像往常一样呆在家里。",
           "startSec": 228.746,
-          "endSec": 232.642
+          "endSec": 232.642,
+          "translationEn": "But we are spending our time at home as usual."
         },
         {
           "id": 49,
           "text": "そのプロの料理人の方が 料理をテキパキとね",
           "translation": "专业厨师高效烹饪食物。",
           "startSec": 233.762,
-          "endSec": 238.474
+          "endSec": 238.474,
+          "translationEn": "The professional chef cooks the food efficiently."
         },
         {
           "id": 50,
           "text": "作っていく様子を見ながら",
           "translation": "看着它被制作出来",
           "startSec": 238.97,
-          "endSec": 241.45
+          "endSec": 241.45,
+          "translationEn": "Watching it being made"
         },
         {
           "id": 51,
           "text": "料理の話を聞きながら",
           "translation": "一边听烹饪故事",
           "startSec": 242.426,
-          "endSec": 244.122
+          "endSec": 244.122,
+          "translationEn": "While listening to cooking stories"
         },
         {
           "id": 52,
           "text": "何かこう 作っていく過程も楽しむというかそうなんですよ",
           "translation": "我喜欢创造东西的过程，至少我是这么说的。",
           "startSec": 246.468,
-          "endSec": 249.716
+          "endSec": 249.716,
+          "translationEn": "I enjoy the process of creating something, or so I say."
         },
         {
           "id": 53,
           "text": "すごく良かったね子供たちにもね すごくいい経験だったなと思ってそうだね",
           "translation": "这对孩子们来说也真的很棒。看来他们认为这是一次非常棒的经历。",
           "startSec": 250.872,
-          "endSec": 257.416
+          "endSec": 257.416,
+          "translationEn": "It was really great for the kids too. It seems like they thought it was a really great experience."
         },
         {
           "id": 54,
           "text": "これはまたやりたいなと思いますね",
           "translation": "我想我想再做一次",
           "startSec": 258.672,
-          "endSec": 261.016347826087
+          "endSec": 261.016347826087,
+          "translationEn": "I think I want to do this again"
         },
         {
           "id": 55,
           "text": "いや本当に何か楽しかったです",
           "translation": "不，真的很有趣",
           "startSec": 260.9593043478261,
-          "endSec": 262.9606956521739
+          "endSec": 262.9606956521739,
+          "translationEn": "No, it was really fun"
         },
         {
           "id": 56,
           "text": "しそうもちろん美味しかったですし",
           "translation": "当然很好吃",
           "startSec": 262.9606956521739,
-          "endSec": 265.248
+          "endSec": 265.248,
+          "translationEn": "Of course it was delicious"
         },
         {
           "id": 57,
           "text": "何かあの多分そういうことやったことあるよっていう人もたくさんいると思うんだけど",
           "translation": "我想可能有很多人都做过类似的事情。",
           "startSec": 267.752,
-          "endSec": 272.114
+          "endSec": 272.114,
+          "translationEn": "I think there are many people who have probably done something like that."
         },
         {
           "id": 58,
           "text": "何かこれおすすめですね",
           "translation": "推荐这样的东西。",
           "startSec": 273.378,
-          "endSec": 274.802
+          "endSec": 274.802,
+          "translationEn": "Something like this is recommended."
         },
         {
           "id": 59,
           "text": "幸せになりますね",
           "translation": "你会幸福的",
           "startSec": 275.842,
-          "endSec": 277.442
+          "endSec": 277.442,
+          "translationEn": "You'll be happy"
         },
         {
           "id": 60,
           "text": "実はそんなにお金もかからないっていうかかかるんだけど",
           "translation": "事实上，它并没有花那么多钱，或者说是花很多钱。",
           "startSec": 277.918,
-          "endSec": 282.19
+          "endSec": 282.19,
+          "translationEn": "Actually, it doesn't cost that much, or rather it costs a lot of money."
         }
       ]
     },
@@ -3038,420 +3458,480 @@
           "text": "はい。え、皆さんこんにちは。",
           "translation": "是的。嗯，大家好。",
           "startSec": 16.91,
-          "endSec": 17.948333333333334
+          "endSec": 17.948333333333334,
+          "translationEn": "yes. Well, hello everyone."
         },
         {
           "id": 2,
           "text": "え、今日は今 この 喋っ て いる タイミング で 3 月 17 日",
           "translation": "好吧，今天是 3 月 17 日，我们正在谈论这个时刻。",
           "startSec": 17.948333333333334,
-          "endSec": 20.47
+          "endSec": 20.47,
+          "translationEn": "Well, today is March 17th at the moment we are talking."
         },
         {
           "id": 3,
           "text": "今この喋っているタイミングで3月17日火曜日 な ん です けれど も 、え 、",
           "translation": "正如我现在所说，现在是 3 月 17 日星期二，但是……",
           "startSec": 20.47,
-          "endSec": 23.159599999999998
+          "endSec": 23.159599999999998,
+          "translationEn": "As I'm speaking now, it's Tuesday, March 17th, but..."
         },
         {
           "id": 4,
           "text": "もう 3 月 も",
           "translation": "已经三月了",
           "startSec": 23.159599999999998,
-          "endSec": 23.75
+          "endSec": 23.75,
+          "translationEn": "It's already March"
         },
         {
           "id": 5,
           "text": "火曜日なんですけれども、え、",
           "translation": "今天是星期二，但是...",
           "startSec": 23.75,
-          "endSec": 25.009999999999998
+          "endSec": 25.009999999999998,
+          "translationEn": "It's Tuesday, but..."
         },
         {
           "id": 6,
           "text": "もう3月もね 半分 終わっ て 後半 に 入っ て しまい まし た",
           "translation": "三月已经过去一半了，我们已经进入下半年了。",
           "startSec": 24.986666666666665,
-          "endSec": 27.99
+          "endSec": 27.99,
+          "translationEn": "Half of March is already over and we are in the second half."
         },
         {
           "id": 7,
           "text": "ね半分終わって後半に入ってしまいましたね 。",
           "translation": "比赛已经结束了一半，现在进入下半场。",
           "startSec": 27.99,
-          "endSec": 30.270367346938777
+          "endSec": 30.270367346938777,
+          "translationEn": "Half of the game is over and we are now in the second half."
         },
         {
           "id": 8,
           "text": "最近 は もう 本当 に 本当 に 忙しく て ですね。",
           "translation": "我最近真的真的很忙。",
           "startSec": 30.270367346938777,
-          "endSec": 33.269000000000005
+          "endSec": 33.269000000000005,
+          "translationEn": "I've been really, really busy lately."
         },
         {
           "id": 9,
           "text": "最近はもう本当に本当に忙しくてですね 。。",
           "translation": "我最近真的真的很忙。 。",
           "startSec": 33.257375,
-          "endSec": 35.341125000000005
+          "endSec": 35.341125000000005,
+          "translationEn": "I've been really, really busy lately. ."
         },
         {
           "id": 10,
           "text": "ま 、 特に 今 は です ね 、 海外 からね。。",
           "translation": "嗯，尤其是现在，来自海外。 。",
           "startSec": 35.3295,
-          "endSec": 37.93833333333334
+          "endSec": 37.93833333333334,
+          "translationEn": "Well, especially now, from overseas. ."
         },
         {
           "id": 11,
           "text": "ま、特に今はですね、海外から日本 に やっ て くる お 客 さん の 写真 撮影 と か",
           "translation": "嗯，特别是现在，我正在做一些事情，比如给从海外来日本的顾客拍照。",
           "startSec": 37.8125,
-          "endSec": 41.15
+          "endSec": 41.15,
+          "translationEn": "Well, especially now, I'm doing things like taking photos of customers who come to Japan from overseas."
         },
         {
           "id": 12,
           "text": "日本にやってくるお客さんの写真撮影とか、え 、",
           "translation": "拍摄来日本的顾客等的照片",
           "startSec": 41.15,
-          "endSec": 43.39
+          "endSec": 43.39,
+          "translationEn": "Taking photos of customers coming to Japan, etc."
         },
         {
           "id": 13,
           "text": "動画 撮影 を し たり 、あと は 、、、え、",
           "translation": "拍摄视频并完成剩下的...",
           "startSec": 43.39,
-          "endSec": 45.89960000000001
+          "endSec": 45.89960000000001,
+          "translationEn": "Shoot a video and do the rest..."
         },
         {
           "id": 14,
           "text": "動画撮影をしたり、あとは、、",
           "translation": "拍摄视频和其他事情...",
           "startSec": 45.838800000000006,
-          "endSec": 46.9436
+          "endSec": 46.9436,
+          "translationEn": "Shooting videos and other things..."
         },
         {
           "id": 15,
           "text": "日本 は 今 ね 、卒業 式 、入学 式 、ま 、入学 式日本は今ね、卒業式、入学式、ま、",
           "translation": "日本现在，毕业典礼，入学典礼，马，入学典礼 日本现在，毕业典礼，入学典礼，马，",
           "startSec": 46.8132,
-          "endSec": 50.25470833333333
+          "endSec": 50.25470833333333,
+          "translationEn": "Japan is now, graduation ceremony, entrance ceremony, ma, entrance ceremony Japan is now, graduation ceremony, entrance ceremony, ma,"
         },
         {
           "id": 16,
           "text": "入学式は 4 月 です けど 、",
           "translation": "入学典礼是在四月，但是",
           "startSec": 50.18966666666666,
-          "endSec": 51.26933333333333
+          "endSec": 51.26933333333333,
+          "translationEn": "The entrance ceremony is in April, but"
         },
         {
           "id": 17,
           "text": "卒業 シーズン と いう こと",
           "translation": "又到了毕业季",
           "startSec": 51.26933333333333,
-          "endSec": 52.349
+          "endSec": 52.349,
+          "translationEn": "It's graduation season"
         },
         {
           "id": 18,
           "text": "は4月ですけど、",
           "translation": "正值四月，",
           "startSec": 52.349,
-          "endSec": 52.83921276595744
+          "endSec": 52.83921276595744,
+          "translationEn": "is in April,"
         },
         {
           "id": 19,
           "text": "卒業シーズンということで 、ま 、",
           "translation": "因为现在是毕业季...",
           "startSec": 52.83921276595744,
-          "endSec": 53.9421914893617
+          "endSec": 53.9421914893617,
+          "translationEn": "Since it's graduation season..."
         },
         {
           "id": 20,
           "text": "その タイミング で 写真 を 撮り た",
           "translation": "我当时拍了一张照片。",
           "startSec": 53.9421914893617,
-          "endSec": 55.229
+          "endSec": 55.229,
+          "translationEn": "I took a photo at that moment."
         },
         {
           "id": 21,
           "text": "で、ま、そのタイミングで写真を撮りたいっ て いう 人 も い ます し 、 、 なん と",
           "translation": "而且，呃，当时也有人想拍照，所以……",
           "startSec": 55.229,
-          "endSec": 58.509
+          "endSec": 58.509,
+          "translationEn": "And, well, there are some people who want to take photos at that time, so..."
         },
         {
           "id": 22,
           "text": "いっていう人もいますし、、",
           "translation": "有人说，",
           "startSec": 58.509,
-          "endSec": 59.59621739130435
+          "endSec": 59.59621739130435,
+          "translationEn": "Some people say,"
         },
         {
           "id": 23,
           "text": "なんと言っ て も 今 、、ま 、",
           "translation": "不管我说什么，现在...",
           "startSec": 59.47015217391304,
-          "endSec": 60.87491304347826
+          "endSec": 60.87491304347826,
+          "translationEn": "No matter what I say, now..."
         },
         {
           "id": 24,
           "text": "僕 ら が 住ん で いる",
           "translation": "我们住",
           "startSec": 60.87491304347826,
-          "endSec": 61.91
+          "endSec": 61.91,
+          "translationEn": "we live"
         },
         {
           "id": 25,
           "text": "言っても今、、ま、僕らが住んでいるところ で は 梅 が 咲い て い ます 。",
           "translation": "然而，现在，我们居住的地方，梅花正盛开。",
           "startSec": 61.91,
-          "endSec": 64.73468085106383
+          "endSec": 64.73468085106383,
+          "translationEn": "However, right now, plum blossoms are blooming where we live."
         },
         {
           "id": 26,
           "text": "そして もうところでは梅が咲いています。",
           "translation": "梅树已经开花了。",
           "startSec": 64.73468085106383,
-          "endSec": 65.99155319148936
+          "endSec": 65.99155319148936,
+          "translationEn": "And the plum trees are already blooming."
         },
         {
           "id": 27,
           "text": "そしてもうすぐ 、 え 、 桜 が 始 ま るっていう タイミング",
           "translation": "很快，樱花就会开始绽放。",
           "startSec": 65.99155319148936,
-          "endSec": 67.789
+          "endSec": 67.789,
+          "translationEn": "And soon, the cherry blossoms will start blooming."
         },
         {
           "id": 28,
           "text": "すぐ、え、桜が始まるっていうタイミングな ん です けど 。",
           "translation": "时间正好，樱花即将盛开。",
           "startSec": 67.789,
-          "endSec": 71.04986956521739
+          "endSec": 71.04986956521739,
+          "translationEn": "The timing is right, the cherry blossoms are about to start."
         },
         {
           "id": 29,
           "text": "やっぱり この 春 の ね 、",
           "translation": "毕竟是今年春天了。",
           "startSec": 71.04986956521739,
-          "endSec": 72.789
+          "endSec": 72.789,
+          "translationEn": "It's this spring after all."
         },
         {
           "id": 30,
           "text": "なんですけどうん。",
           "translation": "但是是的。",
           "startSec": 72.789,
-          "endSec": 73.42474468085106
+          "endSec": 73.42474468085106,
+          "translationEn": "But yeah."
         },
         {
           "id": 31,
           "text": "やっぱりこの春のね、花 が 咲い て くる と 、 ま 、 とっても 忙しく",
           "translation": "果然，这个春天，花开的时候，我很忙。",
           "startSec": 73.42474468085106,
-          "endSec": 76.10900000000001
+          "endSec": 76.10900000000001,
+          "translationEn": "As expected, this spring, when the flowers are blooming, I'm very busy."
         },
         {
           "id": 32,
           "text": "花が咲いてくると、ま、とっても忙しくなり ます ね 。",
           "translation": "花开的时候，我就变得很忙碌。",
           "startSec": 76.10900000000001,
-          "endSec": 77.98784782608696
+          "endSec": 77.98784782608696,
+          "translationEn": "When the flowers bloom, I get very busy."
         },
         {
           "id": 33,
           "text": "やっぱり 花 と 一緒 に 写真 をなりますね。",
           "translation": "我想我还是会和花拍一张照片。",
           "startSec": 77.98784782608696,
-          "endSec": 79.72
+          "endSec": 79.72,
+          "translationEn": "I guess I'll take a photo with the flowers after all."
         },
         {
           "id": 34,
           "text": "やっぱり花と一緒に写真を撮り た いっ て いう 方 が 多く て 、 で 、 特に",
           "translation": "毕竟想和花拍照的人很多，尤其是",
           "startSec": 79.72,
-          "endSec": 82.59
+          "endSec": 82.59,
+          "translationEn": "After all, there are many people who want to take pictures with flowers, especially"
         },
         {
           "id": 35,
           "text": "撮りたいっていう方が多くて、で、",
           "translation": "因为有很多人想拍照，所以...",
           "startSec": 82.59,
-          "endSec": 83.96572
+          "endSec": 83.96572,
+          "translationEn": "There were a lot of people who wanted to take pictures, so..."
         },
         {
           "id": 36,
           "text": "特にこの 3 月 の 終わり から 4 月 の 、え 、ま です",
           "translation": "尤其是三月底到四月份。",
           "startSec": 83.93368,
-          "endSec": 86.789
+          "endSec": 86.789,
+          "translationEn": "Especially from the end of March to April."
         },
         {
           "id": 37,
           "text": "この3月の終わりから4月の、え、",
           "translation": "从三月底到四月，呃...",
           "startSec": 86.789,
-          "endSec": 87.8826170212766
+          "endSec": 87.8826170212766,
+          "translationEn": "From the end of March to April, eh..."
         },
         {
           "id": 38,
           "text": "まですね に かけ て は ものすごく 予約 が いっぱい と",
           "translation": "到当天结束时，我们的房间已经订满了。",
           "startSec": 87.81027659574468,
-          "endSec": 89.789
+          "endSec": 89.789,
+          "translationEn": "By the end of the day, we were fully booked."
         },
         {
           "id": 39,
           "text": "ねにかけてはものすごく予約がいっぱいという 状態 で 、 、 もう 何 でしょう ? もう",
           "translation": "我们已经被订满了，那我们现在能做什么呢？",
           "startSec": 89.789,
-          "endSec": 93.429
+          "endSec": 93.429,
+          "translationEn": "We are already fully booked, so what can we do now?"
         },
         {
           "id": 40,
           "text": "いう状態で、、もう何でしょう?",
           "translation": "在这种情况下，我现在能做什么呢？",
           "startSec": 93.429,
-          "endSec": 94.53995744680851
+          "endSec": 94.53995744680851,
+          "translationEn": "In this situation, what can I do now?"
         },
         {
           "id": 41,
           "text": "もう何十 回 も 写真 撮影 の 予約 が 入っ てる と いう",
           "translation": "他说他已经被预约拍摄数十张照片。",
           "startSec": 94.53995744680851,
-          "endSec": 96.91
+          "endSec": 96.91,
+          "translationEn": "He says he has already been booked for dozens of photo shoots."
         },
         {
           "id": 42,
           "text": "何十回も写真撮影の予約が入ってるという状態 で 、、ま 、",
           "translation": "我预约了几十张照片的拍摄...",
           "startSec": 96.91,
-          "endSec": 100.14478260869566
+          "endSec": 100.14478260869566,
+          "translationEn": "I had reservations for dozens of photo shoots..."
         },
         {
           "id": 43,
           "text": "今 まで に ない 、1番",
           "translation": "第一名，以前从未有过",
           "startSec": 100.14478260869566,
-          "endSec": 101.71000000000001
+          "endSec": 101.71000000000001,
+          "translationEn": "No. 1, never before"
         },
         {
           "id": 44,
           "text": "状態で、、ま、今までにない、1番忙しい 状態 に なっ て い ます 。 。",
           "translation": "现在，我正处于有史以来最忙碌的状态。",
           "startSec": 101.71000000000001,
-          "endSec": 106.469
+          "endSec": 106.469,
+          "translationEn": "Now, I'm in the busiest state I've ever been in. ."
         },
         {
           "id": 45,
           "text": "忙しい状態になっています。。",
           "translation": "我一直很忙。 。",
           "startSec": 106.469,
-          "endSec": 107.26899999999999
+          "endSec": 107.26899999999999,
+          "translationEn": "I've been busy. ."
         },
         {
           "id": 46,
           "text": "あんまり 忙しい と ね 、",
           "translation": "我想我还不算太忙。",
           "startSec": 106.479,
-          "endSec": 107.75928985507247
+          "endSec": 107.75928985507247,
+          "translationEn": "I guess I'm not too busy."
         },
         {
           "id": 47,
           "text": "余裕 が なく て 、",
           "translation": "我买不起，",
           "startSec": 107.75928985507247,
-          "endSec": 108.85668115942029
+          "endSec": 108.85668115942029,
+          "translationEn": "I can't afford it,"
         },
         {
           "id": 48,
           "text": "あんまり忙しいとね、余裕がなくて、",
           "translation": "如果我太忙的话我就没有时间",
           "startSec": 108.85668115942029,
-          "endSec": 110.41131884057971
+          "endSec": 110.41131884057971,
+          "translationEn": "If I'm too busy, I won't have time,"
         },
         {
           "id": 49,
           "text": "そして この ポッドキャスト で 何 を 話そう か",
           "translation": "我们将在这个播客中谈论什么？",
           "startSec": 110.41131884057971,
-          "endSec": 112.789
+          "endSec": 112.789,
+          "translationEn": "And what are we going to talk about in this podcast?"
         },
         {
           "id": 50,
           "text": "そしてこのポッドキャストで何を話そうかなっ て",
           "translation": "我应该在这个播客上谈论什么？",
           "startSec": 112.789,
-          "endSec": 114.40899999999999
+          "endSec": 114.40899999999999,
+          "translationEn": "And what should I talk about on this podcast?"
         },
         {
           "id": 51,
           "text": "こう 考え てる うち に なんか 1 日 が",
           "translation": "当我思考这个问题时，有一天我突然意识到了这一天。",
           "startSec": 114.40899999999999,
-          "endSec": 116.029
+          "endSec": 116.029,
+          "translationEn": "While I was thinking about this, a certain day dawned on me."
         },
         {
           "id": 52,
           "text": "なってこう考えてるうちになんか1日が終わっ て しま うっ て いう こと で 、ま 、",
           "translation": "当我这么想着的时候，这一天似乎已经结束了，所以……",
           "startSec": 116.029,
-          "endSec": 118.6549375
+          "endSec": 118.6549375,
+          "translationEn": "While I was thinking about this, the day seemed to be over, so..."
         },
         {
           "id": 53,
           "text": "本当終わってしまうっていうことで、ま、",
           "translation": "嗯，真的要结束了，嗯……",
           "startSec": 118.6549375,
-          "endSec": 120.1786170212766
+          "endSec": 120.1786170212766,
+          "translationEn": "Well, it's really going to end, well..."
         },
         {
           "id": 54,
           "text": "本当は たくさん 質問 を いい て たり と か ある ん",
           "translation": "其实我有很多疑问。",
           "startSec": 120.1317659574468,
-          "endSec": 122.429
+          "endSec": 122.429,
+          "translationEn": "Actually, I have a lot of questions."
         },
         {
           "id": 55,
           "text": "はたくさん質問をいいてたりとかあるんです けど 、",
           "translation": "有很多问题被问到，但是...",
           "startSec": 122.429,
-          "endSec": 123.8976170212766
+          "endSec": 123.8976170212766,
+          "translationEn": "There are a lot of questions asked, but..."
         },
         {
           "id": 56,
           "text": "最近 は ね 、",
           "translation": "最近，",
           "startSec": 123.8976170212766,
-          "endSec": 124.42631914893617
+          "endSec": 124.42631914893617,
+          "translationEn": "Lately,"
         },
         {
           "id": 57,
           "text": "1人 で いる こと が",
           "translation": "独自一人",
           "startSec": 124.42631914893617,
-          "endSec": 125.19
+          "endSec": 125.19,
+          "translationEn": "Being alone"
         },
         {
           "id": 58,
           "text": "ですけど、最近はね、1人でいることが多い の で 、 2人 の エピソード が 取り にく",
           "translation": "但最近，我经常一个人，所以很难跟上我们两个人之间的情节。",
           "startSec": 125.19,
-          "endSec": 127.429
+          "endSec": 127.429,
+          "translationEn": "But lately, I've been alone a lot, so it's been hard to catch up on episodes between the two of us."
         },
         {
           "id": 59,
           "text": "多いので、2人のエピソードが取りにくいっ て いう こと も ある し 、",
           "translation": "剧集实在是太多了，想要看清这两个人的剧集是很困难的。",
           "startSec": 127.429,
-          "endSec": 130.11227083333333
+          "endSec": 130.11227083333333,
+          "translationEn": "There are so many episodes that it can be difficult to catch episodes of the two of them."
         },
         {
           "id": 60,
           "text": "質問 を いい たら",
           "translation": "如果您有疑问",
           "startSec": 130.11227083333333,
-          "endSec": 130.91
+          "endSec": 130.91,
+          "translationEn": "If you have a question"
         }
       ]
     },
@@ -3469,420 +3949,480 @@
           "text": "はい皆さん こんばんは",
           "translation": "是的，大家晚上好",
           "startSec": 0.212,
-          "endSec": 2.852
+          "endSec": 2.852,
+          "translationEn": "Yes everyone, good evening"
         },
         {
           "id": 2,
           "text": "久しぶりですねって今言おうと思ったんだけど",
           "translation": "我只是想说，已经有一段时间了。",
           "startSec": 4.051,
-          "endSec": 6.612
+          "endSec": 6.612,
+          "translationEn": "I just wanted to say that it's been a while."
         },
         {
           "id": 3,
           "text": "私は久しぶりですそうだよねはい",
           "translation": "自从我上次见到你已经有一段时间了，对吧？",
           "startSec": 6.852,
-          "endSec": 10.514000000000001
+          "endSec": 10.514000000000001,
+          "translationEn": "It's been a while since I last saw you, right?"
         },
         {
           "id": 4,
           "text": "ちょっとね 3月はとても忙しくて",
           "translation": "三月份有点忙。",
           "startSec": 11.63,
-          "endSec": 16.286
+          "endSec": 16.286,
+          "translationEn": "It's a bit busy in March."
         },
         {
           "id": 5,
           "text": "これあの冗談じゃなく毎日新幹線に乗って",
           "translation": "这不是开玩笑，我每天都坐新干线",
           "startSec": 18.26,
-          "endSec": 22.516
+          "endSec": 22.516,
+          "translationEn": "This is not a joke, I ride the Shinkansen every day"
         },
         {
           "id": 6,
           "text": "何か行ったり来たりしてます大変だねすごい大変もうね 何か大変です",
           "translation": "有些事情正在来回发生。这是非常困难的。这是非常困难的。有件事是非常困难的。",
           "startSec": 22.914,
-          "endSec": 30.432
+          "endSec": 30.432,
+          "translationEn": "Something is going back and forth. It's very difficult. It's very difficult. Something is very difficult."
         },
         {
           "id": 7,
           "text": "どこにいるのかわかんないよねそうだね",
           "translation": "我想我不知道我在哪里",
           "startSec": 30.832,
-          "endSec": 33.664
+          "endSec": 33.664,
+          "translationEn": "I guess I don't know where I am"
         },
         {
           "id": 8,
           "text": "東京の方にも行くしあと関西の方ね京都 大阪とかね",
           "translation": "我先去东京，然后去关西，比如京都和大阪。",
           "startSec": 34.454,
-          "endSec": 39.59
+          "endSec": 39.59,
+          "translationEn": "I go to Tokyo, and then Kansai, like Kyoto and Osaka."
         },
         {
           "id": 9,
           "text": "そっちも行くっていうので",
           "translation": "我也要去那里。",
           "startSec": 39.926,
-          "endSec": 41.654
+          "endSec": 41.654,
+          "translationEn": "I'm going there too."
         },
         {
           "id": 10,
           "text": "そうだね ここ5年間ぐらいで一番忙しくて 一番移動をしてるかなと思いますねそうだね",
           "translation": "是的，我认为这是我过去五年左右最忙碌的一段时间，也是我旅行最多的一段时间。",
           "startSec": 42.898,
-          "endSec": 52.279999999999994
+          "endSec": 52.279999999999994,
+          "translationEn": "Yeah, I think it's the busiest I've been in the last five years or so, and I think I've been traveling the most."
         },
         {
           "id": 11,
           "text": "2020年にコロナがあって ちょうどそれから今5年経ちますけど",
           "translation": "2020 年新冠疫情爆发，距今已经过去 5 年了。",
           "startSec": 54.368,
-          "endSec": 59.138
+          "endSec": 59.138,
+          "translationEn": "Corona struck in 2020, and it's been 5 years since then."
         },
         {
           "id": 12,
           "text": "それより前も含めても今まで生きてきた中で 一番忙しいかもしれないですね",
           "translation": "甚至在那之前，这可能是我一生中最忙碌的时候。",
           "startSec": 60.12,
-          "endSec": 65.798
+          "endSec": 65.798,
+          "translationEn": "Even before that, it might be the busiest I've ever been in my life."
         },
         {
           "id": 13,
           "text": "お疲れ様ですそれぐらい何か今お仕事がたくさんあって",
           "translation": "谢谢你的辛勤工作，我现在还有很多工作要做。",
           "startSec": 66.022,
-          "endSec": 71.03
+          "endSec": 71.03,
+          "translationEn": "Thank you for your hard work.I have a lot of work to do right now."
         },
         {
           "id": 14,
           "text": "それはいいことだなと思うんですけどねありがたいですね",
           "translation": "我认为这是一件好事，但我很感激。",
           "startSec": 71.614,
-          "endSec": 74.382
+          "endSec": 74.382,
+          "translationEn": "I think that's a good thing, but I'm grateful."
         },
         {
           "id": 15,
           "text": "でもあの もうね",
           "translation": "但已经这样了",
           "startSec": 75.134,
-          "endSec": 76.61304
+          "endSec": 76.61304,
+          "translationEn": "But that's it already"
         },
         {
           "id": 16,
           "text": "家に帰ってくることがあんまりなくてこうやって収録することができなかったんでそうですね",
           "translation": "我猜他不可能这样录音，因为他不常回家。",
           "startSec": 76.61304,
-          "endSec": 84.378
+          "endSec": 84.378,
+          "translationEn": "I guess he wasn't able to record like this because he didn't come home very often."
         },
         {
           "id": 17,
           "text": "ここ3回ぐらいですかは あさみさんに1人でお話をしていただきました",
           "translation": "已经有三次是麻美单独和我说话了。",
           "startSec": 84.378,
-          "endSec": 92.336
+          "endSec": 92.336,
+          "translationEn": "For the past three times, Asami has spoken to me alone."
         },
         {
           "id": 18,
           "text": "話しましたよありがとうございました緊張しましたけどね",
           "translation": "谢谢你跟我说话，虽然我很紧张。",
           "startSec": 93.408,
-          "endSec": 96.8
+          "endSec": 96.8,
+          "translationEn": "Thank you for talking to me, I was nervous though."
         },
         {
           "id": 19,
           "text": "皆さん温かいコメントくださって 嬉しかったですそうだね",
           "translation": "看来大家都很高兴收到如此热情的评论。",
           "startSec": 97.184,
-          "endSec": 101.552
+          "endSec": 101.552,
+          "translationEn": "It seems like everyone was happy to receive such warm comments."
         },
         {
           "id": 20,
           "text": "あのコメントは読んだんですよ",
           "translation": "我读了那条评论。",
           "startSec": 101.75999999999999,
-          "endSec": 103.92
+          "endSec": 103.92,
+          "translationEn": "I read that comment."
         },
         {
           "id": 21,
           "text": "そしたら何か新鮮でいいよねみたいなはい",
           "translation": "然后我想，“有新鲜的东西真是太好了。”",
           "startSec": 104.444,
-          "endSec": 107.724
+          "endSec": 107.724,
+          "translationEn": "Then I thought, ``It's nice to have something fresh.''"
         },
         {
           "id": 22,
           "text": "のもあったしやっぱり2人いる方が賑やかというかね",
           "translation": "也有一个，估计两个人比较热闹。",
           "startSec": 107.404,
-          "endSec": 113.464
+          "endSec": 113.464,
+          "translationEn": "There was also one, so I guess it's more lively with two people."
         },
         {
           "id": 23,
           "text": "1人はちょっと寂しいよねみたいなのもあったなと思ったんですけどそうだね",
-          "translation": "",
+          "translation": "我以为一个人呆着会有点孤独，但事实就是如此。",
           "startSec": 113.88,
-          "endSec": 119.428
+          "endSec": 119.428,
+          "translationEn": "I thought it was a bit lonely being alone, but that's true."
         },
         {
           "id": 24,
           "text": "いいねがすごいついてたね",
           "translation": "有这么多喜欢",
           "startSec": 120.198,
-          "endSec": 121.606
+          "endSec": 121.606,
+          "translationEn": "There were so many likes"
         },
         {
           "id": 25,
           "text": "嬉しいそうそうそう頑張れってことかな一人頑張ってるなみたいな感じなのかなはい",
           "translation": "我很高兴，是的，我想这就像我正在尽力而为。我想这就像我自己努力工作一样。",
           "startSec": 122.932,
-          "endSec": 128.34
+          "endSec": 128.34,
+          "translationEn": "I'm happy, yeah yeah, I guess it's like I'm trying my best. I guess it's like I'm working hard on my own."
         },
         {
           "id": 26,
           "text": "まあそれで そこの中にあさみさんの方がゆっくりで話が聞き取りやすいみたいなのがあったんで",
           "translation": "嗯，麻美小姐的语气似乎比较慢，也比较容易听。",
           "startSec": 128.612,
-          "endSec": 137.086
+          "endSec": 137.086,
+          "translationEn": "Well, there was something about Asami-san who seemed to be slower and easier to listen to."
         },
         {
           "id": 27,
           "text": "僕もちょっと気をつけて お話しようかなと思うんですけど",
           "translation": "我想我应该更小心一点并和你谈谈。",
           "startSec": 137.086,
-          "endSec": 141.308
+          "endSec": 141.308,
+          "translationEn": "I think I should be a little more careful and talk to you."
         },
         {
           "id": 28,
           "text": "うんうんうん僕が今ここでポッドキャストでね",
           "translation": "是的，是的，我现在在播客上。",
           "startSec": 142.204,
-          "endSec": 146.85170212765956
+          "endSec": 146.85170212765956,
+          "translationEn": "Yeah yeah yeah I'm here right now on the podcast."
         },
         {
           "id": 29,
           "text": "いつもお話している速さというかこのペースっていうのは",
           "translation": "我经常谈论的速度或步伐是",
           "startSec": 146.85170212765956,
-          "endSec": 152.606
+          "endSec": 152.606,
+          "translationEn": "The speed or pace that I always talk about is"
         },
         {
           "id": 30,
           "text": "一般的なネイティブの日本人からしたらかなりゆっくりな方ですよねそうだね",
           "translation": "从一般日本人的角度来看，他似乎很慢。",
           "startSec": 152.924,
-          "endSec": 160.378
+          "endSec": 160.378,
+          "translationEn": "From the perspective of the average native Japanese person, he seems to be quite slow."
         },
         {
           "id": 31,
           "text": "丁寧に聞き取りやすく話をしてるなっていう感じです",
           "translation": "我觉得他说话很仔细，而且很容易听。",
           "startSec": 161.754,
-          "endSec": 166.586
+          "endSec": 166.586,
+          "translationEn": "I feel like he speaks carefully and in a way that is easy to listen to."
         },
         {
           "id": 32,
           "text": "で これ以上もっともっとゆっくりにするとあんまり実践的じゃなくなっちゃうっていうかそうだね",
-          "translation": "所以，如果你再放慢速度，它就不会很实用，或者看起来是这样。",
+          "translation": "所以，如果你的速度比这慢一点，那就不太实用了，或者看起来是这样。",
           "startSec": 167.628,
-          "endSec": 176.506
+          "endSec": 176.506,
+          "translationEn": "So, if you go any slower than this, it won't be very practical, or so it seems."
         },
         {
           "id": 33,
           "text": "会話だとねそう現実と何ていうのリアルと離れすぎてしまうから",
           "translation": "当谈到对话时，似乎现实与现实相差太远。",
           "startSec": 176.538,
-          "endSec": 183.004
+          "endSec": 183.004,
+          "translationEn": "When it comes to conversations, it seems like reality is too far away from reality."
         },
         {
           "id": 34,
           "text": "まあこれぐらいのスピードで話す人いるよね",
           "translation": "原来还有人说话这么快啊。",
           "startSec": 184.77,
-          "endSec": 188.55823529411765
+          "endSec": 188.55823529411765,
+          "translationEn": "Well, there are people who speak this fast."
         },
         {
           "id": 35,
           "text": "っていう一番ゆっくりぐらいのを目指していきたいなと思いますはい",
           "translation": "我想我想以最慢的方式为目标。",
           "startSec": 188.55823529411765,
-          "endSec": 194.43
+          "endSec": 194.43,
+          "translationEn": "I think I'd like to aim for the slowest way."
         },
         {
           "id": 36,
           "text": "質問とかもねたくさんいただいているんですけど",
           "translation": "我收到很多问题和类似的事情。",
           "startSec": 196.828,
-          "endSec": 199.516
+          "endSec": 199.516,
+          "translationEn": "I get a lot of questions and things like that."
         },
         {
           "id": 37,
           "text": "久しぶりすぎて コメントが溜まっちゃってるんで",
           "translation": "已经过去很长时间了，我一直在堆积评论。",
           "startSec": 200.588,
-          "endSec": 204.014
+          "endSec": 204.014,
+          "translationEn": "It's been a long time and I've been piling up comments."
         },
         {
           "id": 38,
           "text": "ちょっと後でまた1回整理するとして",
           "translation": "稍后我会再次组织。",
           "startSec": 204.67000000000002,
-          "endSec": 207.006
+          "endSec": 207.006,
+          "translationEn": "I'll organize it again a little later."
         },
         {
           "id": 39,
           "text": "今日はあのせっかくいろんなところ行ったり来たりしているんではい",
           "translation": "今天我去了很多地方。",
           "startSec": 208.078,
-          "endSec": 212.638
+          "endSec": 212.638,
+          "translationEn": "I've been going back and forth to all sorts of places today."
         },
         {
           "id": 40,
           "text": "まあそれのお話でも 雑談しようかなと思ってるんですけど",
           "translation": "嗯，我正在考虑讨论一下这个问题。",
           "startSec": 212.526,
-          "endSec": 216.154
+          "endSec": 216.154,
+          "translationEn": "Well, I'm thinking of having a chat about that."
         },
         {
           "id": 41,
           "text": "いろいろ言ってるからね 溜まってるよねはい",
           "translation": "我已经说了很多话，所以我正在积累它们，对吗？",
           "startSec": 217.434,
-          "endSec": 220.25
+          "endSec": 220.25,
+          "translationEn": "I've been saying a lot of things, so I'm accumulating them, right?"
         },
         {
           "id": 42,
           "text": "最近まああの さっきも言ったように新幹線によく乗って",
           "translation": "最近，就像我说的，我经常乘坐新干线。",
           "startSec": 220.442,
-          "endSec": 225.312
+          "endSec": 225.312,
+          "translationEn": "Lately, like I said, I've been riding the Shinkansen a lot."
         },
         {
           "id": 43,
           "text": "特にのぞみ号のぞみね",
           "translation": "尤其是希美",
           "startSec": 226.35399999999998,
-          "endSec": 228.898
+          "endSec": 228.898,
+          "translationEn": "Especially Nozomi Nozomi"
         },
         {
           "id": 44,
           "text": "東海道新幹線っていう",
           "translation": "这就是所谓的东海道新干线。",
           "startSec": 229.346,
-          "endSec": 231.32999999999998
+          "endSec": 231.32999999999998,
+          "translationEn": "It's called Tokaido Shinkansen."
         },
         {
           "id": 45,
           "text": "東京と大阪 新大阪ですね",
           "translation": "东京、大阪 新大阪",
           "startSec": 232.54399999999998,
-          "endSec": 235.504
+          "endSec": 235.504,
+          "translationEn": "Tokyo and Osaka Shin-Osaka"
         },
         {
           "id": 46,
           "text": "の間を行ったり来たりしてる新幹線によく乗るんですけどはい",
           "translation": "我经常乘坐往返于",
           "startSec": 235.936,
-          "endSec": 240.678
+          "endSec": 240.678,
+          "translationEn": "I often ride the Shinkansen that goes back and forth between"
         },
         {
           "id": 47,
           "text": "もうね 外国から来ている観光客の人しかいないそうなんだ",
           "translation": "似乎只有来自国外的游客。",
           "startSec": 242.844,
-          "endSec": 249.21
+          "endSec": 249.21,
+          "translationEn": "It seems like there are only tourists coming from abroad."
         },
         {
           "id": 48,
           "text": "日本の人少ない いないいるけど",
           "translation": "日本人虽然不多，但还是有的。",
           "startSec": 249.562,
-          "endSec": 252.81
+          "endSec": 252.81,
+          "translationEn": "There aren't many Japanese people, but there are some."
         },
         {
           "id": 49,
           "text": "少ないねふうん そうなんだね",
           "translation": "不多吧？这是正确的。",
           "startSec": 255.094,
-          "endSec": 258.07
+          "endSec": 258.07,
+          "translationEn": "Not much, huh? That's right."
         },
         {
           "id": 50,
           "text": "何かもっとあの ビジネス系の人がすごくたくさん乗っているイメージが昔はあってそうだね",
           "translation": "我想以前有很多商务人士骑车的形象。",
           "startSec": 258.326,
-          "endSec": 267.346
+          "endSec": 267.346,
+          "translationEn": "I think there used to be an image of a lot of business people riding cars."
         },
         {
           "id": 51,
           "text": "ほぼそういう方々が乗っているっていうのが のぞみといえばみたいなね",
           "translation": "当我想到Nozomi时，我想大多数人都会乘坐它。",
           "startSec": 267.81,
-          "endSec": 273.14
+          "endSec": 273.14,
+          "translationEn": "When I think of Nozomi, I think most of those people ride it."
         },
         {
           "id": 52,
           "text": "感じだったんだけどはい",
           "translation": "感觉就像是的",
           "startSec": 273.796,
-          "endSec": 275.92400000000004
+          "endSec": 275.92400000000004,
+          "translationEn": "It felt like yes"
         },
         {
           "id": 53,
           "text": "最近はもう旅行 観光列車みたいな感じイメージが確かに外国の方ね",
           "translation": "如今，对于其他国家的人们来说，肯定有乘坐观光火车旅行的印象。",
           "startSec": 275.604,
-          "endSec": 283.23539130434784
+          "endSec": 283.23539130434784,
+          "translationEn": "These days, people from other countries certainly have the image of traveling on a sightseeing train."
         },
         {
           "id": 54,
           "text": "ものすごく多くなりましたしねそうなんですよ",
           "translation": "看起来数量已经大幅增加了。",
           "startSec": 283.23539130434784,
-          "endSec": 287.98
+          "endSec": 287.98,
+          "translationEn": "It seems like the number has increased tremendously."
         },
         {
           "id": 55,
           "text": "だからね 僕は逆にいいと思ってるんだけどね",
           "translation": "所以，相反，我认为这很好。",
           "startSec": 289.182,
-          "endSec": 293.654
+          "endSec": 293.654,
+          "translationEn": "So, on the contrary, I think it's good."
         },
         {
           "id": 56,
           "text": "何かこう 楽しいじゃないそうだね",
           "translation": "看来这不是什么好玩的事。",
           "startSec": 296.414,
-          "endSec": 298.398
+          "endSec": 298.398,
+          "translationEn": "It doesn't seem like this is fun."
         },
         {
           "id": 57,
           "text": "わいわいしてるっていう感じなのそうそうそう何かちょっと新鮮な感じに見えますよねはい",
           "translation": "看上去很活泼，是的，看起来有点小清新是吧？",
           "startSec": 299.646,
-          "endSec": 305.582
+          "endSec": 305.582,
+          "translationEn": "It looks like it's lively, yes, it looks a little fresh, right?"
         },
         {
           "id": 58,
           "text": "で 僕最近 座ったらいいんですけど",
           "translation": "最近，我一直在考虑坐下来。",
           "startSec": 305.988,
-          "endSec": 310.46
+          "endSec": 310.46,
+          "translationEn": "And lately, I've been thinking about sitting down."
         },
         {
           "id": 59,
           "text": "立って乗ってます",
           "translation": "我站着骑着",
           "startSec": 311.34,
-          "endSec": 312.14
+          "endSec": 312.14,
+          "translationEn": "I'm standing and riding"
         },
         {
           "id": 60,
           "text": "何で 座ってよいや まあそうなんだけど",
           "translation": "我为什么要坐下？嗯，确实如此。",
           "startSec": 313.068,
-          "endSec": 315.42
+          "endSec": 315.42,
+          "translationEn": "Why should I sit down? Well, that's true."
         }
       ]
     },
@@ -3900,420 +4440,480 @@
           "text": "はい皆さん こんばんは",
           "translation": "是的，大家晚上好",
           "startSec": 0.302,
-          "endSec": 2.222
+          "endSec": 2.222,
+          "translationEn": "Yes everyone, good evening"
         },
         {
           "id": 2,
           "text": "最近私はお仕事に行くことが増えてきました",
           "translation": "最近，我工作的时间越来越多。",
           "startSec": 3.034,
-          "endSec": 8.81
+          "endSec": 8.81,
+          "translationEn": "Lately, I have been going to work more and more."
         },
         {
           "id": 3,
           "text": "子供たちとね 過ごすことが多かったので",
           "translation": "我花了很多时间和我的孩子们在一起。",
           "startSec": 9.338,
-          "endSec": 15.05
+          "endSec": 15.05,
+          "translationEn": "I spent a lot of time with my children."
         },
         {
           "id": 4,
           "text": "マサくんが仕事に行ってるときはあの家にいるっていうことが多かったんですけど",
           "translation": "雅君上班的时候我经常住在那所房子里。",
           "startSec": 17.014,
-          "endSec": 22.518
+          "endSec": 22.518,
+          "translationEn": "I often stayed at that house when Masa-kun went to work."
         },
         {
           "id": 5,
           "text": "変わってもらって 私が仕事に行って",
           "translation": "请改变我，我会去上班",
           "startSec": 23.512,
-          "endSec": 26.792
+          "endSec": 26.792,
+          "translationEn": "Please change me and I'll go to work"
         },
         {
           "id": 6,
           "text": "写真の撮影をする仕事をしてるんですけど それを撮ってくると",
           "translation": "我的工作是拍照，当我拍照时，",
           "startSec": 29.096,
-          "endSec": 36.204
+          "endSec": 36.204,
+          "translationEn": "My job is to take photos, and when I take them,"
         },
         {
           "id": 7,
           "text": "そういうことをしています",
           "translation": "这就是我正在做的",
           "startSec": 37.694,
-          "endSec": 39.598
+          "endSec": 39.598,
+          "translationEn": "That's what I'm doing"
         },
         {
           "id": 8,
           "text": "最近行ったお仕事で とても久しぶりなことがあったんですけど結婚式のね 撮影をしてきました",
           "translation": "我最近找到了一份拍摄婚礼的工作，我已经很长时间没有见过婚礼了。",
           "startSec": 41.518,
-          "endSec": 53.254
+          "endSec": 53.254,
+          "translationEn": "I recently had a job where I photographed a wedding, which I haven't seen in a long time."
         },
         {
           "id": 9,
           "text": "私があの結婚式にその撮影に行くのは本当に久しぶりで",
           "translation": "我已经很久没有去参加那场婚礼拍照片了。",
           "startSec": 54.31,
-          "endSec": 58.838
+          "endSec": 58.838,
+          "translationEn": "It's been a long time since I went to that wedding to take a photo shoot."
         },
         {
           "id": 10,
           "text": "以前はね たくさん撮ってたんですけど",
           "translation": "我曾经拍过很多照片。",
           "startSec": 60.374,
-          "endSec": 63.014
+          "endSec": 63.014,
+          "translationEn": "I used to take a lot of pictures."
         },
         {
           "id": 11,
           "text": "1日がかりでするお仕事なので",
           "translation": "这是一份一日工作，所以",
           "startSec": 63.382,
-          "endSec": 67.176
+          "endSec": 67.176,
+          "translationEn": "It's a one-day job, so"
         },
         {
           "id": 12,
           "text": "やっぱり子供たちのこともあってなかなか時間がなかったんですけど今回は行ってきました",
           "translation": "因为孩子的原因，时间不多，但这次还是去了。",
           "startSec": 67.176,
-          "endSec": 75.656
+          "endSec": 75.656,
+          "translationEn": "I didn't have much time because of my kids, but I went this time."
         },
         {
           "id": 13,
           "text": "で その大切なね 知っている方の撮影だったので",
           "translation": "这很重要，因为这张照片是我认识的人拍的。",
           "startSec": 77.862,
-          "endSec": 85.086
+          "endSec": 85.086,
+          "translationEn": "And that's important, because the photo was taken by someone I know."
         },
         {
           "id": 14,
           "text": "ぜひ撮りたいっていうことで行ったんですけど",
           "translation": "我去那里是因为我真的很想拍照。",
           "startSec": 85.502,
-          "endSec": 88.574
+          "endSec": 88.574,
+          "translationEn": "I went there because I really wanted to take pictures."
         },
         {
           "id": 15,
           "text": "まずね やっぱり朝から晩までお仕事があったのでとっても疲れましたね",
           "translation": "首先，我要从早干到晚，所以我很累。",
           "startSec": 91.072,
-          "endSec": 100.562
+          "endSec": 100.562,
+          "translationEn": "First of all, I had to work from morning until night, so I was very tired."
         },
         {
           "id": 16,
           "text": "長い時間の仕事っていうのは疲れますね",
           "translation": "长时间工作很累。",
           "startSec": 100.762,
-          "endSec": 105.21000000000001
+          "endSec": 105.21000000000001,
+          "translationEn": "Working long hours is tiring."
         },
         {
           "id": 17,
           "text": "重たいねカメラを持って 立ってお仕事をするので",
           "translation": "它很重，因为我工作时必须站立并携带相机。",
           "startSec": 108.99600000000001,
-          "endSec": 114.52199999999999
+          "endSec": 114.52199999999999,
+          "translationEn": "It's heavy because I have to stand and carry a camera while I work."
         },
         {
           "id": 18,
           "text": "こんなに こんなこと 前はしてたんだと思うとちょっとびっくりしましたで 結婚式のね",
           "translation": "我有点惊讶地想到我以前在婚礼上做过类似的事情。",
           "startSec": 115.226,
-          "endSec": 127.07581132075471
+          "endSec": 127.07581132075471,
+          "translationEn": "I was a little surprised to think that I had done something like this before, at a wedding."
         },
         {
           "id": 19,
           "text": "お仕事に行くときは私はスーツを着てちょっと高いヒールっていうものを履くことが多いんですけど",
           "translation": "上班的时候，我经常穿西装，脚踩稍高的高跟鞋。",
           "startSec": 127.07581132075471,
-          "endSec": 139.718
+          "endSec": 139.718,
+          "translationEn": "When I go to work, I often wear a suit and slightly high heels."
         },
         {
           "id": 20,
           "text": "またそれもね 久しぶりに履いて歩いてたのでちょっと疲れちゃいましたね",
           "translation": "而且，已经有一段时间没有戴着它们到处走动了，所以我有点累了。",
           "startSec": 139.718,
-          "endSec": 147.582
+          "endSec": 147.582,
+          "translationEn": "Also, it's been a while since I walked around wearing them, so I'm a little tired."
         },
         {
           "id": 21,
           "text": "何かそういう懐かしいこうだったなみたいなのを思い出しながらやってました",
           "translation": "我一边做这件事，一边想起一些怀旧的事情。",
           "startSec": 149.006,
-          "endSec": 154.334
+          "endSec": 154.334,
+          "translationEn": "I was doing it while remembering something nostalgic."
         },
         {
           "id": 22,
           "text": "写真は撮っていってたんですけど",
           "translation": "不过我当时正在拍照。",
           "startSec": 157.60399999999998,
-          "endSec": 160.42000000000002
+          "endSec": 160.42000000000002,
+          "translationEn": "I was taking photos, though."
         },
         {
           "id": 23,
           "text": "結婚式に久しぶりに参加というか 見るので",
           "translation": "我已经有一段时间没有参加或者更确切地说观看婚礼了。",
           "startSec": 161.124,
-          "endSec": 165.55599999999998
+          "endSec": 165.55599999999998,
+          "translationEn": "It's been a while since I've attended or rather watched a wedding."
         },
         {
           "id": 24,
           "text": "最近の結婚式ってどういうふうになってるんだろうっていうのをちょっと思ってたんですよね",
           "translation": "我只是想知道现在的婚礼是什么样的。",
           "startSec": 166.49,
-          "endSec": 172.49
+          "endSec": 172.49,
+          "translationEn": "I was just wondering what weddings are like these days."
         },
         {
           "id": 25,
           "text": "行ったんですけど お2人がね 皆さんを楽しませようと思って",
           "translation": "我去了那里，你们两个想招待大家。",
           "startSec": 175.01,
-          "endSec": 183.942
+          "endSec": 183.942,
+          "translationEn": "I went there, and the two of you wanted to entertain everyone."
         },
         {
           "id": 26,
           "text": "考えてたものがいくつかあって",
           "translation": "我在想一些事情",
           "startSec": 184.15,
-          "endSec": 187.254
+          "endSec": 187.254,
+          "translationEn": "There are a few things I was thinking about"
         },
         {
           "id": 27,
           "text": "何かそれをご紹介できたらなと思っています",
           "translation": "我希望我能向您介绍类似的东西。",
           "startSec": 187.254,
-          "endSec": 191.694
+          "endSec": 191.694,
+          "translationEn": "I wish I could introduce you to something like that."
         },
         {
           "id": 28,
           "text": "まずね お2人がね 考えてたのが",
           "translation": "首先，你们两个在想什么。",
           "startSec": 192.176,
-          "endSec": 197.942
+          "endSec": 197.942,
+          "translationEn": "First of all, what you two were thinking about."
         },
         {
           "id": 29,
           "text": "お2人のお父さんやお母さんにサプライズをしたいっていうことで",
           "translation": "我想给他们的爸爸妈妈一个惊喜。",
           "startSec": 199.088,
-          "endSec": 207.19
+          "endSec": 207.19,
+          "translationEn": "I wanted to give a surprise to their father and mother."
         },
         {
           "id": 30,
           "text": "初めてこの結婚式のね",
           "translation": "这是我第一次参加这样的婚礼。",
           "startSec": 209.29,
-          "endSec": 211.69338983050847
+          "endSec": 211.69338983050847,
+          "translationEn": "This is my first time at this wedding."
         },
         {
           "id": 31,
           "text": "衣装ドレスあとタキシードを着た姿を見せるっていうファーストミートっていうイベントがあるんですけど",
           "translation": "有一个名为“初次见面”的活动，您将穿着连衣裙和燕尾服。",
           "startSec": 211.69338983050847,
-          "endSec": 223.47
+          "endSec": 223.47,
+          "translationEn": "There's an event called First Meet where you'll be shown wearing a dress and a tuxedo."
         },
         {
           "id": 32,
           "text": "それをやってました",
           "translation": "正在这样做",
           "startSec": 223.47,
-          "endSec": 226.19
+          "endSec": 226.19,
+          "translationEn": "was doing that"
         },
         {
           "id": 33,
           "text": "お着替えするお部屋でねお2人がお支度が整った状態で待っていて",
           "translation": "两人已经在更衣室里等候，准备好了。",
           "startSec": 228.24,
-          "endSec": 236.368
+          "endSec": 236.368,
+          "translationEn": "The two of you were waiting in the room where you were changing, ready."
         },
         {
           "id": 34,
           "text": "お部屋にお父さんお母さんが入ってくるという感じです開けた瞬間ね",
           "translation": "打开房间的那一刻，感觉就像妈妈和爸爸走进了房间。",
           "startSec": 238.4,
-          "endSec": 247.9945
+          "endSec": 247.9945,
+          "translationEn": "It feels like mom and dad come into the room the moment you open it."
         },
         {
           "id": 35,
           "text": "お父さんとお母さんとっても おおーっていう感じで喜んでいて何だろう 嬉しいようなこう",
           "translation": "我的爸爸妈妈看起来很高兴，我不知道为什么，但他们看起来很高兴。",
           "startSec": 247.9945,
-          "endSec": 256.832
+          "endSec": 256.832,
+          "translationEn": "My mom and dad looked so happy and I don't know why, but they looked so happy."
         },
         {
           "id": 36,
           "text": "何か悲しいような",
           "translation": "悲伤的事情",
           "startSec": 257.978,
-          "endSec": 259.161
+          "endSec": 259.161,
+          "translationEn": "something sad"
         },
         {
           "id": 37,
           "text": "お父さんお母さんになったらね そういう気持ちがあると思うんですけど",
           "translation": "我想当你成为父亲和母亲时，你会有这种感觉。",
           "startSec": 261.194,
-          "endSec": 267.774
+          "endSec": 267.774,
+          "translationEn": "I think when you become a father and mother, you feel that way."
         },
         {
           "id": 38,
           "text": "何か温かいような気持ちで 2人を見てる姿がねとても感動しました良かったですね",
           "translation": "我真的很感动，他看着两个人的眼神有一种温暖的感觉，太好了。",
           "startSec": 267.774,
-          "endSec": 279.726
+          "endSec": 279.726,
+          "translationEn": "I was really moved by the way he looked at the two of them with a kind of warm feeling, which was great."
         },
         {
           "id": 39,
           "text": "その後に結婚式をしてね",
           "translation": "然后举办婚礼",
           "startSec": 282.28,
-          "endSec": 288.81600000000003
+          "endSec": 288.81600000000003,
+          "translationEn": "Then have a wedding"
         },
         {
           "id": 40,
           "text": "披露宴って言って お食事をしながらお2人とね",
           "translation": "这叫招待会，我们两个一起吃晚饭。",
           "startSec": 290.95799999999997,
-          "endSec": 296.45799999999997
+          "endSec": 296.45799999999997,
+          "translationEn": "It's called a reception, and the two of us are having dinner together."
         },
         {
           "id": 41,
           "text": "楽しむみたいな時間があるんですけど",
           "translation": "我有一些时间来享受它。",
           "startSec": 296.81,
-          "endSec": 299.786
+          "endSec": 299.786,
+          "translationEn": "I have some time to enjoy it."
         },
         {
           "id": 42,
           "text": "そのときに一つあったのが",
           "translation": "当时发生的一件事是",
           "startSec": 300.794,
-          "endSec": 304.826
+          "endSec": 304.826,
+          "translationEn": "One thing that happened at that time was"
         },
         {
           "id": 43,
           "text": "最初はドレス 白いドレスを新婦さんあのお嫁さんですねが着てるんですけど",
           "translation": "首先，新娘穿着白色的礼服。",
           "startSec": 307.406,
-          "endSec": 317.716
+          "endSec": 317.716,
+          "translationEn": "First of all, the bride is wearing a white dress."
         },
         {
           "id": 44,
           "text": "途中でね あのお色直しって言って",
           "translation": "路上我说我想改变一下自己的外表。",
           "startSec": 317.716,
-          "endSec": 321.332
+          "endSec": 321.332,
+          "translationEn": "On the way, I said I'd like to change my appearance."
         },
         {
           "id": 45,
           "text": "あの1回ね 違う服違うドレスにね 着替える時間があるんですよね",
           "translation": "那一次，我有时间换上一套不同的衣服和裙子。",
           "startSec": 321.636,
-          "endSec": 329.26800000000003
+          "endSec": 329.26800000000003,
+          "translationEn": "That one time, I had time to change into a different outfit and a different dress."
         },
         {
           "id": 46,
           "text": "で そのときに戻ってきたら何色のドレスになってますかっていうね",
           "translation": "然后，当你回来时，我会问你穿什么颜色的衣服。",
           "startSec": 330.28,
-          "endSec": 339.76493103448274
+          "endSec": 339.76493103448274,
+          "translationEn": "Then, when you come back, I'll ask you what color dress you're wearing."
         },
         {
           "id": 47,
           "text": "クイズをお2人が考えていてそれでその色が当たった人には",
           "translation": "如果两个人想到一个测验并且颜色是正确的，",
           "startSec": 339.76493103448274,
-          "endSec": 348.026
+          "endSec": 348.026,
+          "translationEn": "If two people think of a quiz and the color is correct,"
         },
         {
           "id": 48,
           "text": "何かプレゼントをあげますみたいな ことをやってたんですよ",
           "translation": "我正在做一些事情，比如给他送礼物。",
           "startSec": 348.418,
-          "endSec": 354.274
+          "endSec": 354.274,
+          "translationEn": "I was doing something like giving him a present."
         },
         {
           "id": 49,
           "text": "で 出てきたときに あの色だったのかみたいな感じで皆さんがね",
           "translation": "当它出来时，每个人都想知道它是不是那个颜色。",
           "startSec": 357.092,
-          "endSec": 362.71954716981134
+          "endSec": 362.71954716981134,
+          "translationEn": "And when it came out, everyone was wondering if it was that color."
         },
         {
           "id": 50,
           "text": "そういう顔をしてたので すごく面白かったです",
           "translation": "这真的很有趣，因为他脸上有那种表情。",
           "startSec": 362.71954716981134,
-          "endSec": 367.034
+          "endSec": 367.034,
+          "translationEn": "It was really funny because he had that look on his face."
         },
         {
           "id": 51,
           "text": "で 当たった人はね 何かプレゼントをもらってたんですけど",
           "translation": "获奖者收到了一份礼物。",
           "startSec": 367.674,
-          "endSec": 371.674
+          "endSec": 371.674,
+          "translationEn": "The person who won the prize received a gift."
         },
         {
           "id": 52,
           "text": "何か皆さんでね来てもらった人も一緒に参加して楽しめるものがあるってとってもいいなって思って",
           "translation": "我认为如果有一些东西能让每个人都参与并一起享受，那就太好了。",
           "startSec": 374.338,
-          "endSec": 385.79
+          "endSec": 385.79,
+          "translationEn": "I thought it would be really nice to have something for everyone to participate in and enjoy together."
         },
         {
           "id": 53,
           "text": "写真を撮りながら 2人もそうですけどお客さん2人もそうですけど",
           "translation": "拍照时，我们两个人在做同样的事情，两位顾客也是如此。",
           "startSec": 386.414,
-          "endSec": 393.828
+          "endSec": 393.828,
+          "translationEn": "While taking a photo, the two of us were doing the same, and so were the two customers."
         },
         {
           "id": 54,
           "text": "参加している皆さんのね 驚きだったり何か楽しそうな表情もたくさん撮れていいなって思いました",
           "translation": "我认为如果能够捕捉到每个参与者的惊讶或高兴的表情，那就太好了。",
           "startSec": 394.164,
-          "endSec": 401.844
+          "endSec": 401.844,
+          "translationEn": "I thought it would be great to be able to capture a lot of surprised or happy expressions from everyone participating."
         },
         {
           "id": 55,
           "text": "何かそういうね いろんなイベントってあると思うんですけど何か皆さんのね",
           "translation": "类似的事情。我确信有各种各样的活动，但我想知道是否有适合每个人的活动。",
           "startSec": 404.222,
-          "endSec": 413.828
+          "endSec": 413.828,
+          "translationEn": "Something like that. I'm sure there are various events, but I'm wondering if there's something for everyone."
         },
         {
           "id": 56,
           "text": "国の結婚式でも こういうのあるよとか例えば昔ながらのこういう",
           "translation": "即使在乡下举行婚礼，也有这样的传统婚礼仪式。",
           "startSec": 415.26800000000003,
-          "endSec": 421.596
+          "endSec": 421.596,
+          "translationEn": "Even at weddings in the country, there are traditional wedding ceremonies like this."
         },
         {
           "id": 57,
           "text": "イベントとか行事結婚式にあるよみたいなの あると思うんですよね",
           "translation": "我认为活动和婚礼上也有类似的事情。",
           "startSec": 421.596,
-          "endSec": 427.924
+          "endSec": 427.924,
+          "translationEn": "I think there are things like those at events and weddings."
         },
         {
           "id": 58,
           "text": "何かそういうのを教えていただけたら 面白いんじゃないかなと思ってちょっと考えてました",
           "translation": "我想了一会儿，因为我觉得如果你能告诉我这样的事情会很有趣。",
           "startSec": 428.164,
-          "endSec": 436.036
+          "endSec": 436.036,
+          "translationEn": "I was thinking about it for a while because I thought it would be interesting if you could tell me something like that."
         },
         {
           "id": 59,
           "text": "何かね 皆さん 2人をお祝いする場なので",
           "translation": "每个人都有事。这是我们两个庆祝的地方。",
           "startSec": 438.706,
-          "endSec": 445.538
+          "endSec": 445.538,
+          "translationEn": "It's something, everyone. It's a place to celebrate the two of us."
         },
         {
           "id": 60,
           "text": "何か 2人がね ゲストの皆さんを呼んで",
           "translation": "有事，二人，召诸宾客。",
           "startSec": 445.63,
-          "endSec": 453.636
+          "endSec": 453.636,
+          "translationEn": "Something, two people, call all the guests."
         }
       ]
     }
