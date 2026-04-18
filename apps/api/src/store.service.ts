@@ -332,6 +332,7 @@ export class StoreService {
       this.normalizeLearningHistory();
     }
     this.ensureSeedSubscriptionPlans();
+    this.ensureSeedAds();
   }
 
   hasOfficialQuestionPack(): boolean {
@@ -461,7 +462,12 @@ export class StoreService {
         createdAt: now,
       });
     }
-    // Seed sample ads for free tier
+  }
+
+  private ensureSeedAds(): void {
+    // Always reset ads to match code-defined seeds on startup
+    this.adPlacements = [];
+    const now = nowIso();
     const adSeeds: Array<{ slot: string; title: string; imageUrl?: string; linkUrl: string; ctaText: string; priority: number }> = [
       { slot: "banner_top", title: "StudyForge - AI学習プラットフォーム", linkUrl: "https://huggingface.co/spaces/jackywangsh/studyforge", ctaText: "StudyForge を試す 🚀", priority: 110 },
       { slot: "banner_top", title: "LangBoost オープンソース on GitHub", linkUrl: "https://github.com/zixuniaowu/toeicPass", ctaText: "⭐ Star on GitHub", priority: 100 },
