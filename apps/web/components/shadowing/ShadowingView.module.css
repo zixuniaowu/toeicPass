@@ -1149,6 +1149,47 @@
    CINEMA ZONE — VoiceTube Split‑Screen
    ═══════════════════════════════════════════ */
 
+.cinemaHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.cinemaHeaderBack {
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.cinemaHeaderBack:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.cinemaHeaderTitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.cinemaHeaderProgress {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
 .cinemaZone {
   background: #111827;
   margin: 0 calc(-1 * var(--space-6, 24px));

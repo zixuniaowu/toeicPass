@@ -1,152 +1,114 @@
-# toeicPass
+# LangBoost — 日语 · 英语 口语强化平台
 
-A full-stack TOEIC score improvement platform with enterprise TOEIC IP test operations.
+[**🚀 Live Demo on Hugging Face**](https://huggingface.co/spaces/jackywangsh/toeicPass)
 
-Closed-loop learning flow: **assess → plan → practice → review → mock → predict**.
+AI 驱动的多语言口语练习平台，支持日语和英语跟读训练、语法强化、词汇复习、模拟考试、错题本、AI 会话等功能。
 
-## Architecture
+## ✨ 主要功能
+
+### 🎧 跟读训练 (Shadowing)
+- **YouTube 跟读** — 自动拉取 YouTube 字幕，逐句跟读练习
+- **日语ふりがな** — 自动标注假名，支持开关切换
+- **英语 IPA 音标** — 逐词音标显示
+- **语音识别** — 实时录音对比，纠正发音
+- **Cinema 模式** — 沉浸式视频+字幕分屏练习
+- **TED 演讲 / 新闻跟读** — 每日更新素材
+
+### 📝 TOEIC 备考
+- Part 1-7 分项练习，自适应难度
+- 模拟考试 + 分数换算 + 分项反馈
+- 错题本 + 间隔重复卡片
+- AI 图解析 + 成绩预测
+
+### 🗣 AI 会话
+- AI 驱动的错误分析和解释
+- 多轮会话，实时口语练习
+
+### 📊 学习分析
+- 各 Part 正确率、速度、留存率趋势
+- 成绩预测 + 瓶颈预警
+
+## 技术架构
 
 ```
-toeicPass/
+langboost/
 ├── apps/
 │   ├── api/          NestJS REST API (port 8001)
-│   └── web/          Next.js frontend (port 8000)
+│   └── web/          Next.js 15 frontend (port 8000)
 ├── packages/
-│   └── shared/       Shared TypeScript types (@toeicpass/shared)
-├── db/
-│   ├── schema.sql    PostgreSQL schema (v15+)
-│   └── migrations/   Incremental migration scripts
-└── docs/             Architecture docs & decision records
+│   ├── ad-system/    广告系统
+│   ├── conversation-ai/  AI 会话引擎
+│   └── shared/       共享类型
+├── db/               PostgreSQL schema + migrations
+└── docs/             架构文档
 ```
 
-**Monorepo** managed with npm workspaces (`apps/*`, `packages/*`).
-
-### Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| API | NestJS, TypeScript, JWT + RBAC, multi-tenant |
-| Web | Next.js, React, CSS Modules |
+| 层 | 技术栈 |
+|---|--------|
+| API | NestJS, TypeScript, JWT + RBAC, 多租户 |
+| Web | Next.js 15, React, CSS Modules |
 | DB | PostgreSQL 15+ (PGLite for tests) |
-| Queue | Redis + BullMQ (optional; mock in dev) |
-| Shared | `@toeicpass/shared` — shared types across API & Web |
+| Analytics | Umami (隐私友好) |
 | CI/CD | GitHub Actions → Hugging Face Spaces |
-| Container | Docker (Node 20, single-image build) |
+| Container | Docker (Node 20) |
 
-## Core Domains
-
-### Learning Engine
-- Diagnostic tests by TOEIC part (1–7), baseline scoring, weak-point mapping
-- Adaptive study plans based on target score and exam date
-- Practice sessions with timer, explanations, difficulty labels
-- Error notebook with spaced repetition cards
-- Full mock exams with score conversion and section-level feedback
-- AI-powered error analysis and conversation-based explanations
-
-### Enterprise TOEIC IP Test Operations
-- Multi-tenant, RBAC-based (learner, coach, tenant_admin, super_admin)
-- Official-mode orchestration: candidate roster, attendance, result import
-- Simulation-mode: internal training mocks (not official score)
-- Bulk candidate import, seat assignment, test window control, identity verification
-
-### Content System
-- Question bank tagged by part, skill, CEFR band, difficulty, source, quality status
-- Editorial workflow: draft → review → published → archived
-- Versioned explanations with audio/image/text media
-
-### Analytics & Prediction
-- Trend tracking by part (accuracy, pace, retention)
-- Score prediction from recent mocks and error distribution
-- Plateau and schedule deviation alerts
-
-## Quick Start
+## 快速开始
 
 ```bash
-# Install dependencies
+# 安装依赖
 npm install
 
-# Run database migrations (optional — PGLite used in dev by default)
-npm run db:migrate
-
-# Start API (port 8001) and Web (port 8000) together
+# 启动开发服务器 (API + Web)
 npm run dev
+
+# 或分别启动
+npm run dev:api      # API only (port 8001)
+npm run dev:web:hot  # Web only (port 8000)
 ```
 
-| URL | Description |
-|-----|------------|
-| `http://localhost:8000` | Web frontend |
-| `http://localhost:8001/api/v1` | API base URL |
+| URL | 说明 |
+|-----|------|
+| `http://localhost:8000` | Web 前端 |
+| `http://localhost:8001/api/v1` | API |
 
-## Scripts
+## 常用命令
 
-| Command | Description |
-|---------|------------|
-| `npm run dev` | Start API + Web in development mode |
-| `npm run dev:api` | Start NestJS API only (watch mode) |
-| `npm run dev:web:hot` | Start Next.js Web only (hot reload) |
-| `npm run build` | Production build (API + Web) |
-| `npm test` | Run full test suite |
-| `npm run test:e2e` | Run E2E tests (same as `npm test`) |
-| `npm run lint` | TypeScript type checking (both apps) |
-| `npm run db:migrate` | Run database migrations |
+| 命令 | 说明 |
+|------|------|
+| `npm run dev` | 开发模式 (API + Web) |
+| `npm run build` | 生产构建 |
+| `npm test` | 运行测试 |
+| `npm run lint` | TypeScript 类型检查 |
+| `npm run db:migrate` | 数据库迁移 |
 
-### Running a Single Test File
+## 环境变量
 
-```bash
-npm -w apps/api exec jest test/auth.e2e-spec.ts --runInBand
-```
+| 变量 | 默认值 | 说明 |
+|------|--------|------|
+| `PORT` | `8001` | API 端口 |
+| `JWT_SECRET` | `dev-secret` | JWT 签名密钥 |
+| `WEB_ORIGIN` | `http://localhost:3000` | CORS 允许来源 |
+| `DATABASE_URL` | — | PostgreSQL 连接字符串 |
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | — | Umami 访客统计 ID |
 
-## Testing
-
-- **Unit tests**: scoring policy, question policy, session filters, learning action logic
-- **E2E tests**: auth, learning flows, admin operations, enterprise IP flows
-- All tests use **PGLite** (in-memory) — no external database required
-- Tests verify both happy paths and error cases (RBAC, tenant isolation, validation)
-
-## Data Model
-
-All tables are scoped by `tenant_id` for data isolation.
-
-- **Tenancy**: `tenants`, `users`, `memberships`
-- **Learning**: `goals`, `study_plans`, `attempts`, `attempt_items`, `review_cards`
-- **Content**: `questions`, `question_options`
-- **Enterprise IP**: `ip_campaigns`, `ip_candidates`, `ip_sessions`, `ip_results`
-- **Analytics**: `mistake_notes`, `score_predictions`
-
-See [`db/schema.sql`](db/schema.sql) for the full schema.
-
-## Environment Variables
-
-| Variable | Default | Description |
-|----------|---------|------------|
-| `PORT` | `8001` | API listen port |
-| `JWT_SECRET` | `dev-secret` | JWT signing key |
-| `WEB_ORIGIN` | `http://localhost:3000` | CORS allowed origin (CSV for multiple) |
-| `DATABASE_URL` | — | PostgreSQL connection string (PGLite used if absent) |
-| `REDIS_URL` | — | Redis for BullMQ jobs (mock queue if absent) |
-
-## Deployment
+## 部署
 
 ### Docker
 
 ```bash
-docker build -t toeicpass .
-docker run -p 7860:7860 toeicpass
+docker build -t langboost .
+docker run -p 7860:7860 langboost
 ```
-
-The container runs NestJS on port 8001 internally and Next.js on port 7860 (exposed).
 
 ### Hugging Face Spaces
 
-CI/CD workflow: `.github/workflows/deploy-huggingface.yml`
+每次 push 到 `main` 自动同步到 Hugging Face Spaces。
 
-Required GitHub secrets/variables:
-- `HF_TOKEN` — Hugging Face write token
-- `HF_REPO_ID` — e.g. `username/toeicpass-space`
-- `HF_REPO_TYPE` — `space` | `model` | `dataset` (default: `space`)
-- `HF_REPO_BRANCH` — optional (default: `main`)
+需要的 GitHub secrets: `HF_TOKEN`, `HF_REPO_ID`
 
-Each push to `main` triggers automatic sync to the target Hugging Face repo.
+## License
+
+MIT
 
 ## Documentation
 

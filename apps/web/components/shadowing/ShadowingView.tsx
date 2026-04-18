@@ -2025,6 +2025,12 @@ export function ShadowingView({ locale }: { locale: Locale }) {
         <>
           {/* Dark cinematic header area */}
           <div className={styles.cinemaZone}>
+            {/* Back button header */}
+            <div className={styles.cinemaHeader}>
+              <button className={styles.cinemaHeaderBack} onClick={handleBack}>← {l("返回", "戻る")}</button>
+              <span className={styles.cinemaHeaderTitle}>{activeMaterial.title}</span>
+              <span className={styles.cinemaHeaderProgress}>{currentIndex + 1}/{total}</span>
+            </div>
             <div className={styles.cinemaInner}>
               {/* Left: Video player */}
               <div className={styles.cinemaVideo}>
