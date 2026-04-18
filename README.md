@@ -172,4 +172,6 @@ Required GitHub secrets: `HF_TOKEN`, `HF_REPO_ID`
 
 ## License
 
-ISC
+[Business Source License 1.1 (BUSL-1.1)](LICENSE)
+
+You may view, fork, and modify the code for non-commercial purposes (personal learning, academic research, contributions). Commercial use requires a separate license. On **April 18, 2029**, the license automatically converts to Apache 2.0.

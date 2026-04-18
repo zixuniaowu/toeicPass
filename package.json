@@ -33,6 +33,6 @@
     "playwright": "^1.58.2"
   },
   "author": "toeicPass",
-  "license": "ISC",
+  "license": "BUSL-1.1",
   "type": "commonjs"
 }
