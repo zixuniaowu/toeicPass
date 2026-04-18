@@ -6,4 +6,5 @@ export const DEFAULT_AD_SEEDS = [
   { slot: "interstitial", title: "LangBoost はオープンソースです", imageUrl: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png", linkUrl: "https://github.com/zixuniaowu/toeicPass", ctaText: "ソースコードを見る", priority: 85 },
   { slot: "native_feed", title: "StudyForge - AI学習をもっと身近に", imageUrl: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg", linkUrl: "https://huggingface.co/spaces/jackywangsh/studyforge", ctaText: "詳しく見る →", priority: 88 },
   { slot: "native_feed", title: "GitHub でコントリビュート歓迎", imageUrl: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png", linkUrl: "https://github.com/zixuniaowu/toeicPass", ctaText: "リポジトリを見る →", priority: 75 },
-  { slot: "reward_video", title: "追加練習チャンスを獲得", linkUrl: "#reward", ctaText: "動画を見る", priority: 95
+  { slot: "reward_video", title: "追加練習チャンスを獲得", linkUrl: "#reward", ctaText: "動画を見る", priority: 95 },
+] as const;
