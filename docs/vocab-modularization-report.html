@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toeicPass — 词汇翻译修正 & 模块化状态报告</title>
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --card: #fff;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --green: #059669;
+      --red: #dc2626;
+      --blue: #2563eb;
+      --orange: #d97706;
+      --green-bg: #ecfdf5;
+      --red-bg: #fef2f2;
+      --blue-bg: #eff6ff;
+      --orange-bg: #fffbeb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .subtitle { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+    h2 { font-size: 1.3rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+    h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+    .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .summary-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+    .summary-card .label { font-size: 0.85rem; color: var(--muted); }
+    .summary-card .value { font-size: 1.75rem; font-weight: 700; margin-top: 0.25rem; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+    .badge-green { background: var(--green-bg); color: var(--green); }
+    .badge-red { background: var(--red-bg); color: var(--red); }
+    .badge-blue { background: var(--blue-bg); color: var(--blue); }
+    .badge-orange { background: var(--orange-bg); color: var(--orange); }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: var(--card); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+    th, td { padding: 0.6rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    th { background: #f3f4f6; font-weight: 600; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    tr:last-child td { border-bottom: none; }
+    .old { color: var(--red); text-decoration: line-through; }
+    .new { color: var(--green); font-weight: 600; }
+    .ipa { font-family: 'Lucida Sans Unicode', 'DejaVu Sans', sans-serif; color: var(--blue); }
+    .section-intro { color: var(--muted); margin-bottom: 1rem; }
+    .file-ref { font-family: monospace; font-size: 0.85rem; background: #f3f4f6; padding: 2px 6px; border-radius: 4px; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { padding: 0.4rem 0; padding-left: 1.75rem; position: relative; }
+    .checklist li::before { content: '✅'; position: absolute; left: 0; }
+    .checklist li.pending::before { content: '⏳'; }
+    .note { background: var(--blue-bg); border-left: 3px solid var(--blue); padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8rem; text-align: center; }
+  </style>
+</head>
+<body>
+
+<h1>词汇翻译修正 & 模块化状态报告</h1>
+<p class="subtitle">toeicPass · 生成日期：2026-04-18</p>
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="label">修正翻译数</div>
+    <div class="value" style="color:var(--green);">120+</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">补充 IPA 音标</div>
+    <div class="value" style="color:var(--blue);">100+</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">严重翻译错误</div>
+    <div class="value" style="color:var(--red);">15</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">模块化集成状态</div>
+    <div class="value" style="color:var(--green);">✓</div>
+  </div>
+</div>
+
+<!-- ===== Section 1: Translation Fixes ===== -->
+<h2>一、严重翻译错误修正</h2>
+<p class="section-intro">以下是 TOEIC 语境下翻译明显错误或严重不精确的条目，已全部修正。</p>
+
+<table>
+  <thead>
+    <tr><th>单词</th><th>旧翻译</th><th>新翻译</th><th>IPA</th><th>说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>courier</strong></td><td class="old">导游</td><td class="new">快递员；信使</td><td class="ipa">/ˈkʊriər/</td><td>原翻译完全错误</td></tr>
+    <tr><td><strong>affected</strong></td><td class="old">做作的</td><td class="new">受影响的</td><td class="ipa">/əˈfɛktɪd/</td><td>TOEIC 语境应为"受影响"</td></tr>
+    <tr><td><strong>premises</strong></td><td class="old">前提</td><td class="new">经营场所；办公场所</td><td class="ipa">/ˈprɛmɪsɪz/</td><td>商务英语中指"场所"</td></tr>
+    <tr><td><strong>liable</strong></td><td class="old">容易</td><td class="new">有责任的；有义务的</td><td class="ipa">/ˈlaɪəbəl/</td><td>法律/商务语境</td></tr>
+    <tr><td><strong>noticeable</strong></td><td class="old">显（截断）</td><td class="new">显著的；明显的</td><td class="ipa">/ˈnoʊtɪsəbəl/</td><td>原翻译被截断</td></tr>
+    <tr><td><strong>juggle</strong></td><td class="old">杂耍</td><td class="new">同时应付；兼顾</td><td class="ipa">/ˈdʒʌɡəl/</td><td>商务语境指"同时处理多事"</td></tr>
+    <tr><td><strong>listing</strong></td><td class="old">上市</td><td class="new">清单；列表</td><td class="ipa">/ˈlɪstɪŋ/</td><td>TOEIC 常见含义</td></tr>
+    <tr><td><strong>outperform</strong></td><td class="old">跑赢大盘</td><td class="new">表现优于；胜过</td><td class="ipa">/ˌaʊtpərˈfɔːrm/</td><td>不是股市专用术语</td></tr>
+    <tr><td><strong>panel</strong></td><td class="old">控制板</td><td class="new">专家组；面板</td><td class="ipa">/ˈpænəl/</td><td>TOEIC 中多指"专家组"</td></tr>
+    <tr><td><strong>passage</strong></td><td class="old">通道</td><td class="new">段落；通道</td><td class="ipa">/ˈpæsɪdʒ/</td><td>Part 7 核心词汇</td></tr>
+    <tr><td><strong>sheet</strong></td><td class="old">床单</td><td class="new">表格；单据；纸张</td><td class="ipa">/ʃiːt/</td><td>商务语境 (spreadsheet)</td></tr>
+    <tr><td><strong>Seoul</strong></td><td class="old">汉城</td><td class="new">首尔</td><td></td><td>已于 2005 年更名</td></tr>
+    <tr><td><strong>narrowly</strong></td><td class="old">狭隘地</td><td class="new">勉强地；差一点</td><td class="ipa">/ˈnæroʊli/</td><td>"narrowly avoided"</td></tr>
+    <tr><td><strong>instrumental</strong></td><td class="old">工具性的</td><td class="new">起重要作用的</td><td class="ipa">/ˌɪnstrəˈmɛntəl/</td><td>"be instrumental in"</td></tr>
+    <tr><td><strong>submissions</strong></td><td class="old">意见书</td><td class="new">提交物；投稿</td><td></td><td>更通用的商务含义</td></tr>
+  </tbody>
+</table>
+
+<!-- ===== Section 2: Accuracy Improvements ===== -->
+<h2>二、翻译精确度提升</h2>
+<p class="section-intro">以下条目原翻译不完全错误，但在 TOEIC 商务英语语境下不够精确。</p>
+
+<table>
+  <thead>
+    <tr><th>单词</th><th>旧翻译</th><th>新翻译</th><th>补充 IPA</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>advertise</td><td class="old">广告(名词)</td><td class="new">做广告；宣传(动词)</td><td class="ipa">/ˈædvərtaɪz/</td></tr>
+    <tr><td>appreciation</td><td class="old">欣赏</td><td class="new">感激；增值；欣赏</td><td class="ipa">/əˌpriːʃiˈeɪʃən/</td></tr>
+    <tr><td>botanical</td><td class="old">植物</td><td class="new">植物学的</td><td class="ipa">/bəˈtænɪkəl/</td></tr>
+    <tr><td>bulk</td><td class="old">大部分</td><td class="new">大量；散装</td><td class="ipa">/bʌlk/</td></tr>
+    <tr><td>cart</td><td class="old">大车</td><td class="new">购物车；手推车</td><td class="ipa">/kɑːrt/</td></tr>
+    <tr><td>cards</td><td class="old">牌</td><td class="new">卡片</td><td></td></tr>
+    <tr><td>contact</td><td class="old">接触</td><td class="new">联系；联系人</td><td class="ipa">/ˈkɑːntækt/</td></tr>
+    <tr><td>completed</td><td class="old">完全的</td><td class="new">已完成的</td><td></td></tr>
+    <tr><td>collected</td><td class="old">集</td><td class="new">已收集的</td><td></td></tr>
+    <tr><td>closing</td><td class="old">关闭</td><td class="new">截止的；结束的</td><td class="ipa">/ˈkloʊzɪŋ/</td></tr>
+    <tr><td>demonstrate</td><td class="old">证明</td><td class="new">展示；演示；证明</td><td class="ipa">/ˈdɛmənstreɪt/</td></tr>
+    <tr><td>employ</td><td class="old">采用</td><td class="new">雇用；使用</td><td class="ipa">/ɪmˈplɔɪ/</td></tr>
+    <tr><td>grievance</td><td class="old">委屈</td><td class="new">申诉；不满</td><td class="ipa">/ˈɡriːvəns/</td></tr>
+    <tr><td>hospitality</td><td class="old">款待</td><td class="new">酒店业；款待</td><td class="ipa">/ˌhɑːspɪˈtæləti/</td></tr>
+    <tr><td>keen</td><td class="old">敏锐的</td><td class="new">热衷的；敏锐的</td><td class="ipa">/kiːn/</td></tr>
+    <tr><td>keynote</td><td class="old">基调</td><td class="new">主题演讲；基调</td><td class="ipa">/ˈkiːnoʊt/</td></tr>
+    <tr><td>kickoff</td><td class="old">开球</td><td class="new">启动；开始</td><td class="ipa">/ˈkɪkɔːf/</td></tr>
+    <tr><td>know-how</td><td class="old">知识</td><td class="new">专业技能；诀窍</td><td class="ipa">/ˈnoʊhaʊ/</td></tr>
+    <tr><td>kiosk</td><td class="old">亭</td><td class="new">自助服务亭；售货亭</td><td class="ipa">/ˈkiːɑːsk/</td></tr>
+    <tr><td>kindly</td><td class="old">亲切地</td><td class="new">请（礼貌用语）；亲切地</td><td class="ipa">/ˈkaɪndli/</td></tr>
+    <tr><td>networking</td><td class="old">联网</td><td class="new">人脉交流；组网</td><td class="ipa">/ˈnɛtwɜːrkɪŋ/</td></tr>
+    <tr><td>patron</td><td class="old">赞助人</td><td class="new">顾客；赞助人</td><td class="ipa">/ˈpeɪtrən/</td></tr>
+    <tr><td>quotation</td><td class="old">引述</td><td class="new">报价；引用</td><td class="ipa">/kwoʊˈteɪʃən/</td></tr>
+    <tr><td>prospective</td><td class="old">预期</td><td class="new">潜在的；预期的</td><td class="ipa">/prəˈspɛktɪv/</td></tr>
+    <tr><td>several</td><td class="old">一些</td><td class="new">几个；若干</td><td class="ipa">/ˈsɛvrəl/</td></tr>
+    <tr><td>shipping</td><td class="old">船运</td><td class="new">运输；发货</td><td class="ipa">/ˈʃɪpɪŋ/</td></tr>
+    <tr><td>turnaround</td><td class="old">回转</td><td class="new">周转时间；好转</td><td class="ipa">/ˈtɜːrnəraʊnd/</td></tr>
+    <tr><td>volume</td><td class="old">体积</td><td class="new">数量；音量；册</td><td class="ipa">/ˈvɑːljuːm/</td></tr>
+    <tr><td>tally</td><td class="old">相符</td><td class="new">计数；清点</td><td class="ipa">/ˈtæli/</td></tr>
+  </tbody>
+</table>
+
+<!-- ===== Section 3: IPA Additions ===== -->
+<h2>三、IPA 音标补充</h2>
+<p class="section-intro">为 100+ 个空 IPA 字段补充了美式英语国际音标。涵盖 TOEIC 核心商务词汇。</p>
+
+<div class="note">
+  <strong>注意：</strong>剩余约 150+ 个时事/地名/人名/日文素材相关条目（如 taliban, tehran, trump 等）的 IPA 未补充，因为这些不属于 TOEIC 核心词汇考点。
+</div>
+
+<h3>示例 IPA 补充</h3>
+<table>
+  <thead><tr><th>单词</th><th>IPA</th></tr></thead>
+  <tbody>
+    <tr><td>accommodate</td><td class="ipa">/əˈkɑːmədeɪt/</td></tr>
+    <tr><td>eligible</td><td class="ipa">/ˈɛlɪdʒəbəl/</td></tr>
+    <tr><td>reimburse</td><td class="ipa">/ˌriːɪmˈbɜːrs/</td></tr>
+    <tr><td>questionnaire</td><td class="ipa">/ˌkwɛstʃəˈnɛr/</td></tr>
+    <tr><td>subsidiary</td><td class="ipa">/səbˈsɪdiɛri/</td></tr>
+    <tr><td>testimonial</td><td class="ipa">/ˌtɛstɪˈmoʊniəl/</td></tr>
+    <tr><td>thoroughly</td><td class="ipa">/ˈθɜːrəli/</td></tr>
+    <tr><td>voluntarily</td><td class="ipa">/ˌvɑːlənˈtɛrəli/</td></tr>
+  </tbody>
+</table>
+
+<!-- ===== Section 4: Vocab Card Data Structure ===== -->
+<h2>四、Vocab Card API 数据结构</h2>
+
+<h3>种子数据 (VocabularySeedCard)</h3>
+<table>
+  <thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td><code>term</code></td><td>string</td><td>英语单词</td></tr>
+    <tr><td><code>pos</code></td><td>string</td><td>词性 (verb, noun, adjective, adverb)</td></tr>
+    <tr><td><code>definition</code></td><td>string</td><td>英文定义</td></tr>
+    <tr><td><code>example</code></td><td>string</td><td>英文例句</td></tr>
+    <tr><td><code>sourcePart</code></td><td>number</td><td>来源 TOEIC Part (1-7)</td></tr>
+    <tr><td><code>tags</code></td><td>string[]</td><td>主题标签 (finance, office, hr…)</td></tr>
+  </tbody>
+</table>
+
+<h3>API 返回 (GET /api/v1/learning/vocabulary/cards)</h3>
+<table>
+  <thead><tr><th>额外字段</th><th>类型</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td><code>id</code></td><td>string</td><td>唯一 ID</td></tr>
+    <tr><td><code>scoreBand</code></td><td>string</td><td>目标分数带 (600/700/800/900)</td></tr>
+    <tr><td><code>easeFactor</code></td><td>number</td><td>SM-2 记忆难度因子（默认 2.3）</td></tr>
+    <tr><td><code>intervalDays</code></td><td>number</td><td>当前复习间隔天数</td></tr>
+    <tr><td><code>dueAt</code></td><td>string</td><td>下次到期日期</td></tr>
+    <tr><td><code>lastGrade</code></td><td>number?</td><td>上次评分</td></tr>
+    <tr><td><code>due</code></td><td>boolean</td><td>是否到期（计算字段）</td></tr>
+  </tbody>
+</table>
+
+<h3>中文定义的数据流</h3>
+<div class="note">
+  API 返回的 <code>definition</code> 为英文。中文释义由前端通过 <span class="file-ref">word-dictionary.ts</span> + <span class="file-ref">vocab-cn-overrides.ts</span> 在客户端查找。字典匹配词时可自动处理词形变化（-ing, -ed, -s, -ies 等）。
+</div>
+
+<h3>DB Schema 额外字段（目前内存 Store 未使用）</h3>
+<table>
+  <thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td><code>cefr_level</code></td><td>text</td><td>A1-C2 等级（未启用）</td></tr>
+    <tr><td><code>difficulty</code></td><td>smallint</td><td>1-5 难度（未启用）</td></tr>
+    <tr><td><code>score_band</code></td><td>text</td><td>更细分的分数带（300-400…900+）</td></tr>
+  </tbody>
+</table>
+
+<!-- ===== Section 5: Modularization ===== -->
+<h2>五、模块化改造 — @toeicpass/ad-system</h2>
+
+<h3>改造目标</h3>
+<p class="section-intro">将广告模块做成真正可复用的独立积木：任何新项目可以直接安装导入，不需要了解 toeicPass 的内部实现。</p>
+
+<h3>本次改造清单</h3>
+<ul class="checklist">
+  <li><strong>package.json</strong> — 移除 <code>private: true</code>，加入 <code>license</code>, <code>repository</code>, <code>keywords</code>, <code>peerDependencies</code>, <code>files</code>, <code>scripts</code></li>
+  <li><strong>SPEC.md (规格书)</strong> — 完整的类型参考、API 方法签名、事件追踪流程图、架构图、文件结构</li>
+  <li><strong>INTEGRATION.md (集成指南)</strong> — 7 步从零集成：安装 → IAdStore 实现(内存/PG/文件3种) → 初始化 → REST API → React组件 → AdSense → DB Schema</li>
+  <li><strong>CHANGELOG.md</strong> — 版本变更记录</li>
+  <li><strong>README.md</strong> — 重写为面向外部开发者的快速入门 + 功能列表 + 架构图</li>
+</ul>
+
+<h3>模块架构图</h3>
+<pre style="background:#f3f4f6; padding:1rem; border-radius:8px; font-size:0.85rem; line-height:1.5;">
+┌─────────────────────────────────────────────────┐
+│                  宿主应用 (Host App)              │
+│                                                   │
+│  ┌──────────┐ implements  ┌──────────────────┐   │
+│  │ IAdStore │────────────→│   AdService      │   │
+│  │ (你的DB) │             │ (纯业务逻辑)      │   │
+│  └──────────┘             └──────────────────┘   │
+│        │                          │               │
+│        │ persist                  │ API 响应      │
+│        ▼                          ▼               │
+│  ┌──────────┐             ┌──────────────────┐   │
+│  │ Database │             │  REST / GraphQL   │   │
+│  └──────────┘             └──────────────────┘   │
+│                                   │               │
+│                                   ▼               │
+│                           ┌──────────────────┐   │
+│                           │  React 组件       │   │
+│                           │  (AdBanner, etc.) │   │
+│                           └──────────────────┘   │
+└─────────────────────────────────────────────────┘
+</pre>
+
+<h3>可复用性设计要点</h3>
+<table>
+  <thead><tr><th>设计决策</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>IAdStore 接口</td><td>宿主应用只需实现 3 个属性即可接入任何数据库</td></tr>
+    <tr><td>AdApiFunctions 注入</td><td>React 组件通过 Props 接收 API 函数，不绑定特定 HTTP 客户端</td></tr>
+    <tr><td>React optional peerDep</td><td>只用后端时不需要安装 React</td></tr>
+    <tr><td>零框架依赖</td><td>后端纯 TypeScript，NestJS/Express/Fastify/Hono 均可使用</td></tr>
+    <tr><td>内置种子数据</td><td>一行代码 <code>seedIfEmpty(DEFAULT_AD_SEEDS)</code> 引导</td></tr>
+    <tr><td>双入口导出</td><td><code>@toeicpass/ad-system</code> (后端) + <code>@toeicpass/ad-system/web</code> (前端)</td></tr>
+  </tbody>
+</table>
+
+<h3>当前集成验证</h3>
+<table>
+  <thead><tr><th>位置</th><th>引用方式</th><th>状态</th></tr></thead>
+  <tbody>
+    <tr><td>apps/api/src/services/subscription.service.ts</td><td><code>import { AdService } from "@toeicpass/ad-system"</code></td><td><span class="badge badge-green">正常</span></td></tr>
+    <tr><td>apps/api/tsconfig.json</td><td>paths 映射</td><td><span class="badge badge-green">正常</span></td></tr>
+    <tr><td>apps/web/vitest.config.ts</td><td>alias 映射 (src + web)</td><td><span class="badge badge-green">正常</span></td></tr>
+    <tr><td>package-lock.json</td><td>workspace 链接</td><td><span class="badge badge-green">正常</span></td></tr>
+  </tbody>
+</table>
+
+<h3>新增文档一览</h3>
+<table>
+  <thead><tr><th>文件</th><th>大小</th><th>内容</th></tr></thead>
+  <tbody>
+    <tr><td><code>SPEC.md</code></td><td>~7 KB</td><td>规格书：全部类型定义、10 个 API 方法签名、事件流图、Slot 说明、文件结构</td></tr>
+    <tr><td><code>INTEGRATION.md</code></td><td>~6 KB</td><td>集成指南：7 步教程、3 种 Store 实现示例、Express API 示例、React 组件示例、PG Schema</td></tr>
+    <tr><td><code>CHANGELOG.md</code></td><td>~0.5 KB</td><td>v1.0.0 功能清单</td></tr>
+    <tr><td><code>README.md</code></td><td>~3 KB</td><td>快速入门 + 架构图 + 功能列表（重写）</td></tr>
+  </tbody>
+</table>
+
+<!-- ===== Section 6: Remaining Issues ===== -->
+<h2>六、剩余问题 & 建议</h2>
+
+<table>
+  <thead><tr><th>问题</th><th>优先级</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>TED/新闻词汇混入 TOEIC 词库</td>
+      <td><span class="badge badge-orange">中</span></td>
+      <td>vocab-cn-overrides.ts 含 ~150 个时事/地名/人名（taliban, tehran, trump, pixar 等），不属于 TOEIC 考点。建议标记 tag 区分或移除。</td>
+    </tr>
+    <tr>
+      <td>例句无中文翻译</td>
+      <td><span class="badge badge-blue">低</span></td>
+      <td>API 返回的 <code>example</code> 为英文。中文用户可能需要例句翻译。可考虑加入 <code>exampleCn</code> 字段或前端翻译。</td>
+    </tr>
+    <tr>
+      <td>DB schema 字段未启用</td>
+      <td><span class="badge badge-blue">低</span></td>
+      <td><code>cefr_level</code> 和 <code>difficulty</code> 在 PostgreSQL migration 中已定义但内存 Store 未使用。可在迁移到持久化存储时启用。</td>
+    </tr>
+    <tr>
+      <td>packages/shared 内容稀疏</td>
+      <td><span class="badge badge-blue">低</span></td>
+      <td>可将 <code>apps/web/types/index.ts</code> 中的共享类型（如 VocabCard, VocabSummary）迁移至此包。</td>
+    </tr>
+  </tbody>
+</table>
+
+<footer>
+  自动生成 · toeicPass 代码审查报告 · 2026-04-18
+</footer>
+
+</body>
+</html>
