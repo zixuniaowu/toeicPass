@@ -4,24 +4,42 @@
 
 An AI-powered multilingual speaking practice platform with sentence-by-sentence shadowing, tap-to-translate, pronunciation feedback, grammar drills, vocabulary flashcards, mock exams, and AI conversation.
 
-![Shadowing Practice](docs/images/shadowing-practice.png)
-
 ---
 
 ## Key Features
 
 ### Shadowing Training
 
-The core feature of LangBoost is **sentence-by-sentence shadowing** for both Japanese and English:
+The core feature of LangBoost is **sentence-by-sentence shadowing** with real-time pronunciation correction for both Japanese and English.
 
-- **YouTube Shadowing** — Automatically fetches YouTube subtitles for sentence-by-sentence repeat-after practice
-- **Tap-to-Translate** — Tap any word in the subtitle to see its translation and hear its pronunciation instantly
-- **Japanese Furigana** — Auto-annotated readings (ふりがな) above kanji, togglable on/off
+#### English Shadowing — Pronunciation Feedback
+
+Record your voice and instantly see color-coded feedback: **green** = correct, **red** = mispronounced, gray = missed. The accuracy score shows your progress.
+
+![English Shadowing with Speech Recognition](docs/images/shadowing-english-feedback.png)
+
+> *Steve Jobs' Stanford Speech — "bio" was mispronounced (should be "one"), "university" was misread. Accuracy: 85%*
+
+#### Japanese Shadowing — Furigana & Translation
+
+Japanese sentences display **furigana** (reading annotations) above kanji and **Chinese translations** below. Toggle these on/off with checkboxes.
+
+![Japanese Shadowing with Furigana](docs/images/shadowing-japanese-furigana.png)
+
+> *Business email practice — full furigana + Chinese translation displayed, 100% pronunciation accuracy*
+
+#### More Shadowing Features
+
+- **YouTube Shadowing** — Auto-fetch subtitles from any YouTube video for sentence-by-sentence repeat-after practice
+- **Tap-to-Translate** — Tap any word to see its translation and hear its pronunciation
 - **English IPA Phonetics** — Per-word IPA transcription displayed inline
-- **Speech Recognition** — Record your voice, compare against the original, and get pronunciation feedback
-- **Cinema Mode** — Immersive split-screen layout with video + highlighted subtitles
+- **Cinema Mode** — Immersive split-screen with video + highlighted subtitles
+- **Speed Control** — Slow / Normal / Fast playback for each sentence
 - **Curated Content** — TED Talks, news, drama dialogues, famous speeches (Steve Jobs, Simon Sinek, etc.)
-- **Daily News Feed** — Fresh shadowing materials updated regularly
+
+![Shadowing Material Library](docs/images/shadowing-practice.png)
+
+### AI Conversation
 
 ![AI Conversation](docs/images/ai-conversation.png)
 
@@ -56,13 +74,13 @@ Practice real-world scenarios with AI-powered dialogue:
 
 ## Screenshots
 
-| Shadowing Materials | AI Conversation |
+| English Pronunciation Feedback | Japanese Furigana + Translation |
 |:---:|:---:|
-| ![Shadowing](docs/images/shadowing-practice.png) | ![AI Chat](docs/images/ai-conversation.png) |
+| ![English](docs/images/shadowing-english-feedback.png) | ![Japanese](docs/images/shadowing-japanese-furigana.png) |
 
-| Vocabulary Flashcards | Grammar Practice |
+| Shadowing Library | AI Conversation Scenarios |
 |:---:|:---:|
-| ![Vocab](docs/images/vocab-flashcard.png) | ![Grammar](docs/images/grammar-practice.png) |
+| ![Library](docs/images/shadowing-practice.png) | ![AI Chat](docs/images/ai-conversation.png) |
 
 ---
 
