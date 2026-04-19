@@ -27,10 +27,16 @@ export class ConversationService {
     this.model = config?.model ?? "gemini-2.0-flash";
   }
 
+  /** Return all available conversation scenarios. */
   listScenarios(): ConversationScenario[] {
     return this.scenarios;
   }
 
+  /**
+   * Generate a conversation reply using Gemini AI (if available) or rule-based fallback.
+   * @param dto - The user's input including scenario, text, and conversation history.
+   * @throws Error if the scenario ID is not found.
+   */
   async generateReply(dto: ConversationReplyInput): Promise<ConversationReplyResult> {
     const scenario = this.scenarios.find((s) => s.id === dto.scenarioId);
     if (!scenario) {

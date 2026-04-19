@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { TABS, type Locale, type ViewTab, type PlanCode } from "../../types";
+import { TABS, type ViewTab, type PlanCode } from "../../types";
+import type { UiLang, TargetLang } from "../../types";
+import { createT, UI_LANGS } from "../../lib/i18n";
 import { PlanBadge } from "../subscription/PlanBadge";
 import styles from "./TopBar.module.css";
 
@@ -10,39 +12,39 @@ interface TopBarProps {
   onViewChange: (view: ViewTab) => void;
   isLoggedIn: boolean;
   onLogout?: () => void;
-  locale: Locale;
-  onLocaleChange: (locale: Locale) => void;
+  /** @deprecated Use uiLang instead */
+  locale?: "zh" | "ja";
+  /** @deprecated Use onUiLangChange instead */
+  onLocaleChange?: (locale: "zh" | "ja") => void;
+  uiLang: UiLang;
+  targetLang: TargetLang;
+  onUiLangChange: (lang: UiLang) => void;
+  onTargetLangChange: (lang: TargetLang) => void;
   planCode?: PlanCode;
   isAdmin?: boolean;
 }
 
-const TAB_LABEL_JA: Partial<Record<ViewTab, string>> = {
-  shadowing: "シャドーイング",
-  mock: "模擬試験",
-  grammar: "文法練習",
-  conversation: "AI会話",
-  mistakes: "ミスノート",
-  vocab: "単語帳",
-  subscription: "会員",
-  admin: "広告管理",
-  settings: "設定",
-};
+const NAV_KEYS: readonly ViewTab[] = [
+  "shadowing", "mock", "grammar", "conversation",
+  "mistakes", "vocab", "subscription", "admin", "settings",
+] as const;
 
 export function TopBar({
   activeView,
   onViewChange,
   isLoggedIn,
   onLogout,
-  locale,
-  onLocaleChange,
+  uiLang,
+  targetLang,
+  onUiLangChange,
+  onTargetLangChange,
   planCode,
   isAdmin,
 }: TopBarProps) {
-  const isJa = locale === "ja";
+  const t = createT(uiLang);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Filter tabs: hide admin tab for non-admin users
-  const visibleTabs = TABS.filter((t) => t.key !== "admin" || isAdmin);
+  const visibleTabs = TABS.filter((tab) => tab.key !== "admin" || isAdmin);
 
   const handleTabClick = useCallback((key: ViewTab) => {
     onViewChange(key);
@@ -54,8 +56,8 @@ export function TopBar({
       <div className={styles.brand}>
         <span className={styles.brandMark}>LB</span>
         <div>
-          <p className={styles.brandTitle}>LangBoost</p>
-          <p className={styles.brandSub}>{isJa ? "日本語・英語 スピーキング強化" : "日语 · 英语 口语强化平台"}</p>
+          <p className={styles.brandTitle}>{t("brand.title")}</p>
+          <p className={styles.brandSub}>{t("brand.subtitle")}</p>
         </div>
       </div>
 
@@ -77,7 +79,7 @@ export function TopBar({
                 className={`${styles.tab} ${activeView === tab.key ? styles.active : ""}`}
                 onClick={() => handleTabClick(tab.key)}
               >
-                {isJa ? TAB_LABEL_JA[tab.key] ?? tab.label : tab.label}
+                {t(`nav.${tab.key}`) !== `nav.${tab.key}` ? t(`nav.${tab.key}`) : tab.label}
               </button>
             ))}
           </nav>
@@ -85,28 +87,48 @@ export function TopBar({
       )}
 
       <div className={styles.actions}>
+        {/* UI Language Switcher */}
         <div className={styles.localeSwitch}>
-          <button
-            type="button"
-            className={`${styles.localeBtn} ${locale === "zh" ? styles.localeBtnActive : ""}`}
-            onClick={() => onLocaleChange("zh")}
-          >
-            中文
-          </button>
-          <button
-            type="button"
-            className={`${styles.localeBtn} ${locale === "ja" ? styles.localeBtnActive : ""}`}
-            onClick={() => onLocaleChange("ja")}
-          >
-            日本語
-          </button>
+          {UI_LANGS.map((lang) => (
+            <button
+              key={lang}
+              type="button"
+              className={`${styles.localeBtn} ${uiLang === lang ? styles.localeBtnActive : ""}`}
+              onClick={() => onUiLangChange(lang)}
+            >
+              {t(`lang.${lang}`)}
+            </button>
+          ))}
         </div>
+
+        {/* Target Language Toggle */}
+        {isLoggedIn && (
+          <div className={styles.localeSwitch}>
+            <button
+              type="button"
+              className={`${styles.localeBtn} ${targetLang === "en" ? styles.localeBtnActive : ""}`}
+              onClick={() => onTargetLangChange("en")}
+              title={t("lang.targetLabel")}
+            >
+              {t("lang.targetEn")}
+            </button>
+            <button
+              type="button"
+              className={`${styles.localeBtn} ${targetLang === "ja" ? styles.localeBtnActive : ""}`}
+              onClick={() => onTargetLangChange("ja")}
+              title={t("lang.targetLabel")}
+            >
+              {t("lang.targetJa")}
+            </button>
+          </div>
+        )}
+
         {isLoggedIn && planCode && (
           <PlanBadge planCode={planCode} onClick={() => onViewChange("subscription")} />
         )}
         {isLoggedIn && onLogout && (
           <button type="button" className={styles.logout} onClick={onLogout}>
-            {isJa ? "ログアウト" : "退出登录"}
+            {t("auth.logout")}
           </button>
         )}
       </div>

@@ -10,6 +10,8 @@ import { useVocab } from "../hooks/useVocab";
 import { useAnalytics } from "../hooks/useAnalytics";
 import { useLearningCommandRunner } from "../hooks/useLearningCommandRunner";
 import { useSubscription } from "../hooks/useSubscription";
+import { useLangConfig } from "../hooks/useLangConfig";
+import { createT } from "../lib/i18n";
 import { AppShell } from "./layout/AppShell";
 import { CardSkeleton } from "./ui/Skeleton";
 import { LoginView } from "./auth/LoginView";
@@ -52,30 +54,25 @@ const ALL_VIEWS = new Set<ViewTab>([...NAV_VIEWS, ...PRACTICE_VIEWS]);
 
 const COPY = {
   zh: {
-    submitDone: "\u5df2\u5b8c\u6210\u6a21\u62df\u8003\u8bd5\uff0c\u5df2\u5207\u6362\u5230\u9519\u9898\u96c6\u3002",
-    registerSuccess: "\u6ce8\u518c\u5e76\u767b\u5f55\u6210\u529f\u3002",
-    jumpMockPart: (partNo: number) => `\u5df2\u5207\u6362\u5230\u6a21\u62df\u8003\u8bd5\uff0c\u4f18\u5148\u590d\u7ec3 Part ${partNo}\u3002`,
-    jumpMockBatch: (count: number) => `\u5df2\u5207\u6362\u5230\u6a21\u62df\u8003\u8bd5\uff0c\u5efa\u8bae\u4f18\u5148\u590d\u7ec3 ${count} \u9053\u9519\u9898\u3002`,
-    jumpMockSingle: "\u5df2\u5207\u6362\u5230\u6a21\u62df\u8003\u8bd5\uff0c\u5efa\u8bae\u4f18\u5148\u590d\u7ec3\u8fd9\u9053\u9519\u9898\u3002",
-    mistakeBoundaryTitle: "\u9519\u9898\u5e93\u52a0\u8f7d\u5931\u8d25",
-    mistakeBoundaryHint: "\u9519\u9898\u6570\u636e\u5b58\u5728\u5f02\u5e38\u5b57\u6bb5\u3002\u4f60\u53ef\u4ee5\u5148\u70b9\u201c\u5237\u65b0\u9519\u9898\u201d\uff0c\u7cfb\u7edf\u4f1a\u5c3d\u91cf\u81ea\u52a8\u4fee\u590d\u5e76\u7ee7\u7eed\u52a0\u8f7d\u3002",
-    goalSaved: "\u76ee\u6807\u5df2\u4fdd\u5b58\u3002",
-    goalFailed: "\u76ee\u6807\u4fdd\u5b58\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5\u3002",
-    confirmLeaveExam: "模拟考试尚未提交，确定要离开吗？",
-    confirmLeavePractice: "当前练习尚未完成，确定要离开吗？",
+    jumpMockPart: (partNo: number) => `已切换到模拟考试，优先复练 Part ${partNo}。`,
+    jumpMockBatch: (count: number) => `已切换到模拟考试，建议优先复练 ${count} 道错题。`,
+    jumpMockSingle: "已切换到模拟考试，建议优先复练这道错题。",
+    mistakeBoundaryTitle: "错题库加载失败",
+    mistakeBoundaryHint: "错题数据存在异常字段。你可以先点"刷新错题"，系统会尽量自动修复并继续加载。",
   },
   ja: {
-    submitDone: "\u6a21\u64ec\u8a66\u9a13\u3092\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\u30df\u30b9\u30ce\u30fc\u30c8\u306b\u5207\u308a\u66ff\u3048\u307e\u3057\u305f\u3002",
-    registerSuccess: "\u767b\u9332\u3068\u30ed\u30b0\u30a4\u30f3\u304c\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002",
-    jumpMockPart: (partNo: number) => `\u6a21\u64ec\u8a66\u9a13\u306b\u5207\u308a\u66ff\u3048\u307e\u3057\u305f\u3002Part ${partNo} \u3092\u512a\u5148\u3057\u3066\u5fa9\u7fd2\u3057\u3066\u304f\u3060\u3055\u3044\u3002`,
-    jumpMockBatch: (count: number) => `\u6a21\u64ec\u8a66\u9a13\u306b\u5207\u308a\u66ff\u3048\u307e\u3057\u305f\u3002\u307e\u305a\u306f ${count} \u554f\u306e\u30df\u30b9\u3092\u5fa9\u7fd2\u3057\u307e\u3057\u3087\u3046\u3002`,
-    jumpMockSingle: "\u6a21\u64ec\u8a66\u9a13\u306b\u5207\u308a\u66ff\u3048\u307e\u3057\u305f\u3002\u3053\u306e\u30df\u30b9\u554f\u984c\u3092\u512a\u5148\u3057\u3066\u5fa9\u7fd2\u3057\u307e\u3057\u3087\u3046\u3002",
-    mistakeBoundaryTitle: "\u30df\u30b9\u30ce\u30fc\u30c8\u306e\u8aad\u307f\u8fbc\u307f\u306b\u5931\u6557\u3057\u307e\u3057\u305f",
-    mistakeBoundaryHint: "\u30c7\u30fc\u30bf\u306b\u4e0d\u6574\u5408\u304c\u3042\u308b\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\u300c\u30df\u30b9\u3092\u66f4\u65b0\u300d\u3092\u62bc\u3057\u3066\u518d\u8aad\u307f\u8fbc\u307f\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
-    goalSaved: "\u76ee\u6a19\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
-    goalFailed: "\u76ee\u6a19\u306e\u4fdd\u5b58\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
-    confirmLeaveExam: "模擬試験がまだ提出されていません。本当に離れますか？",
-    confirmLeavePractice: "練習がまだ完了していません。本当に離れますか？",
+    jumpMockPart: (partNo: number) => `模擬試験に切り替えました。Part ${partNo} を優先して復習してください。`,
+    jumpMockBatch: (count: number) => `模擬試験に切り替えました。まずは ${count} 問のミスを復習しましょう。`,
+    jumpMockSingle: "模擬試験に切り替えました。このミス問題を優先して復習しましょう。",
+    mistakeBoundaryTitle: "ミスノートの読み込みに失敗しました",
+    mistakeBoundaryHint: "データに不整合がある可能性があります。「ミスを更新」を押して再読み込みしてください。",
+  },
+  en: {
+    jumpMockPart: (partNo: number) => `Switched to mock exam. Focus on Part ${partNo} first.`,
+    jumpMockBatch: (count: number) => `Switched to mock exam. Review these ${count} mistakes first.`,
+    jumpMockSingle: "Switched to mock exam. Focus on this mistake first.",
+    mistakeBoundaryTitle: "Failed to load mistake library",
+    mistakeBoundaryHint: "Data may be inconsistent. Click 'Refresh' to reload.",
   },
 } as const;
 
@@ -94,12 +91,11 @@ export function ClientHome() {
     }
     return "shadowing";
   });
-  const [locale, setLocale] = useState<Locale>(() => {
-    if (typeof window !== "undefined") {
-      return (localStorage.getItem("lb.locale") as Locale) || "ja";
-    }
-    return "ja";
-  });
+
+  // New 3-dimensional language configuration
+  const { langConfig, locale, setUiLang, setTargetLang } = useLangConfig();
+  const t = createT(langConfig.uiLang);
+
   const [theme, setTheme] = useState<ThemeMode>(() => {
     if (typeof window !== "undefined") {
       return (localStorage.getItem("lb.theme") as ThemeMode) || "auto";
@@ -149,7 +145,7 @@ export function ClientHome() {
     loadVocabularyCards: vocab.loadCards,
   });
 
-  // Persist locale
+  // Persist locale (backward compat: keep lb.locale in sync for legacy code)
   useEffect(() => {
     localStorage.setItem("lb.locale", locale);
   }, [locale]);
@@ -220,19 +216,19 @@ export function ClientHome() {
     if (!ALL_VIEWS.has(newView)) return;
     // Confirm before leaving active exam/practice with unsaved progress
     if (activeView === "mock" && newView !== "mock" && session.activeSession && !session.sessionResult) {
-      if (!window.confirm(COPY[locale].confirmLeaveExam)) return;
+      if (!window.confirm(t("home.confirmLeaveExam"))) return;
       session.resetSession();
     } else if (activeView === "mock" && newView !== "mock") {
       session.resetSession();
     }
     if (PRACTICE_VIEWS.has(activeView) && !PRACTICE_VIEWS.has(newView) && session.activeSession) {
-      if (!window.confirm(COPY[locale].confirmLeavePractice)) return;
+      if (!window.confirm(t("home.confirmLeavePractice"))) return;
       session.resetSession();
     } else if (PRACTICE_VIEWS.has(activeView) && !PRACTICE_VIEWS.has(newView)) {
       session.resetSession();
     }
     setActiveView(newView);
-  }, [activeView, session, locale]);
+  }, [activeView, session, t]);
 
   const handleStartMock = useCallback(async (message?: string) => {
     const ok = await runner.runAction("mock:start");

@@ -78,10 +78,12 @@ export class AdService {
 
   // ===== Admin =====
 
+  /** List all ad placements sorted by priority (descending). */
   listAllAds(): AdPlacement[] {
     return [...this.store.adPlacements].sort((a, b) => b.priority - a.priority);
   }
 
+  /** Get aggregated ad statistics including per-slot breakdown and recent events. */
   getAdStats(): AdStats {
     const ads = this.store.adPlacements;
     const totalImpressions = ads.reduce((s, a) => s + a.impressions, 0);
@@ -116,6 +118,7 @@ export class AdService {
     };
   }
 
+  /** Create a new ad placement and persist. */
   createAd(data: CreateAdInput): AdPlacement {
     const ad: AdPlacement = {
       id: this.generateId(),
@@ -138,6 +141,7 @@ export class AdService {
     return ad;
   }
 
+  /** Update an existing ad placement. Returns `null` if not found. */
   updateAd(adId: string, data: UpdateAdInput): AdPlacement | null {
     const ad = this.store.adPlacements.find((a) => a.id === adId);
     if (!ad) return null;
@@ -155,6 +159,7 @@ export class AdService {
     return ad;
   }
 
+  /** Delete an ad placement by ID. Returns `true` if deleted, `false` if not found. */
   deleteAd(adId: string): boolean {
     const idx = this.store.adPlacements.findIndex((a) => a.id === adId);
     if (idx === -1) return false;

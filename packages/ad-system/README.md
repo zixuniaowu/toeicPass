@@ -1,50 +1,53 @@
 # @toeicpass/ad-system
 
-> 可复用的广告投放、事件追踪与分析模块 — 后端服务 + React 前端组件。像积木一样拿来就用。
+> Reusable ad serving, event tracking and analytics module — backend service + React frontend components.
 
-**零框架耦合** · **TypeScript** · **React (可选)** · **AdSense Waterfall**
+**Framework-agnostic** · **TypeScript** · **React (optional)** · **AdSense Waterfall**
 
-## 文档一览
+## Documentation
 
-| 文档 | 说明 |
+| Document | Description |
 |---|---|
-| [SPEC.md](./SPEC.md) | 完整规格书 — 全部类型定义、API 参考、事件流、架构图 |
-| [INTEGRATION.md](./INTEGRATION.md) | 分步集成指南 — 从安装到上线 7 步完成 |
-| [CHANGELOG.md](./CHANGELOG.md) | 版本变更记录 |
+| [SPEC.md](./SPEC.md) | Full specification — all type definitions, API reference, event flow, architecture diagram |
+| [INTEGRATION.md](./INTEGRATION.md) | Step-by-step integration guide — 7 steps from install to production |
+| [CHANGELOG.md](./CHANGELOG.md) | Version changelog |
 
-## 快速开始
-
-### 安装
+## Installation
 
 ```bash
 npm install @toeicpass/ad-system
 ```
 
-### 后端 (30 秒)
+Or via monorepo workspace reference:
+```json
+{ "dependencies": { "@toeicpass/ad-system": "workspace:*" } }
+```
+
+## Quick Start — Backend
 
 ```typescript
 import { AdService, DEFAULT_AD_SEEDS } from "@toeicpass/ad-system";
 import type { IAdStore } from "@toeicpass/ad-system";
 
-// 1. 实现存储接口
+// 1. Implement the storage interface
 const store: IAdStore = {
   adPlacements: [],
   adEvents: [],
-  persistSnapshot: () => { /* 写 DB */ },
+  persistSnapshot: () => { /* write to DB */ },
 };
 
-// 2. 创建服务
+// 2. Create the service
 const adService = new AdService(store);
 
-// 3. 种子引导
+// 3. Seed initial data
 adService.seedIfEmpty(DEFAULT_AD_SEEDS);
 
-// 4. 使用
+// 4. Use it
 const ads = adService.getAdsForUser("free", "banner_top");
 adService.recordAdEvent(ads[0].id, "user-123", "impression");
 ```
 
-### 前端 (30 秒)
+## Quick Start — Frontend
 
 ```tsx
 import { AdBanner, NativeFeedAd } from "@toeicpass/ad-system/web";
@@ -63,46 +66,74 @@ const api: AdApiFunctions = {
 <NativeFeedAd locale="zh" showAds={true} api={api} />
 ```
 
-## 架构
+## Architecture
 
-```
-┌─────────────┐  implements  ┌──────────┐
-│  IAdStore   │─────────────>│ AdService│  ← 纯 TypeScript, 无框架依赖
-│  (你的 DB)  │              └──────────┘
-└─────────────┘                    │
-                                   ▼
-                             REST / GraphQL
-                                   │
-                                   ▼
-                         ┌──────────────────┐
-                         │ React 组件        │  ← 通过 Props 注入 API
-                         │ (AdBanner, etc.)  │     不耦合路由/状态管理
-                         └──────────────────┘
+```mermaid
+graph TD
+    A[IAdStore<br/>Your DB] -->|implements| B[AdService<br/>Pure TypeScript, no framework deps]
+    B -->|API response| C[REST / GraphQL]
+    C -->|fetch| D[React Components<br/>AdBanner, NativeFeedAd, etc.<br/>API injected via Props]
 ```
 
-## 功能列表
+### Design Principles
 
-| 功能 | 说明 |
+- **Dependency Inversion**: `AdService` depends on the `IAdStore` interface, not a concrete database. Swap PostgreSQL, Redis, or in-memory storage freely.
+- **Backend/Frontend Split**: The package exposes two entry points — `@toeicpass/ad-system` (backend, no React dependency) and `@toeicpass/ad-system/web` (React components). React is an optional peer dependency.
+- **Stateless Components**: Frontend components receive an `AdApiFunctions` object via props. They make no assumptions about routing, state management, or fetch libraries.
+
+### Module Structure
+
+```
+src/
+├── index.ts              # Backend entry — exports AdService, seeds, types
+├── ad.service.ts         # Core service: CRUD, targeting, event recording, stats
+├── seeds.ts              # 7 built-in ad placements for bootstrapping
+├── types.ts              # All TypeScript interfaces and type aliases
+└── css.d.ts              # CSS module declarations
+
+web/
+├── index.ts              # Frontend entry — exports all React components + types
+├── components/           # AdBanner, NativeFeedAd, InterstitialAd, RewardVideoAd,
+│                         # GoogleAdUnit, AdManagerView
+├── lib/ad-provider.ts    # AdSense waterfall logic
+└── types.ts              # Frontend-specific types (AdApiFunctions, Props)
+```
+
+### Exported Types (Backend)
+
+| Type | Description |
 |---|---|
-| 4 种广告位 | banner_top · interstitial · native_feed · reward_video |
-| 用户计划定向 | 按 free/basic/premium 等计划展示不同广告 |
-| 时间窗口调度 | startsAt / expiresAt 控制投放时段 |
-| 事件追踪 | impression · click · dismiss · reward_complete |
-| CTR 分析 | 按 slot 分组的曝光/点击/CTR 统计 |
-| AdSense Waterfall | 自有广告优先，无广告时回退 Google AdSense |
-| 管理面板 | 完整 CRUD + 统计仪表盘 (React 组件) |
-| 种子数据 | 7 条预设广告，一行代码引导 |
-| 多语言 | 中文 (zh) + 日语 (ja) |
+| `AdSlot` | `"banner_top"` \| `"interstitial"` \| `"native_feed"` \| `"reward_video"` |
+| `AdEventType` | `"impression"` \| `"click"` \| `"dismiss"` \| `"reward_complete"` |
+| `AdPlacement` | Full ad placement record with targeting, scheduling, stats |
+| `AdEvent` | Tracked event record (placement ID, user ID, type, timestamp) |
+| `AdStats` | Per-slot aggregated impressions/clicks/CTR |
+| `IAdStore` | Storage interface — implement to connect your database |
+| `CreateAdInput` / `UpdateAdInput` | CRUD input shapes |
 
-## 仅使用后端？
+## Features
 
-不需要 React。后端部分是纯 TypeScript，不依赖任何 Web 框架或 UI 库。
+| Feature | Details |
+|---|---|
+| 4 ad slots | `banner_top` · `interstitial` · `native_feed` · `reward_video` |
+| Plan targeting | Show different ads based on user plan (free/basic/premium) |
+| Time-windowed delivery | `startsAt` / `expiresAt` fields for scheduling |
+| Event tracking | impression · click · dismiss · reward_complete |
+| CTR analytics | Per-slot impressions/clicks/CTR aggregation |
+| AdSense waterfall | Serve own ads first, fall back to Google AdSense |
+| Admin panel | Full CRUD + stats dashboard (React components) |
+| Seed data | 7 preset ads, one-line bootstrap |
+| i18n | Chinese (zh) + Japanese (ja) |
+
+## Backend-only Usage
+
+React is not required. The backend entry point is pure TypeScript with zero UI dependencies.
 
 ```typescript
 import { AdService } from "@toeicpass/ad-system";
-// React 是 optional peerDependency，不安装也不报错
+// React is an optional peerDependency — no error if not installed
 ```
 
 ## License
 
-MIT
+MIT — see [LICENSE](./LICENSE)

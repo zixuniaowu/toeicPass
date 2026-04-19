@@ -1,7 +1,8 @@
 "use client";
 
 import { ReactNode } from "react";
-import type { Locale, ViewTab, PlanCode } from "../../types";
+import type { ViewTab, PlanCode } from "../../types";
+import type { UiLang, TargetLang } from "../../types";
 import { TopBar } from "./TopBar";
 import { Footer } from "./Footer";
 import styles from "./AppShell.module.css";
@@ -13,8 +14,10 @@ interface AppShellProps {
   isLoggedIn: boolean;
   message: string;
   onLogout?: () => void;
-  locale: Locale;
-  onLocaleChange: (locale: Locale) => void;
+  uiLang: UiLang;
+  targetLang: TargetLang;
+  onUiLangChange: (lang: UiLang) => void;
+  onTargetLangChange: (lang: TargetLang) => void;
   planCode?: PlanCode;
   isAdmin?: boolean;
 }
@@ -26,8 +29,10 @@ export function AppShell({
   isLoggedIn,
   message,
   onLogout,
-  locale,
-  onLocaleChange,
+  uiLang,
+  targetLang,
+  onUiLangChange,
+  onTargetLangChange,
   planCode,
   isAdmin,
 }: AppShellProps) {
@@ -39,8 +44,10 @@ export function AppShell({
           onViewChange={onViewChange}
           isLoggedIn={isLoggedIn}
           onLogout={onLogout}
-          locale={locale}
-          onLocaleChange={onLocaleChange}
+          uiLang={uiLang}
+          targetLang={targetLang}
+          onUiLangChange={onUiLangChange}
+          onTargetLangChange={onTargetLangChange}
           planCode={planCode}
           isAdmin={isAdmin}
         />

@@ -1,39 +1,42 @@
 # @toeicpass/conversation-ai
 
-> 可复用的 AI 对话练习模块 — TOEIC 英语口语训练、语法纠错、改进建议。像积木一样拿来就用。
+> Reusable AI conversation practice module — TOEIC English speaking, grammar correction, improvement suggestions.
 
-**Gemini AI + 规则引擎双模** · **语音识别/合成** · **TypeScript** · **React (可选)**
+**Gemini AI + Rule Engine dual mode** · **Speech Recognition/Synthesis** · **TypeScript** · **React (optional)**
 
-## 文档一览
+## Documentation
 
-| 文档 | 说明 |
+| Document | Description |
 |---|---|
-| [SPEC.md](./SPEC.md) | 完整规格书 — 全部类型定义、API 参考、AI 流程图、场景目录 |
-| [INTEGRATION.md](./INTEGRATION.md) | 分步集成指南 — 从安装到上线 6 步完成 |
-| [CHANGELOG.md](./CHANGELOG.md) | 版本变更记录 |
+| [SPEC.md](./SPEC.md) | Full specification — all type definitions, API reference, AI flow diagram, scenario catalog |
+| [INTEGRATION.md](./INTEGRATION.md) | Step-by-step integration guide — 6 steps from install to production |
+| [CHANGELOG.md](./CHANGELOG.md) | Version changelog |
 
-## 快速开始
-
-### 安装
+## Installation
 
 ```bash
 npm install @toeicpass/conversation-ai
 ```
 
-### 后端 (30 秒)
+Or via monorepo workspace reference:
+```json
+{ "dependencies": { "@toeicpass/conversation-ai": "workspace:*" } }
+```
+
+## Quick Start — Backend
 
 ```typescript
 import { ConversationService } from "@toeicpass/conversation-ai";
 
-// 无 API Key 也能运行 (规则引擎模式)
+// Works without API key (rule engine mode)
 const svc = new ConversationService({
-  geminiApiKey: process.env.GEMINI_API_KEY, // 可选
+  geminiApiKey: process.env.GEMINI_API_KEY, // optional
 });
 
-// 列出场景
-const scenarios = svc.listScenarios(); // 内置 8 个 TOEIC 场景
+// List scenarios
+const scenarios = svc.listScenarios(); // 8 built-in TOEIC scenarios
 
-// 生成回复
+// Generate reply
 const reply = await svc.generateReply({
   scenarioId: "office-meeting",
   text: "I think we should meet on Friday.",
@@ -45,7 +48,7 @@ console.log(reply.corrections);  // ["Remember to capitalize 'I'..."]
 console.log(reply.suggestions);  // ["Try adding one supporting sentence..."]
 ```
 
-### 前端 (30 秒)
+## Quick Start — Frontend
 
 ```tsx
 import { ConversationView } from "@toeicpass/conversation-ai/web";
@@ -63,61 +66,88 @@ const api: ConversationApiFunctions = {
 <ConversationView locale="zh" api={api} />
 ```
 
-## 架构
+## Architecture
 
-```
-ConversationService
-├─ Gemini API (主通道)     ← 有 Key 时使用
-│   temperature=0.7, JSON 模式
-│   系统提示: 场景 + 难度 + 输出格式
-└─ 规则引擎 (备用通道)     ← 无 Key / API 失败时自动降级
-    ├─ 语法检查: 大写I、缩写词、句子长度、标点
-    └─ 场景回复: 8 类 category × 前期/后期
-
-            │
-            ▼
-
-ConversationView (React)
-├─ 场景选择 → 对话界面 → 纠错/建议展示
-├─ 🎤 Web Speech API (STT) — 按住说话
-├─ 🔊 SpeechSynthesis (TTS) — 自动朗读
-└─ CSS Modules 样式隔离
+```mermaid
+graph TD
+    A[ConversationService] --> B{Gemini API Key?}
+    B -->|Yes| C[Gemini API<br/>temperature=0.7, JSON mode<br/>System prompt: scenario + difficulty + output format]
+    B -->|No / API error| D[Rule Engine<br/>Grammar: capitalization, contractions, sentence length, punctuation<br/>Scenario replies: 8 categories × early/late turns]
+    C --> E[ConversationReplyResult<br/>content + corrections + suggestions]
+    D --> E
+    E --> F[REST Endpoint]
+    F --> G[ConversationView React]
+    G --> H[🎤 Web Speech API STT<br/>Push-to-talk]
+    G --> I[🔊 SpeechSynthesis TTS<br/>Auto read-aloud]
 ```
 
-## 内置 8 个场景
+### Design Principles
 
-| 场景 | 难度 | 类别 |
-|---|---|---|
-| 🏢 办公室会议 | ⭐ | office |
-| 🍽️ 餐厅点餐 | ⭐ | restaurant |
-| ✈️ 机场值机 | ⭐⭐ | airport |
-| 🏨 酒店预订 | ⭐⭐ | hotel |
-| 📞 电话咨询 | ⭐⭐ | phone |
-| 💼 工作面试 | ⭐⭐⭐ | interview |
-| 📊 产品介绍 | ⭐⭐⭐ | meeting |
-| 📋 客户投诉 | ⭐⭐⭐ | phone |
+- **Graceful Degradation**: When Gemini API is unavailable (no key, rate limit, network error), the service automatically falls back to a rule-based engine. Users always get a response.
+- **Dependency Inversion**: The frontend `ConversationView` component receives API functions via props — no hard-coded fetch URLs or state management coupling.
+- **Scenario-driven**: Each conversation session is anchored to a scenario with a defined context, category, and difficulty level. This constrains AI responses to TOEIC-relevant topics.
 
-## 核心特性
+### Module Structure
 
-| 特性 | 说明 |
+```
+src/
+├── index.ts                  # Backend entry — exports ConversationService, scenarios, types
+├── conversation.service.ts   # Core service: Gemini integration, rule engine fallback
+├── scenarios.ts              # 8 built-in TOEIC conversation scenarios
+├── types.ts                  # All TypeScript interfaces
+└── css.d.ts                  # CSS module declarations
+
+web/
+├── index.ts                  # Frontend entry — exports ConversationView + types
+├── conversationview.tsx      # Full conversation UI with speech I/O
+└── types.ts                  # Frontend-specific types (ConversationApiFunctions)
+```
+
+### Exported Types
+
+| Type | Description |
 |---|---|
-| AI 双通道 | Gemini 2.0 Flash (主) + 规则引擎 (备)，全自动降级 |
-| 语法纠错 | 实时检查大写、缩写、句长、标点 |
-| 改进建议 | AI 或规则引擎给出可执行的提升建议 |
-| 语音练习 | 按住说话 (STT) + 自动朗读 (TTS) |
-| 多语言 UI | 中文 (zh) + 日语 (ja) |
-| 自定义场景 | 传入自定义 scenarios 数组即可 |
-| 零框架依赖 | 后端纯 TypeScript，适配任何框架 |
+| `ConversationScenario` | Scenario definition — id, title, description, context, difficulty, category |
+| `ConversationMessage` | Single message — role (user/assistant/system), content, corrections, suggestions |
+| `ConversationSession` | Full session — scenario ID, message history, timestamps |
+| `ConversationReplyInput` | Input to `generateReply()` — scenario ID, user text, history |
+| `ConversationReplyResult` | AI output — content, corrections array, suggestions array |
+| `ConversationServiceConfig` | Service config — `geminiApiKey` (optional) |
 
-## 仅使用后端？
+## Built-in Scenarios
 
-不需要 React。后端部分是纯 TypeScript：
+| Scenario | Difficulty | Category |
+|---|---|---|
+| 🏢 Office Meeting | ⭐ | office |
+| 🍽️ Restaurant Ordering | ⭐ | restaurant |
+| ✈️ Airport Check-in | ⭐⭐ | airport |
+| 🏨 Hotel Booking | ⭐⭐ | hotel |
+| 📞 Phone Inquiry | ⭐⭐ | phone |
+| 💼 Job Interview | ⭐⭐⭐ | interview |
+| 📊 Product Presentation | ⭐⭐⭐ | meeting |
+| 📋 Customer Complaint | ⭐⭐⭐ | phone |
+
+## Features
+
+| Feature | Details |
+|---|---|
+| Dual AI channel | Gemini 2.0 Flash (primary) + Rule Engine (fallback), automatic degradation |
+| Grammar correction | Real-time checks for capitalization, contractions, sentence length, punctuation |
+| Improvement suggestions | Actionable tips from AI or rule engine |
+| Voice practice | Push-to-talk STT + auto read-aloud TTS |
+| i18n | Chinese (zh) + Japanese (ja) |
+| Custom scenarios | Pass a custom scenarios array to override defaults |
+| Framework-agnostic backend | Pure TypeScript, works with any framework |
+
+## Backend-only Usage
+
+React is not required. The backend entry point is pure TypeScript:
 
 ```typescript
 import { ConversationService } from "@toeicpass/conversation-ai";
-// React 是 optional peerDependency，不安装也不报错
+// React is an optional peerDependency — no error if not installed
 ```
 
 ## License
 
-MIT
+MIT — see [LICENSE](./LICENSE)

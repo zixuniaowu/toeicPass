@@ -10,3 +10,5 @@ export { useMistakes } from "./useMistakes";
 export { useVocab } from "./useVocab";
 
 export { useLearningCommandRunner } from "./useLearningCommandRunner";
+
+export { useLangConfig } from "./useLangConfig";
