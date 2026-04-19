@@ -87,42 +87,6 @@ export function TopBar({
       )}
 
       <div className={styles.actions}>
-        {/* UI Language Switcher */}
-        <div className={styles.localeSwitch}>
-          {UI_LANGS.map((lang) => (
-            <button
-              key={lang}
-              type="button"
-              className={`${styles.localeBtn} ${uiLang === lang ? styles.localeBtnActive : ""}`}
-              onClick={() => onUiLangChange(lang)}
-            >
-              {t(`lang.${lang}`)}
-            </button>
-          ))}
-        </div>
-
-        {/* Target Language Toggle */}
-        {isLoggedIn && (
-          <div className={styles.localeSwitch}>
-            <button
-              type="button"
-              className={`${styles.localeBtn} ${targetLang === "en" ? styles.localeBtnActive : ""}`}
-              onClick={() => onTargetLangChange("en")}
-              title={t("lang.targetLabel")}
-            >
-              {t("lang.targetEn")}
-            </button>
-            <button
-              type="button"
-              className={`${styles.localeBtn} ${targetLang === "ja" ? styles.localeBtnActive : ""}`}
-              onClick={() => onTargetLangChange("ja")}
-              title={t("lang.targetLabel")}
-            >
-              {t("lang.targetJa")}
-            </button>
-          </div>
-        )}
-
         {isLoggedIn && planCode && (
           <PlanBadge planCode={planCode} onClick={() => onViewChange("subscription")} />
         )}

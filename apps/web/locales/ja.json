@@ -50,6 +50,9 @@
   "settings.themeAuto": "システムに合わせる",
   "settings.langConfig": "言語設定",
   "settings.langConfigDesc": "表示言語と学習目標言語を選択",
+  "settings.uiLangLabel": "表示言語",
+  "settings.nativeLangLabel": "母語",
+  "settings.targetLangLabel": "学習ターゲット言語",
 
   "home.submitDone": "模擬試験を完了しました。ミスノートに切り替えました。",
   "home.registerSuccess": "登録とログインが完了しました。",

@@ -39,15 +39,20 @@ function saveConfig(cfg: LangConfig) {
  */
 export function useLangConfig() {
   const [config, setConfig] = useState<LangConfig>(defaultConfig);
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
 
   // Hydrate from localStorage after mount (avoid SSR mismatch)
   useEffect(() => {
+    if (typeof window !== "undefined" && !localStorage.getItem(STORAGE_KEY)) {
+      setIsFirstVisit(true);
+    }
     setConfig(loadConfig());
   }, []);
 
   const setUiLang = useCallback((uiLang: UiLang) => {
     setConfig((prev) => {
-      const next = { ...prev, uiLang };
+      // Sync nativeLang with uiLang — most users' native language matches their UI preference
+      const next = { ...prev, uiLang, nativeLang: uiLang as NativeLang };
       saveConfig(next);
       return next;
     });
@@ -81,6 +86,8 @@ export function useLangConfig() {
   return {
     langConfig: config,
     locale,
+    isFirstVisit,
+    setIsFirstVisit,
     setUiLang,
     setNativeLang,
     setTargetLang,

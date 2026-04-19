@@ -39,7 +39,7 @@
   "settings.currentScoreLabel": "当前分数（最近真实考试）",
   "settings.goalScoreLabel": "目标分数",
   "settings.examDate": "考试日期",
-  "settings.goalHint": "推荐：先点"一键填入"，再点"保存目标"。",
+  "settings.goalHint": "推荐：先点「一键填入」，再点「保存目标」。",
   "settings.quickFill": "一键填入 800 / 90 天",
   "settings.saveGoal": "保存目标",
   "settings.system": "系统状态",
@@ -50,6 +50,9 @@
   "settings.themeAuto": "跟随系统",
   "settings.langConfig": "语言设置",
   "settings.langConfigDesc": "选择界面语言和学习目标语言",
+  "settings.uiLangLabel": "界面语言",
+  "settings.nativeLangLabel": "母语",
+  "settings.targetLangLabel": "学习目标语言",
 
   "home.submitDone": "已完成模拟考试，已切换到错题集。",
   "home.registerSuccess": "注册并登录成功。",

@@ -50,6 +50,9 @@
   "settings.themeAuto": "System",
   "settings.langConfig": "Language Settings",
   "settings.langConfigDesc": "Choose your display language and learning target",
+  "settings.uiLangLabel": "UI Language",
+  "settings.nativeLangLabel": "Native Language",
+  "settings.targetLangLabel": "Learning Target",
 
   "home.submitDone": "Mock exam completed. Switched to mistakes view.",
   "home.registerSuccess": "Registered and logged in successfully.",

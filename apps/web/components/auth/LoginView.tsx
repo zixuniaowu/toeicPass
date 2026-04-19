@@ -2,6 +2,7 @@
 
 import type { AuthCredentials } from "../../hooks/useAuth";
 import type { Locale } from "../../types";
+import type { UiLang } from "../../types";
 import { Button } from "../ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/Card";
 import { Input } from "../ui/Input";
@@ -9,6 +10,7 @@ import styles from "./LoginView.module.css";
 
 interface LoginViewProps {
   locale: Locale;
+  uiLang?: UiLang;
   credentials: AuthCredentials;
   isSubmitting: boolean;
   message: string;
@@ -18,7 +20,7 @@ interface LoginViewProps {
   onGoogleLogin?: () => void;
   onWeChatLogin?: () => void;
   onLineLogin?: () => void;
-  onLocaleChange?: (locale: Locale) => void;
+  onLocaleChange?: (lang: UiLang) => void;
 }
 
 const COPY = {
@@ -92,10 +94,46 @@ const COPY = {
     lineLogin: "LINE でログイン",
     orDivider: "または",
   },
+  en: {
+    overviewAriaLabel: "product-overview-en",
+    eyebrow: "LangBoost",
+    brandTitle: "Japanese & English Speaking Practice",
+    brandDesc: "Shadowing, mock exams, mistake review, and vocabulary — all in one platform to boost your speaking skills.",
+    features: [
+      "Japanese shadowing + daily news + YouTube import",
+      "Full-length mock exams with auto mistake collection",
+      "Spaced repetition vocab cards with smart scheduling",
+      "Sentence-level shadowing with real-time pronunciation feedback",
+    ],
+    stats: [
+      { value: "JP+EN", label: "Bilingual" },
+      { value: "2000+", label: "Questions" },
+      { value: "SRS", label: "Spaced Rep." },
+    ],
+    formEyebrow: "Welcome Back",
+    formTitle: "Log in to LangBoost",
+    formSubtitle: "Enter your credentials to start learning",
+    passwordPlaceholder: "Enter password",
+    loginLoading: "Processing...",
+    loginButton: "Log In",
+    demoNotice: "Usually only Email + Password are needed. Tenant Code is only required for multi-tenant login.",
+    orgSummary: "Organization info (for registration or multi-tenant login)",
+    tenantNameLabel: "Tenant Name (for registration)",
+    displayNameLabel: "Display Name (for registration)",
+    registerLoading: "Processing...",
+    registerButton: "Register & Log In",
+    registerTip: "Registration uses the Email and Password entered above.",
+    accountTip: "Note: `demo / owner@demo.com` is for testing and may contain historical data.",
+    googleLogin: "Log in with Google",
+    wechatLogin: "Log in with WeChat",
+    lineLogin: "Log in with LINE",
+    orDivider: "or",
+  },
 } as const;
 
 export function LoginView({
   locale,
+  uiLang,
   credentials,
   isSubmitting,
   message,
@@ -107,7 +145,7 @@ export function LoginView({
   onLineLogin,
   onLocaleChange,
 }: LoginViewProps) {
-  const copy = COPY[locale];
+  const copy = COPY[uiLang ?? locale];
 
   return (
     <div className={styles.page}>
@@ -115,17 +153,24 @@ export function LoginView({
         <div className={styles.localeSwitcher}>
           <button
             type="button"
-            className={`${styles.localeBtn} ${locale === "zh" ? styles.localeBtnActive : ""}`}
+            className={`${styles.localeBtn} ${(uiLang ?? locale) === "zh" ? styles.localeBtnActive : ""}`}
             onClick={() => onLocaleChange("zh")}
           >
             中文
           </button>
           <button
             type="button"
-            className={`${styles.localeBtn} ${locale === "ja" ? styles.localeBtnActive : ""}`}
+            className={`${styles.localeBtn} ${(uiLang ?? locale) === "ja" ? styles.localeBtnActive : ""}`}
             onClick={() => onLocaleChange("ja")}
           >
             日本語
+          </button>
+          <button
+            type="button"
+            className={`${styles.localeBtn} ${(uiLang ?? locale) === "en" ? styles.localeBtnActive : ""}`}
+            onClick={() => onLocaleChange("en")}
+          >
+            English
           </button>
         </div>
       )}

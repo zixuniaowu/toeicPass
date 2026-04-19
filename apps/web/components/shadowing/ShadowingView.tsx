@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef, type ChangeEvent } from "react";
 import type { Locale } from "../../types";
+import type { UiLang } from "../../types";
 import { SHADOWING_MATERIALS, type ShadowingMaterial } from "../../data/shadowing-materials";
 import { JAPANESE_SHADOWING_MATERIALS } from "../../data/japanese-shadowing-materials";
 import { annotateWords, type WordAnnotation } from "../../data/word-dictionary";
@@ -581,9 +582,13 @@ function mergeSnapshotMaterials(
   return deduped.slice(0, 60);
 }
 
-export function ShadowingView({ locale }: { locale: Locale }) {
-  const isJa = locale === "ja";
-  const l = (zh: string, ja: string) => (isJa ? ja : zh);
+export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiLang?: UiLang }) {
+  const isJa = uiLang === "ja";
+  const isEn = uiLang === "en";
+  const l = (zh: string, ja: string, en?: string) => {
+    if (isEn) return en ?? ja;
+    return isJa ? ja : zh;
+  };
 
   const [trainingLanguage, setTrainingLanguage] = useState<TrainingLanguage>("en");
   const [viewMode, setViewMode] = useState<ViewMode>("materials");
@@ -643,7 +648,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
 
   const ensureJaSentenceTranslation = useCallback(
     (material: ShadowingMaterial, sentence: { id: number; text: string; translation?: string }) => {
-      if (locale !== "ja" || trainingLanguage !== "en") {
+      if (uiLang !== "ja" || trainingLanguage !== "en") {
         return;
       }
       const key = makeSentenceTranslationKey(material.id, sentence.id, sentence.text);
@@ -672,37 +677,48 @@ export function ShadowingView({ locale }: { locale: Locale }) {
           translatingSentenceSetRef.current.delete(key);
         });
     },
-    [jaSentenceMap, locale, makeSentenceTranslationKey, trainingLanguage],
+    [jaSentenceMap, uiLang, makeSentenceTranslationKey, trainingLanguage],
   );
 
   const getSentenceTranslation = useCallback(
     (material: ShadowingMaterial, sentence: { id: number; text: string; translation?: string }) => {
       if (trainingLanguage === "ja") {
-        // Japanese study: show Chinese for zh locale, English for ja locale
-        if (locale === "ja") {
+        // Japanese study: show translation in user's UI language
+        if (uiLang === "en") {
+          // English UI: prefer English translation, fall back to Chinese
           return (sentence as { translationEn?: string }).translationEn || sentence.translation || "";
         }
+        if (uiLang === "ja") {
+          return (sentence as { translationEn?: string }).translationEn || sentence.translation || "";
+        }
+        // Chinese UI: show Chinese translation
         return sentence.translation ?? "";
       }
-      if (locale !== "ja") {
+      // English training
+      if (uiLang === "zh") {
         return sentence.translation ?? "";
       }
+      if (uiLang === "en") {
+        // English UI studying English: show Chinese translation as reference
+        return sentence.translation ?? "";
+      }
+      // Japanese UI studying English: try dynamic Japanese translation
       const key = makeSentenceTranslationKey(material.id, sentence.id, sentence.text);
       return jaSentenceMap[key] ?? sentence.translation ?? "";
     },
-    [jaSentenceMap, locale, makeSentenceTranslationKey, trainingLanguage],
+    [jaSentenceMap, uiLang, makeSentenceTranslationKey, trainingLanguage],
   );
 
   // Secondary translation for Japanese training: the other language
   const getSecondaryTranslation = useCallback(
     (sentence: { id: number; text: string; translation?: string }) => {
       if (trainingLanguage !== "ja") return "";
-      if (locale === "ja") {
+      if (uiLang === "ja") {
         return sentence.translation ?? ""; // Chinese as secondary
       }
       return (sentence as { translationEn?: string }).translationEn || ""; // English as secondary
     },
-    [locale, trainingLanguage],
+    [uiLang, trainingLanguage],
   );
 
   const makeWordGlossKey = useCallback((word: WordAnnotation) => {
@@ -711,7 +727,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
 
   const ensureJaWordGloss = useCallback(
     (word: WordAnnotation) => {
-      if (locale !== "ja" || trainingLanguage !== "en") {
+      if (uiLang !== "ja" || trainingLanguage !== "en") {
         return;
       }
       const key = makeWordGlossKey(word);
@@ -740,7 +756,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
           translatingWordGlossRef.current.delete(key);
         });
     },
-    [jaWordGlossMap, locale, makeWordGlossKey, trainingLanguage],
+    [jaWordGlossMap, uiLang, makeWordGlossKey, trainingLanguage],
   );
 
   const ensureJapaneseWordGloss = useCallback(
@@ -830,7 +846,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
         }
         return jpWordGlossMap[key] ?? null;
       }
-      if (locale !== "ja") {
+      if (uiLang !== "ja") {
         return word.cn ?? null;
       }
       const key = makeWordGlossKey(word);
@@ -839,7 +855,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
       }
       return jaWordGlossMap[key] ?? word.cn ?? null;
     },
-    [jaWordGlossMap, jpWordGlossMap, locale, makeWordGlossKey, trainingLanguage],
+    [jaWordGlossMap, jpWordGlossMap, uiLang, makeWordGlossKey, trainingLanguage],
   );
 
   const getJapaneseWordReading = useCallback(
@@ -1210,7 +1226,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   }, [activeMaterial, completedSet, currentIndex, persistMaterialProgress]);
 
   useEffect(() => {
-    if (locale !== "ja" || trainingLanguage !== "en" || !activeMaterial) {
+    if (uiLang !== "ja" || trainingLanguage !== "en" || !activeMaterial) {
       return;
     }
     const around = [
@@ -1219,16 +1235,16 @@ export function ShadowingView({ locale }: { locale: Locale }) {
       activeMaterial.sentences[currentIndex + 1],
     ].filter((item): item is ShadowingMaterial["sentences"][number] => Boolean(item?.text));
     around.forEach((sentence) => ensureJaSentenceTranslation(activeMaterial, sentence));
-  }, [activeMaterial, currentIndex, ensureJaSentenceTranslation, locale, trainingLanguage]);
+  }, [activeMaterial, currentIndex, ensureJaSentenceTranslation, uiLang, trainingLanguage]);
 
   useEffect(() => {
-    if (locale !== "ja" || trainingLanguage !== "en" || !activeMaterial || !alwaysShowTranslation) {
+    if (uiLang !== "ja" || trainingLanguage !== "en" || !activeMaterial || !alwaysShowTranslation) {
       return;
     }
     activeMaterial.sentences.slice(0, 80).forEach((sentence) => {
       ensureJaSentenceTranslation(activeMaterial, sentence);
     });
-  }, [activeMaterial, alwaysShowTranslation, ensureJaSentenceTranslation, locale, trainingLanguage]);
+  }, [activeMaterial, alwaysShowTranslation, ensureJaSentenceTranslation, uiLang, trainingLanguage]);
 
   useEffect(() => {
     if (!activeMaterial || !showWordTranslation) {
@@ -1243,7 +1259,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
       words.forEach((word) => ensureJapaneseWordGloss(word));
       return;
     }
-    if (locale === "ja") {
+    if (uiLang === "ja") {
       words.forEach((word) => ensureJaWordGloss(word));
     }
   }, [
@@ -1252,7 +1268,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
     ensureJaWordGloss,
     ensureJapaneseWordGloss,
     getAnnotatedWords,
-    locale,
+    uiLang,
     showWordTranslation,
     trainingLanguage,
   ]);
@@ -1282,7 +1298,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
   ]);
 
   useEffect(() => {
-    if (locale !== "ja" || trainingLanguage !== "en" || !activeMaterial) {
+    if (uiLang !== "ja" || trainingLanguage !== "en" || !activeMaterial) {
       return;
     }
     const timer = window.setTimeout(() => {
@@ -1306,7 +1322,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
     ensureJaSentenceTranslation,
     ensureJaWordGloss,
     getAnnotatedWords,
-    locale,
+    uiLang,
     showWordTranslation,
     trainingLanguage,
   ]);
@@ -2180,7 +2196,7 @@ export function ShadowingView({ locale }: { locale: Locale }) {
                             return null;
                           }
                           const transcriptTranslation = getSentenceTranslation(activeMaterial, s);
-                          if (!transcriptTranslation && locale !== "ja") {
+                          if (!transcriptTranslation && uiLang !== "ja") {
                             return null;
                           }
                           const transcriptSecondary = getSecondaryTranslation(s);

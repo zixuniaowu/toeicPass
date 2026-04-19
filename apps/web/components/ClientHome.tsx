@@ -58,7 +58,11 @@ const COPY = {
     jumpMockBatch: (count: number) => `已切换到模拟考试，建议优先复练 ${count} 道错题。`,
     jumpMockSingle: "已切换到模拟考试，建议优先复练这道错题。",
     mistakeBoundaryTitle: "错题库加载失败",
-    mistakeBoundaryHint: "错题数据存在异常字段。你可以先点"刷新错题"，系统会尽量自动修复并继续加载。",
+    mistakeBoundaryHint: "错题数据存在异常字段。你可以先点「刷新错题」，系统会尽量自动修复并继续加载。",
+    submitDone: "提交完成！",
+    registerSuccess: "注册成功！",
+    goalSaved: "目标已保存！",
+    goalFailed: "目标保存失败，请重试。",
   },
   ja: {
     jumpMockPart: (partNo: number) => `模擬試験に切り替えました。Part ${partNo} を優先して復習してください。`,
@@ -66,6 +70,10 @@ const COPY = {
     jumpMockSingle: "模擬試験に切り替えました。このミス問題を優先して復習しましょう。",
     mistakeBoundaryTitle: "ミスノートの読み込みに失敗しました",
     mistakeBoundaryHint: "データに不整合がある可能性があります。「ミスを更新」を押して再読み込みしてください。",
+    submitDone: "提出完了！",
+    registerSuccess: "登録に成功しました！",
+    goalSaved: "目標を保存しました！",
+    goalFailed: "目標の保存に失敗しました。もう一度お試しください。",
   },
   en: {
     jumpMockPart: (partNo: number) => `Switched to mock exam. Focus on Part ${partNo} first.`,
@@ -73,6 +81,10 @@ const COPY = {
     jumpMockSingle: "Switched to mock exam. Focus on this mistake first.",
     mistakeBoundaryTitle: "Failed to load mistake library",
     mistakeBoundaryHint: "Data may be inconsistent. Click 'Refresh' to reload.",
+    submitDone: "Submitted successfully!",
+    registerSuccess: "Registration successful!",
+    goalSaved: "Goal saved!",
+    goalFailed: "Failed to save goal. Please try again.",
   },
 } as const;
 
@@ -93,7 +105,7 @@ export function ClientHome() {
   });
 
   // New 3-dimensional language configuration
-  const { langConfig, locale, setUiLang, setTargetLang } = useLangConfig();
+  const { langConfig, locale, setUiLang, setNativeLang, setTargetLang } = useLangConfig();
   const t = createT(langConfig.uiLang);
 
   const [theme, setTheme] = useState<ThemeMode>(() => {
@@ -424,13 +436,18 @@ export function ClientHome() {
       case "settings":
         return (
           <SettingsView
-            locale={locale}
             credentials={auth.credentials}
             currentScore={currentScoreInput}
             goalScore={goalScore}
             goalDate={goalDate}
             theme={theme}
+            uiLang={langConfig.uiLang}
+            nativeLang={langConfig.nativeLang}
+            targetLang={langConfig.targetLang}
             onThemeChange={setTheme}
+            onUiLangChange={setUiLang}
+            onNativeLangChange={setNativeLang}
+            onTargetLangChange={setTargetLang}
             onCredentialsChange={auth.updateCredentials}
             onCurrentScoreChange={setCurrentScoreInput}
             onGoalScoreChange={setGoalScore}
@@ -467,8 +484,7 @@ export function ClientHome() {
           />
         );
       case "shadowing":
-        return <ShadowingView locale={locale} />;
-      case "mistakes":
+        return <ShadowingView locale={locale} uiLang={langConfig.uiLang} />;
         return (
           <ViewErrorBoundary
             locale={locale}
@@ -597,7 +613,7 @@ export function ClientHome() {
           />
         );
       default:
-        return <ShadowingView locale={locale} />;
+        return <ShadowingView locale={locale} uiLang={langConfig.uiLang} />;
     }
   };
 
@@ -611,6 +627,7 @@ export function ClientHome() {
       <>
         <LoginView
           locale={locale}
+          uiLang={langConfig.uiLang}
           credentials={auth.credentials}
           isSubmitting={auth.isSubmitting}
           message={auth.message}
@@ -620,7 +637,7 @@ export function ClientHome() {
           onGoogleLogin={handleGoogleLogin}
           onWeChatLogin={handleWeChatLogin}
           onLineLogin={handleLineLogin}
-          onLocaleChange={setLocale}
+          onLocaleChange={setUiLang}
         />
         <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
       </>
@@ -634,8 +651,10 @@ export function ClientHome() {
       isLoggedIn={auth.isLoggedIn}
       message={auth.message}
       onLogout={handleLogout}
-      locale={locale}
-      onLocaleChange={setLocale}
+      uiLang={langConfig.uiLang}
+      targetLang={langConfig.targetLang}
+      onUiLangChange={setUiLang}
+      onTargetLangChange={setTargetLang}
       planCode={subscription.planCode}
       isAdmin={subscription.isAdmin}
     >
