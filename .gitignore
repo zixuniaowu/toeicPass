@@ -13,3 +13,12 @@ apps/api/.runtime/
 apps/web/public/assets/youtube/
 tmp-login.png
 nul
+
+# Dictionary source files (large binaries - rebuild with npm run build:dict)
+ecdict-tmp/
+jmdict-tmp/
+jmdict.zip
+ecdict.zip
+
+# Built dictionary chunks (generated - not committed)
+apps/web/public/dict/
