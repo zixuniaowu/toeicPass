@@ -89,6 +89,10 @@
         "/^node -e \"const d=require\\('\\./data/japanese-youtube-shadowing\\.json'\\); const m=d\\.items\\[0\\]; console\\.log\\('Title:', m\\.title\\); m\\.sentences\\.slice\\(0,20\\)\\.forEach\\(\\(s,i\\)=>console\\.log\\(i\\+1, '\\|', s\\.startSec\\.toFixed\\(1\\)\\+'-'\\+s\\.endSec\\.toFixed\\(1\\), '\\|', s\\.text\\.length\\+'c', '\\|', s\\.text\\)\\)\"$/": {
             "approve": true,
             "matchCommandLine": true
-        }
+        },
+        "Get-Item": true,
+        "New-Item": true,
+        "Out-Null": true,
+        "npm -w apps/web": true
     }
 }

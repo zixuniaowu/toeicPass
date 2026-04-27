@@ -1,0 +1,114 @@
+/* ════════════════════════════════════════
+   AnnotatedSentence — per-word annotations
+   ════════════════════════════════════════ */
+
+/* ── Japanese layout ───────────────────── */
+.jaContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.jaSentence {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2.4;
+  text-align: center;
+  color: var(--color-text);
+  letter-spacing: 0.05em;
+}
+
+/* Let the browser handle ruby layout natively.
+   Adding any display override breaks furigana positioning. */
+.ruby {
+  ruby-align: center;
+}
+
+.rt {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+  ruby-align: center;
+}
+
+/* Gloss chip grid below the sentence */
+.glossGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.glossChip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15em;
+  background: var(--color-surface-raised, var(--color-surface));
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.glossWord {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.glossMeaning {
+  color: var(--color-muted);
+  font-size: 0.85em;
+}
+
+/* ── English layout ────────────────────── */
+.enContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.enSentence {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.6;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.enWord {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0.3em;
+  vertical-align: bottom;
+  line-height: 1;
+}
+
+.enWordMain {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.enIPA {
+  font-size: 0.65em;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+  margin-top: 0.15em;
+  font-style: italic;
+}
+
+.enGloss {
+  font-size: 0.6em;
+  color: var(--color-muted);
+  margin-top: 0.1em;
+  max-width: 6em;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

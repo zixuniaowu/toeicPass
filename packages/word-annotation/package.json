@@ -1,0 +1,53 @@
+{
+  "name": "@toeicpass/word-annotation",
+  "version": "1.0.0",
+  "description": "Framework-agnostic word annotation engine — word gloss, Japanese furigana, sentence translation. Designed for reuse in web apps, browser extensions, and CLI tools.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zixuniaowu/toeicPass.git",
+    "directory": "packages/word-annotation"
+  },
+  "keywords": [
+    "word-annotation",
+    "furigana",
+    "translation",
+    "japanese",
+    "english",
+    "shadowing",
+    "browser-extension"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "default": "./dist/react/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}

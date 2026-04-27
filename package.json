@@ -21,7 +21,8 @@
     "test": "npm run -w apps/api test && npm run -w apps/web test",
     "test:e2e": "npm run -w apps/api test:e2e",
     "lint": "npm run -w apps/api lint && npm run -w apps/web lint",
-    "db:migrate": "npm run -w apps/api db:migrate"
+    "db:migrate": "npm run -w apps/api db:migrate",
+    "build:dict": "node apps/web/scripts/build-en-dict-sqlite.mjs ecdict-tmp/stardict.db apps/web/public/dict/en && node apps/web/scripts/build-ja-dict.mjs jmdict-tmp/jmdict-eng-3.6.2.json apps/web/public/dict/ja"
   },
   "keywords": [
     "toeic",
@@ -29,6 +30,7 @@
     "nextjs"
   ],
   "devDependencies": {
+    "better-sqlite3": "^12.9.0",
     "concurrently": "^9.2.0",
     "playwright": "^1.58.2"
   },
