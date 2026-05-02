@@ -2,7 +2,7 @@
 /**
  * RecordingPanel — mic permission banner, record/stop controls, and accuracy feedback.
  */
-import type { CompareWord, TrainingLanguage } from "../../lib/shadowing-utils";
+import type { CompareWord, TrainingLanguage, PhoneticSegment } from "../../lib/shadowing-utils";
 import type { MicPermission } from "../../hooks/useSpeechRecognition";
 import styles from "./ShadowingView.module.css";
 
@@ -17,8 +17,11 @@ type Props = {
    *  When provided, speech-recognition output is compared against this
    *  instead of the raw kanji text, avoiding false mismatches. */
   sentencePhoneticText?: string;
+  /** Kuromoji morpheme segments (surface + hiragana reading) for token-level comparison.
+   *  When provided, accuracy feedback colours whole morphemes instead of individual kana. */
+  sentenceSegments?: PhoneticSegment[];
   trainingLanguage?: TrainingLanguage;
-  onStartRecording: (text: string, compareText?: string) => void;
+  onStartRecording: (text: string, compareText?: string, segments?: PhoneticSegment[]) => void;
   onStopRecording: () => void;
   onDismissMicBanner: () => void;
   l: (zh: string, ja: string, en?: string) => string;
@@ -32,6 +35,7 @@ export function RecordingPanel({
   compareResult,
   sentenceText,
   sentencePhoneticText,
+  sentenceSegments,
   trainingLanguage = "en",
   onStartRecording,
   onStopRecording,
@@ -69,7 +73,7 @@ export function RecordingPanel({
         {!isRecording ? (
           <button
             className={styles.recordBtn}
-            onClick={() => onStartRecording(sentenceText, textForComparison)}
+            onClick={() => onStartRecording(sentenceText, textForComparison, sentenceSegments)}
             disabled={isSpeaking}
           >
             {`🎙 ${l("开始跟读", "シャドーイング開始")}`}
@@ -161,7 +165,7 @@ export function RecordingPanel({
 
           <button
             className={styles.retryBtn}
-            onClick={() => onStartRecording(sentenceText, textForComparison)}
+            onClick={() => onStartRecording(sentenceText, textForComparison, sentenceSegments)}
           >
             {`🎙 ${l("再读一次", "もう一度読む")}`}
           </button>

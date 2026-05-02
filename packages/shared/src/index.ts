@@ -75,3 +75,115 @@ export type SessionMode = "diagnostic" | "practice" | "mock";
  * | `super_admin` | Full platform administration |
  */
 export type Role = "learner" | "coach" | "tenant_admin" | "super_admin";
+
+// ===== Shadowing Engine =====
+
+/** A single word annotation in a transcript line. */
+export interface FuriganaSegment {
+  /** Original surface form (may include kanji). */
+  surface: string;
+  /** Phonetic reading in hiragana (Japanese) or IPA string (English). */
+  reading: string;
+  /** Whether this segment carries an IPA transcription instead of furigana. */
+  isIpa?: boolean;
+}
+
+/** One timestamped cue in a transcript. */
+export interface TranscriptLine {
+  /** Start time in seconds relative to the audio/video. */
+  startSec: number;
+  /** End time in seconds. */
+  endSec: number;
+  /** Raw text for this cue. */
+  text: string;
+  /**
+   * Optional word-level phonetic annotations.
+   * For Japanese: furigana segments.
+   * For English: IPA segments.
+   */
+  annotations?: FuriganaSegment[];
+}
+
+/** Supported audio/video source kinds for shadowing content. */
+export type ShadowingSourceKind =
+  | "youtube"      // YouTube video by videoId
+  | "database"     // Stored in the app's question / media database
+  | "local_file"   // Uploaded local audio/video file
+  | "tts";         // Generated text-to-speech audio
+
+/**
+ * Canonical content descriptor for the Shadowing Engine.
+ *
+ * All shadowing exercises must map their data to this interface so the
+ * `useShadowingEngine` hook can process them uniformly regardless of source.
+ */
+export interface IShadowingContent {
+  /** Stable unique identifier for this content item. */
+  id: string;
+
+  /** Display title shown in the practice UI. */
+  title: string;
+
+  /** Short description or topic label. */
+  description?: string;
+
+  /** Primary language of the spoken content. */
+  language: "en" | "ja";
+
+  /** Where this content comes from. */
+  sourceKind: ShadowingSourceKind;
+
+  /**
+   * Audio URL or YouTube video ID depending on `sourceKind`.
+   * - `youtube`: YouTube video ID (e.g. `"dQw4w9WgXcQ"`)
+   * - `database` / `local_file` / `tts`: Absolute or relative audio URL
+   */
+  audioRef: string;
+
+  /** Full ordered transcript. */
+  transcript: TranscriptLine[];
+
+  /**
+   * Total duration in seconds.
+   * Required when `sourceKind !== 'youtube'`.
+   */
+  durationSec?: number;
+
+  /** CEFR or TOEIC band difficulty label (e.g. "B1", "700"). */
+  difficultyLabel?: string;
+
+  /** Thumbnail image URL shown in the content picker. */
+  thumbnailUrl?: string;
+
+  /** Arbitrary tags for filtering (e.g. ["business", "part2"]). */
+  tags?: string[];
+}
+
+// ===== Score Calculation =====
+
+/** Raw metrics collected by the recording engine for a single shadowing attempt. */
+export interface ShadowingAttemptMetrics {
+  /**
+   * Pronunciation score: 0–100.
+   * Derived from phoneme-level comparison between the user's speech and reference.
+   */
+  pronunciationScore: number;
+
+  /**
+   * Fluency score: 0–100.
+   * Based on speaking rate, pause distribution, and hesitation count.
+   */
+  fluencyScore: number;
+
+  /**
+   * Completeness score: 0–100.
+   * Percentage of reference words that the user successfully produced.
+   */
+  completenessScore: number;
+
+  /** Words per minute (user's speaking rate). */
+  wpm?: number;
+
+  /** Number of pause events detected (silence > 500 ms in mid-sentence). */
+  pauseCount?: number;
+}

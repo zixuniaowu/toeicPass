@@ -1,9 +1,12 @@
-import { Module } from "@nestjs/common";
+import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
 import { APP_INTERCEPTOR } from "@nestjs/core";
 import { AppService } from "./app.service";
 import { AuditInterceptor } from "./audit.interceptor";
 import { JwtStrategy, TenantGuard } from "./auth";
+import { GuestAccessMiddleware } from "./guest-access.middleware";
+import { OwnershipGuard } from "./ownership.guard";
+import { PermissionsGuard } from "./permissions.guard";
 import { AdminController } from "./controllers/admin.controller";
 import { AuthController } from "./controllers/auth.controller";
 import { EnterpriseController } from "./controllers/enterprise.controller";
@@ -15,6 +18,7 @@ import { RolesGuard } from "./roles.guard";
 import { AdminQuestionService } from "./services/admin-question.service";
 import { AuthDomainService } from "./services/auth-domain.service";
 import { EnterpriseIpService } from "./services/enterprise-ip.service";
+import { InMemoryCacheService } from "./services/in-memory-cache.service";
 import { LearningConversationService } from "./services/learning-conversation.service";
 import { LearningDomainService } from "./services/learning-domain.service";
 import { SubscriptionService } from "./services/subscription.service";
@@ -39,16 +43,23 @@ const StoreProvider = process.env.DATABASE_URL
     AuthDomainService,
     AdminQuestionService,
     EnterpriseIpService,
+    InMemoryCacheService,
     LearningConversationService,
     LearningDomainService,
     SubscriptionService,
     JwtStrategy,
     TenantGuard,
     RolesGuard,
+    OwnershipGuard,
+    PermissionsGuard,
     {
       provide: APP_INTERCEPTOR,
       useClass: AuditInterceptor,
     },
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(GuestAccessMiddleware).forRoutes("*");
+  }
+}

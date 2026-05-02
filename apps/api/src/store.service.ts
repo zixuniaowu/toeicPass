@@ -30,6 +30,7 @@ import {
   DailyUsage,
   AdPlacement,
   AdEvent,
+  RefreshTokenRecord,
 } from "./types";
 import { newId, nowIso } from "./utils";
 import * as questionBank from "./question-bank.json";
@@ -316,6 +317,7 @@ export class StoreService {
   public dailyUsage: DailyUsage[] = [];
   public adPlacements: AdPlacement[] = [];
   public adEvents: AdEvent[] = [];
+  public refreshTokens: RefreshTokenRecord[] = [];
 
   private readonly snapshotFile =
     process.env.STORE_SNAPSHOT_FILE ?? (process.env.NODE_ENV === "test" ? "" : ".runtime/store-snapshot.json");
@@ -370,6 +372,7 @@ export class StoreService {
         dailyUsage: this.dailyUsage,
         adPlacements: this.adPlacements,
         adEvents: this.adEvents,
+        refreshTokens: this.refreshTokens,
       },
     };
 
@@ -416,6 +419,7 @@ export class StoreService {
       this.dailyUsage = Array.isArray(data.dailyUsage) ? data.dailyUsage : [];
       this.adPlacements = Array.isArray(data.adPlacements) ? data.adPlacements : [];
       this.adEvents = Array.isArray(data.adEvents) ? data.adEvents : [];
+      this.refreshTokens = Array.isArray(data.refreshTokens) ? data.refreshTokens : [];
     } catch {
       // Ignore invalid snapshot and continue with fresh in-memory state.
     }

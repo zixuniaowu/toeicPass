@@ -7,6 +7,7 @@ import {
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { compare, hash } from "bcryptjs";
+import { createHash, randomBytes } from "crypto";
 import { LoginDto, OAuthLoginDto, RegisterDto } from "../dto";
 import { RequestContext } from "../context";
 import { StoreService } from "../store.service";
@@ -139,7 +140,7 @@ export class AuthDomainService {
     return { userId: user.id };
   }
 
-  async login(dto: LoginDto): Promise<{ accessToken: string; tenantCode: string }> {
+  async login(dto: LoginDto): Promise<{ accessToken: string; refreshToken: string; tenantCode: string }> {
     const normalizedEmail = dto.email.toLowerCase().trim();
     await this.ensureDefaultAccountOnDemand(normalizedEmail, dto.password, dto.tenantCode);
     const user = this.store.users.find((item) => item.email === normalizedEmail);
@@ -198,7 +199,68 @@ export class AuthDomainService {
       sub: user.id,
       email: user.email,
     });
-    return { accessToken, tenantCode: activeTenant.code };
+    const refreshToken = await this.issueRefreshToken(user.id);
+    return { accessToken, refreshToken, tenantCode: activeTenant.code };
+  }
+
+  /** Issue a new refresh token for the given user, invalidating any prior tokens. */
+  private async issueRefreshToken(userId: string): Promise<string> {
+    // Revoke previous tokens for this user
+    this.store.refreshTokens
+      .filter((rt) => rt.userId === userId && !rt.revoked)
+      .forEach((rt) => { rt.revoked = true; });
+
+    const rawToken = randomBytes(48).toString("hex");
+    const tokenHash = createHash("sha256").update(rawToken).digest("hex");
+    const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(); // 30 days
+
+    this.store.refreshTokens.push({
+      id: newId(),
+      userId,
+      tokenHash,
+      expiresAt,
+      revoked: false,
+      createdAt: nowIso(),
+    });
+
+    return rawToken;
+  }
+
+  /**
+   * Exchange a valid refresh token for a new access token + refresh token pair.
+   * Implements refresh token rotation: the presented token is revoked immediately.
+   */
+  async exchangeRefreshToken(
+    rawRefreshToken: string,
+  ): Promise<{ accessToken: string; refreshToken: string }> {
+    const tokenHash = createHash("sha256").update(rawRefreshToken).digest("hex");
+    const record = this.store.refreshTokens.find(
+      (rt) => rt.tokenHash === tokenHash && !rt.revoked,
+    );
+
+    if (!record) {
+      throw new UnauthorizedException("Invalid or expired refresh token");
+    }
+
+    if (new Date(record.expiresAt) < new Date()) {
+      record.revoked = true;
+      throw new UnauthorizedException("Refresh token has expired");
+    }
+
+    // Rotate: revoke the used token
+    record.revoked = true;
+
+    const user = this.store.users.find((u) => u.id === record.userId);
+    if (!user || !user.isActive) {
+      throw new UnauthorizedException("User account not found or inactive");
+    }
+
+    const accessToken = await this.jwtService.signAsync({
+      sub: user.id,
+      email: user.email,
+    });
+    const newRefreshToken = await this.issueRefreshToken(user.id);
+    return { accessToken, refreshToken: newRefreshToken };
   }
 
   async refreshToken(userId: string): Promise<{ accessToken: string }> {

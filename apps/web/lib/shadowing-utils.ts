@@ -68,6 +68,87 @@ export function containsKanji(text: string): boolean {
 
 // ── Speech comparison ─────────────────────────────────────────────────────────
 
+/**
+ * A single token from kuromoji (surface + its hiragana reading).
+ * Used for token-level Japanese comparison so the result displays
+ * the original kanji/kana surface form coloured green/red/grey.
+ */
+export type PhoneticSegment = {
+  surface: string; // original text (may contain kanji)
+  reading: string; // hiragana form used for comparison
+};
+
+/**
+ * Token-level comparison for Japanese.
+ *
+ * Splits the spoken transcript into individual kana characters and greedily
+ * matches each phonetic segment (kuromoji token).  Results use the *surface*
+ * form of each token so the caller can display kanji with accurate colouring.
+ */
+export function compareJapaneseSegments(
+  segments: PhoneticSegment[],
+  spokenText: string,
+): { words: CompareWord[]; accuracy: number } {
+  const meaningful = segments.filter(
+    (s) => normalizeJapanese(s.reading).length > 0,
+  );
+
+  if (meaningful.length === 0) return { words: [], accuracy: 0 };
+
+  const spokenChars = normalizeJapanese(spokenText);
+  let si = 0;
+  let matchCount = 0;
+  const result: CompareWord[] = [];
+
+  for (const seg of meaningful) {
+    const readingChars = normalizeJapanese(seg.reading);
+    if (readingChars.length === 0) continue;
+
+    // Exact match at current position
+    if (
+      si + readingChars.length <= spokenChars.length &&
+      spokenChars.slice(si, si + readingChars.length).every((c, i) => c === readingChars[i])
+    ) {
+      result.push({ word: seg.surface, status: "correct" });
+      matchCount++;
+      si += readingChars.length;
+      continue;
+    }
+
+    // Look ahead (up to ~12 chars) for this token further in spoken text
+    let found = false;
+    const limit = Math.min(si + 12, spokenChars.length - readingChars.length + 1);
+    for (let look = si + 1; look < limit; look++) {
+      const candidate = spokenChars.slice(look, look + readingChars.length);
+      if (
+        candidate.length === readingChars.length &&
+        candidate.every((c, i) => c === readingChars[i])
+      ) {
+        const extraText = spokenChars.slice(si, look).join("");
+        if (extraText) result.push({ word: extraText, status: "wrong" });
+        result.push({ word: seg.surface, status: "correct" });
+        matchCount++;
+        si = look + readingChars.length;
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      result.push({ word: seg.surface, status: "missing" });
+    }
+  }
+
+  // Any remaining spoken text that didn't match a token
+  if (si < spokenChars.length) {
+    result.push({ word: spokenChars.slice(si).join(""), status: "wrong" });
+  }
+
+  const accuracy =
+    meaningful.length > 0 ? Math.round((matchCount / meaningful.length) * 100) : 0;
+  return { words: result, accuracy };
+}
+
 export function compareWords(
   original: string,
   spoken: string,

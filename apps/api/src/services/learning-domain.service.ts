@@ -21,6 +21,7 @@ import {
 } from "../question-policy";
 import { QueueService } from "../queue.service";
 import { LearningConversationService } from "./learning-conversation.service";
+import { InMemoryCacheService } from "./in-memory-cache.service";
 import { StoreService } from "../store.service";
 import { calculatePrediction, estimateRawCorrect, toToeicScaledListening, toToeicScaledReading } from "../scoring-policy";
 import { Attempt, AttemptItem, AttemptMode, Question, ReviewCard, VocabularyCard } from "../types";
@@ -65,6 +66,7 @@ export class LearningDomainService {
     private readonly store: StoreService,
     private readonly queue: QueueService,
     private readonly conversationService: LearningConversationService,
+    private readonly cache: InMemoryCacheService,
   ) {}
 
   createGoal(ctx: RequestContext, dto: GoalDto): { goalId: string } {
@@ -1255,6 +1257,39 @@ export class LearningDomainService {
     card.lastGrade = dto.grade;
     card.dueAt = this.plusDays(card.intervalDays);
     return card;
+  }
+
+  enqueueSrsCards(ctx: RequestContext, questionIds: string[]): { enqueued: number; skipped: number } {
+    let enqueued = 0;
+    let skipped = 0;
+    for (const questionId of questionIds) {
+      const question = this.store.questions.find((q) => q.id === questionId && q.tenantId === ctx.tenantId);
+      if (!question) {
+        skipped += 1;
+        continue;
+      }
+      const existing = this.store.reviewCards.find(
+        (c) => c.tenantId === ctx.tenantId && c.userId === ctx.userId && c.questionId === questionId,
+      );
+      if (existing) {
+        // Reset the due date to tomorrow so it surfaces in the next session
+        existing.dueAt = this.plusDays(1);
+        existing.intervalDays = 1;
+        enqueued += 1;
+      } else {
+        this.store.reviewCards.push({
+          id: newId(),
+          tenantId: ctx.tenantId,
+          userId: ctx.userId,
+          questionId,
+          easeFactor: 2.5,
+          intervalDays: 1,
+          dueAt: this.plusDays(1),
+        });
+        enqueued += 1;
+      }
+    }
+    return { enqueued, skipped };
   }
 
   getMockHistory(ctx: RequestContext) {

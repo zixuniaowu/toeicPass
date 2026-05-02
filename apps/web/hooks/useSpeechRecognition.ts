@@ -1,7 +1,7 @@
 "use client";
 import { useState, useCallback, useRef } from "react";
-import type { TrainingLanguage, CompareWord } from "../lib/shadowing-utils";
-import { compareWords } from "../lib/shadowing-utils";
+import type { TrainingLanguage, CompareWord, PhoneticSegment } from "../lib/shadowing-utils";
+import { compareWords, compareJapaneseSegments } from "../lib/shadowing-utils";
 
 export type MicPermission = "unknown" | "granted" | "denied" | "prompt";
 
@@ -10,7 +10,7 @@ export type UseRecognitionReturn = {
   recognizedText: string;
   compareResult: { words: CompareWord[]; accuracy: number } | null;
   micPermission: MicPermission;
-  startRecording: (originalText: string, compareText?: string) => void;
+  startRecording: (originalText: string, compareText?: string, segments?: PhoneticSegment[]) => void;
   stopRecording: () => void;
   clearRecognition: () => void;
   requestMicPermission: () => Promise<boolean>;
@@ -55,7 +55,7 @@ export function useSpeechRecognition(
   }, []);
 
   const startRecording = useCallback(
-    (originalText: string, compareText?: string) => {
+    (originalText: string, compareText?: string, segments?: PhoneticSegment[]) => {
       // For Japanese, compareText is the hiragana-only form (kanji replaced by readings).
       // Speech recognisers return hiragana for kanji words, so comparing against the
       // phonetic form prevents false mismatches on every kanji character.
@@ -97,7 +97,12 @@ export function useSpeechRecognition(
           setRecognizedText(transcript);
 
           if (event.results[event.results.length - 1].isFinal) {
-            const result = compareWords(textForComparison, transcript, trainingLanguage);
+            // For Japanese: use token-level segment comparison when kuromoji segments
+            // are available so accuracy feedback colours whole morphemes (not single chars).
+            const result =
+              trainingLanguage === "ja" && segments && segments.length > 0
+                ? compareJapaneseSegments(segments, transcript)
+                : compareWords(textForComparison, transcript, trainingLanguage);
             setCompareResult(result);
           }
         };

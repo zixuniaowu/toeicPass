@@ -52,6 +52,12 @@ export class LoginDto {
   tenantCode?: string;
 }
 
+export class RefreshTokenDto {
+  @IsString()
+  @IsNotEmpty()
+  refreshToken!: string;
+}
+
 export class GoalDto {
   @IsInt()
   @Min(10)
@@ -318,6 +324,20 @@ export class CreateAdDto {
   @IsOptional()
   @IsString()
   expiresAt?: string;
+}
+
+// ── SRS enqueue ──────────────────────────────────────────────────────────────
+
+export class SrsEnqueueDto {
+  @IsArray()
+  @ArrayMinSize(1)
+  @ArrayMaxSize(100)
+  @IsString({ each: true })
+  questionIds!: string[];
+
+  @IsOptional()
+  @IsString()
+  source?: string;
 }
 
 export class UpdateAdDto {

@@ -14,7 +14,7 @@ import type { ShadowingMaterial } from "../data/shadowing-materials";
 import type { WordAnnotation } from "../data/word-dictionary";
 import type { JapaneseReadingToken } from "../lib/japanese-reading";
 import type { UiLang } from "../types";
-import type { TrainingLanguage } from "../lib/shadowing-utils";
+import type { TrainingLanguage, PhoneticSegment } from "../lib/shadowing-utils";
 import { containsKanji } from "../lib/shadowing-utils";
 import { annotateWords } from "../data/word-dictionary";
 import { getJapaneseReading } from "../lib/japanese-reading";
@@ -61,6 +61,12 @@ export type UseWordAnnotationReturn = {
    * Used as the comparison target for speech recognition (which returns hiragana).
    */
   getSentencePhoneticText: (sentenceText: string) => string;
+  /**
+   * Return PhoneticSegment[] (surface + hiragana reading) from cached kuromoji tokens.
+   * Enables token-level comparison so accuracy feedback shows coloured morphemes.
+   * Returns null when tokens not yet loaded — caller should fall back to string compare.
+   */
+  getSentencePhoneticSegments: (sentenceText: string) => PhoneticSegment[] | null;
   /** Get the best available gloss for a word */
   getWordGloss: (word: WordAnnotation) => string | null;
   /** Get furigana reading for a Japanese word */
@@ -307,6 +313,26 @@ export function useWordAnnotation(
     [jpSentenceTokensMap, trainingLanguage],
   );
 
+  /**
+   * Build a PhoneticSegment array from cached kuromoji tokens.
+   * Each entry maps the original surface form to its hiragana reading so that
+   * the speech-recognition comparison can colour individual morphemes correctly.
+   */
+  const getSentencePhoneticSegments = useCallback(
+    (sentenceText: string): PhoneticSegment[] | null => {
+      if (trainingLanguage !== "ja") return null;
+      const tokens = jpSentenceTokensMap[sentenceText.trim()];
+      if (!tokens || tokens.length === 0) return null;
+      return tokens
+        .filter((t) => t.surface.trim().length > 0)
+        .map((t) => ({
+          surface: t.surface,
+          reading: t.hasKanji && t.reading ? t.reading : t.surface,
+        }));
+    },
+    [jpSentenceTokensMap, trainingLanguage],
+  );
+
   // ── Gloss getters ─────────────────────────────────────────────────────────
 
   const getWordGloss = useCallback(
@@ -360,6 +386,7 @@ export function useWordAnnotation(
     ensureSentenceTokens,
     getSentenceTokens,
     getSentencePhoneticText,
+    getSentencePhoneticSegments,
     getWordGloss,
     getJapaneseWordReading,
     getAnnotatedWords,

@@ -61,12 +61,16 @@ export class AppService {
     return this.authDomain.register(dto);
   }
 
-  async login(dto: LoginDto): Promise<{ accessToken: string; tenantCode: string }> {
+  async login(dto: LoginDto): Promise<{ accessToken: string; refreshToken: string; tenantCode: string }> {
     return this.authDomain.login(dto);
   }
 
   async refreshToken(userId: string): Promise<{ accessToken: string }> {
     return this.authDomain.refreshToken(userId);
+  }
+
+  async exchangeRefreshToken(rawToken: string): Promise<{ accessToken: string; refreshToken: string }> {
+    return this.authDomain.exchangeRefreshToken(rawToken);
   }
 
   async oauthLogin(dto: OAuthLoginDto): Promise<{ accessToken: string; tenantCode: string; isNewUser: boolean }> {
@@ -184,6 +188,10 @@ export class AppService {
 
   gradeCard(ctx: RequestContext, cardId: string, dto: GradeCardDto): ReviewCard {
     return this.learningDomainService.gradeCard(ctx, cardId, dto);
+  }
+
+  enqueueSrsCards(ctx: RequestContext, questionIds: string[]): { enqueued: number; skipped: number } {
+    return this.learningDomainService.enqueueSrsCards(ctx, questionIds);
   }
 
   getMockHistory(ctx: RequestContext) {

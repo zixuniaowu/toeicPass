@@ -8,7 +8,7 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { AppService } from "../app.service";
-import { LoginDto, OAuthLoginDto, RegisterDto } from "../dto";
+import { LoginDto, OAuthLoginDto, RefreshTokenDto, RegisterDto } from "../dto";
 import { JwtAuthGuard } from "../jwt-auth.guard";
 import { ReqShape } from "../request-context";
 
@@ -34,6 +34,19 @@ export class AuthController {
     return this.appService.oauthLogin(dto);
   }
 
+  /**
+   * Exchange a refresh token for a new access + refresh token pair.
+   * Does NOT require a valid access token — the refresh token IS the credential.
+   */
+  @Post("token/refresh")
+  exchangeRefreshToken(@Body() dto: RefreshTokenDto) {
+    return this.appService.exchangeRefreshToken(dto.refreshToken);
+  }
+
+  /**
+   * @deprecated Use POST /auth/token/refresh with a refresh token body instead.
+   * Kept for backward compatibility.
+   */
   @Post("refresh")
   @UseGuards(JwtAuthGuard)
   refresh(@Req() req: ReqShape) {

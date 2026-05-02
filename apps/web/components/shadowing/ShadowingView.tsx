@@ -869,6 +869,11 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
   const sentencePhoneticText = trainingLanguage === "ja"
     ? wordAnnotation.getSentencePhoneticText(sentence.text)
     : sentence.text;
+  // Kuromoji morpheme segments for token-level comparison — colours whole morphemes in
+  // the accuracy feedback rather than individual kana characters.
+  const sentenceSegments = trainingLanguage === "ja"
+    ? (wordAnnotation.getSentencePhoneticSegments(sentence.text) ?? undefined)
+    : undefined;
   const progress = completedSet.size;
   const total = activeMaterial.sentences.length;
   const showPronunciationHint = trainingLanguage === "en" ? showIPA : showReading;
@@ -1051,7 +1056,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
                         </button>
                         <button
                           className={styles.transcriptRecordBtn}
-                          onClick={(e) => { e.stopPropagation(); goToSentence(idx); const phonetic = wordAnnotation.getSentencePhoneticText(s.text); setTimeout(() => recognition.startRecording(s.text, phonetic), 100); }}
+                          onClick={(e) => { e.stopPropagation(); goToSentence(idx); const phonetic = wordAnnotation.getSentencePhoneticText(s.text); const segs = wordAnnotation.getSentencePhoneticSegments(s.text) ?? undefined; setTimeout(() => recognition.startRecording(s.text, phonetic, segs), 100); }}
                           title={l("跟读", "シャドーイング")}
                         >
                           🎙
@@ -1147,6 +1152,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
                   compareResult={recognition.compareResult}
                   sentenceText={sentence.text}
                   sentencePhoneticText={sentencePhoneticText}
+                  sentenceSegments={sentenceSegments}
                   trainingLanguage={trainingLanguage}
                   onStartRecording={recognition.startRecording}
                   onStopRecording={recognition.stopRecording}
@@ -1256,6 +1262,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
                   compareResult={recognition.compareResult}
                   sentenceText={sentence.text}
                   sentencePhoneticText={sentencePhoneticText}
+                  sentenceSegments={sentenceSegments}
                   trainingLanguage={trainingLanguage}
                   onStartRecording={recognition.startRecording}
                   onStopRecording={recognition.stopRecording}

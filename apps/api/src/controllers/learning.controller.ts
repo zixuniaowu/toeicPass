@@ -15,19 +15,24 @@ import {
   GradeCardDto,
   MistakeNoteDto,
   StartMistakeDrillDto,
+  SrsEnqueueDto,
   SubmitAttemptDto,
   WritingEvaluateDto,
 } from "../dto";
 import { JwtAuthGuard } from "../jwt-auth.guard";
 import { TenantGuard } from "../auth";
 import { RolesGuard } from "../roles.guard";
+import { InMemoryCacheService } from "../services/in-memory-cache.service";
 import { ReqShape, toCtx } from "../request-context";
 import { parseAttemptFilters } from "../session-filters";
 
 @Controller()
 @UseGuards(JwtAuthGuard, TenantGuard, RolesGuard)
 export class LearningController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private readonly cache: InMemoryCacheService,
+  ) {}
 
   @Get("me")
   me(@Req() req: ReqShape) {
@@ -74,7 +79,13 @@ export class LearningController {
 
   @Get("analytics/overview")
   analyticsOverview(@Req() req: ReqShape) {
-    return this.appService.analyticsOverview(toCtx(req));
+    const ctx = toCtx(req);
+    const cacheKey = `analytics:overview:${ctx.tenantId}:${ctx.userId}`;
+    const cached = this.cache.get<unknown>(cacheKey);
+    if (cached !== undefined) return cached;
+    const result = this.appService.analyticsOverview(ctx);
+    this.cache.set(cacheKey, result, 60); // 60-second TTL
+    return result;
   }
 
   @Get("learning/next-tasks")
@@ -182,6 +193,11 @@ export class LearningController {
   @Post("review/cards/:cardId/grade")
   gradeCard(@Req() req: ReqShape, @Param("cardId") cardId: string, @Body() dto: GradeCardDto) {
     return this.appService.gradeCard(toCtx(req), cardId, dto);
+  }
+
+  @Post("srs/enqueue")
+  enqueueSrsCards(@Req() req: ReqShape, @Body() dto: SrsEnqueueDto) {
+    return this.appService.enqueueSrsCards(toCtx(req), dto.questionIds);
   }
 
   @Post("mock-tests/start")

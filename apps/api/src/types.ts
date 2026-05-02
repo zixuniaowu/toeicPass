@@ -350,3 +350,17 @@ export interface AdEvent {
   eventType: "impression" | "click" | "dismiss" | "reward_complete";
   createdAt: string;
 }
+
+// ===== Refresh Tokens =====
+
+export interface RefreshTokenRecord {
+  /** Opaque random token (stored as bcrypt hash in production; plain here for speed). */
+  id: string;
+  userId: string;
+  /** SHA-256 hex hash of the raw token value. */
+  tokenHash: string;
+  expiresAt: string;
+  /** If true the token has been rotated or explicitly revoked. */
+  revoked: boolean;
+  createdAt: string;
+}
