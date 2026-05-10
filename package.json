@@ -13,14 +13,17 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run -w apps/api build && npm run -w apps/web build",
-    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web:hot\"",
+    "build": "npm run build:packages && npm run -w apps/api build && npm run -w apps/web build",
+    "build:packages": "npm run -w @toeicpass/shared build && npm run -w @toeicpass/conversation-ai build && npm run -w @toeicpass/ad-system build && npm run -w @toeicpass/word-annotation build",
+    "dev": "concurrently \"npm run dev:packages\" \"npm run dev:api\" \"npm run dev:web:hot\"",
     "dev:api": "npm run -w apps/api start:dev",
+    "dev:packages": "concurrently \"npm run -w @toeicpass/shared build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/conversation-ai build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/ad-system build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/word-annotation build -- --watch --preserveWatchOutput\"",
     "dev:web": "npm run -w apps/web start || (npm run -w apps/web build && npm run -w apps/web start)",
     "dev:web:hot": "npm run -w apps/web dev",
-    "test": "npm run -w apps/api test && npm run -w apps/web test",
+    "test": "npm run build:packages && npm run -w apps/api test && npm run -w apps/web test",
     "test:e2e": "npm run -w apps/api test:e2e",
-    "lint": "npm run -w apps/api lint && npm run -w apps/web lint",
+    "lint": "npm run build:packages && npm run typecheck:packages && npm run -w apps/api lint && npm run -w apps/web lint",
+    "typecheck:packages": "npm run -w @toeicpass/shared typecheck && npm run -w @toeicpass/conversation-ai typecheck && npm run -w @toeicpass/ad-system typecheck && npm run -w @toeicpass/word-annotation typecheck",
     "db:migrate": "npm run -w apps/api db:migrate",
     "build:dict": "node apps/web/scripts/build-en-dict-sqlite.mjs ecdict-tmp/stardict.db apps/web/public/dict/en && node apps/web/scripts/build-ja-dict.mjs jmdict-tmp/jmdict-eng-3.6.2.json apps/web/public/dict/ja"
   },

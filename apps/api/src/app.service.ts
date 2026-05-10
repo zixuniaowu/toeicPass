@@ -148,16 +148,16 @@ export class AppService {
     return this.learningDomainService.addMistakeNote(ctx, attemptItemId, dto);
   }
 
-  getVocabularyCards(ctx: RequestContext) {
-    return this.learningDomainService.getVocabularyCards(ctx);
+  getVocabularyCards(ctx: RequestContext, targetLanguage: "en" | "ja" = "en") {
+    return this.learningDomainService.getVocabularyCards(ctx, targetLanguage);
   }
 
   gradeVocabularyCard(ctx: RequestContext, cardId: string, dto: GradeCardDto) {
     return this.learningDomainService.gradeVocabularyCard(ctx, cardId, dto);
   }
 
-  getGrammarCards(ctx: RequestContext) {
-    const cards = this.store.getGrammarCards(ctx.tenantId, ctx.userId);
+  getGrammarCards(ctx: RequestContext, targetLanguage: "en" | "ja" = "en") {
+    const cards = this.store.getGrammarCards(ctx.tenantId, ctx.userId, targetLanguage);
     const today = new Date().toISOString().slice(0, 10);
     const dueCards = cards.filter((c) => c.dueAt <= today);
     return {
@@ -169,6 +169,7 @@ export class AppService {
       },
       cards: cards.map((c) => ({
         ...c,
+        targetLanguage: c.targetLanguage ?? targetLanguage,
         due: c.dueAt <= today,
       })),
     };
@@ -210,7 +211,7 @@ export class AppService {
     return this.learningDomainService.generateConversationReply(ctx, dto);
   }
 
-  evaluateWriting(ctx: RequestContext, dto: { text: string }) {
+  evaluateWriting(ctx: RequestContext, dto: { text: string; targetLang?: "en" | "ja" }) {
     return this.learningDomainService.evaluateWriting(ctx, dto);
   }
 

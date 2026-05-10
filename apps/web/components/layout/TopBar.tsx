@@ -29,6 +29,8 @@ const NAV_KEYS: readonly ViewTab[] = [
   "mistakes", "vocab", "subscription", "admin", "settings",
 ] as const;
 
+const TARGET_LANGS: readonly TargetLang[] = ["en", "ja"] as const;
+
 export function TopBar({
   activeView,
   onViewChange,
@@ -83,6 +85,47 @@ export function TopBar({
               </button>
             ))}
           </nav>
+
+          <div className={styles.controls}>
+            <div className={styles.switchGroup}>
+              <span className={styles.switchLabel}>{t("lang.uiLabel")}</span>
+              <div className={styles.localeSwitch} role="group" aria-label={t("lang.uiLabel")}>
+                {UI_LANGS.map((lang) => (
+                  <button
+                    key={lang}
+                    type="button"
+                    className={`${styles.localeBtn} ${uiLang === lang ? styles.localeBtnActive : ""}`}
+                    aria-label={`${t("lang.uiLabel")}: ${t(`lang.${lang}`)}`}
+                    aria-pressed={uiLang === lang}
+                    onClick={() => onUiLangChange(lang)}
+                  >
+                    {t(`lang.${lang}`)}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.switchGroup}>
+              <span className={styles.switchLabel}>{t("lang.targetLabel")}</span>
+              <div className={styles.localeSwitch} role="group" aria-label={t("lang.targetLabel")}>
+                {TARGET_LANGS.map((lang) => {
+                  const key = `lang.target${lang.charAt(0).toUpperCase()}${lang.slice(1)}`;
+                  return (
+                    <button
+                      key={lang}
+                      type="button"
+                      className={`${styles.localeBtn} ${targetLang === lang ? styles.localeBtnActive : ""}`}
+                      aria-label={`${t("lang.targetLabel")}: ${t(key)}`}
+                      aria-pressed={targetLang === lang}
+                      onClick={() => onTargetLangChange(lang)}
+                    >
+                      {t(key)}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </>
       )}
 

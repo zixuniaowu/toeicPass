@@ -1,59 +1,97 @@
 "use client";
 
 import { useState } from "react";
-import type { Locale } from "../../types";
+import type { Locale, TargetLang, ViewTab } from "../../types";
+import { createT } from "../../lib/i18n";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 import styles from "./WritingView.module.css";
 import { API_BASE } from "../../lib/api";
 
-const COPY = {
-  zh: {
-    title: "\u82f1\u8bed\u5199\u4f5c\u7ec3\u4e60",
-    subtitle: "\u5728\u8fd9\u91cc\u8f93\u5165\u4f60\u7684\u82f1\u6587\u6587\u7ae0\u6216\u6bb5\u843d\uff0cAI\u4f1a\u81ea\u52a8\u4e3a\u4f60\u8bc4\u4f30\u8bcd\u6c47\u3001\u8bed\u6cd5\u548c\u7ed3\u6784\u3002",
-    wordCount: "\u5b57\u6570",
-    evaluating: "\u8bc4\u4f30\u4e2d...",
-    submit: "\u63d0\u4ea4\u8bc4\u4f30",
-    report: "\u8bc4\u4f30\u62a5\u544a",
-    scoreLabel: "\u5f97\u5206",
-    suggestions: "\u6539\u8fdb\u5efa\u8bae",
-    noSuggestions: "\u975e\u5e38\u597d\uff01\u6ca1\u6709\u66f4\u591a\u5efa\u8bae\u3002",
-    submitFailed: "\u8bc4\u4ef7\u63d0\u4ea4\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5",
-  },
-  ja: {
-    title: "\u82f1\u8a9e\u30e9\u30a4\u30c6\u30a3\u30f3\u30b0\u7df4\u7fd2",
-    subtitle: "\u82f1\u6587\u3092\u5165\u529b\u3059\u308b\u3068\u3001AI\u304c\u8a9e\u5f59\u30fb\u6587\u6cd5\u30fb\u69cb\u6210\u3092\u81ea\u52d5\u3067\u8a55\u4fa1\u3057\u307e\u3059\u3002",
-    wordCount: "\u5358\u8a9e\u6570",
-    evaluating: "\u8a55\u4fa1\u4e2d...",
-    submit: "\u8a55\u4fa1\u3092\u63d0\u51fa",
-    report: "\u8a55\u4fa1\u30ec\u30dd\u30fc\u30c8",
-    scoreLabel: "\u30b9\u30b3\u30a2",
-    suggestions: "\u6539\u5584\u63d0\u6848",
-    noSuggestions: "\u7d20\u6674\u3089\u3057\u3044\uff01\u3053\u308c\u4ee5\u4e0a\u306e\u63d0\u6848\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
-    submitFailed: "\u8a55\u4fa1\u306e\u63d0\u51fa\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
-  },
-} as const;
+type WritingFocusArea = "content" | "organization" | "languageControl";
 
 type WritingResult = {
   score: number;
   wordCount: number;
   feedback: string[];
+  summary?: string;
+  nextStep?: string;
+  focusArea?: WritingFocusArea;
+  focusSignals?: string[];
+  drillChecklist?: string[];
+  revisionPrompt?: string;
+  sentenceFrames?: string[];
+  rubric?: Array<{
+    label: string;
+    score: number;
+    comment: string;
+  }>;
 };
 
 interface WritingViewProps {
   locale: Locale;
+  targetLang: TargetLang;
   token: string | null;
   tenantCode: string;
+  onOpenView?: (view: ViewTab) => void;
 }
 
-export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
+export function WritingView({ locale, targetLang, token, tenantCode, onOpenView }: WritingViewProps) {
   const [text, setText] = useState("");
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [result, setResult] = useState<WritingResult | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const t = COPY[locale];
+  const t = createT(locale);
+  const isJapaneseTarget = targetLang === "ja";
 
   const wordCount = text.split(/\s+/).filter(Boolean).length;
+  const characterCount = text.replace(/\s+/g, "").length;
+  const metricLabel = t(isJapaneseTarget ? "writing.charCount" : "writing.wordCount");
+  const metricCount = isJapaneseTarget ? characterCount : wordCount;
+  const title = t(isJapaneseTarget ? "writing.titleJa" : "writing.title");
+  const subtitle = t(isJapaneseTarget ? "writing.subtitleJa" : "writing.subtitle");
+  const placeholder = t(isJapaneseTarget ? "writing.placeholderJa" : "writing.placeholder");
+  const recommendationReason = result?.focusArea === "content"
+    ? t("writing.focusContentReason")
+    : result?.focusArea === "organization"
+      ? t("writing.focusOrganizationReason")
+      : result?.focusArea === "languageControl"
+        ? t("writing.focusLanguageReason")
+        : null;
+  const recommendedViews: Array<{ view: ViewTab; label: string }> = result?.focusArea === "content"
+    ? [
+        {
+          view: "vocab",
+          label: t(isJapaneseTarget ? "writing.trainingLinkVocabJa" : "writing.trainingLinkVocab"),
+        },
+        {
+          view: "shadowing",
+          label: t(isJapaneseTarget ? "writing.trainingLinkShadowingJa" : "writing.trainingLinkShadowing"),
+        },
+      ]
+    : result?.focusArea === "organization"
+      ? [
+          {
+            view: "grammar",
+            label: t(isJapaneseTarget ? "writing.trainingLinkGrammarJa" : "writing.trainingLinkGrammar"),
+          },
+          {
+            view: "shadowing",
+            label: t(isJapaneseTarget ? "writing.trainingLinkShadowingJa" : "writing.trainingLinkShadowing"),
+          },
+        ]
+      : result?.focusArea === "languageControl"
+        ? [
+            {
+              view: "grammar",
+              label: t(isJapaneseTarget ? "writing.trainingLinkGrammarJa" : "writing.trainingLinkGrammar"),
+            },
+            {
+              view: "vocab",
+              label: t(isJapaneseTarget ? "writing.trainingLinkVocabJa" : "writing.trainingLinkVocab"),
+            },
+          ]
+        : [];
 
   const handleSubmit = async () => {
     if (!text.trim() || !token) return;
@@ -68,17 +106,17 @@ export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
           "Authorization": `Bearer ${token}`,
           "x-tenant-code": tenantCode,
         },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, targetLang }),
       });
       if (!res.ok) {
-        setErrorMsg(t.submitFailed);
+        setErrorMsg(t("writing.submitFailed"));
         return;
       }
       const data = await res.json();
       setResult(data);
     } catch (error) {
       console.error("Evaluation failed", error);
-      setErrorMsg(t.submitFailed);
+      setErrorMsg(t("writing.submitFailed"));
     } finally {
       setIsEvaluating(false);
     }
@@ -87,8 +125,8 @@ export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2>{t.title}</h2>
-        <p className={styles.subtitle}>{t.subtitle}</p>
+        <h2>{title}</h2>
+        <p className={styles.subtitle}>{subtitle}</p>
       </div>
 
       <div className={styles.workspace}>
@@ -96,15 +134,15 @@ export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Start writing your essay here..."
+            placeholder={placeholder}
             className={styles.textArea}
             disabled={isEvaluating}
             rows={12}
           />
           <div className={styles.metrics}>
-            <span>{t.wordCount}: {wordCount}</span>
-            <Button onClick={handleSubmit} disabled={isEvaluating || wordCount === 0}>
-              {isEvaluating ? t.evaluating : t.submit}
+            <span>{metricLabel}: {metricCount}</span>
+            <Button onClick={handleSubmit} disabled={isEvaluating || metricCount === 0}>
+              {isEvaluating ? t("writing.evaluating") : t("writing.submit")}
             </Button>
           </div>
         </Card>
@@ -116,13 +154,35 @@ export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
         {result && (
           <Card className={styles.resultCard}>
             <div className={styles.resultHeader}>
-              <h3>{t.report}</h3>
+              <h3>{t("writing.report")}</h3>
               <div className={styles.scoreBox}>
-                {t.scoreLabel}: <span className={styles.score}>{result.score}</span> / 100
+                {t("writing.scoreLabel")}: <span className={styles.score}>{result.score}</span> / 100
               </div>
             </div>
+            {result.summary && (
+              <div className={styles.feedbackSection}>
+                <h4>{t("writing.summaryLabel")}</h4>
+                <p className={styles.summaryText}>{result.summary}</p>
+              </div>
+            )}
+            {result.rubric && result.rubric.length > 0 && (
+              <div className={styles.feedbackSection}>
+                <h4>{t("writing.rubricLabel")}</h4>
+                <ul className={styles.rubricList}>
+                  {result.rubric.map((item) => (
+                    <li key={item.label} className={styles.rubricItem}>
+                      <div className={styles.rubricHeader}>
+                        <strong>{item.label}</strong>
+                        <span className={styles.rubricScore}>{item.score} / 100</span>
+                      </div>
+                      <p>{item.comment}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div className={styles.feedbackSection}>
-              <h4>{t.suggestions}</h4>
+              <h4>{t("writing.suggestions")}</h4>
               {result.feedback && result.feedback.length > 0 ? (
                 <ul className={styles.feedbackList}>
                   {result.feedback.map((f, i) => (
@@ -130,9 +190,69 @@ export function WritingView({ locale, token, tenantCode }: WritingViewProps) {
                   ))}
                 </ul>
               ) : (
-                <p>{t.noSuggestions}</p>
+                <p>{t("writing.noSuggestions")}</p>
               )}
             </div>
+            {result.nextStep && (
+              <div className={styles.feedbackSection}>
+                <h4>{t("writing.nextStepLabel")}</h4>
+                <p className={styles.summaryText}>{result.nextStep}</p>
+              </div>
+            )}
+            {result.focusSignals && result.focusSignals.length > 0 && (
+              <div className={styles.feedbackSection}>
+                <h4>{t("writing.focusSignalsLabel")}</h4>
+                <ul className={styles.feedbackList}>
+                  {result.focusSignals.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {result.drillChecklist && result.drillChecklist.length > 0 && (
+              <div className={styles.feedbackSection}>
+                <h4>{t("writing.drillChecklistLabel")}</h4>
+                <ul className={styles.feedbackList}>
+                  {result.drillChecklist.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {result.revisionPrompt && (
+              <div className={styles.feedbackSection}>
+                <h4>{t("writing.revisionPromptLabel")}</h4>
+                <p className={styles.summaryText}>{result.revisionPrompt}</p>
+              </div>
+            )}
+            {result.sentenceFrames && result.sentenceFrames.length > 0 && (
+              <div className={styles.feedbackSection}>
+                <h4>{t("writing.sentenceFramesLabel")}</h4>
+                <ul className={styles.feedbackList}>
+                  {result.sentenceFrames.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {recommendedViews.length > 0 && recommendationReason && (
+              <div className={styles.feedbackSection}>
+                <h4>{t("writing.recommendationsLabel")}</h4>
+                <p className={styles.summaryText}>{recommendationReason}</p>
+                <div className={styles.recommendationActions}>
+                  {recommendedViews.map((item) => (
+                    <Button
+                      key={item.view}
+                      variant="secondary"
+                      onClick={() => onOpenView?.(item.view)}
+                      disabled={!onOpenView}
+                    >
+                      {item.label}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            )}
           </Card>
         )}
       </div>

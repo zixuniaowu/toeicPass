@@ -1,0 +1,334 @@
+{
+  "cards": [
+    {
+      "term": "みず",
+      "pos": "noun",
+      "definition": "水",
+      "example": "みずを のみます。",
+      "sourcePart": 1,
+      "scoreBand": "N5",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n5", "core"],
+      "translations": {
+        "definition": {
+          "zh": "水",
+          "ja": "水。飲みものや生活に使うみず。",
+          "en": "water"
+        },
+        "example": {
+          "zh": "喝水。",
+          "ja": "みずを のみます。",
+          "en": "I drink water."
+        }
+      }
+    },
+    {
+      "term": "たべる",
+      "pos": "verb",
+      "definition": "吃；食用",
+      "example": "まいにち ここで ひるごはんを たべます。",
+      "sourcePart": 1,
+      "scoreBand": "N5",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n5", "core"],
+      "translations": {
+        "definition": {
+          "zh": "吃；食用",
+          "ja": "食べること。食事をすること。",
+          "en": "to eat"
+        },
+        "example": {
+          "zh": "每天在这里吃午饭。",
+          "ja": "まいにち ここで ひるごはんを たべます。",
+          "en": "I eat lunch here every day."
+        }
+      }
+    },
+    {
+      "term": "いく",
+      "pos": "verb",
+      "definition": "去；前往",
+      "example": "あした としょかんへ いきます。",
+      "sourcePart": 1,
+      "scoreBand": "N5",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n5", "core"],
+      "translations": {
+        "definition": {
+          "zh": "去；前往",
+          "ja": "行くこと。ある場所へ向かうこと。",
+          "en": "to go; to head to"
+        },
+        "example": {
+          "zh": "明天去图书馆。",
+          "ja": "あした としょかんへ いきます。",
+          "en": "I will go to the library tomorrow."
+        }
+      }
+    },
+    {
+      "term": "ともだち",
+      "pos": "noun",
+      "definition": "朋友",
+      "example": "ともだちと えいがを みます。",
+      "sourcePart": 1,
+      "scoreBand": "N5",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n5", "core"],
+      "translations": {
+        "definition": {
+          "zh": "朋友",
+          "ja": "友だち。仲のよい相手。",
+          "en": "friend"
+        },
+        "example": {
+          "zh": "和朋友看电影。",
+          "ja": "ともだちと えいがを みます。",
+          "en": "I watch a movie with my friend."
+        }
+      }
+    },
+    {
+      "term": "べんきょう",
+      "pos": "noun",
+      "definition": "学习；用功",
+      "example": "よるに にほんごを べんきょうします。",
+      "sourcePart": 1,
+      "scoreBand": "N5",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n5", "core"],
+      "translations": {
+        "definition": {
+          "zh": "学习；用功",
+          "ja": "勉強。学んだり練習したりすること。",
+          "en": "study; learning"
+        },
+        "example": {
+          "zh": "晚上学习日语。",
+          "ja": "よるに にほんごを べんきょうします。",
+          "en": "I study Japanese at night."
+        }
+      }
+    },
+    {
+      "term": "うけつけ",
+      "pos": "noun",
+      "definition": "前台；受理处",
+      "example": "うけつけで なまえを かいてください。",
+      "sourcePart": 2,
+      "scoreBand": "N4",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n4", "core", "service"],
+      "translations": {
+        "definition": {
+          "zh": "前台；受理处",
+          "ja": "受付。案内や手続きをする場所。",
+          "en": "reception desk; front desk"
+        },
+        "example": {
+          "zh": "请在前台写下名字。",
+          "ja": "うけつけで なまえを かいてください。",
+          "en": "Please write your name at the reception desk."
+        }
+      }
+    },
+    {
+      "term": "やくそく",
+      "pos": "noun",
+      "definition": "约定；约会",
+      "example": "きょうの ごごに だいじな やくそくが あります。",
+      "sourcePart": 2,
+      "scoreBand": "N4",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n4", "core"],
+      "translations": {
+        "definition": {
+          "zh": "约定；约会",
+          "ja": "約束。人と決めた予定や約定。",
+          "en": "promise; appointment"
+        },
+        "example": {
+          "zh": "今天下午有重要约定。",
+          "ja": "きょうの ごごに だいじな やくそくが あります。",
+          "en": "I have an important appointment this afternoon."
+        }
+      }
+    },
+    {
+      "term": "しゅっぱつ",
+      "pos": "noun",
+      "definition": "出发",
+      "example": "しんかんせんは しちじに しゅっぱつします。",
+      "sourcePart": 2,
+      "scoreBand": "N4",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n4", "travel"],
+      "translations": {
+        "definition": {
+          "zh": "出发",
+          "ja": "出発。ある場所から出ていくこと。",
+          "en": "departure"
+        },
+        "example": {
+          "zh": "新干线七点出发。",
+          "ja": "しんかんせんは しちじに しゅっぱつします。",
+          "en": "The shinkansen departs at seven."
+        }
+      }
+    },
+    {
+      "term": "しんぱい",
+      "pos": "noun",
+      "definition": "担心；忧虑",
+      "example": "そのことは しんぱいしなくて だいじょうぶです。",
+      "sourcePart": 2,
+      "scoreBand": "N4",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n4", "core"],
+      "translations": {
+        "definition": {
+          "zh": "担心；忧虑",
+          "ja": "心配。気がかりに思うこと。",
+          "en": "worry; concern"
+        },
+        "example": {
+          "zh": "那件事不用担心，没关系。",
+          "ja": "そのことは しんぱいしなくて だいじょうぶです。",
+          "en": "You do not need to worry about that."
+        }
+      }
+    },
+    {
+      "term": "れんらく",
+      "pos": "noun",
+      "definition": "联络；联系",
+      "example": "おくれるときは すぐに れんらくしてください。",
+      "sourcePart": 2,
+      "scoreBand": "N4",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n4", "business"],
+      "translations": {
+        "definition": {
+          "zh": "联络；联系",
+          "ja": "連絡。人に知らせたり連絡を取ったりすること。",
+          "en": "contact; communication"
+        },
+        "example": {
+          "zh": "如果迟到请马上联系。",
+          "ja": "おくれるときは すぐに れんらくしてください。",
+          "en": "Please contact me right away if you will be late."
+        }
+      }
+    },
+    {
+      "term": "けいけん",
+      "pos": "noun",
+      "definition": "经验；经历",
+      "example": "この しごとで たくさんの けいけんを つみました。",
+      "sourcePart": 3,
+      "scoreBand": "N3",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n3", "core", "business"],
+      "translations": {
+        "definition": {
+          "zh": "经验；经历",
+          "ja": "経験。実際に体験して得たこと。",
+          "en": "experience"
+        },
+        "example": {
+          "zh": "在这份工作中积累了很多经验。",
+          "ja": "この しごとで たくさんの けいけんを つみました。",
+          "en": "I gained a lot of experience in this job."
+        }
+      }
+    },
+    {
+      "term": "かいぜん",
+      "pos": "noun",
+      "definition": "改善；改进",
+      "example": "サービスの かいぜんが ひつようです。",
+      "sourcePart": 3,
+      "scoreBand": "N3",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n3", "business"],
+      "translations": {
+        "definition": {
+          "zh": "改善；改进",
+          "ja": "改善。前よりよくすること。",
+          "en": "improvement"
+        },
+        "example": {
+          "zh": "需要改善服务。",
+          "ja": "サービスの かいぜんが ひつようです。",
+          "en": "The service needs improvement."
+        }
+      }
+    },
+    {
+      "term": "けんとう",
+      "pos": "noun",
+      "definition": "研究；讨论；考虑",
+      "example": "その あんを もういちど けんとうしましょう。",
+      "sourcePart": 3,
+      "scoreBand": "N3",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n3", "business"],
+      "translations": {
+        "definition": {
+          "zh": "研究；讨论；考虑",
+          "ja": "検討。よく考えて判断すること。",
+          "en": "review; consideration"
+        },
+        "example": {
+          "zh": "让我们再考虑一次那个方案。",
+          "ja": "その あんを もういちど けんとうしましょう。",
+          "en": "Let's review that plan one more time."
+        }
+      }
+    },
+    {
+      "term": "ていしゅつ",
+      "pos": "noun",
+      "definition": "提交；呈交",
+      "example": "レポートは きんようびまでに ていしゅつしてください。",
+      "sourcePart": 3,
+      "scoreBand": "N3",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n3", "business"],
+      "translations": {
+        "definition": {
+          "zh": "提交；呈交",
+          "ja": "提出。書類などを出すこと。",
+          "en": "submission"
+        },
+        "example": {
+          "zh": "请在周五之前提交报告。",
+          "ja": "レポートは きんようびまでに ていしゅつしてください。",
+          "en": "Please submit the report by Friday."
+        }
+      }
+    },
+    {
+      "term": "ちょうせい",
+      "pos": "noun",
+      "definition": "调整；协调",
+      "example": "スケジュールを ちょうせいして から おしらせします。",
+      "sourcePart": 3,
+      "scoreBand": "N3",
+      "targetLanguage": "ja",
+      "tags": ["jlpt", "n3", "business"],
+      "translations": {
+        "definition": {
+          "zh": "调整；协调",
+          "ja": "調整。全体のバランスを整えること。",
+          "en": "adjustment; coordination"
+        },
+        "example": {
+          "zh": "调整日程后再通知你。",
+          "ja": "スケジュールを ちょうせいして から おしらせします。",
+          "en": "I will let you know after adjusting the schedule."
+        }
+      }
+    }
+  ]
+}

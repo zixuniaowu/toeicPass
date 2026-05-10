@@ -116,10 +116,11 @@ langboost/
 # Install dependencies
 npm install
 
-# Start dev servers (API + Web)
+# Start dev servers (workspace packages + API + Web)
 npm run dev
 
 # Or start individually
+npm run dev:packages # Workspace package watch mode
 npm run dev:api      # API only (port 8001)
 npm run dev:web:hot  # Web only (port 8000)
 ```
@@ -133,10 +134,13 @@ npm run dev:web:hot  # Web only (port 8000)
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Development mode (API + Web) |
+| `npm run dev` | Development mode (workspace packages + API + Web) |
+| `npm run dev:packages` | Watch and rebuild reusable workspace packages |
 | `npm run build` | Production build |
+| `npm run build:packages` | Build reusable workspace packages only |
 | `npm test` | Run test suite |
-| `npm run lint` | TypeScript type checking |
+| `npm run lint` | Build packages and type-check the monorepo |
+| `npm run typecheck:packages` | Type-check reusable workspace packages only |
 | `npm run db:migrate` | Run database migrations |
 
 ## Environment Variables

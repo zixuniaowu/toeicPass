@@ -37,15 +37,15 @@ export type UseWordAnnotationReturn = {
   /** Fetch & cache translation for a full sentence (Japanese UI, English training) */
   ensureJaSentenceTranslation: (
     material: ShadowingMaterial,
-    sentence: { id: number; text: string; translation?: string },
+    sentence: { id: number; text: string; translations?: { zh?: string; ja?: string; en?: string } },
   ) => void;
   /** Get translated sentence for display (returns empty string when unavailable) */
   getSentenceTranslation: (
     material: ShadowingMaterial,
-    sentence: { id: number; text: string; translation?: string },
+    sentence: { id: number; text: string; translations?: { zh?: string; ja?: string; en?: string } },
   ) => string;
   /** Secondary translation (e.g. Chinese when primary is Japanese) */
-  getSecondaryTranslation: (sentence: { id: number; text: string; translation?: string }) => string;
+  getSecondaryTranslation: (sentence: { id: number; text: string; translations?: { zh?: string; ja?: string; en?: string } }) => string;
   /** Fetch gloss for a word when UI is Japanese and training language is English */
   ensureJaWordGloss: (word: WordAnnotation) => void;
   /** Fetch gloss for a word when training language is Japanese */
@@ -114,7 +114,7 @@ export function useWordAnnotation(
   const ensureJaSentenceTranslation = useCallback(
     (
       material: ShadowingMaterial,
-      sentence: { id: number; text: string; translation?: string },
+      sentence: { id: number; text: string; translations?: { zh?: string; ja?: string; en?: string } },
     ) => {
       if (uiLang !== "ja" || trainingLanguage !== "en") return;
       const key = makeSentenceTranslationKey(material.id, sentence.id, sentence.text);
@@ -124,7 +124,7 @@ export function useWordAnnotation(
         .then(async (translated) => {
           let resolved = String(translated ?? "").trim();
           if (!resolved || resolved.toLowerCase() === sentence.text.trim().toLowerCase()) {
-            const zhSource = String(sentence.translation ?? "").trim();
+            const zhSource = String(sentence.translations?.zh ?? "").trim();
             if (zhSource) {
               const fromZh = String(
                 await translateText(zhSource, "ja", "zh-CN") ?? "",
@@ -146,29 +146,29 @@ export function useWordAnnotation(
   const getSentenceTranslation = useCallback(
     (
       material: ShadowingMaterial,
-      sentence: { id: number; text: string; translation?: string },
+      sentence: { id: number; text: string; translations?: { zh?: string; ja?: string; en?: string } },
     ): string => {
       if (trainingLanguage === "ja") {
         if (uiLang === "en" || uiLang === "ja") {
-          return (sentence as { translationEn?: string }).translationEn || sentence.translation || "";
+          return sentence.translations?.en || sentence.translations?.zh || "";
         }
-        return sentence.translation ?? "";
+        return sentence.translations?.zh ?? "";
       }
-      if (uiLang === "zh") return sentence.translation ?? "";
-      if (uiLang === "en") return sentence.translation ?? "";
+      if (uiLang === "zh") return sentence.translations?.zh ?? "";
+      if (uiLang === "en") return sentence.translations?.en ?? sentence.translations?.zh ?? "";
       // Japanese UI studying English: dynamic translation
       const key = makeSentenceTranslationKey(material.id, sentence.id, sentence.text);
-      return jaSentenceMap[key] ?? sentence.translation ?? "";
+      return jaSentenceMap[key] ?? sentence.translations?.ja ?? sentence.translations?.zh ?? "";
     },
     [jaSentenceMap, uiLang, makeSentenceTranslationKey, trainingLanguage],
   );
 
   const getSecondaryTranslation = useCallback(
-    (sentence: { id: number; text: string; translation?: string }): string => {
+    (sentence: { id: number; text: string; translations?: { zh?: string; ja?: string; en?: string } }): string => {
       if (trainingLanguage !== "ja") return "";
       // Only show secondary when it differs from the primary (i.e., an English translation exists)
       // Returning the same Chinese text as both primary and secondary creates a duplicate.
-      return (sentence as { translationEn?: string }).translationEn || "";
+      return sentence.translations?.en || "";
     },
     [trainingLanguage],
   );

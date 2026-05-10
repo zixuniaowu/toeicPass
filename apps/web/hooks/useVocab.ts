@@ -9,6 +9,7 @@ export function useVocab(
   getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
   setMessage: (msg: string) => void,
   locale: Locale,
+  targetLang: "en" | "ja" = "en",
 ) {
   const byLocale = (zh: string, ja: string) => (locale === "ja" ? ja : zh);
   const [cards, setCards] = useState<VocabCard[]>([]);
@@ -24,7 +25,7 @@ export function useVocab(
 
       setIsLoading(true);
       try {
-        const payload = await api.fetchVocabularyCards(getRequestOptions(activeToken));
+        const payload = await api.fetchVocabularyCards(getRequestOptions(activeToken), targetLang);
         if (payload) {
           setSummary(payload.summary);
           setCards(payload.cards);
@@ -40,7 +41,7 @@ export function useVocab(
         setIsLoading(false);
       }
     },
-    [ensureSession, getRequestOptions, locale, setMessage]
+    [ensureSession, getRequestOptions, locale, setMessage, targetLang]
   );
 
   const toggleReveal = useCallback((cardId: string) => {

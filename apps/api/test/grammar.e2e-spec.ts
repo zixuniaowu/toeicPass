@@ -60,6 +60,23 @@ describe("Grammar Cards E2E", () => {
     expect(card.dueAt).toBeDefined();
   });
 
+  it("lists JLPT grammar cards when targetLang is ja", async () => {
+    const res = await request(app.getHttpServer())
+      .get("/api/v1/learning/grammar/cards?targetLang=ja")
+      .set("x-tenant-code", tenantCode)
+      .set("Authorization", authHeader);
+
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body.cards)).toBe(true);
+    expect(res.body.cards.length).toBeGreaterThanOrEqual(1);
+
+    const card = res.body.cards[0];
+    expect(card.targetLanguage).toBe("ja");
+    expect(card.jlptLevel).toMatch(/N5|N4|N3/);
+    expect(card.titleJa).toMatch(/[ぁ-んァ-ン一-龯]/);
+    expect(card.explanationJa).toMatch(/[ぁ-んァ-ン一-龯]/);
+  });
+
   // ===== Grammar Card Grading =====
 
   it("grades a grammar card (grade 3 = remembered)", async () => {

@@ -1,0 +1,102 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.header h2 {
+  margin: 0 0 var(--space-2);
+}
+
+.header p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.summaryGrid strong {
+  display: block;
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+}
+
+.summaryGrid span {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--color-muted);
+}
+
+.card {
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.explanation {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.examplesSection {
+  margin-top: var(--space-4);
+}
+
+.examplesSection h4 {
+  margin: 0 0 var(--space-2);
+}
+
+.exampleList {
+  margin: 0;
+  padding-left: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.gradeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.error {
+  margin: 0;
+  color: var(--color-error, #dc2626);
+  font-weight: 600;
+}
+
+.empty {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+@media (max-width: 760px) {
+  .summaryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cardHeader {
+    flex-direction: column;
+  }
+}

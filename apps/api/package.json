@@ -14,6 +14,9 @@
     "audit:questions": "tsx scripts/audit-question-quality.ts"
   },
   "dependencies": {
+    "@toeicpass/ad-system": "1.0.0",
+    "@toeicpass/conversation-ai": "1.0.0",
+    "@toeicpass/shared": "1.0.0",
     "@nestjs/common": "^11.1.6",
     "@nestjs/core": "^11.1.6",
     "@nestjs/jwt": "^11.0.1",

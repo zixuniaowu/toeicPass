@@ -16,7 +16,7 @@ type ChatMessage = {
 const I18N = {
   zh: {
     title: "AI 语音对话",
-    subtitle: "选择主题，按住麦克风用英语和 AI 聊天",
+    subtitle: (languageLabel: string) => `选择主题，按住麦克风用${languageLabel}和 AI 聊天`,
     hold: "按住说话",
     release: "松开发送",
     listening: "正在听...",
@@ -30,7 +30,7 @@ const I18N = {
   },
   ja: {
     title: "AI 音声会話",
-    subtitle: "トピックを選んで、マイクを押して英語で話そう",
+    subtitle: (languageLabel: string) => `トピックを選んで、マイクを押して${languageLabel}で話そう`,
     hold: "押して話す",
     release: "離して送信",
     listening: "聞いています...",
@@ -44,6 +44,11 @@ const I18N = {
   },
 };
 
+const TARGET_LABELS = {
+  zh: { en: "英语", ja: "日语" },
+  ja: { en: "英語", ja: "日本語" },
+} as const;
+
 const TOPIC_ICONS: Record<string, string> = {
   office: "🏢", restaurant: "🍽️", airport: "✈️", hotel: "🏨",
   phone: "📞", interview: "💼", meeting: "📊", shopping: "🛍️",
@@ -51,8 +56,10 @@ const TOPIC_ICONS: Record<string, string> = {
 
 let msgId = 0;
 
-export function ConversationView({ locale, api }: ConversationViewProps) {
+export function ConversationView({ locale, targetLanguage, api }: ConversationViewProps) {
   const t = I18N[locale] ?? I18N.zh;
+  const targetLabel = TARGET_LABELS[locale][targetLanguage];
+  const speechLang = targetLanguage === "ja" ? "ja-JP" : "en-US";
 
   const [scenarios, setScenarios] = useState<ConversationScenario[]>([]);
   const [active, setActive] = useState<ConversationScenario | null>(null);
@@ -83,15 +90,26 @@ export function ConversationView({ locale, api }: ConversationViewProps) {
     };
   }, []);
 
+  useEffect(() => {
+    recognitionRef.current?.abort();
+    setActive(null);
+    setMessages([]);
+    setInterim("");
+    setMicError(null);
+  }, [targetLanguage]);
+
+  const visibleScenarios = scenarios.filter((scenario) => scenario.targetLanguage === targetLanguage);
+  const scenarioOptions = visibleScenarios.length > 0 ? visibleScenarios : scenarios;
+
   const speak = useCallback((text: string) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
     const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = "en-US";
+    utt.lang = speechLang;
     utt.rate = 0.9;
     utterRef.current = utt;
     window.speechSynthesis.speak(utt);
-  }, []);
+  }, [speechLang]);
 
   const sendText = useCallback(async (text: string) => {
     if (!text.trim() || !active) return;
@@ -129,7 +147,7 @@ export function ConversationView({ locale, api }: ConversationViewProps) {
       stream.getTracks().forEach((tr) => tr.stop());
 
       const rec = new SR();
-      rec.lang = "en-US";
+      rec.lang = speechLang;
       rec.continuous = false;
       rec.interimResults = true;
       recognitionRef.current = rec;
@@ -165,7 +183,7 @@ export function ConversationView({ locale, api }: ConversationViewProps) {
     }).catch(() => {
       setMicError(t.micDenied);
     });
-  }, [t, sendText]);
+  }, [speechLang, t, sendText]);
 
   const stopListening = useCallback(() => {
     recognitionRef.current?.stop();
@@ -193,10 +211,10 @@ export function ConversationView({ locale, api }: ConversationViewProps) {
       <div className={styles.page}>
         <div className={styles.topicHeader}>
           <h1 className={styles.pageTitle}>{t.title}</h1>
-          <p className={styles.pageSubtitle}>{t.subtitle}</p>
+          <p className={styles.pageSubtitle}>{t.subtitle(targetLabel)}</p>
         </div>
         <div className={styles.topicGrid}>
-          {scenarios.map((sc) => (
+          {scenarioOptions.map((sc) => (
             <button key={sc.id} className={styles.topicCard} onClick={() => selectTopic(sc)}>
               <span className={styles.topicIcon}>{TOPIC_ICONS[sc.category] ?? "💬"}</span>
               <span className={styles.topicName}>{locale === "ja" ? sc.title : sc.titleCn}</span>

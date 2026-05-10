@@ -31,6 +31,7 @@ import {
   AdPlacement,
   AdEvent,
   RefreshTokenRecord,
+  VocabularyCardTranslations,
 } from "./types";
 import { newId, nowIso } from "./utils";
 import * as questionBank from "./question-bank.json";
@@ -52,10 +53,14 @@ import * as questionBankExpansion15 from "./question-bank-expansion-15.json";
 import * as vocabSeedData from "./vocab-seed.json";
 import * as vocabSeedData1 from "./vocab-seed-1.json";
 import * as vocabSeedData2 from "./vocab-seed-2.json";
+import * as jlptVocabSeedData from "./jlpt-vocab-seed.json";
 import * as grammarSeedData from "./grammar-seed.json";
+import * as jlptGrammarSeedData from "./jlpt-grammar-seed.json";
 
 type GrammarSeedRule = {
   ruleId: string;
+  targetLanguage?: "en" | "ja";
+  jlptLevel?: string;
   title: string;
   titleCn: string;
   titleJa: string;
@@ -96,6 +101,9 @@ type VocabularySeedCard = {
   example: string;
   sourcePart: number;
   tags: string[];
+  scoreBand?: string;
+  targetLanguage?: "en" | "ja";
+  translations?: VocabularyCardTranslations;
 };
 
 /**
@@ -1372,18 +1380,28 @@ export class StoreService {
     }
   }
 
-  ensureSeedVocabularyCards(tenantId: string, userId: string): void {
+  ensureSeedVocabularyCards(tenantId: string, userId: string, targetLanguage: "en" | "ja" = "en"): void {
     const userCards = this.vocabularyCards
-      .filter((card) => card.tenantId === tenantId && card.userId === userId)
+      .filter(
+        (card) =>
+          card.tenantId === tenantId &&
+          card.userId === userId &&
+          (card.targetLanguage ?? "en") === targetLanguage,
+      )
       .sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.term.localeCompare(b.term));
+    userCards.forEach((card) => {
+      card.translations = this.buildVocabularyTranslations(card);
+    });
     const existingKeys = new Set(
-      userCards.map((card) => `${card.term.trim().toLowerCase()}::${card.pos.trim().toLowerCase()}`),
+      userCards.map(
+        (card) => `${targetLanguage}::${card.term.trim().toLowerCase()}::${card.pos.trim().toLowerCase()}`,
+      ),
     );
-    const seed = this.buildVocabularySeedCards();
+    const seed = this.buildVocabularySeedCards(targetLanguage);
     let queueIndex = userCards.length;
 
     seed.forEach((item, seedIndex) => {
-      const key = `${item.term.trim().toLowerCase()}::${item.pos.trim().toLowerCase()}`;
+      const key = `${targetLanguage}::${item.term.trim().toLowerCase()}::${item.pos.trim().toLowerCase()}`;
       if (existingKeys.has(key)) {
         return;
       }
@@ -1397,7 +1415,14 @@ export class StoreService {
         example: item.example,
         sourcePart: item.sourcePart,
         tags: item.tags,
-        scoreBand: assignScoreBand(seedIndex, seed.length),
+        targetLanguage,
+        scoreBand: item.scoreBand ?? assignScoreBand(seedIndex, seed.length),
+        translations: this.buildVocabularyTranslations({
+          definition: item.definition,
+          example: item.example,
+          targetLanguage,
+          translations: item.translations,
+        }),
         easeFactor: 2.3,
         intervalDays: 0,
         dueAt: this.vocabularyDueDate(queueIndex),
@@ -1410,7 +1435,16 @@ export class StoreService {
     this.rebalanceVocabularySchedule(tenantId, userId);
   }
 
-  private buildVocabularySeedCards(): VocabularySeedCard[] {
+  private buildVocabularySeedCards(targetLanguage: "en" | "ja" = "en"): VocabularySeedCard[] {
+    if (targetLanguage === "ja") {
+      return this.normalizeVocabularySeedCards(
+        ((jlptVocabSeedData as { cards?: VocabularySeedCard[] }).cards ?? []).map((item) => ({
+          ...item,
+          targetLanguage: "ja",
+        })),
+      );
+    }
+
     if (this.vocabularySeedCache) {
       return this.vocabularySeedCache;
     }
@@ -1777,12 +1811,88 @@ export class StoreService {
         definition,
         example: this.normalizeVocabularySentence(String(item.example ?? "").trim()),
         sourcePart: Number(item.sourcePart) >= 1 && Number(item.sourcePart) <= 7 ? Number(item.sourcePart) : 7,
+        scoreBand: typeof item.scoreBand === "string" && item.scoreBand.trim().length > 0 ? item.scoreBand.trim() : undefined,
+        targetLanguage: item.targetLanguage === "ja" ? "ja" : "en",
+        translations: this.normalizeVocabularyTranslations(item.translations),
         tags: Array.isArray(item.tags)
           ? item.tags.filter((tag) => typeof tag === "string" && tag.trim().length > 0)
           : [],
       });
     });
     return Array.from(dedup.values());
+  }
+
+  private normalizeVocabularyTranslations(translations?: VocabularyCardTranslations): VocabularyCardTranslations | undefined {
+    if (!translations) {
+      return undefined;
+    }
+
+    const normalizeField = (
+      field?: Partial<Record<"zh" | "ja" | "en", string>>,
+    ): Partial<Record<"zh" | "ja" | "en", string>> | undefined => {
+      if (!field) {
+        return undefined;
+      }
+      const normalized: Partial<Record<"zh" | "ja" | "en", string>> = {};
+      (["zh", "ja", "en"] as const).forEach((lang) => {
+        const value = field[lang];
+        if (typeof value === "string" && value.trim().length > 0) {
+          normalized[lang] = value.trim();
+        }
+      });
+      return Object.keys(normalized).length > 0 ? normalized : undefined;
+    };
+
+    const normalized = {
+      definition: normalizeField(translations.definition),
+      example: normalizeField(translations.example),
+    };
+
+    return normalized.definition || normalized.example ? normalized : undefined;
+  }
+
+  private detectVocabularyTextLang(text: string, fallback: "zh" | "ja" | "en"): "zh" | "ja" | "en" {
+    if (/[ぁ-んァ-ン]/.test(text)) {
+      return "ja";
+    }
+    if (/[A-Za-z]/.test(text)) {
+      return "en";
+    }
+    if (/[\u4e00-\u9fff]/.test(text)) {
+      return "zh";
+    }
+    return fallback;
+  }
+
+  private buildVocabularyTranslations(card: {
+    definition: string;
+    example: string;
+    targetLanguage?: "en" | "ja";
+    translations?: VocabularyCardTranslations;
+  }): VocabularyCardTranslations | undefined {
+    const targetLanguage = card.targetLanguage === "ja" ? "ja" : "en";
+    const translations = this.normalizeVocabularyTranslations(card.translations) ?? {};
+    const definitionTranslations = { ...(translations.definition ?? {}) };
+    const exampleTranslations = { ...(translations.example ?? {}) };
+    const definition = String(card.definition ?? "").trim();
+    const example = String(card.example ?? "").trim();
+
+    if (definition) {
+      const definitionLang = this.detectVocabularyTextLang(definition, targetLanguage === "ja" ? "zh" : "en");
+      definitionTranslations[definitionLang] ??= definition;
+    }
+
+    if (example) {
+      const exampleLang = this.detectVocabularyTextLang(example, targetLanguage === "ja" ? "ja" : "en");
+      exampleTranslations[exampleLang] ??= example;
+    }
+
+    const normalized = {
+      definition: Object.keys(definitionTranslations).length > 0 ? definitionTranslations : undefined,
+      example: Object.keys(exampleTranslations).length > 0 ? exampleTranslations : undefined,
+    };
+
+    return normalized.definition || normalized.example ? normalized : undefined;
   }
 
   private buildQuestionBankVocabularyCards(existingTerms: Set<string>): VocabularySeedCard[] {
@@ -2073,12 +2183,28 @@ export class StoreService {
       });
   }
 
-  ensureSeedGrammarCards(tenantId: string, userId: string): void {
+  private buildGrammarSeedRules(targetLanguage: "en" | "ja" = "en"): GrammarSeedRule[] {
+    if (targetLanguage === "ja") {
+      return ((jlptGrammarSeedData as { rules?: GrammarSeedRule[] }).rules ?? []).map((rule) => ({
+        ...rule,
+        targetLanguage: "ja",
+      }));
+    }
+    return ((grammarSeedData as { rules?: GrammarSeedRule[] }).rules ?? []).map((rule) => ({
+      ...rule,
+      targetLanguage: "en",
+    }));
+  }
+
+  ensureSeedGrammarCards(tenantId: string, userId: string, targetLanguage: "en" | "ja" = "en"): void {
     const userCards = this.grammarCards.filter(
-      (card) => card.tenantId === tenantId && card.userId === userId,
+      (card) =>
+        card.tenantId === tenantId &&
+        card.userId === userId &&
+        (card.targetLanguage ?? "en") === targetLanguage,
     );
     const existingRuleIds = new Set(userCards.map((c) => c.ruleId));
-    const rules = (grammarSeedData as { rules?: GrammarSeedRule[] }).rules ?? [];
+    const rules = this.buildGrammarSeedRules(targetLanguage);
 
     rules.forEach((rule, index) => {
       if (existingRuleIds.has(rule.ruleId)) {
@@ -2089,6 +2215,8 @@ export class StoreService {
         tenantId,
         userId,
         ruleId: rule.ruleId,
+        targetLanguage,
+        jlptLevel: rule.jlptLevel,
         title: rule.title,
         titleCn: rule.titleCn ?? "",
         titleJa: rule.titleJa ?? "",
@@ -2109,10 +2237,15 @@ export class StoreService {
     });
   }
 
-  getGrammarCards(tenantId: string, userId: string): GrammarCard[] {
-    this.ensureSeedGrammarCards(tenantId, userId);
+  getGrammarCards(tenantId: string, userId: string, targetLanguage: "en" | "ja" = "en"): GrammarCard[] {
+    this.ensureSeedGrammarCards(tenantId, userId, targetLanguage);
     return this.grammarCards
-      .filter((card) => card.tenantId === tenantId && card.userId === userId)
+      .filter(
+        (card) =>
+          card.tenantId === tenantId &&
+          card.userId === userId &&
+          (card.targetLanguage ?? "en") === targetLanguage,
+      )
       .sort((a, b) => a.difficulty - b.difficulty || a.title.localeCompare(b.title));
   }
 

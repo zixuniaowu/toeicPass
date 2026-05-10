@@ -1,6 +1,6 @@
-import type { ShadowingMaterial } from "./shadowing-materials";
+import { defineShadowingMaterials, type ShadowingMaterial } from "./shadowing-materials";
 
-export const JAPANESE_SHADOWING_MATERIALS_EXPANDED: ShadowingMaterial[] = [
+export const JAPANESE_SHADOWING_MATERIALS_EXPANDED: ShadowingMaterial[] = defineShadowingMaterials([
   // ============================================================
   // 日常会話 (drama) — Everyday conversation
   // ============================================================
@@ -488,4 +488,4 @@ export const JAPANESE_SHADOWING_MATERIALS_EXPANDED: ShadowingMaterial[] = [
       { id: 16, text: "いいですね、ぜひ。持ち寄りにしましょう。", translation: "好啊，一定。大家各带一些吃的吧。" },
     ],
   },
-];
+]);

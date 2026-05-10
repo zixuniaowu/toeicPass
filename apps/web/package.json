@@ -13,6 +13,9 @@
     "import:ja-latest": "node scripts/pull-japanese-youtube-shadowing.js"
   },
   "dependencies": {
+    "@toeicpass/ad-system": "1.0.0",
+    "@toeicpass/conversation-ai": "1.0.0",
+    "@toeicpass/shared": "1.0.0",
     "kuromoji": "^0.1.2",
     "next": "^15.4.6",
     "react": "^19.1.1",

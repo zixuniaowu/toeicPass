@@ -1165,11 +1165,16 @@ export class LearningDomainService {
     return note;
   }
 
-  getVocabularyCards(ctx: RequestContext) {
-    this.store.ensureSeedVocabularyCards(ctx.tenantId, ctx.userId);
+  getVocabularyCards(ctx: RequestContext, targetLanguage: "en" | "ja" = "en") {
+    this.store.ensureSeedVocabularyCards(ctx.tenantId, ctx.userId, targetLanguage);
     const today = new Date().toISOString().slice(0, 10);
     const cards = this.store.vocabularyCards
-      .filter((item) => item.tenantId === ctx.tenantId && item.userId === ctx.userId)
+      .filter(
+        (item) =>
+          item.tenantId === ctx.tenantId &&
+          item.userId === ctx.userId &&
+          (item.targetLanguage ?? "en") === targetLanguage,
+      )
       .sort((a, b) => {
         const dueCompare = a.dueAt.localeCompare(b.dueAt);
         return dueCompare !== 0 ? dueCompare : a.term.localeCompare(b.term);
@@ -1196,6 +1201,7 @@ export class LearningDomainService {
       },
       cards: cards.map((card) => ({
         ...card,
+        targetLanguage: card.targetLanguage ?? targetLanguage,
         due: card.dueAt <= today,
       })),
     };
@@ -2174,36 +2180,420 @@ export class LearningDomainService {
     return cloned;
   }
 
-  evaluateWriting(ctx: RequestContext, dto: { text: string }) {
+  private countSentences(text: string, pattern: RegExp): number {
+    return text
+      .split(pattern)
+      .map((part) => part.trim())
+      .filter(Boolean)
+      .length;
+  }
+
+  private clampWritingScore(score: number): number {
+    return Math.max(45, Math.min(95, score));
+  }
+
+  private prioritizeWritingSignals(
+    focusArea: "content" | "organization" | "languageControl",
+    signalsByArea: {
+      content: string[];
+      organization: string[];
+      languageControl: string[];
+    },
+  ): string[] {
+    const areaPriority: Array<"content" | "organization" | "languageControl"> = focusArea === "content"
+      ? ["content", "organization", "languageControl"]
+      : focusArea === "organization"
+        ? ["organization", "content", "languageControl"]
+        : ["languageControl", "organization", "content"];
+
+    return areaPriority.flatMap((area) => signalsByArea[area]).slice(0, 3);
+  }
+
+  private evaluateJapaneseWritingWithRubric(text: string) {
+    const characterCount = text.replace(/\s+/g, "").length;
+    const sentenceCount = this.countSentences(text, /[。！？]+/);
+    const paragraphCount = text.split(/\n\s*\n/).filter((part) => part.trim()).length;
+    const transitionCount = (text.match(/(しかし|そのため|また|さらに|一方で|例えば|まず|そして|だから)/g) ?? []).length;
+    const politeEndingCount = (text.match(/(です|ます|でした|ました)(?=[。！？\n]|$)/g) ?? []).length;
+    const plainEndingCount = (text.match(/(だ|である)(?=[。！？\n]|$)/g) ?? []).length;
+    const mixedRegister = politeEndingCount > 0 && plainEndingCount > 0;
+    const hasTerminalPunctuation = /[。！？]\s*$/.test(text);
+    const feedback: string[] = [];
+    let score = 45;
+
+    if (characterCount >= 140) {
+      score += 18;
+    } else if (characterCount >= 80) {
+      score += 12;
+    } else if (characterCount >= 40) {
+      score += 6;
+    } else {
+      feedback.push("文章が短めです。理由や具体例を少し足して、内容を広げてみましょう。");
+    }
+
+    if (sentenceCount >= 4) {
+      score += 12;
+    } else if (sentenceCount >= 2) {
+      score += 8;
+    } else {
+      feedback.push("一文だけで終わらせず、2〜3文に分けると内容の展開が伝わりやすくなります。");
+    }
+
+    if (transitionCount >= 2) {
+      score += 12;
+    } else if (transitionCount === 1) {
+      score += 8;
+    } else {
+      feedback.push("「しかし」「そのため」「例えば」などのつなぎ表現を入れると、文章の流れがより分かりやすくなります。");
+    }
+
+    if (paragraphCount >= 2 || characterCount < 90) {
+      score += 6;
+    } else {
+      feedback.push("長めの文章では、段落を分けると読みやすさが上がります。");
+    }
+
+    if (mixedRegister) {
+      feedback.push("「です・ます」と普通体が混ざっているので、文体をそろえるとより自然です。");
+    } else {
+      score += 7;
+    }
+
+    if (!hasTerminalPunctuation) {
+      feedback.push("文末に句点や記号を入れると、読みやすさが上がります。");
+    }
+
+    if (feedback.length === 0) {
+      feedback.push("内容の展開、文のつながり、文体の安定感がよくまとまっています。細かい語彙選択を磨くとさらに良くなります。");
+    }
+
+    const contentScore = this.clampWritingScore(
+      45 +
+      (characterCount >= 140 ? 28 : characterCount >= 80 ? 20 : characterCount >= 40 ? 12 : 4) +
+      (sentenceCount >= 4 ? 10 : sentenceCount >= 2 ? 6 : 2),
+    );
+    const organizationScore = this.clampWritingScore(
+      45 +
+      (transitionCount >= 2 ? 20 : transitionCount === 1 ? 12 : 4) +
+      (paragraphCount >= 2 || characterCount < 90 ? 14 : 6) +
+      (sentenceCount >= 4 ? 12 : sentenceCount >= 2 ? 8 : 3),
+    );
+    const languageControlScore = this.clampWritingScore(
+      45 +
+      (mixedRegister ? 5 : 18) +
+      (hasTerminalPunctuation ? 12 : 4) +
+      (politeEndingCount > 0 || plainEndingCount > 0 ? 12 : 6),
+    );
+    const rubric = [
+      {
+        label: "内容展開",
+        score: contentScore,
+        comment: characterCount >= 80
+          ? "主張に対して理由や具体例が入り始めており、内容が伝わりやすくなっています。"
+          : "主張の核はありますが、理由や具体例をもう一つ加えると内容の厚みが出ます。",
+      },
+      {
+        label: "構成とつながり",
+        score: organizationScore,
+        comment: transitionCount >= 1 && sentenceCount >= 2
+          ? "文と文の関係が見えやすく、読み手が流れを追いやすい構成です。"
+          : "接続表現や文の切り分けを増やすと、展開がさらに分かりやすくなります。",
+      },
+      {
+        label: "文体・表現の安定",
+        score: languageControlScore,
+        comment: mixedRegister
+          ? "文体が少し混ざっているので、です・ます体か普通体のどちらかにそろえると自然です。"
+          : "文体は比較的安定しています。文末表現や語彙選択を磨くとさらに完成度が上がります。",
+      },
+    ];
+    const weakestRubric = rubric.reduce((weakest, item) => (item.score < weakest.score ? item : weakest), rubric[0]);
+    const finalScore = this.clampWritingScore(score);
+    const focusArea = weakestRubric.label === "内容展開"
+      ? "content"
+      : weakestRubric.label === "構成とつながり"
+        ? "organization"
+        : "languageControl";
+    const focusSignals = this.prioritizeWritingSignals(focusArea, {
+      content: [
+        ...(characterCount < 80 ? ["理由や具体例を1つ足して内容を厚くする。"] : []),
+      ],
+      organization: [
+        ...(sentenceCount < 2 ? ["1文だけで終わらせず、2〜3文に分けて展開する。"] : []),
+        ...(transitionCount === 0 ? ["接続表現を1〜2個入れて流れを見せる。"] : []),
+        ...(characterCount >= 90 && paragraphCount < 2 ? ["長めの内容は段落を分けて読みやすくする。"] : []),
+      ],
+      languageControl: [
+        ...(mixedRegister ? ["です・ます体か普通体のどちらかに文体をそろえる。"] : []),
+        ...(!hasTerminalPunctuation ? ["文末に句点や記号を入れて終わりを明確にする。"] : []),
+      ],
+    });
+    const summary = finalScore >= 85
+      ? "内容、構成、文体のバランスがよく、読み手に意図が伝わりやすい作文です。"
+      : finalScore >= 70
+        ? "伝えたい内容は十分に見えています。あと一段、展開と表現の精度を上げるとさらに強くなります。"
+        : "基本の主張はありますが、理由・つながり・文体のいずれかを補強すると評価が安定しやすくなります。";
+    const nextStep = weakestRubric.label === "内容展開"
+      ? "次は一つの主張に対して『理由 + 具体例』を1セット追加して、内容をもう一段深くしてみましょう。"
+      : weakestRubric.label === "構成とつながり"
+        ? "次は接続表現を1〜2個増やし、内容が長くなる場合は段落も分けてみましょう。"
+        : "次は文体を一つにそろえ、文末の表現と句読点まで含めて仕上げる意識を持つと安定します。";
+    const drillChecklist = focusArea === "content"
+      ? [
+          "主張に対する理由を1つ追加する。",
+          "短くても具体例を1つ入れる。",
+          "最後に全体の結論を1文でまとめる。",
+        ]
+      : focusArea === "organization"
+        ? [
+            "接続表現を2つ以上入れる。",
+            "文を2〜4文に分けて流れを作る。",
+            "長くなる場合は段落を分ける。",
+          ]
+        : [
+            "文体を『です・ます』か普通体のどちらかにそろえる。",
+            "文末に句点を入れて、切れ目を明確にする。",
+            "同じ表現の繰り返しを1か所減らす。",
+          ];
+    const revisionPrompt = focusArea === "content"
+      ? "次の改稿では、中心意見を保ったまま『理由1つ + 具体例1つ + まとめ1文』を追加して、3〜4文で書き直してください。"
+      : focusArea === "organization"
+        ? "次の改稿では、接続表現を2つ以上使い、文を整理しながら読み手が流れを追いやすい形に書き直してください。"
+        : "次の改稿では、文体を一つにそろえ、文末表現と句読点まで確認しながら、より自然な日本語に書き直してください。";
+    const sentenceFrames = focusArea === "content"
+      ? [
+          "私の考えは〜です。",
+          "なぜなら、〜からです。",
+          "たとえば、〜。",
+          "このように、〜と考えます。",
+        ]
+      : focusArea === "organization"
+        ? [
+            "まず、〜。",
+            "次に、〜。",
+            "そのため、〜。",
+            "最後に、〜。",
+          ]
+        : [
+            "私は〜です。",
+            "また、〜ます。",
+            "たとえば、〜です。",
+            "最後に、〜と思います。",
+          ];
+
+    return {
+      score: finalScore,
+      wordCount: characterCount,
+      feedback,
+      summary,
+      nextStep,
+      focusArea,
+      focusSignals,
+      drillChecklist,
+      revisionPrompt,
+      sentenceFrames,
+      rubric,
+    };
+  }
+
+  private evaluateEnglishWritingWithRubric(text: string) {
+    const wordCount = text.split(/\s+/).filter(Boolean).length;
+    const sentenceCount = this.countSentences(text, /[.!?]+/);
+    const paragraphCount = text.split(/\n\s*\n/).filter((part) => part.trim()).length;
+    const transitionCount = (text.match(/\b(however|therefore|moreover|in addition|furthermore|although|for example|as a result)\b/gi) ?? []).length;
+    const words = text.toLowerCase().match(/[a-z']+/g) ?? [];
+    const uniqueWordRatio = words.length > 0 ? new Set(words).size / words.length : 0;
+    const hasConclusionCue = /\b(in conclusion|overall|to sum up|therefore)\b/i.test(text);
+    const hasTerminalPunctuation = /[.!?]["')\]]?\s*$/.test(text);
+    const feedback: string[] = [];
+    let score = 45;
+
+    if (wordCount >= 140) {
+      score += 18;
+    } else if (wordCount >= 90) {
+      score += 14;
+    } else if (wordCount >= 50) {
+      score += 8;
+    } else {
+      feedback.push("Expand the response with one or two more supporting ideas or examples.");
+    }
+
+    if (sentenceCount >= 4) {
+      score += 14;
+    } else if (sentenceCount >= 2) {
+      score += 8;
+    } else {
+      feedback.push("Break the response into multiple sentences so each idea has room to develop.");
+    }
+
+    if (transitionCount >= 2) {
+      score += 12;
+    } else if (transitionCount === 1) {
+      score += 8;
+    } else {
+      feedback.push("Add transition words such as However, Therefore, or For example to connect your ideas.");
+    }
+
+    if (paragraphCount >= 2 || hasConclusionCue) {
+      score += 8;
+    } else if (wordCount >= 90) {
+      feedback.push("Use paragraphing or a short conclusion to make the structure easier to follow.");
+    }
+
+    if (uniqueWordRatio >= 0.55) {
+      score += 8;
+    } else {
+      feedback.push("Vary your word choice a little more instead of repeating the same key terms.");
+    }
+
+    if (!hasTerminalPunctuation) {
+      feedback.push("Finish the response with clear sentence-ending punctuation.");
+    }
+
+    if (feedback.length === 0) {
+      feedback.push("Clear organization, sufficient support, and smooth transitions. Keep polishing word choice for even more precision.");
+    }
+
+    const contentScore = this.clampWritingScore(
+      45 +
+      (wordCount >= 140 ? 28 : wordCount >= 90 ? 22 : wordCount >= 50 ? 14 : 5) +
+      (uniqueWordRatio >= 0.55 ? 12 : 6),
+    );
+    const organizationScore = this.clampWritingScore(
+      45 +
+      (sentenceCount >= 4 ? 14 : sentenceCount >= 2 ? 8 : 3) +
+      (transitionCount >= 2 ? 18 : transitionCount === 1 ? 12 : 4) +
+      (paragraphCount >= 2 || hasConclusionCue ? 14 : 6),
+    );
+    const languageControlScore = this.clampWritingScore(
+      45 +
+      (uniqueWordRatio >= 0.55 ? 18 : 8) +
+      (hasTerminalPunctuation ? 12 : 4) +
+      (sentenceCount >= 3 ? 12 : 6),
+    );
+    const rubric = [
+      {
+        label: "Content Development",
+        score: contentScore,
+        comment: wordCount >= 90
+          ? "The response includes enough support to make the main message understandable and reasonably complete."
+          : "The main idea is visible, but one more concrete reason or example would make it more convincing.",
+      },
+      {
+        label: "Organization & Flow",
+        score: organizationScore,
+        comment: transitionCount >= 1 && sentenceCount >= 2
+          ? "Ideas are connected in a readable order, so the response is easier to follow from start to finish."
+          : "The response would become clearer with stronger transitions and a more explicit sentence-by-sentence progression.",
+      },
+      {
+        label: "Language Control",
+        score: languageControlScore,
+        comment: uniqueWordRatio >= 0.55 && /[.!?]["')\]]?\s*$/.test(text)
+          ? "Word choice is reasonably varied and the response feels controlled at the sentence level."
+          : "Sentence endings are understandable, but more precise vocabulary and cleaner sentence control would raise the quality.",
+      },
+    ];
+    const weakestRubric = rubric.reduce((weakest, item) => (item.score < weakest.score ? item : weakest), rubric[0]);
+    const finalScore = this.clampWritingScore(score);
+    const focusArea = weakestRubric.label === "Content Development"
+      ? "content"
+      : weakestRubric.label === "Organization & Flow"
+        ? "organization"
+        : "languageControl";
+    const focusSignals = this.prioritizeWritingSignals(focusArea, {
+      content: [
+        ...(wordCount < 90 ? ["Add one more supporting reason or concrete example."] : []),
+      ],
+      organization: [
+        ...(sentenceCount < 2 ? ["Break the draft into 2-4 readable sentences."] : []),
+        ...(transitionCount === 0 ? ["Use at least one transition such as However, Therefore, or For example."] : []),
+        ...(wordCount >= 90 && !hasConclusionCue && paragraphCount < 2
+          ? ["Add a clearer closing sentence or a paragraph break."]
+          : []),
+      ],
+      languageControl: [
+        ...(uniqueWordRatio < 0.55 ? ["Replace one repeated word with a more precise alternative."] : []),
+        ...(!hasTerminalPunctuation ? ["Finish the draft with clear sentence-ending punctuation."] : []),
+      ],
+    });
+    const summary = finalScore >= 85
+      ? "The response is clear, supported, and organized well enough to communicate confidently."
+      : finalScore >= 70
+        ? "The core message is clear. A little more support and tighter control would make the response feel more complete."
+        : "The response has a workable idea, but it still needs stronger support, structure, or language control to feel complete.";
+    const nextStep = weakestRubric.label === "Content Development"
+      ? "Next, add one more supporting reason or concrete example so the reader can see why your point matters."
+      : weakestRubric.label === "Organization & Flow"
+        ? "Next, revise the draft with clearer transitions and a more explicit ending so each idea leads into the next."
+        : "Next, focus on sentence-level control: cleaner endings, more precise vocabulary, and less repetition of key words.";
+    const drillChecklist = focusArea === "content"
+      ? [
+          "Add one supporting reason for the main claim.",
+          "Include one concrete example or detail.",
+          "Finish with a short closing sentence.",
+        ]
+      : focusArea === "organization"
+        ? [
+            "Use at least two transition signals.",
+            "Separate the ideas into 3-4 readable sentences.",
+            "End with a clearer final sentence or mini-conclusion.",
+          ]
+        : [
+            "Check every sentence ending for punctuation.",
+            "Replace one repeated word with a more precise choice.",
+            "Re-read once for grammar and sentence control.",
+          ];
+    const revisionPrompt = focusArea === "content"
+      ? "Rewrite the response in 4-5 sentences while keeping the same main idea, but add one supporting reason, one concrete example, and a short closing sentence."
+      : focusArea === "organization"
+        ? "Rewrite the response with clearer transitions, a smoother sentence order, and a more explicit final sentence so the reader can follow the logic easily."
+        : "Rewrite the response with cleaner sentence endings, more precise vocabulary, and one full proofreading pass for grammar control.";
+    const sentenceFrames = focusArea === "content"
+      ? [
+          "I think that ...",
+          "This is because ...",
+          "For example, ...",
+          "For these reasons, ...",
+        ]
+      : focusArea === "organization"
+        ? [
+            "First, ...",
+            "Next, ...",
+            "Therefore, ...",
+            "Finally, ...",
+          ]
+        : [
+            "I think ...",
+            "In addition, I ...",
+            "For example, ...",
+            "In conclusion, ...",
+          ];
+
+    return {
+      score: finalScore,
+      wordCount,
+      feedback,
+      summary,
+      nextStep,
+      focusArea,
+      focusSignals,
+      drillChecklist,
+      revisionPrompt,
+      sentenceFrames,
+      rubric,
+    };
+  }
+
+  evaluateWriting(ctx: RequestContext, dto: { text: string; targetLang?: "en" | "ja" }) {
     const text = dto.text.trim();
     if (!text) {
       throw new BadRequestException("Text is required");
     }
-    // Simulate an AI evaluation for English writing
-    const wordCount = text.split(/\s+/).filter(Boolean).length;
-    let score = 0;
-    const feedback: string[] = [];
-    
-    if (wordCount < 50) {
-      score = Math.floor(Math.random() * 20) + 40; // 40-59
-      feedback.push("Your essay is too short. Try to elaborate on your points with more details.");
-    } else if (wordCount < 150) {
-      score = Math.floor(Math.random() * 20) + 60; // 60-79
-      feedback.push("Good length, but try to use more complex sentence structures.");
-    } else {
-      score = Math.floor(Math.random() * 20) + 80; // 80-99
-      feedback.push("Great length and detail.");
-    }
-
-    if (!/\b(However|Therefore|Moreover|In addition|Furthermore|Although)\b/i.test(text)) {
-      feedback.push("Try using transition words (e.g., However, Therefore) to connect your ideas.");
-    }
-
-    return {
-      score,
-      wordCount,
-      feedback,
-    };
+    const targetLang = dto.targetLang === "ja" ? "ja" : "en";
+    return targetLang === "ja"
+      ? this.evaluateJapaneseWritingWithRubric(text)
+      : this.evaluateEnglishWritingWithRubric(text);
   }
 }
 

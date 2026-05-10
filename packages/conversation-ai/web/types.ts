@@ -1,6 +1,6 @@
 // Frontend types for @toeicpass/conversation-ai/web
 
-import type { ConversationScenario, ConversationReplyResult } from "../src/types";
+import type { ConversationScenario, ConversationReplyResult, ConversationTargetLanguage } from "../src/types";
 
 /** API functions that conversation components need — injected by the host app */
 export interface ConversationApiFunctions {
@@ -20,7 +20,8 @@ export interface ConversationApiFunctions {
 
 export interface ConversationViewProps {
   locale: "zh" | "ja";
+  targetLanguage: ConversationTargetLanguage;
   api: ConversationApiFunctions;
 }
 
-export type { ConversationScenario, ConversationReplyResult };
+export type { ConversationScenario, ConversationReplyResult, ConversationTargetLanguage };

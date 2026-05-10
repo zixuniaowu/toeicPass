@@ -402,4 +402,8 @@ export class WritingEvaluateDto {
   @IsString()
   @IsNotEmpty()
   text!: string;
+
+  @IsOptional()
+  @IsIn(["en", "ja"])
+  targetLang?: "en" | "ja";
 }

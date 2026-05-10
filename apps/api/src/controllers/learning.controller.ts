@@ -114,8 +114,8 @@ export class LearningController {
   }
 
   @Get("learning/vocabulary/cards")
-  vocabularyCards(@Req() req: ReqShape) {
-    return this.appService.getVocabularyCards(toCtx(req));
+  vocabularyCards(@Req() req: ReqShape, @Query("targetLang") targetLang?: string) {
+    return this.appService.getVocabularyCards(toCtx(req), targetLang === "ja" ? "ja" : "en");
   }
 
   @Post("learning/vocabulary/cards/:cardId/grade")
@@ -124,8 +124,8 @@ export class LearningController {
   }
 
   @Get("learning/grammar/cards")
-  grammarCards(@Req() req: ReqShape) {
-    return this.appService.getGrammarCards(toCtx(req));
+  grammarCards(@Req() req: ReqShape, @Query("targetLang") targetLang?: string) {
+    return this.appService.getGrammarCards(toCtx(req), targetLang === "ja" ? "ja" : "en");
   }
 
   @Post("learning/grammar/cards/:cardId/grade")

@@ -1,7 +1,7 @@
-import type { ShadowingMaterial } from "./shadowing-materials";
+import { defineShadowingMaterials, type ShadowingMaterial } from "./shadowing-materials";
 import { JAPANESE_SHADOWING_MATERIALS_EXPANDED } from "./japanese-shadowing-materials-expanded";
 
-export const JAPANESE_SHADOWING_MATERIALS: ShadowingMaterial[] = [
+export const JAPANESE_SHADOWING_MATERIALS: ShadowingMaterial[] = defineShadowingMaterials([
   ...JAPANESE_SHADOWING_MATERIALS_EXPANDED,
   {
     id: "jp-daily-cafe",
@@ -394,4 +394,4 @@ export const JAPANESE_SHADOWING_MATERIALS: ShadowingMaterial[] = [
       { id: 16, text: "食を通じて日本の文化を深く理解できますね。", translation: "通过饮食可以深入了解日本文化呢。" },
     ],
   },
-];
+]);

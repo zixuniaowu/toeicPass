@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Locale, VocabCard, VocabSummary } from "../../types";
+import type { Locale, TargetLang, VocabCard, VocabSummary } from "../../types";
 import { annotateTerm } from "../../data/word-dictionary";
 import { translateText } from "../../lib/translate";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/Card";
@@ -14,6 +14,7 @@ import styles from "./VocabView.module.css";
 
 interface VocabViewProps {
   locale: Locale;
+  targetLang: TargetLang;
   cards: VocabCard[];
   summary: VocabSummary | null;
   isLoading: boolean;
@@ -35,7 +36,10 @@ const COPY = {
   zh: {
     headerTitle: "背单词",
     subtitle: "TOEIC 核心词汇 - 按目标分数分级 · 间隔重复记忆",
+    jlptHeaderTitle: "JLPT 词汇",
+    jlptSubtitle: "JLPT 核心词汇 - 按 N5/N4/N3 分层 · 间隔重复记忆",
     pronunciationHint: "可选中英文单词，查看音标并点击朗读。",
+    jlptPronunciationHint: "可选中日语词汇，查看音标并点击朗读。",
     dailyGoal: (count: number) => `今日打卡目标：先完成 ${count} 词`,
     dueHint: (due: number) => `当前到期共 ${due} 词。今天先做这一批，剩余词卡后续继续清理。`,
     noDueHint: "今天没有到期词卡，可切到「词汇列表」补新词。",
@@ -51,6 +55,7 @@ const COPY = {
     refresh: "刷新",
     emptyTitle: "暂无词卡",
     emptyHint: "点击「刷新」加载你的 TOEIC 词汇卡片",
+    jlptEmptyHint: "点击「刷新」加载你的 JLPT 词汇卡片",
     todayBatch: (count: number) => `今日任务（${count}）`,
     allDueBatch: (count: number) => `全部到期（${count}）`,
     cardProgress: (current: number, total: number) => `第 ${current} / ${total} 张`,
@@ -64,6 +69,7 @@ const COPY = {
     filterLearning: "学习中",
     filterMastered: "已掌握",
     allPart: "全 Part",
+    allBands: "全部等级",
     filterCount: (count: number) => `共 ${count} 个词卡`,
     dueBadge: "待复习",
     masteredBadge: "已掌握",
@@ -71,6 +77,7 @@ const COPY = {
     speak: "朗读",
     chineseDef: "中文",
     japaneseDef: "日文",
+    meaningLabel: "词义",
     noChineseDef: "暂未收录",
     translating: "翻译中...",
     intervalDays: (days: number) => `间隔 ${days}天`,
@@ -81,6 +88,7 @@ const COPY = {
     legendDue: (count: number) => `待复习 ${count}`,
     partDist: "各 Part 词汇分布",
     scoreDist: "目标分数词汇分布",
+    jlptLevelDist: "JLPT 等级分布",
     wordsCount: (count: number) => `${count} 词`,
     memoryDifficulty: "记忆难度分布",
     diffHard: "困难 (EF < 2.0)",
@@ -93,11 +101,15 @@ const COPY = {
     tip3: "完全掌握 - 延长间隔，减少复习频率",
     tip4: "每天坚持复习到期词卡，效果最佳",
     tip5: "重点关注 Part 5/6 高频词汇，提分最快",
+    jlptTip5: "优先巩固 N5/N4 核心词，再逐步推进到 N3。",
   },
   ja: {
     headerTitle: "単語学習",
     subtitle: "TOEIC コア語彙 - 目標スコア別レベル · 間隔反復で記憶定着",
+    jlptHeaderTitle: "JLPT 語彙",
+    jlptSubtitle: "JLPT コア語彙 - N5/N4/N3 レベル別 · 間隔反復で記憶定着",
     pronunciationHint: "英語/中国語の語句を選択すると IPA と読み上げが使えます。",
+    jlptPronunciationHint: "日本語の語句を選択すると IPA と読み上げが使えます。",
     dailyGoal: (count: number) => `本日の目標：まず ${count} 語を完了`,
     dueHint: (due: number) => `復習期限は合計 ${due} 語。まずこのバッチを終えてから残りを進めます。`,
     noDueHint: "本日の期限カードはありません。「単語一覧」で新規語彙を追加学習してください。",
@@ -113,6 +125,7 @@ const COPY = {
     refresh: "更新",
     emptyTitle: "カードがありません",
     emptyHint: "「更新」を押して TOEIC 語彙カードを読み込んでください",
+    jlptEmptyHint: "「更新」を押して JLPT 語彙カードを読み込んでください",
     todayBatch: (count: number) => `今日タスク（${count}）`,
     allDueBatch: (count: number) => `期限カード（${count}）`,
     cardProgress: (current: number, total: number) => `${current} / ${total} 枚`,
@@ -126,6 +139,7 @@ const COPY = {
     filterLearning: "学習中",
     filterMastered: "定着済み",
     allPart: "全 Part",
+    allBands: "全レベル",
     filterCount: (count: number) => `${count} 件のカード`,
     dueBadge: "要復習",
     masteredBadge: "定着済み",
@@ -133,6 +147,7 @@ const COPY = {
     speak: "再生",
     chineseDef: "中国語",
     japaneseDef: "日本語",
+    meaningLabel: "意味",
     noChineseDef: "未登録",
     translating: "翻訳中...",
     intervalDays: (days: number) => `間隔 ${days}日`,
@@ -143,6 +158,7 @@ const COPY = {
     legendDue: (count: number) => `要復習 ${count}`,
     partDist: "Part 別語彙分布",
     scoreDist: "目標スコア別語彙分布",
+    jlptLevelDist: "JLPT レベル分布",
     wordsCount: (count: number) => `${count} 語`,
     memoryDifficulty: "記憶難易度分布",
     diffHard: "難しい (EF < 2.0)",
@@ -155,6 +171,7 @@ const COPY = {
     tip3: "完全に覚えた - 間隔を伸ばして復習頻度を下げる",
     tip4: "毎日、期限カードを優先すると効果が高い",
     tip5: "Part 5/6 の高頻度語彙を優先すると得点効率が高い",
+    jlptTip5: "まず N5/N4 の基礎語彙を固めてから N3 に進むと安定します。",
   },
 } as const;
 
@@ -183,8 +200,14 @@ function localizePos(pos: string, locale: "zh" | "ja"): string {
   return label ? `${label} (${pos})` : pos;
 }
 
+function getCardTranslation(card: VocabCard, field: "definition" | "example", lang: "zh" | "ja" | "en"): string | null {
+  const value = card.translations?.[field]?.[lang];
+  return typeof value === "string" && value.trim().length > 0 ? value.trim() : null;
+}
+
 export function VocabView({
   locale,
+  targetLang,
   cards,
   summary,
   isLoading,
@@ -200,6 +223,7 @@ export function VocabView({
   tenantCode = "",
 }: VocabViewProps) {
   const copy = COPY[locale];
+  const isJapaneseDeck = targetLang === "ja";
   const selectionScopeRef = useRef<HTMLDivElement | null>(null);
   const [tab, setTab] = useState<VocabTab>("study");
   const [browseFilter, setBrowseFilter] = useState<"all" | "due" | "learning" | "mastered">("all");
@@ -207,9 +231,28 @@ export function VocabView({
   const [browseScoreBand, setBrowseScoreBand] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [studyIndex, setStudyIndex] = useState(0);
-  const [studyScope, setStudyScope] = useState<"today" | "allDue" | "all" | "600" | "700" | "800" | "900">("today");
+  const [studyScope, setStudyScope] = useState<string>("today");
   const [jaDefinitionMap, setJaDefinitionMap] = useState<Record<string, string>>({});
   const [exampleTransMap, setExampleTransMap] = useState<Record<string, string>>({});
+
+  const bandOptions = useMemo(() => {
+    const uniqueBands = Array.from(
+      new Set(cards.map((card) => card.scoreBand).filter((band): band is string => Boolean(band))),
+    );
+    if (uniqueBands.length > 0) {
+      return uniqueBands;
+    }
+    return isJapaneseDeck ? ["N5", "N4", "N3"] : ["600", "700", "800", "900"];
+  }, [cards, isJapaneseDeck]);
+
+  const formatBandLabel = (band: string) => (isJapaneseDeck ? band : `${band}${locale === "ja" ? "点" : "分"}`);
+  const defaultBand = bandOptions[0] ?? (isJapaneseDeck ? "N5" : "600");
+  const headerTitle = isJapaneseDeck ? copy.jlptHeaderTitle : copy.headerTitle;
+  const subtitle = isJapaneseDeck ? copy.jlptSubtitle : copy.subtitle;
+  const pronunciationHint = isJapaneseDeck ? copy.jlptPronunciationHint : copy.pronunciationHint;
+  const emptyHint = isJapaneseDeck ? copy.jlptEmptyHint : copy.emptyHint;
+  const scoreDistTitle = isJapaneseDeck ? copy.jlptLevelDist : copy.scoreDist;
+  const tip5 = isJapaneseDeck ? copy.jlptTip5 : copy.tip5;
 
   const speak = (text: string) => {
     if (!text || typeof window === "undefined" || !("speechSynthesis" in window)) {
@@ -217,7 +260,7 @@ export function VocabView({
     }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US";
+    utterance.lang = isJapaneseDeck ? "ja-JP" : "en-US";
     utterance.rate = 0.9;
     utterance.pitch = 1;
     window.speechSynthesis.speak(utterance);
@@ -234,15 +277,24 @@ export function VocabView({
   const filteredCards = useMemo(
     () =>
       cards.filter((card) => {
+        const searchNeedle = searchQuery.toLowerCase();
+        const translationSearchText = [
+          getCardTranslation(card, "definition", "zh"),
+          getCardTranslation(card, "definition", "ja"),
+          getCardTranslation(card, "definition", "en"),
+          getCardTranslation(card, "example", "zh"),
+          getCardTranslation(card, "example", "ja"),
+          getCardTranslation(card, "example", "en"),
+        ].filter(Boolean).join(" ").toLowerCase();
         if (browseFilter === "due" && !card.due) return false;
         if (browseFilter === "learning" && (card.due || (card.intervalDays >= 14 && (card.lastGrade ?? 0) >= 4))) return false;
         if (browseFilter === "mastered" && !(card.intervalDays >= 14 && (card.lastGrade ?? 0) >= 4)) return false;
-        if (browsePartFilter !== "all" && String(card.sourcePart) !== browsePartFilter) return false;
-        if (browseScoreBand !== "all" && (card.scoreBand ?? "600") !== browseScoreBand) return false;
-        if (searchQuery && !card.term.toLowerCase().includes(searchQuery.toLowerCase()) && !card.definition.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+        if (!isJapaneseDeck && browsePartFilter !== "all" && String(card.sourcePart) !== browsePartFilter) return false;
+        if (browseScoreBand !== "all" && (card.scoreBand ?? defaultBand) !== browseScoreBand) return false;
+        if (searchQuery && !card.term.toLowerCase().includes(searchNeedle) && !card.definition.toLowerCase().includes(searchNeedle) && !translationSearchText.includes(searchNeedle)) return false;
         return true;
       }),
-    [browseFilter, browsePartFilter, browseScoreBand, cards, searchQuery],
+    [browseFilter, browsePartFilter, browseScoreBand, cards, defaultBand, isJapaneseDeck, searchQuery],
   );
 
   // Study mode: default to today's target batch first
@@ -253,11 +305,11 @@ export function VocabView({
     if (studyScope === "allDue" && dueCards.length > 0) {
       return dueCards;
     }
-    if (["600", "700", "800", "900"].includes(studyScope)) {
-      return cards.filter((c) => (c.scoreBand ?? "600") === studyScope);
+    if (bandOptions.includes(studyScope)) {
+      return cards.filter((c) => (c.scoreBand ?? defaultBand) === studyScope);
     }
     return cards;
-  }, [studyScope, todayStudyCards, dueCards, cards]);
+  }, [bandOptions, cards, defaultBand, dueCards, studyScope, todayStudyCards]);
   const currentStudyCard = studyCards[studyIndex] ?? null;
 
   useEffect(() => {
@@ -303,8 +355,8 @@ export function VocabView({
   }).filter((s) => s.total > 0);
 
   // Stats by score band
-  const scoreStats = ["600", "700", "800", "900"].map((band) => {
-    const bandCards = cards.filter((c) => (c.scoreBand ?? "600") === band);
+  const scoreStats = bandOptions.map((band) => {
+    const bandCards = cards.filter((c) => (c.scoreBand ?? defaultBand) === band);
     const bandDue = bandCards.filter((c) => c.due);
     const bandMastered = bandCards.filter((c) => c.intervalDays >= 14 && (c.lastGrade ?? 0) >= 4);
     return { band, total: bandCards.length, due: bandDue.length, mastered: bandMastered.length };
@@ -316,7 +368,7 @@ export function VocabView({
     if (locale !== "ja") {
       return;
     }
-    const pendingCards = visibleBrowseCards.filter((card) => !jaDefinitionMap[card.id]);
+    const pendingCards = visibleBrowseCards.filter((card) => !jaDefinitionMap[card.id] && !getCardTranslation(card, "definition", "ja"));
     if (pendingCards.length === 0) {
       return;
     }
@@ -324,8 +376,9 @@ export function VocabView({
     void Promise.all(
       pendingCards.map(async (card) => {
         const annotation = annotateTerm(card.term);
+        const structuredChineseDefinition = getCardTranslation(card, "definition", "zh");
         const hasChineseInDefinition = /[\u4e00-\u9fff]/.test(card.definition);
-        const sourceText = String(annotation?.cn ?? (hasChineseInDefinition ? card.definition : card.definition)).trim();
+        const sourceText = String(structuredChineseDefinition ?? annotation?.cn ?? card.definition).trim();
         if (!sourceText) {
           return [card.id, card.term] as const;
         }
@@ -352,20 +405,24 @@ export function VocabView({
   // Translate example sentences for browse list
   useEffect(() => {
     const pendingCards = visibleBrowseCards.filter(
-      (card) => card.example && !exampleTransMap[card.id],
+      (card) => card.example && !exampleTransMap[card.id] && !(locale === "ja" ? getCardTranslation(card, "example", "ja") : getCardTranslation(card, "example", "zh")),
     );
     if (pendingCards.length === 0) {
       return;
     }
     let cancelled = false;
-    const targetLang = locale === "ja" ? "ja" : "zh-CN";
+    const targetLangCode = locale === "ja" ? "ja" : "zh-CN";
+    const sourceLangCode = isJapaneseDeck ? "ja" : "en";
     void Promise.all(
       pendingCards.map(async (card) => {
         const example = String(card.example ?? "").trim();
         if (!example) {
           return [card.id, ""] as const;
         }
-        const translated = await translateText(example, targetLang as "ja" | "zh-CN", "en");
+        if (isJapaneseDeck && locale === "ja") {
+          return [card.id, example] as const;
+        }
+        const translated = await translateText(example, targetLangCode as "ja" | "zh-CN", sourceLangCode as "en" | "ja");
         return [card.id, translated] as const;
       }),
     ).then((entries) => {
@@ -383,14 +440,14 @@ export function VocabView({
     return () => {
       cancelled = true;
     };
-  }, [exampleTransMap, locale, visibleBrowseCards]);
+  }, [exampleTransMap, isJapaneseDeck, locale, visibleBrowseCards]);
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2>{copy.headerTitle}</h2>
-        <p className={styles.subtitle}>{copy.subtitle}</p>
-        <p className={styles.pronunciationHint}>{copy.pronunciationHint}</p>
+        <h2>{headerTitle}</h2>
+        <p className={styles.subtitle}>{subtitle}</p>
+        <p className={styles.pronunciationHint}>{pronunciationHint}</p>
       </div>
 
       {dueCount > 0 ? (
@@ -457,7 +514,7 @@ export function VocabView({
               ) : (
                 <div className={styles.emptyStudy}>
                   <h3>{copy.emptyTitle}</h3>
-                  <p>{copy.emptyHint}</p>
+                  <p>{emptyHint}</p>
                 </div>
               )
             ) : (
@@ -488,8 +545,8 @@ export function VocabView({
                 )}
 
                 <div className={styles.scopeSwitch}>
-                  {(["600", "700", "800", "900"] as const).map((band) => {
-                    const bandCount = cards.filter((c) => (c.scoreBand ?? "600") === band).length;
+                  {bandOptions.map((band) => {
+                    const bandCount = cards.filter((c) => (c.scoreBand ?? defaultBand) === band).length;
                     if (bandCount === 0) return null;
                     return (
                       <button
@@ -498,7 +555,7 @@ export function VocabView({
                         className={`${styles.scopeButton} ${studyScope === band ? styles.scopeButtonActive : ""}`}
                         onClick={() => { setStudyScope(band); setStudyIndex(0); }}
                       >
-                        {band}{locale === "ja" ? "点" : "分"} ({bandCount})
+                        {formatBandLabel(band)} ({bandCount})
                       </button>
                     );
                   })}
@@ -577,36 +634,40 @@ export function VocabView({
                 ))}
               </div>
               <div className={styles.filterChips}>
-                <button
-                  className={`${styles.chip} ${browsePartFilter === "all" ? styles.chipActive : ""}`}
-                  onClick={() => setBrowsePartFilter("all")}
-                >
-                  {copy.allPart}
-                </button>
-                {[1, 2, 3, 4, 5, 6, 7].map((p) => (
-                  <button
-                    key={p}
-                    className={`${styles.chip} ${browsePartFilter === String(p) ? styles.chipActive : ""}`}
-                    onClick={() => setBrowsePartFilter(String(p))}
-                  >
-                    P{p}
-                  </button>
-                ))}
+                {!isJapaneseDeck && (
+                  <>
+                    <button
+                      className={`${styles.chip} ${browsePartFilter === "all" ? styles.chipActive : ""}`}
+                      onClick={() => setBrowsePartFilter("all")}
+                    >
+                      {copy.allPart}
+                    </button>
+                    {[1, 2, 3, 4, 5, 6, 7].map((p) => (
+                      <button
+                        key={p}
+                        className={`${styles.chip} ${browsePartFilter === String(p) ? styles.chipActive : ""}`}
+                        onClick={() => setBrowsePartFilter(String(p))}
+                      >
+                        P{p}
+                      </button>
+                    ))}
+                  </>
+                )}
               </div>
               <div className={styles.filterChips}>
                 <button
                   className={`${styles.chip} ${browseScoreBand === "all" ? styles.chipActive : ""}`}
                   onClick={() => setBrowseScoreBand("all")}
                 >
-                  {locale === "ja" ? "全スコア" : "全分数"}
+                  {copy.allBands}
                 </button>
-                {["600", "700", "800", "900"].map((band) => (
+                {bandOptions.map((band) => (
                   <button
                     key={band}
                     className={`${styles.chip} ${browseScoreBand === band ? styles.chipActive : ""}`}
                     onClick={() => setBrowseScoreBand(band)}
                   >
-                    {band}{locale === "ja" ? "点" : "分"}
+                    {formatBandLabel(band)}
                   </button>
                 ))}
               </div>
@@ -617,9 +678,15 @@ export function VocabView({
             <div className={styles.wordList}>
               {visibleBrowseCards.map((card) => {
                 const annotation = annotateTerm(card.term);
+                const structuredChineseDefinition = getCardTranslation(card, "definition", "zh");
+                const structuredJapaneseDefinition = getCardTranslation(card, "definition", "ja");
+                const structuredEnglishDefinition = getCardTranslation(card, "definition", "en");
                 const hasChineseInDefinition = /[\u4e00-\u9fff]/.test(card.definition);
-                const chineseDefinition = annotation?.cn ?? (hasChineseInDefinition ? card.definition : null);
-                const localizedDefinition = locale === "ja" ? jaDefinitionMap[card.id] : chineseDefinition;
+                const chineseDefinition = structuredChineseDefinition ?? annotation?.cn ?? (hasChineseInDefinition ? card.definition : null);
+                const localizedDefinition = locale === "ja" ? (structuredJapaneseDefinition ?? jaDefinitionMap[card.id]) : chineseDefinition;
+                const structuredExampleTranslation = locale === "ja"
+                  ? getCardTranslation(card, "example", "ja")
+                  : getCardTranslation(card, "example", "zh");
                 return (
                   <div key={card.id} className={styles.wordItem}>
                     <div className={styles.wordMain}>
@@ -638,22 +705,24 @@ export function VocabView({
                       </button>
                     </div>
                     <p className={styles.wordDefCn}>
-                      {locale === "ja"
-                        ? `${copy.japaneseDef}：${localizedDefinition ?? copy.translating}`
-                        : `${copy.chineseDef}：${localizedDefinition ?? copy.noChineseDef}`}
+                      {isJapaneseDeck
+                        ? `${copy.meaningLabel}：${locale === "ja" ? (localizedDefinition ?? copy.translating) : (localizedDefinition ?? copy.noChineseDef)}`
+                        : locale === "ja"
+                          ? `${copy.japaneseDef}：${localizedDefinition ?? copy.translating}`
+                          : `${copy.chineseDef}：${localizedDefinition ?? copy.noChineseDef}`}
                     </p>
-                    <p className={styles.wordDef}>{card.definition}</p>
+                    {!isJapaneseDeck && <p className={styles.wordDef}>{structuredEnglishDefinition ?? card.definition}</p>}
                     {card.example && (
                       <>
                         <p className={styles.wordExample}>{card.example}</p>
                         <p className={styles.wordExampleTrans}>
-                          {exampleTransMap[card.id] ?? copy.translating}
+                          {structuredExampleTranslation ?? exampleTransMap[card.id] ?? copy.translating}
                         </p>
                       </>
                     )}
                     <div className={styles.wordMeta}>
-                      <span>Part {card.sourcePart}</span>
-                      {card.scoreBand && <span className={styles.scoreBadge}>{card.scoreBand}{locale === "ja" ? "点" : "分"}</span>}
+                      {!isJapaneseDeck && <span>Part {card.sourcePart}</span>}
+                      {card.scoreBand && <span className={styles.scoreBadge}>{formatBandLabel(card.scoreBand)}</span>}
                       <span>EF {card.easeFactor.toFixed(1)}</span>
                       <span>{copy.intervalDays(card.intervalDays)}</span>
                       {card.tags.length > 0 && <span>{card.tags.join(", ")}</span>}
@@ -699,35 +768,37 @@ export function VocabView({
           </div>
 
           {/* Per-part breakdown */}
-          <div className={styles.statsSection}>
-            <h3>{copy.partDist}</h3>
-            <div className={styles.partGrid}>
-              {partStats.map((s) => (
-                <div key={s.part} className={styles.partCard}>
-                  <div className={styles.partHeader}>
-                    <strong>Part {s.part}</strong>
-                    <span>{copy.wordsCount(s.total)}</span>
+          {!isJapaneseDeck && (
+            <div className={styles.statsSection}>
+              <h3>{copy.partDist}</h3>
+              <div className={styles.partGrid}>
+                {partStats.map((s) => (
+                  <div key={s.part} className={styles.partCard}>
+                    <div className={styles.partHeader}>
+                      <strong>Part {s.part}</strong>
+                      <span>{copy.wordsCount(s.total)}</span>
+                    </div>
+                    <div className={styles.miniBar}>
+                      <div className={styles.miniBarFill} style={{ width: s.total > 0 ? `${(s.mastered / s.total) * 100}%` : "0%" }} />
+                    </div>
+                    <div className={styles.partDetail}>
+                      <span>{copy.legendMastered(s.mastered)}</span>
+                      <span>{copy.legendDue(s.due)}</span>
+                    </div>
                   </div>
-                  <div className={styles.miniBar}>
-                    <div className={styles.miniBarFill} style={{ width: s.total > 0 ? `${(s.mastered / s.total) * 100}%` : "0%" }} />
-                  </div>
-                  <div className={styles.partDetail}>
-                    <span>{copy.legendMastered(s.mastered)}</span>
-                    <span>{copy.legendDue(s.due)}</span>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Score band breakdown */}
           <div className={styles.statsSection}>
-            <h3>{copy.scoreDist}</h3>
+            <h3>{scoreDistTitle}</h3>
             <div className={styles.partGrid}>
               {scoreStats.map((s) => (
                 <div key={s.band} className={styles.partCard}>
                   <div className={styles.partHeader}>
-                    <strong>{s.band}{locale === "ja" ? "点" : "分"}</strong>
+                    <strong>{formatBandLabel(s.band)}</strong>
                     <span>{copy.wordsCount(s.total)}</span>
                   </div>
                   <div className={styles.miniBar}>
@@ -773,7 +844,7 @@ export function VocabView({
               <li>{copy.tip2}</li>
               <li>{copy.tip3}</li>
               <li>{copy.tip4}</li>
-              <li>{copy.tip5}</li>
+              <li>{tip5}</li>
             </ol>
           </div>
         </div>

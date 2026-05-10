@@ -8,6 +8,7 @@ import type {
   NextTask,
   DailyPlan,
   DueCard,
+  GrammarPayload,
   MistakeLibraryItem,
   VocabularyPayload,
   OptionKey,
@@ -306,9 +307,11 @@ export async function saveMistakeNote(
 
 // Vocabulary API
 export async function fetchVocabularyCards(
-  options: RequestOptions
+  options: RequestOptions,
+  targetLang: "en" | "ja" = "en",
 ): Promise<VocabularyPayload | null> {
-  const res = await fetch(`${API_BASE}/learning/vocabulary/cards`, {
+  const query = new URLSearchParams({ targetLang }).toString();
+  const res = await fetch(`${API_BASE}/learning/vocabulary/cards?${query}`, {
     method: "GET",
     headers: createHeaders(options),
   });
@@ -322,6 +325,36 @@ export async function gradeVocabularyCard(
   options: RequestOptions
 ): Promise<{ success: boolean; error?: string }> {
   const res = await fetch(`${API_BASE}/learning/vocabulary/cards/${cardId}/grade`, {
+    method: "POST",
+    headers: createHeaders(options),
+    body: JSON.stringify({ grade }),
+  });
+  if (!res.ok) {
+    handleUnauthorized(res);
+    return { success: false, error: await parseApiError(res) };
+  }
+  return { success: true };
+}
+
+export async function fetchGrammarCards(
+  options: RequestOptions,
+  targetLang: "en" | "ja" = "en",
+): Promise<GrammarPayload | null> {
+  const query = new URLSearchParams({ targetLang }).toString();
+  const res = await fetch(`${API_BASE}/learning/grammar/cards?${query}`, {
+    method: "GET",
+    headers: createHeaders(options),
+  });
+  if (!res.ok) { handleUnauthorized(res); return null; }
+  return res.json();
+}
+
+export async function gradeGrammarCard(
+  cardId: string,
+  grade: number,
+  options: RequestOptions
+): Promise<{ success: boolean; error?: string }> {
+  const res = await fetch(`${API_BASE}/learning/grammar/cards/${cardId}/grade`, {
     method: "POST",
     headers: createHeaders(options),
     body: JSON.stringify({ grade }),

@@ -1,0 +1,112 @@
+{
+  "rules": [
+    {
+      "ruleId": "jlpt-n5-wa-vs-ga",
+      "title": "は と が",
+      "titleCn": "は 和 が 的区别",
+      "titleJa": "は と が",
+      "category": "jlpt-particles",
+      "explanation": "「は」は話題を示し、「が」は新しく提示する情報や主語を強く示すときによく使います。文脈によって焦点が変わります。",
+      "explanationCn": "「は」用于提示话题，「が」更常用于强调主语或新信息。两者的差别取决于句子的关注点。",
+      "explanationJa": "「は」は話題を示し、「が」は新しく提示する情報や主語を強く示すときによく使います。文脈によって焦点が変わります。",
+      "examples": [
+        "わたしは がくせいです。→ 话题是“我”。",
+        "だれが きましたか。→ 山田さんが きました。"
+      ],
+      "sourcePart": 0,
+      "difficulty": 1,
+      "jlptLevel": "N5",
+      "targetLanguage": "ja"
+    },
+    {
+      "ruleId": "jlpt-n5-ni-vs-de",
+      "title": "に と で",
+      "titleCn": "に 和 で 的区别",
+      "titleJa": "に と で",
+      "category": "jlpt-particles",
+      "explanation": "「に」は到着点・存在場所・时间点などを表し、「で」は动作发生的场所、方法、手段を表します。",
+      "explanationCn": "「に」表示到达点、存在地点、时间点等；「で」表示动作发生的场所、方式或手段。",
+      "explanationJa": "「に」は到着点・存在場所・時間点などを表し、「で」は動作が起こる場所、方法、手段を表します。",
+      "examples": [
+        "がっこうに いきます。→ 到达点。",
+        "きっさてんで べんきょうします。→ 动作发生地点。"
+      ],
+      "sourcePart": 0,
+      "difficulty": 1,
+      "jlptLevel": "N5",
+      "targetLanguage": "ja"
+    },
+    {
+      "ruleId": "jlpt-n5-te-kudasai",
+      "title": "〜てください",
+      "titleCn": "请做……",
+      "titleJa": "〜てください",
+      "category": "jlpt-basic-patterns",
+      "explanation": "动词的て形后接「ください」，表示礼貌地请求对方做某事，是 N5 高频句型。",
+      "explanationCn": "动词て形后接「ください」，表示礼貌地请求对方做某事，是 N5 高频句型。",
+      "explanationJa": "動詞のて形に「ください」を付けると、相手に丁寧に依頼できます。N5 で頻出の形です。",
+      "examples": [
+        "ここに なまえを かいてください。",
+        "もう いちど いってください。"
+      ],
+      "sourcePart": 0,
+      "difficulty": 1,
+      "jlptLevel": "N5",
+      "targetLanguage": "ja"
+    },
+    {
+      "ruleId": "jlpt-n4-tewa-ikemasen",
+      "title": "〜てはいけません",
+      "titleCn": "不可以做……",
+      "titleJa": "〜てはいけません",
+      "category": "jlpt-rules",
+      "explanation": "「〜てはいけません」表示禁止，相当于“不能…… / 不可以……”。比口语的「〜ちゃだめ」更正式。",
+      "explanationCn": "「〜てはいけません」表示禁止，相当于“不能…… / 不可以……”，比口语的「〜ちゃだめ」更正式。",
+      "explanationJa": "「〜てはいけません」は禁止を表します。口語の「〜ちゃだめ」よりもフォーマルです。",
+      "examples": [
+        "ここで しゃしんを とっては いけません。",
+        "しけんちゅうに けいたいを みては いけません。"
+      ],
+      "sourcePart": 0,
+      "difficulty": 2,
+      "jlptLevel": "N4",
+      "targetLanguage": "ja"
+    },
+    {
+      "ruleId": "jlpt-n4-koto-ga-aru",
+      "title": "〜たことがある",
+      "titleCn": "曾经做过……",
+      "titleJa": "〜たことがある",
+      "category": "jlpt-experience",
+      "explanation": "动词た形后接「ことがある」，表示过去曾有过某种经历。回答次数或经验时经常使用。",
+      "explanationCn": "动词た形后接「ことがある」，表示过去曾经有过某种经历。",
+      "explanationJa": "動詞のた形に「ことがある」を付けると、過去の経験を表せます。",
+      "examples": [
+        "日本へ いったことが あります。",
+        "すしを つくったことが ありますか。"
+      ],
+      "sourcePart": 0,
+      "difficulty": 2,
+      "jlptLevel": "N4",
+      "targetLanguage": "ja"
+    },
+    {
+      "ruleId": "jlpt-n3-you-ni-suru",
+      "title": "〜ようにする",
+      "titleCn": "尽量做到…… / 养成……习惯",
+      "titleJa": "〜ようにする",
+      "category": "jlpt-habit-change",
+      "explanation": "「〜ようにする」表示有意识地努力去做某事，常用于习惯改变、目标或自我要求。",
+      "explanationCn": "「〜ようにする」表示有意识地努力去做某事，常用于习惯改变、目标或自我要求。",
+      "explanationJa": "「〜ようにする」は、意識してそうするよう努めることを表します。習慣づけや自己管理でよく使います。",
+      "examples": [
+        "まいにち 日本語で にっきを かくようにしています。",
+        "ねるまえに スマホを みないようにしてください。"
+      ],
+      "sourcePart": 0,
+      "difficulty": 3,
+      "jlptLevel": "N3",
+      "targetLanguage": "ja"
+    }
+  ]
+}

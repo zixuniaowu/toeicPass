@@ -1,18 +1,19 @@
 "use client";
 
 import { useMemo } from "react";
-import type { Locale } from "../../types";
+import type { Locale, TargetLang } from "../../types";
 import * as api from "../../lib/api";
 import { ConversationView as ConversationViewBase } from "@toeicpass/conversation-ai/web";
 import type { ConversationApiFunctions } from "@toeicpass/conversation-ai/web";
 
 interface ConversationViewProps {
   locale: Locale;
+  targetLang: TargetLang;
   token: string;
   tenantCode: string;
 }
 
-export function ConversationView({ locale, token, tenantCode }: ConversationViewProps) {
+export function ConversationView({ locale, targetLang, token, tenantCode }: ConversationViewProps) {
   const conversationApi = useMemo<ConversationApiFunctions>(() => {
     const opts = { token, tenantCode };
     return {
@@ -21,5 +22,5 @@ export function ConversationView({ locale, token, tenantCode }: ConversationView
     };
   }, [token, tenantCode]);
 
-  return <ConversationViewBase locale={locale} api={conversationApi} />;
+  return <ConversationViewBase locale={locale} targetLanguage={targetLang} api={conversationApi} />;
 }

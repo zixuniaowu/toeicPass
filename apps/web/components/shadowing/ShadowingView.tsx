@@ -64,6 +64,25 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
     return isJa ? ja : zh;
   };
 
+  const getUiTranslation = (translations?: { zh?: string; ja?: string; en?: string }) => {
+    if (!translations) return "";
+    if (uiLang === "ja") return translations.ja ?? translations.zh ?? translations.en ?? "";
+    if (uiLang === "en") return translations.en ?? translations.zh ?? translations.ja ?? "";
+    return translations.zh ?? translations.ja ?? translations.en ?? "";
+  };
+
+  const getMaterialSupportTitle = (material: { title: string; translations?: { zh?: string; ja?: string; en?: string } }) => {
+    const translated = getUiTranslation(material.translations);
+    return translated && translated !== material.title ? translated : "";
+  };
+
+  const getMaterialHeading = (material: { title: string; translations?: { zh?: string; ja?: string; en?: string } }) => {
+    if (uiLang === "zh") {
+      return getUiTranslation(material.translations) || material.title;
+    }
+    return material.title;
+  };
+
 
   // ── Language selection ──────────────────────────────────────────────────
   const [trainingLanguage, setTrainingLanguage] = useState<TrainingLanguage>("en");
@@ -287,7 +306,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
     const customMaterial: ShadowingMaterial = {
       id: `youtube-${videoId}-${Date.now()}`,
       title,
-      titleCn: title,
+      translations: { zh: title },
       source: "YouTube (manual script)",
       category: "speech",
       difficulty: 2,
@@ -331,7 +350,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
       const autoMaterial: ShadowingMaterial = {
         id: `youtube-${videoId}-${Date.now()}`,
         title,
-        titleCn: title,
+        translations: { zh: title },
         source: `YouTube (${payload.sourceLanguage ?? "subtitle"})`,
         category: "speech",
         difficulty: 2,
@@ -405,7 +424,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
       const importedMaterial: ShadowingMaterial = {
         id: videoId ? `youtube-${videoId}-${Date.now()}` : `subtitle-${Date.now()}`,
         title,
-        titleCn: title,
+        translations: { zh: title },
         source: `Subtitle file (${file.name})`,
         category: "speech",
         difficulty: 2,
@@ -475,7 +494,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
       const importedMaterial: ShadowingMaterial = {
         id: videoId ? `youtube-${videoId}-${Date.now()}` : `subtitle-${Date.now()}`,
         title,
-        titleCn: title,
+        translations: { zh: title },
         source: videoId ? "YouTube Transcript (pasted)" : "Transcript (pasted)",
         category: "speech",
         difficulty: 2,
@@ -525,14 +544,14 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
         const news: NewsMaterial[] = data.articles.map((a: { id: string; title: string; description: string; source: string; date: string; sentences: Array<{ id: number; text: string }> }) => ({
           id: a.id,
           title: a.title,
-          titleCn: a.description.substring(0, 60) + "...",
+          translations: { zh: a.description.substring(0, 60) + "..." },
           source: a.source,
           date: a.date,
           difficulty: 2,
           sentences: a.sentences.map((s) => ({
             id: s.id,
             text: s.text,
-            translation: "",
+            translations: {},
           })),
         }));
         setNewsArticles(news);
@@ -551,7 +570,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
     const material: ShadowingMaterial = {
       id: article.id,
       title: article.title,
-      titleCn: article.titleCn,
+      translations: article.translations,
       source: article.source,
       category: "speech",
       difficulty: article.difficulty as 1 | 2 | 3,
@@ -654,7 +673,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
               <Card key={material.id} className={styles.materialCard}>
                 <div className={styles.materialHeader}>
                   <h3>{material.title}</h3>
-                  <span className={styles.titleCn}>{isJa ? material.title : material.titleCn}</span>
+                  {getMaterialSupportTitle(material) && <span className={styles.titleCn}>{getMaterialSupportTitle(material)}</span>}
                 </div>
                 <p className={styles.source}>{material.source}</p>
                 <div className={styles.materialMeta}>
@@ -688,7 +707,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
                 <Card key={article.id} className={styles.materialCard}>
                   <div className={styles.materialHeader}>
                     <h3>{article.title}</h3>
-                    <span className={styles.titleCn}>{isJa ? article.title : article.titleCn}</span>
+                    {getMaterialSupportTitle(article) && <span className={styles.titleCn}>{getMaterialSupportTitle(article)}</span>}
                   </div>
                   <p className={styles.source}>{article.source} · {article.date}</p>
                   <div className={styles.materialMeta}>
@@ -1186,7 +1205,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
           <div className={styles.sessionHeader}>
             <Button variant="secondary" onClick={handleBack}>{l("返回列表", "一覧へ戻る")}</Button>
             <div className={styles.sessionTitle}>
-              <h2>{isJa ? activeMaterial.title : activeMaterial.titleCn}</h2>
+              <h2>{getMaterialHeading(activeMaterial)}</h2>
               <span className={styles.progressLabel}>{isJa ? `${currentIndex + 1} / ${total} 文 · 完了 ${progress}` : `第 ${currentIndex + 1} / ${total} 句 · 已完成 ${progress}`}</span>
             </div>
           </div>

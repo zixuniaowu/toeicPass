@@ -192,11 +192,18 @@ export type VocabCard = {
   sourcePart: number;
   tags: string[];
   scoreBand?: string;
+  targetLanguage?: "en" | "ja";
   easeFactor: number;
   intervalDays: number;
   dueAt: string;
   lastGrade?: number;
   due: boolean;
+  translations?: VocabCardTranslations;
+};
+
+export type VocabCardTranslations = {
+  definition?: Partial<Record<"zh" | "ja" | "en", string>>;
+  example?: Partial<Record<"zh" | "ja" | "en", string>>;
 };
 
 export type VocabSummary = {
@@ -211,6 +218,40 @@ export type VocabularyPayload = {
   cards: VocabCard[];
 };
 
+export type GrammarCard = {
+  id: string;
+  ruleId: string;
+  targetLanguage?: "en" | "ja";
+  jlptLevel?: string;
+  title: string;
+  titleCn: string;
+  titleJa: string;
+  category: string;
+  explanation: string;
+  explanationCn: string;
+  explanationJa: string;
+  examples: string[];
+  sourcePart: number;
+  difficulty: number;
+  easeFactor: number;
+  intervalDays: number;
+  dueAt: string;
+  lastGrade?: number;
+  due: boolean;
+};
+
+export type GrammarSummary = {
+  total: number;
+  due: number;
+  learning: number;
+  mastered: number;
+};
+
+export type GrammarPayload = {
+  summary: GrammarSummary;
+  cards: GrammarCard[];
+};
+
 // Constants
 export const LISTENING_PARTS = [1, 2, 3, 4] as const;
 export const READING_PARTS = [5, 6, 7] as const;
@@ -221,6 +262,7 @@ export const TABS: Array<{ key: ViewTab; label: string; group?: string }> = [
   { key: "shadowing", label: "跟读练习", group: "practice" },
   { key: "mock", label: "模拟考试", group: "practice" },
   { key: "grammar", label: "语法练习", group: "practice" },
+  { key: "writing", label: "写作练习", group: "practice" },
   { key: "conversation", label: "AI对话", group: "practice" },
   { key: "mistakes", label: "错题集", group: "review" },
   { key: "vocab", label: "背单词", group: "review" },

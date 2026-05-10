@@ -3,19 +3,73 @@
  * Used as fallback when the live /api/news endpoint is unavailable.
  */
 
+import type { ShadowingTranslations } from "./shadowing-materials";
+
 export type NewsMaterial = {
   id: string;
   title: string;
-  titleCn: string;
+  translations: ShadowingTranslations;
   source: string;
   date: string;
   difficulty: number;
-  sentences: Array<{ id: number; text: string; translation: string }>;
+  sentences: Array<{ id: number; text: string; translations: ShadowingTranslations }>;
 };
+
+type NewsMaterialInput = Omit<NewsMaterial, "translations" | "sentences"> & {
+  titleCn?: string;
+  translations?: ShadowingTranslations;
+  sentences: Array<
+    Omit<NewsMaterial["sentences"][number], "translations"> & {
+      translation?: string;
+      translations?: ShadowingTranslations;
+    }
+  >;
+};
+
+function normalizeTranslationValue(value: unknown): string | undefined {
+  const text = String(value ?? "").trim();
+  return text.length > 0 ? text : undefined;
+}
+
+function defineNewsMaterials(materials: NewsMaterialInput[]): NewsMaterial[] {
+  return materials.map((material) => ({
+    id: material.id,
+    title: material.title,
+    translations: {
+      ...(normalizeTranslationValue(material.translations?.zh ?? material.titleCn)
+        ? { zh: normalizeTranslationValue(material.translations?.zh ?? material.titleCn) }
+        : {}),
+      ...(normalizeTranslationValue(material.translations?.ja)
+        ? { ja: normalizeTranslationValue(material.translations?.ja) }
+        : {}),
+      ...(normalizeTranslationValue(material.translations?.en)
+        ? { en: normalizeTranslationValue(material.translations?.en) }
+        : {}),
+    },
+    source: material.source,
+    date: material.date,
+    difficulty: material.difficulty,
+    sentences: material.sentences.map((sentence) => ({
+      id: sentence.id,
+      text: sentence.text,
+      translations: {
+        ...(normalizeTranslationValue(sentence.translations?.zh ?? sentence.translation)
+          ? { zh: normalizeTranslationValue(sentence.translations?.zh ?? sentence.translation) }
+          : {}),
+        ...(normalizeTranslationValue(sentence.translations?.ja)
+          ? { ja: normalizeTranslationValue(sentence.translations?.ja) }
+          : {}),
+        ...(normalizeTranslationValue(sentence.translations?.en)
+          ? { en: normalizeTranslationValue(sentence.translations?.en) }
+          : {}),
+      },
+    })),
+  }));
+}
 
 export function getDailyNews(): NewsMaterial[] {
   const today = new Date().toLocaleDateString();
-  return [
+  return defineNewsMaterials([
     {
       id: "news-tech-ai",
       title: "AI Technology Transforms Global Workforce",
@@ -116,12 +170,12 @@ export function getDailyNews(): NewsMaterial[] {
         { id: 10, text: "Funding for space research has received broad bipartisan support.", translation: "太空研究的资金获得了广泛的两党支持。" },
       ],
     },
-  ];
+  ]);
 }
 
 export function getDailyNewsJa(): NewsMaterial[] {
   const today = new Date().toLocaleDateString();
-  return [
+  return defineNewsMaterials([
     {
       id: "news-ja-tech",
       title: "AI技術が日本の職場を変革",
@@ -202,5 +256,5 @@ export function getDailyNewsJa(): NewsMaterial[] {
         { id: 10, text: "国際的な競争力を強化するため、産学官の連携が不可欠です。", translation: "为强化国际竞争力，产学官合作不可或缺。" },
       ],
     },
-  ];
+  ]);
 }

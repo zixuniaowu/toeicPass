@@ -671,7 +671,9 @@ async function translateSentences(sentences) {
     }
     translated.push({
       ...sentence,
-      translation: cache.get(key) || "",
+      translations: {
+        ...(cache.get(key) ? { zh: cache.get(key) } : {}),
+      },
     });
   }
   return translated;
@@ -843,7 +845,9 @@ async function main() {
     materials.push({
       id: `youtube-${video.id}-seed`,
       title: video.title || `TED ${video.id}`,
-      titleCn: video.title || `TED ${video.id}`,
+      translations: {
+        zh: video.title || `TED ${video.id}`,
+      },
       source: "TED YouTube Latest",
       category: "ted",
       difficulty: 2,

@@ -1,7 +1,9 @@
+export type ShadowingTranslations = Partial<Record<"zh" | "ja" | "en", string>>;
+
 export type ShadowingMaterial = {
   id: string;
   title: string;
-  titleCn: string;
+  translations: ShadowingTranslations;
   source: string;
   category: "speech" | "drama" | "ted";
   difficulty: 1 | 2 | 3;
@@ -12,13 +14,60 @@ export type ShadowingMaterial = {
 export type ShadowingSentence = {
   id: number;
   text: string;
-  translation: string;
-  translationEn?: string;
+  translations: ShadowingTranslations;
   startSec?: number;
   endSec?: number;
 };
 
-export const SHADOWING_MATERIALS: ShadowingMaterial[] = [
+type ShadowingMaterialInput = Omit<ShadowingMaterial, "translations" | "sentences"> & {
+  titleCn?: string;
+  translations?: ShadowingTranslations;
+  sentences: Array<
+    Omit<ShadowingSentence, "translations"> & {
+      translation?: string;
+      translationEn?: string;
+      translations?: ShadowingTranslations;
+    }
+  >;
+};
+
+function normalizeTranslationValue(value: unknown): string | undefined {
+  const text = String(value ?? "").trim();
+  return text.length > 0 ? text : undefined;
+}
+
+function normalizeShadowingTranslations(
+  translations?: ShadowingTranslations,
+  legacyZh?: unknown,
+  legacyEn?: unknown,
+): ShadowingTranslations {
+  return {
+    ...(normalizeTranslationValue(translations?.zh ?? legacyZh) ? { zh: normalizeTranslationValue(translations?.zh ?? legacyZh) } : {}),
+    ...(normalizeTranslationValue(translations?.ja) ? { ja: normalizeTranslationValue(translations?.ja) } : {}),
+    ...(normalizeTranslationValue(translations?.en ?? legacyEn) ? { en: normalizeTranslationValue(translations?.en ?? legacyEn) } : {}),
+  };
+}
+
+export function defineShadowingMaterials(materials: ShadowingMaterialInput[]): ShadowingMaterial[] {
+  return materials.map((material) => ({
+    id: material.id,
+    title: material.title,
+    translations: normalizeShadowingTranslations(material.translations, material.titleCn),
+    source: material.source,
+    category: material.category,
+    difficulty: material.difficulty,
+    ...(material.youtubeVideoId ? { youtubeVideoId: material.youtubeVideoId } : {}),
+    sentences: material.sentences.map((sentence) => ({
+      id: sentence.id,
+      text: sentence.text,
+      translations: normalizeShadowingTranslations(sentence.translations, sentence.translation, sentence.translationEn),
+      ...(typeof sentence.startSec === "number" ? { startSec: sentence.startSec } : {}),
+      ...(typeof sentence.endSec === "number" ? { endSec: sentence.endSec } : {}),
+    })),
+  }));
+}
+
+export const SHADOWING_MATERIALS: ShadowingMaterial[] = defineShadowingMaterials([
   // ============================================================
   // EXISTING MATERIALS (5)
   // ============================================================
@@ -2355,4 +2404,4 @@ export const SHADOWING_MATERIALS: ShadowingMaterial[] = [
       { id: 40, text: "Congratulations, Class of 2019. Get out there and build the future. The world needs your energy, your passion, and your impatience for progress.", translation: "祝贺2019届毕业生。走出去，建设未来。世界需要你们的活力、热情和对进步的迫不及待。" }
     ],
   },
-];
+]);

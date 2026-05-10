@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef, lazy, Suspense } from "react";
-import type { Locale, ViewTab, NextTask } from "../types";
+import type { Locale, ViewTab, NextTask, UiLang, TargetLang } from "../types";
 import { TABS } from "../types";
 import { useAuth } from "../hooks/useAuth";
 import { useSession } from "../hooks/useSession";
@@ -15,6 +15,7 @@ import { createT } from "../lib/i18n";
 import { AppShell } from "./layout/AppShell";
 import { CardSkeleton } from "./ui/Skeleton";
 import { LoginView } from "./auth/LoginView";
+import { LanguageSetupPopup } from "./auth/LanguageSetupPopup";
 import { ViewErrorBoundary } from "./error/ViewErrorBoundary";
 import { ToastContainer } from "./ui/Toast";
 import { useToast } from "../hooks/useToast";
@@ -30,6 +31,9 @@ const MockExamView = lazy(() => import("./mock/MockExamView").then(m => ({ defau
 
 const SettingsView = lazy(() => import("./settings/SettingsView").then(m => ({ default: m.SettingsView })));
 const PracticeView = lazy(() => import("./practice/PracticeView").then(m => ({ default: m.PracticeView })));
+const JlptGrammarView = lazy(() => import("./grammar/JlptGrammarView").then(m => ({ default: m.JlptGrammarView })));
+const JlptReadingView = lazy(() => import("./reading/JlptReadingView").then(m => ({ default: m.JlptReadingView })));
+const WritingView = lazy(() => import("./writing/WritingView").then(m => ({ default: m.WritingView })));
 const SubscriptionView = lazy(() => import("./subscription/SubscriptionView").then(m => ({ default: m.SubscriptionView })));
 const AdManagerView = lazy(() => import("./admin/AdManagerView").then(m => ({ default: m.AdManagerView })));
 const ConversationView = lazy(() => import("./conversation/ConversationView").then(m => ({ default: m.ConversationView })));
@@ -97,7 +101,7 @@ export function ClientHome() {
   const [activeView, setActiveView] = useState<ViewTab>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("lb.view") as ViewTab | null;
-      if (saved && ["listening", "grammar", "textcompletion", "reading", "shadowing", "mock", "mistakes", "vocab", "settings", "subscription"].includes(saved)) {
+      if (saved && ["listening", "grammar", "textcompletion", "reading", "shadowing", "mock", "mistakes", "vocab", "writing", "settings", "subscription"].includes(saved)) {
         return saved;
       }
     }
@@ -105,7 +109,16 @@ export function ClientHome() {
   });
 
   // New 3-dimensional language configuration
-  const { langConfig, locale, setUiLang, setNativeLang, setTargetLang } = useLangConfig();
+  const {
+    langConfig,
+    locale,
+    isFirstVisit,
+    setIsFirstVisit,
+    setLangConfig,
+    setUiLang,
+    setNativeLang,
+    setTargetLang,
+  } = useLangConfig();
   const t = createT(langConfig.uiLang);
 
   const [theme, setTheme] = useState<ThemeMode>(() => {
@@ -128,7 +141,13 @@ export function ClientHome() {
   const toast = useToast();
   const session = useSession(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
-  const vocab = useVocab(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
+  const vocab = useVocab(
+    auth.ensureSession,
+    auth.getRequestOptions,
+    auth.setMessage,
+    locale,
+    langConfig.targetLang,
+  );
   const analytics = useAnalytics(auth.getRequestOptions);
   const subscription = useSubscription(auth.getRequestOptions, auth.isLoggedIn);
 
@@ -354,6 +373,15 @@ export function ClientHome() {
     auth.logout();
   }, [auth, session]);
 
+  const handleLanguageSetup = useCallback((uiLang: UiLang, targetLang: TargetLang) => {
+    setLangConfig({
+      uiLang,
+      nativeLang: uiLang,
+      targetLang,
+    });
+    setIsFirstVisit(false);
+  }, [setIsFirstVisit, setLangConfig]);
+
   const handleMistakePractice = useCallback(async (partNo: number) => {
     await handleStartMock(COPY[locale].jumpMockPart(partNo));
   }, [handleStartMock, locale]);
@@ -429,7 +457,7 @@ export function ClientHome() {
       void vocab.loadCards();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeView, mistakes.loadMistakes, vocab.loadCards]);
+  }, [activeView, langConfig.targetLang, mistakes.loadMistakes, vocab.loadCards]);
 
   const renderView = () => {
     switch (activeView) {
@@ -479,6 +507,7 @@ export function ClientHome() {
         return (
           <ConversationView
             locale={locale}
+            targetLang={langConfig.targetLang}
             token={auth.token}
             tenantCode={auth.credentials.tenantCode}
           />
@@ -520,6 +549,7 @@ export function ClientHome() {
         return (
           <VocabView
             locale={locale}
+            targetLang={langConfig.targetLang}
             cards={vocab.cards}
             summary={vocab.summary}
             isLoading={vocab.isLoading}
@@ -559,9 +589,7 @@ export function ClientHome() {
           />
         );
       case "listening":
-      case "grammar":
       case "textcompletion":
-      case "reading":
         return (
           <PracticeView
             type={activeView as "listening" | "grammar" | "textcompletion" | "reading"}
@@ -586,8 +614,44 @@ export function ClientHome() {
             tenantCode={auth.credentials.tenantCode}
           />
         );
-      case "writing":
-        // Redirect legacy "writing" to grammar practice
+      case "reading":
+        if (langConfig.targetLang === "ja") {
+          return <JlptReadingView locale={locale} />;
+        }
+        return (
+          <PracticeView
+            type="reading"
+            locale={locale}
+            activeSession={session.activeSession}
+            currentQuestion={session.currentQuestion}
+            currentQuestionIndex={session.currentQuestionIndex}
+            totalQuestions={session.totalQuestions}
+            answeredCount={session.answeredCount}
+            answerMap={session.answerMap}
+            practiceHint={session.practiceHint}
+            isSubmitting={session.isSubmitting}
+            partFilter={practicePartFilter}
+            onPartFilterChange={setPracticePartFilter}
+            onStartPractice={() => void handleStartPractice()}
+            onSelectAnswer={session.selectAnswer}
+            onPrevious={session.goToPrevious}
+            onNext={session.goToNext}
+            onSubmit={() => void handleSubmitPractice()}
+            showAds={subscription.showAds}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
+          />
+        );
+      case "grammar":
+        if (langConfig.targetLang === "ja") {
+          return (
+            <JlptGrammarView
+              locale={locale}
+              token={auth.token}
+              tenantCode={auth.credentials.tenantCode}
+            />
+          );
+        }
         return (
           <PracticeView
             type="grammar"
@@ -610,6 +674,16 @@ export function ClientHome() {
             showAds={subscription.showAds}
             token={auth.token}
             tenantCode={auth.credentials.tenantCode}
+          />
+        );
+      case "writing":
+        return (
+          <WritingView
+            locale={locale}
+            targetLang={langConfig.targetLang}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
+            onOpenView={handleViewChange}
           />
         );
       default:
@@ -639,57 +713,61 @@ export function ClientHome() {
           onLineLogin={handleLineLogin}
           onLocaleChange={setUiLang}
         />
+        {isFirstVisit && <LanguageSetupPopup onConfirm={handleLanguageSetup} />}
         <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
       </>
     );
   }
 
   return (
-    <AppShell
-      activeView={activeView}
-      onViewChange={handleViewChange}
-      isLoggedIn={auth.isLoggedIn}
-      message={auth.message}
-      onLogout={handleLogout}
-      uiLang={langConfig.uiLang}
-      targetLang={langConfig.targetLang}
-      onUiLangChange={setUiLang}
-      onTargetLangChange={setTargetLang}
-      planCode={subscription.planCode}
-      isAdmin={subscription.isAdmin}
-    >
-      {subscription.showAds && (
-        <AdBanner
-          locale={locale}
-          token={auth.token}
-          tenantCode={auth.credentials.tenantCode}
-          slot="banner_top"
-          showAds={subscription.showAds}
-        />
-      )}
-      <ViewErrorBoundary locale={locale}>
-        <Suspense fallback={<ViewFallback />}>
-          {renderView()}
-        </Suspense>
-      </ViewErrorBoundary>
-      {subscription.showAds && (
-        <NativeFeedAd
-          locale={locale}
-          token={auth.token}
-          tenantCode={auth.credentials.tenantCode}
-          showAds={subscription.showAds}
-        />
-      )}
-      <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
-      {showInterstitial && (
-        <InterstitialAd
-          locale={locale}
-          token={auth.token}
-          tenantCode={auth.credentials.tenantCode}
-          showAds={subscription.showAds}
-          onClose={() => setShowInterstitial(false)}
-        />
-      )}
-    </AppShell>
+    <>
+      <AppShell
+        activeView={activeView}
+        onViewChange={handleViewChange}
+        isLoggedIn={auth.isLoggedIn}
+        message={auth.message}
+        onLogout={handleLogout}
+        uiLang={langConfig.uiLang}
+        targetLang={langConfig.targetLang}
+        onUiLangChange={setUiLang}
+        onTargetLangChange={setTargetLang}
+        planCode={subscription.planCode}
+        isAdmin={subscription.isAdmin}
+      >
+        {subscription.showAds && (
+          <AdBanner
+            locale={locale}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
+            slot="banner_top"
+            showAds={subscription.showAds}
+          />
+        )}
+        <ViewErrorBoundary locale={locale}>
+          <Suspense fallback={<ViewFallback />}>
+            {renderView()}
+          </Suspense>
+        </ViewErrorBoundary>
+        {subscription.showAds && (
+          <NativeFeedAd
+            locale={locale}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
+            showAds={subscription.showAds}
+          />
+        )}
+        <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
+        {showInterstitial && (
+          <InterstitialAd
+            locale={locale}
+            token={auth.token}
+            tenantCode={auth.credentials.tenantCode}
+            showAds={subscription.showAds}
+            onClose={() => setShowInterstitial(false)}
+          />
+        )}
+      </AppShell>
+      {isFirstVisit && <LanguageSetupPopup onConfirm={handleLanguageSetup} />}
+    </>
   );
 }

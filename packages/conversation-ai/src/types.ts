@@ -1,5 +1,7 @@
 // ===== Conversation AI Shared Types =====
 
+export type ConversationTargetLanguage = "en" | "ja";
+
 /**
  * A conversation practice scenario definition.
  * Each scenario provides context for the AI to role-play a specific TOEIC-relevant situation.
@@ -7,14 +9,16 @@
 export interface ConversationScenario {
   /** Unique scenario identifier (e.g. "office-meeting"). */
   id: string;
-  /** English title. */
+  /** Display title for Japanese UI. English scenarios keep English titles here. */
   title: string;
   /** Chinese title. */
   titleCn: string;
   /** Brief description of the scenario for display. */
   description: string;
-  /** Detailed context used in the AI system prompt. */
+  /** Detailed context used in the AI system prompt and UI hint. */
   context: string;
+  /** Which language the learner should practice in this scenario. */
+  targetLanguage: ConversationTargetLanguage;
   /** Difficulty level: 1 (easy), 2 (medium), 3 (hard). */
   difficulty: 1 | 2 | 3;
   /** Scenario category, used for rule-based response selection. */

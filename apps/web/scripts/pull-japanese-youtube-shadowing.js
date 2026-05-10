@@ -446,8 +446,10 @@ async function translateSentences(sentences) {
     }
     translated.push({
       ...sentence,
-      translation: cacheZh.get(key) || "",
-      translationEn: cacheEn.get(key) || "",
+      translations: {
+        ...(cacheZh.get(key) ? { zh: cacheZh.get(key) } : {}),
+        ...(cacheEn.get(key) ? { en: cacheEn.get(key) } : {}),
+      },
     });
   }
   return translated;
@@ -624,7 +626,9 @@ async function main() {
     materials.push({
       id: `youtube-ja-${video.id}-seed`,
       title: video.title || `Japanese ${video.id}`,
-      titleCn: video.title || `日本語 ${video.id}`,
+      translations: {
+        zh: video.title || `日本語 ${video.id}`,
+      },
       source: "Japanese YouTube Latest",
       category: "speech",
       difficulty: 2,

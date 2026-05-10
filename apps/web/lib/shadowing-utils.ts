@@ -2,7 +2,7 @@
  * Pure utility functions for shadowing practice.
  * No React dependencies — safe to import in server/client contexts.
  */
-import type { ShadowingMaterial } from "../data/shadowing-materials";
+import type { ShadowingMaterial, ShadowingTranslations } from "../data/shadowing-materials";
 import type { Locale } from "../types";
 import tedLatestShadowing from "../data/ted-latest-shadowing.json";
 import jaYoutubeShadowing from "../data/japanese-youtube-shadowing.json";
@@ -25,8 +25,46 @@ export type TranscriptCue = {
 type TedLatestSnapshot = {
   generatedAt?: string;
   itemCount?: number;
-  items?: ShadowingMaterial[];
+  items?: SnapshotMaterialInput[];
 };
+
+type SnapshotMaterialInput = Omit<ShadowingMaterial, "translations" | "sentences"> & {
+  translations?: ShadowingTranslations;
+  sentences: Array<
+    Omit<ShadowingMaterial["sentences"][number], "translations"> & {
+      translations?: ShadowingTranslations;
+    }
+  >;
+};
+
+type ImportedShadowingMaterialInput = Omit<ShadowingMaterial, "translations" | "sentences"> & {
+  titleCn?: string;
+  translations?: ShadowingTranslations;
+  sentences: Array<
+    Omit<ShadowingMaterial["sentences"][number], "translations"> & {
+      translation?: string;
+      translationEn?: string;
+      translations?: ShadowingTranslations;
+    }
+  >;
+};
+
+function normalizeTranslationValue(value: unknown): string | undefined {
+  const text = String(value ?? "").trim();
+  return text.length > 0 ? text : undefined;
+}
+
+function normalizeTranslations(
+  translations?: ShadowingTranslations,
+  legacyZh?: unknown,
+  legacyEn?: unknown,
+): ShadowingTranslations {
+  return {
+    ...(normalizeTranslationValue(translations?.zh ?? legacyZh) ? { zh: normalizeTranslationValue(translations?.zh ?? legacyZh) } : {}),
+    ...(normalizeTranslationValue(translations?.ja) ? { ja: normalizeTranslationValue(translations?.ja) } : {}),
+    ...(normalizeTranslationValue(translations?.en ?? legacyEn) ? { en: normalizeTranslationValue(translations?.en ?? legacyEn) } : {}),
+  };
+}
 
 // ── Text normalisation ────────────────────────────────────────────────────────
 
@@ -303,7 +341,7 @@ export function parseYoutubeScript(raw: string): {
     sentences.push({
       id: index + 1,
       text,
-      translation,
+      translations: normalizeTranslations(undefined, translation),
       ...(typeof startSec === "number" ? { startSec } : {}),
       ...(typeof endSec === "number" ? { endSec } : {}),
     });
@@ -418,11 +456,11 @@ export function buildVttFromCues(cues: TranscriptCue[]): string {
 
 // ── Material helpers ──────────────────────────────────────────────────────────
 
-export function normalizeMaterialForStorage(material: ShadowingMaterial): ShadowingMaterial {
+export function normalizeMaterialForStorage(material: ImportedShadowingMaterialInput): ShadowingMaterial {
   return {
     id: String(material.id),
     title: String(material.title),
-    titleCn: String(material.titleCn),
+    translations: normalizeTranslations(material.translations, material.titleCn),
     source: String(material.source),
     category: "speech",
     difficulty: material.difficulty === 1 || material.difficulty === 3 ? material.difficulty : 2,
@@ -430,10 +468,31 @@ export function normalizeMaterialForStorage(material: ShadowingMaterial): Shadow
     sentences: material.sentences.map((sentence, index) => ({
       id: index + 1,
       text: String(sentence.text ?? "").trim(),
-      translation: String(sentence.translation ?? "").trim(),
+      translations: normalizeTranslations(sentence.translations, sentence.translation, sentence.translationEn),
       ...(typeof sentence.startSec === "number" ? { startSec: sentence.startSec } : {}),
       ...(typeof sentence.endSec === "number" ? { endSec: sentence.endSec } : {}),
     })),
+  };
+}
+
+function normalizeSnapshotMaterial(material: SnapshotMaterialInput): ShadowingMaterial {
+  return {
+    id: String(material.id),
+    title: String(material.title),
+    translations: normalizeTranslations(material.translations),
+    source: String(material.source),
+    category: material.category,
+    difficulty: material.difficulty === 1 || material.difficulty === 3 ? material.difficulty : 2,
+    ...(material.youtubeVideoId ? { youtubeVideoId: String(material.youtubeVideoId) } : {}),
+    sentences: material.sentences
+      .map((sentence, index) => ({
+        id: index + 1,
+        text: String(sentence.text ?? "").trim(),
+        translations: normalizeTranslations(sentence.translations),
+        ...(typeof sentence.startSec === "number" ? { startSec: sentence.startSec } : {}),
+        ...(typeof sentence.endSec === "number" ? { endSec: sentence.endSec } : {}),
+      }))
+      .filter((sentence) => sentence.text.length > 0),
   };
 }
 
@@ -442,6 +501,7 @@ export function normalizeImportedSentences(
     id?: number;
     text?: string;
     translation?: string;
+    translations?: ShadowingTranslations;
     startSec?: number;
     endSec?: number;
   }> | undefined,
@@ -451,7 +511,7 @@ export function normalizeImportedSentences(
     .map((sentence, index) => ({
       id: index + 1,
       text: String(sentence.text ?? "").trim(),
-      translation: String(sentence.translation ?? "").trim(),
+      translations: normalizeTranslations(sentence.translations, sentence.translation),
       ...(typeof sentence.startSec === "number" ? { startSec: sentence.startSec } : {}),
       ...(typeof sentence.endSec === "number" ? { endSec: sentence.endSec } : {}),
     }))
@@ -465,7 +525,9 @@ export function buildScriptTextFromSentences(sentences: ShadowingMaterial["sente
         typeof sentence.startSec === "number" && typeof sentence.endSec === "number"
           ? `[${formatSeconds(sentence.startSec)}-${formatSeconds(sentence.endSec)}] `
           : "";
-      const translationSuffix = sentence.translation ? ` | ${sentence.translation}` : "";
+      const translationSuffix = sentence.translations.zh ?? sentence.translations.en ?? sentence.translations.ja
+        ? ` | ${sentence.translations.zh ?? sentence.translations.en ?? sentence.translations.ja}`
+        : "";
       return `${timePrefix}${sentence.text}${translationSuffix}`;
     })
     .join("\n");
@@ -488,7 +550,7 @@ export function parseTedSnapshotMaterials(): {
   const generatedAt = String(snapshot?.generatedAt ?? "").trim();
   const items = Array.isArray(snapshot?.items) ? snapshot.items : [];
   const materials = items
-    .map((item) => normalizeMaterialForStorage(item))
+    .map((item) => normalizeSnapshotMaterial(item))
     .filter((item) => item.sentences.length > 0);
   return { generatedAt, materials };
 }
@@ -497,7 +559,7 @@ export function parseJaYoutubeSnapshotMaterials(): { materials: ShadowingMateria
   const snapshot = jaYoutubeShadowing as TedLatestSnapshot;
   const items = Array.isArray(snapshot?.items) ? snapshot.items : [];
   const materials = items
-    .map((item) => normalizeMaterialForStorage(item))
+    .map((item) => normalizeSnapshotMaterial(item))
     .filter((item) => item.sentences.length > 0);
   return { materials };
 }

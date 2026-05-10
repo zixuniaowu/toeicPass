@@ -122,6 +122,7 @@ export interface VocabularyCard {
   example: string;
   sourcePart: number;
   tags: string[];
+  targetLanguage?: "en" | "ja";
   easeFactor: number;
   intervalDays: number;
   dueAt: string;
@@ -130,6 +131,12 @@ export interface VocabularyCard {
   difficulty?: number;
   scoreBand?: string;
   createdAt: string;
+  translations?: VocabularyCardTranslations;
+}
+
+export interface VocabularyCardTranslations {
+  definition?: Partial<Record<"zh" | "ja" | "en", string>>;
+  example?: Partial<Record<"zh" | "ja" | "en", string>>;
 }
 
 export interface GrammarCard {
@@ -137,6 +144,8 @@ export interface GrammarCard {
   tenantId: string;
   userId: string;
   ruleId: string;
+  targetLanguage?: "en" | "ja";
+  jlptLevel?: string;
   title: string;
   titleCn: string;
   titleJa: string;
