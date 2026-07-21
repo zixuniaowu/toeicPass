@@ -349,7 +349,7 @@ export class StoreService {
     return this.loadOfficialQuestionPack().length > 0;
   }
 
-  persistSnapshot(): void {
+  persistSnapshot(): void | Promise<void> {
     if (!this.snapshotEnabled) {
       return;
     }
@@ -479,6 +479,7 @@ export class StoreService {
   private ensureSeedAds(): void {
     // Always reset ads to match code-defined seeds on startup
     this.adPlacements = [];
+    this.adEvents = [];
     const now = nowIso();
     const adSeeds: Array<{ slot: string; title: string; imageUrl?: string; linkUrl: string; ctaText: string; priority: number }> = [
       { slot: "banner_top", title: "StudyForge - AI学習プラットフォーム", linkUrl: "https://huggingface.co/spaces/jackywangsh/studyforge", ctaText: "StudyForge を試す 🚀", priority: 110 },

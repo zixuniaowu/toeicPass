@@ -14,16 +14,28 @@
   ],
   "scripts": {
     "build": "npm run build:packages && npm run -w apps/api build && npm run -w apps/web build",
-    "build:packages": "npm run -w @toeicpass/shared build && npm run -w @toeicpass/conversation-ai build && npm run -w @toeicpass/ad-system build && npm run -w @toeicpass/word-annotation build",
+    "build:packages": "npm run -w @toeicpass/shared build && npm run -w @toeicpass/conversation-ai build && npm run -w @toeicpass/ad-system build && npm run -w @toeicpass/word-annotation build && npm run -w @toeicpass/app-core build && npm run -w @toeicpass/app-i18n build && npm run -w @toeicpass/shadowing-content build",
     "dev": "concurrently \"npm run dev:packages\" \"npm run dev:api\" \"npm run dev:web:hot\"",
     "dev:api": "npm run -w apps/api start:dev",
-    "dev:packages": "concurrently \"npm run -w @toeicpass/shared build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/conversation-ai build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/ad-system build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/word-annotation build -- --watch --preserveWatchOutput\"",
+    "dev:packages": "concurrently \"npm run -w @toeicpass/shared build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/conversation-ai build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/ad-system build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/word-annotation build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/app-core build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/app-i18n build -- --watch --preserveWatchOutput\" \"npm run -w @toeicpass/shadowing-content build -- --watch --preserveWatchOutput\"",
+    "dev:mobile": "npm run -w apps/mobile start",
+    "android:mobile": "npm run -w apps/mobile android",
+    "ios:mobile": "npm run -w apps/mobile ios",
+    "run:android:mobile": "npm run -w apps/mobile run:android",
+    "run:ios:mobile": "npm run -w apps/mobile run:ios",
+    "prebuild:mobile": "npm run -w apps/mobile prebuild",
+    "prebuild:mobile:clean": "npm run -w apps/mobile prebuild:clean",
+    "build:mobile:android:preview": "npm run -w apps/mobile build:android:preview",
+    "build:mobile:android:production": "npm run -w apps/mobile build:android:production",
+    "build:mobile:ios:preview": "npm run -w apps/mobile build:ios:preview",
+    "build:mobile:ios:simulator": "npm run -w apps/mobile build:ios:simulator",
+    "build:mobile:ios:production": "npm run -w apps/mobile build:ios:production",
     "dev:web": "npm run -w apps/web start || (npm run -w apps/web build && npm run -w apps/web start)",
     "dev:web:hot": "npm run -w apps/web dev",
     "test": "npm run build:packages && npm run -w apps/api test && npm run -w apps/web test",
     "test:e2e": "npm run -w apps/api test:e2e",
     "lint": "npm run build:packages && npm run typecheck:packages && npm run -w apps/api lint && npm run -w apps/web lint",
-    "typecheck:packages": "npm run -w @toeicpass/shared typecheck && npm run -w @toeicpass/conversation-ai typecheck && npm run -w @toeicpass/ad-system typecheck && npm run -w @toeicpass/word-annotation typecheck",
+    "typecheck:packages": "npm run -w @toeicpass/shared typecheck && npm run -w @toeicpass/conversation-ai typecheck && npm run -w @toeicpass/ad-system typecheck && npm run -w @toeicpass/word-annotation typecheck && npm run -w @toeicpass/app-core typecheck && npm run -w @toeicpass/app-i18n typecheck && npm run -w @toeicpass/shadowing-content typecheck",
     "db:migrate": "npm run -w apps/api db:migrate",
     "build:dict": "node apps/web/scripts/build-en-dict-sqlite.mjs ecdict-tmp/stardict.db apps/web/public/dict/en && node apps/web/scripts/build-ja-dict.mjs jmdict-tmp/jmdict-eng-3.6.2.json apps/web/public/dict/ja"
   },
@@ -39,5 +51,10 @@
   },
   "author": "toeicPass",
   "license": "BUSL-1.1",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "4.25.2",
+    "react-native-webview": "^14.0.1"
+  }
 }

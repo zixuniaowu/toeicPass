@@ -2,18 +2,30 @@
  * Pure utility functions for shadowing practice.
  * No React dependencies — safe to import in server/client contexts.
  */
+import {
+  compareJapaneseSegments,
+  compareWords,
+  normalizeByLanguage,
+  normalizeEnglish,
+  normalizeJapanese,
+  type CompareWord,
+  type PhoneticSegment,
+  type TrainingLanguage,
+} from "@toeicpass/app-core/shadowing-compare";
 import type { ShadowingMaterial, ShadowingTranslations } from "../data/shadowing-materials";
 import type { Locale } from "../types";
 import tedLatestShadowing from "../data/ted-latest-shadowing.json";
 import jaYoutubeShadowing from "../data/japanese-youtube-shadowing.json";
 
-// ── Types ────────────────────────────────────────────────────────────────────
-
-export type TrainingLanguage = "en" | "ja";
-
-export type CompareWord = {
-  word: string;
-  status: "correct" | "wrong" | "missing";
+export {
+  compareJapaneseSegments,
+  compareWords,
+  normalizeByLanguage,
+  normalizeEnglish,
+  normalizeJapanese,
+  type CompareWord,
+  type PhoneticSegment,
+  type TrainingLanguage,
 };
 
 export type TranscriptCue = {
@@ -66,168 +78,8 @@ function normalizeTranslations(
   };
 }
 
-// ── Text normalisation ────────────────────────────────────────────────────────
-
-export function normalizeEnglish(text: string): string[] {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9'\s-]/g, "")
-    .split(/\s+/)
-    .filter(Boolean);
-}
-
-// Convert katakana (ァ-ヶ) to hiragana equivalents so speech-recognition output
-// (which often returns hiragana for katakana words, e.g. "こんびに" for "コンビニ")
-// matches the original text in comparisons.
-function katakanaToHiragana(text: string): string {
-  return text.replace(/[\u30A1-\u30F6]/g, (ch) =>
-    String.fromCharCode(ch.charCodeAt(0) - 0x60),
-  );
-}
-
-export function normalizeJapanese(text: string): string[] {
-  return Array.from(
-    katakanaToHiragana(
-      String(text ?? "")
-        .normalize("NFKC")
-    )
-      .replace(/[、。！？!?,，．「」『』（）()［］\[\]{}【】…・〜～―—\-_：;；"'`｀\s]/g, "")
-      .trim(),
-  ).filter(Boolean);
-}
-
-export function normalizeByLanguage(text: string, language: TrainingLanguage): string[] {
-  return language === "ja" ? normalizeJapanese(text) : normalizeEnglish(text);
-}
-
 export function containsKanji(text: string): boolean {
   return /[一-龯々]/u.test(String(text ?? ""));
-}
-
-// ── Speech comparison ─────────────────────────────────────────────────────────
-
-/**
- * A single token from kuromoji (surface + its hiragana reading).
- * Used for token-level Japanese comparison so the result displays
- * the original kanji/kana surface form coloured green/red/grey.
- */
-export type PhoneticSegment = {
-  surface: string; // original text (may contain kanji)
-  reading: string; // hiragana form used for comparison
-};
-
-/**
- * Token-level comparison for Japanese.
- *
- * Splits the spoken transcript into individual kana characters and greedily
- * matches each phonetic segment (kuromoji token).  Results use the *surface*
- * form of each token so the caller can display kanji with accurate colouring.
- */
-export function compareJapaneseSegments(
-  segments: PhoneticSegment[],
-  spokenText: string,
-): { words: CompareWord[]; accuracy: number } {
-  const meaningful = segments.filter(
-    (s) => normalizeJapanese(s.reading).length > 0,
-  );
-
-  if (meaningful.length === 0) return { words: [], accuracy: 0 };
-
-  const spokenChars = normalizeJapanese(spokenText);
-  let si = 0;
-  let matchCount = 0;
-  const result: CompareWord[] = [];
-
-  for (const seg of meaningful) {
-    const readingChars = normalizeJapanese(seg.reading);
-    if (readingChars.length === 0) continue;
-
-    // Exact match at current position
-    if (
-      si + readingChars.length <= spokenChars.length &&
-      spokenChars.slice(si, si + readingChars.length).every((c, i) => c === readingChars[i])
-    ) {
-      result.push({ word: seg.surface, status: "correct" });
-      matchCount++;
-      si += readingChars.length;
-      continue;
-    }
-
-    // Look ahead (up to ~12 chars) for this token further in spoken text
-    let found = false;
-    const limit = Math.min(si + 12, spokenChars.length - readingChars.length + 1);
-    for (let look = si + 1; look < limit; look++) {
-      const candidate = spokenChars.slice(look, look + readingChars.length);
-      if (
-        candidate.length === readingChars.length &&
-        candidate.every((c, i) => c === readingChars[i])
-      ) {
-        const extraText = spokenChars.slice(si, look).join("");
-        if (extraText) result.push({ word: extraText, status: "wrong" });
-        result.push({ word: seg.surface, status: "correct" });
-        matchCount++;
-        si = look + readingChars.length;
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      result.push({ word: seg.surface, status: "missing" });
-    }
-  }
-
-  // Any remaining spoken text that didn't match a token
-  if (si < spokenChars.length) {
-    result.push({ word: spokenChars.slice(si).join(""), status: "wrong" });
-  }
-
-  const accuracy =
-    meaningful.length > 0 ? Math.round((matchCount / meaningful.length) * 100) : 0;
-  return { words: result, accuracy };
-}
-
-export function compareWords(
-  original: string,
-  spoken: string,
-  language: TrainingLanguage,
-): { words: CompareWord[]; accuracy: number } {
-  const origWords = normalizeByLanguage(original, language);
-  const spokenWords = normalizeByLanguage(spoken, language);
-  const result: CompareWord[] = [];
-  let matchCount = 0;
-  let si = 0;
-
-  for (let oi = 0; oi < origWords.length; oi++) {
-    if (si < spokenWords.length && origWords[oi] === spokenWords[si]) {
-      result.push({ word: origWords[oi], status: "correct" });
-      matchCount++;
-      si++;
-    } else {
-      let found = false;
-      for (let look = si + 1; look < Math.min(si + 3, spokenWords.length); look++) {
-        if (origWords[oi] === spokenWords[look]) {
-          for (let k = si; k < look; k++) {
-            result.push({ word: spokenWords[k], status: "wrong" });
-          }
-          result.push({ word: origWords[oi], status: "correct" });
-          matchCount++;
-          si = look + 1;
-          found = true;
-          break;
-        }
-      }
-      if (!found) {
-        result.push({ word: origWords[oi], status: "missing" });
-      }
-    }
-  }
-  for (; si < spokenWords.length; si++) {
-    result.push({ word: spokenWords[si], status: "wrong" });
-  }
-
-  const accuracy = origWords.length > 0 ? Math.round((matchCount / origWords.length) * 100) : 0;
-  return { words: result, accuracy };
 }
 
 // ── YouTube URL parsing ───────────────────────────────────────────────────────

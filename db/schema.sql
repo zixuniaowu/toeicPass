@@ -211,3 +211,33 @@ create table audit_logs (
 );
 
 create index idx_audit_logs_tenant_created_at on audit_logs(tenant_id, created_at desc);
+
+-- ===== Ad System =====
+create table ad_placements (
+  id uuid primary key default gen_random_uuid(),
+  slot text not null,
+  title text not null,
+  image_url text,
+  link_url text not null,
+  cta_text text not null default 'Learn More',
+  priority int not null default 0,
+  target_plans text[] not null default '{free}',
+  is_active boolean not null default true,
+  impressions int not null default 0,
+  clicks int not null default 0,
+  starts_at timestamptz,
+  expires_at timestamptz,
+  created_at timestamptz not null default now()
+);
+
+create index idx_ad_placements_slot on ad_placements(slot, is_active, priority desc);
+
+create table ad_events (
+  id uuid primary key default gen_random_uuid(),
+  placement_id uuid not null references ad_placements(id) on delete cascade,
+  user_id uuid references users(id) on delete set null,
+  event_type text not null check (event_type in ('impression','click','dismiss','reward_complete')),
+  created_at timestamptz not null default now()
+);
+
+create index idx_ad_events_placement on ad_events(placement_id, created_at desc);

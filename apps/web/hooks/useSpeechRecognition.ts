@@ -1,7 +1,12 @@
 "use client";
 import { useState, useCallback, useRef } from "react";
-import type { TrainingLanguage, CompareWord, PhoneticSegment } from "../lib/shadowing-utils";
-import { compareWords, compareJapaneseSegments } from "../lib/shadowing-utils";
+import {
+  compareJapaneseSegments,
+  compareWords,
+  type CompareWord,
+  type PhoneticSegment,
+  type TrainingLanguage,
+} from "@toeicpass/app-core/shadowing-compare";
 
 export type MicPermission = "unknown" | "granted" | "denied" | "prompt";
 

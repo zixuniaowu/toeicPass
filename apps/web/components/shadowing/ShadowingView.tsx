@@ -3,8 +3,11 @@
 import { useState, useCallback, useEffect, useRef, type ChangeEvent } from "react";
 import type { Locale } from "../../types";
 import type { UiLang } from "../../types";
-import { SHADOWING_MATERIALS, type ShadowingMaterial } from "../../data/shadowing-materials";
-import { JAPANESE_SHADOWING_MATERIALS } from "../../data/japanese-shadowing-materials";
+import {
+  JAPANESE_SHADOWING_MATERIALS,
+  SHADOWING_MATERIALS,
+  type ShadowingMaterial,
+} from "@toeicpass/shadowing-content";
 import { getDailyNews, getDailyNewsJa, type NewsMaterial } from "../../data/news-data";
 import { Card, CardContent } from "../ui/Card";
 import { Button } from "../ui/Button";

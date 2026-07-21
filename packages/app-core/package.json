@@ -1,0 +1,73 @@
+{
+  "name": "@toeicpass/app-core",
+  "version": "1.0.0",
+  "description": "Shared app-facing API client and domain types for toeicPass web and mobile apps",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zixuniaowu/toeicPass.git",
+    "directory": "packages/app-core"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./api": {
+      "types": "./dist/api.d.ts",
+      "default": "./dist/api.js"
+    },
+    "./mistake-coach": {
+      "types": "./dist/mistake-coach.d.ts",
+      "default": "./dist/mistake-coach.js"
+    },
+    "./shadowing-feedback": {
+      "types": "./dist/shadowing-feedback.d.ts",
+      "default": "./dist/shadowing-feedback.js"
+    },
+    "./shadowing-compare": {
+      "types": "./dist/shadowing-compare.d.ts",
+      "default": "./dist/shadowing-compare.js"
+    },
+    "./shadowing-runtime": {
+      "types": "./dist/shadowing-runtime.d.ts",
+      "default": "./dist/shadowing-runtime.js"
+    },
+    "./shadowing-engine": {
+      "types": "./dist/shadowing-engine.d.ts",
+      "default": "./dist/shadowing-engine.js"
+    },
+    "./shadowing-session": {
+      "types": "./dist/shadowing-session.d.ts",
+      "default": "./dist/shadowing-session.js"
+    },
+    "./shadowing-practice": {
+      "types": "./dist/shadowing-practice.d.ts",
+      "default": "./dist/shadowing-practice.js"
+    },
+    "./shadowing-score": {
+      "types": "./dist/shadowing-score.d.ts",
+      "default": "./dist/shadowing-score.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@toeicpass/ad-system": "1.0.0",
+    "@toeicpass/conversation-ai": "1.0.0",
+    "@toeicpass/shared": "1.0.0"
+  }
+}

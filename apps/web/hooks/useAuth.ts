@@ -1,9 +1,14 @@
 "use client";
 
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
-import type { Locale } from "../types";
+import type { Locale, TargetLang, UiLang } from "../types";
 import * as api from "../lib/api";
 import { setOnUnauthorized } from "../lib/api";
+import {
+  persistStoredWebAppSession,
+  readStoredWebAppSession,
+  updateStoredWebAppSession,
+} from "../lib/app-session-storage";
 
 export type AuthCredentials = {
   tenantCode: string;
@@ -29,37 +34,17 @@ const DEFAULT_CREDENTIALS: AuthCredentials = {
 
 const byLocale = (locale: Locale, zh: string, ja: string) => (locale === "ja" ? ja : zh);
 
-const STORAGE_KEY_TOKEN = "lb.token";
-const STORAGE_KEY_TENANT = "lb.tenantCode";
-
-function safeGetItem(key: string): string | null {
-  try { return localStorage.getItem(key); } catch { return null; }
-}
-
-function safeSetItem(key: string, value: string): void {
-  try { localStorage.setItem(key, value); } catch { /* noop */ }
-}
-
-function safeRemoveItem(key: string): void {
-  try { localStorage.removeItem(key); } catch { /* noop */ }
-}
-
-function loadStoredToken(): string {
-  if (typeof window === "undefined") return "";
-  return safeGetItem(STORAGE_KEY_TOKEN) ?? "";
-}
-
-function loadStoredTenant(): string {
-  if (typeof window === "undefined") return DEFAULT_CREDENTIALS.tenantCode;
-  return safeGetItem(STORAGE_KEY_TENANT) ?? DEFAULT_CREDENTIALS.tenantCode;
-}
-
-export function useAuth(locale: Locale) {
-  const tenantCodeRef = useRef<string>(loadStoredTenant());
-  const [token, setToken] = useState<string>(loadStoredToken);
+export function useAuth(
+  locale: Locale,
+  sessionLang?: { uiLang: UiLang; targetLang: TargetLang },
+) {
+  const storedSession = readStoredWebAppSession();
+  const tenantCodeRef = useRef<string>(storedSession.tenantCode || DEFAULT_CREDENTIALS.tenantCode);
+  const [token, setToken] = useState<string>(storedSession.token);
   const [credentials, setCredentials] = useState<AuthCredentials>(() => ({
     ...DEFAULT_CREDENTIALS,
-    tenantCode: loadStoredTenant(),
+    tenantCode: storedSession.tenantCode || DEFAULT_CREDENTIALS.tenantCode,
+    email: storedSession.email || DEFAULT_CREDENTIALS.email,
   }));
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string>(
@@ -69,14 +54,15 @@ export function useAuth(locale: Locale) {
   const isLoggedIn = Boolean(token);
   const authHeader = useMemo(() => (token ? `Bearer ${token}` : null), [token]);
 
-  // Persist token to localStorage
   useEffect(() => {
-    if (token) {
-      safeSetItem(STORAGE_KEY_TOKEN, token);
-    } else {
-      safeRemoveItem(STORAGE_KEY_TOKEN);
-    }
-  }, [token]);
+    persistStoredWebAppSession({
+      token,
+      tenantCode: tenantCodeRef.current || credentials.tenantCode || DEFAULT_CREDENTIALS.tenantCode,
+      email: credentials.email || DEFAULT_CREDENTIALS.email,
+      uiLang: sessionLang?.uiLang ?? storedSession.uiLang,
+      targetLang: sessionLang?.targetLang ?? storedSession.targetLang,
+    });
+  }, [credentials.email, credentials.tenantCode, sessionLang?.targetLang, sessionLang?.uiLang, storedSession.targetLang, storedSession.uiLang, token]);
 
   useEffect(() => {
     if (!token) {
@@ -87,6 +73,10 @@ export function useAuth(locale: Locale) {
   const updateCredentials = useCallback((updates: Partial<AuthCredentials>) => {
     if (typeof updates.tenantCode === "string") {
       tenantCodeRef.current = updates.tenantCode.trim();
+      updateStoredWebAppSession({ tenantCode: updates.tenantCode.trim() });
+    }
+    if (typeof updates.email === "string") {
+      updateStoredWebAppSession({ email: updates.email.trim().toLowerCase() });
     }
     setCredentials((prev) => ({ ...prev, ...updates }));
   }, []);
@@ -161,7 +151,7 @@ export function useAuth(locale: Locale) {
           if (resolvedTenantCode) {
             tenantCodeRef.current = resolvedTenantCode;
             setCredentials((prev) => ({ ...prev, tenantCode: resolvedTenantCode }));
-            safeSetItem(STORAGE_KEY_TENANT, resolvedTenantCode);
+            updateStoredWebAppSession({ tenantCode: resolvedTenantCode });
           }
           setToken(result.token);
           if (!silent) setMessage(byLocale(locale, "登录成功。", "ログイン成功。"));
@@ -193,8 +183,7 @@ export function useAuth(locale: Locale) {
 
   const logout = useCallback(() => {
     setToken("");
-    safeRemoveItem(STORAGE_KEY_TOKEN);
-    safeRemoveItem(STORAGE_KEY_TENANT);
+    updateStoredWebAppSession({ token: "" });
     setMessage(byLocale(locale, "已退出登录。请使用账号重新登录。", "ログアウトしました。アカウントで再ログインしてください。"));
   }, [locale]);
 
@@ -202,8 +191,7 @@ export function useAuth(locale: Locale) {
   useEffect(() => {
     setOnUnauthorized(() => {
       setToken("");
-      safeRemoveItem(STORAGE_KEY_TOKEN);
-      safeRemoveItem(STORAGE_KEY_TENANT);
+      updateStoredWebAppSession({ token: "" });
       setMessage(byLocale(locale, "登录已过期，请重新登录。", "セッションの有効期限が切れました。再ログインしてください。"));
     });
     return () => setOnUnauthorized(null);
@@ -228,7 +216,7 @@ export function useAuth(locale: Locale) {
         if (resolvedTenantCode) {
           tenantCodeRef.current = resolvedTenantCode;
           setCredentials((prev) => ({ ...prev, tenantCode: resolvedTenantCode }));
-          safeSetItem(STORAGE_KEY_TENANT, resolvedTenantCode);
+          updateStoredWebAppSession({ tenantCode: resolvedTenantCode });
         }
         setToken(result.token);
         setMessage(byLocale(locale, `${providerLabel} 登录成功。`, `${providerLabel} ログインに成功しました。`));

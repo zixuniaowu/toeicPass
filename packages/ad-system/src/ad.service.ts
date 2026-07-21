@@ -60,7 +60,7 @@ export class AdService {
   /**
    * Record an ad event (impression, click, dismiss, reward_complete).
    */
-  recordAdEvent(placementId: string, userId: string | undefined, eventType: AdEventType): void {
+  async recordAdEvent(placementId: string, userId: string | undefined, eventType: AdEventType): Promise<void> {
     const placement = this.store.adPlacements.find((a) => a.id === placementId);
     if (!placement) return;
 
@@ -74,6 +74,7 @@ export class AdService {
 
     if (eventType === "impression") placement.impressions += 1;
     if (eventType === "click") placement.clicks += 1;
+    await this.store.persistSnapshot();
   }
 
   // ===== Admin =====
@@ -119,7 +120,7 @@ export class AdService {
   }
 
   /** Create a new ad placement and persist. */
-  createAd(data: CreateAdInput): AdPlacement {
+  async createAd(data: CreateAdInput): Promise<AdPlacement> {
     const ad: AdPlacement = {
       id: this.generateId(),
       slot: data.slot as AdPlacement["slot"],
@@ -137,12 +138,12 @@ export class AdService {
       createdAt: this.nowIso(),
     };
     this.store.adPlacements.push(ad);
-    this.store.persistSnapshot();
+    await this.store.persistSnapshot();
     return ad;
   }
 
   /** Update an existing ad placement. Returns `null` if not found. */
-  updateAd(adId: string, data: UpdateAdInput): AdPlacement | null {
+  async updateAd(adId: string, data: UpdateAdInput): Promise<AdPlacement | null> {
     const ad = this.store.adPlacements.find((a) => a.id === adId);
     if (!ad) return null;
     if (data.slot !== undefined) ad.slot = data.slot as AdPlacement["slot"];
@@ -155,16 +156,17 @@ export class AdService {
     if (data.isActive !== undefined) ad.isActive = data.isActive;
     if (data.startsAt !== undefined) ad.startsAt = data.startsAt;
     if (data.expiresAt !== undefined) ad.expiresAt = data.expiresAt;
-    this.store.persistSnapshot();
+    await this.store.persistSnapshot();
     return ad;
   }
 
   /** Delete an ad placement by ID. Returns `true` if deleted, `false` if not found. */
-  deleteAd(adId: string): boolean {
+  async deleteAd(adId: string): Promise<boolean> {
     const idx = this.store.adPlacements.findIndex((a) => a.id === adId);
     if (idx === -1) return false;
     this.store.adPlacements.splice(idx, 1);
-    this.store.persistSnapshot();
+    this.store.adEvents = this.store.adEvents.filter((event) => event.placementId !== adId);
+    await this.store.persistSnapshot();
     return true;
   }
 
@@ -173,11 +175,11 @@ export class AdService {
   /**
    * Seed sample ads if none exist. Call during app bootstrap.
    */
-  seedIfEmpty(seeds: Array<Omit<CreateAdInput, "targetPlans"> & { targetPlans?: string[] }>): AdPlacement[] {
+  async seedIfEmpty(seeds: Array<Omit<CreateAdInput, "targetPlans"> & { targetPlans?: string[] }>): Promise<AdPlacement[]> {
     if (this.store.adPlacements.length > 0) return [];
     const created: AdPlacement[] = [];
     for (const seed of seeds) {
-      created.push(this.createAd({ ...seed, targetPlans: seed.targetPlans ?? ["free"] }));
+      created.push(await this.createAd({ ...seed, targetPlans: seed.targetPlans ?? ["free"] }));
     }
     return created;
   }

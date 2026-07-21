@@ -1,0 +1,49 @@
+{
+  "name": "@toeicpass/mobile",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "run:android": "expo run:android",
+    "run:ios": "expo run:ios",
+    "web": "expo start --web",
+    "prebuild": "expo prebuild",
+    "prebuild:clean": "expo prebuild --clean",
+    "build:android:preview": "npx eas-cli build --platform android --profile preview",
+    "build:android:production": "npx eas-cli build --platform android --profile production",
+    "build:ios:preview": "npx eas-cli build --platform ios --profile preview",
+    "build:ios:simulator": "npx eas-cli build --platform ios --profile ios-simulator",
+    "build:ios:production": "npx eas-cli build --platform ios --profile production",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-navigation/bottom-tabs": "^7.18.2",
+    "@react-navigation/native": "^7.3.3",
+    "@react-navigation/native-stack": "^7.17.5",
+    "@toeicpass/app-core": "1.0.0",
+    "@toeicpass/app-i18n": "1.0.0",
+    "@toeicpass/shadowing-content": "1.0.0",
+    "@toeicpass/shared": "1.0.0",
+    "babel-preset-expo": "~56.0.0",
+    "expo": "^56.0.12",
+    "expo-av": "^16.0.8",
+    "expo-constants": "~56.0.18",
+    "expo-linking": "~56.0.14",
+    "expo-speech": "~56.0.3",
+    "expo-speech-recognition": "^56.0.1",
+    "expo-status-bar": "~56.0.4",
+    "expo-system-ui": "~6.0.8",
+    "react": "19.2.3",
+    "react-native": "0.85.3",
+    "react-native-safe-area-context": "^5.7.0",
+    "react-native-webview": "^14.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "typescript": "^5.9.2"
+  }
+}

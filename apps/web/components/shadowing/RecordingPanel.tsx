@@ -2,7 +2,11 @@
 /**
  * RecordingPanel — mic permission banner, record/stop controls, and accuracy feedback.
  */
-import type { CompareWord, TrainingLanguage, PhoneticSegment } from "../../lib/shadowing-utils";
+import type {
+  CompareWord,
+  PhoneticSegment,
+  TrainingLanguage,
+} from "@toeicpass/app-core/shadowing-compare";
 import type { MicPermission } from "../../hooks/useSpeechRecognition";
 import styles from "./ShadowingView.module.css";
 

@@ -1,0 +1,30 @@
+{
+  "name": "@toeicpass/app-i18n",
+  "version": "1.0.0",
+  "description": "Shared translation dictionaries and i18n helpers for toeicPass apps",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zixuniaowu/toeicPass.git",
+    "directory": "packages/app-i18n"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@toeicpass/shared": "1.0.0"
+  }
+}

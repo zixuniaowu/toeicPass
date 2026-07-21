@@ -90,8 +90,10 @@ Practice real-world scenarios with AI-powered dialogue:
 langboost/
 ├── apps/
 │   ├── api/               NestJS REST API (port 8001)
+│   ├── mobile/            Expo / React Native mobile app
 │   └── web/               Next.js 15 frontend (port 8000)
 ├── packages/
+│   ├── app-core/          Shared app-facing API client + data contracts
 │   ├── ad-system/         Ad placement system
 │   ├── conversation-ai/   AI conversation engine
 │   └── shared/            Shared types & utilities
@@ -103,6 +105,7 @@ langboost/
 |-------|-------|
 | API | NestJS, TypeScript, JWT + RBAC, multi-tenant |
 | Web | Next.js 15, React, CSS Modules |
+| Mobile | Expo 56, React Native, Android-first / iOS-ready |
 | DB | PostgreSQL 15+ (PGLite for tests) |
 | Analytics | Umami (privacy-friendly) |
 | CI/CD | GitHub Actions → Hugging Face Spaces |
@@ -123,12 +126,14 @@ npm run dev
 npm run dev:packages # Workspace package watch mode
 npm run dev:api      # API only (port 8001)
 npm run dev:web:hot  # Web only (port 8000)
+npm run dev:mobile   # Mobile app (Expo)
 ```
 
 | URL | Description |
 |-----|-------------|
 | `http://localhost:8000` | Web frontend |
 | `http://localhost:8001/api/v1` | REST API |
+| Expo QR / Android emulator | Mobile frontend |
 
 ## Commands
 
@@ -138,10 +143,69 @@ npm run dev:web:hot  # Web only (port 8000)
 | `npm run dev:packages` | Watch and rebuild reusable workspace packages |
 | `npm run build` | Production build |
 | `npm run build:packages` | Build reusable workspace packages only |
+| `npm run dev:mobile` | Start Expo mobile app |
+| `npm run android:mobile` | Start Expo and open the Android target |
+| `npm run ios:mobile` | Start Expo and open the iOS target |
+| `npm run run:android:mobile` | Run the generated native Android app |
+| `npm run run:ios:mobile` | Run the generated native iOS app |
+| `npm run prebuild:mobile` | Generate native Android/iOS projects from Expo config |
+| `npm run build:mobile:android:preview` | EAS internal Android APK build with preview app id |
+| `npm run build:mobile:android:production` | EAS production Android AAB build |
+| `npm run build:mobile:ios:preview` | EAS internal iOS preview build |
+| `npm run build:mobile:ios:simulator` | EAS iOS simulator build |
+| `npm run build:mobile:ios:production` | EAS production iOS build |
 | `npm test` | Run test suite |
 | `npm run lint` | Build packages and type-check the monorepo |
 | `npm run typecheck:packages` | Type-check reusable workspace packages only |
 | `npm run db:migrate` | Run database migrations |
+
+## Mobile Packaging
+
+`apps/mobile` now includes Expo EAS build profiles and a dynamic app config.
+
+- `development`
+  - Android APK development-client build
+  - package / bundle id suffix: `.dev`
+  - scheme: `toeicpass-dev`
+- `preview`
+  - internal preview build for Android and iOS
+  - package / bundle id suffix: `.preview`
+  - scheme: `toeicpass-preview`
+- `production`
+  - store-ready package identifiers
+  - scheme: `toeicpass`
+
+This lets internal Android installs, iOS preview installs, and production builds coexist without rewriting app identifiers later.
+
+The mobile app can also switch API targets at runtime from the login page or settings page. That covers:
+
+- Hugging Face production API
+- a LAN dev API such as `http://192.168.x.x:8001/api/v1`
+- future iOS preview/test environments without rebuilding the app
+
+Both the login page and the settings page can now run an in-app API connectivity check against `/health`, so device builds can confirm the backend target before attempting auth or loading training data.
+
+Those screens also show runtime diagnostics for the current build variant, platform, scheme, app identifier, and API probe result, which makes Android preview and future iOS preview installs much easier to debug on-device.
+
+The shadowing flow now also reuses a shared transcript-comparison engine from `packages/app-core`, so the existing web compare logic is no longer web-only. Mobile can already render the same compare feedback shape, and future Android/iOS speech-recognition integrations can feed that shared result pipeline instead of inventing a second comparison implementation.
+
+If you want device-friendly API presets to appear automatically in the mobile app, you can also provide:
+
+- `EXPO_PUBLIC_LAN_API_URL`
+  - example: `http://192.168.1.23:8001/api/v1`
+- `EXPO_PUBLIC_PREVIEW_API_URL`
+  - example: `https://staging.example.com/api/v1`
+
+```bash
+# Internal Android APK
+npm run build:mobile:android:preview
+
+# Store-ready Android AAB
+npm run build:mobile:android:production
+
+# iOS simulator build
+npm run build:mobile:ios:simulator
+```
 
 ## Environment Variables
 
@@ -152,6 +216,8 @@ npm run dev:web:hot  # Web only (port 8000)
 | `WEB_ORIGIN` | `http://localhost:3000` | CORS allowed origin |
 | `DATABASE_URL` | — | PostgreSQL connection string |
 | `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | — | Umami analytics website ID |
+| `EXPO_PUBLIC_LAN_API_URL` | — | Optional LAN API preset shown in the mobile app |
+| `EXPO_PUBLIC_PREVIEW_API_URL` | — | Optional preview API preset shown in the mobile app |
 
 ## Deployment
 
@@ -171,6 +237,7 @@ Required GitHub secrets: `HF_TOKEN`, `HF_REPO_ID`
 ## Documentation
 
 - [System Blueprint](docs/system-blueprint.md) — Architecture and product goals
+- [Mobile Architecture](docs/mobile-architecture.md) — Android-first reuse strategy and next iOS path
 - [API Contract](docs/api-contract-v1.md) — REST API specification
 - [Official Question Sources](docs/official-question-sources.md) — Licensed content guidelines
 

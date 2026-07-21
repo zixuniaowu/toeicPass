@@ -1,7 +1,11 @@
+import { resolve } from "node:path";
 import { Injectable, Logger, OnModuleDestroy, OnModuleInit } from "@nestjs/common";
+import { PGlite } from "@electric-sql/pglite";
 import { Client } from "pg";
 import { StoreService } from "./store.service";
 import {
+  AdEvent,
+  AdPlacement,
   Attempt,
   AttemptItem,
   AuditLog,
@@ -25,7 +29,7 @@ import {
 @Injectable()
 export class PgStoreService extends StoreService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(PgStoreService.name);
-  private client: Client | null = null;
+  private client: Client | PGlite | null = null;
 
   constructor() {
     super();
@@ -33,31 +37,45 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
 
   async onModuleInit(): Promise<void> {
     const databaseUrl = process.env.DATABASE_URL;
-    if (!databaseUrl) {
-      this.logger.warn("DATABASE_URL not set — PgStoreService will fall back to in-memory mode");
-      return;
+
+    if (databaseUrl) {
+      const client = new Client({ connectionString: databaseUrl });
+      await client.connect();
+      this.client = client;
+      this.logger.log("Connected to PostgreSQL");
+    } else {
+      const dataDir = process.env.PGLITE_DATA_DIR ?? resolve(process.cwd(), ".local-pg");
+      const client = new PGlite(dataDir);
+      await client.waitReady;
+      this.client = client;
+      this.logger.log(`Connected to PGlite at ${dataDir}`);
     }
 
-    this.client = new Client({ connectionString: databaseUrl });
-    await this.client.connect();
-    this.logger.log("Connected to PostgreSQL");
+    await this.ensureAdTables();
     await this.loadFromDatabase();
   }
 
   async onModuleDestroy(): Promise<void> {
     if (this.client) {
-      await this.client.end();
+      if (this.client instanceof Client) {
+        await this.client.end();
+      } else {
+        await this.client.close();
+      }
       this.client = null;
     }
   }
 
-  persistSnapshot(): void {
+  async persistSnapshot(): Promise<void> {
     super.persistSnapshot();
 
     if (this.client) {
-      this.syncToDatabase().catch((error) => {
-        this.logger.error("Failed to sync snapshot to PostgreSQL", error);
-      });
+      try {
+        await this.syncToDatabase();
+      } catch (error) {
+        this.logger.error("Failed to sync snapshot to PostgreSQL", error as Error);
+        throw error;
+      }
     }
   }
 
@@ -107,6 +125,7 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
       await this.loadReviewCardsFromDatabase();
       await this.loadMistakeNotesFromDatabase();
       await this.loadIpTablesFromDatabase();
+      await this.loadAdTablesFromDatabase();
 
       this.logger.log(
         `Loaded from PostgreSQL: ${this.tenants.length} tenants, ${this.users.length} users, ` +
@@ -216,6 +235,80 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
     );
   }
 
+  private async loadAdTablesFromDatabase(): Promise<void> {
+    if (!this.client) {
+      return;
+    }
+
+    try {
+      const adPlacements = await this.queryRows<AdPlacement>(
+        `SELECT id, slot, title, image_url AS "imageUrl", link_url AS "linkUrl",
+                cta_text AS "ctaText", priority, target_plans AS "targetPlans",
+                is_active AS "isActive", impressions, clicks,
+                starts_at AS "startsAt", expires_at AS "expiresAt",
+                created_at AS "createdAt"
+         FROM ad_placements`,
+      );
+      const adEvents = await this.queryRows<AdEvent>(
+        `SELECT id, placement_id AS "placementId", user_id AS "userId",
+                event_type AS "eventType", created_at AS "createdAt"
+         FROM ad_events
+         ORDER BY created_at ASC`,
+      );
+
+      if (adPlacements.length > 0) {
+        this.adPlacements = adPlacements.map((placement) => ({
+          ...placement,
+          targetPlans: Array.isArray(placement.targetPlans) ? placement.targetPlans : [],
+        }));
+      }
+
+      this.adEvents = adEvents;
+    } catch (error) {
+      this.logger.warn("Ad tables unavailable in PostgreSQL; keeping in-memory ad store", error as Error);
+    }
+  }
+
+  private async ensureAdTables(): Promise<void> {
+    if (!this.client) {
+      return;
+    }
+
+    const statements = [
+      `CREATE TABLE IF NOT EXISTS ad_placements (
+         id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+         slot text NOT NULL,
+         title text NOT NULL,
+         image_url text,
+         link_url text NOT NULL,
+         cta_text text NOT NULL DEFAULT 'Learn More',
+         priority int NOT NULL DEFAULT 0,
+         target_plans text[] NOT NULL DEFAULT '{free}',
+         is_active boolean NOT NULL DEFAULT true,
+         impressions int NOT NULL DEFAULT 0,
+         clicks int NOT NULL DEFAULT 0,
+         starts_at timestamptz,
+         expires_at timestamptz,
+         created_at timestamptz NOT NULL DEFAULT now()
+       )`,
+      `CREATE INDEX IF NOT EXISTS idx_ad_placements_slot
+         ON ad_placements (slot, is_active, priority DESC)`,
+      `CREATE TABLE IF NOT EXISTS ad_events (
+         id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+         placement_id uuid NOT NULL REFERENCES ad_placements(id) ON DELETE CASCADE,
+         user_id uuid REFERENCES users(id) ON DELETE SET NULL,
+         event_type text NOT NULL CHECK (event_type IN ('impression', 'click', 'dismiss', 'reward_complete')),
+         created_at timestamptz NOT NULL DEFAULT now()
+       )`,
+      `CREATE INDEX IF NOT EXISTS idx_ad_events_placement
+         ON ad_events (placement_id, created_at DESC)`,
+    ];
+
+    for (const statement of statements) {
+      await this.executeQuery(statement);
+    }
+  }
+
   private async syncToDatabase(): Promise<void> {
     if (!this.client) {
       return;
@@ -226,7 +319,7 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
     // For now, sync only tenants and users as a working proof-of-concept.
 
     for (const tenant of this.tenants) {
-      await this.client.query(
+      await this.executeQuery(
         `INSERT INTO tenants (id, name, code, created_at)
          VALUES ($1, $2, $3, $4)
          ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, code = EXCLUDED.code`,
@@ -235,7 +328,7 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
     }
 
     for (const user of this.users) {
-      await this.client.query(
+      await this.executeQuery(
         `INSERT INTO users (id, email, password_hash, display_name, is_active, created_at)
          VALUES ($1, $2, $3, $4, $5, $6)
          ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email,
@@ -247,20 +340,117 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
     }
 
     for (const membership of this.memberships) {
-      await this.client.query(
+      await this.executeQuery(
         `INSERT INTO memberships (id, tenant_id, user_id, role)
          VALUES ($1, $2, $3, $4)
          ON CONFLICT (id) DO UPDATE SET role = EXCLUDED.role`,
         [membership.id, membership.tenantId, membership.userId, membership.role],
       );
     }
+
+    await this.syncAdTablesToDatabase();
   }
 
-  private async queryRows<T>(sql: string): Promise<T[]> {
+  private async syncAdTablesToDatabase(): Promise<void> {
+    if (!this.client) {
+      return;
+    }
+
+    await this.executeQuery("BEGIN");
+
+    try {
+      for (const placement of this.adPlacements) {
+        await this.executeQuery(
+          `INSERT INTO ad_placements (
+             id, slot, title, image_url, link_url, cta_text, priority,
+             target_plans, is_active, impressions, clicks, starts_at, expires_at, created_at
+           )
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8::text[], $9, $10, $11, $12, $13, $14)
+           ON CONFLICT (id) DO UPDATE SET
+             slot = EXCLUDED.slot,
+             title = EXCLUDED.title,
+             image_url = EXCLUDED.image_url,
+             link_url = EXCLUDED.link_url,
+             cta_text = EXCLUDED.cta_text,
+             priority = EXCLUDED.priority,
+             target_plans = EXCLUDED.target_plans,
+             is_active = EXCLUDED.is_active,
+             impressions = EXCLUDED.impressions,
+             clicks = EXCLUDED.clicks,
+             starts_at = EXCLUDED.starts_at,
+             expires_at = EXCLUDED.expires_at`,
+          [
+            placement.id,
+            placement.slot,
+            placement.title,
+            placement.imageUrl ?? null,
+            placement.linkUrl,
+            placement.ctaText,
+            placement.priority,
+            placement.targetPlans,
+            placement.isActive,
+            placement.impressions,
+            placement.clicks,
+            placement.startsAt ?? null,
+            placement.expiresAt ?? null,
+            placement.createdAt,
+          ],
+        );
+      }
+
+      if (this.adPlacements.length > 0) {
+        await this.executeQuery("DELETE FROM ad_placements WHERE id <> ALL($1::uuid[])", [
+          this.adPlacements.map((placement) => placement.id),
+        ]);
+      } else {
+        await this.executeQuery("DELETE FROM ad_placements");
+      }
+
+      for (const event of this.adEvents) {
+        await this.executeQuery(
+          `INSERT INTO ad_events (id, placement_id, user_id, event_type, created_at)
+           VALUES ($1, $2, $3, $4, $5)
+           ON CONFLICT (id) DO UPDATE SET
+             placement_id = EXCLUDED.placement_id,
+             user_id = EXCLUDED.user_id,
+             event_type = EXCLUDED.event_type,
+             created_at = EXCLUDED.created_at`,
+          [event.id, event.placementId, event.userId ?? null, event.eventType, event.createdAt],
+        );
+      }
+
+      if (this.adEvents.length > 0) {
+        await this.executeQuery("DELETE FROM ad_events WHERE id <> ALL($1::uuid[])", [
+          this.adEvents.map((event) => event.id),
+        ]);
+      } else {
+        await this.executeQuery("DELETE FROM ad_events");
+      }
+
+      await this.executeQuery("COMMIT");
+    } catch (error) {
+      await this.executeQuery("ROLLBACK");
+      throw error;
+    }
+  }
+
+  private async queryRows<T>(sql: string, params: unknown[] = []): Promise<T[]> {
     if (!this.client) {
       return [];
     }
-    const result = await this.client.query(sql);
+    const result = await this.executeQuery<T>(sql, params);
     return result.rows as T[];
+  }
+
+  private async executeQuery<T>(sql: string, params: unknown[] = []): Promise<{ rows: T[] }> {
+    if (!this.client) {
+      return { rows: [] };
+    }
+
+    if (this.client instanceof Client) {
+      return this.client.query(sql, params) as unknown as Promise<{ rows: T[] }>;
+    }
+
+    return this.client.query<T>(sql, params) as Promise<{ rows: T[] }>;
   }
 }

@@ -186,8 +186,12 @@ export class SubscriptionService {
     return this.adService.getAdsForUser(plan.code, slot) as AdPlacement[];
   }
 
-  recordAdEvent(placementId: string, userId: string | undefined, eventType: "impression" | "click" | "dismiss" | "reward_complete"): void {
-    this.adService.recordAdEvent(placementId, userId, eventType);
+  async recordAdEvent(
+    placementId: string,
+    userId: string | undefined,
+    eventType: "impression" | "click" | "dismiss" | "reward_complete",
+  ): Promise<void> {
+    await this.adService.recordAdEvent(placementId, userId, eventType);
   }
 
   // ===== User Profile for Frontend =====
@@ -262,7 +266,7 @@ export class SubscriptionService {
     return this.adService.getAdStats();
   }
 
-  createAd(data: {
+  async createAd(data: {
     slot: string;
     title: string;
     imageUrl?: string;
@@ -272,11 +276,11 @@ export class SubscriptionService {
     targetPlans: string[];
     startsAt?: string;
     expiresAt?: string;
-  }): AdPlacement {
-    return this.adService.createAd(data) as AdPlacement;
+  }): Promise<AdPlacement> {
+    return await this.adService.createAd(data) as AdPlacement;
   }
 
-  updateAd(adId: string, data: Partial<{
+  async updateAd(adId: string, data: Partial<{
     slot: string;
     title: string;
     imageUrl: string;
@@ -287,14 +291,14 @@ export class SubscriptionService {
     isActive: boolean;
     startsAt: string;
     expiresAt: string;
-  }>): AdPlacement {
-    const result = this.adService.updateAd(adId, data);
+  }>): Promise<AdPlacement> {
+    const result = await this.adService.updateAd(adId, data);
     if (!result) throw new NotFoundException(`Ad not found: ${adId}`);
     return result as AdPlacement;
   }
 
-  deleteAd(adId: string): void {
-    const success = this.adService.deleteAd(adId);
+  async deleteAd(adId: string): Promise<void> {
+    const success = await this.adService.deleteAd(adId);
     if (!success) throw new NotFoundException(`Ad not found: ${adId}`);
   }
 }

@@ -80,9 +80,9 @@ export class SubscriptionController {
   /** Record an ad event (impression, click, etc.) */
   @Post("ads/event")
   @UseGuards(JwtAuthGuard, TenantGuard, RolesGuard)
-  recordAdEvent(@Req() req: ReqShape, @Body() dto: RecordAdEventDto) {
+  async recordAdEvent(@Req() req: ReqShape, @Body() dto: RecordAdEventDto) {
     const ctx = toCtx(req);
-    this.subscriptionService.recordAdEvent(dto.placementId, ctx.userId, dto.eventType);
+    await this.subscriptionService.recordAdEvent(dto.placementId, ctx.userId, dto.eventType);
     return { success: true };
   }
 
@@ -105,24 +105,24 @@ export class SubscriptionController {
   @Post("admin/ads")
   @UseGuards(JwtAuthGuard, TenantGuard, RolesGuard)
   @Roles("tenant_admin", "super_admin")
-  createAd(@Body() dto: CreateAdDto) {
-    const ad = this.subscriptionService.createAd(dto);
+  async createAd(@Body() dto: CreateAdDto) {
+    const ad = await this.subscriptionService.createAd(dto);
     return { success: true, ad };
   }
 
   @Put("admin/ads/:adId")
   @UseGuards(JwtAuthGuard, TenantGuard, RolesGuard)
   @Roles("tenant_admin", "super_admin")
-  updateAd(@Param("adId") adId: string, @Body() dto: UpdateAdDto) {
-    const ad = this.subscriptionService.updateAd(adId, dto);
+  async updateAd(@Param("adId") adId: string, @Body() dto: UpdateAdDto) {
+    const ad = await this.subscriptionService.updateAd(adId, dto);
     return { success: true, ad };
   }
 
   @Delete("admin/ads/:adId")
   @UseGuards(JwtAuthGuard, TenantGuard, RolesGuard)
   @Roles("tenant_admin", "super_admin")
-  deleteAd(@Param("adId") adId: string) {
-    this.subscriptionService.deleteAd(adId);
+  async deleteAd(@Param("adId") adId: string) {
+    await this.subscriptionService.deleteAd(adId);
     return { success: true };
   }
 }

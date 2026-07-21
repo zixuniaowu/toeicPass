@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
 import { APP_INTERCEPTOR } from "@nestjs/core";
@@ -12,6 +14,7 @@ import { AuthController } from "./controllers/auth.controller";
 import { EnterpriseController } from "./controllers/enterprise.controller";
 import { LearningController } from "./controllers/learning.controller";
 import { SubscriptionController } from "./controllers/subscription.controller";
+import { SystemController } from "./controllers/system.controller";
 import { PgStoreService } from "./pg-store.service";
 import { QueueService } from "./queue.service";
 import { RolesGuard } from "./roles.guard";
@@ -24,7 +27,10 @@ import { LearningDomainService } from "./services/learning-domain.service";
 import { SubscriptionService } from "./services/subscription.service";
 import { StoreService } from "./store.service";
 
-const StoreProvider = process.env.DATABASE_URL
+const usePersistentStore = process.env.NODE_ENV !== "test"
+  && (Boolean(process.env.DATABASE_URL) || existsSync(resolve(process.cwd(), ".local-pg")));
+
+const StoreProvider = usePersistentStore
   ? { provide: StoreService, useClass: PgStoreService }
   : StoreService;
 
@@ -35,7 +41,7 @@ const StoreProvider = process.env.DATABASE_URL
       signOptions: { expiresIn: "7d" },
     }),
   ],
-  controllers: [AuthController, LearningController, AdminController, EnterpriseController, SubscriptionController],
+  controllers: [SystemController, AuthController, LearningController, AdminController, EnterpriseController, SubscriptionController],
   providers: [
     AppService,
     StoreProvider,

@@ -26,3 +26,27 @@
   color: var(--color-error);
   opacity: 0.8;
 }
+
+.actions {
+  margin-top: var(--space-3);
+}
+
+.retryButton {
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-error, #dc2626);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  padding: 0.625rem 0.9rem;
+  cursor: pointer;
+}
+
+.retryButton:hover {
+  filter: brightness(0.96);
+}
+
+.retryButton:focus-visible {
+  outline: 2px solid rgba(220, 38, 38, 0.35);
+  outline-offset: 2px;
+}

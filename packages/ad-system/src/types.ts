@@ -82,7 +82,7 @@ export interface IAdStore {
   /** Mutable array of all recorded ad events. */
   adEvents: AdEvent[];
   /** Called after mutations to persist the current state. */
-  persistSnapshot(): void;
+  persistSnapshot(): void | Promise<void>;
 }
 
 // ===== Service Configuration =====

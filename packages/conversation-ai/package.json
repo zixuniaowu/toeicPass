@@ -40,7 +40,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "node ../../scripts/build-package-web.mjs",
     "prepublishOnly": "npm run build",
     "typecheck": "tsc --noEmit"
   },

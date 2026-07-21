@@ -137,7 +137,10 @@ export function ClientHome() {
   // Interstitial ad state: show after session submit for free users
   const [showInterstitial, setShowInterstitial] = useState(false);
 
-  const auth = useAuth(locale);
+  const auth = useAuth(locale, {
+    uiLang: langConfig.uiLang,
+    targetLang: langConfig.targetLang,
+  });
   const toast = useToast();
   const session = useSession(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
   const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);

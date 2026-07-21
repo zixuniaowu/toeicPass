@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import type { UiLang, NativeLang, TargetLang, LangConfig } from "../types";
+import { readStoredWebAppSession, updateStoredWebAppSession } from "../lib/app-session-storage";
 
 const STORAGE_KEY = "langboost-lang-config";
 
@@ -12,6 +13,14 @@ function defaultConfig(): LangConfig {
 
 function loadConfig(): LangConfig {
   if (typeof window === "undefined") return defaultConfig();
+  const storedSession = readStoredWebAppSession();
+  if (storedSession.uiLang && storedSession.targetLang) {
+    return {
+      uiLang: storedSession.uiLang,
+      nativeLang: storedSession.uiLang,
+      targetLang: storedSession.targetLang,
+    };
+  }
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultConfig();
@@ -26,6 +35,10 @@ function loadConfig(): LangConfig {
 function saveConfig(cfg: LangConfig) {
   if (typeof window === "undefined") return;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(cfg));
+  updateStoredWebAppSession({
+    uiLang: cfg.uiLang,
+    targetLang: cfg.targetLang,
+  });
 }
 
 /**

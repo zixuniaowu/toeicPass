@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "toeicPass Mobile",
+    "slug": "toeicpass-mobile",
+    "description": "Mobile training app for TOEIC practice, shadowing, and Japanese or English speaking drills.",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "toeicpass",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#f4efe6",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#f4efe6"
+    },
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.toeicpass.mobile",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#f4efe6"
+      },
+      "permissions": [
+        "RECORD_AUDIO"
+      ],
+      "softwareKeyboardLayoutMode": "resize"
+    },
+    "ios": {
+      "bundleIdentifier": "com.toeicpass.mobile",
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "toeicPass uses the microphone for sentence shadowing and speaking practice."
+      }
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
+    },
+    "plugins": [
+      "expo-status-bar",
+      "expo-speech-recognition"
+    ]
+  }
+}

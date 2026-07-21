@@ -1,4 +1,12 @@
 node_modules/
+.expo/
+.expo-export/
+apps/mobile/.expo/
+apps/mobile/.expo-shared/
+apps/mobile/.expo-export/
+apps/mobile/.expo-export-ios/
+apps/mobile/android/
+apps/mobile/ios/
 dist/
 .next/
 apps/web/.next_old/
@@ -22,3 +30,16 @@ ecdict.zip
 
 # Built dictionary chunks (generated - not committed)
 apps/web/public/dict/
+
+# Extracted Android package artifacts (not source)
+/AndroidManifest.xml
+/META-INF/
+/R.txt
+/classes.jar
+/classes*.dex
+/expo/
+/jni/
+/proguard.txt
+
+# Local screenshots
+/screenshot*.png

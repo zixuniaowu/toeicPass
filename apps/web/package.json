@@ -14,7 +14,10 @@
   },
   "dependencies": {
     "@toeicpass/ad-system": "1.0.0",
+    "@toeicpass/app-core": "1.0.0",
+    "@toeicpass/app-i18n": "1.0.0",
     "@toeicpass/conversation-ai": "1.0.0",
+    "@toeicpass/shadowing-content": "1.0.0",
     "@toeicpass/shared": "1.0.0",
     "kuromoji": "^0.1.2",
     "next": "^15.4.6",
@@ -23,6 +26,7 @@
     "youtube-transcript": "^1.2.1"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/node": "^24.3.0",
