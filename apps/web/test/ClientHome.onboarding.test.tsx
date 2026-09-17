@@ -191,7 +191,7 @@ describe("ClientHome onboarding", () => {
   it("persists selected languages from the first-visit popup", async () => {
     render(<ClientHome />);
 
-    const englishOption = (await screen.findAllByRole("button", { name: /English/i }))[1];
+    const [englishOption] = await screen.findAllByRole("button", { name: /English/i });
     fireEvent.click(englishOption);
 
     fireEvent.click(screen.getByRole("button", { name: "Start Learning" }));

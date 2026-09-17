@@ -117,7 +117,7 @@ describe("LoginView", () => {
   it("renders brand title in Japanese locale", () => {
     renderLogin({ locale: "ja" });
 
-    expect(screen.getByText("日本語・英語 スピーキング強化")).toBeDefined();
+    expect(screen.getByText("日本語・英語スピーキング強化プラットフォーム")).toBeDefined();
   });
 
   it("renders feature list items", () => {
@@ -144,6 +144,6 @@ describe("LoginView", () => {
   it("renders Japanese form title when locale is ja", () => {
     renderLogin({ locale: "ja" });
 
-    expect(screen.getByText("LangBoost ログイン")).toBeDefined();
+    expect(screen.getByText("LangBoost にログイン")).toBeDefined();
   });
 });

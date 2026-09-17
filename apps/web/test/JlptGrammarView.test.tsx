@@ -47,7 +47,7 @@ describe("JlptGrammarView", () => {
 
     await waitFor(() => {
       expect(fetchMock).toHaveBeenCalledWith(
-        "http://127.0.0.1:8001/api/v1/learning/grammar/cards?targetLang=ja",
+        "https://jackywangsh-toeicpass.hf.space/api/v1/learning/grammar/cards?targetLang=ja",
         expect.objectContaining({ method: "GET" }),
       );
     });
@@ -60,7 +60,7 @@ describe("JlptGrammarView", () => {
 
     await waitFor(() => {
       expect(fetchMock).toHaveBeenCalledWith(
-        "http://127.0.0.1:8001/api/v1/learning/grammar/cards/card-1/grade",
+        "https://jackywangsh-toeicpass.hf.space/api/v1/learning/grammar/cards/card-1/grade",
         expect.objectContaining({
           method: "POST",
           body: JSON.stringify({ grade: 5 }),
