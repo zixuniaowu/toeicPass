@@ -1,6 +1,7 @@
 import type { ShadowingMaterial } from "@toeicpass/shadowing-content";
 import type { UiLang } from "@toeicpass/app-core";
 import type { ShadowingComparisonFeedback } from "@toeicpass/app-core/shadowing-feedback";
+import type { SavedRecording } from "../services/recording-store";
 
 import { useRef, useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
@@ -22,6 +23,7 @@ export function ShadowingScreen(props: {
   activeMaterial: ShadowingMaterial | null;
   activeSentenceText: string | null;
   activeSentenceTranslations: ShadowingMaterial["sentences"][number]["translations"] | null;
+  activeSentenceAnnotations: ShadowingMaterial["sentences"][number]["annotations"] | null;
   shadowingIndex: number;
   shadowingCompletedCount: number;
   showShadowingTranslation: boolean;
@@ -32,6 +34,9 @@ export function ShadowingScreen(props: {
   shadowingComparison: ShadowingComparisonFeedback | null;
   shadowingAudioStatus: string;
   recordingPlaybackSupported: boolean;
+  recordingPersistSupported: boolean;
+  isRecordOnlyRecording: boolean;
+  recordings: SavedRecording[];
   onStartShadowing: (materialId: string) => void;
   onBackShadowingList: () => void;
   onToggleTranslation: () => void;
@@ -39,8 +44,11 @@ export function ShadowingScreen(props: {
   onPlaySentence: () => void;
   onNextSentence: (sentenceCount: number) => void;
   onToggleRecording: () => void;
+  onToggleRecordOnly: () => void;
   onPlayRecording: () => void;
   onClearRecording: () => void;
+  onPlayRecordingFile: (uri: string) => void;
+  onDeleteRecordingFile: (id: string) => void;
   onGoHome?: () => void;
 }) {
   const {
@@ -50,6 +58,7 @@ export function ShadowingScreen(props: {
     activeMaterial,
     activeSentenceText,
     activeSentenceTranslations,
+    activeSentenceAnnotations,
     shadowingIndex,
     shadowingCompletedCount,
     showShadowingTranslation,
@@ -60,6 +69,9 @@ export function ShadowingScreen(props: {
     shadowingComparison,
     shadowingAudioStatus,
     recordingPlaybackSupported,
+    recordingPersistSupported,
+    isRecordOnlyRecording,
+    recordings,
     onStartShadowing,
     onBackShadowingList,
     onToggleTranslation,
@@ -67,8 +79,11 @@ export function ShadowingScreen(props: {
     onPlaySentence,
     onNextSentence,
     onToggleRecording,
+    onToggleRecordOnly,
     onPlayRecording,
     onClearRecording,
+    onPlayRecordingFile,
+    onDeleteRecordingFile,
   onGoHome,
   } = props;
   const [showIpa, setShowIpa] = useState(false);
@@ -154,6 +169,8 @@ export function ShadowingScreen(props: {
                   t={t}
                   translation={activeSentenceTranslations ? getShadowingTranslation(activeSentenceTranslations, uiLang) : null}
                   showTranslation={showShadowingTranslation}
+                  annotations={activeSentenceAnnotations ?? null}
+                  speechLanguage={activeMaterial.language === "ja" ? "ja-JP" : "en-US"}
                 />
               </>
             ) : null}
@@ -206,6 +223,13 @@ export function ShadowingScreen(props: {
                   {t("mobile.shadowingClearRecording")}
                 </Text>
               </Pressable>
+              {!recordingPersistSupported ? (
+                <Pressable style={styles.primaryButton} onPress={onToggleRecordOnly}>
+                  <Text style={styles.primaryButtonText}>
+                    {isRecordOnlyRecording ? t("mobile.shadowingRecording") : t("mobile.shadowingRecord")}
+                  </Text>
+                </Pressable>
+              ) : null}
             </View>
             <Text style={styles.cardBody}>
               {shadowingAudioStatus || (
@@ -218,9 +242,84 @@ export function ShadowingScreen(props: {
               {t("mobile.shadowingProgress")}: {shadowingCompletedCount} / {activeMaterial.sentences.length}
             </Text>
           </View>
+          <RecordingsSection
+            t={t}
+            materialId={activeMaterial.id}
+            recordings={recordings}
+            playbackSupported={recordingPlaybackSupported}
+            onPlay={onPlayRecordingFile}
+            onDelete={onDeleteRecordingFile}
+          />
         </>
       )}
     </>
+  );
+}
+
+function RecordingsSection(props: {
+  t: Translate;
+  materialId: string;
+  recordings: SavedRecording[];
+  playbackSupported: boolean;
+  onPlay: (uri: string) => void;
+  onDelete: (id: string) => void;
+}) {
+  const { t, materialId, recordings, playbackSupported, onPlay, onDelete } = props;
+  const forMaterial = recordings.filter((item) => item.materialId === materialId);
+
+  return (
+    <View style={styles.card}>
+      <Text style={styles.cardTitle}>
+        {t("mobile.recordingsTitle")} ({forMaterial.length})
+      </Text>
+      {forMaterial.length === 0 ? (
+        <Text style={styles.cardBody}>{t("mobile.recordingsEmpty")}</Text>
+      ) : (
+        <View style={{ gap: 8 }}>
+          {forMaterial.map((recording) => (
+            <View
+              key={recording.id}
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 10,
+                backgroundColor: "#f5f1e8",
+                borderRadius: 12,
+                paddingVertical: 8,
+                paddingHorizontal: 12,
+              }}
+            >
+              <View style={{ flex: 1 }}>
+
+                <Text style={{ fontSize: 13, color: "#10212b", fontWeight: "600" }} numberOfLines={1}>
+                  {recording.sentenceText}
+                </Text>
+                <Text style={{ fontSize: 11, color: "#7a8b94" }}>
+                  #{recording.sentenceIndex} · {new Date(recording.createdAt).toLocaleString()}
+                </Text>
+              </View>
+              <Pressable
+                style={[styles.secondaryButton, !playbackSupported ? styles.buttonDisabled : null]}
+                onPress={() => onPlay(recording.uri)}
+                disabled={!playbackSupported}
+              >
+                <Text style={[styles.secondaryButtonText, !playbackSupported ? styles.buttonTextDisabled : null]}>
+                  {t("mobile.shadowingListen")}
+                </Text>
+              </Pressable>
+              <Pressable
+                style={styles.secondaryButton}
+                onPress={() => onDelete(recording.id)}
+              >
+                <Text style={[styles.secondaryButtonText, { color: "#b91c1c" }]}>
+                  {t("mobile.recordingsDelete")}
+                </Text>
+              </Pressable>
+            </View>
+          ))}
+        </View>
+      )}
+    </View>
   );
 }
 

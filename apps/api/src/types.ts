@@ -373,3 +373,45 @@ export interface RefreshTokenRecord {
   revoked: boolean;
   createdAt: string;
 }
+
+// ===== Shadowing Content (global, not tenant-scoped) =====
+
+export type ShadowingTranslations = Partial<Record<"zh" | "ja" | "en", string>>;
+
+/** Furigana segment: original surface text plus a hiragana reading. */
+export interface FuriganaSegment {
+  surface: string;
+  reading: string;
+  isIpa?: boolean;
+}
+
+export interface ShadowingSentenceRecord {
+  id: number;
+  text: string;
+  translations: ShadowingTranslations;
+  startSec?: number;
+  endSec?: number;
+  /** Furigana segments for Japanese sentences (computed at serve time). */
+  annotations?: FuriganaSegment[];
+}
+
+/**
+ * A shadowing material served to mobile/web clients. Global content: every
+ * tenant and every app flavor (EN/JA) sees the same published materials.
+ */
+export interface ShadowingMaterialRecord {
+  /** Stable slug id (e.g. "jobs-stanford"). Client caches key on this. */
+  id: string;
+  language: "en" | "ja";
+  title: string;
+  translations: ShadowingTranslations;
+  source: string;
+  category: string;
+  difficulty: number;
+  youtubeVideoId?: string;
+  sentences: ShadowingSentenceRecord[];
+  published: boolean;
+  createdAt: string;
+  /** Clients send this back as `since` for incremental sync. */
+  updatedAt: string;
+}

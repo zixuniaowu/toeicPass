@@ -17,6 +17,11 @@ export type ShadowingSentence = {
   translations: ShadowingTranslations;
   startSec?: number;
   endSec?: number;
+  /**
+   * Furigana segments for Japanese sentences (surface + hiragana reading),
+   * computed server-side and delivered through the content API.
+   */
+  annotations?: Array<{ surface: string; reading: string; isIpa?: boolean }>;
 };
 
 type ShadowingMaterialInput = Omit<ShadowingMaterial, "translations" | "sentences"> & {

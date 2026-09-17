@@ -5,6 +5,9 @@ type Props = {
   t: (key: string) => string;
   uiLang: string;
   targetLang: string;
+  appTitle?: string;
+  lockTargetLang?: boolean;
+  syncingContent?: boolean;
   onOpenShadowing: () => void;
   onOpenYoutube: () => void;
   onOpenVocab: () => void;
@@ -17,10 +20,18 @@ const UI_LANG_OPTIONS = [
   { key: "ja", label: "日本語" },
 ] as const;
 
+const TARGET_LANG_LABELS: Record<string, string> = {
+  en: "English",
+  ja: "日本語",
+};
+
 export function HomeScreen({
   t,
   uiLang,
   targetLang,
+  appTitle = "toeicPass",
+  lockTargetLang = false,
+  syncingContent = false,
   onOpenShadowing,
   onOpenYoutube,
   onOpenVocab,
@@ -35,7 +46,7 @@ export function HomeScreen({
     <ScrollView style={homeStyles.container} showsVerticalScrollIndicator={false}>
       {/* Header */}
       <View style={homeStyles.headerSection}>
-        <Text style={homeStyles.appTitle}>toeicPass</Text>
+        <Text style={homeStyles.appTitle}>{appTitle}</Text>
         <Text style={homeStyles.appSubtitle}>跟读 · 词汇 · 视频</Text>
       </View>
 
@@ -63,25 +74,36 @@ export function HomeScreen({
             </Pressable>
           ))}
         </View>
-        <Text style={[homeStyles.langLabel, { marginTop: 10 }]}>{t("mobile.langTarget")}</Text>
-        <View style={homeStyles.chipRow}>
-          <Pressable
-            style={[homeStyles.chip, targetLang === "en" ? homeStyles.chipActive : null]}
-            onPress={() => onTargetLangChange("en")}
-          >
-            <Text style={[homeStyles.chipText, targetLang === "en" ? homeStyles.chipTextActive : null]}>
-              English
-            </Text>
-          </Pressable>
-          <Pressable
-            style={[homeStyles.chip, targetLang === "ja" ? homeStyles.chipActive : null]}
-            onPress={() => onTargetLangChange("ja")}
-          >
-            <Text style={[homeStyles.chipText, targetLang === "ja" ? homeStyles.chipTextActive : null]}>
-              日本語
-            </Text>
-          </Pressable>
-        </View>
+        {lockTargetLang ? (
+          <Text style={[homeStyles.langLabel, { marginTop: 10 }]}>
+            {t("mobile.langTarget")} · {TARGET_LANG_LABELS[targetLang] ?? targetLang}
+          </Text>
+        ) : (
+          <>
+            <Text style={[homeStyles.langLabel, { marginTop: 10 }]}>{t("mobile.langTarget")}</Text>
+            <View style={homeStyles.chipRow}>
+              <Pressable
+                style={[homeStyles.chip, targetLang === "en" ? homeStyles.chipActive : null]}
+                onPress={() => onTargetLangChange("en")}
+              >
+                <Text style={[homeStyles.chipText, targetLang === "en" ? homeStyles.chipTextActive : null]}>
+                  English
+                </Text>
+              </Pressable>
+              <Pressable
+                style={[homeStyles.chip, targetLang === "ja" ? homeStyles.chipActive : null]}
+                onPress={() => onTargetLangChange("ja")}
+              >
+                <Text style={[homeStyles.chipText, targetLang === "ja" ? homeStyles.chipTextActive : null]}>
+                  日本語
+                </Text>
+              </Pressable>
+            </View>
+          </>
+        )}
+        {syncingContent ? (
+          <Text style={homeStyles.syncHint}>正在同步课程内容…</Text>
+        ) : null}
       </View>
 
       {/* Feature Cards */}
@@ -230,6 +252,11 @@ const homeStyles = {
   },
   chipTextActive: {
     color: "#ffffff",
+  },
+  syncHint: {
+    marginTop: 10,
+    fontSize: 12,
+    color: "#7a8b94",
   },
   cardGrid: {
     paddingHorizontal: 16,

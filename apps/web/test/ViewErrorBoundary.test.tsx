@@ -1,8 +1,9 @@
+import type { ReactElement } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ViewErrorBoundary } from "../components/error/ViewErrorBoundary";
 
-function ThrowingView({ error }: { error: Error }) {
+function ThrowingView({ error }: { error: Error }): ReactElement {
   throw error;
 }
 

@@ -11,6 +11,7 @@ import { OwnershipGuard } from "./ownership.guard";
 import { PermissionsGuard } from "./permissions.guard";
 import { AdminController } from "./controllers/admin.controller";
 import { AuthController } from "./controllers/auth.controller";
+import { ContentController } from "./controllers/content.controller";
 import { EnterpriseController } from "./controllers/enterprise.controller";
 import { LearningController } from "./controllers/learning.controller";
 import { SubscriptionController } from "./controllers/subscription.controller";
@@ -20,8 +21,10 @@ import { QueueService } from "./queue.service";
 import { RolesGuard } from "./roles.guard";
 import { AdminQuestionService } from "./services/admin-question.service";
 import { AuthDomainService } from "./services/auth-domain.service";
+import { ContentService } from "./services/content.service";
 import { EnterpriseIpService } from "./services/enterprise-ip.service";
 import { InMemoryCacheService } from "./services/in-memory-cache.service";
+import { JapaneseReadingService } from "./services/japanese-reading.service";
 import { LearningConversationService } from "./services/learning-conversation.service";
 import { LearningDomainService } from "./services/learning-domain.service";
 import { SubscriptionService } from "./services/subscription.service";
@@ -41,15 +44,17 @@ const StoreProvider = usePersistentStore
       signOptions: { expiresIn: "7d" },
     }),
   ],
-  controllers: [SystemController, AuthController, LearningController, AdminController, EnterpriseController, SubscriptionController],
+  controllers: [SystemController, AuthController, LearningController, AdminController, EnterpriseController, SubscriptionController, ContentController],
   providers: [
     AppService,
     StoreProvider,
     QueueService,
     AuthDomainService,
     AdminQuestionService,
+    ContentService,
     EnterpriseIpService,
     InMemoryCacheService,
+    JapaneseReadingService,
     LearningConversationService,
     LearningDomainService,
     SubscriptionService,

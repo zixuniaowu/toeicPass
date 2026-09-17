@@ -37,6 +37,7 @@ const PUBLIC_PATH_PREFIXES = [
   "/api/v1/auth/register",
   "/api/v1/auth/oauth",
   "/api/v1/health",
+  "/api/v1/content",
 ];
 
 /** Attach a synthetic guest user to unauthenticated requests in non-prod. */

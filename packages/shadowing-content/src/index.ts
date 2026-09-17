@@ -8,15 +8,32 @@ export {
   type ShadowingTranslations,
 } from "./shadowing-materials";
 export { JAPANESE_SHADOWING_MATERIALS } from "./japanese-shadowing-materials";
+export { JAPANESE_LIFE_WORK_MATERIALS } from "./japanese-life-work-materials";
+export {
+  YOUTUBE_SHADOWING_MATERIALS,
+  isJapaneseYoutubeMaterial,
+} from "./youtube-shadowing-materials";
 
 import {
   SHADOWING_MATERIALS,
   type ShadowingMaterial,
 } from "./shadowing-materials";
 import { JAPANESE_SHADOWING_MATERIALS } from "./japanese-shadowing-materials";
+import { JAPANESE_LIFE_WORK_MATERIALS } from "./japanese-life-work-materials";
+import {
+  YOUTUBE_SHADOWING_MATERIALS,
+  isJapaneseYoutubeMaterial,
+} from "./youtube-shadowing-materials";
 
 export function getShadowingMaterialsByLanguage(language: "en" | "ja"): ShadowingMaterial[] {
-  return language === "ja" ? JAPANESE_SHADOWING_MATERIALS : SHADOWING_MATERIALS;
+  const ttsMaterials =
+    language === "ja"
+      ? [...JAPANESE_SHADOWING_MATERIALS, ...JAPANESE_LIFE_WORK_MATERIALS]
+      : SHADOWING_MATERIALS;
+  const youtubeMaterials = YOUTUBE_SHADOWING_MATERIALS.filter((material) =>
+    language === "ja" ? isJapaneseYoutubeMaterial(material) : !isJapaneseYoutubeMaterial(material),
+  );
+  return [...ttsMaterials, ...youtubeMaterials];
 }
 
 export function toShadowingContent(material: ShadowingMaterial, language: "en" | "ja"): IShadowingContent {

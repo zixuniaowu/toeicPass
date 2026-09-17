@@ -21,6 +21,7 @@ import {
   Question,
   ReviewCard,
   ScorePrediction,
+  ShadowingMaterialRecord,
   Tenant,
   User,
   VocabularyCard,
@@ -52,6 +53,7 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
     }
 
     await this.ensureAdTables();
+    await this.ensureShadowingTables();
     await this.loadFromDatabase();
   }
 
@@ -126,6 +128,7 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
       await this.loadMistakeNotesFromDatabase();
       await this.loadIpTablesFromDatabase();
       await this.loadAdTablesFromDatabase();
+      await this.loadShadowingMaterialsFromDatabase();
 
       this.logger.log(
         `Loaded from PostgreSQL: ${this.tenants.length} tenants, ${this.users.length} users, ` +
@@ -349,6 +352,7 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
     }
 
     await this.syncAdTablesToDatabase();
+    await this.syncShadowingTablesToDatabase();
   }
 
   private async syncAdTablesToDatabase(): Promise<void> {
@@ -425,6 +429,126 @@ export class PgStoreService extends StoreService implements OnModuleInit, OnModu
         ]);
       } else {
         await this.executeQuery("DELETE FROM ad_events");
+      }
+
+      await this.executeQuery("COMMIT");
+    } catch (error) {
+      await this.executeQuery("ROLLBACK");
+      throw error;
+    }
+  }
+
+  private async ensureShadowingTables(): Promise<void> {
+    if (!this.client) {
+      return;
+    }
+
+    const statements = [
+      `CREATE TABLE IF NOT EXISTS shadowing_materials (
+         id text PRIMARY KEY,
+         language text NOT NULL CHECK (language IN ('en', 'ja')),
+         title text NOT NULL,
+         translations jsonb NOT NULL DEFAULT '{}'::jsonb,
+         source text NOT NULL DEFAULT '',
+         category text NOT NULL DEFAULT 'speech',
+         difficulty smallint NOT NULL DEFAULT 2,
+         youtube_video_id text,
+         sentences jsonb NOT NULL DEFAULT '[]'::jsonb,
+         published boolean NOT NULL DEFAULT true,
+         created_at timestamptz NOT NULL DEFAULT now(),
+         updated_at timestamptz NOT NULL DEFAULT now()
+       )`,
+      `CREATE INDEX IF NOT EXISTS idx_shadowing_materials_language
+         ON shadowing_materials (language, published)`,
+    ];
+
+    for (const statement of statements) {
+      await this.executeQuery(statement);
+    }
+  }
+
+  /**
+   * Shadowing materials are global content (not tenant-scoped). DB rows only
+   * override the in-memory seed when the table is non-empty, so a fresh
+   * database keeps serving the bundled seed content.
+   */
+  private async loadShadowingMaterialsFromDatabase(): Promise<void> {
+    if (!this.client) {
+      return;
+    }
+
+    try {
+      const rows = await this.queryRows<ShadowingMaterialRecord & {
+        createdAt: Date | string;
+        updatedAt: Date | string;
+      }>(
+        `SELECT id, language, title, translations, source, category, difficulty,
+                youtube_video_id AS "youtubeVideoId", sentences, published,
+                created_at AS "createdAt", updated_at AS "updatedAt"
+         FROM shadowing_materials`,
+      );
+
+      if (rows.length > 0) {
+        this.shadowingMaterials = rows.map((row) => ({
+          ...row,
+          createdAt: new Date(row.createdAt).toISOString(),
+          updatedAt: new Date(row.updatedAt).toISOString(),
+        }));
+      }
+    } catch (error) {
+      this.logger.warn("Shadowing materials table unavailable; keeping in-memory content", error as Error);
+    }
+  }
+
+  private async syncShadowingTablesToDatabase(): Promise<void> {
+    if (!this.client) {
+      return;
+    }
+
+    await this.executeQuery("BEGIN");
+
+    try {
+      for (const material of this.shadowingMaterials) {
+        await this.executeQuery(
+          `INSERT INTO shadowing_materials (
+             id, language, title, translations, source, category, difficulty,
+             youtube_video_id, sentences, published, created_at, updated_at
+           )
+           VALUES ($1, $2, $3, $4::jsonb, $5, $6, $7, $8, $9::jsonb, $10, $11, $12)
+           ON CONFLICT (id) DO UPDATE SET
+             language = EXCLUDED.language,
+             title = EXCLUDED.title,
+             translations = EXCLUDED.translations,
+             source = EXCLUDED.source,
+             category = EXCLUDED.category,
+             difficulty = EXCLUDED.difficulty,
+             youtube_video_id = EXCLUDED.youtube_video_id,
+             sentences = EXCLUDED.sentences,
+             published = EXCLUDED.published,
+             updated_at = EXCLUDED.updated_at`,
+          [
+            material.id,
+            material.language,
+            material.title,
+            JSON.stringify(material.translations ?? {}),
+            material.source,
+            material.category,
+            material.difficulty,
+            material.youtubeVideoId ?? null,
+            JSON.stringify(material.sentences ?? []),
+            material.published,
+            material.createdAt,
+            material.updatedAt,
+          ],
+        );
+      }
+
+      if (this.shadowingMaterials.length > 0) {
+        await this.executeQuery("DELETE FROM shadowing_materials WHERE id <> ALL($1::text[])", [
+          this.shadowingMaterials.map((material) => material.id),
+        ]);
+      } else {
+        await this.executeQuery("DELETE FROM shadowing_materials");
       }
 
       await this.executeQuery("COMMIT");

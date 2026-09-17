@@ -9,6 +9,10 @@ COPY apps/web/package.json apps/web/package.json
 COPY packages/shared/package.json packages/shared/package.json
 COPY packages/ad-system/package.json packages/ad-system/package.json
 COPY packages/conversation-ai/package.json packages/conversation-ai/package.json
+COPY packages/word-annotation/package.json packages/word-annotation/package.json
+COPY packages/app-core/package.json packages/app-core/package.json
+COPY packages/app-i18n/package.json packages/app-i18n/package.json
+COPY packages/shadowing-content/package.json packages/shadowing-content/package.json
 
 RUN npm ci
 

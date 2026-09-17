@@ -34,6 +34,12 @@ import {
 } from "expo-speech-recognition";
 import { useAppStateEffect } from "../platform/use-app-state-effect";
 import { useShadowingAudio } from "./use-shadowing-audio";
+import {
+  deleteRecording,
+  listRecordings,
+  saveRecording,
+  type SavedRecording,
+} from "../services/recording-store";
 
 type Translate = (key: string) => string;
 
@@ -49,6 +55,7 @@ export type UseShadowingTrainingResult = {
   activeMaterial: ShadowingMaterial | null;
   activeSentence: ShadowingMaterial["sentences"][number] | null;
   compareTranscript: (recognizedText: string) => void;
+  deleteSavedRecording: (id: string) => Promise<void>;
   clearRecording: () => Promise<void>;
   handleBackToList: () => void;
   handleNextSentence: (sentenceCount: number) => void;
@@ -57,9 +64,14 @@ export type UseShadowingTrainingResult = {
   handlePreviousSentence: () => void;
   handleStartShadowing: (materialId: string) => void;
   handleToggleRecording: () => Promise<void>;
+  handleToggleRecordOnly: () => Promise<void>;
   handleToggleTranslation: () => void;
   handleUpdateMetric: (metric: ReviewMetric, value: number) => void;
+  isRecordOnlyRecording: boolean;
+  playSavedRecording: (uri: string) => Promise<void>;
+  recordingPersistSupported: boolean;
   recordingPlaybackSupported: boolean;
+  recordings: SavedRecording[];
   resetForTargetLang: (lang: "en" | "ja") => void;
   setTranscriptDraft: (value: string) => void;
   suspendAudio: () => Promise<void>;
@@ -75,7 +87,15 @@ export function useShadowingTraining(
     createShadowingSessionState(targetLang),
   );
   const [transcriptDraft, setTranscriptDraft] = useState("");
+  const [recordings, setRecordings] = useState<SavedRecording[]>([]);
+  const [isRecordOnlyRecording, setIsRecordOnlyRecording] = useState(false);
   const shadowingScoreCalculator = useMemo(() => new ScoreCalculator(), []);
+
+  useEffect(() => {
+    void listRecordings().then(setRecordings);
+  }, []);
+
+  const speechLocale = targetLang === "ja" ? "ja-JP" : "en-US";
 
   const updateShadowingSpeaking = useCallback((isSpeaking: boolean) => {
     setShadowingSession((current) => setShadowingSessionSpeaking(current, isSpeaking));
@@ -100,6 +120,7 @@ export function useShadowingTraining(
     ExpoSpeechRecognitionModule.abort();
     await shadowingAudio.clearRecording();
     await shadowingAudio.stopSpeech();
+    setIsRecordOnlyRecording(false);
     setShadowingSession((current) => {
       const next = setShadowingSessionPlayback(
         setShadowingSessionSpeaking(current, false),
@@ -139,60 +160,102 @@ export function useShadowingTraining(
   tRef.current = t;
 
   useSpeechRecognitionEvent("start", () => {
-    console.log("[STT] start event - speech recognition started");
+    // Recognition session started.
   });
 
-  useSpeechRecognitionEvent("audiostart", (event) => {
-    console.log("[STT] audiostart event:", JSON.stringify(event));
-  });
-
+  // When recordingOptions.persist is enabled, the recognizer writes the mic
+  // stream to a cache file; `audioend` delivers the uri. Persist it to the
+  // app's documents directory so practice recordings survive restarts.
   useSpeechRecognitionEvent("audioend", (event) => {
-    console.log("[STT] audioend event:", JSON.stringify(event));
+    const uri = event.uri;
+    const material = activeMaterialRef.current;
+    const sentence = activeSentenceRef.current;
+    if (!uri || !material || !sentence) {
+      return;
+    }
+    void (async () => {
+      const saved = await saveRecording({
+        sourceUri: uri,
+        materialId: material.id,
+        materialTitle: material.title,
+        sentenceIndex: sentence.id,
+        sentenceText: sentence.text,
+        lang: targetLangRef.current,
+      });
+      if (!saved) {
+        return;
+      }
+      setRecordings((current) => [saved, ...current]);
+      setShadowingSession((current) => {
+        if (!current.feedback.comparison && !current.feedback.review) {
+          // Keep feedback untouched if no result arrived; just enable replay.
+          return {
+            ...current,
+            feedback: { ...current.feedback, recordingUri: saved.uri },
+          };
+        }
+        return {
+          ...current,
+          feedback: { ...current.feedback, recordingUri: saved.uri },
+        };
+      });
+    })();
   });
 
   useSpeechRecognitionEvent("result", (event) => {
-    console.log("[STT] result event:", JSON.stringify(event));
-    if (event.isFinal) {
-      const transcript = event.results[0]?.transcript ?? "";
-      console.log("[STT] final transcript:", transcript);
-      if (transcript) {
-        setTranscriptDraft(transcript);
-        const refText = activeSentenceRef.current?.text;
-        console.log("[STT] activeSentenceRef text:", JSON.stringify(refText));
-        const referenceText = refText?.trim() ?? "";
-        if (referenceText) {
-          const comparison = createShadowingComparisonFeedback({
-            referenceText,
-            recognizedText: transcript,
-            language: targetLangRef.current,
-          });
-          setShadowingSession((current) =>
-            setShadowingSessionFeedback(current, {
-              ...current.feedback,
-              comparison,
-              audioStatus: tRef.current("mobile.shadowingRecordingReady"),
-            }),
-          );
-          console.log("[STT] comparison set in feedback");
-        } else {
-          setShadowingSession((current) =>
-            setShadowingSessionFeedback(current, {
-              ...current.feedback,
-              comparison: createShadowingComparisonFeedback({
-                referenceText: transcript,
-                recognizedText: transcript,
-                language: targetLangRef.current,
-              }),
-              audioStatus: tRef.current("mobile.shadowingRecordingReady"),
-            }),
-          );
-        }
+    if (!event.isFinal) {
+      return;
+    }
+    // Compare every alternative transcription against the reference and keep
+    // the best-scoring one — the top alternative is not always the closest.
+    const candidates = event.results
+      .map((item) => item?.transcript ?? "")
+      .filter((transcript) => transcript.trim().length > 0);
+    if (candidates.length === 0) {
+      return;
+    }
+    const referenceText = activeSentenceRef.current?.text?.trim() ?? "";
+    let bestTranscript = candidates[0];
+    let bestComparison = referenceText
+      ? createShadowingComparisonFeedback({
+          referenceText,
+          recognizedText: bestTranscript,
+          language: targetLangRef.current,
+        })
+      : null;
+    for (const transcript of candidates.slice(1)) {
+      if (!referenceText || !bestComparison) {
+        break;
+      }
+      const comparison = createShadowingComparisonFeedback({
+        referenceText,
+        recognizedText: transcript,
+        language: targetLangRef.current,
+      });
+      if (comparison.accuracy > bestComparison.accuracy) {
+        bestTranscript = transcript;
+        bestComparison = comparison;
       }
     }
+
+    setTranscriptDraft(bestTranscript);
+    const comparison =
+      bestComparison ??
+      createShadowingComparisonFeedback({
+        referenceText: bestTranscript,
+        recognizedText: bestTranscript,
+        language: targetLangRef.current,
+      });
+    setShadowingSession((current) =>
+      setShadowingSessionFeedback(current, {
+        ...current.feedback,
+        comparison,
+        audioStatus: tRef.current("mobile.shadowingRecordingReady"),
+      }),
+    );
   });
 
   useSpeechRecognitionEvent("end", () => {
-    console.log("[STT] end event");
     setShadowingSession((current) => {
       if (current.runtime.isRecording) {
         return setShadowingSessionRecording(current, false);
@@ -202,7 +265,6 @@ export function useShadowingTraining(
   });
 
   useSpeechRecognitionEvent("error", (event) => {
-    console.log("[STT] error event:", JSON.stringify(event));
     setShadowingSession((current) => {
       if (!current.runtime.isRecording) return current;
       return clearShadowingSessionFeedback(setShadowingSessionRecording(current, false));
@@ -217,15 +279,15 @@ export function useShadowingTraining(
     [materials, shadowingSession.practice.materialId],
   );
 
+  const activeMaterialRef = useRef(activeMaterial);
+  activeMaterialRef.current = activeMaterial;
+
   const activeSentence = useMemo(
-    () => {
-      const sentence = selectActiveShadowingSentence(
+    () =>
+      selectActiveShadowingSentence(
         activeMaterial,
         shadowingSession.practice.sentenceIndex,
-      ) as ShadowingMaterial["sentences"][number] | null;
-      console.log("[NAV] activeSentence computed, idx:", shadowingSession.practice.sentenceIndex, "materialId:", activeMaterial?.id, "text:", sentence?.text?.slice(0, 40));
-      return sentence;
-    },
+      ) as ShadowingMaterial["sentences"][number] | null,
     [activeMaterial, shadowingSession.practice.sentenceIndex],
   );
 
@@ -256,16 +318,12 @@ export function useShadowingTraining(
 
   const handleToggleRecording = useCallback(async () => {
     if (shadowingSession.runtime.isRecording) {
-      console.log("[REC] Stopping STT");
       setShadowingSession((current) => setShadowingSessionRecording(current, false));
       ExpoSpeechRecognitionModule.stop();
-      console.log("[REC] STT stop() called");
       return;
     }
 
-    console.log("[REC] Starting STT, requesting permissions...");
     const result = await ExpoSpeechRecognitionModule.requestPermissionsAsync();
-    console.log("[REC] Permission result:", JSON.stringify(result));
     if (!result.granted) {
       Alert.alert(t("mobile.shadowingTitle"), t("mobile.shadowingMicDenied"));
       return;
@@ -273,37 +331,39 @@ export function useShadowingTraining(
 
     try {
       const recognitionAvailable = ExpoSpeechRecognitionModule.isRecognitionAvailable();
-      console.log("[REC] isRecognitionAvailable:", recognitionAvailable);
       if (!recognitionAvailable) {
         Alert.alert("语音识别不可用", "设备未安装语音识别服务。请检查 Google 语音识别是否开启。");
         return;
       }
 
       setTranscriptDraft("");
-      console.log("[REC] activeSentenceRef.text at start:", JSON.stringify(activeSentenceRef.current?.text));
       setShadowingSession((current) => {
         const next = clearShadowingSessionFeedback(current);
         return setShadowingSessionRecording(next, true);
       });
 
-      console.log("[REC] Calling STT start() with lang=en-US");
       ExpoSpeechRecognitionModule.start({
-        lang: "en-US",
+        lang: speechLocale,
         interimResults: false,
         continuous: false,
+        maxAlternatives: 3,
         contextualStrings: activeSentence?.text ? [activeSentence.text] : undefined,
         addsPunctuation: true,
+        // Persist the mic stream to a file so recordings can be replayed and
+        // are kept on the device (see audioend handler / recording-store).
+        recordingOptions: {
+          persist: true,
+          outputFileName: `shadowing-${Date.now()}.wav`,
+        },
       });
-      console.log("[REC] STT start() returned");
-    } catch (e) {
-      console.log("[REC] Error starting:", e);
+    } catch {
       ExpoSpeechRecognitionModule.abort();
       setShadowingSession((current) =>
         clearShadowingSessionFeedback(setShadowingSessionRecording(current, false)),
       );
       Alert.alert(t("mobile.shadowingTitle"), t("mobile.shadowingRecordFailed"));
     }
-  }, [activeSentence?.text, shadowingSession.runtime.isRecording, t]);
+  }, [activeSentence?.text, shadowingSession.runtime.isRecording, speechLocale, t]);
 
   const handleUpdateMetric = useCallback((metric: ReviewMetric, value: number) => {
     setShadowingSession((current) => {
@@ -342,17 +402,85 @@ export function useShadowingTraining(
     t,
   ]);
 
+  const recordingPersistSupported = Platform.OS === "ios" || Number(Platform.Version) >= 33;
+  // Local file playback works on every supported Android/iOS version.
+  const recordingPlaybackSupported = true;
+
+  /**
+   * Android < 13 cannot persist the recognizer's audio stream (native limit)
+   * and the mic is exclusive across processes, so a separate record-only
+   * flow (expo-av) lets those devices keep practice recordings locally.
+   */
+  const handleToggleRecordOnly = useCallback(async () => {
+    if (isRecordOnlyRecording) {
+      setIsRecordOnlyRecording(false);
+      try {
+        const recorded = await shadowingAudio.finishRecording();
+        const material = activeMaterialRef.current;
+        const sentence = activeSentenceRef.current;
+        if (recorded?.uri && material && sentence) {
+          const saved = await saveRecording({
+            sourceUri: recorded.uri,
+            materialId: material.id,
+            materialTitle: material.title,
+            sentenceIndex: sentence.id,
+            sentenceText: sentence.text,
+            lang: targetLangRef.current,
+          });
+          if (saved) {
+            setRecordings((current) => [saved, ...current]);
+            setShadowingSession((current) => ({
+              ...current,
+              feedback: { ...current.feedback, recordingUri: saved.uri },
+            }));
+            return;
+          }
+        }
+      } catch {
+        // Recording cleanup failures are non-fatal.
+      }
+      return;
+    }
+
+    const permission = await shadowingAudio.requestRecordingPermission();
+    if (!permission) {
+      Alert.alert(t("mobile.shadowingTitle"), t("mobile.shadowingMicDenied"));
+      return;
+    }
+    try {
+      await shadowingAudio.startRecording();
+      setIsRecordOnlyRecording(true);
+    } catch {
+      setIsRecordOnlyRecording(false);
+      Alert.alert(t("mobile.shadowingTitle"), t("mobile.shadowingRecordFailed"));
+    }
+  }, [isRecordOnlyRecording, shadowingAudio, t]);
+
   const handleNextSentence = useCallback((sentenceCount: number) => {
-    console.log("[NAV] handleNextSentence, idx:", shadowingSession.practice.sentenceIndex, "count:", sentenceCount);
     setShadowingSession((current) => goToNextShadowingSessionSentence(current, sentenceCount));
     setTranscriptDraft("");
-  }, [shadowingSession.practice.sentenceIndex]);
+  }, []);
 
   const handlePreviousSentence = useCallback(() => {
-    console.log("[NAV] handlePreviousSentence, idx:", shadowingSession.practice.sentenceIndex);
     setShadowingSession((current) => goToPreviousShadowingSessionSentence(current));
     setTranscriptDraft("");
-  }, [shadowingSession.practice.sentenceIndex]);
+  }, []);
+
+  const deleteSavedRecording = useCallback(async (id: string) => {
+    const next = await deleteRecording(id);
+    setRecordings(next);
+  }, []);
+
+  const playSavedRecording = useCallback(
+    async (uri: string) => {
+      try {
+        await shadowingAudio.playRecording(uri);
+      } catch {
+        await shadowingAudio.stopPlayback();
+      }
+    },
+    [shadowingAudio],
+  );
 
   const handleToggleTranslation = useCallback(() => {
     setShadowingSession((current) =>
@@ -385,13 +513,12 @@ export function useShadowingTraining(
     );
   }, [activeSentence?.text, targetLang]);
 
-  const recordingPlaybackSupported = Platform.Version >= 33;
-
   return useMemo(
     () => ({
       activeMaterial,
       activeSentence,
       compareTranscript,
+      deleteSavedRecording,
       clearRecording,
       handleBackToList,
       handleNextSentence,
@@ -400,9 +527,14 @@ export function useShadowingTraining(
       handlePreviousSentence,
       handleStartShadowing,
       handleToggleRecording,
+      handleToggleRecordOnly,
       handleToggleTranslation,
       handleUpdateMetric,
+      isRecordOnlyRecording,
+      playSavedRecording,
+      recordingPersistSupported,
       recordingPlaybackSupported,
+      recordings,
       resetForTargetLang,
       setTranscriptDraft,
       suspendAudio,
@@ -413,6 +545,7 @@ export function useShadowingTraining(
       activeMaterial,
       activeSentence,
       compareTranscript,
+      deleteSavedRecording,
       clearRecording,
       handleBackToList,
       handleNextSentence,
@@ -421,9 +554,14 @@ export function useShadowingTraining(
       handlePreviousSentence,
       handleStartShadowing,
       handleToggleRecording,
+      handleToggleRecordOnly,
       handleToggleTranslation,
       handleUpdateMetric,
+      isRecordOnlyRecording,
+      playSavedRecording,
+      recordingPersistSupported,
       recordingPlaybackSupported,
+      recordings,
       resetForTargetLang,
       setTranscriptDraft,
       suspendAudio,

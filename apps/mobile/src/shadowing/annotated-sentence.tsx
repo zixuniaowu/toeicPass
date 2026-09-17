@@ -17,6 +17,9 @@ type Props = {
   t: (key: string) => string;
   translation?: string | null;
   showTranslation?: boolean;
+  /** Furigana segments for Japanese sentences (surface + hiragana reading). */
+  annotations?: Array<{ surface: string; reading: string }> | null;
+  speechLanguage?: string;
 };
 
 type PopoverState = {
@@ -27,7 +30,7 @@ type PopoverState = {
   y: number;
 };
 
-export function AnnotatedSentence({ text, comparison, showIpa, t, translation, showTranslation }: Props) {
+export function AnnotatedSentence({ text, comparison, showIpa, t, translation, showTranslation, annotations, speechLanguage }: Props) {
   const annotatedWords = useMemo(() => annotateSentence(text), [text]);
   const [popover, setPopover] = useState<PopoverState | null>(null);
   const wordRefs = useRef<Record<string, View | null>>({});
@@ -41,29 +44,60 @@ export function AnnotatedSentence({ text, comparison, showIpa, t, translation, s
     return map;
   }, [comparison]);
 
+  const hasFurigana = Boolean(showIpa && annotations && annotations.length > 0);
+
   return (
     <View style={annotatedSentenceStyles.container}>
-      <View style={annotatedSentenceStyles.wordsRow}>
-        {annotatedWords.map((aw, i) => (
-          <WordView
-            key={`${aw.text}-${i}`}
-            word={aw}
-            status={comparisonMap?.[aw.clean] ?? null}
-            showIpa={showIpa}
-            onLongPress={(x, y) => {
-              if (aw.annotation) {
-                setPopover({
-                  word: aw.text,
-                  ipa: aw.annotation.ipa,
-                  cn: aw.annotation.cn,
-                  x,
-                  y,
-                });
-              }
-            }}
-          />
-        ))}
-      </View>
+      {hasFurigana ? (
+        <View style={annotatedSentenceStyles.wordsRow}>
+          {(annotations ?? []).map((segment, i) => {
+            const needsReading = segment.reading !== segment.surface;
+            return (
+              <Pressable
+                key={`furigana-${i}`}
+                style={annotatedSentenceStyles.wordWrapper}
+                onLongPress={() => {
+                  setPopover({
+                    word: segment.surface,
+                    ipa: needsReading ? segment.reading : null,
+                    cn: null,
+                    x: 0,
+                    y: 0,
+                  });
+                }}
+                delayLongPress={400}
+              >
+                {needsReading ? (
+                  <Text style={annotatedSentenceStyles.furigana}>{segment.reading}</Text>
+                ) : null}
+                <Text style={annotatedSentenceStyles.word}>{segment.surface}</Text>
+              </Pressable>
+            );
+          })}
+        </View>
+      ) : (
+        <View style={annotatedSentenceStyles.wordsRow}>
+          {annotatedWords.map((aw, i) => (
+            <WordView
+              key={`${aw.text}-${i}`}
+              word={aw}
+              status={comparisonMap?.[aw.clean] ?? null}
+              showIpa={showIpa}
+              onLongPress={(x, y) => {
+                if (aw.annotation) {
+                  setPopover({
+                    word: aw.text,
+                    ipa: aw.annotation.ipa,
+                    cn: aw.annotation.cn,
+                    x,
+                    y,
+                  });
+                }
+              }}
+            />
+          ))}
+        </View>
+      )}
       {showTranslation && translation ? (
         <Text style={{ fontSize: 15, color: "#475569", marginTop: 8, marginBottom: 4, lineHeight: 22 }}>
           {translation}
@@ -108,7 +142,7 @@ export function AnnotatedSentence({ text, comparison, showIpa, t, translation, s
                   <Pressable
                     style={annotatedSentenceStyles.playButton}
                     onPress={() => {
-                      Speech.speak(popover.word, { language: "en", rate: 0.8 });
+                      Speech.speak(popover.word, { language: speechLanguage ?? "en", rate: 0.8 });
                     }}
                   >
                     <Text style={annotatedSentenceStyles.playButtonText}>&#9654;</Text>
@@ -227,6 +261,12 @@ const annotatedSentenceStyles = {
     fontSize: 12,
     color: "#7a8b94",
     lineHeight: 16,
+  },
+  furigana: {
+    fontSize: 12,
+    color: "#7a8b94",
+    lineHeight: 15,
+    textAlign: "center" as const,
   },
   wordCorrect: {
     color: "#0f766e",

@@ -16,6 +16,7 @@ coverage/
 .env
 .env.local
 apps/api/.local-pg/
+apps/api/.local-pg.bak-node25/
 .runtime/
 apps/api/.runtime/
 apps/web/public/assets/youtube/

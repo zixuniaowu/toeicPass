@@ -32,8 +32,10 @@ import {
   AdEvent,
   RefreshTokenRecord,
   VocabularyCardTranslations,
+  ShadowingMaterialRecord,
 } from "./types";
 import { newId, nowIso } from "./utils";
+import { getShadowingMaterialsByLanguage } from "@toeicpass/shadowing-content";
 import * as questionBank from "./question-bank.json";
 import * as questionBankExpansion from "./question-bank-expansion.json";
 import * as questionBankExpansion2 from "./question-bank-expansion-2.json";
@@ -326,6 +328,7 @@ export class StoreService {
   public adPlacements: AdPlacement[] = [];
   public adEvents: AdEvent[] = [];
   public refreshTokens: RefreshTokenRecord[] = [];
+  public shadowingMaterials: ShadowingMaterialRecord[] = [];
 
   private readonly snapshotFile =
     process.env.STORE_SNAPSHOT_FILE ?? (process.env.NODE_ENV === "test" ? "" : ".runtime/store-snapshot.json");
@@ -343,6 +346,7 @@ export class StoreService {
     }
     this.ensureSeedSubscriptionPlans();
     this.ensureSeedAds();
+    this.ensureSeedShadowingMaterials();
   }
 
   hasOfficialQuestionPack(): boolean {
@@ -381,6 +385,7 @@ export class StoreService {
         adPlacements: this.adPlacements,
         adEvents: this.adEvents,
         refreshTokens: this.refreshTokens,
+        shadowingMaterials: this.shadowingMaterials,
       },
     };
 
@@ -428,9 +433,47 @@ export class StoreService {
       this.adPlacements = Array.isArray(data.adPlacements) ? data.adPlacements : [];
       this.adEvents = Array.isArray(data.adEvents) ? data.adEvents : [];
       this.refreshTokens = Array.isArray(data.refreshTokens) ? data.refreshTokens : [];
+      this.shadowingMaterials = Array.isArray(data.shadowingMaterials) ? data.shadowingMaterials : [];
     } catch {
       // Ignore invalid snapshot and continue with fresh in-memory state.
     }
+  }
+
+  /**
+   * Seed shadowing materials from the bundled `@toeicpass/shadowing-content`
+   * package. Only ids that are not yet present are added, so admin edits and
+   * deletions made after boot (in DB or snapshot) are preserved.
+   */
+  private ensureSeedShadowingMaterials(): void {
+    const existingIds = new Set(this.shadowingMaterials.map((material) => material.id));
+    const now = nowIso();
+    (["en", "ja"] as const).forEach((language) => {
+      getShadowingMaterialsByLanguage(language).forEach((material) => {
+        if (existingIds.has(material.id)) {
+          return;
+        }
+        this.shadowingMaterials.push({
+          id: material.id,
+          language,
+          title: material.title,
+          translations: material.translations,
+          source: material.source,
+          category: material.category,
+          difficulty: material.difficulty,
+          ...(material.youtubeVideoId ? { youtubeVideoId: material.youtubeVideoId } : {}),
+          sentences: material.sentences.map((sentence) => ({
+            id: sentence.id,
+            text: sentence.text,
+            translations: sentence.translations,
+            ...(typeof sentence.startSec === "number" ? { startSec: sentence.startSec } : {}),
+            ...(typeof sentence.endSec === "number" ? { endSec: sentence.endSec } : {}),
+          })),
+          published: true,
+          createdAt: now,
+          updatedAt: now,
+        });
+      });
+    });
   }
 
   private ensureSeedSubscriptionPlans(): void {

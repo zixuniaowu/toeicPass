@@ -48,6 +48,27 @@
 - `POST /api/v1/admin/questions/{questionId}/publish`
 - `GET /api/v1/admin/questions?part=...&difficulty=...`
 
+## Shadowing Content Distribution (Public)
+Server-driven article updates for the mobile shadowing apps: content is
+fetched at runtime so article changes do not require an app release.
+- `GET /api/v1/content/shadowing?language=en|ja[&since=<ISO timestamp>]`
+  - No auth. Returns `{ serverTime, language, materials: [...] }`.
+  - `since` enables incremental sync: only materials with `updatedAt` after
+    the timestamp are returned. Pass back the previous `serverTime`.
+  - Material shape: `{ id, language, title, translations, source, category,
+    difficulty, youtubeVideoId?, sentences: [{ id, text, translations,
+    startSec?, endSec? }], published, createdAt, updatedAt }`.
+- Admin management (tenant_admin / super_admin, global content):
+  - `GET /api/v1/admin/shadowing-materials[?language=...]`
+  - `POST /api/v1/admin/shadowing-materials` (id required, kebab-case)
+  - `PUT /api/v1/admin/shadowing-materials/{materialId}`
+  - `POST /api/v1/admin/shadowing-materials/{materialId}/publish`
+  - `POST /api/v1/admin/shadowing-materials/{materialId}/unpublish`
+  - `DELETE /api/v1/admin/shadowing-materials/{materialId}`
+- New materials are created unpublished; publish to make them visible to
+  clients. Updates and unpublish/delete are picked up by clients on their
+  next sync (mobile syncs on app start with AsyncStorage cache fallback).
+
 ## Eventing and Audit
 - Every write endpoint emits an audit event with actor, tenant, action, and payload hash.
 - Use idempotency key header for session submit and result import endpoints.

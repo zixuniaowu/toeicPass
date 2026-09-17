@@ -2,12 +2,14 @@ import {
   ArrayMaxSize,
   ArrayMinSize,
   IsArray,
+  IsBoolean,
   IsDateString,
   IsEmail,
   IsIn,
   IsInt,
   IsNotEmpty,
   IsNumber,
+  IsObject,
   IsOptional,
   IsString,
   Max,
@@ -406,4 +408,73 @@ export class WritingEvaluateDto {
   @IsOptional()
   @IsIn(["en", "ja"])
   targetLang?: "en" | "ja";
+}
+
+export class ShadowingSentenceDto {
+  @IsInt()
+  @Min(1)
+  id!: number;
+
+  @IsString()
+  @IsNotEmpty()
+  text!: string;
+
+  @IsOptional()
+  @IsObject()
+  translations?: Record<string, string>;
+
+  @IsOptional()
+  @IsNumber()
+  startSec?: number;
+
+  @IsOptional()
+  @IsNumber()
+  endSec?: number;
+}
+
+export class UpsertShadowingMaterialDto {
+  /** Required on create; ignored on update (taken from the URL). */
+  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
+  id?: string;
+
+  @IsIn(["en", "ja"])
+  language!: "en" | "ja";
+
+  @IsString()
+  @IsNotEmpty()
+  title!: string;
+
+  @IsOptional()
+  @IsObject()
+  translations?: Record<string, string>;
+
+  @IsOptional()
+  @IsString()
+  source?: string;
+
+  @IsOptional()
+  @IsString()
+  category?: string;
+
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(3)
+  difficulty?: number;
+
+  @IsOptional()
+  @IsString()
+  youtubeVideoId?: string;
+
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => ShadowingSentenceDto)
+  sentences!: ShadowingSentenceDto[];
+
+  @IsOptional()
+  @IsBoolean()
+  published?: boolean;
 }

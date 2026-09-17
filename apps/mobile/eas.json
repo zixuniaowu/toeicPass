@@ -8,7 +8,8 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "APP_VARIANT": "development"
+        "APP_VARIANT": "development",
+        "APP_LANG": "both"
       },
       "android": {
         "buildType": "apk"
@@ -17,7 +18,28 @@
     "preview": {
       "distribution": "internal",
       "env": {
-        "APP_VARIANT": "preview"
+        "APP_VARIANT": "preview",
+        "APP_LANG": "both"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview-en": {
+      "extends": "preview",
+      "env": {
+        "APP_VARIANT": "preview",
+        "APP_LANG": "en"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview-ja": {
+      "extends": "preview",
+      "env": {
+        "APP_VARIANT": "preview",
+        "APP_LANG": "ja"
       },
       "android": {
         "buildType": "apk"
@@ -32,10 +54,25 @@
     "production": {
       "autoIncrement": true,
       "env": {
-        "APP_VARIANT": "production"
+        "APP_VARIANT": "production",
+        "APP_LANG": "both"
       },
       "android": {
         "buildType": "app-bundle"
+      }
+    },
+    "production-en": {
+      "extends": "production",
+      "env": {
+        "APP_VARIANT": "production",
+        "APP_LANG": "en"
+      }
+    },
+    "production-ja": {
+      "extends": "production",
+      "env": {
+        "APP_VARIANT": "production",
+        "APP_LANG": "ja"
       }
     }
   },
