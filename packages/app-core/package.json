@@ -68,6 +68,7 @@
   "dependencies": {
     "@toeicpass/ad-system": "1.0.0",
     "@toeicpass/conversation-ai": "1.0.0",
-    "@toeicpass/shared": "1.0.0"
+    "@toeicpass/shared": "1.0.0",
+    "double-metaphone": "^1.0.5"
   }
 }
