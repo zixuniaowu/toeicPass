@@ -293,8 +293,15 @@ export async function fetchPrediction(options: RequestOptions): Promise<number |
     handleUnauthorized(res);
     return null;
   }
-  const payload = (await res.json()) as { predictedTotal?: number } | null;
-  return payload?.predictedTotal ?? null;
+  // The API answers 200 with an empty body when no prediction exists yet.
+  const text = await res.text();
+  if (!text) return null;
+  try {
+    const payload = JSON.parse(text) as { predictedTotal?: number } | null;
+    return payload?.predictedTotal ?? null;
+  } catch {
+    return null;
+  }
 }
 
 export async function startSession(

@@ -1,7 +1,6 @@
 {
   "brand.title": "LangBoost",
   "brand.subtitle": "Japanese & English Speaking Platform",
-
   "nav.shadowing": "Shadowing",
   "nav.mock": "Mock Exam",
   "nav.grammar": "Grammar",
@@ -16,7 +15,6 @@
   "nav.reading": "Reading",
   "nav.writing": "Writing",
   "nav.dashboard": "Dashboard",
-
   "auth.logout": "Log out",
   "auth.login": "Log in",
   "auth.register": "Register",
@@ -26,7 +24,6 @@
   "auth.registerButton": "Register & Log in",
   "auth.processing": "Processing...",
   "auth.passwordPlaceholder": "Enter password",
-
   "lang.uiLabel": "UI Language",
   "lang.targetLabel": "Learning Target",
   "lang.targetEn": "🇺🇸 English",
@@ -34,7 +31,6 @@
   "lang.zh": "中文",
   "lang.ja": "日本語",
   "lang.en": "English",
-
   "settings.title": "Account & Goal Settings",
   "settings.account": "Account",
   "settings.goal": "Goals",
@@ -55,26 +51,24 @@
   "settings.uiLangLabel": "UI Language",
   "settings.nativeLangLabel": "Native Language",
   "settings.targetLangLabel": "Learning Target",
-
   "home.submitDone": "Mock exam completed. Switched to mistakes view.",
   "home.registerSuccess": "Registered and logged in successfully.",
   "home.goalSaved": "Goal saved.",
   "home.goalFailed": "Failed to save goal. Please try again.",
   "home.confirmLeaveExam": "Mock exam not submitted yet. Leave anyway?",
   "home.confirmLeavePractice": "Practice session not completed. Leave anyway?",
-
   "login.overviewAriaLabel": "product-overview-en",
   "login.eyebrow": "LangBoost",
   "login.brandTitle": "Japanese & English Speaking Platform",
-  "login.brandDesc": "Shadowing, mock exams, mistake review, vocabulary — improve your Japanese and English speaking skills in one place.",
-  "login.feature1": "Japanese shadowing + daily news + YouTube import",
-  "login.feature2": "Full-length mock exams with auto mistake collection",
-  "login.feature3": "Spaced repetition vocab cards with smart scheduling",
-  "login.feature4": "Sentence-level shadowing with real-time pronunciation feedback",
+  "login.brandDesc": "Focused shadowing for English (TOEIC) and Japanese: record each sentence, get per-word feedback, review vocabulary.",
+  "login.feature1": "Sentence-level shadowing for English (TOEIC) and Japanese with per-word feedback",
+  "login.feature2": "Playback: my recording / model audio / A/B",
+  "login.feature3": "Spaced-repetition vocabulary cards",
+  "login.feature4": "Original IT & workplace materials with notes",
   "login.stat1Value": "JP+EN",
   "login.stat1Label": "Bilingual",
-  "login.stat2Value": "2000+",
-  "login.stat2Label": "Questions",
+  "login.stat2Value": "IT",
+  "login.stat2Label": "Original materials",
   "login.stat3Value": "SRS",
   "login.stat3Label": "Spaced Rep.",
   "login.formEyebrow": "Welcome Back",
@@ -91,7 +85,6 @@
   "login.wechatLogin": "Log in with WeChat",
   "login.lineLogin": "Log in with LINE",
   "login.orDivider": "or",
-
   "writing.title": "English Writing Practice",
   "writing.subtitle": "Enter your English text and AI will evaluate vocabulary, grammar, and structure.",
   "writing.placeholder": "Start writing your essay here...",
@@ -153,14 +146,12 @@
   "readingJlpt.hintLabel": "Reading Hint",
   "readingJlpt.previous": "Previous Passage",
   "readingJlpt.next": "Next Passage",
-
   "upgrade.title": "Usage Limit Reached",
   "upgrade.upgradeBtn": "View Plans",
   "upgrade.watchAdBtn": "🎬 Watch Ad for Extra Tries",
   "upgrade.closeBtn": "Later",
   "upgrade.hint": "Upgrade to a higher plan to unlock more features and usage.",
   "upgrade.adHint": "Or watch a short video ad for additional practice opportunities",
-
   "audio.defaultTtsLabel": "Read stem aloud (matches current question)",
   "audio.clipSliced": "Clipped for this question",
   "audio.clipSlicing": "Clipping audio...",

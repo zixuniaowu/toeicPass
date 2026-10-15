@@ -123,7 +123,7 @@ describe("LoginView", () => {
   it("renders feature list items", () => {
     renderLogin();
 
-    expect(screen.getByText(/跟读训练/)).toBeDefined();
+    expect(screen.getByText(/句级跟读/)).toBeDefined();
     expect(screen.getByText(/间隔重复词卡/)).toBeDefined();
   });
 
@@ -131,7 +131,7 @@ describe("LoginView", () => {
     renderLogin();
 
     expect(screen.getByText("JP+EN")).toBeDefined();
-    expect(screen.getByText("2000+")).toBeDefined();
+    expect(screen.getByText("职场原创素材")).toBeDefined();
     expect(screen.getByText("SRS")).toBeDefined();
   });
 

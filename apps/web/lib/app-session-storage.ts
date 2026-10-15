@@ -17,7 +17,7 @@ export const DEFAULT_WEB_APP_SESSION: AppSession = {
   token: "",
   tenantCode: "demo",
   email: "owner@demo.com",
-  uiLang: "ja",
+  uiLang: "zh",
   targetLang: "en",
 };
 

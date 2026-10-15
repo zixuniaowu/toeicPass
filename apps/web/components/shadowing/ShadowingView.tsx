@@ -652,7 +652,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
           <>
             {/* Category filter */}
             <div className={styles.categoryFilter}>
-              {categories.map((cat) => (
+              {categories.filter((cat) => cat.key === "all" || baseMaterials.some((m) => m.category === cat.key)).map((cat) => (
                 <button
                   key={cat.key}
                   className={`${styles.categoryBtn} ${categoryFilter === cat.key ? styles.categoryBtnActive : ""}`}

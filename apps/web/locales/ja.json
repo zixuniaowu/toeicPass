@@ -1,7 +1,6 @@
 {
   "brand.title": "LangBoost",
   "brand.subtitle": "日本語・英語 スピーキング強化",
-
   "nav.shadowing": "シャドーイング",
   "nav.mock": "模擬試験",
   "nav.grammar": "文法練習",
@@ -16,7 +15,6 @@
   "nav.reading": "リーディング",
   "nav.writing": "ライティング",
   "nav.dashboard": "ダッシュボード",
-
   "auth.logout": "ログアウト",
   "auth.login": "ログイン",
   "auth.register": "登録",
@@ -26,7 +24,6 @@
   "auth.registerButton": "登録してログイン",
   "auth.processing": "処理中...",
   "auth.passwordPlaceholder": "パスワードを入力",
-
   "lang.uiLabel": "表示言語",
   "lang.targetLabel": "学習目標",
   "lang.targetEn": "🇺🇸 English",
@@ -34,7 +31,6 @@
   "lang.zh": "中文",
   "lang.ja": "日本語",
   "lang.en": "English",
-
   "settings.title": "アカウントと目標設定",
   "settings.account": "アカウント",
   "settings.goal": "目標",
@@ -55,26 +51,24 @@
   "settings.uiLangLabel": "表示言語",
   "settings.nativeLangLabel": "母語",
   "settings.targetLangLabel": "学習ターゲット言語",
-
   "home.submitDone": "模擬試験を完了しました。ミスノートに切り替えました。",
   "home.registerSuccess": "登録とログインが完了しました。",
   "home.goalSaved": "目標を保存しました。",
   "home.goalFailed": "目標の保存に失敗しました。もう一度お試しください。",
   "home.confirmLeaveExam": "模擬試験がまだ提出されていません。本当に離れますか？",
   "home.confirmLeavePractice": "練習がまだ完了していません。本当に離れますか？",
-
   "login.overviewAriaLabel": "product-overview-ja",
   "login.eyebrow": "LangBoost",
   "login.brandTitle": "日本語・英語 スピーキング強化",
-  "login.brandDesc": "模擬試験・シャドーイング・ミス復習・単語学習を 1 つの流れにまとめ、日本語・英語のスピーキング力を高めます。",
-  "login.feature1": "日本語シャドーイング＋デイリーニュース＋YouTube 取込",
-  "login.feature2": "2 時間の模擬試験でミス問題を自動蓄積",
-  "login.feature3": "間隔反復カードで期限到来の単語を優先学習",
-  "login.feature4": "文単位シャドーイングと発音フィードバック",
+  "login.brandDesc": "シャドーイングに特化：英語（TOEIC）と日本語を文ごとに録音し、単語ごとにフィードバック。",
+  "login.feature1": "英語（TOEIC）/ 日本語の文単位シャドーイングと単語ごとの発音フィードバック",
+  "login.feature2": "録音再生：自分の声 / お手本 / A/B 比較",
+  "login.feature3": "間隔反復の語彙カードと自動優先度付け",
+  "login.feature4": "IT・ビジネスのオリジナル教材（解説・語彙ノート付き）",
   "login.stat1Value": "JP+EN",
   "login.stat1Label": "二か国語",
-  "login.stat2Value": "2000+",
-  "login.stat2Label": "練習問題",
+  "login.stat2Value": "IT",
+  "login.stat2Label": "オリジナル教材",
   "login.stat3Value": "SRS",
   "login.stat3Label": "間隔反復",
   "login.formEyebrow": "Welcome Back",
@@ -91,7 +85,6 @@
   "login.wechatLogin": "WeChat でログイン",
   "login.lineLogin": "LINE でログイン",
   "login.orDivider": "または",
-
   "writing.title": "英語ライティング練習",
   "writing.subtitle": "英文を入力すると、AIが語彙・文法・構成を自動で評価します。",
   "writing.placeholder": "ここに英文を書き始めてください...",
@@ -153,14 +146,12 @@
   "readingJlpt.hintLabel": "読むポイント",
   "readingJlpt.previous": "前の素材",
   "readingJlpt.next": "次の素材",
-
   "upgrade.title": "利用上限に達しました",
   "upgrade.upgradeBtn": "プランを見る",
   "upgrade.watchAdBtn": "🎬 広告を見て追加回数を獲得",
   "upgrade.closeBtn": "後で",
   "upgrade.hint": "上位プランにアップグレードして、さらに多くの機能をアンロックしましょう。",
   "upgrade.adHint": "または短い動画広告を視聴して追加チャンスを獲得",
-
   "audio.defaultTtsLabel": "設問読み上げ（現在の問題に対応）",
   "audio.clipSliced": "問題用にクリップ済み",
   "audio.clipSlicing": "音声をクリップ中...",

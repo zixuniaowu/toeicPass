@@ -27,6 +27,9 @@ describe("English tolerant scoring", () => {
     ["Hello, Mr. Smith!", "hello mister Smith"],
     ["The 1st floor", "the first floor"],
     ["We can't attend.", "we cannot attend"],
+    ["Check the API latency.", "check the a p i latency"],
+    ["We need a new API key.", "we need a new a p i key"],
+    ["Open the checkout page.", "open the check out page"],
     ["Revenue rose 12% last quarter.", "revenue rose twelve percent last quarter"],
   ])("%s ≈ %s → 100%%", (target, heard) => {
     const r = en(target, heard);

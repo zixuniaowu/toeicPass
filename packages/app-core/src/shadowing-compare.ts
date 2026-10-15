@@ -250,10 +250,20 @@ function keyOf(norm: string): string {
 function mergeCompounds(a: Token[], bSet: Set<string>): Token[] {
   const out: Token[] = [];
   for (let i = 0; i < a.length; i++) {
-    if (i + 1 < a.length && !bSet.has(a[i].norm) && bSet.has(a[i].norm + a[i + 1].norm)) {
-      out.push({ norm: a[i].norm + a[i + 1].norm, src: a[i].src });
-      i++;
-    } else out.push(a[i]);
+    let merged = false;
+    // Try longest first: "check out" -> "checkout", spelled acronyms "a p i" -> "api".
+    for (let k = Math.min(4, a.length - i); k >= 2 && !merged; k--) {
+      const parts = a.slice(i, i + k);
+      const spelled = parts.every((t) => t.norm.length === 1);
+      if (bSet.has(a[i].norm) && !spelled) continue;
+      const joined = parts.map((t) => t.norm).join("");
+      if (bSet.has(joined)) {
+        out.push({ norm: joined, src: a[i].src });
+        i += k - 1;
+        merged = true;
+      }
+    }
+    if (!merged) out.push(a[i]);
   }
   return out;
 }
@@ -599,9 +609,11 @@ export function compareJapaneseSegments(segments: PhoneticSegment[], spokenReadi
     else if (ratio >= 0.5) status = "close";
     else if (segHeard[idx].length === 0) status = "missing";
     else status = "wrong";
-    const expected = x.morae.join("");
+    const expectedKey = x.morae.join("");
     const heard = segHeard[idx] || undefined;
-    words.push({ word: x.seg.surface, status, heard, expected, tip: japaneseTip(expected, heard, status) });
+    // Show the natural reading (ほうしん) rather than the folded matching key (ほおしん).
+    const expected = toJapaneseReadingText(x.seg.reading || x.seg.surface) || expectedKey;
+    words.push({ word: x.seg.surface, status, heard, expected, tip: japaneseTip(expectedKey, heard, status) });
     pushExtra(idx);
   });
   const accuracy = Math.max(0, Math.min(100, Math.round((100 * (matched + 0.6 * close)) / (target.length + 0.5 * inserted))));
