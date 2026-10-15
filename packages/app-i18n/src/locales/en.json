@@ -57,7 +57,7 @@
   "home.goalFailed": "Failed to save goal. Please try again.",
   "home.confirmLeaveExam": "Mock exam not submitted yet. Leave anyway?",
   "home.confirmLeavePractice": "Practice session not completed. Leave anyway?",
-  "login.overviewAriaLabel": "product-overview-en",
+  "login.overviewAriaLabel": "Product overview",
   "login.eyebrow": "LangBoost",
   "login.brandTitle": "Japanese & English Speaking Platform",
   "login.brandDesc": "Focused shadowing for English (TOEIC) and Japanese: record each sentence, get per-word feedback, review vocabulary.",

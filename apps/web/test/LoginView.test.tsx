@@ -146,4 +146,15 @@ describe("LoginView", () => {
 
     expect(screen.getByText("LangBoost にログイン")).toBeDefined();
   });
+
+  it("offers English and renders the whole page in English", () => {
+    renderLogin({ uiLang: "en", onGoogleLogin: vi.fn(), onWeChatLogin: vi.fn(), onLineLogin: vi.fn() });
+    fireEvent.click(screen.getByRole("button", { name: "English" }));
+    expect(mockOnLocaleChange).toHaveBeenCalledWith("en");
+    expect(screen.getByText("Log in to LangBoost")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Register & Log in" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Log in with Google" })).toBeInTheDocument();
+    const text = document.body.textContent ?? "";
+    expect(text.replace(/中文|日本語/g, "")).not.toMatch(/[\u3040-\u30ff\u4e00-\u9fff]/);
+  });
 });

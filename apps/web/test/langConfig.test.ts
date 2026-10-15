@@ -36,4 +36,15 @@ describe("language config", () => {
     act(() => result.current.setTargetLang("en"));
     expect(result.current.langConfig.uiLang).toBe("zh");
   });
+
+  it("choosing English UI while learning English switches the target to Japanese (and Japanese UI → English)", () => {
+    const { result } = renderHook(() => useLangConfig());
+    act(() => result.current.setUiLang("en"));
+    expect(result.current.langConfig).toEqual({ uiLang: "en", nativeLang: "en", targetLang: "ja" });
+    expect(JSON.parse(localStorage.getItem("langboost-lang-config")!).uiLang).toBe("en");
+    act(() => result.current.setUiLang("ja"));
+    expect(result.current.langConfig).toEqual({ uiLang: "ja", nativeLang: "ja", targetLang: "en" });
+    act(() => result.current.setUiLang("zh"));
+    expect(result.current.langConfig.targetLang).toBe("en");
+  });
 });

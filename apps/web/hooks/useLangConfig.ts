@@ -90,7 +90,12 @@ export function useLangConfig() {
   const setUiLang = useCallback((uiLang: UiLang) => {
     setConfig((prev) => {
       // Sync nativeLang with uiLang — most users' native language matches their UI preference
-      const next = sanitizeLangConfig({ ...prev, uiLang });
+      // An explicit UI choice wins: if it isn't valid for the current target, switch to the
+      // target where it is (English UI → learning Japanese, Japanese UI → learning English).
+      const targetLang = allowedUiLangs(prev.targetLang).includes(uiLang)
+        ? prev.targetLang
+        : (uiLang === "en" ? "ja" : uiLang === "ja" ? "en" : prev.targetLang);
+      const next = sanitizeLangConfig({ ...prev, uiLang, targetLang });
       saveConfig(next);
       return next;
     });

@@ -9,6 +9,7 @@ interface LanguageSetupPopupProps {
 
 const OPTIONS: { target: TargetLang; ui: UiLang; flag: string; label: string; desc: string }[] = [
   { target: "en", ui: "zh", flag: "🇺🇸", label: "我要学英语（TOEIC）", desc: "英语跟读 · 发音纠正 · 词根词汇" },
+  { target: "en", ui: "ja", flag: "🇺🇸", label: "英語を学ぶ（日本語 UI）", desc: "英語シャドーイング · 発音チェック · TOEIC 語彙" },
   { target: "ja", ui: "zh", flag: "🇯🇵", label: "我要学日语", desc: "日语跟读 · 发音纠正 · 商务/日常/IT 日语" },
   { target: "ja", ui: "en", flag: "🇬🇧", label: "I'm learning Japanese (English UI)", desc: "Japanese shadowing · pronunciation feedback · business / daily / IT Japanese" },
 ];
@@ -36,7 +37,7 @@ export function LanguageSetupPopup({ onConfirm }: LanguageSetupPopupProps) {
             </button>
           ))}
         </div>
-        <p className={styles.footnote}>界面语言可之后在「设置」中修改。 · You can change the UI language later in Settings.</p>
+        <p className={styles.footnote}>界面语言可之后在「设置」中修改。 · 表示言語は後から「設定」で変更できます。 · You can change the UI language later in Settings.</p>
       </div>
     </div>
   );

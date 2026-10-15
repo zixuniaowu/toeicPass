@@ -64,6 +64,13 @@ export function LoginView({
           >
             {t("lang.ja")}
           </button>
+          <button
+            type="button"
+            className={`${styles.localeBtn} ${(uiLang ?? locale) === "en" ? styles.localeBtnActive : ""}`}
+            onClick={() => onLocaleChange("en")}
+          >
+            {t("lang.en")}
+          </button>
         </div>
       )}
       <section className={styles.brandPanel} aria-label={t("login.overviewAriaLabel")}>
@@ -125,7 +132,7 @@ export function LoginView({
                 <span>{t("login.orDivider")}</span>
               </div>
               <div className={styles.oauthGroup}>
-                <button type="button" className={styles.oauthBtn} onClick={onGoogleLogin} disabled={isSubmitting} title="Google">
+                <button type="button" className={styles.oauthBtn} onClick={onGoogleLogin} disabled={isSubmitting} title={t("login.googleLogin")} aria-label={t("login.googleLogin")}>
                   <svg width="22" height="22" viewBox="0 0 48 48">
                     <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
                     <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
@@ -135,7 +142,7 @@ export function LoginView({
                 </button>
 
                 {onWeChatLogin && (
-                  <button type="button" className={styles.oauthBtn} onClick={onWeChatLogin} disabled={isSubmitting} title="WeChat">
+                  <button type="button" className={styles.oauthBtn} onClick={onWeChatLogin} disabled={isSubmitting} title={t("login.wechatLogin")} aria-label={t("login.wechatLogin")}>
                     <svg width="22" height="22" viewBox="0 0 48 48">
                       <path fill="#09B83E" d="M24 2C11.85 2 2 10.95 2 22c0 6.15 3.15 11.6 8.05 15.15L8.4 43.5c-.15.55.4 1 .9.75l7.2-3.8c2.35.7 4.85 1.05 7.5 1.05 12.15 0 22-8.95 22-20S36.15 2 24 2z"/>
                       <path fill="#fff" d="M16.5 18c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5zm15 0c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5z"/>
@@ -144,7 +151,7 @@ export function LoginView({
                 )}
 
                 {onLineLogin && (
-                  <button type="button" className={styles.oauthBtn} onClick={onLineLogin} disabled={isSubmitting} title="LINE">
+                  <button type="button" className={styles.oauthBtn} onClick={onLineLogin} disabled={isSubmitting} title={t("login.lineLogin")} aria-label={t("login.lineLogin")}>
                     <svg width="22" height="22" viewBox="0 0 48 48">
                       <rect width="48" height="48" rx="12" fill="#06C755"/>
                       <path fill="#fff" d="M40 22.38c0-7.18-7.18-13.02-16-13.02S8 15.2 8 22.38c0 6.44 5.72 11.83 13.44 12.85.52.11 1.23.35 1.41.8.16.41.1 1.05.05 1.47l-.23 1.36c-.07.41-.32 1.6 1.4.87s9.31-5.49 12.72-9.4C39.01 27.87 40 25.27 40 22.38z"/>
