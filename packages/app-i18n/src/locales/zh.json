@@ -327,5 +327,16 @@
   "mobile.practiceStartFailed": "针对练习启动失败",
   "mobile.latestNote": "上次强化记录",
   "mobile.sessionStay": "继续作答",
-  "mobile.sessionLeave": "离开"
+  "mobile.sessionLeave": "离开",
+  "lookup.ipa": "音标",
+  "lookup.meaning": "释义",
+  "lookup.reading": "读音",
+  "lookup.translation": "翻译",
+  "lookup.loading": "查询中…",
+  "lookup.notFound": "词典中未找到该词，可点击朗读听发音。",
+  "lookup.noIpa": "暂无音标",
+  "lookup.speak": "朗读",
+  "lookup.replay": "重播",
+  "lookup.copy": "复制释义",
+  "lookup.stop": "停止"
 }

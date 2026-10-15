@@ -16,10 +16,23 @@ import type { JapaneseReadingToken } from "../lib/japanese-reading";
 import type { UiLang } from "../types";
 import type { TrainingLanguage, PhoneticSegment } from "../lib/shadowing-utils";
 import { containsKanji } from "../lib/shadowing-utils";
-import { annotateWords } from "../data/word-dictionary";
 import { getJapaneseReading } from "../lib/japanese-reading";
 import { translateText } from "../lib/translate";
 import { lookupEnWordAsync, lookupJaWordAsync, prefetchWord } from "../lib/offline-dict";
+import { glossLangFor, lookupEnglishWord, lookupJapanese, shortGloss } from "../lib/word-lookup";
+
+/** English sentence → per-word annotations from the bundled dictionary, gloss in the UI language. */
+export function annotateEnglishSentence(sentence: string, uiLang: UiLang): WordAnnotation[] {
+  const lang = glossLangFor(uiLang);
+  return String(sentence ?? "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((token) => {
+      const hit = lookupEnglishWord(token, lang);
+      const clean = token.replace(/[\u2018\u2019\u2032]/g, "'").toLowerCase().replace(/[^a-z'-]/g, "").replace(/^[-']+|[-']+$/g, "");
+      return { word: token, clean, cn: shortGloss(hit.meaning), ipa: hit.ipa };
+    });
+}
 
 // ── Japanese word tokenizer (for annotated display) ──────────────────────────
 
@@ -117,6 +130,7 @@ export function useWordAnnotation(
       sentence: { id: number; text: string; translations?: { zh?: string; ja?: string; en?: string } },
     ) => {
       if (uiLang !== "ja" || trainingLanguage !== "en") return;
+      if (sentence.translations?.ja) return;
       const key = makeSentenceTranslationKey(material.id, sentence.id, sentence.text);
       if (jaSentenceMap[key] || translatingSentenceSetRef.current.has(key)) return;
       translatingSentenceSetRef.current.add(key);
@@ -158,7 +172,7 @@ export function useWordAnnotation(
       if (uiLang === "en") return sentence.translations?.en ?? sentence.translations?.zh ?? "";
       // Japanese UI studying English: dynamic translation
       const key = makeSentenceTranslationKey(material.id, sentence.id, sentence.text);
-      return jaSentenceMap[key] ?? sentence.translations?.ja ?? sentence.translations?.zh ?? "";
+      return sentence.translations?.ja ?? jaSentenceMap[key] ?? sentence.translations?.zh ?? "";
     },
     [jaSentenceMap, uiLang, makeSentenceTranslationKey, trainingLanguage],
   );
@@ -178,6 +192,7 @@ export function useWordAnnotation(
   const ensureJaWordGloss = useCallback(
     (word: WordAnnotation) => {
       if (uiLang !== "ja" || trainingLanguage !== "en") return;
+      if (word.cn) return; // bundled dictionary already provides the Japanese gloss
       const key = makeWordGlossKey(word);
       if (!key || jaWordGlossMap[key] || translatingWordGlossRef.current.has(key)) return;
       translatingWordGlossRef.current.add(key);
@@ -218,6 +233,7 @@ export function useWordAnnotation(
     (word: WordAnnotation) => {
       if (trainingLanguage !== "ja") return;
       const key = makeWordGlossKey(word);
+      if (key && lookupJapanese(key).meaning) return; // bundled dictionary covers it
       if (!key || jpWordGlossMap[key] || translatingJpWordGlossRef.current.has(key)) return;
       translatingJpWordGlossRef.current.add(key);
       // Pre-warm offline dict chunk while we check
@@ -353,7 +369,8 @@ export function useWordAnnotation(
       if (trainingLanguage === "ja") {
         const key = makeWordGlossKey(word);
         if (!key) return null;
-        return jpWordGlossMap[key] ?? null;
+        const bundled = lookupJapanese(key);
+        return jpWordGlossMap[key] ?? (bundled.found ? shortGloss(bundled.meaning) : null);
       }
       if (uiLang !== "ja") return word.cn ?? null;
       const key = makeWordGlossKey(word);
@@ -368,7 +385,7 @@ export function useWordAnnotation(
       if (trainingLanguage !== "ja") return null;
       const key = makeWordGlossKey(word);
       if (!key) return null;
-      return jpWordReadingMap[key] ?? null;
+      return jpWordReadingMap[key] ?? lookupJapanese(key).reading ?? null;
     },
     [jpWordReadingMap, makeWordGlossKey, trainingLanguage],
   );
@@ -384,9 +401,9 @@ export function useWordAnnotation(
         }
         return annotateJapaneseWords(text);
       }
-      return annotateWords(text);
+      return annotateEnglishSentence(text, uiLang);
     },
-    [trainingLanguage, jpSentenceTokensMap],
+    [trainingLanguage, jpSentenceTokensMap, uiLang],
   );
 
   return {

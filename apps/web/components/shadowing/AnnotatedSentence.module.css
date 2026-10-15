@@ -80,13 +80,22 @@
   color: var(--color-text);
 }
 
+.enAnnotated {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  column-gap: 0.45em;
+  row-gap: 0.6em;
+  line-height: 1.25;
+}
+
 .enWord {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 0.3em;
-  vertical-align: bottom;
-  line-height: 1;
+  line-height: 1.25;
+  min-width: 1.5em;
 }
 
 .enWordMain {
@@ -98,15 +107,16 @@
   font-size: 0.65em;
   color: var(--color-primary);
   letter-spacing: 0.02em;
-  margin-top: 0.15em;
-  font-style: italic;
+  margin-top: 0.2em;
+  font-family: "Charis SIL", "Doulos SIL", "Lucida Sans Unicode", "Segoe UI", system-ui, sans-serif;
+  white-space: nowrap;
 }
 
 .enGloss {
   font-size: 0.6em;
   color: var(--color-muted);
-  margin-top: 0.1em;
-  max-width: 6em;
+  margin-top: 0.15em;
+  max-width: 8em;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;

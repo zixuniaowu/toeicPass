@@ -1,3 +1,4 @@
+const TRANSLATE_TIMEOUT_MS = 6000;
 const requestCache = new Map<string, Promise<string>>();
 
 type TranslateApiResponse = {
@@ -23,7 +24,10 @@ export async function translateText(
 
   const request = (async () => {
     try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), TRANSLATE_TIMEOUT_MS);
       const response = await fetch("/api/translate", {
+        signal: controller.signal,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,6 +38,7 @@ export async function translateText(
           sourceLang,
         }),
       });
+      clearTimeout(timer);
       if (!response.ok) {
         return normalized;
       }

@@ -29,13 +29,28 @@ function withItCategory(list: ShadowingMaterial[]): ShadowingMaterial[] {
   return list.map((m) => (/^(it-|jp-it-)/.test(m.id) ? { ...m, category: "it" as const } : m));
 }
 
+import { EN_SENTENCE_JA, EN_TITLE_JA } from "./en-sentence-ja";
+
+/** Attach Japanese sentence translations so Japanese-UI learners never fall back to Chinese. */
+function withJapaneseTranslations(list: ShadowingMaterial[]): ShadowingMaterial[] {
+  return list.map((m) => {
+    const ja = EN_SENTENCE_JA[m.id] ?? {};
+    const titleJa = EN_TITLE_JA[m.id];
+    return {
+      ...m,
+      translations: titleJa && !m.translations.ja ? { ...m.translations, ja: titleJa } : m.translations,
+      sentences: m.sentences.map((s) => (ja[s.id] && !s.translations.ja ? { ...s, translations: { ...s.translations, ja: ja[s.id] } } : s)),
+    };
+  });
+}
+
 function uniqueById(list: ShadowingMaterial[]): ShadowingMaterial[] {
   const seen = new Set<string>();
   return list.filter((m) => (seen.has(m.id) ? false : (seen.add(m.id), true)));
 }
 
 /** All English shadowing materials (original / public-domain only). */
-export const SHADOWING_MATERIALS: ShadowingMaterial[] = uniqueById(withItCategory([...BASE_EN_MATERIALS, ...IT_MATERIALS_EN]));
+export const SHADOWING_MATERIALS: ShadowingMaterial[] = uniqueById(withJapaneseTranslations(withItCategory([...BASE_EN_MATERIALS, ...IT_MATERIALS_EN])));
 
 /** All Japanese shadowing materials: advanced passages and IT first, then everyday basics. */
 export const JAPANESE_SHADOWING_MATERIALS: ShadowingMaterial[] = uniqueById(

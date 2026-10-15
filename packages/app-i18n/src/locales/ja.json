@@ -320,5 +320,16 @@
   "mobile.practiceStartFailed": "再演習の開始に失敗しました",
   "mobile.latestNote": "前回の復習メモ",
   "mobile.sessionStay": "続ける",
-  "mobile.sessionLeave": "離れる"
+  "mobile.sessionLeave": "離れる",
+  "lookup.ipa": "発音記号",
+  "lookup.meaning": "意味",
+  "lookup.reading": "読み",
+  "lookup.translation": "訳",
+  "lookup.loading": "検索中…",
+  "lookup.notFound": "辞書に見つかりませんでした。読み上げで発音を確認できます。",
+  "lookup.noIpa": "発音記号なし",
+  "lookup.speak": "読み上げ",
+  "lookup.replay": "もう一度",
+  "lookup.copy": "意味をコピー",
+  "lookup.stop": "停止"
 }

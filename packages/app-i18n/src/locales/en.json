@@ -327,5 +327,16 @@
   "mobile.practiceStartFailed": "Failed to start practice drill",
   "mobile.latestNote": "Latest review note",
   "mobile.sessionStay": "Stay",
-  "mobile.sessionLeave": "Leave"
+  "mobile.sessionLeave": "Leave",
+  "lookup.ipa": "IPA",
+  "lookup.meaning": "Meaning",
+  "lookup.reading": "Reading",
+  "lookup.translation": "Translation",
+  "lookup.loading": "Looking up…",
+  "lookup.notFound": "Not found in the dictionary. Use Speak to hear it.",
+  "lookup.noIpa": "No IPA",
+  "lookup.speak": "Speak",
+  "lookup.replay": "Replay",
+  "lookup.copy": "Copy",
+  "lookup.stop": "Stop"
 }

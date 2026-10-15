@@ -92,20 +92,26 @@ export function AnnotatedSentence({
   }
 
   // ── English ───────────────────────────────────────────────────────────────
+  const annotating = showIPA || showWordTranslation;
+  if (!annotating) {
+    return (
+      <div className={styles.enContainer}>
+        <p className={styles.enSentence}>{text}</p>
+      </div>
+    );
+  }
+  // Every word is rendered as the same 3-row column (word / IPA / gloss) so rows line up.
   return (
     <div className={styles.enContainer}>
-      <p className={styles.enSentence}>
+      <p className={`${styles.enSentence} ${styles.enAnnotated}`}>
         {words.map((w, i) => {
           const gloss = showWordTranslation ? getWordGloss(w) : null;
-          const hasAnnotation = (showIPA && w.ipa) || gloss;
-          return hasAnnotation ? (
+          return (
             <span key={i} className={styles.enWord}>
               <span className={styles.enWordMain}>{w.word}</span>
-              {showIPA && w.ipa && <span className={styles.enIPA}>{w.ipa}</span>}
-              {gloss && <span className={styles.enGloss}>{gloss}</span>}
+              {showIPA && <span className={styles.enIPA}>{w.ipa ?? "\u00a0"}</span>}
+              {showWordTranslation && <span className={styles.enGloss} title={gloss ?? undefined}>{gloss ?? "\u00a0"}</span>}
             </span>
-          ) : (
-            <span key={i}>{w.word} </span>
           );
         })}
       </p>
