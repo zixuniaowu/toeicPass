@@ -73,6 +73,7 @@ function saveConfig(cfg: LangConfig) {
 export function useLangConfig() {
   const [config, setConfig] = useState<LangConfig>(defaultConfig);
   const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   // Hydrate from localStorage after mount (avoid SSR mismatch)
   useEffect(() => {
@@ -83,6 +84,7 @@ export function useLangConfig() {
     setConfig(loaded);
     // Migrate legacy/invalid stored combinations in place.
     if (localStorage.getItem(STORAGE_KEY)) saveConfig(loaded);
+    setIsHydrated(true);
   }, []);
 
   const setUiLang = useCallback((uiLang: UiLang) => {
@@ -124,6 +126,7 @@ export function useLangConfig() {
     langConfig: config,
     locale,
     isFirstVisit,
+    isHydrated,
     setIsFirstVisit,
     setUiLang,
     setNativeLang,

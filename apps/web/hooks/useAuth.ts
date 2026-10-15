@@ -48,9 +48,8 @@ export function useAuth(
     email: storedSession.email || DEFAULT_CREDENTIALS.email,
   }));
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState<string>(
-    t("auth.pleaseLogin"),
-  );
+  // Empty = show the default "please log in" prompt, derived in the current UI language.
+  const [rawMessage, setMessage] = useState<string>("");
 
   const isLoggedIn = Boolean(token);
   const authHeader = useMemo(() => (token ? `Bearer ${token}` : null), [token]);
@@ -66,10 +65,9 @@ export function useAuth(
   }, [credentials.email, credentials.tenantCode, sessionLang?.targetLang, sessionLang?.uiLang, storedSession.targetLang, storedSession.uiLang, token]);
 
   useEffect(() => {
-    if (!token) {
-      setMessage(t("auth.pleaseLogin"));
-    }
+    if (!token) setMessage("");
   }, [locale, token]);
+  const message = rawMessage || (token ? "" : t("auth.pleaseLogin"));
 
   const updateCredentials = useCallback((updates: Partial<AuthCredentials>) => {
     if (typeof updates.tenantCode === "string") {

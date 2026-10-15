@@ -116,6 +116,7 @@ export function ClientHome() {
     langConfig,
     locale,
     isFirstVisit,
+    isHydrated,
     setIsFirstVisit,
     setLangConfig,
     setUiLang,
@@ -161,16 +162,18 @@ export function ClientHome() {
   // Bridge auth.message changes into toast notifications
   const lastMessageRef = useRef("");
   useEffect(() => {
+    // Wait until the stored UI language is loaded so we never toast in the default (zh) language.
+    if (!isHydrated) return;
     if (auth.message && auth.message !== lastMessageRef.current) {
       lastMessageRef.current = auth.message;
-      const variant = auth.message.includes("\u5931\u8d25") || auth.message.includes("\u5931\u6557") || auth.message.includes("error") || auth.message.includes("Error")
+      const variant = /\u5931\u8d25|\u5931\u6557|\u5f02\u5e38|\u30a8\u30e9\u30fc|error|fail|expired/i.test(auth.message)
         ? "error" as const
-        : auth.message.includes("\u6210\u529f") || auth.message.includes("\u5b8c\u4e86") || auth.message.includes("\u5b8c\u6210")
+        : /\u6210\u529f|\u5b8c\u4e86|\u5b8c\u6210|\u4fdd\u5b58|^Logged in|Registered|saved|updated|Submitted/i.test(auth.message)
           ? "success" as const
           : "info" as const;
       toast.show(auth.message, variant);
     }
-  }, [auth.message, toast]);
+  }, [auth.message, toast, isHydrated]);
 
   const runner = useLearningCommandRunner({
     locale,
