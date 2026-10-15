@@ -1,23 +1,9 @@
-export function listeningTracksByPart(partNo: number): string[] {
-  const tracks: Record<number, string[]> = {
-    1: [
-      "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
-      "/assets/audio/toeic-official/practice-test-2-part-1.mp3",
-    ],
-    2: [
-      "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
-      "/assets/audio/toeic-official/practice-test-2-part-2.mp3",
-    ],
-    3: [
-      "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
-      "/assets/audio/toeic-official/practice-test-2-part-3.mp3",
-    ],
-    4: [
-      "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
-      "/assets/audio/toeic-official/practice-test-2-part-4.mp3",
-    ],
-  };
-  return tracks[partNo] ?? [];
+/**
+ * Official ETS practice-test audio was removed for copyright reasons.
+ * Listening questions fall back to TTS / no media until original audio is produced.
+ */
+export function listeningTracksByPart(_partNo: number): string[] {
+  return [];
 }
 
 export function isClipEligibleListeningTrack(url: string): boolean {

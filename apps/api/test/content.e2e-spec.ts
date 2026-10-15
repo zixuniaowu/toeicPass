@@ -43,8 +43,9 @@ describe("Shadowing content e2e", () => {
       expect(Array.isArray(material.sentences)).toBe(true);
     }
     const ids = materials.map((material) => material.id);
-    expect(ids).toContain("jobs-stanford");
-    expect(ids).toContain("yt-jobs-stanford");
+    expect(ids).toContain("it-api-design-review");
+    expect(ids).not.toContain("jobs-stanford");
+    expect(ids.some((id) => String(id).startsWith("yt-"))).toBe(false);
   });
 
   it("serves published Japanese materials without auth", async () => {
@@ -56,7 +57,15 @@ describe("Shadowing content e2e", () => {
       expect(material.language).toBe("ja");
     }
     const ids = materials.map((material) => material.id);
-    expect(ids).toContain("yt-ja-easy-japanese");
+    expect(ids).toContain("jp-it-code-review");
+    expect(ids).toContain("jp-adv-hourensou");
+    expect(ids.some((id) => String(id).startsWith("yt-"))).toBe(false);
+  });
+
+  it("converts Japanese ASR text to a hiragana reading", async () => {
+    const res = await request(app.getHttpServer()).post("/api/v1/content/ja/reading").send({ text: "今日は会議があります" });
+    expect(res.status).toBe(200);
+    expect(res.body.readingText).toBe("きょうはかいぎがあります");
   });
 
   it("supports incremental sync via since", async () => {

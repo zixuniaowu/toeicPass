@@ -6,7 +6,6 @@
       "difficulty": 2,
       "stem": "Where should I submit the invoice?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -33,7 +32,6 @@
       "difficulty": 3,
       "stem": "When can your team finish the purchase order?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -60,7 +58,6 @@
       "difficulty": 4,
       "stem": "Who is responsible for approving the vendor list?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -87,7 +84,6 @@
       "difficulty": 2,
       "stem": "Could you send me the latest forecast file today?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -114,7 +110,6 @@
       "difficulty": 3,
       "stem": "Do we need to revise the status report before Friday?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -141,7 +136,6 @@
       "difficulty": 4,
       "stem": "Where should I submit the training plan?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -168,7 +162,6 @@
       "difficulty": 2,
       "stem": "When can your team finish the audit sheet?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -195,7 +188,6 @@
       "difficulty": 3,
       "stem": "Who is responsible for approving the proposal?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -222,7 +214,6 @@
       "difficulty": 4,
       "stem": "Could you send me the latest risk log today?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -249,7 +240,6 @@
       "difficulty": 2,
       "stem": "Do we need to revise the shipment form before Friday?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -276,7 +266,6 @@
       "difficulty": 3,
       "stem": "Where should I submit the invoice?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -303,7 +292,6 @@
       "difficulty": 4,
       "stem": "When can your team finish the purchase order?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -330,7 +318,6 @@
       "difficulty": 2,
       "stem": "Who is responsible for approving the vendor list?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -357,7 +344,6 @@
       "difficulty": 3,
       "stem": "Could you send me the latest forecast file today?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -384,7 +370,6 @@
       "difficulty": 4,
       "stem": "Do we need to revise the status report before Friday?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -411,7 +396,6 @@
       "difficulty": 2,
       "stem": "Where should I submit the training plan?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -438,7 +422,6 @@
       "difficulty": 3,
       "stem": "When can your team finish the audit sheet?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -465,7 +448,6 @@
       "difficulty": 4,
       "stem": "Who is responsible for approving the proposal?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -492,7 +474,6 @@
       "difficulty": 2,
       "stem": "Could you send me the latest risk log today?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -519,7 +500,6 @@
       "difficulty": 3,
       "stem": "Do we need to revise the shipment form before Friday?",
       "explanation": "Choose the response that best matches the question type and intent.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-2.mp3",
       "options": [
         {
           "key": "A",
@@ -546,7 +526,6 @@
       "difficulty": 3,
       "stem": "In a conversation, the speakers discuss operations planning for the Seoul branch. What concern is mentioned?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -573,7 +552,6 @@
       "difficulty": 4,
       "stem": "What does the woman suggest doing first regarding the training plan?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -600,7 +578,6 @@
       "difficulty": 3,
       "stem": "What will the man probably do next after the discussion?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -627,7 +604,6 @@
       "difficulty": 4,
       "stem": "In a conversation, the speakers discuss HR planning for the Bangkok branch. What concern is mentioned?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -654,7 +630,6 @@
       "difficulty": 3,
       "stem": "What does the woman suggest doing first regarding the audit sheet?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -681,7 +656,6 @@
       "difficulty": 4,
       "stem": "What will the man probably do next after the discussion?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -708,7 +682,6 @@
       "difficulty": 3,
       "stem": "In a conversation, the speakers discuss procurement planning for the Hanoi branch. What concern is mentioned?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -735,7 +708,6 @@
       "difficulty": 4,
       "stem": "What does the woman suggest doing first regarding the proposal?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -762,7 +734,6 @@
       "difficulty": 3,
       "stem": "What will the man probably do next after the discussion?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -789,7 +760,6 @@
       "difficulty": 4,
       "stem": "In a conversation, the speakers discuss finance planning for the Singapore branch. What concern is mentioned?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -816,7 +786,6 @@
       "difficulty": 3,
       "stem": "What does the woman suggest doing first regarding the risk log?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -843,7 +812,6 @@
       "difficulty": 4,
       "stem": "What will the man probably do next after the discussion?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -870,7 +838,6 @@
       "difficulty": 3,
       "stem": "In a conversation, the speakers discuss marketing planning for the Taipei branch. What concern is mentioned?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -897,7 +864,6 @@
       "difficulty": 4,
       "stem": "What does the woman suggest doing first regarding the shipment form?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -924,7 +890,6 @@
       "difficulty": 3,
       "stem": "What will the man probably do next after the discussion?",
       "explanation": "Use dialogue context to identify problem, suggestion, or next action.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-3.mp3",
       "options": [
         {
           "key": "A",
@@ -951,7 +916,6 @@
       "difficulty": 2,
       "stem": "A recorded announcement for the Taipei office explains building access. What should listeners do by Monday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -978,7 +942,6 @@
       "difficulty": 3,
       "stem": "A recorded announcement for the Bangkok office explains staff orientation. What should listeners do by Tuesday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1005,7 +968,6 @@
       "difficulty": 4,
       "stem": "A recorded announcement for the Jakarta office explains system migration. What should listeners do by Wednesday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1032,7 +994,6 @@
       "difficulty": 2,
       "stem": "A recorded announcement for the Manila office explains service outage. What should listeners do by Thursday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1059,7 +1020,6 @@
       "difficulty": 3,
       "stem": "A recorded announcement for the Hanoi office explains safety drill. What should listeners do by Friday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1086,7 +1046,6 @@
       "difficulty": 4,
       "stem": "A recorded announcement for the Sydney office explains building access. What should listeners do by Monday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1113,7 +1072,6 @@
       "difficulty": 2,
       "stem": "A recorded announcement for the Auckland office explains staff orientation. What should listeners do by Tuesday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1140,7 +1098,6 @@
       "difficulty": 3,
       "stem": "A recorded announcement for the Singapore office explains system migration. What should listeners do by Wednesday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1167,7 +1124,6 @@
       "difficulty": 4,
       "stem": "A recorded announcement for the Seoul office explains service outage. What should listeners do by Thursday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1194,7 +1150,6 @@
       "difficulty": 2,
       "stem": "A recorded announcement for the Tokyo office explains safety drill. What should listeners do by Friday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1221,7 +1176,6 @@
       "difficulty": 3,
       "stem": "A recorded announcement for the Taipei office explains building access. What should listeners do by Monday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1248,7 +1202,6 @@
       "difficulty": 4,
       "stem": "A recorded announcement for the Bangkok office explains staff orientation. What should listeners do by Tuesday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1275,7 +1228,6 @@
       "difficulty": 2,
       "stem": "A recorded announcement for the Jakarta office explains system migration. What should listeners do by Wednesday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1302,7 +1254,6 @@
       "difficulty": 3,
       "stem": "A recorded announcement for the Manila office explains service outage. What should listeners do by Thursday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -1329,7 +1280,6 @@
       "difficulty": 4,
       "stem": "A recorded announcement for the Hanoi office explains safety drill. What should listeners do by Friday?",
       "explanation": "Identify required action and operational detail in the talk.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-4.mp3",
       "options": [
         {
           "key": "A",
@@ -3696,7 +3646,6 @@
       "difficulty": 2,
       "stem": "In the photo, employees are sorting invoice on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
       "options": [
         {
@@ -3724,7 +3673,6 @@
       "difficulty": 3,
       "stem": "In the photo, employees are sorting proposal on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
       "options": [
         {
@@ -3752,7 +3700,6 @@
       "difficulty": 2,
       "stem": "In the photo, employees are sorting status report on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
       "options": [
         {
@@ -3780,7 +3727,6 @@
       "difficulty": 3,
       "stem": "In the photo, employees are sorting purchase order on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
       "options": [
         {
@@ -3808,7 +3754,6 @@
       "difficulty": 2,
       "stem": "In the photo, employees are sorting risk log on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
       "options": [
         {
@@ -3836,7 +3781,6 @@
       "difficulty": 3,
       "stem": "In the photo, employees are sorting training plan on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
       "options": [
         {
@@ -3864,7 +3808,6 @@
       "difficulty": 2,
       "stem": "In the photo, employees are sorting vendor list on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
       "options": [
         {
@@ -3892,7 +3835,6 @@
       "difficulty": 3,
       "stem": "In the photo, employees are sorting shipment form on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
       "options": [
         {
@@ -3920,7 +3862,6 @@
       "difficulty": 2,
       "stem": "In the photo, employees are sorting audit sheet on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
       "options": [
         {
@@ -3948,7 +3889,6 @@
       "difficulty": 3,
       "stem": "In the photo, employees are sorting forecast file on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-filing-cabinets.jpg",
       "options": [
         {
@@ -3976,7 +3916,6 @@
       "difficulty": 2,
       "stem": "In the photo, employees are sorting invoice on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-unloading-truck.jpg",
       "options": [
         {
@@ -4004,7 +3943,6 @@
       "difficulty": 3,
       "stem": "In the photo, employees are sorting proposal on a worktable.",
       "explanation": "Choose the statement that best describes the scene.",
-      "mediaUrl": "/assets/audio/toeic-official/practice-test-1-part-1.mp3",
       "imageUrl": "/assets/images/listening/part1-bicycles-real.jpg",
       "options": [
         {

@@ -36,7 +36,8 @@ describe("Learning e2e", () => {
     expect(goal.body.goalId).toBeDefined();
   });
 
-  it("runs diagnostic start and submit", async () => {
+  // Listening audio (ETS practice tests) was removed for copyright; listening/diagnostic flows are hidden in the app.
+  it.skip("runs diagnostic start and submit", async () => {
     const start = await request(app.getHttpServer())
       .post("/api/v1/diagnostics/start")
       .set("x-tenant-code", tenantCode)
@@ -102,7 +103,8 @@ describe("Learning e2e", () => {
     expect(complete.status).toBe(201);
   });
 
-  it("serves listening practice with time-fragmented media", async () => {
+  // Listening audio (ETS practice tests) was removed for copyright; listening/diagnostic flows are hidden in the app.
+  it.skip("serves listening practice with time-fragmented media", async () => {
     const start = await request(app.getHttpServer())
       .post("/api/v1/practice/sessions?partGroup=listening")
       .set("x-tenant-code", tenantCode)
@@ -119,7 +121,8 @@ describe("Learning e2e", () => {
     ).toBe(true);
   });
 
-  it("serves Part 1 with aligned visuals", async () => {
+  // Listening audio (ETS practice tests) was removed for copyright; listening/diagnostic flows are hidden in the app.
+  it.skip("serves Part 1 with aligned visuals", async () => {
     const start = await request(app.getHttpServer())
       .post("/api/v1/practice/sessions?part=1")
       .set("x-tenant-code", tenantCode)

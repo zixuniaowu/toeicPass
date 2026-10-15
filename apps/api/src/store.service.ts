@@ -630,7 +630,7 @@ export class StoreService {
         difficulty: 1,
         stem: "Several filing cabinet drawers are open in an office.",
         explanation: "Part 1 requires matching what is visibly true in the picture, not assumed actions.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-1.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part1-filing-cabinets.jpg",
         options: [
           { key: "A", text: "Several filing cabinet drawers are open." },
@@ -646,7 +646,7 @@ export class StoreService {
         difficulty: 2,
         stem: "Two workers are unloading boxes from a delivery truck.",
         explanation: "Focus on the observable present action instead of location details.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-1.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part1-unloading-truck.jpg",
         options: [
           { key: "A", text: "The workers are signing contracts." },
@@ -662,7 +662,7 @@ export class StoreService {
         difficulty: 2,
         stem: "Several bicycles are parked beside a fence.",
         explanation: "Plural subject + passive state 'are parked' is the key structure.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-1.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part1-bicycles-real.jpg",
         options: [
           { key: "A", text: "People are buying bicycles at a shop." },
@@ -678,7 +678,7 @@ export class StoreService {
         difficulty: 1,
         stem: "When does the orientation session begin?",
         explanation: "A time question needs a time-based response.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-2.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part2-response.svg",
         options: [
           { key: "A", text: "In the main conference room." },
@@ -694,7 +694,7 @@ export class StoreService {
         difficulty: 2,
         stem: "Could you email me the revised budget?",
         explanation: "A request question is best answered by agreement or action.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-2.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part2-response.svg",
         options: [
           { key: "A", text: "Sure, I will send it this afternoon." },
@@ -710,7 +710,7 @@ export class StoreService {
         difficulty: 3,
         stem: "Why was the flight delayed?",
         explanation: "'Why' asks for a reason; only one option provides a cause.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-2.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part2-response.svg",
         options: [
           { key: "A", text: "At Gate 12 near the cafe." },
@@ -726,7 +726,7 @@ export class StoreService {
         difficulty: 3,
         stem: "In a conversation, the speakers discuss a delayed software release. What problem do they mention?",
         explanation: "Identify the stated obstacle in the conversation context.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-3.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part3-conversation.svg",
         options: [
           { key: "A", text: "The office internet is unavailable." },
@@ -742,7 +742,7 @@ export class StoreService {
         difficulty: 3,
         stem: "The woman says she can adjust the timeline. What does she suggest first?",
         explanation: "The first practical suggestion is to move a specific milestone.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-3.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part3-conversation.svg",
         options: [
           { key: "A", text: "Cancel the launch entirely." },
@@ -758,7 +758,7 @@ export class StoreService {
         difficulty: 3,
         stem: "What will the man do next in the conversation?",
         explanation: "Listen for commitment phrases such as 'I will send'.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-3.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part3-conversation.svg",
         options: [
           { key: "A", text: "Book a flight to the branch office." },
@@ -774,7 +774,7 @@ export class StoreService {
         difficulty: 2,
         stem: "A company announcement explains changes to building access. What is the purpose of the talk?",
         explanation: "The core purpose is to inform employees of a new policy.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-4.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part4-talk.svg",
         options: [
           { key: "A", text: "To promote a new security vendor" },
@@ -790,7 +790,7 @@ export class StoreService {
         difficulty: 3,
         stem: "According to the speaker, what has changed since last month?",
         explanation: "The new badge requirement is contrasted with last month's rule.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-4.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part4-talk.svg",
         options: [
           { key: "A", text: "Parking fees were eliminated." },
@@ -806,7 +806,7 @@ export class StoreService {
         difficulty: 3,
         stem: "Who should employees contact if their card does not work?",
         explanation: "Direct instruction includes a specific support desk.",
-        mediaUrl: "/assets/audio/toeic-official/practice-test-2-part-4.mp3",
+        mediaUrl: undefined,
         imageUrl: "/assets/images/listening/part4-talk.svg",
         options: [
           { key: "A", text: "The reception manager" },
