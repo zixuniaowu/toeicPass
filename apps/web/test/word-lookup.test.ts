@@ -96,3 +96,12 @@ describe("selection lookup", () => {
     expect(r.meaning).toBeTruthy();
   });
 });
+
+describe("shortGloss", async () => {
+  const { shortGloss } = await import("../lib/word-lookup");
+  it("keeps parenthetical meaning for acronyms and strips notes otherwise", () => {
+    expect(shortGloss("API（应用程序接口）")).toBe("应用程序接口");
+    expect(shortGloss("一级严重（Sev1，最高级故障）")).toBe("一级严重");
+    expect(shortGloss("开始;开口")).toBe("开始");
+  });
+});

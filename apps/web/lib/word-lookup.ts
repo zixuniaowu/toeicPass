@@ -73,8 +73,13 @@ export function lookupEnglishWord(raw: string, lang: GlossLang): EnLookup {
 /** Short form of a meaning for inline glosses ("开始;开口" → "开始"). */
 export function shortGloss(meaning: string | null | undefined): string | null {
   if (!meaning) return null;
-  const first = meaning.split(/[;；,，、/／]/)[0].replace(/（[^）]*）|\([^)]*\)/g, "").trim();
-  return first || meaning.trim();
+  const text = meaning.trim();
+  const inner = text.match(/[（(]([^）)]*)[）)]/)?.[1]?.trim() ?? "";
+  const outer = text.replace(/（[^）]*）|\([^)]*\)/g, "").trim();
+  // "API（应用程序接口）" → the parenthetical carries the meaning.
+  const core = outer && !/^[A-Za-z0-9 .\-/]+$/.test(outer) ? outer : inner || outer || text;
+  const first = core.split(/[;；,，、／]/)[0].trim();
+  return first || core;
 }
 
 export type JaSegment = { surface: string; reading: string | null; meaning: string | null };
