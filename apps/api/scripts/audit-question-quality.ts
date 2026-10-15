@@ -116,7 +116,12 @@ function run(): void {
     console.log(`WROTE_REPORT=${absolute}`);
   }
 
-  if (process.argv.includes("--strict") && invalidCount > 0) {
+  // Listening audio (ETS practice-test recordings) was removed for copyright and the
+  // listening feature is hidden in the app, so missing media is reported but not fatal.
+  const DEFERRED_ISSUES = new Set(["listening-missing-media"]);
+  const blockingCount = invalidRows.filter((row) => row.issues.some((issue) => !DEFERRED_ISSUES.has(issue))).length;
+  console.log(`BLOCKING_INVALID=${blockingCount}`);
+  if (process.argv.includes("--strict") && blockingCount > 0) {
     process.exitCode = 1;
   }
 }
