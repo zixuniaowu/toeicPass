@@ -8,3 +8,6 @@ apps/api/.runtime
 apps/api/.local-pg
 *.log
 tmp-login.png
+apps/mobile
+apps/web/.next_old
+**/.expo
