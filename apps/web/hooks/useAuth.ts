@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import type { Locale, TargetLang, UiLang } from "../types";
+import { createT } from "@toeicpass/app-i18n";
 import * as api from "../lib/api";
 import { setOnUnauthorized } from "../lib/api";
 import {
@@ -32,12 +33,12 @@ const DEFAULT_CREDENTIALS: AuthCredentials = {
   displayName: "",
 };
 
-const byLocale = (locale: Locale, zh: string, ja: string) => (locale === "ja" ? ja : zh);
 
 export function useAuth(
-  locale: Locale,
+  locale: UiLang,
   sessionLang?: { uiLang: UiLang; targetLang: TargetLang },
 ) {
+  const t = useMemo(() => createT(locale), [locale]);
   const storedSession = readStoredWebAppSession();
   const tenantCodeRef = useRef<string>(storedSession.tenantCode || DEFAULT_CREDENTIALS.tenantCode);
   const [token, setToken] = useState<string>(storedSession.token);
@@ -48,7 +49,7 @@ export function useAuth(
   }));
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string>(
-    byLocale(locale, "请先登录。首次使用可先注册账号。", "先にログインしてください。初回は登録から開始できます。"),
+    t("auth.pleaseLogin"),
   );
 
   const isLoggedIn = Boolean(token);
@@ -66,7 +67,7 @@ export function useAuth(
 
   useEffect(() => {
     if (!token) {
-      setMessage(byLocale(locale, "请先登录。首次使用可先注册账号。", "先にログインしてください。初回は登録から開始できます。"));
+      setMessage(t("auth.pleaseLogin"));
     }
   }, [locale, token]);
 
@@ -91,7 +92,7 @@ export function useAuth(
         displayName: credentials.displayName.trim(),
       };
       if (!normalized.tenantCode || !normalized.tenantName || !normalized.email || !normalized.password || !normalized.displayName) {
-        if (!silent) setMessage(byLocale(locale, "请完整填写租户、姓名、邮箱和密码。", "テナント・氏名・メール・パスワードをすべて入力してください。"));
+        if (!silent) setMessage(t("auth.fillAllFields"));
         return false;
       }
       setIsSubmitting(true);
@@ -100,22 +101,18 @@ export function useAuth(
           const result = await api.register(normalized);
           if (!result.success) {
             if ((result.error ?? "").toLowerCase().includes("already registered")) {
-              if (!silent) setMessage(byLocale(locale, "账号已存在，正在直接登录。", "アカウントは既に存在します。直接ログインします。"));
+              if (!silent) setMessage(t("auth.accountExists"));
               return true;
             }
-            if (!silent) setMessage(byLocale(locale, `注册失败: ${result.error}`, `登録失敗: ${result.error}`));
+            if (!silent) setMessage(t("auth.registerFailed", { error: result.error ?? "" }));
             return false;
           }
-          if (!silent) setMessage(byLocale(locale, "注册成功，请继续登录。", "登録が完了しました。続けてログインしてください。"));
+          if (!silent) setMessage(t("auth.registerSuccess"));
           return true;
         } catch (error) {
           if (!silent) {
             setMessage(
-              byLocale(
-                locale,
-                `注册请求失败，请确认服务已启动（API: http://127.0.0.1:8001）。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
-                `登録リクエストに失敗しました。サービス起動を確認してください（API: http://127.0.0.1:8001）。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
-              ),
+              t("auth.registerRequestFailed", { detail: error instanceof Error ? ` ${error.message}` : "" }).trim(),
             );
           }
           return false;
@@ -136,7 +133,7 @@ export function useAuth(
         password: credentials.password,
       };
       if (!normalized.email || !normalized.password) {
-        if (!silent) setMessage(byLocale(locale, "请先填写邮箱和密码。", "メールアドレスとパスワードを入力してください。"));
+        if (!silent) setMessage(t("auth.fillEmailPassword"));
         return null;
       }
       setIsSubmitting(true);
@@ -144,7 +141,7 @@ export function useAuth(
         try {
           const result = await api.login(normalized);
           if (!result.success || !result.token) {
-            if (!silent) setMessage(byLocale(locale, `登录失败: ${result.error}`, `ログイン失敗: ${result.error}`));
+            if (!silent) setMessage(t("auth.loginFailed", { error: result.error ?? "" }));
             return null;
           }
           const resolvedTenantCode = result.tenantCode ?? normalizedTenantCode;
@@ -154,16 +151,12 @@ export function useAuth(
             updateStoredWebAppSession({ tenantCode: resolvedTenantCode });
           }
           setToken(result.token);
-          if (!silent) setMessage(byLocale(locale, "登录成功。", "ログイン成功。"));
+          if (!silent) setMessage(t("auth.loginSuccess"));
           return result.token;
         } catch (error) {
           if (!silent) {
             setMessage(
-              byLocale(
-                locale,
-                `登录请求失败，请确认服务已启动（API: http://127.0.0.1:8001）。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
-                `ログインリクエストに失敗しました。サービス起動を確認してください（API: http://127.0.0.1:8001）。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
-              ),
+              t("auth.loginRequestFailed", { detail: error instanceof Error ? ` ${error.message}` : "" }).trim(),
             );
           }
           return null;
@@ -177,14 +170,14 @@ export function useAuth(
 
   const ensureSession = useCallback(async (): Promise<string | null> => {
     if (token) return token;
-    setMessage(byLocale(locale, "请先登录后再开始训练。", "先にログインしてから学習を開始してください。"));
+    setMessage(t("auth.loginToStart"));
     return null;
   }, [locale, token]);
 
   const logout = useCallback(() => {
     setToken("");
     updateStoredWebAppSession({ token: "" });
-    setMessage(byLocale(locale, "已退出登录。请使用账号重新登录。", "ログアウトしました。アカウントで再ログインしてください。"));
+    setMessage(t("auth.loggedOut"));
   }, [locale]);
 
   // Auto-logout on 401 Unauthorized responses from the API layer
@@ -192,7 +185,7 @@ export function useAuth(
     setOnUnauthorized(() => {
       setToken("");
       updateStoredWebAppSession({ token: "" });
-      setMessage(byLocale(locale, "登录已过期，请重新登录。", "セッションの有効期限が切れました。再ログインしてください。"));
+      setMessage(t("auth.sessionExpired"));
     });
     return () => setOnUnauthorized(null);
   }, [locale]);
@@ -209,7 +202,7 @@ export function useAuth(
           tenantCode: credentials.tenantCode.trim() || undefined,
         });
         if (!result.success || !result.token) {
-          setMessage(byLocale(locale, `${providerLabel} 登录失败: ${result.error}`, `${providerLabel} ログイン失敗: ${result.error}`));
+          setMessage(t("auth.providerLoginFailed", { provider: providerLabel, error: result.error ?? "" }));
           return null;
         }
         const resolvedTenantCode = result.tenantCode ?? credentials.tenantCode.trim();
@@ -219,15 +212,11 @@ export function useAuth(
           updateStoredWebAppSession({ tenantCode: resolvedTenantCode });
         }
         setToken(result.token);
-        setMessage(byLocale(locale, `${providerLabel} 登录成功。`, `${providerLabel} ログインに成功しました。`));
+        setMessage(t("auth.providerLoginSuccess", { provider: providerLabel }));
         return result.token;
       } catch (error) {
         setMessage(
-          byLocale(
-            locale,
-            `${providerLabel} 登录请求失败。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
-            `${providerLabel} ログインリクエストに失敗しました。${error instanceof Error ? ` ${error.message}` : ""}`.trim(),
-          ),
+          t("auth.providerRequestFailed", { provider: providerLabel, detail: error instanceof Error ? ` ${error.message}` : "" }).trim(),
         );
         return null;
       } finally {

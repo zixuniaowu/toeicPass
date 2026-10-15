@@ -191,7 +191,7 @@ describe("ClientHome onboarding", () => {
   it("first-visit popup asks only what to learn and defaults the UI to Chinese", async () => {
     render(<ClientHome />);
 
-    expect(await screen.findByText("你想练习哪种语言？")).toBeInTheDocument();
+    expect(await screen.findByText(/你想练习哪种语言？/)).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: /我要学日语/ }));
 
     expect(mockSetLangConfig).toHaveBeenCalledWith({

@@ -54,6 +54,16 @@ describe("useAuth", () => {
     expect(result.current.message).toContain("成功");
   });
 
+  it("english UI shows english auth messages", async () => {
+    mockLogin.mockResolvedValueOnce({ success: true, token: "jwt-en", tenantCode: "demo" });
+    const { result } = renderHook(() => useAuth("en"));
+    expect(result.current.message).toMatch(/log in/i);
+    await act(async () => {
+      await result.current.login();
+    });
+    expect(result.current.message).toBe("Logged in.");
+  });
+
   it("login failure returns null and shows error", async () => {
     mockLogin.mockResolvedValueOnce({ success: false, error: "Invalid credentials" });
     const { result } = renderHook(() => useAuth("zh"));

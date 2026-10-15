@@ -1,17 +1,18 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
-import type { Locale, VocabCard, VocabSummary } from "../types";
+import type { UiLang, VocabCard, VocabSummary } from "../types";
+import { createT } from "@toeicpass/app-i18n";
 import * as api from "../lib/api";
 
 export function useVocab(
   ensureSession: () => Promise<string | null>,
   getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
   setMessage: (msg: string) => void,
-  locale: Locale,
+  locale: UiLang,
   targetLang: "en" | "ja" = "en",
 ) {
-  const byLocale = (zh: string, ja: string) => (locale === "ja" ? ja : zh);
+  const t = useMemo(() => createT(locale), [locale]);
   const [cards, setCards] = useState<VocabCard[]>([]);
   const [summary, setSummary] = useState<VocabSummary | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,10 +33,7 @@ export function useVocab(
         }
       } catch (error) {
         setMessage(
-          byLocale(
-            `加载词卡异常: ${error instanceof Error ? error.message : String(error)}`,
-            `単語カード読み込みエラー: ${error instanceof Error ? error.message : String(error)}`,
-          ),
+          t("vocab.loadError", { error: error instanceof Error ? error.message : String(error) }),
         );
       } finally {
         setIsLoading(false);
@@ -57,20 +55,17 @@ export function useVocab(
       try {
         const result = await api.gradeVocabularyCard(cardId, grade, getRequestOptions(token));
         if (!result.success) {
-          setMessage(byLocale(`词卡评级失败: ${result.error}`, `カード評価失敗: ${result.error}`));
+          setMessage(t("vocab.gradeFailed", { error: result.error ?? "" }));
           return false;
         }
 
         setRevealMap((prev) => ({ ...prev, [cardId]: false }));
         await loadCards(token);
-        setMessage(byLocale("词卡进度已更新。", "カード進捗を更新しました。"));
+        setMessage(t("vocab.progressUpdated"));
         return true;
       } catch (error) {
         setMessage(
-          byLocale(
-            `词卡评级异常: ${error instanceof Error ? error.message : String(error)}`,
-            `カード評価エラー: ${error instanceof Error ? error.message : String(error)}`,
-          ),
+          t("vocab.gradeError", { error: error instanceof Error ? error.message : String(error) }),
         );
         return false;
       } finally {

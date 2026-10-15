@@ -140,18 +140,18 @@ export function ClientHome() {
   // Interstitial ad state: show after session submit for free users
   const [showInterstitial, setShowInterstitial] = useState(false);
 
-  const auth = useAuth(locale, {
+  const auth = useAuth(langConfig.uiLang, {
     uiLang: langConfig.uiLang,
     targetLang: langConfig.targetLang,
   });
   const toast = useToast();
-  const session = useSession(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
-  const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, locale);
+  const session = useSession(auth.ensureSession, auth.getRequestOptions, auth.setMessage, langConfig.uiLang);
+  const mistakes = useMistakes(auth.ensureSession, auth.getRequestOptions, auth.setMessage, langConfig.uiLang);
   const vocab = useVocab(
     auth.ensureSession,
     auth.getRequestOptions,
     auth.setMessage,
-    locale,
+    langConfig.uiLang,
     langConfig.targetLang,
   );
   const analytics = useAnalytics(auth.getRequestOptions);
@@ -185,7 +185,7 @@ export function ClientHome() {
   // Persist locale (backward compat: keep lb.locale in sync for legacy code)
   useEffect(() => {
     localStorage.setItem("lb.locale", locale);
-  }, [locale]);
+  }, [t]);
 
   // Persist active view
   useEffect(() => {
@@ -294,9 +294,7 @@ export function ClientHome() {
 
   const handleGoogleLogin = useCallback(() => {
     if (!GOOGLE_CLIENT_ID) {
-      const msg = locale === "ja"
-        ? "Google ログインを利用するには NEXT_PUBLIC_GOOGLE_CLIENT_ID を設定してください。"
-        : "使用 Google 登录需要配置 NEXT_PUBLIC_GOOGLE_CLIENT_ID 环境变量。";
+      const msg = t("auth.oauthNotConfigured", { provider: "Google", env: "NEXT_PUBLIC_GOOGLE_CLIENT_ID" });
       alert(msg);
       return;
     }
@@ -310,32 +308,28 @@ export function ClientHome() {
       prompt: "select_account",
     });
     window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
-  }, [locale]);
+  }, [t]);
 
   const handleWeChatLogin = useCallback(() => {
     if (!WECHAT_APP_ID) {
-      const msg = locale === "ja"
-        ? "WeChat ログインを利用するには NEXT_PUBLIC_WECHAT_APP_ID を設定してください。"
-        : "使用微信登录需要配置 NEXT_PUBLIC_WECHAT_APP_ID 环境变量。";
+      const msg = t("auth.oauthNotConfigured", { provider: "WeChat", env: "NEXT_PUBLIC_WECHAT_APP_ID" });
       alert(msg);
       return;
     }
     const redirectUri = encodeURIComponent(`${window.location.origin}/`);
     window.location.href = `https://open.weixin.qq.com/connect/qrconnect?appid=${WECHAT_APP_ID}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_login&state=wechat#wechat_redirect`;
-  }, [locale]);
+  }, [t]);
 
   const handleLineLogin = useCallback(() => {
     if (!LINE_CHANNEL_ID) {
-      const msg = locale === "ja"
-        ? "LINE ログインを利用するには NEXT_PUBLIC_LINE_CHANNEL_ID を設定してください。"
-        : "使用 LINE 登录需要配置 NEXT_PUBLIC_LINE_CHANNEL_ID 环境变量。";
+      const msg = t("auth.oauthNotConfigured", { provider: "LINE", env: "NEXT_PUBLIC_LINE_CHANNEL_ID" });
       alert(msg);
       return;
     }
     const redirectUri = encodeURIComponent(`${window.location.origin}/`);
     const state = crypto.randomUUID();
     window.location.href = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${LINE_CHANNEL_ID}&redirect_uri=${redirectUri}&state=${state}&scope=profile%20openid%20email`;
-  }, [locale]);
+  }, [t]);
 
   // Handle OAuth redirect callback (Google, WeChat, LINE)
   useEffect(() => {

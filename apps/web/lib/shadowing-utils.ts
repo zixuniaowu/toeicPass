@@ -152,7 +152,7 @@ export function formatVttTimestamp(totalSeconds: number): string {
 
 // ── Script / transcript parsing ───────────────────────────────────────────────
 
-export function parseYoutubeScript(raw: string): {
+export function parseYoutubeScript(raw: string, lang: "zh" | "ja" | "en" = "zh"): {
   sentences: ShadowingMaterial["sentences"];
   errors: string[];
 } {
@@ -175,7 +175,7 @@ export function parseYoutubeScript(raw: string): {
       const start = parseTimestampToSeconds(timed[1]);
       const end = parseTimestampToSeconds(timed[2]);
       if (start === null || end === null || end <= start) {
-        errors.push(`第 ${index + 1} 行时间轴格式错误：${line}`);
+        errors.push(lang === "en" ? `Line ${index + 1}: invalid timestamp format: ${line}` : lang === "ja" ? `${index + 1} 行目のタイムスタンプ形式が不正です：${line}` : `第 ${index + 1} 行时间轴格式错误：${line}`);
         return;
       }
       startSec = start;
@@ -187,7 +187,7 @@ export function parseYoutubeScript(raw: string): {
     const text = textPart?.trim() ?? "";
     const translation = translationPart.trim();
     if (!text) {
-      errors.push(`第 ${index + 1} 行缺少英文句子：${line}`);
+      errors.push(lang === "en" ? `Line ${index + 1}: missing sentence text: ${line}` : lang === "ja" ? `${index + 1} 行目に文がありません：${line}` : `第 ${index + 1} 行缺少英文句子：${line}`);
       return;
     }
     sentences.push({
@@ -215,7 +215,7 @@ function splitPlainSentences(rawText: string): string[] {
   return compact.split(/,\s+/).map((s) => s.trim()).filter((s) => s.length > 1);
 }
 
-export function parseYoutubeTranscriptText(raw: string): {
+export function parseYoutubeTranscriptText(raw: string, lang: "zh" | "ja" | "en" = "zh"): {
   cues: TranscriptCue[];
   errors: string[];
 } {
@@ -236,7 +236,7 @@ export function parseYoutubeTranscriptText(raw: string): {
     if (timed) {
       const startSec = parseLooseTimestamp(timed[1]);
       if (startSec === null) {
-        errors.push(`无法解析时间戳：${line}`);
+        errors.push(lang === "en" ? `Couldn't parse timestamp: ${line}` : lang === "ja" ? `タイムスタンプを解析できません：${line}` : `无法解析时间戳：${line}`);
         return;
       }
       const tail = normalizeTranscriptLine(timed[2]);
@@ -434,21 +434,26 @@ export function buildYoutubeEmbedUrl(
   return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
 }
 
-export function withSubtitleFallbackHint(rawMessage: string, isJa = false): string {
-  const fallbackDefault = isJa ? "自動インポートに失敗しました。" : "自动导入失败。";
+type HintLang = boolean | "zh" | "ja" | "en";
+const hintLang = (l: HintLang): "zh" | "ja" | "en" => (l === true ? "ja" : l === false ? "zh" : l);
+
+export function withSubtitleFallbackHint(rawMessage: string, lang: HintLang = false): string {
+  const ui = hintLang(lang);
+  const fallbackDefault = ui === "ja" ? "自動インポートに失敗しました。" : ui === "en" ? "Automatic import failed." : "自动导入失败。";
   const message = String(rawMessage || fallbackDefault).trim();
   if (/srt|vtt|字幕文件/i.test(message)) return message;
-  const hint = isJa
+  if (ui === "en") return `${message} You can import an SRT/VTT subtitle file below instead.`;
+  return ui === "ja"
     ? `${message} 下の SRT/VTT 字幕ファイルインポートもご利用いただけます。`
     : `${message} 你可以改用下方 SRT/VTT 字幕文件导入。`;
-  return hint;
 }
 
-export function titleFromSubtitleFile(fileName: string, isJa = false): string {
+export function titleFromSubtitleFile(fileName: string, lang: HintLang = false): string {
+  const ui = hintLang(lang);
   const title = String(fileName ?? "")
     .replace(/\.(srt|vtt)$/i, "")
     .trim();
-  return title || (isJa ? "字幕ファイルシャドーイング" : "字幕文件跟读");
+  return title || (ui === "ja" ? "字幕ファイルシャドーイング" : ui === "en" ? "Subtitle shadowing" : "字幕文件跟读");
 }
 
 // ── Badge / label helpers ─────────────────────────────────────────────────────

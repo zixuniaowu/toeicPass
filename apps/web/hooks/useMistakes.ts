@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
-import type { Locale, MistakeLibraryItem } from "../types";
+import type { UiLang, MistakeLibraryItem } from "../types";
+import { createT } from "@toeicpass/app-i18n";
 import * as api from "../lib/api";
 
 const normalizeOptionKey = (value: unknown): "A" | "B" | "C" | "D" => {
@@ -65,9 +66,9 @@ export function useMistakes(
   ensureSession: () => Promise<string | null>,
   getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
   setMessage: (msg: string) => void,
-  locale: Locale,
+  locale: UiLang,
 ) {
-  const byLocale = (zh: string, ja: string) => (locale === "ja" ? ja : zh);
+  const t = useMemo(() => createT(locale), [locale]);
   const [mistakeLibrary, setMistakeLibrary] = useState<MistakeLibraryItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [partFilter, setPartFilter] = useState<string>("all");
@@ -96,10 +97,7 @@ export function useMistakes(
         );
       } catch (error) {
         setMessage(
-          byLocale(
-            `加载错题库异常: ${error instanceof Error ? error.message : String(error)}`,
-            `ミスノート読み込みエラー: ${error instanceof Error ? error.message : String(error)}`,
-          ),
+          t("mistakes.loadError", { error: error instanceof Error ? error.message : String(error) }),
         );
       } finally {
         setIsLoading(false);
@@ -123,7 +121,7 @@ export function useMistakes(
 
       const note = (noteDraftMap[item.latestAttemptItemId] ?? "").trim();
       if (!note) {
-        setMessage(byLocale("请先输入错题备注。", "先に復習メモを入力してください。"));
+        setMessage(t("mistakes.noteRequired"));
         return false;
       }
 
@@ -138,19 +136,16 @@ export function useMistakes(
         );
 
         if (!result.success) {
-          setMessage(byLocale(`保存错题备注失败: ${result.error}`, `ミスノート保存失敗: ${result.error}`));
+          setMessage(t("mistakes.noteSaveFailed", { error: result.error ?? "" }));
           return false;
         }
 
-        setMessage(byLocale("错题备注已保存。", "復習メモを保存しました。"));
+        setMessage(t("mistakes.noteSaved"));
         await loadMistakes(token);
         return true;
       } catch (error) {
         setMessage(
-          byLocale(
-            `保存错题备注异常: ${error instanceof Error ? error.message : String(error)}`,
-            `ミスノート保存エラー: ${error instanceof Error ? error.message : String(error)}`,
-          ),
+          t("mistakes.noteSaveError", { error: error instanceof Error ? error.message : String(error) }),
         );
         return false;
       } finally {

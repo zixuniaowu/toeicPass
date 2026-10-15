@@ -304,7 +304,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       setYoutubeError(l("请输入有效的 YouTube 链接或视频 ID。", "有効な YouTube リンクまたは動画 ID を入力してください。", "Please enter a valid YouTube link or video ID."));
       return;
     }
-    const { sentences, errors } = parseYoutubeScript(youtubeScriptInput);
+    const { sentences, errors } = parseYoutubeScript(youtubeScriptInput, uiLang);
     if (errors.length > 0) {
       setYoutubeError(errors[0]);
       return;
@@ -327,7 +327,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
     };
     youtubeMaterials.upsertMaterial(customMaterial);
     handleStart(customMaterial);
-  }, [handleStart, youtubeMaterials, youtubeScriptInput, youtubeTitleInput, youtubeUrlInput]);
+  }, [uiLang, handleStart, youtubeMaterials, youtubeScriptInput, youtubeTitleInput, youtubeUrlInput]);
 
   const handleAutoImportYoutube = useCallback(async () => {
     setYoutubeError("");
@@ -348,7 +348,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       });
       const payload = (await response.json()) as YoutubeImportResponse;
       if (!response.ok || !payload.success) {
-        setYoutubeError(withSubtitleFallbackHint(payload.error || l("自动导入失败。", "自動インポートに失敗しました。", "Automatic import failed."), isJa));
+        setYoutubeError(withSubtitleFallbackHint(payload.error || l("自动导入失败。", "自動インポートに失敗しました。", "Automatic import failed."), uiLang));
         return;
       }
       const videoId = payload.videoId ? String(payload.videoId) : parseYoutubeVideoId(input);
@@ -374,7 +374,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
       handleStart(autoMaterial);
     } catch (error) {
-      setYoutubeError(withSubtitleFallbackHint(error instanceof Error ? error.message : l("自动导入失败。", "自動インポートに失敗しました。", "Automatic import failed."), isJa));
+      setYoutubeError(withSubtitleFallbackHint(error instanceof Error ? error.message : l("自动导入失败。", "自動インポートに失敗しました。", "Automatic import failed."), uiLang));
     } finally {
       setYoutubeImporting(false);
     }
@@ -406,7 +406,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       }
 
       const maybeVideoId = parseYoutubeVideoId(youtubeUrlInput);
-      const fallbackTitle = youtubeTitleInput.trim() || titleFromSubtitleFile(file.name, isJa);
+      const fallbackTitle = youtubeTitleInput.trim() || titleFromSubtitleFile(file.name, uiLang);
       const response = await fetch("/api/youtube-subtitles", {
         method: "POST",
         headers: {
@@ -462,7 +462,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       return;
     }
 
-    const { cues, errors } = parseYoutubeTranscriptText(transcriptText);
+    const { cues, errors } = parseYoutubeTranscriptText(transcriptText, uiLang);
     if (errors.length > 0) {
       setYoutubeError(errors[0]);
       return;
@@ -522,7 +522,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
     } finally {
       setTranscriptImporting(false);
     }
-  }, [handleStart, l, youtubeMaterials, youtubeTitleInput, youtubeTranscriptInput, youtubeUrlInput]);
+  }, [uiLang, handleStart, l, youtubeMaterials, youtubeTitleInput, youtubeTranscriptInput, youtubeUrlInput]);
 
   const handleImportJaYoutubeBatch = useCallback(() => {
     youtubeMaterials.importJaYoutubeBatch();
@@ -823,9 +823,11 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                                   const sentenceTotal = material.sentences.length;
                                   const progress = youtubeMaterials.materialProgressMap[material.id];
                                   if (!progress) {
-                                    return isJa
-                                      ? `未開始 · ${sentenceTotal} 文 · ${material.source}`
-                                      : `未开始 · ${sentenceTotal} 句 · ${material.source}`;
+                                    return l(
+                                      `未开始 · ${sentenceTotal} 句 · ${material.source}`,
+                                      `未開始 · ${sentenceTotal} 文 · ${material.source}`,
+                                      `Not started · ${sentenceTotal} sentences · ${material.source}`,
+                                    );
                                   }
                                   const current = clampSentenceIndex(progress.currentIndex, sentenceTotal) + 1;
                                   const completedCount = new Set(
@@ -833,9 +835,11 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                                       (id) => Number.isInteger(id) && id >= 0 && id < sentenceTotal,
                                     ),
                                   ).size;
-                                  return isJa
-                                    ? `${current}/${sentenceTotal} 文 · 完了 ${completedCount} 文 · ${material.source}`
-                                    : `第 ${current}/${sentenceTotal} 句 · 已完成 ${completedCount} 句 · ${material.source}`;
+                                  return l(
+                                    `第 ${current}/${sentenceTotal} 句 · 已完成 ${completedCount} 句 · ${material.source}`,
+                                    `${current}/${sentenceTotal} 文 · 完了 ${completedCount} 文 · ${material.source}`,
+                                    `Sentence ${current}/${sentenceTotal} · ${completedCount} done · ${material.source}`,
+                                  );
                                 })()}
                               </span>
                             </div>

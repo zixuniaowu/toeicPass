@@ -18,8 +18,8 @@ export function LanguageSetupPopup({ onConfirm }: LanguageSetupPopupProps) {
   return (
     <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="lang-setup-title">
       <div className={styles.popup}>
-        <h2 id="lang-setup-title" className={styles.title}>欢迎使用 toeicPass 跟读训练</h2>
-        <p className={styles.subtitle}>你想练习哪种语言？</p>
+        <h2 id="lang-setup-title" className={styles.title}>欢迎使用 toeicPass 跟读训练 · Welcome</h2>
+        <p className={styles.subtitle}>你想练习哪种语言？ · Which language do you want to practice?</p>
         <div className={styles.options}>
           {OPTIONS.map((opt) => (
             <button

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useMemo } from "react";
 import type {
   ActiveSession,
-  Locale,
+  UiLang,
   OptionKey,
   SessionMode,
   SessionFilters,
@@ -11,15 +11,16 @@ import type {
   SubmitReport,
 } from "../types";
 import { isListeningPart } from "../types";
+import { createT } from "@toeicpass/app-i18n";
 import * as api from "../lib/api";
 
 export function useSession(
   ensureSession: () => Promise<string | null>,
   getRequestOptions: (token?: string) => { token?: string; tenantCode?: string },
   setMessage: (msg: string) => void,
-  locale: Locale,
+  locale: UiLang,
 ) {
-  const byLocale = (zh: string, ja: string) => (locale === "ja" ? ja : zh);
+  const t = useMemo(() => createT(locale), [locale]);
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answerMap, setAnswerMap] = useState<Record<string, OptionKey>>({});
@@ -35,9 +36,9 @@ export function useSession(
   const practiceHint = currentQuestion
     ? isListeningPart(currentQuestion.partNo)
       ? currentQuestion.partNo <= 2
-        ? byLocale("先播放题目音频再作答，仅按 A/B/C/D 选择。", "先に音声を聞いてから A/B/C/D で解答してください。")
-        : byLocale("先听音频，再看题干关键词，再做题。", "先に音声を聞き、設問キーワードを確認して解答します。")
-      : byLocale("先读题干关键词，再排除干扰项。", "設問キーワードを先に読み、不要な選択肢を除外します。")
+        ? t("session.tipAudioOnly")
+        : t("session.tipListening")
+      : t("session.tipReading")
     : "";
 
   const startSession = useCallback(
@@ -47,12 +48,12 @@ export function useSession(
 
       const result = await api.startSession(mode, filters, getRequestOptions(token));
       if (!result.success || !result.questions) {
-        setMessage(byLocale(`开题失败: ${result.error ?? "未知错误"}`, `問題セットの開始に失敗: ${result.error ?? "不明なエラー"}`));
+        setMessage(t("session.startFailed", { error: result.error ?? t("session.unknownError") }));
         return false;
       }
 
       if (result.questions.length === 0) {
-        setMessage(byLocale("当前筛选条件下没有题目。", "現在の条件に一致する問題がありません。"));
+        setMessage(t("session.noQuestions"));
         return false;
       }
 
@@ -70,10 +71,7 @@ export function useSession(
       const listeningCount = result.questions.filter((q) => isListeningPart(q.partNo)).length;
       const readingCount = result.questions.length - listeningCount;
       setMessage(
-        byLocale(
-          `已加载 ${result.questions.length} 题（听力 ${listeningCount} / 阅读 ${readingCount}）。请按顺序逐题作答。`,
-          `${result.questions.length} 問を読み込みました（L ${listeningCount} / R ${readingCount}）。順番に解答してください。`,
-        ),
+        t("session.loaded", { count: result.questions.length, listening: listeningCount, reading: readingCount }),
       );
       return true;
     },
@@ -87,11 +85,11 @@ export function useSession(
 
       const result = await api.startMistakeDrillSession(payload, getRequestOptions(token));
       if (!result.success || !result.questions) {
-        setMessage(byLocale(`错题练习开题失败: ${result.error ?? "未知错误"}`, `ミス演習の開始に失敗: ${result.error ?? "不明なエラー"}`));
+        setMessage(t("session.mistakeStartFailed", { error: result.error ?? t("session.unknownError") }));
         return null;
       }
       if (result.questions.length === 0) {
-        setMessage(byLocale("当前错题条件下没有可练习题目。", "現在の条件で練習できるミス問題がありません。"));
+        setMessage(t("session.noMistakeQuestions"));
         return null;
       }
 
@@ -109,10 +107,7 @@ export function useSession(
       const listeningCount = result.questions.filter((q) => isListeningPart(q.partNo)).length;
       const readingCount = result.questions.length - listeningCount;
       setMessage(
-        byLocale(
-          `已生成错题强化 ${result.questions.length} 题（听力 ${listeningCount} / 阅读 ${readingCount}）。`,
-          `ミス強化 ${result.questions.length} 問を生成しました（L ${listeningCount} / R ${readingCount}）。`,
-        ),
+        t("session.mistakeLoaded", { count: result.questions.length, listening: listeningCount, reading: readingCount }),
       );
       return result.questions[0]?.partNo ?? null;
     },
@@ -162,7 +157,7 @@ export function useSession(
 
     const unanswered = activeSession.questions.filter((q) => !answerMap[q.id]);
     if (unanswered.length > 0 && !options?.allowPartial) {
-      setMessage(byLocale(`还有 ${unanswered.length} 题未作答。`, `${unanswered.length} 問が未回答です。`));
+      setMessage(t("session.unanswered", { count: unanswered.length }));
       return null;
     }
 
@@ -184,7 +179,7 @@ export function useSession(
       );
 
       if (!result.success || !result.report) {
-        setMessage(byLocale(`提交失败: ${result.error ?? "未知错误"}`, `提出失敗: ${result.error ?? "不明なエラー"}`));
+        setMessage(t("session.submitFailed", { error: result.error ?? t("session.unknownError") }));
         return null;
       }
 
@@ -195,17 +190,11 @@ export function useSession(
       questionStartedAtRef.current = 0;
       if (options?.allowPartial && unanswered.length > 0) {
         setMessage(
-          byLocale(
-            `已提交。未作答 ${unanswered.length} 题按错误计入。总分 ${result.report.scoreTotal}。`,
-            `提出しました。未回答 ${unanswered.length} 問は誤答として計上。スコア ${result.report.scoreTotal}。`,
-          ),
+          t("session.submittedWithBlank", { count: unanswered.length, score: result.report.scoreTotal }),
         );
       } else {
         setMessage(
-          byLocale(
-            `提交成功。总分 ${result.report.scoreTotal}，答对 ${result.report.correct}/${result.report.answered}。`,
-            `提出完了。スコア ${result.report.scoreTotal}、正解 ${result.report.correct}/${result.report.answered}。`,
-          ),
+          t("session.submitSuccess", { score: result.report.scoreTotal, correct: result.report.correct, answered: result.report.answered }),
         );
       }
       return result.report;
