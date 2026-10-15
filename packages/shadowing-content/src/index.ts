@@ -30,6 +30,22 @@ function withItCategory(list: ShadowingMaterial[]): ShadowingMaterial[] {
 }
 
 import { EN_SENTENCE_JA, EN_TITLE_JA } from "./en-sentence-ja";
+import { JA_INTRO_EN, JA_SENTENCE_EN, JA_TITLE_EN, JA_VOCAB_EN } from "./ja-materials-en";
+
+/** Attach English translations/notes to Japanese materials (English UI). */
+function withEnglishTranslations(list: ShadowingMaterial[]): ShadowingMaterial[] {
+  return list.map((m) => {
+    const en = JA_SENTENCE_EN[m.id] ?? {};
+    const vocabEn = JA_VOCAB_EN[m.id] ?? {};
+    return {
+      ...m,
+      translations: JA_TITLE_EN[m.id] && !m.translations.en ? { ...m.translations, en: JA_TITLE_EN[m.id] } : m.translations,
+      intro: m.intro && JA_INTRO_EN[m.id] && !m.intro.en ? { ...m.intro, en: JA_INTRO_EN[m.id] } : m.intro,
+      vocabulary: m.vocabulary?.map((v) => (vocabEn[v.term] && !v.en ? { ...v, en: vocabEn[v.term] } : v)),
+      sentences: m.sentences.map((s) => (en[s.id] && !s.translations.en ? { ...s, translations: { ...s.translations, en: en[s.id] } } : s)),
+    };
+  });
+}
 
 /** Attach Japanese sentence translations so Japanese-UI learners never fall back to Chinese. */
 function withJapaneseTranslations(list: ShadowingMaterial[]): ShadowingMaterial[] {
@@ -54,7 +70,7 @@ export const SHADOWING_MATERIALS: ShadowingMaterial[] = uniqueById(withJapaneseT
 
 /** All Japanese shadowing materials: advanced passages and IT first, then everyday basics. */
 export const JAPANESE_SHADOWING_MATERIALS: ShadowingMaterial[] = uniqueById(
-  withItCategory([...ADVANCED_JA_MATERIALS, ...IT_MATERIALS_JA, ...BASE_JA_MATERIALS, ...JAPANESE_LIFE_WORK_MATERIALS]),
+  withEnglishTranslations(withItCategory([...ADVANCED_JA_MATERIALS, ...IT_MATERIALS_JA, ...BASE_JA_MATERIALS, ...JAPANESE_LIFE_WORK_MATERIALS])),
 );
 import {
   YOUTUBE_SHADOWING_MATERIALS,

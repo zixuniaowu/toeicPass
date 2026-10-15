@@ -26,11 +26,11 @@ export const FEATURES = {
 } as const;
 
 /** Main navigation, in display order. */
-export const NAV_ITEMS: Array<{ key: ViewTab; zh: string; ja: string; icon: string }> = [
-  { key: "shadowing", zh: "跟读", ja: "シャドーイング", icon: "🎙" },
-  { key: "vocab", zh: "词汇", ja: "語彙", icon: "📚" },
-  { key: "review", zh: "复习", ja: "復習", icon: "🔁" },
-  { key: "settings", zh: "设置", ja: "設定", icon: "⚙️" },
+export const NAV_ITEMS: Array<{ key: ViewTab; zh: string; ja: string; en: string; icon: string }> = [
+  { key: "shadowing", zh: "跟读", ja: "シャドーイング", en: "Shadowing", icon: "🎙" },
+  { key: "vocab", zh: "词汇", ja: "語彙", en: "Vocabulary", icon: "📚" },
+  { key: "review", zh: "复习", ja: "復習", en: "Review", icon: "🔁" },
+  { key: "settings", zh: "设置", ja: "設定", en: "Settings", icon: "⚙️" },
 ];
 
 export function isViewEnabled(view: ViewTab): boolean {

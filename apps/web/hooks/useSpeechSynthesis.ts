@@ -1,6 +1,7 @@
 "use client";
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useEffect } from "react";
 import type { TrainingLanguage } from "../lib/shadowing-utils";
+import { loadJaAudioManifest, playSpeech, stopSpeech } from "../lib/tts";
 
 export type UseSpeechSynthesisReturn = {
   isSpeaking: boolean;
@@ -13,28 +14,23 @@ export type UseSpeechSynthesisReturn = {
 export function useSpeechSynthesis(trainingLanguage: TrainingLanguage): UseSpeechSynthesisReturn {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [speechRate, setSpeechRate] = useState(0.85);
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  useEffect(() => {
+    if (trainingLanguage === "ja") void loadJaAudioManifest();
+    // Voices load asynchronously in Chrome; touching getVoices() warms the list.
+    if (typeof window !== "undefined") window.speechSynthesis?.getVoices();
+  }, [trainingLanguage]);
 
   const speak = useCallback(
     (text: string) => {
-      if (!window.speechSynthesis) return;
-      window.speechSynthesis.cancel();
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = trainingLanguage === "ja" ? "ja-JP" : "en-US";
-      utterance.rate = speechRate;
-      utterance.pitch = 1;
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => setIsSpeaking(false);
-      utterance.onerror = () => setIsSpeaking(false);
-      utteranceRef.current = utterance;
-      window.speechSynthesis.speak(utterance);
+      setIsSpeaking(true);
+      void playSpeech(text, trainingLanguage === "ja" ? "ja" : "en", speechRate).finally(() => setIsSpeaking(false));
     },
     [speechRate, trainingLanguage],
   );
 
   const stopSpeaking = useCallback(() => {
-    window.speechSynthesis?.cancel();
+    stopSpeech();
     setIsSpeaking(false);
   }, []);
 

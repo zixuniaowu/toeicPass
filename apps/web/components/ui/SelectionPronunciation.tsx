@@ -2,11 +2,12 @@
 
 import { RefObject, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import type { Locale } from "../../types";
+import type { UiLang } from "../../types";
 import { createT } from "@toeicpass/app-i18n";
 import { getJapaneseReading } from "../../lib/japanese-reading";
 import { getWordIpa } from "../../lib/pronunciation";
 import { translateText } from "../../lib/translate";
+import { pickBestVoice } from "../../lib/tts";
 import { buildSelectionLookup, type SelectionLookup } from "../../lib/selection-lookup";
 import styles from "./SelectionPronunciation.module.css";
 
@@ -15,7 +16,7 @@ type SelectionState = SelectionLookup & { left: number; top: number };
 interface SelectionPronunciationProps {
   scopeRef: RefObject<HTMLElement | null>;
   /** UI language (popup labels and explanation language follow it). */
-  locale?: Locale;
+  locale?: UiLang;
   learningLanguage?: "en" | "ja";
 }
 
@@ -55,6 +56,8 @@ export function SelectionPronunciation({ scopeRef, locale = "zh", learningLangua
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(selectionState.isPhrase ? selectionState.text : selectionState.word);
     utterance.lang = learningLanguage === "ja" ? "ja-JP" : "en-US";
+    const voice = pickBestVoice(learningLanguage === "ja" ? "ja" : "en");
+    if (voice) utterance.voice = voice;
     utterance.rate = 0.88;
     utterance.onend = () => { setIsSpeaking(false); utteranceRef.current = null; };
     utterance.onerror = () => { setIsSpeaking(false); utteranceRef.current = null; };
@@ -115,7 +118,7 @@ export function SelectionPronunciation({ scopeRef, locale = "zh", learningLangua
     let cancelled = false;
     setRemote({ ipa: null, meaning: null, reading: null, done: false });
     const source = selectionState.isPhrase ? selectionState.text : selectionState.word;
-    const target = selectionState.glossLang === "ja" ? "ja" : "zh-CN";
+    const target = selectionState.glossLang === "ja" ? "ja" : selectionState.glossLang === "en" ? "en" : "zh-CN";
     void Promise.all([
       needIpa ? withTimeout(getWordIpa(selectionState.word), null) : Promise.resolve(null),
       needMeaning

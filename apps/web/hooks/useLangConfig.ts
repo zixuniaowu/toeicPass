@@ -6,28 +6,31 @@ import { readStoredWebAppSession, updateStoredWebAppSession } from "../lib/app-s
 
 const STORAGE_KEY = "langboost-lang-config";
 
-/** UI languages actually offered (the old "en" UI fell back to Japanese). */
-export const SELECTABLE_UI_LANGS: readonly UiLang[] = ["zh", "ja"] as const;
+/** UI languages offered. English UI is for English speakers learning Japanese. */
+export const SELECTABLE_UI_LANGS: readonly UiLang[] = ["zh", "ja", "en"] as const;
 
 /** Defaults: learning English (TOEIC) with a Chinese UI. */
 function defaultConfig(): LangConfig {
   return { uiLang: "zh", nativeLang: "zh", targetLang: "en" };
 }
 
-/** UI languages allowed for a learning target (no Japanese UI when learning Japanese). */
+/**
+ * UI (= explanation) languages allowed per learning target:
+ * - learning English: 中文 / 日本語 (explanations need a language other than the target)
+ * - learning Japanese: 中文 / English
+ */
 export function allowedUiLangs(targetLang: TargetLang): UiLang[] {
-  return targetLang === "ja" ? ["zh"] : ["zh", "ja"];
+  return targetLang === "ja" ? ["zh", "en"] : ["zh", "ja"];
 }
 
 /**
  * Normalise any stored/requested config into a sensible combination:
- * - the fake "en" UI becomes Chinese
- * - learning Japanese forces a Chinese UI
+ * - combinations outside allowedUiLangs() fall back to Chinese
  * - nativeLang always follows the UI language
  */
 export function sanitizeLangConfig(cfg: Partial<LangConfig> | null | undefined): LangConfig {
   const targetLang: TargetLang = cfg?.targetLang === "ja" ? "ja" : "en";
-  let uiLang: UiLang = cfg?.uiLang === "ja" ? "ja" : "zh";
+  let uiLang: UiLang = cfg?.uiLang === "ja" || cfg?.uiLang === "en" ? cfg.uiLang : "zh";
   if (!allowedUiLangs(targetLang).includes(uiLang)) uiLang = "zh";
   return { uiLang, nativeLang: uiLang as NativeLang, targetLang };
 }

@@ -457,14 +457,17 @@ export function getDifficultyVariant(d: number): "success" | "warning" | "error"
   return d === 1 ? "success" : d === 2 ? "warning" : "error";
 }
 
-export function getDifficultyLabel(d: number, locale: Locale): string {
+export function getDifficultyLabel(d: number, locale: Locale | "en"): string {
+  if (locale === "en") return d === 1 ? "Beginner" : d === 2 ? "Intermediate" : "Advanced";
   if (locale === "ja") return d === 1 ? "初級" : d === 2 ? "中級" : "上級";
   return d === 1 ? "初级" : d === 2 ? "中级" : "高级";
 }
 
-export function getCategoryLabel(c: string, locale: Locale): string {
+export function getCategoryLabel(c: string, locale: Locale | "en"): string {
   const m: Record<string, string> =
-    locale === "ja"
+    locale === "en"
+      ? { speech: "Business", drama: "Conversation", ted: "Topic talk", it: "IT" }
+      : locale === "ja"
       ? { speech: "ビジネス", drama: "会話", ted: "テーマ解説", it: "IT" }
       : { speech: "商务", drama: "情景对话", ted: "专题讲解", it: "IT" };
   return m[c] || c;

@@ -189,16 +189,16 @@ export function useSpeechRecognition(
         try { localStorage.setItem(NO_PARALLEL_KEY, "1"); } catch { /* ignore */ }
         stopRecorder();
         recorderRef.current = null;
-        setNotice(l("此设备无法同时录音和识别，已切换为仅识别模式。", "この端末では録音と認識を同時に行えないため、認識のみで続行します。"));
+        setNotice(l("此设备无法同时录音和识别，已切换为仅识别模式。", "この端末では録音と認識を同時に行えないため、認識のみで続行します。", "This device can't record and recognize at the same time, so recognition only is used."));
         setTimeout(() => startRecognizer(false), 150);
         return;
       }
       if (event.error === "no-speech") {
-        setRecognizedText(l("未检测到语音，请再试一次", "音声が検出されませんでした。もう一度試してください。"));
+        setRecognizedText(l("未检测到语音，请再试一次", "音声が検出されませんでした。もう一度試してください。", "No speech detected. Please try again."));
       } else if (event.error === "not-allowed") {
         setMicPermission("denied");
       } else if (event.error !== "aborted") {
-        setRecognizedText(`${l("识别出错", "認識エラー")}: ${event.error}`);
+        setRecognizedText(`${l("识别出错", "認識エラー", "Recognition error")}: ${event.error}`);
       }
     };
     recognition.onend = () => {
@@ -271,14 +271,14 @@ export function useSpeechRecognition(
         if (!SpeechRecognitionAPI) {
           // Recording-only mode (e.g. Firefox): still allows self-review playback.
           setIsRecording(true);
-          setNotice(l("当前浏览器不支持语音识别，可录音后回放自查。推荐使用 Android/桌面版 Chrome。", "このブラウザは音声認識に未対応です。録音して聞き返すことはできます（Android/PC版 Chrome 推奨）。"));
+          setNotice(l("当前浏览器不支持语音识别，可录音后回放自查。推荐使用 Android/桌面版 Chrome。", "このブラウザは音声認識に未対応です。録音して聞き返すことはできます（Android/PC版 Chrome 推奨）。", "This browser doesn't support speech recognition. You can still record and play back (Chrome on Android/desktop recommended)."));
           timeoutRef.current = setTimeout(() => { stopRecorder(); setIsRecording(false); }, MAX_SESSION_MS);
           return;
         }
         const started = startRecognizer(Boolean(recorderRef.current));
         if (!started) {
           stopRecorder();
-          setRecognizedText(l("语音识别启动失败，请重试", "音声認識を開始できませんでした。もう一度お試しください。"));
+          setRecognizedText(l("语音识别启动失败，请重试", "音声認識を開始できませんでした。もう一度お試しください。", "Couldn't start speech recognition. Please try again."));
           return;
         }
         timeoutRef.current = setTimeout(() => { userStoppedRef.current = true; recognitionRef.current?.stop(); }, MAX_SESSION_MS);

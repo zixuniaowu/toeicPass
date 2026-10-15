@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Locale, TargetLang, VocabCard, VocabSummary } from "../../types";
+import type { Locale, UiLang, TargetLang, VocabCard, VocabSummary } from "../../types";
 import { annotateTerm } from "../../data/word-dictionary";
 import { translateText } from "../../lib/translate";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/Card";
@@ -14,6 +14,7 @@ import styles from "./VocabView.module.css";
 
 interface VocabViewProps {
   locale: Locale;
+  uiLang?: UiLang;
   targetLang: TargetLang;
   cards: VocabCard[];
   summary: VocabSummary | null;
@@ -173,6 +174,76 @@ const COPY = {
     tip5: "Part 5/6 の高頻度語彙を優先すると得点効率が高い",
     jlptTip5: "まず N5/N4 の基礎語彙を固めてから N3 に進むと安定します。",
   },
+  en: {
+    headerTitle: "Vocabulary",
+    subtitle: "TOEIC core vocabulary - by target score · spaced repetition",
+    jlptHeaderTitle: "JLPT Vocabulary",
+    jlptSubtitle: "JLPT core vocabulary - N5/N4/N3 levels · spaced repetition",
+    pronunciationHint: "Select an English word to see its IPA and hear it read aloud.",
+    jlptPronunciationHint: "Select a Japanese word to see its reading and meaning, and hear it read aloud.",
+    dailyGoal: (count: number) => `Today's goal: finish ${count} words first`,
+    dueHint: (due: number) => `${due} words are due. Do this batch today and clear the rest later.`,
+    noDueHint: "No cards are due today. Switch to \"Word list\" to learn new words.",
+    totalCards: "Total cards",
+    dueTotal: "Due",
+    todayPlan: "Today's plan",
+    learning: "Learning",
+    mastered: "Mastered",
+    tabStudy: "Study",
+    tabBrowse: "Word list",
+    tabStats: "Stats",
+    refreshing: "Refreshing...",
+    refresh: "Refresh",
+    emptyTitle: "No cards yet",
+    emptyHint: "Click \"Refresh\" to load your TOEIC vocabulary cards",
+    jlptEmptyHint: "Click \"Refresh\" to load your JLPT vocabulary cards",
+    todayBatch: (count: number) => `Today (${count})`,
+    allDueBatch: (count: number) => `All due (${count})`,
+    cardProgress: (current: number, total: number) => `Card ${current} / ${total}`,
+    dueBatchLabel: (today: number, due: number) => `Today's batch ${today}/${due}`,
+    dueTotalLabel: (due: number) => `Due total ${due}`,
+    prevCard: "Previous",
+    nextCard: "Next",
+    searchPlaceholder: "Search words or meanings...",
+    filterAll: "All",
+    filterDue: "Due",
+    filterLearning: "Learning",
+    filterMastered: "Mastered",
+    allPart: "All Parts",
+    allBands: "All levels",
+    filterCount: (count: number) => `${count} cards`,
+    dueBadge: "Due",
+    masteredBadge: "Mastered",
+    speakAria: (term: string) => `Read ${term} aloud`,
+    speak: "Play",
+    chineseDef: "Chinese",
+    japaneseDef: "Japanese",
+    meaningLabel: "Meaning",
+    noChineseDef: "Not available",
+    translating: "Translating...",
+    intervalDays: (days: number) => `Interval ${days}d`,
+    moreHint: (count: number) => `${count} more cards not shown`,
+    overallProgress: "Overall progress",
+    legendMastered: (count: number) => `Mastered ${count}`,
+    legendLearning: (count: number) => `Learning ${count}`,
+    legendDue: (count: number) => `Due ${count}`,
+    partDist: "Words by Part",
+    scoreDist: "Words by target score",
+    jlptLevelDist: "JLPT level distribution",
+    wordsCount: (count: number) => `${count} words`,
+    memoryDifficulty: "Memory difficulty",
+    diffHard: "Hard (EF < 2.0)",
+    diffNormal: "Normal (EF 2.0-2.5)",
+    diffEasy: "Easy (EF 2.5-3.0)",
+    diffVeryEasy: "Very easy (EF >= 3.0)",
+    tipsTitle: "Spaced repetition",
+    tip1: "Don't know - shows again soon to strengthen memory",
+    tip2: "Somewhat familiar - reviewed at a medium interval",
+    tip3: "Mastered - longer intervals, fewer reviews",
+    tip4: "Reviewing due cards every day works best",
+    tip5: "Focus on high-frequency Part 5/6 words for the fastest gains",
+    jlptTip5: "Solidify core N5/N4 words first, then move on to N3.",
+  },
 } as const;
 
 const POS_LABELS: Record<string, Record<string, string>> = {
@@ -194,7 +265,8 @@ const POS_LABELS: Record<string, Record<string, string>> = {
   },
 };
 
-function localizePos(pos: string, locale: "zh" | "ja"): string {
+function localizePos(pos: string, locale: "zh" | "ja" | "en"): string {
+  if (locale === "en") return pos;
   const lower = pos.trim().toLowerCase();
   const label = POS_LABELS[locale]?.[lower];
   return label ? `${label} (${pos})` : pos;
@@ -207,6 +279,7 @@ function getCardTranslation(card: VocabCard, field: "definition" | "example", la
 
 export function VocabView({
   locale,
+  uiLang = locale,
   targetLang,
   cards,
   summary,
@@ -222,7 +295,8 @@ export function VocabView({
   token = "",
   tenantCode = "",
 }: VocabViewProps) {
-  const copy = COPY[locale];
+  const isEnUi = uiLang === "en";
+  const copy = COPY[isEnUi ? "en" : locale];
   const isJapaneseDeck = targetLang === "ja";
   const selectionScopeRef = useRef<HTMLDivElement | null>(null);
   const [tab, setTab] = useState<VocabTab>("study");
@@ -245,7 +319,7 @@ export function VocabView({
     return isJapaneseDeck ? ["N5", "N4", "N3"] : ["600", "700", "800", "900"];
   }, [cards, isJapaneseDeck]);
 
-  const formatBandLabel = (band: string) => (isJapaneseDeck ? band : `${band}${locale === "ja" ? "点" : "分"}`);
+  const formatBandLabel = (band: string) => (isJapaneseDeck ? band : `${band}${isEnUi ? "" : locale === "ja" ? "点" : "分"}`);
   const defaultBand = bandOptions[0] ?? (isJapaneseDeck ? "N5" : "600");
   const headerTitle = isJapaneseDeck ? copy.jlptHeaderTitle : copy.headerTitle;
   const subtitle = isJapaneseDeck ? copy.jlptSubtitle : copy.subtitle;
@@ -411,7 +485,7 @@ export function VocabView({
       return;
     }
     let cancelled = false;
-    const targetLangCode = locale === "ja" ? "ja" : "zh-CN";
+    const targetLangCode = isEnUi ? "en" : locale === "ja" ? "ja" : "zh-CN";
     const sourceLangCode = isJapaneseDeck ? "ja" : "en";
     void Promise.all(
       pendingCards.map(async (card) => {
@@ -419,10 +493,10 @@ export function VocabView({
         if (!example) {
           return [card.id, ""] as const;
         }
-        if (isJapaneseDeck && locale === "ja") {
-          return [card.id, example] as const;
+        if ((isJapaneseDeck && locale === "ja" && !isEnUi) || (isEnUi && !isJapaneseDeck)) {
+          return [card.id, isEnUi ? "" : example] as const;
         }
-        const translated = await translateText(example, targetLangCode as "ja" | "zh-CN", sourceLangCode as "en" | "ja");
+        const translated = await translateText(example, targetLangCode as "ja" | "zh-CN" | "en", sourceLangCode as "en" | "ja");
         return [card.id, translated] as const;
       }),
     ).then((entries) => {
@@ -582,6 +656,7 @@ export function VocabView({
                 {currentStudyCard && (
                   <FlashCard
                     locale={locale}
+                    uiLang={uiLang}
                     card={currentStudyCard}
                     isRevealed={revealMap[currentStudyCard.id] ?? false}
                     isGrading={gradingCardId === currentStudyCard.id}
@@ -683,8 +758,10 @@ export function VocabView({
                 const structuredEnglishDefinition = getCardTranslation(card, "definition", "en");
                 const hasChineseInDefinition = /[\u4e00-\u9fff]/.test(card.definition);
                 const chineseDefinition = structuredChineseDefinition ?? annotation?.cn ?? (hasChineseInDefinition ? card.definition : null);
-                const localizedDefinition = locale === "ja" ? (structuredJapaneseDefinition ?? jaDefinitionMap[card.id]) : chineseDefinition;
-                const structuredExampleTranslation = locale === "ja"
+                const localizedDefinition = isEnUi ? (structuredEnglishDefinition ?? card.definition) : locale === "ja" ? (structuredJapaneseDefinition ?? jaDefinitionMap[card.id]) : chineseDefinition;
+                const structuredExampleTranslation = isEnUi
+                  ? (isJapaneseDeck ? getCardTranslation(card, "example", "en") : null)
+                  : locale === "ja"
                   ? getCardTranslation(card, "example", "ja")
                   : getCardTranslation(card, "example", "zh");
                 return (
@@ -692,7 +769,7 @@ export function VocabView({
                     <div className={styles.wordMain}>
                       <strong className={styles.wordTerm}>{card.term}</strong>
                       {annotation?.ipa && <span className={styles.wordIpa}>{annotation.ipa}</span>}
-                      <span className={styles.wordPos}>{localizePos(card.pos, locale)}</span>
+                      <span className={styles.wordPos}>{localizePos(card.pos, isEnUi ? "en" : locale)}</span>
                       {card.due && <span className={styles.wordDue}>{copy.dueBadge}</span>}
                       {card.intervalDays >= 14 && (card.lastGrade ?? 0) >= 4 && <span className={styles.wordMastered}>{copy.masteredBadge}</span>}
                       <button
@@ -707,7 +784,9 @@ export function VocabView({
                     <p className={styles.wordDefCn}>
                       {isJapaneseDeck
                         ? `${copy.meaningLabel}：${locale === "ja" ? (localizedDefinition ?? copy.translating) : (localizedDefinition ?? copy.noChineseDef)}`
-                        : locale === "ja"
+                        : isEnUi
+                          ? null
+                          : locale === "ja"
                           ? `${copy.japaneseDef}：${localizedDefinition ?? copy.translating}`
                           : `${copy.chineseDef}：${localizedDefinition ?? copy.noChineseDef}`}
                     </p>
@@ -739,7 +818,7 @@ export function VocabView({
             </div>
           </div>
         )}
-        {(tab === "study" || tab === "browse") && <SelectionPronunciation scopeRef={selectionScopeRef} locale={locale} />}
+        {(tab === "study" || tab === "browse") && <SelectionPronunciation scopeRef={selectionScopeRef} locale={uiLang} learningLanguage={isJapaneseDeck ? "ja" : "en"} />}
       </div>
 
       {/* Stats Tab */}

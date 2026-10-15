@@ -87,7 +87,9 @@ for (const [term, acr] of enTerms) {
 }
 
 // ── Japanese ──
-type JaEntry = { r: string; zh: string; b?: string };
+type JaEntry = { r: string; zh: string; en?: string; b?: string };
+const jaEnOver = readOver("en-ja-over.txt");
+const jaEnJm = readJson("jm-ja-en.json");
 const ja: Record<string, JaEntry> = {};
 const kuromoji = require("kuromoji");
 const kataToHira = (s: string) => s.replace(/[\u30a1-\u30f6]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
@@ -100,11 +102,20 @@ kuromoji.builder({ dicPath: path.join(here, "../../../node_modules/kuromoji/dict
     const reading = kataToHira(t.reading && t.reading !== "*" ? t.reading : surface);
     const functional = t.pos === "助詞" || t.pos === "助動詞";
     const zh = (jaZh[baseForm] ?? jaZh[surface] ?? "").trim() || (functional ? "（语法成分）" : "");
+    const en = (
+      (functional ? jaEnOver[baseForm] ?? jaEnOver[surface] : undefined) ??
+      jaEnOver[surface] ?? jaEnOver[baseForm] ?? jaEnJm[surface] ?? jaEnJm[baseForm] ?? ""
+    ).trim();
     if (!zh) missing.push(`ja ${surface}/${baseForm}`);
-    if (!ja[surface]) ja[surface] = { r: reading, zh, ...(baseForm !== surface ? { b: baseForm } : {}) };
+    if (!en) missing.push(`ja-en ${surface}/${baseForm}`);
+    if (!ja[surface]) ja[surface] = { r: reading, zh, en, ...(baseForm !== surface ? { b: baseForm } : {}) };
   }
   // Single characters left over by greedy longest-match segmentation at runtime.
-  const EXTRA: Record<string, JaEntry> = { え: { r: "え", zh: "诶（感叹）" }, け: { r: "け", zh: "（语气／接尾）" }, 知: { r: "ち", zh: "知识；智慧" } };
+  const EXTRA: Record<string, JaEntry> = {
+    え: { r: "え", zh: "诶（感叹）", en: "eh?; huh" },
+    け: { r: "け", zh: "（语气／接尾）", en: "(sentence-final, recalling)" },
+    知: { r: "ち", zh: "知识；智慧", en: "knowledge; wisdom" },
+  };
   for (const [k, v] of Object.entries(EXTRA)) if (!ja[k]) ja[k] = v;
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "en.json"), JSON.stringify(en));

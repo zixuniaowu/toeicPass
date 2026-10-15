@@ -1,4 +1,5 @@
 "use client";
+import { playSpeech } from "../../lib/tts";
 /**
  * RecordingPanel — mic banner, record/stop, playback (mine / model / A-B) and
  * detailed per-word feedback with tips and tap-to-hear.
@@ -34,20 +35,9 @@ type Props = {
   l: (zh: string, ja: string, en?: string) => string;
 };
 
-/** Speak text with the browser TTS; resolves when finished. */
+/** Speak text (pre-generated neural audio for Japanese materials, else best browser voice). */
 export function speakText(text: string, lang: TrainingLanguage, rate = 0.95): Promise<void> {
-  return new Promise((resolve) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) { resolve(); return; }
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = lang === "ja" ? "ja-JP" : "en-US";
-    u.rate = rate;
-    const voice = window.speechSynthesis.getVoices().find((v) => v.lang.replace("_", "-").startsWith(u.lang));
-    if (voice) u.voice = voice;
-    u.onend = () => resolve();
-    u.onerror = () => resolve();
-    window.speechSynthesis.speak(u);
-  });
+  return playSpeech(text, lang === "ja" ? "ja" : "en", rate);
 }
 
 type PlayMode = "none" | "mine" | "model" | "ab";
@@ -111,7 +101,7 @@ export function RecordingPanel({
 
   const statusClass = (w: CompareWord) => fb[w.status] ?? "";
   const statusLabel = (s: CompareWord["status"]) =>
-    ({ correct: l("正确", "正解"), close: l("接近", "惜しい"), wrong: l("读错", "誤り"), missing: l("漏读", "読み落とし"), extra: l("多读", "余分") })[s];
+    ({ correct: l("正确", "正解", "Correct"), close: l("接近", "惜しい", "Close"), wrong: l("读错", "誤り", "Wrong"), missing: l("漏读", "読み落とし", "Missed"), extra: l("多读", "余分", "Extra") })[s];
   const issues = compareResult?.words.filter((w) => w.status !== "correct") ?? [];
   const tipLang = uiLang === "ja" ? "ja" : "zh";
 
@@ -121,8 +111,8 @@ export function RecordingPanel({
         <div className={styles.micBanner}>
           <div className={styles.micBannerIcon}>🎙</div>
           <div className={styles.micBannerContent}>
-            <strong>{l("需要麦克风权限", "マイクの許可が必要です")}</strong>
-            <p>{l("请点击浏览器地址栏左侧的🔒图标，将麦克风设为「允许」后刷新页面", "ブラウザのアドレスバー左の🔒アイコンをタップし、マイクを「許可」に変更してページを再読み込みしてください")}</p>
+            <strong>{l("需要麦克风权限", "マイクの許可が必要です", "Microphone permission required")}</strong>
+            <p>{l("请点击浏览器地址栏左侧的🔒图标，将麦克风设为「允许」后刷新页面", "ブラウザのアドレスバー左の🔒アイコンをタップし、マイクを「許可」に変更してページを再読み込みしてください", "Tap the 🔒 icon left of the address bar, allow the microphone, then reload the page")}</p>
           </div>
           <button className={styles.micBannerClose} onClick={onDismissMicBanner} aria-label="Close">✕</button>
         </div>
@@ -131,14 +121,14 @@ export function RecordingPanel({
       <div className={styles.recordActions}>
         {!isRecording ? (
           <button className={styles.recordBtn} onClick={start} disabled={isSpeaking} data-testid="record-start">
-            {`🎙 ${compareResult ? l("再读一次", "もう一度読む") : l("开始跟读", "シャドーイング開始")}`}
+            {`🎙 ${compareResult ? l("再读一次", "もう一度読む", "Try again") : l("开始跟读", "シャドーイング開始", "Start shadowing")}`}
           </button>
         ) : (
           <button className={`${styles.recordBtn} ${styles.recordBtnActive}`} onClick={onStopRecording} data-testid="record-stop">
-            {`⏹ ${l("读完了，停止", "読み終わったら停止")}`}
+            {`⏹ ${l("读完了，停止", "読み終わったら停止", "Stop when you finish reading")}`}
           </button>
         )}
-        {isRecording && <span className={styles.recordingIndicator}>{l("录音中…读完后点击停止", "録音中…読み終えたら停止")}</span>}
+        {isRecording && <span className={styles.recordingIndicator}>{l("录音中…读完后点击停止", "録音中…読み終えたら停止", "Recording… stop when you finish")}</span>}
       </div>
 
       {notice && <p className={fb.notice}>{notice}</p>}
@@ -146,20 +136,20 @@ export function RecordingPanel({
       {(recordingUrl || compareResult) && !isRecording && (
         <div className={fb.playbackRow}>
           <button className={`${fb.playBtn} ${playing === "mine" ? fb.playBtnActive : ""}`} disabled={!recordingUrl} onClick={() => void run("mine")} data-testid="play-mine">
-            ▶ {l("我的录音", "自分の録音")}
+            ▶ {l("我的录音", "自分の録音", "My recording")}
           </button>
           <button className={`${fb.playBtn} ${playing === "model" ? fb.playBtnActive : ""}`} onClick={() => void run("model")} data-testid="play-model">
-            🔊 {l("原声", "お手本")}
+            🔊 {l("原声", "お手本", "Model")}
           </button>
           <button className={`${fb.playBtn} ${playing === "ab" ? fb.playBtnActive : ""}`} disabled={!recordingUrl} onClick={() => void run("ab")} data-testid="play-ab">
-            🔁 A/B {l("对比", "比較")}
+            🔁 A/B {l("对比", "比較", "Compare")}
           </button>
         </div>
       )}
 
       {recognizedText && !compareResult && (
         <div className={styles.recognizedText}>
-          <span className={styles.recognizedLabel}>{l("识别中：", "認識中：")}</span>
+          <span className={styles.recognizedLabel}>{l("识别中：", "認識中：", "Hearing:")}</span>
           {recognizedText}
         </div>
       )}
@@ -171,7 +161,7 @@ export function RecordingPanel({
               {compareResult.accuracy}%
             </span>
             <span className={styles.accuracyEmoji}>
-              {compareResult.accuracy >= 85 ? l("太棒了！", "すばらしい！") : compareResult.accuracy >= 60 ? l("不错，再打磨几个词", "いい感じ！あと数語を磨きましょう") : l("再听一遍原声，然后再试", "お手本をもう一度聞いて再挑戦")}
+              {compareResult.accuracy >= 85 ? l("太棒了！", "すばらしい！", "Excellent!") : compareResult.accuracy >= 60 ? l("不错，再打磨几个词", "いい感じ！あと数語を磨きましょう", "Nice! Polish a few more words") : l("再听一遍原声，然后再试", "お手本をもう一度聞いて再挑戦", "Listen to the model again and retry")}
             </span>
           </div>
           <div className={styles.accuracyTrack}>
@@ -184,7 +174,7 @@ export function RecordingPanel({
                 key={i}
                 type="button"
                 className={`${fb.word} ${statusClass(w)}`}
-                title={`${statusLabel(w.status)}${w.heard && w.status !== "correct" ? ` · ${l("听到", "認識")}: ${w.heard}` : ""}`}
+                title={`${statusLabel(w.status)}${w.heard && w.status !== "correct" ? ` · ${l("听到", "認識", "Heard")}: ${w.heard}` : ""}`}
                 onClick={() => void speakText(w.word, trainingLanguage, 0.8)}
               >
                 {w.word}
@@ -192,12 +182,12 @@ export function RecordingPanel({
             ))}
           </div>
           <div className={fb.legend}>
-            <span className={fb.correct}>{l("绿=正确", "緑=正解")}</span>
-            <span className={fb.close}>{l("黄=接近", "黄=惜しい")}</span>
-            <span className={fb.wrong}>{l("红=读错/漏读", "赤=誤り/抜け")}</span>
-            <span className={fb.extra}>{l("灰=多读", "灰=余分")}</span>
+            <span className={fb.correct}>{l("绿=正确", "緑=正解", "green = correct")}</span>
+            <span className={fb.close}>{l("黄=接近", "黄=惜しい", "yellow = close")}</span>
+            <span className={fb.wrong}>{l("红=读错/漏读", "赤=誤り/抜け", "red = wrong / missed")}</span>
+            <span className={fb.extra}>{l("灰=多读", "灰=余分", "grey = extra")}</span>
           </div>
-          <p className={fb.transcript}>{l("识别结果：", "認識結果：")}{recognizedText}</p>
+          <p className={fb.transcript}>{l("识别结果：", "認識結果：", "Recognized:")}{recognizedText}</p>
 
           {issues.length > 0 && (
             <ul className={fb.issues} data-testid="issue-list">
@@ -207,12 +197,12 @@ export function RecordingPanel({
                   <div className={fb.issueBody}>
                     <span className={fb.issueWords}>
                       {w.status === "extra"
-                        ? `${l("多读了", "余分")}: “${w.heard ?? w.word}”`
+                        ? `${l("多读了", "余分", "Extra")}: “${w.heard ?? w.word}”`
                         : w.status === "missing"
-                          ? `${l("应读", "正しくは")}: “${w.word}” · ${l("未识别到", "認識されず")}`
-                          : `${l("应读", "正しくは")}: “${w.word}”${isJa && w.expected ? `（${w.expected}）` : ""} · ${l("听到", "認識")}: “${w.heard ?? "—"}”`}
+                          ? `${l("应读", "正しくは", "Expected")}: “${w.word}” · ${l("未识别到", "認識されず", "Not recognized")}`
+                          : `${l("应读", "正しくは", "Expected")}: “${w.word}”${isJa && w.expected ? `（${w.expected}）` : ""} · ${l("听到", "認識", "Heard")}: “${w.heard ?? "—"}”`}
                       {w.status !== "extra" && (
-                        <button type="button" className={fb.hearBtn} aria-label={l("听发音", "発音を聞く")} onClick={() => void speakText(w.word, trainingLanguage, 0.8)}>🔊</button>
+                        <button type="button" className={fb.hearBtn} aria-label={l("听发音", "発音を聞く", "Hear pronunciation")} onClick={() => void speakText(w.word, trainingLanguage, 0.8)}>🔊</button>
                       )}
                     </span>
                     {w.tip && <span className={fb.issueTip}>💡 {feedbackTipText(w.tip, tipLang)}</span>}

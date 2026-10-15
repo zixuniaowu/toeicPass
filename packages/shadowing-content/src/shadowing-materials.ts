@@ -22,6 +22,7 @@ export type ShadowingVocabNote = {
   reading?: string;
   zh: string;
   ja?: string;
+  en?: string;
 };
 
 export type ShadowingSentence = {

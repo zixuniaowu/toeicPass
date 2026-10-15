@@ -301,7 +301,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
     setYoutubeError("");
     const videoId = parseYoutubeVideoId(youtubeUrlInput);
     if (!videoId) {
-      setYoutubeError(l("请输入有效的 YouTube 链接或视频 ID。", "有効な YouTube リンクまたは動画 ID を入力してください。"));
+      setYoutubeError(l("请输入有效的 YouTube 链接或视频 ID。", "有効な YouTube リンクまたは動画 ID を入力してください。", "Please enter a valid YouTube link or video ID."));
       return;
     }
     const { sentences, errors } = parseYoutubeScript(youtubeScriptInput);
@@ -310,11 +310,11 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       return;
     }
     if (sentences.length === 0) {
-      setYoutubeError(l("请至少输入一行句子脚本。", "少なくとも 1 行のスクリプトを入力してください。"));
+      setYoutubeError(l("请至少输入一行句子脚本。", "少なくとも 1 行のスクリプトを入力してください。", "Please enter at least one line of script."));
       return;
     }
 
-    const title = youtubeTitleInput.trim() || l("YouTube 跟读", "YouTube シャドーイング");
+    const title = youtubeTitleInput.trim() || l("YouTube 跟读", "YouTube シャドーイング", "YouTube shadowing");
     const customMaterial: ShadowingMaterial = {
       id: `youtube-${videoId}-${Date.now()}`,
       title,
@@ -333,7 +333,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
     setYoutubeError("");
     const input = youtubeUrlInput.trim();
     if (!input) {
-      setYoutubeError(l("请先输入 YouTube 链接或视频 ID。", "先に YouTube リンクまたは動画 ID を入力してください。"));
+      setYoutubeError(l("请先输入 YouTube 链接或视频 ID。", "先に YouTube リンクまたは動画 ID を入力してください。", "Enter a YouTube link or video ID first."));
       return;
     }
 
@@ -348,17 +348,17 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       });
       const payload = (await response.json()) as YoutubeImportResponse;
       if (!response.ok || !payload.success) {
-        setYoutubeError(withSubtitleFallbackHint(payload.error || l("自动导入失败。", "自動インポートに失敗しました。"), isJa));
+        setYoutubeError(withSubtitleFallbackHint(payload.error || l("自动导入失败。", "自動インポートに失敗しました。", "Automatic import failed."), isJa));
         return;
       }
       const videoId = payload.videoId ? String(payload.videoId) : parseYoutubeVideoId(input);
       const normalizedSentences = normalizeImportedSentences(payload.sentences);
       if (!videoId || normalizedSentences.length === 0) {
-        setYoutubeError(l("未获取到可用字幕。请换一个有英文字幕的视频，或改用 SRT/VTT 字幕文件导入。", "利用可能な字幕が取得できませんでした。英語字幕付き動画に変更するか、SRT/VTT ファイルを使ってください。"));
+        setYoutubeError(l("未获取到可用字幕。请换一个有英文字幕的视频，或改用 SRT/VTT 字幕文件导入。", "利用可能な字幕が取得できませんでした。英語字幕付き動画に変更するか、SRT/VTT ファイルを使ってください。", "No usable subtitles were found. Try a video with subtitles or use an SRT/VTT file."));
         return;
       }
 
-      const title = youtubeTitleInput.trim() || String(payload.title ?? "").trim() || l("YouTube 跟读", "YouTube シャドーイング");
+      const title = youtubeTitleInput.trim() || String(payload.title ?? "").trim() || l("YouTube 跟读", "YouTube シャドーイング", "YouTube shadowing");
       const autoMaterial: ShadowingMaterial = {
         id: `youtube-${videoId}-${Date.now()}`,
         title,
@@ -374,7 +374,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
       handleStart(autoMaterial);
     } catch (error) {
-      setYoutubeError(withSubtitleFallbackHint(error instanceof Error ? error.message : l("自动导入失败。", "自動インポートに失敗しました。"), isJa));
+      setYoutubeError(withSubtitleFallbackHint(error instanceof Error ? error.message : l("自动导入失败。", "自動インポートに失敗しました。", "Automatic import failed."), isJa));
     } finally {
       setYoutubeImporting(false);
     }
@@ -389,11 +389,11 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
 
     setYoutubeError("");
     if (!/\.(srt|vtt)$/i.test(file.name)) {
-      setYoutubeError(l("仅支持 .srt 或 .vtt 字幕文件。", ".srt または .vtt 字幕ファイルのみ対応しています。"));
+      setYoutubeError(l("仅支持 .srt 或 .vtt 字幕文件。", ".srt または .vtt 字幕ファイルのみ対応しています。", "Only .srt or .vtt subtitle files are supported."));
       return;
     }
     if (file.size > 2_000_000) {
-      setYoutubeError(l("字幕文件过大，请控制在 2MB 内。", "字幕ファイルが大きすぎます。2MB 以内にしてください。"));
+      setYoutubeError(l("字幕文件过大，请控制在 2MB 内。", "字幕ファイルが大きすぎます。2MB 以内にしてください。", "The subtitle file is too large (max 2 MB)."));
       return;
     }
 
@@ -401,7 +401,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
     try {
       const subtitleText = await file.text();
       if (!subtitleText.trim()) {
-        setYoutubeError(l("字幕文件为空，请换一个文件。", "字幕ファイルが空です。別のファイルを使用してください。"));
+        setYoutubeError(l("字幕文件为空，请换一个文件。", "字幕ファイルが空です。別のファイルを使用してください。", "The subtitle file is empty. Please use another file."));
         return;
       }
 
@@ -421,13 +421,13 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       });
       const payload = (await response.json()) as YoutubeImportResponse;
       if (!response.ok || !payload.success) {
-        setYoutubeError(payload.error || l("字幕文件导入失败。", "字幕ファイルのインポートに失敗しました。"));
+        setYoutubeError(payload.error || l("字幕文件导入失败。", "字幕ファイルのインポートに失敗しました。", "Failed to import the subtitle file."));
         return;
       }
 
       const normalizedSentences = normalizeImportedSentences(payload.sentences);
       if (normalizedSentences.length === 0) {
-        setYoutubeError(l("字幕文件里没有可用句子。", "字幕ファイルに利用可能な文がありません。"));
+        setYoutubeError(l("字幕文件里没有可用句子。", "字幕ファイルに利用可能な文がありません。", "The subtitle file contains no usable sentences."));
         return;
       }
 
@@ -448,7 +448,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
       handleStart(importedMaterial);
     } catch (error) {
-      setYoutubeError(error instanceof Error ? error.message : l("字幕文件导入失败。", "字幕ファイルのインポートに失敗しました。"));
+      setYoutubeError(error instanceof Error ? error.message : l("字幕文件导入失败。", "字幕ファイルのインポートに失敗しました。", "Failed to import the subtitle file."));
     } finally {
       setSubtitleFileImporting(false);
     }
@@ -458,7 +458,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
     setYoutubeError("");
     const transcriptText = youtubeTranscriptInput.trim();
     if (!transcriptText) {
-      setYoutubeError(l("请先粘贴 transcript 内容。", "先に transcript テキストを貼り付けてください。"));
+      setYoutubeError(l("请先粘贴 transcript 内容。", "先に transcript テキストを貼り付けてください。", "Paste the transcript text first."));
       return;
     }
 
@@ -468,7 +468,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       return;
     }
     if (cues.length === 0) {
-      setYoutubeError(l("未识别到可用句子。请检查 transcript 格式。", "利用可能な文を認識できませんでした。transcript 形式を確認してください。"));
+      setYoutubeError(l("未识别到可用句子。请检查 transcript 格式。", "利用可能な文を認識できませんでした。transcript 形式を確認してください。", "No usable sentences were recognized. Please check the transcript format."));
       return;
     }
 
@@ -476,7 +476,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
     try {
       const subtitleText = buildVttFromCues(cues);
       const maybeVideoId = parseYoutubeVideoId(youtubeUrlInput);
-      const fallbackTitle = youtubeTitleInput.trim() || l("YouTube Transcript 跟读", "YouTube Transcript シャドーイング");
+      const fallbackTitle = youtubeTitleInput.trim() || l("YouTube Transcript 跟读", "YouTube Transcript シャドーイング", "YouTube transcript shadowing");
       const response = await fetch("/api/youtube-subtitles", {
         method: "POST",
         headers: {
@@ -491,13 +491,13 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       });
       const payload = (await response.json()) as YoutubeImportResponse;
       if (!response.ok || !payload.success) {
-        setYoutubeError(payload.error || l("Transcript 导入失败。", "Transcript のインポートに失敗しました。"));
+        setYoutubeError(payload.error || l("Transcript 导入失败。", "Transcript のインポートに失敗しました。", "Failed to import the transcript."));
         return;
       }
 
       const normalizedSentences = normalizeImportedSentences(payload.sentences);
       if (normalizedSentences.length === 0) {
-        setYoutubeError(l("Transcript 可解析，但未生成可练习句子。", "Transcript は解析できましたが、練習用の文を生成できませんでした。"));
+        setYoutubeError(l("Transcript 可解析，但未生成可练习句子。", "Transcript は解析できましたが、練習用の文を生成できませんでした。", "The transcript was parsed, but no practice sentences could be generated."));
         return;
       }
 
@@ -518,7 +518,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
       setYoutubeScriptInput(buildScriptTextFromSentences(normalizedSentences));
       handleStart(importedMaterial);
     } catch (error) {
-      setYoutubeError(error instanceof Error ? error.message : l("Transcript 导入失败。", "Transcript のインポートに失敗しました。"));
+      setYoutubeError(error instanceof Error ? error.message : l("Transcript 导入失败。", "Transcript のインポートに失敗しました。", "Failed to import the transcript."));
     } finally {
       setTranscriptImporting(false);
     }
@@ -592,11 +592,11 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
   }, [handleStart]);
 
   const categories = [
-    { key: "all", label: l("全部", "すべて") },
-    { key: "it", label: l("💻 IT 专题", "💻 IT 特集") },
-    { key: "speech", label: l("商务", "ビジネス") },
-    { key: "drama", label: isJapaneseTraining ? l("日常", "日常会話") : l("情景对话", "場面会話") },
-    { key: "ted", label: isJapaneseTraining ? l("专题讲解", "テーマ解説") : l("专题讲解", "テーマ解説") },
+    { key: "all", label: l("全部", "すべて", "All") },
+    { key: "it", label: l("💻 IT 专题", "💻 IT 特集", "💻 IT") },
+    { key: "speech", label: l("商务", "ビジネス", "Business") },
+    { key: "drama", label: isJapaneseTraining ? l("日常", "日常会話", "Daily conversation") : l("情景对话", "場面会話", "Situations") },
+    { key: "ted", label: isJapaneseTraining ? l("专题讲解", "テーマ解説", "Topics") : l("专题讲解", "テーマ解説", "Topics") },
   ];
 
   const baseMaterials = isJapaneseTraining ? JAPANESE_SHADOWING_MATERIALS : SHADOWING_MATERIALS;
@@ -614,11 +614,11 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
     return (
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>{isJapaneseTraining ? l("日语口语强化", "日本語スピーキング強化") : l("英语口语强化", "英語スピーキング強化")}</h2>
+          <h2>{isJapaneseTraining ? l("日语口语强化", "日本語スピーキング強化", "Japanese speaking practice") : l("英语口语强化", "英語スピーキング強化", "English speaking practice")}</h2>
           <p className={styles.subtitle}>
             {isJapaneseTraining
-              ? l("逐句跟读练习日语口语，点击「🎙 开始跟读」录音并自动纠错", "文ごとに日本語スピーキングを練習できます。「🎙 シャドーイング開始」で録音し自動チェックします。")
-              : l("逐句跟读练习英语发音和语感，点击「🎙 开始跟读」录音并自动纠错", "文ごとに英語スピーキングを練習できます。「🎙 シャドーイング開始」で録音し自動チェックします。")}
+              ? l("逐句跟读练习日语口语，点击「🎙 开始跟读」录音并自动纠错", "文ごとに日本語スピーキングを練習できます。「🎙 シャドーイング開始」で録音し自動チェックします。", "Practice Japanese sentence by sentence. Press “🎙 Start shadowing” to record and get automatic feedback.")
+              : l("逐句跟读练习英语发音和语感，点击「🎙 开始跟读」录音并自动纠错", "文ごとに英語スピーキングを練習できます。「🎙 シャドーイング開始」で録音し自動チェックします。", "Practice English sentence by sentence. Press “🎙 Start shadowing” to record and get automatic feedback.")}
           </p>
         </div>
 
@@ -628,14 +628,14 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
             className={`${styles.tab} ${viewMode === "materials" ? styles.tabActive : ""}`}
             onClick={() => setViewMode("materials")}
           >
-            {l("经典材料", "定番素材")} ({baseMaterials.length})
+            {l("经典材料", "定番素材", "Core materials")} ({baseMaterials.length})
           </button>
           {showExtraTabs && (
             <button
               className={`${styles.tab} ${viewMode === "news" ? styles.tabActive : ""}`}
               onClick={() => { setViewMode("news"); if (newsArticles.length === 0) void loadNews(); }}
             >
-              {l("每日新闻", "デイリーニュース")}
+              {l("每日新闻", "デイリーニュース", "Daily news")}
             </button>
           )}
           {showExtraTabs && (
@@ -643,7 +643,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
               className={`${styles.tab} ${viewMode === "youtube" ? styles.tabActive : ""}`}
               onClick={() => setViewMode("youtube")}
             >
-              {l("YouTube 跟读", "YouTube シャドーイング")}
+              {l("YouTube 跟读", "YouTube シャドーイング", "YouTube shadowing")}
             </button>
           )}
         </div>
@@ -676,13 +676,13 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                 <p className={styles.source}>{material.source}</p>
                 <div className={styles.materialMeta}>
                   <Badge variant={getDifficultyVariant(material.difficulty)}>
-                    {getDifficultyLabel(material.difficulty, locale)}
+                    {getDifficultyLabel(material.difficulty, uiLang)}
                   </Badge>
-                  <Badge variant="info">{getCategoryLabel(material.category, locale)}</Badge>
-                  <span className={styles.sentenceCount}>{material.sentences.length} {l("句", "文")}</span>
+                  <Badge variant="info">{getCategoryLabel(material.category, uiLang)}</Badge>
+                  <span className={styles.sentenceCount}>{material.sentences.length} {l("句", "文", "sentences")}</span>
                 </div>
                 <Button onClick={() => handleStart(material)} className={styles.startBtn}>
-                  {l("开始跟读", "練習開始")}
+                  {l("开始跟读", "練習開始", "Start")}
                 </Button>
               </Card>
             ))}
@@ -694,11 +694,11 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
           <div>
             <div className={styles.newsHeader}>
               <Button variant="secondary" onClick={loadNews} disabled={isLoadingNews}>
-                {isLoadingNews ? l("加载中...", "読み込み中...") : l("刷新新闻", "ニュース更新")}
+                {isLoadingNews ? l("加载中...", "読み込み中...", "Loading...") : l("刷新新闻", "ニュース更新", "Refresh news")}
               </Button>
             </div>
             {newsArticles.length === 0 && !isLoadingNews && (
-              <p className={styles.emptyNews}>{l("点击「刷新新闻」获取今日英语新闻", "「ニュース更新」を押して今日の英語ニュースを取得")}</p>
+              <p className={styles.emptyNews}>{l("点击「刷新新闻」获取今日英语新闻", "「ニュース更新」を押して今日の英語ニュースを取得", "Press “Refresh news” to load today's news")}</p>
             )}
             <div className={styles.materialGrid}>
               {newsArticles.map((article) => (
@@ -710,13 +710,13 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                   <p className={styles.source}>{article.source} · {article.date}</p>
                   <div className={styles.materialMeta}>
                     <Badge variant={getDifficultyVariant(article.difficulty)}>
-                      {getDifficultyLabel(article.difficulty, locale)}
+                      {getDifficultyLabel(article.difficulty, uiLang)}
                     </Badge>
-                    <Badge variant="info">{l("新闻", "ニュース")}</Badge>
-                    <span className={styles.sentenceCount}>{article.sentences.length} {l("句", "文")}</span>
+                    <Badge variant="info">{l("新闻", "ニュース", "News")}</Badge>
+                    <span className={styles.sentenceCount}>{article.sentences.length} {l("句", "文", "sentences")}</span>
                   </div>
                   <Button onClick={() => handleStartNews(article)} className={styles.startBtn}>
-                    {l("开始跟读", "練習開始")}
+                    {l("开始跟读", "練習開始", "Start")}
                   </Button>
                 </Card>
               ))}
@@ -729,11 +729,11 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
             <CardContent>
               <div className={styles.youtubeFormGrid}>
                 <label className={styles.youtubeLabel}>
-                  <span>{l("YouTube 链接 / 视频 ID", "YouTube リンク / 動画 ID")}</span>
+                  <span>{l("YouTube 链接 / 视频 ID", "YouTube リンク / 動画 ID", "YouTube link / video ID")}</span>
                   <input
                     className={styles.youtubeInput}
                     type="text"
-                    placeholder={l("例如：https://www.youtube.com/watch?v=xxxxxxxxxxx", "例：https://www.youtube.com/watch?v=xxxxxxxxxxx")}
+                    placeholder={l("例如：https://www.youtube.com/watch?v=xxxxxxxxxxx", "例：https://www.youtube.com/watch?v=xxxxxxxxxxx", "e.g. https://www.youtube.com/watch?v=xxxxxxxxxxx")}
                     value={youtubeUrlInput}
                     onChange={(e) => setYoutubeUrlInput(e.target.value)}
                   />
@@ -746,7 +746,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                     onClick={handleAutoImportYoutube}
                     disabled={youtubeImporting}
                   >
-                    {youtubeImporting ? l("自动导入中...", "自動インポート中...") : l("一键抓字幕并自动导入", "字幕を取得して自動インポート")}
+                    {youtubeImporting ? l("自动导入中...", "自動インポート中...", "Importing...") : l("一键抓字幕并自动导入", "字幕を取得して自動インポート", "Fetch subtitles and import")}
                   </Button>
                   {isJapaneseTraining ? (
                     <Button
@@ -754,7 +754,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                       onClick={handleImportJaYoutubeBatch}
                       disabled={youtubeImporting}
                     >
-                      {l("一键导入日语跟读素材 ×10", "日本語素材10件を一括導入")}
+                      {l("一键导入日语跟读素材 ×10", "日本語素材10件を一括導入", "Import 10 Japanese videos")}
                     </Button>
                   ) : (
                     <Button
@@ -762,7 +762,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                       onClick={handleImportTedLatestBatch}
                       disabled={youtubeImporting || tedSnapshot.materials.length === 0}
                     >
-                      {l("一键导入 TED 最新10", "TED 最新10件を一括導入")}
+                      {l("一键导入 TED 最新10", "TED 最新10件を一括導入", "Import the latest 10 TED talks")}
                     </Button>
                   )}
                 </div>
@@ -770,27 +770,21 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                 <div className={styles.youtubeHint}>
                   {isJapaneseTraining ? (
                     <>
-                      <p>{l(
-                        "最省事：直接点「一键导入日语跟读素材 ×10」，包含日常会话、商务、旅行等场景。",
-                        "最短手順：「日本語素材10件を一括導入」を押してください。日常会話・ビジネス・旅行などの場面が含まれます。"
-                      )}</p>
-                      <p>{l(
-                        "也可以粘贴任意日语 YouTube 视频链接，自动抓取字幕。推荐频道：Yosuke Teaches Japanese、NHK World Japan、日本語の森",
-                        "YouTube 動画リンクを貼り付けて字幕を取得することもできます。おすすめ：Yosuke Teaches Japanese、NHK World Japan、日本語の森"
-                      )}</p>
+                      <p>{l("最省事：直接点「一键导入日语跟读素材 ×10」，包含日常会话、商务、旅行等场景。", "最短手順：「日本語素材10件を一括導入」を押してください。日常会話・ビジネス・旅行などの場面が含まれます。", "Quick start: press “Import 10 Japanese videos” (daily life, business, travel and more).")}</p>
+                      <p>{l("也可以粘贴任意日语 YouTube 视频链接，自动抓取字幕。推荐频道：Yosuke Teaches Japanese、NHK World Japan、日本語の森", "YouTube 動画リンクを貼り付けて字幕を取得することもできます。おすすめ：Yosuke Teaches Japanese、NHK World Japan、日本語の森", "You can also paste a YouTube link to fetch its subtitles. Suggested: Yosuke Teaches Japanese, NHK World Japan, Nihongo no Mori.")}</p>
                     </>
                   ) : (
                     <>
-                      <p>{l("最省事：直接点「一键导入 TED 最新10」。", "最短手順：「TED 最新10件を一括導入」を押してください。")}</p>
-                      {tedSnapshotGeneratedAt && <p>{l("TED 批量包生成时间", "TED バッチ生成時刻")}：{tedSnapshotGeneratedAt}</p>}
+                      <p>{l("最省事：直接点「一键导入 TED 最新10」。", "最短手順：「TED 最新10件を一括導入」を押してください。", "Quick start: press “Import the latest 10 TED talks”.")}</p>
+                      {tedSnapshotGeneratedAt && <p>{l("TED 批量包生成时间", "TED バッチ生成時刻", "TED batch generated at")}：{tedSnapshotGeneratedAt}</p>}
                     </>
                   )}
                 </div>
 
                 <div className={styles.savedMaterialsBlock}>
-                  <h4>{l("我的视频材料", "マイ動画素材")}</h4>
+                  <h4>{l("我的视频材料", "マイ動画素材", "My video materials")}</h4>
                   {youtubeMaterials.savedMaterials.length === 0 ? (
-                    <p className={styles.savedEmpty}>{l("还没有保存的材料。导入一个视频后会自动保存。", "保存済み素材はまだありません。動画を導入すると自動保存されます。")}</p>
+                    <p className={styles.savedEmpty}>{l("还没有保存的材料。导入一个视频后会自动保存。", "保存済み素材はまだありません。動画を導入すると自動保存されます。", "No saved materials yet. Imported videos are saved automatically.")}</p>
                   ) : (
                     <div className={styles.savedMaterialList}>
                       {youtubeMaterials.savedMaterials.map((material) => (
@@ -851,14 +845,14 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                                 onClick={() => handleStart(material, { resumeFromLast: true })}
                                 size="sm"
                               >
-                                {youtubeMaterials.materialProgressMap[material.id] ? l("继续练习", "続きから練習") : l("开始练习", "練習開始")}
+                                {youtubeMaterials.materialProgressMap[material.id] ? l("继续练习", "続きから練習", "Continue") : l("开始练习", "練習開始", "Start")}
                               </Button>
                               <Button
                                 variant="link"
                                 onClick={() => youtubeMaterials.deleteMaterial(material.id)}
                                 size="sm"
                               >
-                                {l("删除", "削除")}
+                                {l("删除", "削除", "Delete")}
                               </Button>
                             </div>
                           </div>
@@ -950,7 +944,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
           <div className={styles.cinemaZone}>
             {/* Back button header */}
             <div className={styles.cinemaHeader}>
-              <button className={styles.cinemaHeaderBack} onClick={handleBack}>← {l("返回", "戻る")}</button>
+              <button className={styles.cinemaHeaderBack} onClick={handleBack}>← {l("返回", "戻る", "Back")}</button>
               <span className={styles.cinemaHeaderTitle}>{activeMaterial.title}</span>
               <span className={styles.cinemaHeaderProgress}>{currentIndex + 1}/{total}</span>
             </div>
@@ -977,7 +971,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                         checked={alwaysShowTranslation}
                         onChange={(e) => setAlwaysShowTranslation(e.target.checked)}
                       />
-                      <span>{l("双语", "対訳")}</span>
+                      <span>{l("双语", "対訳", "Translation")}</span>
                     </label>
                     {trainingLanguage === "ja" ? (
                       <label className={styles.cinemaToggle}>
@@ -986,7 +980,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                           checked={showReading}
                           onChange={(e) => setShowReading(e.target.checked)}
                         />
-                        <span>{l("假名", "ふりがな")}</span>
+                        <span>{l("假名", "ふりがな", "Furigana")}</span>
                       </label>
                     ) : (
                       <label className={styles.cinemaToggle}>
@@ -995,7 +989,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                           checked={showIPA}
                           onChange={(e) => setShowIPA(e.target.checked)}
                         />
-                        <span>{l("音标", "IPA")}</span>
+                        <span>{l("音标", "IPA", "IPA")}</span>
                       </label>
                     )}
                     <label className={styles.cinemaToggle}>
@@ -1004,12 +998,12 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                         checked={showWordTranslation}
                         onChange={(e) => setShowWordTranslation(e.target.checked)}
                       />
-                      <span>{l("释义", "語釈")}</span>
+                      <span>{l("释义", "語釈", "Glosses")}</span>
                     </label>
                     <button
                       className={styles.cinemaSpeed}
                       onClick={() => tts.setSpeechRate(tts.speechRate === 0.6 ? 0.85 : tts.speechRate === 0.85 ? 1.0 : 0.6)}
-                      title={l("点击切换TTS语速", "クリックしてTTS速度を切替")}
+                      title={l("点击切换TTS语速", "クリックしてTTS速度を切替", "Click to change the speech speed")}
                     >
                       {tts.speechRate}x
                     </button>
@@ -1019,14 +1013,14 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                       className={styles.cinemaPrevNext}
                       onClick={handlePrev}
                       disabled={currentIndex === 0}
-                      title={l("上一句", "前の文")}
+                      title={l("上一句", "前の文", "Previous")}
                     >
                       ⏮
                     </button>
                     <button
                       className={styles.cinemaPlayBtn}
                       onClick={() => tts.isSpeaking ? tts.stopSpeaking() : tts.speak(sentence.text)}
-                      title={tts.isSpeaking ? l("停止", "停止") : l("播放当前句TTS", "現在の文を再生")}
+                      title={tts.isSpeaking ? l("停止", "停止", "Stop") : l("播放当前句TTS", "現在の文を再生", "Play this sentence")}
                     >
                       {tts.isSpeaking ? "⏸" : "▶"}
                     </button>
@@ -1034,7 +1028,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                       className={styles.cinemaPrevNext}
                       onClick={handleNext}
                       disabled={currentIndex >= total - 1}
-                      title={l("下一句", "次の文")}
+                      title={l("下一句", "次の文", "Next")}
                     >
                       ⏭
                     </button>
@@ -1045,7 +1039,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                         YouTube ↗
                       </a>
                     )}
-                    <button className={styles.cinemaBackBtn} onClick={handleBack}>{l("返回", "戻る")}</button>
+                    <button className={styles.cinemaBackBtn} onClick={handleBack}>{l("返回", "戻る", "Back")}</button>
                   </div>
                 </div>
               </div>
@@ -1053,7 +1047,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
               {/* Right: Scrollable transcript pane */}
               <div className={styles.transcriptPane}>
                 <div className={styles.transcriptHeader}>
-                  <span className={styles.transcriptTitle}>{l("字幕列表", "字幕リスト")}</span>
+                  <span className={styles.transcriptTitle}>{l("字幕列表", "字幕リスト", "Subtitles")}</span>
                   <span className={styles.transcriptProgress}>{currentIndex + 1}/{total}</span>
                 </div>
                 <div className={styles.transcriptList}>
@@ -1067,14 +1061,14 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                         <button
                           className={styles.transcriptPlayBtn}
                           onClick={(e) => { e.stopPropagation(); goToSentence(idx); }}
-                          title={l("播放", "再生")}
+                          title={l("播放", "再生", "Play")}
                         >
                           ▶
                         </button>
                         <button
                           className={styles.transcriptRecordBtn}
                           onClick={(e) => { e.stopPropagation(); goToSentence(idx); const phonetic = wordAnnotation.getSentencePhoneticText(s.text); const segs = wordAnnotation.getSentencePhoneticSegments(s.text) ?? undefined; setTimeout(() => recognition.startRecording(s.text, phonetic, segs), 100); }}
-                          title={l("跟读", "シャドーイング")}
+                          title={l("跟读", "シャドーイング", "Shadowing")}
                         >
                           🎙
                         </button>
@@ -1093,7 +1087,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                           return (
                             <>
                               <p className={styles.transcriptCn}>
-                                {transcriptTranslation || l("翻译中...", "翻訳中...")}
+                                {transcriptTranslation || l("翻译中...", "翻訳中...", "Translating...")}
                               </p>
                               {transcriptSecondary && (
                                 <p className={styles.transcriptCnSecondary}>{transcriptSecondary}</p>
@@ -1125,10 +1119,10 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
             {/* Meta tags */}
             <div className={styles.practiceMetaRow}>
               <Badge variant={getDifficultyVariant(activeMaterial.difficulty)}>
-                {getDifficultyLabel(activeMaterial.difficulty, locale)}
+                {getDifficultyLabel(activeMaterial.difficulty, uiLang)}
               </Badge>
               <span className={styles.practiceMetaTitle}>{activeMaterial.title}</span>
-              <span className={styles.practiceMetaSub}>{isJa ? `完了 ${progress}/${total} 文` : `已完成 ${progress}/${total} 句`}</span>
+              <span className={styles.practiceMetaSub}>{l(`已完成 ${progress}/${total} 句`, `完了 ${progress}/${total} 文`, `Done ${progress}/${total}`)}</span>
             </div>
 
 
@@ -1144,9 +1138,9 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                   <button
                     className={`${styles.speakBtn} ${tts.isSpeaking ? styles.speakBtnActive : ""}`}
                     onClick={() => tts.isSpeaking ? tts.stopSpeaking() : tts.speak(sentence.text)}
-                    title={l("朗读", "読み上げ")}
+                    title={l("朗读", "読み上げ", "Listen")}
                   >
-                    {tts.isSpeaking ? `⏹ ${l("停止", "停止")}` : `🔊 ${l("朗读", "読み上げ")}`}
+                    {tts.isSpeaking ? `⏹ ${l("停止", "停止", "Stop")}` : `🔊 ${l("朗读", "読み上げ", "Listen")}`}
                   </button>
                 </div>
 
@@ -1157,7 +1151,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                   ) : (
                     renderAnnotatedSentence(sentence.text)
                   )}
-                  <SelectionPronunciation scopeRef={selectionScopeRef} locale={locale} learningLanguage={trainingLanguage} />
+                  <SelectionPronunciation scopeRef={selectionScopeRef} locale={uiLang} learningLanguage={trainingLanguage} />
                 </div>
 
                 {/* Recording section */}
@@ -1188,13 +1182,13 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                 )}
                 {translatedSentence && !alwaysShowTranslation && (
                   <details className={styles.translationDetails}>
-                    <summary>{l("点击查看翻译", "訳を表示")}</summary>
+                    <summary>{l("点击查看翻译", "訳を表示", "Show translation")}</summary>
                     <p className={styles.translation}>{translatedSentence}</p>
                     {secondaryTranslation && <p className={styles.translationSecondary}>{secondaryTranslation}</p>}
                   </details>
                 )}
                 {!translatedSentence && trainingLanguage === "en" && (
-                  <p className={styles.noTranslation}>{l("实时新闻暂无翻译，可使用「逐词释义」辅助理解", "ニュース文に翻訳がありません。「語釈」表示を使って理解してください。")}</p>
+                  <p className={styles.noTranslation}>{l("实时新闻暂无翻译，可使用「逐词释义」辅助理解", "ニュース文に翻訳がありません。「語釈」表示を使って理解してください。", "News sentences have no translation. Use “Glosses” to follow along.")}</p>
                 )}
               </CardContent>
             </Card>
@@ -1204,10 +1198,10 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
         /* ── Standard (non-YouTube) practice layout ── */
         <>
           <div className={styles.sessionHeader}>
-            <Button variant="secondary" onClick={handleBack}>{l("返回列表", "一覧へ戻る")}</Button>
+            <Button variant="secondary" onClick={handleBack}>{l("返回列表", "一覧へ戻る", "Back to list")}</Button>
             <div className={styles.sessionTitle}>
               <h2>{getMaterialHeading(activeMaterial)}</h2>
-              <span className={styles.progressLabel}>{isJa ? `${currentIndex + 1} / ${total} 文 · 完了 ${progress}` : `第 ${currentIndex + 1} / ${total} 句 · 已完成 ${progress}`}</span>
+              <span className={styles.progressLabel}>{l(`第 ${currentIndex + 1} / ${total} 句 · 已完成 ${progress}`, `${currentIndex + 1} / ${total} 文 · 完了 ${progress}`, `Sentence ${currentIndex + 1} / ${total} · done ${progress}`)}</span>
             </div>
           </div>
 
@@ -1218,18 +1212,18 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
           {(activeMaterial.intro || activeMaterial.vocabulary?.length) && (
             <details className={styles.translationDetails} open={currentIndex === 0} data-testid="material-notes">
               <summary>
-                📒 {l("背景与重点词汇", "背景と重要語句")}
+                📒 {l("背景与重点词汇", "背景と重要語句", "Background & key phrases")}
                 {activeMaterial.level ? ` · ${activeMaterial.level}` : ""}
               </summary>
               {activeMaterial.intro && (
-                <p className={styles.translation}>{(isJa ? activeMaterial.intro.ja : activeMaterial.intro.zh) ?? activeMaterial.intro.zh}</p>
+                <p className={styles.translation}>{getUiTranslation(activeMaterial.intro)}</p>
               )}
               {activeMaterial.vocabulary && activeMaterial.vocabulary.length > 0 && (
                 <ul style={{ margin: "6px 0 0", paddingLeft: 18, lineHeight: 1.8 }}>
                   {activeMaterial.vocabulary.map((v) => (
                     <li key={v.term}>
                       <strong>{v.term}</strong>
-                      {v.reading ? `（${v.reading}）` : ""} — {isJa && v.ja ? v.ja : v.zh}
+                      {v.reading ? `（${v.reading}）` : ""} — {getUiTranslation({ zh: v.zh, ja: v.ja, en: v.en })}
                     </li>
                   ))}
                 </ul>
@@ -1241,30 +1235,30 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
             <div className={styles.toggleGroup}>
               <label className={styles.toggleLabel}>
                 <input type="checkbox" checked={alwaysShowTranslation} onChange={(e) => setAlwaysShowTranslation(e.target.checked)} />
-                {l("显示翻译", "訳を表示")}
+                {l("显示翻译", "訳を表示", "Show translation")}
               </label>
               <label className={styles.toggleLabel}>
                 <input type="checkbox" checked={showWordTranslation} onChange={(e) => setShowWordTranslation(e.target.checked)} />
-                {isJapaneseTraining ? l("词义提示", "語釈") : l("逐词释义", "語釈")}
+                {isJapaneseTraining ? l("词义提示", "語釈", "Glosses") : l("逐词释义", "語釈", "Glosses")}
               </label>
               {trainingLanguage === "en" && (
                 <label className={styles.toggleLabel}>
                   <input type="checkbox" checked={showIPA} onChange={(e) => setShowIPA(e.target.checked)} />
-                  {l("显示音标", "IPA 表示")}
+                  {l("显示音标", "IPA 表示", "Show IPA")}
                 </label>
               )}
               {trainingLanguage === "ja" && (
                 <label className={styles.toggleLabel}>
                   <input type="checkbox" checked={showReading} onChange={(e) => setShowReading(e.target.checked)} />
-                  {l("显示假名读法", "ふりがな表示")}
+                  {l("显示假名读法", "ふりがな表示", "Show furigana")}
                 </label>
               )}
             </div>
             <div className={styles.speedControl}>
-              <span>{l("语速：", "速度：")}</span>
-              <button className={`${styles.speedBtn} ${tts.speechRate === 0.6 ? styles.speedActive : ""}`} onClick={() => tts.setSpeechRate(0.6)}>{l("慢", "遅い")}</button>
-              <button className={`${styles.speedBtn} ${tts.speechRate === 0.85 ? styles.speedActive : ""}`} onClick={() => tts.setSpeechRate(0.85)}>{l("中", "標準")}</button>
-              <button className={`${styles.speedBtn} ${tts.speechRate === 1.0 ? styles.speedActive : ""}`} onClick={() => tts.setSpeechRate(1.0)}>{l("快", "速い")}</button>
+              <span>{l("语速：", "速度：", "Speed:")}</span>
+              <button className={`${styles.speedBtn} ${tts.speechRate === 0.6 ? styles.speedActive : ""}`} onClick={() => tts.setSpeechRate(0.6)}>{l("慢", "遅い", "Slow")}</button>
+              <button className={`${styles.speedBtn} ${tts.speechRate === 0.85 ? styles.speedActive : ""}`} onClick={() => tts.setSpeechRate(0.85)}>{l("中", "標準", "Normal")}</button>
+              <button className={`${styles.speedBtn} ${tts.speechRate === 1.0 ? styles.speedActive : ""}`} onClick={() => tts.setSpeechRate(1.0)}>{l("快", "速い", "Fast")}</button>
             </div>
           </div>
 
@@ -1276,7 +1270,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                   className={`${styles.speakBtn} ${tts.isSpeaking ? styles.speakBtnActive : ""}`}
                   onClick={() => tts.isSpeaking ? tts.stopSpeaking() : tts.speak(sentence.text)}
                 >
-                  {tts.isSpeaking ? `⏹ ${l("停止", "停止")}` : `🔊 ${l("朗读", "読み上げ")}`}
+                  {tts.isSpeaking ? `⏹ ${l("停止", "停止", "Stop")}` : `🔊 ${l("朗读", "読み上げ", "Listen")}`}
                 </button>
               </div>
 
@@ -1286,7 +1280,7 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
                 ) : (
                   renderAnnotatedSentence(sentence.text)
                 )}
-                <SelectionPronunciation scopeRef={selectionScopeRef} locale={locale} learningLanguage={trainingLanguage} />
+                <SelectionPronunciation scopeRef={selectionScopeRef} locale={uiLang} learningLanguage={trainingLanguage} />
               </div>
 
               {/* For Japanese, show translation BEFORE the recording panel so learners
@@ -1320,34 +1314,34 @@ export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale:
               {trainingLanguage === "en" && translatedSentence && alwaysShowTranslation && <p className={styles.translation}>{translatedSentence}</p>}
               {trainingLanguage === "en" && secondaryTranslation && alwaysShowTranslation && <p className={styles.translationSecondary}>{secondaryTranslation}</p>}
               {trainingLanguage === "en" && translatedSentence && !alwaysShowTranslation && (
-                <details className={styles.translationDetails}><summary>{l("点击查看翻译", "訳を表示")}</summary><p className={styles.translation}>{translatedSentence}</p>{secondaryTranslation && <p className={styles.translationSecondary}>{secondaryTranslation}</p>}</details>
+                <details className={styles.translationDetails}><summary>{l("点击查看翻译", "訳を表示", "Show translation")}</summary><p className={styles.translation}>{translatedSentence}</p>{secondaryTranslation && <p className={styles.translationSecondary}>{secondaryTranslation}</p>}</details>
               )}
-              {trainingLanguage === "en" && !translatedSentence && <p className={styles.noTranslation}>{l("实时新闻暂无翻译，可使用「逐词释义」辅助理解", "ニュース文に翻訳がありません。「語釈」表示を使って理解してください。")}</p>}
+              {trainingLanguage === "en" && !translatedSentence && <p className={styles.noTranslation}>{l("实时新闻暂无翻译，可使用「逐词释义」辅助理解", "ニュース文に翻訳がありません。「語釈」表示を使って理解してください。", "News sentences have no translation. Use “Glosses” to follow along.")}</p>}
             </CardContent>
           </Card>
 
           <div className={styles.navigation}>
-            <Button variant="secondary" onClick={handlePrev} disabled={currentIndex === 0}>{l("上一句", "前の文")}</Button>
-            <Button variant="secondary" onClick={() => tts.speak(sentence.text)} disabled={tts.isSpeaking}>{`🔊 ${l("再听一遍", "もう一度聞く")}`}</Button>
+            <Button variant="secondary" onClick={handlePrev} disabled={currentIndex === 0}>{l("上一句", "前の文", "Previous")}</Button>
+            <Button variant="secondary" onClick={() => tts.speak(sentence.text)} disabled={tts.isSpeaking}>{`🔊 ${l("再听一遍", "もう一度聞く", "Listen again")}`}</Button>
             {currentIndex < total - 1 ? (
-              <Button onClick={handleNext}>{l("下一句", "次の文")}</Button>
+              <Button onClick={handleNext}>{l("下一句", "次の文", "Next")}</Button>
             ) : (
-              <Button onClick={handleBack}>{l("练习完成！", "練習完了！")}</Button>
+              <Button onClick={handleBack}>{l("练习完成！", "練習完了！", "Practice complete!")}</Button>
             )}
           </div>
 
           <div className={styles.tips}>
-            <h4>{l("跟读方法", "シャドーイング手順")}</h4>
+            <h4>{l("跟读方法", "シャドーイング手順", "How to shadow")}</h4>
             <ol>
-              <li>{l("第一步 听 → 点击「🔊 朗读」听标准发音", "Step 1 聞く → 「🔊 読み上げ」で基準音声を聞く")}</li>
-              <li>{l("第二步 读 → 点击「🎙 开始跟读」对着麦克风读出来", "Step 2 話す → 「🎙 シャドーイング開始」でマイクに向かって読む")}</li>
-              <li>{l("第三步 比 → 查看对比结果，绿色=正确，红色=错误，灰色=漏读", "Step 3 比較 → 緑=正解、赤=誤り、灰=読み落としを確認")}</li>
+              <li>{l("第一步 听 → 点击「🔊 朗读」听标准发音", "Step 1 聞く → 「🔊 読み上げ」で基準音声を聞く", "Step 1 Listen → press “🔊 Listen” to hear the model audio")}</li>
+              <li>{l("第二步 读 → 点击「🎙 开始跟读」对着麦克风读出来", "Step 2 話す → 「🎙 シャドーイング開始」でマイクに向かって読む", "Step 2 Speak → press “🎙 Start shadowing” and read into the mic")}</li>
+              <li>{l("第三步 比 → 查看对比结果，绿色=正确，红色=错误，灰色=漏读", "Step 3 比較 → 緑=正解、赤=誤り、灰=読み落としを確認", "Step 3 Compare → green = correct, red = wrong, grey = missed")}</li>
               <li>
                 {trainingLanguage === "en"
-                  ? l("第四步 查 → 可直接划词，查看音标/释义并朗读单词", "Step 4 確認 → 選択した語の IPA / 語釈 / 再生を確認")
-                  : l("第四步 查 → 开启词义提示，先理解关键短语再继续跟读", "Step 4 確認 → 語釈表示を使ってキーフレーズを確認して続ける")}
+                  ? l("第四步 查 → 可直接划词，查看音标/释义并朗读单词", "Step 4 確認 → 選択した語の IPA / 語釈 / 再生を確認", "Step 4 Check → select a word to see its reading / meaning / audio")
+                  : l("第四步 查 → 开启词义提示，先理解关键短语再继续跟读", "Step 4 確認 → 語釈表示を使ってキーフレーズを確認して続ける", "Step 4 Check → use glosses to review key phrases, then continue")}
               </li>
-              <li>{l("第五步 练 → 反复练习直到准确率达到 80% 以上", "Step 5 反復 → 正確率 80% 以上まで繰り返す")}</li>
+              <li>{l("第五步 练 → 反复练习直到准确率达到 80% 以上", "Step 5 反復 → 正確率 80% 以上まで繰り返す", "Step 5 Repeat → until accuracy is 80% or higher")}</li>
             </ol>
           </div>
         </>

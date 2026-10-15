@@ -19,7 +19,7 @@ import { containsKanji } from "../lib/shadowing-utils";
 import { getJapaneseReading } from "../lib/japanese-reading";
 import { translateText } from "../lib/translate";
 import { lookupEnWordAsync, lookupJaWordAsync, prefetchWord } from "../lib/offline-dict";
-import { glossLangFor, lookupEnglishWord, lookupJapanese, shortGloss } from "../lib/word-lookup";
+import { glossLangFor, jaGlossLangFor, lookupEnglishWord, lookupJapanese, shortGloss } from "../lib/word-lookup";
 
 /** English sentence → per-word annotations from the bundled dictionary, gloss in the UI language. */
 export function annotateEnglishSentence(sentence: string, uiLang: UiLang): WordAnnotation[] {
@@ -179,12 +179,12 @@ export function useWordAnnotation(
 
   const getSecondaryTranslation = useCallback(
     (sentence: { id: number; text: string; translations?: { zh?: string; ja?: string; en?: string } }): string => {
-      if (trainingLanguage !== "ja") return "";
+      if (trainingLanguage !== "ja" || uiLang !== "zh") return "";
       // Only show secondary when it differs from the primary (i.e., an English translation exists)
       // Returning the same Chinese text as both primary and secondary creates a duplicate.
       return sentence.translations?.en || "";
     },
-    [trainingLanguage],
+    [trainingLanguage, uiLang],
   );
 
   // ── Word gloss (English training, Japanese UI) ───────────────────────────
@@ -233,7 +233,7 @@ export function useWordAnnotation(
     (word: WordAnnotation) => {
       if (trainingLanguage !== "ja") return;
       const key = makeWordGlossKey(word);
-      if (key && lookupJapanese(key).meaning) return; // bundled dictionary covers it
+      if (key && lookupJapanese(key, jaGlossLangFor(uiLang)).meaning) return; // bundled dictionary covers it
       if (!key || jpWordGlossMap[key] || translatingJpWordGlossRef.current.has(key)) return;
       translatingJpWordGlossRef.current.add(key);
       // Pre-warm offline dict chunk while we check
@@ -259,7 +259,7 @@ export function useWordAnnotation(
           translatingJpWordGlossRef.current.delete(key);
         });
     },
-    [jpWordGlossMap, makeWordGlossKey, trainingLanguage],
+    [jpWordGlossMap, makeWordGlossKey, trainingLanguage, uiLang],
   );
 
   // ── Furigana reading ─────────────────────────────────────────────────────
@@ -369,8 +369,9 @@ export function useWordAnnotation(
       if (trainingLanguage === "ja") {
         const key = makeWordGlossKey(word);
         if (!key) return null;
-        const bundled = lookupJapanese(key);
-        return jpWordGlossMap[key] ?? (bundled.found ? shortGloss(bundled.meaning) : null);
+        const bundled = lookupJapanese(key, jaGlossLangFor(uiLang));
+        if (bundled.found) return shortGloss(bundled.meaning);
+        return uiLang === "en" ? null : jpWordGlossMap[key] ?? null;
       }
       if (uiLang !== "ja") return word.cn ?? null;
       const key = makeWordGlossKey(word);

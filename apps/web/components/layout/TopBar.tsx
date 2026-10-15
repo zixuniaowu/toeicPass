@@ -24,6 +24,7 @@ interface TopBarProps {
 export function TopBar({ activeView, onViewChange, isLoggedIn, onLogout, uiLang, targetLang }: TopBarProps) {
   const t = createT(uiLang);
   const ja = uiLang === "ja";
+  const l = (zh: string, jaText: string, en?: string) => (uiLang === "en" ? en ?? jaText : ja ? jaText : zh);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleTabClick = useCallback((key: ViewTab) => {
@@ -31,7 +32,7 @@ export function TopBar({ activeView, onViewChange, isLoggedIn, onLogout, uiLang,
     setMenuOpen(false);
   }, [onViewChange]);
 
-  const targetLabel = targetLang === "ja" ? "🇯🇵 学日语" : ja ? "🇺🇸 英語（TOEIC）" : "🇺🇸 学英语 · TOEIC";
+  const targetLabel = targetLang === "ja" ? l("🇯🇵 学日语", "🇯🇵 日本語", "🇯🇵 Learning Japanese") : l("🇺🇸 学英语 · TOEIC", "🇺🇸 英語（TOEIC）", "🇺🇸 English (TOEIC)");
 
   return (
     <header className={styles.topbar}>
@@ -39,7 +40,7 @@ export function TopBar({ activeView, onViewChange, isLoggedIn, onLogout, uiLang,
         <span className={styles.brandMark}>LB</span>
         <div>
           <p className={styles.brandTitle}>{t("brand.title")}</p>
-          <p className={styles.brandSub}>{ja ? "シャドーイング・発音トレーニング" : "跟读 · 发音训练"}</p>
+          <p className={styles.brandSub}>{l("跟读 · 发音训练", "シャドーイング・発音トレーニング", "Shadowing · pronunciation training")}</p>
         </div>
       </div>
 
@@ -62,7 +63,7 @@ export function TopBar({ activeView, onViewChange, isLoggedIn, onLogout, uiLang,
                 aria-current={activeView === tab.key ? "page" : undefined}
                 onClick={() => handleTabClick(tab.key)}
               >
-                {tab.icon} {ja ? tab.ja : tab.zh}
+                {tab.icon} {l(tab.zh, tab.ja, tab.en)}
               </button>
             ))}
           </nav>
@@ -74,7 +75,7 @@ export function TopBar({ activeView, onViewChange, isLoggedIn, onLogout, uiLang,
           <button
             type="button"
             className={styles.logout}
-            title={ja ? "設定で変更" : "在设置中修改"}
+            title={l("在设置中修改", "設定で変更", "Change in Settings")}
             onClick={() => onViewChange("settings")}
             data-testid="target-badge"
           >

@@ -8,7 +8,7 @@ type TranslateApiResponse = {
 
 export async function translateText(
   text: string,
-  targetLang: "ja" | "zh-CN",
+  targetLang: "ja" | "zh-CN" | "en",
   sourceLang: "auto" | "en" | "zh-CN" | "ja" = "auto",
 ): Promise<string> {
   const normalized = String(text ?? "").trim();

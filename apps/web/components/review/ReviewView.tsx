@@ -11,7 +11,7 @@ import styles from "../settings/SettingsView.module.css";
 
 export function ReviewView({ uiLang, targetLang }: { uiLang: UiLang; targetLang: TargetLang }) {
   const ja = uiLang === "ja";
-  const l = useCallback((zh: string, jaText: string) => (ja ? jaText : zh), [ja]);
+  const l = useCallback((zh: string, jaText: string, en?: string) => (uiLang === "en" ? en ?? jaText : ja ? jaText : zh), [ja, uiLang]);
   const [log, setLog] = useState<PracticeAttempt[]>([]);
   const [active, setActive] = useState<string | null>(null);
   const [segments, setSegments] = useState<PhoneticSegment[] | undefined>(undefined);
@@ -40,15 +40,15 @@ export function ReviewView({ uiLang, targetLang }: { uiLang: UiLang; targetLang:
         </span>
       </div>
       <span className={styles.rowHint}>
-        {l("练习", "練習")} {a.attempts} {l("次", "回")}
-        {a.issues.length > 0 && ` · ${l("问题词", "要練習")}: ${a.issues.map((i) => i.word).slice(0, 5).join(", ")}`}
+        {l("练习", "練習", "Practice")} {a.attempts} {l("次", "回", "times")}
+        {a.issues.length > 0 && ` · ${l("问题词", "要練習", "Needs practice")}: ${a.issues.map((i) => i.word).slice(0, 5).join(", ")}`}
       </span>
       <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
         <button type="button" className={styles.linkBtn} onClick={() => { recognition.clearRecognition(); setActive(active === a.text ? null : a.text); }}>
-          {active === a.text ? l("收起", "閉じる") : `🎙 ${l("再练一次", "もう一度練習")}`}
+          {active === a.text ? l("收起", "閉じる", "Close") : `🎙 ${l("再练一次", "もう一度練習", "Practice again")}`}
         </button>
         <button type="button" className={styles.linkBtn} onClick={() => { removePracticeAttempt(a.text, a.lang); refresh(); }}>
-          {l("移除", "削除")}
+          {l("移除", "削除", "Delete")}
         </button>
       </div>
       {active === a.text && (
@@ -75,20 +75,20 @@ export function ReviewView({ uiLang, targetLang }: { uiLang: UiLang; targetLang:
 
   return (
     <div className={styles.page} data-testid="review-page">
-      <h1 className={styles.pageTitle}>{l("复习", "復習")}</h1>
+      <h1 className={styles.pageTitle}>{l("复习", "復習", "Review")}</h1>
       <section className={styles.section}>
         <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>{l("待加强", "要復習")}（{weak.length}）</h2>
-          <p className={styles.sectionDesc}>{l("最高分低于 85% 的句子。反复跟读直到变绿。", "最高スコアが 85% 未満の文です。緑になるまで練習しましょう。")}</p>
+          <h2 className={styles.sectionTitle}>{l("待加强", "要復習", "To review")}（{weak.length}）</h2>
+          <p className={styles.sectionDesc}>{l("最高分低于 85% 的句子。反复跟读直到变绿。", "最高スコアが 85% 未満の文です。緑になるまで練習しましょう。", "Sentences whose best score is below 85%. Practice until they turn green.")}</p>
         </div>
         {weak.length === 0 ? (
-          <div className={styles.row}><span className={styles.rowHint}>{l("暂无需要复习的句子。去「跟读」练习吧！", "復習が必要な文はありません。「シャドーイング」で練習しましょう！")}</span></div>
+          <div className={styles.row}><span className={styles.rowHint}>{l("暂无需要复习的句子。去「跟读」练习吧！", "復習が必要な文はありません。「シャドーイング」で練習しましょう！", "Nothing to review. Go practice in “Shadowing”!")}</span></div>
         ) : weak.map(renderItem)}
       </section>
       {mastered.length > 0 && (
         <section className={styles.section}>
           <div className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>{l("已掌握", "習得済み")}（{mastered.length}）</h2>
+            <h2 className={styles.sectionTitle}>{l("已掌握", "習得済み", "Mastered")}（{mastered.length}）</h2>
           </div>
           {mastered.slice(0, 30).map(renderItem)}
         </section>

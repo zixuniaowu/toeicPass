@@ -34,7 +34,7 @@ interface SettingsViewProps {
   onSaveGoal: () => void;
 }
 
-const UI_LANG_LABEL: Record<string, string> = { zh: "中文", ja: "日本語" };
+const UI_LANG_LABEL: Record<string, string> = { zh: "中文", ja: "日本語", en: "English" };
 
 export function SettingsView(props: SettingsViewProps) {
   const {
@@ -44,7 +44,7 @@ export function SettingsView(props: SettingsViewProps) {
     onLogout, onApplyNinetyDayGoal, onSaveGoal,
   } = props;
   const ja = uiLang === "ja";
-  const l = (zh: string, jaText: string) => (ja ? jaText : zh);
+  const l = (zh: string, jaText: string, en?: string) => (uiLang === "en" ? en ?? jaText : ja ? jaText : zh);
   const allowed = allowedUiLangs(targetLang);
   const [micReset, setMicReset] = useState(false);
 
@@ -55,36 +55,36 @@ export function SettingsView(props: SettingsViewProps) {
 
   return (
     <div className={styles.page} data-testid="settings-page">
-      <h1 className={styles.pageTitle}>{l("设置", "設定")}</h1>
+      <h1 className={styles.pageTitle}>{l("设置", "設定", "Settings")}</h1>
 
       <section className={styles.section} aria-labelledby="sec-learning">
         <div className={styles.sectionHead}>
-          <h2 id="sec-learning" className={styles.sectionTitle}>{l("学习语言", "学習言語")}</h2>
-          <p className={styles.sectionDesc}>{l("选择你正在练习的语言。界面语言会随之调整为合适的组合。", "練習する言語を選びます。表示言語は適切な組み合わせに自動調整されます。")}</p>
+          <h2 id="sec-learning" className={styles.sectionTitle}>{l("学习语言", "学習言語", "Learning language")}</h2>
+          <p className={styles.sectionDesc}>{l("选择你正在练习的语言。界面语言会随之调整为合适的组合。", "練習する言語を選びます。表示言語は適切な組み合わせに自動調整されます。", "Choose the language you practice. The UI language is adjusted to a valid combination.")}</p>
         </div>
         <div className={styles.row}>
           <div className={styles.rowLabel}>
-            <span className={styles.rowTitle}>{l("我要学", "学習対象")}</span>
-            <span className={styles.rowHint}>{l("跟读材料、词汇和语音识别都会切换", "教材・語彙・音声認識が切り替わります")}</span>
+            <span className={styles.rowTitle}>{l("我要学", "学習対象", "I'm learning")}</span>
+            <span className={styles.rowHint}>{l("跟读材料、词汇和语音识别都会切换", "教材・語彙・音声認識が切り替わります", "Switches materials, vocabulary and speech recognition")}</span>
           </div>
-          <div className={styles.segmented} role="group" aria-label={l("学习语言", "学習言語")}>
+          <div className={styles.segmented} role="group" aria-label={l("学习语言", "学習言語", "Learning language")}>
             <button type="button" className={styles.segBtn} aria-pressed={targetLang === "en"} onClick={() => onTargetLangChange("en")}>
-              🇺🇸 {l("英语（TOEIC）", "英語（TOEIC）")}
+              🇺🇸 {l("英语（TOEIC）", "英語（TOEIC）", "English (TOEIC)")}
             </button>
             <button type="button" className={styles.segBtn} aria-pressed={targetLang === "ja"} onClick={() => onTargetLangChange("ja")}>
-              🇯🇵 {l("日语", "日本語")}
+              🇯🇵 {l("日语", "日本語", "Japanese")}
             </button>
           </div>
         </div>
         <div className={styles.row}>
           <div className={styles.rowLabel}>
-            <span className={styles.rowTitle}>{l("界面语言", "表示言語")}</span>
+            <span className={styles.rowTitle}>{l("界面语言", "表示言語", "UI language")}</span>
             <span className={styles.rowHint}>
-              {targetLang === "ja" ? l("学日语时界面使用中文（讲解、翻译均为中文）", "日本語学習時は中国語 UI になります") : l("讲解、翻译和提示所使用的语言", "解説・訳・ヒントの言語")}
+              {targetLang === "ja" ? l("学日语时可选中文或英文界面（讲解、翻译随之切换）", "日本語学習時は中国語または英語 UI", "Explanations, translations and glosses use this language") : l("讲解、翻译和提示所使用的语言", "解説・訳・ヒントの言語", "Language of explanations, translations and tips")}
             </span>
           </div>
-          <div className={styles.segmented} role="group" aria-label={l("界面语言", "表示言語")}>
-            {(["zh", "ja"] as const).map((lang) => (
+          <div className={styles.segmented} role="group" aria-label={l("界面语言", "表示言語", "UI language")}>
+            {allowed.map((lang) => (
               <button key={lang} type="button" className={styles.segBtn} aria-pressed={uiLang === lang} disabled={!allowed.includes(lang)} onClick={() => onUiLangChange(lang)}>
                 {UI_LANG_LABEL[lang]}
               </button>
@@ -95,15 +95,15 @@ export function SettingsView(props: SettingsViewProps) {
 
       <section className={styles.section} aria-labelledby="sec-shadowing">
         <div className={styles.sectionHead}>
-          <h2 id="sec-shadowing" className={styles.sectionTitle}>{l("跟读与录音", "シャドーイングと録音")}</h2>
+          <h2 id="sec-shadowing" className={styles.sectionTitle}>{l("跟读与录音", "シャドーイングと録音", "Shadowing & recording")}</h2>
         </div>
         <div className={styles.row}>
           <div className={styles.rowLabel}>
-            <span className={styles.rowTitle}>{l("录音 + 识别同时进行", "録音と認識の同時実行")}</span>
-            <span className={styles.rowHint}>{l("若某些安卓设备无法同时录音和识别，会自动切换为仅识别。点击可重新尝试。", "一部の Android 端末で同時実行できない場合は自動で認識のみになります。再試行できます。")}</span>
+            <span className={styles.rowTitle}>{l("录音 + 识别同时进行", "録音と認識の同時実行", "Record and recognize simultaneously")}</span>
+            <span className={styles.rowHint}>{l("若某些安卓设备无法同时录音和识别，会自动切换为仅识别。点击可重新尝试。", "一部の Android 端末で同時実行できない場合は自動で認識のみになります。再試行できます。", "Some Android devices can't do both; the app then falls back to recognition only. You can retry here.")}</span>
           </div>
           <button type="button" className={styles.linkBtn} onClick={resetMicMode}>
-            {micReset ? l("已重置 ✓", "リセット済み ✓") : l("重新启用录音回放", "録音再生を再有効化")}
+            {micReset ? l("已重置 ✓", "リセット済み ✓", "Reset ✓") : l("重新启用录音回放", "録音再生を再有効化", "Re-enable recording playback")}
           </button>
         </div>
       </section>
@@ -111,31 +111,31 @@ export function SettingsView(props: SettingsViewProps) {
       {targetLang === "en" && (
         <section className={styles.section} aria-labelledby="sec-goal">
           <div className={styles.sectionHead}>
-            <h2 id="sec-goal" className={styles.sectionTitle}>{l("TOEIC 目标", "TOEIC 目標")}</h2>
-            <p className={styles.sectionDesc}>{l("用于安排每日练习量（可选）", "毎日の練習量の目安に使います（任意）")}</p>
+            <h2 id="sec-goal" className={styles.sectionTitle}>{l("TOEIC 目标", "TOEIC 目標", "TOEIC goal")}</h2>
+            <p className={styles.sectionDesc}>{l("用于安排每日练习量（可选）", "毎日の練習量の目安に使います（任意）", "Used to plan daily practice (optional)")}</p>
           </div>
           <div className={styles.fields}>
-            <Input label={l("当前分数", "現在のスコア")} type="number" min={10} max={990} value={currentScore} onChange={(e) => onCurrentScoreChange(Number(e.target.value) || 10)} />
-            <Input label={l("目标分数", "目標スコア")} type="number" min={10} max={990} value={goalScore} onChange={(e) => onGoalScoreChange(Number(e.target.value) || 10)} />
-            <Input label={l("考试日期", "試験日")} type="date" value={goalDate} onChange={(e) => onGoalDateChange(e.target.value)} />
+            <Input label={l("当前分数", "現在のスコア", "Current score")} type="number" min={10} max={990} value={currentScore} onChange={(e) => onCurrentScoreChange(Number(e.target.value) || 10)} />
+            <Input label={l("目标分数", "目標スコア", "Target score")} type="number" min={10} max={990} value={goalScore} onChange={(e) => onGoalScoreChange(Number(e.target.value) || 10)} />
+            <Input label={l("考试日期", "試験日", "Exam date")} type="date" value={goalDate} onChange={(e) => onGoalDateChange(e.target.value)} />
           </div>
           <div className={styles.actions}>
-            <Button variant="secondary" onClick={onApplyNinetyDayGoal}>{l("一键设为 90 天后", "90日後に設定")}</Button>
-            <Button onClick={onSaveGoal}>{l("保存目标", "目標を保存")}</Button>
+            <Button variant="secondary" onClick={onApplyNinetyDayGoal}>{l("一键设为 90 天后", "90日後に設定", "Set to 90 days from now")}</Button>
+            <Button onClick={onSaveGoal}>{l("保存目标", "目標を保存", "Save goal")}</Button>
           </div>
         </section>
       )}
 
       <section className={styles.section} aria-labelledby="sec-appearance">
         <div className={styles.sectionHead}>
-          <h2 id="sec-appearance" className={styles.sectionTitle}>{l("外观", "外観")}</h2>
+          <h2 id="sec-appearance" className={styles.sectionTitle}>{l("外观", "外観", "Appearance")}</h2>
         </div>
         <div className={styles.row}>
-          <div className={styles.rowLabel}><span className={styles.rowTitle}>{l("主题", "テーマ")}</span></div>
-          <div className={styles.segmented} role="group" aria-label={l("主题", "テーマ")}>
+          <div className={styles.rowLabel}><span className={styles.rowTitle}>{l("主题", "テーマ", "Theme")}</span></div>
+          <div className={styles.segmented} role="group" aria-label={l("主题", "テーマ", "Theme")}>
             {(["light", "dark", "auto"] as const).map((m) => (
               <button key={m} type="button" className={styles.segBtn} aria-pressed={theme === m} onClick={() => onThemeChange(m)}>
-                {m === "light" ? `☀️ ${l("浅色", "ライト")}` : m === "dark" ? `🌙 ${l("深色", "ダーク")}` : `💻 ${l("跟随系统", "自動")}`}
+                {m === "light" ? `☀️ ${l("浅色", "ライト", "Light")}` : m === "dark" ? `🌙 ${l("深色", "ダーク", "Dark")}` : `💻 ${l("跟随系统", "自動", "Auto")}`}
               </button>
             ))}
           </div>
@@ -144,28 +144,28 @@ export function SettingsView(props: SettingsViewProps) {
 
       <section className={styles.section} aria-labelledby="sec-account">
         <div className={styles.sectionHead}>
-          <h2 id="sec-account" className={styles.sectionTitle}>{l("账户", "アカウント")}</h2>
+          <h2 id="sec-account" className={styles.sectionTitle}>{l("账户", "アカウント", "Account")}</h2>
         </div>
         <div className={styles.row}>
           <div className={styles.rowLabel}>
-            <span className={styles.rowTitle}>{credentials.displayName || l("已登录", "ログイン中")}</span>
+            <span className={styles.rowTitle}>{credentials.displayName || l("已登录", "ログイン中", "Signed in")}</span>
             <span className={styles.rowHint}>{credentials.email}</span>
           </div>
-          {onLogout && <button type="button" className={styles.linkBtn} onClick={onLogout}>{l("退出登录", "ログアウト")}</button>}
+          {onLogout && <button type="button" className={styles.linkBtn} onClick={onLogout}>{l("退出登录", "ログアウト", "Log out")}</button>}
         </div>
       </section>
 
       <section className={styles.section} aria-labelledby="sec-about">
         <div className={styles.sectionHead}>
-          <h2 id="sec-about" className={styles.sectionTitle}>{l("关于", "このアプリについて")}</h2>
+          <h2 id="sec-about" className={styles.sectionTitle}>{l("关于", "このアプリについて", "About")}</h2>
         </div>
         <div className={styles.row}>
           <span className={styles.rowHint}>API</span>
           <span className={styles.mono}>{API_BASE}</span>
         </div>
         <div className={styles.row}>
-          <span className={styles.rowHint}>{l("推荐浏览器", "推奨ブラウザ")}</span>
-          <span className={styles.value}>{l("Android / 桌面版 Chrome", "Android / PC版 Chrome")}</span>
+          <span className={styles.rowHint}>{l("推荐浏览器", "推奨ブラウザ", "Recommended browser")}</span>
+          <span className={styles.value}>{l("Android / 桌面版 Chrome", "Android / PC版 Chrome", "Chrome on Android / desktop")}</span>
         </div>
       </section>
     </div>

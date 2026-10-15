@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Locale, VocabCard } from "../../types";
+import type { Locale, UiLang, VocabCard } from "../../types";
 import { annotateTerm } from "../../data/word-dictionary";
 import { getWordIpa } from "../../lib/pronunciation";
 import { translateText } from "../../lib/translate";
@@ -11,6 +11,7 @@ import styles from "./FlashCard.module.css";
 
 interface FlashCardProps {
   locale: Locale;
+  uiLang?: UiLang;
   card: VocabCard;
   isRevealed: boolean;
   isGrading: boolean;
@@ -103,17 +104,46 @@ const COPY = {
     mastered: "完全に覚えた",
     masteredHint: "→ 間隔を延長",
   },
+  en: {
+    currentCard: "Current card",
+    loadingIpa: "Looking up pronunciation...",
+    noIpa: "No IPA (use Play below)",
+    dueReview: "Due for review",
+    nextDue: (dueAt: string) => `Next ${dueAt}`,
+    hideMeaning: "Hide meaning",
+    showMeaning: "Show meaning",
+    speakWord: "Play word",
+    speakExample: "Play example",
+    stop: "Stop",
+    chineseDef: "Chinese",
+    japaneseDef: "Japanese",
+    meaningLabel: "Meaning",
+    noChineseDef: "No definition available.",
+    translating: "Translating...",
+    englishDef: "English Definition",
+    exampleLabel: "Example",
+    exampleTransLabel: "Translation",
+    tags: (tags: string) => `Tags: ${tags}`,
+    unknown: "Don't know",
+    unknownHint: "→ again in a few minutes",
+    familiar: "Somewhat familiar",
+    familiarHint: "→ review in 1-3 days",
+    mastered: "Mastered",
+    masteredHint: "→ longer interval",
+  },
 } as const;
 
 export function FlashCard({
   locale,
+  uiLang = locale,
   card,
   isRevealed,
   isGrading,
   onToggleReveal,
   onGrade,
 }: FlashCardProps) {
-  const copy = COPY[locale];
+  const isEnUi = uiLang === "en";
+  const copy = COPY[isEnUi ? "en" : locale];
   const isJapaneseDeck = card.targetLanguage === "ja";
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [fallbackIpa, setFallbackIpa] = useState<string | null>(null);
@@ -187,6 +217,7 @@ export function FlashCard({
   const structuredEnglishDefinition = getCardTranslation(card, "definition", "en");
   const structuredJapaneseExample = getCardTranslation(card, "example", "ja");
   const structuredChineseExample = getCardTranslation(card, "example", "zh");
+  const structuredEnglishExample = getCardTranslation(card, "example", "en");
   const hasChineseInDefinition = /[\u4e00-\u9fff]/.test(card.definition);
   const chineseDefinition = structuredChineseDefinition ?? termInfo?.cn ?? (hasChineseInDefinition ? card.definition : null);
   const englishDefinition = structuredEnglishDefinition ?? (hasChineseInDefinition ? null : card.definition);
@@ -195,7 +226,7 @@ export function FlashCard({
     : (englishDefinition ?? chineseDefinition ?? card.definition);
 
   useEffect(() => {
-    if (locale !== "ja") {
+    if (locale !== "ja" || isEnUi) {
       setLocalizedDefinition(null);
       setIsTranslatingDefinition(false);
       return;
@@ -227,7 +258,7 @@ export function FlashCard({
     return () => {
       cancelled = true;
     };
-  }, [baseDefinition, locale, structuredJapaneseDefinition]);
+  }, [baseDefinition, locale, isEnUi, structuredJapaneseDefinition]);
 
   // Translate example sentence for user's locale
   useEffect(() => {
@@ -237,22 +268,22 @@ export function FlashCard({
       setIsTranslatingExample(false);
       return;
     }
-    const structuredExampleForLocale = locale === "ja" ? structuredJapaneseExample : structuredChineseExample;
+    const structuredExampleForLocale = isEnUi ? structuredEnglishExample : locale === "ja" ? structuredJapaneseExample : structuredChineseExample;
     if (structuredExampleForLocale) {
       setTranslatedExample(structuredExampleForLocale);
       setIsTranslatingExample(false);
       return;
     }
-    if (isJapaneseDeck && locale === "ja") {
+    if (isJapaneseDeck && locale === "ja" && !isEnUi) {
       setTranslatedExample(example);
       setIsTranslatingExample(false);
       return;
     }
     let cancelled = false;
     setIsTranslatingExample(true);
-    const targetLang = locale === "ja" ? "ja" : "zh-CN";
+    const targetLang = isEnUi ? "en" : locale === "ja" ? "ja" : "zh-CN";
     const sourceLang = isJapaneseDeck ? "ja" : "en";
-    void translateText(example, targetLang as "ja" | "zh-CN", sourceLang)
+    void translateText(example, targetLang as "ja" | "zh-CN" | "en", sourceLang)
       .then((result) => {
         if (!cancelled) {
           setTranslatedExample(result);
@@ -266,7 +297,7 @@ export function FlashCard({
     return () => {
       cancelled = true;
     };
-  }, [card.example, isJapaneseDeck, locale, structuredChineseExample, structuredJapaneseExample]);
+  }, [card.example, isJapaneseDeck, locale, isEnUi, structuredChineseExample, structuredJapaneseExample, structuredEnglishExample]);
 
   return (
     <div className={styles.card}>
@@ -278,7 +309,7 @@ export function FlashCard({
             {displayIpa ?? (isLoadingIpa ? copy.loadingIpa : copy.noIpa)}
           </p>
           <span className={styles.meta}>
-            {localizePos(card.pos, locale)}{!isJapaneseDeck ? ` · Part ${card.sourcePart}` : ""}
+            {isEnUi ? card.pos : localizePos(card.pos, locale)}{!isJapaneseDeck ? ` · Part ${card.sourcePart}` : ""}
           </span>
         </div>
         <Badge variant={card.due ? "warning" : "info"}>
@@ -304,9 +335,11 @@ export function FlashCard({
 
       {isRevealed && (
         <div className={styles.answer}>
-          <p className={styles.defLabel}>{isJapaneseDeck ? copy.meaningLabel : (locale === "ja" ? copy.japaneseDef : copy.chineseDef)}</p>
+          <p className={styles.defLabel}>{isJapaneseDeck || isEnUi ? copy.meaningLabel : (locale === "ja" ? copy.japaneseDef : copy.chineseDef)}</p>
           <p>
-            {isJapaneseDeck
+            {isEnUi
+              ? (englishDefinition ?? baseDefinition)
+              : isJapaneseDeck
               ? (locale === "ja"
                 ? (isTranslatingDefinition ? copy.translating : (localizedDefinition ?? baseDefinition))
                 : baseDefinition)
@@ -314,7 +347,7 @@ export function FlashCard({
                 ? (isTranslatingDefinition ? copy.translating : (localizedDefinition ?? baseDefinition))
                 : (chineseDefinition ?? copy.noChineseDef))}
           </p>
-          {!isJapaneseDeck && (
+          {!isJapaneseDeck && !isEnUi && (
             <>
               <p className={styles.defLabel}>{copy.englishDef}</p>
               <p>{englishDefinition ?? card.definition}</p>

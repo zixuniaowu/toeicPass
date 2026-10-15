@@ -561,6 +561,7 @@ export function ClientHome() {
         return (
           <VocabView
             locale={locale}
+            uiLang={langConfig.uiLang}
             targetLang={langConfig.targetLang}
             cards={vocab.cards}
             summary={vocab.summary}

@@ -10,7 +10,7 @@ import { spellAcronymIpa, tokenizeEnglish } from "./lookup-core";
 
 export type GlossLang = "zh" | "ja";
 type EnEntry = { ipa: string; zh: string; ja: string };
-type JaEntry = { r: string; zh: string; b?: string };
+type JaEntry = { r: string; zh: string; en?: string; b?: string };
 
 const EN = enDict as Record<string, EnEntry>;
 const JA = jaDict as Record<string, JaEntry>;
@@ -18,9 +18,14 @@ const JA_MAX_KEY = Math.max(1, ...Object.keys(JA).map((k) => k.length));
 
 export type EnLookup = { word: string; ipa: string | null; meaning: string | null; found: boolean };
 
-/** UI language → explanation language (English UI falls back to Chinese). */
+/** UI language → explanation language for English words (English UI falls back to Chinese). */
 export function glossLangFor(uiLang: string | undefined): GlossLang {
   return uiLang === "ja" ? "ja" : "zh";
+}
+
+/** UI language → explanation language for Japanese words (Chinese or English). */
+export function jaGlossLangFor(uiLang: string | undefined): "zh" | "en" {
+  return uiLang === "en" ? "en" : "zh";
 }
 
 function inflectionCandidates(w: string): string[] {
@@ -88,7 +93,7 @@ export type JaLookup = { text: string; reading: string | null; meaning: string |
 const KANA_ONLY = /^[\u3040-\u309f\u30a0-\u30ffー]+$/;
 
 /** Greedy longest-match segmentation of Japanese text against the bundled dictionary. */
-export function lookupJapanese(text: string): JaLookup {
+export function lookupJapanese(text: string, lang: "zh" | "en" = "zh"): JaLookup {
   const src = String(text ?? "").replace(/\s+/g, "");
   const segments: JaSegment[] = [];
   let i = 0;
@@ -106,7 +111,7 @@ export function lookupJapanese(text: string): JaLookup {
     if (matched) {
       flushUnknown();
       const e = JA[matched];
-      segments.push({ surface: matched, reading: e.r, meaning: e.zh || null });
+      segments.push({ surface: matched, reading: e.r, meaning: (lang === "en" ? e.en : e.zh) || null });
       i += matched.length;
     } else {
       const ch = src[i];
@@ -121,7 +126,7 @@ export function lookupJapanese(text: string): JaLookup {
   const reading = contentSegs.length > 0 && contentSegs.every((s) => s.reading || KANA_ONLY.test(s.surface))
     ? contentSegs.map((s) => s.reading ?? s.surface).join("")
     : null;
-  const meaningful = contentSegs.filter((s) => s.meaning && !s.meaning.startsWith("（"));
+  const meaningful = contentSegs.filter((s) => s.meaning && !s.meaning.startsWith("（") && !s.meaning.startsWith("("));
   const meaning = contentSegs.length === 1
     ? contentSegs[0].meaning
     : meaningful.length > 0 ? meaningful.map((s) => `${s.surface}：${shortGloss(s.meaning)}`).join("　") : null;
@@ -142,7 +147,7 @@ const normSentence = (s: string) => String(s ?? "").toLowerCase().replace(/[\s"'
 let sentenceIndex: Map<string, { zh?: string; ja?: string; en?: string }> | null = null;
 
 /** Bundled translation for a selection that is (a whole) material sentence, in the requested language. */
-export function findSentenceTranslation(text: string, lang: GlossLang): string | null {
+export function findSentenceTranslation(text: string, lang: GlossLang | "en"): string | null {
   if (!sentenceIndex) {
     sentenceIndex = new Map();
     for (const l of ["en", "ja"] as const) {
