@@ -38,6 +38,7 @@ import {
   parseTedSnapshotMaterials,
   type TrainingLanguage,
 } from "../../lib/shadowing-utils";
+import { FEATURES } from "../../lib/features";
 import styles from "./ShadowingView.module.css";
 
 type ViewMode = "materials" | "practice" | "news" | "youtube";
@@ -584,9 +585,9 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
 
   const categories = [
     { key: "all", label: l("全部", "すべて") },
-    { key: "speech", label: isJapaneseTraining ? l("商务", "ビジネス") : l("演讲", "スピーチ") },
-    { key: "drama", label: isJapaneseTraining ? l("日常", "日常会話") : l("美剧", "ドラマ") },
-    { key: "ted", label: isJapaneseTraining ? l("演讲", "スピーチ") : "TED" },
+    { key: "speech", label: isJapaneseTraining ? l("商务 / IT", "ビジネス / IT") : l("商务 / IT", "ビジネス / IT") },
+    { key: "drama", label: isJapaneseTraining ? l("日常", "日常会話") : l("情景对话", "場面会話") },
+    { key: "ted", label: isJapaneseTraining ? l("专题讲解", "テーマ解説") : l("专题讲解", "テーマ解説") },
   ];
 
   const baseMaterials = isJapaneseTraining ? JAPANESE_SHADOWING_MATERIALS : SHADOWING_MATERIALS;
@@ -597,7 +598,7 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
   const tedSnapshotGeneratedAt = tedSnapshot.generatedAt
     ? new Date(tedSnapshot.generatedAt).toLocaleString()
     : "";
-  const showExtraTabs = true;
+  const showExtraTabs = FEATURES.newsFeed;
 
   // --- Material Selection Screen ---
   if ((viewMode === "materials" || (showExtraTabs && (viewMode === "news" || viewMode === "youtube"))) && !activeMaterial) {
