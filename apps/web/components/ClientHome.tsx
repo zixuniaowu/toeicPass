@@ -164,7 +164,10 @@ export function ClientHome() {
   useEffect(() => {
     // Wait until the stored UI language is loaded so we never toast in the default (zh) language.
     if (!isHydrated) return;
-    if (auth.message && auth.message !== lastMessageRef.current) {
+    // The default "please log in" prompt is shown inline on the login page; don't toast it
+    // (a toast would linger in the old language after switching the UI language).
+    const isDefaultPrompt = (["zh", "ja", "en"] as const).some((l) => createT(l)("auth.pleaseLogin") === auth.message);
+    if (auth.message && !isDefaultPrompt && auth.message !== lastMessageRef.current) {
       lastMessageRef.current = auth.message;
       const variant = /\u5931\u8d25|\u5931\u6557|\u5f02\u5e38|\u30a8\u30e9\u30fc|error|fail|expired/i.test(auth.message)
         ? "error" as const
