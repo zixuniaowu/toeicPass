@@ -465,7 +465,7 @@ export function getDifficultyLabel(d: number, locale: Locale): string {
 export function getCategoryLabel(c: string, locale: Locale): string {
   const m: Record<string, string> =
     locale === "ja"
-      ? { speech: "スピーチ", drama: "ドラマ", ted: "TED" }
-      : { speech: "演讲", drama: "美剧", ted: "TED" };
+      ? { speech: "ビジネス", drama: "会話", ted: "テーマ解説", it: "IT" }
+      : { speech: "商务", drama: "情景对话", ted: "专题讲解", it: "IT" };
   return m[c] || c;
 }

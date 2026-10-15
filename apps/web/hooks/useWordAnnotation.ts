@@ -9,7 +9,7 @@
  *
  * This is the core of the 划词翻译 feature, extracted from ShadowingView.
  */
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import type { ShadowingMaterial } from "../data/shadowing-materials";
 import type { WordAnnotation } from "../data/word-dictionary";
 import type { JapaneseReadingToken } from "../lib/japanese-reading";
@@ -268,6 +268,19 @@ export function useWordAnnotation(
     },
     [jpWordReadingMap, makeWordGlossKey, trainingLanguage],
   );
+
+  // Precomputed kuromoji readings for built-in materials (public/data/ja-readings.json).
+  useEffect(() => {
+    if (trainingLanguage !== "ja") return;
+    let cancelled = false;
+    void fetch("/data/ja-readings.json")
+      .then((r) => (r.ok ? r.json() : {}))
+      .then((data: Record<string, JapaneseReadingToken[]>) => {
+        if (!cancelled && data && typeof data === "object") setJpSentenceTokensMap((prev) => ({ ...data, ...prev }));
+      })
+      .catch(() => undefined);
+    return () => { cancelled = true; };
+  }, [trainingLanguage]);
 
   const ensureSentenceTokens = useCallback(
     (sentenceText: string) => {

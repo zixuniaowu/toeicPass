@@ -5,10 +5,23 @@ export type ShadowingMaterial = {
   title: string;
   translations: ShadowingTranslations;
   source: string;
-  category: "speech" | "drama" | "ted";
+  category: "speech" | "drama" | "ted" | "it";
   difficulty: 1 | 2 | 3;
   youtubeVideoId?: string;
+  /** Learner level label, e.g. "B2", "JLPT N2". */
+  level?: string;
+  /** Short context / explanation shown before practice. */
+  intro?: ShadowingTranslations;
+  /** Key vocabulary & expression notes. */
+  vocabulary?: ShadowingVocabNote[];
   sentences: ShadowingSentence[];
+};
+
+export type ShadowingVocabNote = {
+  term: string;
+  reading?: string;
+  zh: string;
+  ja?: string;
 };
 
 export type ShadowingSentence = {
@@ -62,6 +75,9 @@ export function defineShadowingMaterials(materials: ShadowingMaterialInput[]): S
     category: material.category,
     difficulty: material.difficulty,
     ...(material.youtubeVideoId ? { youtubeVideoId: material.youtubeVideoId } : {}),
+    ...(material.level ? { level: material.level } : {}),
+    ...(material.intro ? { intro: material.intro } : {}),
+    ...(material.vocabulary?.length ? { vocabulary: material.vocabulary } : {}),
     sentences: material.sentences.map((sentence) => ({
       id: sentence.id,
       text: sentence.text,

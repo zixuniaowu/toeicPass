@@ -467,7 +467,7 @@ export function ClientHome() {
 
   const renderView = () => {
     if (!isViewEnabled(activeView)) {
-      return <ShadowingView locale={locale} uiLang={langConfig.uiLang} />;
+      return <ShadowingView locale={locale} uiLang={langConfig.uiLang} targetLang={langConfig.targetLang} />;
     }
     switch (activeView) {
       case "review":
@@ -525,7 +525,7 @@ export function ClientHome() {
           />
         );
       case "shadowing":
-        return <ShadowingView locale={locale} uiLang={langConfig.uiLang} />;
+        return <ShadowingView locale={locale} uiLang={langConfig.uiLang} targetLang={langConfig.targetLang} />;
         return (
           <ViewErrorBoundary
             locale={locale}
@@ -699,7 +699,7 @@ export function ClientHome() {
           />
         );
       default:
-        return <ShadowingView locale={locale} uiLang={langConfig.uiLang} />;
+        return <ShadowingView locale={locale} uiLang={langConfig.uiLang} targetLang={langConfig.targetLang} />;
     }
   };
 

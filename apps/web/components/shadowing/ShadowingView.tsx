@@ -60,7 +60,7 @@ type YoutubeImportResponse = {
 };
 
 
-export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiLang?: UiLang }) {
+export function ShadowingView({ locale, uiLang = locale, targetLang }: { locale: Locale; uiLang?: UiLang; targetLang?: TrainingLanguage }) {
   const isJa = uiLang === "ja";
   const isEn = uiLang === "en";
   const l = (zh: string, ja: string, en?: string) => {
@@ -89,7 +89,15 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
 
 
   // ── Language selection ──────────────────────────────────────────────────
-  const [trainingLanguage, setTrainingLanguage] = useState<TrainingLanguage>("en");
+  const [trainingLanguage, setTrainingLanguage] = useState<TrainingLanguage>(targetLang ?? "en");
+  // The learning target is chosen once (first-run modal / Settings); follow it here.
+  useEffect(() => {
+    if (targetLang && targetLang !== trainingLanguage) {
+      setTrainingLanguage(targetLang);
+      setActiveMaterial(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetLang]);
   const isJapaneseTraining = trainingLanguage === "ja";
 
   // ── View / navigation state ─────────────────────────────────────────────
@@ -585,7 +593,8 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
 
   const categories = [
     { key: "all", label: l("全部", "すべて") },
-    { key: "speech", label: isJapaneseTraining ? l("商务 / IT", "ビジネス / IT") : l("商务 / IT", "ビジネス / IT") },
+    { key: "it", label: l("💻 IT 专题", "💻 IT 特集") },
+    { key: "speech", label: l("商务", "ビジネス") },
     { key: "drama", label: isJapaneseTraining ? l("日常", "日常会話") : l("情景对话", "場面会話") },
     { key: "ted", label: isJapaneseTraining ? l("专题讲解", "テーマ解説") : l("专题讲解", "テーマ解説") },
   ];
@@ -611,21 +620,6 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
               ? l("逐句跟读练习日语口语，点击「🎙 开始跟读」录音并自动纠错", "文ごとに日本語スピーキングを練習できます。「🎙 シャドーイング開始」で録音し自動チェックします。")
               : l("逐句跟读练习英语发音和语感，点击「🎙 开始跟读」录音并自动纠错", "文ごとに英語スピーキングを練習できます。「🎙 シャドーイング開始」で録音し自動チェックします。")}
           </p>
-        </div>
-
-        <div className={styles.categoryFilter}>
-          <button
-            className={`${styles.categoryBtn} ${trainingLanguage === "en" ? styles.categoryBtnActive : ""}`}
-            onClick={() => { setTrainingLanguage("en"); setNewsArticles([]); }}
-          >
-            {l("英语口语强化", "英語スピーキング強化")}
-          </button>
-          <button
-            className={`${styles.categoryBtn} ${trainingLanguage === "ja" ? styles.categoryBtnActive : ""}`}
-            onClick={() => { setTrainingLanguage("ja"); setNewsArticles([]); }}
-          >
-            {l("日语口语强化", "日本語スピーキング強化")}
-          </button>
         </div>
 
         {/* Tab switcher */}
@@ -1220,6 +1214,28 @@ export function ShadowingView({ locale, uiLang = locale }: { locale: Locale; uiL
           <div className={styles.progressBar}>
             <div className={styles.progressFill} style={{ width: `${(progress / total) * 100}%` }} />
           </div>
+
+          {(activeMaterial.intro || activeMaterial.vocabulary?.length) && (
+            <details className={styles.translationDetails} open={currentIndex === 0} data-testid="material-notes">
+              <summary>
+                📒 {l("背景与重点词汇", "背景と重要語句")}
+                {activeMaterial.level ? ` · ${activeMaterial.level}` : ""}
+              </summary>
+              {activeMaterial.intro && (
+                <p className={styles.translation}>{(isJa ? activeMaterial.intro.ja : activeMaterial.intro.zh) ?? activeMaterial.intro.zh}</p>
+              )}
+              {activeMaterial.vocabulary && activeMaterial.vocabulary.length > 0 && (
+                <ul style={{ margin: "6px 0 0", paddingLeft: 18, lineHeight: 1.8 }}>
+                  {activeMaterial.vocabulary.map((v) => (
+                    <li key={v.term}>
+                      <strong>{v.term}</strong>
+                      {v.reading ? `（${v.reading}）` : ""} — {isJa && v.ja ? v.ja : v.zh}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </details>
+          )}
 
           <div className={styles.controlsBar}>
             <div className={styles.toggleGroup}>
