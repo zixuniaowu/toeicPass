@@ -16,6 +16,8 @@ const mockLogin = vi.mocked(api.login);
 describe("useAuth", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    localStorage.clear();
+    sessionStorage.clear();
   });
 
   it("starts logged out with default credentials", () => {

@@ -17,7 +17,7 @@ export type NativeLang = _NativeLang;
 export type TargetLang = _TargetLang;
 export type LangConfig = _LangConfig;
 export type LoginResponse = { accessToken: string; tenantCode: string };
-export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "shadowing" | "mock" | "mistakes" | "vocab" | "writing" | "conversation" | "settings" | "subscription" | "admin";
+export type ViewTab = "dashboard" | "listening" | "grammar" | "textcompletion" | "reading" | "shadowing" | "mock" | "mistakes" | "vocab" | "writing" | "conversation" | "settings" | "subscription" | "admin" | "review";
 export type OptionKey = "A" | "B" | "C" | "D";
 
 // Question Types

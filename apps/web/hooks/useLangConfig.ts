@@ -6,27 +6,44 @@ import { readStoredWebAppSession, updateStoredWebAppSession } from "../lib/app-s
 
 const STORAGE_KEY = "langboost-lang-config";
 
-/** Derive sensible defaults: uiLang ↔ nativeLang, targetLang always the "other" language. */
+/** UI languages actually offered (the old "en" UI fell back to Japanese). */
+export const SELECTABLE_UI_LANGS: readonly UiLang[] = ["zh", "ja"] as const;
+
+/** Defaults: learning English (TOEIC) with a Chinese UI. */
 function defaultConfig(): LangConfig {
-  return { uiLang: "ja", nativeLang: "ja", targetLang: "en" };
+  return { uiLang: "zh", nativeLang: "zh", targetLang: "en" };
+}
+
+/** UI languages allowed for a learning target (no Japanese UI when learning Japanese). */
+export function allowedUiLangs(targetLang: TargetLang): UiLang[] {
+  return targetLang === "ja" ? ["zh"] : ["zh", "ja"];
+}
+
+/**
+ * Normalise any stored/requested config into a sensible combination:
+ * - the fake "en" UI becomes Chinese
+ * - learning Japanese forces a Chinese UI
+ * - nativeLang always follows the UI language
+ */
+export function sanitizeLangConfig(cfg: Partial<LangConfig> | null | undefined): LangConfig {
+  const targetLang: TargetLang = cfg?.targetLang === "ja" ? "ja" : "en";
+  let uiLang: UiLang = cfg?.uiLang === "ja" ? "ja" : "zh";
+  if (!allowedUiLangs(targetLang).includes(uiLang)) uiLang = "zh";
+  return { uiLang, nativeLang: uiLang as NativeLang, targetLang };
 }
 
 function loadConfig(): LangConfig {
   if (typeof window === "undefined") return defaultConfig();
   const storedSession = readStoredWebAppSession();
   if (storedSession.uiLang && storedSession.targetLang) {
-    return {
-      uiLang: storedSession.uiLang,
-      nativeLang: storedSession.uiLang,
-      targetLang: storedSession.targetLang,
-    };
+    return sanitizeLangConfig({ uiLang: storedSession.uiLang, targetLang: storedSession.targetLang });
   }
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultConfig();
     const parsed = JSON.parse(raw);
     if (parsed.uiLang && parsed.nativeLang && parsed.targetLang) {
-      return parsed as LangConfig;
+      return sanitizeLangConfig(parsed as LangConfig);
     }
   } catch { /* ignore corrupt data */ }
   return defaultConfig();
@@ -59,13 +76,16 @@ export function useLangConfig() {
     if (typeof window !== "undefined" && !localStorage.getItem(STORAGE_KEY)) {
       setIsFirstVisit(true);
     }
-    setConfig(loadConfig());
+    const loaded = loadConfig();
+    setConfig(loaded);
+    // Migrate legacy/invalid stored combinations in place.
+    if (localStorage.getItem(STORAGE_KEY)) saveConfig(loaded);
   }, []);
 
   const setUiLang = useCallback((uiLang: UiLang) => {
     setConfig((prev) => {
       // Sync nativeLang with uiLang — most users' native language matches their UI preference
-      const next = { ...prev, uiLang, nativeLang: uiLang as NativeLang };
+      const next = sanitizeLangConfig({ ...prev, uiLang });
       saveConfig(next);
       return next;
     });
@@ -73,7 +93,7 @@ export function useLangConfig() {
 
   const setNativeLang = useCallback((nativeLang: NativeLang) => {
     setConfig((prev) => {
-      const next = { ...prev, nativeLang };
+      const next = { ...prev, nativeLang: (prev.uiLang as NativeLang) ?? nativeLang };
       saveConfig(next);
       return next;
     });
@@ -81,7 +101,7 @@ export function useLangConfig() {
 
   const setTargetLang = useCallback((targetLang: TargetLang) => {
     setConfig((prev) => {
-      const next = { ...prev, targetLang };
+      const next = sanitizeLangConfig({ ...prev, targetLang });
       saveConfig(next);
       return next;
     });
@@ -89,12 +109,13 @@ export function useLangConfig() {
 
   /** Convenience: set whole config at once (e.g. from Settings form). */
   const setLangConfig = useCallback((cfg: LangConfig) => {
-    setConfig(cfg);
-    saveConfig(cfg);
+    const next = sanitizeLangConfig(cfg);
+    setConfig(next);
+    saveConfig(next);
   }, []);
 
   /** Backward-compatible locale getter for legacy components. */
-  const locale = (config.uiLang === "en" ? "ja" : config.uiLang) as "zh" | "ja";
+  const locale = (config.uiLang === "ja" ? "ja" : "zh") as "zh" | "ja";
 
   return {
     langConfig: config,

@@ -64,13 +64,6 @@ export function LoginView({
           >
             {t("lang.ja")}
           </button>
-          <button
-            type="button"
-            className={`${styles.localeBtn} ${(uiLang ?? locale) === "en" ? styles.localeBtnActive : ""}`}
-            onClick={() => onLocaleChange("en")}
-          >
-            {t("lang.en")}
-          </button>
         </div>
       )}
       <section className={styles.brandPanel} aria-label={t("login.overviewAriaLabel")}>

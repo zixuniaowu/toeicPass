@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import type { UiLang, TargetLang } from "../../types";
 import styles from "./LanguageSetupPopup.module.css";
 
@@ -8,88 +7,35 @@ interface LanguageSetupPopupProps {
   onConfirm: (uiLang: UiLang, targetLang: TargetLang) => void;
 }
 
-const LANG_OPTIONS: { value: UiLang; flag: string; label: string; desc: string }[] = [
-  { value: "zh", flag: "🇨🇳", label: "中文", desc: "Chinese" },
-  { value: "ja", flag: "🇯🇵", label: "日本語", desc: "Japanese" },
-  { value: "en", flag: "🇺🇸", label: "English", desc: "English" },
+const OPTIONS: { target: TargetLang; flag: string; label: string; desc: string }[] = [
+  { target: "en", flag: "🇺🇸", label: "我要学英语（TOEIC）", desc: "英语跟读 · 发音纠正 · 词根词汇" },
+  { target: "ja", flag: "🇯🇵", label: "我要学日语", desc: "日语跟读 · 发音纠正 · 商务/日常/IT 日语" },
 ];
 
-const TARGET_OPTIONS: { value: TargetLang; flag: string; label: string }[] = [
-  { value: "en", flag: "🇺🇸", label: "English" },
-  { value: "ja", flag: "🇯🇵", label: "日本語 (Japanese)" },
-];
-
+/** First-run choice: what am I learning? The UI language defaults to Chinese. */
 export function LanguageSetupPopup({ onConfirm }: LanguageSetupPopupProps) {
-  const [step, setStep] = useState<1 | 2>(1);
-  const [selectedLang, setSelectedLang] = useState<UiLang | null>(null);
-  const [selectedTarget, setSelectedTarget] = useState<TargetLang | null>(null);
-
-  const handleLangSelect = (lang: UiLang) => {
-    setSelectedLang(lang);
-    // Auto-suggest target: if native is en → target ja, otherwise target en
-    setSelectedTarget(lang === "en" ? "ja" : "en");
-    setStep(2);
-  };
-
-  const handleConfirm = () => {
-    if (selectedLang && selectedTarget) {
-      onConfirm(selectedLang, selectedTarget);
-    }
-  };
-
   return (
-    <div className={styles.overlay}>
+    <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="lang-setup-title">
       <div className={styles.popup}>
-        {step === 1 && (
-          <>
-            <h2 className={styles.title}>Welcome to LangBoost</h2>
-            <p className={styles.subtitle}>What is your native language?</p>
-            <div className={styles.options}>
-              {LANG_OPTIONS.map((opt) => (
-                <button
-                  key={opt.value}
-                  className={styles.optionBtn}
-                  onClick={() => handleLangSelect(opt.value)}
-                >
-                  <span className={styles.optionFlag}>{opt.flag}</span>
-                  <span className={styles.optionLabel}>{opt.label}</span>
-                </button>
-              ))}
-            </div>
-          </>
-        )}
-
-        {step === 2 && (
-          <>
-            <h2 className={styles.title}>
-              {selectedLang === "zh" ? "你想学什么语言？" : selectedLang === "ja" ? "何を学びますか？" : "What do you want to learn?"}
-            </h2>
-            <div className={styles.options}>
-              {TARGET_OPTIONS.map((opt) => (
-                <button
-                  key={opt.value}
-                  className={`${styles.optionBtn} ${selectedTarget === opt.value ? styles.optionBtnActive : ""}`}
-                  onClick={() => setSelectedTarget(opt.value)}
-                >
-                  <span className={styles.optionFlag}>{opt.flag}</span>
-                  <span className={styles.optionLabel}>{opt.label}</span>
-                </button>
-              ))}
-            </div>
-            <div className={styles.actions}>
-              <button className={styles.backBtn} onClick={() => setStep(1)}>
-                ← {selectedLang === "zh" ? "返回" : selectedLang === "ja" ? "戻る" : "Back"}
-              </button>
-              <button
-                className={styles.confirmBtn}
-                onClick={handleConfirm}
-                disabled={!selectedTarget}
-              >
-                {selectedLang === "zh" ? "开始学习" : selectedLang === "ja" ? "学習を始める" : "Start Learning"}
-              </button>
-            </div>
-          </>
-        )}
+        <h2 id="lang-setup-title" className={styles.title}>欢迎使用 toeicPass 跟读训练</h2>
+        <p className={styles.subtitle}>你想练习哪种语言？</p>
+        <div className={styles.options}>
+          {OPTIONS.map((opt) => (
+            <button
+              key={opt.target}
+              type="button"
+              className={styles.optionBtn}
+              onClick={() => onConfirm("zh", opt.target)}
+            >
+              <span className={styles.optionFlag}>{opt.flag}</span>
+              <span className={styles.optionText}>
+                <span className={styles.optionLabel}>{opt.label}</span>
+                <span className={styles.optionDesc}>{opt.desc}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+        <p className={styles.footnote}>界面语言默认中文，之后可在「设置」中修改。</p>
       </div>
     </div>
   );

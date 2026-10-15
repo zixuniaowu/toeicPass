@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { TABS, type ViewTab, type PlanCode } from "../../types";
-import type { UiLang, TargetLang } from "../../types";
-import { createT, UI_LANGS } from "../../lib/i18n";
-import { PlanBadge } from "../subscription/PlanBadge";
+import type { ViewTab, PlanCode, UiLang, TargetLang } from "../../types";
+import { createT } from "../../lib/i18n";
+import { NAV_ITEMS } from "../../lib/features";
 import styles from "./TopBar.module.css";
 
 interface TopBarProps {
@@ -12,46 +11,27 @@ interface TopBarProps {
   onViewChange: (view: ViewTab) => void;
   isLoggedIn: boolean;
   onLogout?: () => void;
-  /** @deprecated Use uiLang instead */
-  locale?: "zh" | "ja";
-  /** @deprecated Use onUiLangChange instead */
-  onLocaleChange?: (locale: "zh" | "ja") => void;
   uiLang: UiLang;
   targetLang: TargetLang;
-  onUiLangChange: (lang: UiLang) => void;
-  onTargetLangChange: (lang: TargetLang) => void;
+  /** @deprecated language is changed in Settings only */
+  onUiLangChange?: (lang: UiLang) => void;
+  /** @deprecated language is changed in Settings only */
+  onTargetLangChange?: (lang: TargetLang) => void;
   planCode?: PlanCode;
   isAdmin?: boolean;
 }
 
-const NAV_KEYS: readonly ViewTab[] = [
-  "shadowing", "mock", "grammar", "conversation",
-  "mistakes", "vocab", "subscription", "admin", "settings",
-] as const;
-
-const TARGET_LANGS: readonly TargetLang[] = ["en", "ja"] as const;
-
-export function TopBar({
-  activeView,
-  onViewChange,
-  isLoggedIn,
-  onLogout,
-  uiLang,
-  targetLang,
-  onUiLangChange,
-  onTargetLangChange,
-  planCode,
-  isAdmin,
-}: TopBarProps) {
+export function TopBar({ activeView, onViewChange, isLoggedIn, onLogout, uiLang, targetLang }: TopBarProps) {
   const t = createT(uiLang);
+  const ja = uiLang === "ja";
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const visibleTabs = TABS.filter((tab) => tab.key !== "admin" || isAdmin);
 
   const handleTabClick = useCallback((key: ViewTab) => {
     onViewChange(key);
     setMenuOpen(false);
   }, [onViewChange]);
+
+  const targetLabel = targetLang === "ja" ? "🇯🇵 学日语" : ja ? "🇺🇸 英語（TOEIC）" : "🇺🇸 学英语 · TOEIC";
 
   return (
     <header className={styles.topbar}>
@@ -59,7 +39,7 @@ export function TopBar({
         <span className={styles.brandMark}>LB</span>
         <div>
           <p className={styles.brandTitle}>{t("brand.title")}</p>
-          <p className={styles.brandSub}>{t("brand.subtitle")}</p>
+          <p className={styles.brandSub}>{ja ? "シャドーイング・発音トレーニング" : "跟读 · 发音训练"}</p>
         </div>
       </div>
 
@@ -74,64 +54,32 @@ export function TopBar({
           >
             <span className={`${styles.hamburgerLine} ${menuOpen ? styles.hamburgerOpen : ""}`} />
           </button>
-          <nav className={`${styles.tabs} ${menuOpen ? styles.tabsOpen : ""}`}>
-            {visibleTabs.map((tab) => (
+          <nav className={`${styles.tabs} ${menuOpen ? styles.tabsOpen : ""}`} aria-label="main">
+            {NAV_ITEMS.map((tab) => (
               <button
                 key={tab.key}
                 className={`${styles.tab} ${activeView === tab.key ? styles.active : ""}`}
+                aria-current={activeView === tab.key ? "page" : undefined}
                 onClick={() => handleTabClick(tab.key)}
               >
-                {t(`nav.${tab.key}`) !== `nav.${tab.key}` ? t(`nav.${tab.key}`) : tab.label}
+                {tab.icon} {ja ? tab.ja : tab.zh}
               </button>
             ))}
           </nav>
-
-          <div className={styles.controls}>
-            <div className={styles.switchGroup}>
-              <span className={styles.switchLabel}>{t("lang.uiLabel")}</span>
-              <div className={styles.localeSwitch} role="group" aria-label={t("lang.uiLabel")}>
-                {UI_LANGS.map((lang) => (
-                  <button
-                    key={lang}
-                    type="button"
-                    className={`${styles.localeBtn} ${uiLang === lang ? styles.localeBtnActive : ""}`}
-                    aria-label={`${t("lang.uiLabel")}: ${t(`lang.${lang}`)}`}
-                    aria-pressed={uiLang === lang}
-                    onClick={() => onUiLangChange(lang)}
-                  >
-                    {t(`lang.${lang}`)}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.switchGroup}>
-              <span className={styles.switchLabel}>{t("lang.targetLabel")}</span>
-              <div className={styles.localeSwitch} role="group" aria-label={t("lang.targetLabel")}>
-                {TARGET_LANGS.map((lang) => {
-                  const key = `lang.target${lang.charAt(0).toUpperCase()}${lang.slice(1)}`;
-                  return (
-                    <button
-                      key={lang}
-                      type="button"
-                      className={`${styles.localeBtn} ${targetLang === lang ? styles.localeBtnActive : ""}`}
-                      aria-label={`${t("lang.targetLabel")}: ${t(key)}`}
-                      aria-pressed={targetLang === lang}
-                      onClick={() => onTargetLangChange(lang)}
-                    >
-                      {t(key)}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
         </>
       )}
 
       <div className={styles.actions}>
-        {isLoggedIn && planCode && (
-          <PlanBadge planCode={planCode} onClick={() => onViewChange("subscription")} />
+        {isLoggedIn && (
+          <button
+            type="button"
+            className={styles.logout}
+            title={ja ? "設定で変更" : "在设置中修改"}
+            onClick={() => onViewChange("settings")}
+            data-testid="target-badge"
+          >
+            {targetLabel}
+          </button>
         )}
         {isLoggedIn && onLogout && (
           <button type="button" className={styles.logout} onClick={onLogout}>

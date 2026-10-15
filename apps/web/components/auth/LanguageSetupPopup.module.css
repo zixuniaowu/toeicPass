@@ -113,3 +113,7 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.optionText { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+.optionDesc { font-size: 0.85rem; color: var(--color-text-secondary, #666); margin-top: 2px; }
+.footnote { font-size: 0.8rem; color: var(--color-text-secondary, #888); margin: 0; }

@@ -21,6 +21,7 @@ import {
   type TrainingLanguage,
 } from "@toeicpass/app-core/shadowing-compare";
 import { getJapaneseReading } from "../lib/japanese-reading";
+import { recordPracticeAttempt } from "../lib/practice-log";
 
 export type MicPermission = "unknown" | "granted" | "denied" | "prompt";
 
@@ -151,6 +152,7 @@ export function useSpeechRecognition(
       setRecognizedText(scored.transcript);
     }
     setCompareResult({ words: scored.words, accuracy: scored.accuracy });
+    recordPracticeAttempt(target.text, trainingLanguage, scored.accuracy, scored.words);
   }, [trainingLanguage]);
 
   const startRecognizer = useCallback((allowRetryAlone: boolean) => {

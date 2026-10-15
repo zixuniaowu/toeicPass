@@ -188,19 +188,23 @@ describe("ClientHome onboarding", () => {
     });
   });
 
-  it("persists selected languages from the first-visit popup", async () => {
+  it("first-visit popup asks only what to learn and defaults the UI to Chinese", async () => {
     render(<ClientHome />);
 
-    const [englishOption] = await screen.findAllByRole("button", { name: /English/i });
-    fireEvent.click(englishOption);
-
-    fireEvent.click(screen.getByRole("button", { name: "Start Learning" }));
+    expect(await screen.findByText("你想练习哪种语言？")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /我要学日语/ }));
 
     expect(mockSetLangConfig).toHaveBeenCalledWith({
-      uiLang: "en",
-      nativeLang: "en",
+      uiLang: "zh",
+      nativeLang: "zh",
       targetLang: "ja",
     });
     expect(mockSetIsFirstVisit).toHaveBeenCalledWith(false);
+  });
+
+  it("offers English (TOEIC) as a choice", async () => {
+    render(<ClientHome />);
+    fireEvent.click(await screen.findByRole("button", { name: /我要学英语（TOEIC）/ }));
+    expect(mockSetLangConfig).toHaveBeenCalledWith({ uiLang: "zh", nativeLang: "zh", targetLang: "en" });
   });
 });

@@ -226,52 +226,19 @@ describe("ClientHome writing entry", () => {
     });
   });
 
-  it("renders WritingView when switching to the writing tab", async () => {
+  it.each(["writing", "grammar", "reading"])("hidden feature %s is not reachable and stays on shadowing", async (view) => {
     render(<ClientHome />);
-
-    fireEvent.click(await screen.findByRole("button", { name: "Open writing" }));
-
-    expect(await screen.findByText("writing-view")).toBeInTheDocument();
-    expect(screen.queryByText("practice-view")).not.toBeInTheDocument();
+    fireEvent.click(await screen.findByRole("button", { name: `Open ${view}` }));
+    expect(await screen.findByText("shadowing-view")).toBeInTheDocument();
+    expect(screen.queryByText("writing-view")).not.toBeInTheDocument();
+    expect(screen.queryByText("jlpt-grammar-view")).not.toBeInTheDocument();
+    expect(screen.queryByText("jlpt-reading-view")).not.toBeInTheDocument();
   });
 
-  it("renders JLPT grammar view when targetLang is ja and switching to grammar", async () => {
-    mockUseLangConfig.mockReturnValue({
-      langConfig: { uiLang: "ja", nativeLang: "ja", targetLang: "ja" },
-      locale: "ja",
-      isFirstVisit: false,
-      setIsFirstVisit: vi.fn(),
-      setLangConfig: vi.fn(),
-      setUiLang: vi.fn(),
-      setNativeLang: vi.fn(),
-      setTargetLang: vi.fn(),
-    });
-
+  it("a stored hidden view falls back to shadowing", async () => {
+    localStorage.setItem("lb.view", "writing");
     render(<ClientHome />);
-
-    fireEvent.click(await screen.findByRole("button", { name: "Open grammar" }));
-
-    expect(await screen.findByText("jlpt-grammar-view")).toBeInTheDocument();
-    expect(screen.queryByText("practice-view")).not.toBeInTheDocument();
-  });
-
-  it("renders JLPT reading view when targetLang is ja and switching to reading", async () => {
-    mockUseLangConfig.mockReturnValue({
-      langConfig: { uiLang: "ja", nativeLang: "ja", targetLang: "ja" },
-      locale: "ja",
-      isFirstVisit: false,
-      setIsFirstVisit: vi.fn(),
-      setLangConfig: vi.fn(),
-      setUiLang: vi.fn(),
-      setNativeLang: vi.fn(),
-      setTargetLang: vi.fn(),
-    });
-
-    render(<ClientHome />);
-
-    fireEvent.click(await screen.findByRole("button", { name: "Open reading" }));
-
-    expect(await screen.findByText("jlpt-reading-view")).toBeInTheDocument();
-    expect(screen.queryByText("practice-view")).not.toBeInTheDocument();
+    expect(await screen.findByText("shadowing-view")).toBeInTheDocument();
+    localStorage.removeItem("lb.view");
   });
 });

@@ -16,8 +16,8 @@ interface AppShellProps {
   onLogout?: () => void;
   uiLang: UiLang;
   targetLang: TargetLang;
-  onUiLangChange: (lang: UiLang) => void;
-  onTargetLangChange: (lang: TargetLang) => void;
+  onUiLangChange?: (lang: UiLang) => void;
+  onTargetLangChange?: (lang: TargetLang) => void;
   planCode?: PlanCode;
   isAdmin?: boolean;
 }

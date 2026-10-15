@@ -16,6 +16,8 @@ import { AppShell } from "./layout/AppShell";
 import { CardSkeleton } from "./ui/Skeleton";
 import { LoginView } from "./auth/LoginView";
 import { LanguageSetupPopup } from "./auth/LanguageSetupPopup";
+import { FEATURES, isViewEnabled } from "../lib/features";
+import { ReviewView } from "./review/ReviewView";
 import { ViewErrorBoundary } from "./error/ViewErrorBoundary";
 import { ToastContainer } from "./ui/Toast";
 import { useToast } from "../hooks/useToast";
@@ -52,9 +54,10 @@ function ViewFallback() {
   );
 }
 
-const NAV_VIEWS = new Set<ViewTab>(TABS.map(t => t.key));
 const PRACTICE_VIEWS = new Set<ViewTab>(["listening", "grammar", "textcompletion", "reading"]);
-const ALL_VIEWS = new Set<ViewTab>([...NAV_VIEWS, ...PRACTICE_VIEWS]);
+const ALL_VIEWS = new Set<ViewTab>(
+  ([...TABS.map((t) => t.key), ...PRACTICE_VIEWS, "review"] as ViewTab[]).filter((v) => isViewEnabled(v)),
+);
 
 const COPY = {
   zh: {
@@ -101,7 +104,7 @@ export function ClientHome() {
   const [activeView, setActiveView] = useState<ViewTab>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("lb.view") as ViewTab | null;
-      if (saved && ["listening", "grammar", "textcompletion", "reading", "shadowing", "mock", "mistakes", "vocab", "writing", "settings", "subscription"].includes(saved)) {
+      if (saved && isViewEnabled(saved)) {
         return saved;
       }
     }
@@ -463,7 +466,12 @@ export function ClientHome() {
   }, [activeView, langConfig.targetLang, mistakes.loadMistakes, vocab.loadCards]);
 
   const renderView = () => {
+    if (!isViewEnabled(activeView)) {
+      return <ShadowingView locale={locale} uiLang={langConfig.uiLang} />;
+    }
     switch (activeView) {
+      case "review":
+        return <ReviewView uiLang={langConfig.uiLang} targetLang={langConfig.targetLang} />;
       case "settings":
         return (
           <SettingsView
@@ -485,6 +493,7 @@ export function ClientHome() {
             onGoalDateChange={setGoalDate}
             onRegister={() => void auth.register()}
             onLogin={() => void auth.login()}
+            onLogout={handleLogout}
             onApplyNinetyDayGoal={handleApplyNinetyDayGoal}
             onSaveGoal={() => void handleSaveGoal()}
           />
@@ -732,12 +741,10 @@ export function ClientHome() {
         onLogout={handleLogout}
         uiLang={langConfig.uiLang}
         targetLang={langConfig.targetLang}
-        onUiLangChange={setUiLang}
-        onTargetLangChange={setTargetLang}
         planCode={subscription.planCode}
         isAdmin={subscription.isAdmin}
       >
-        {subscription.showAds && (
+        {FEATURES.ads && subscription.showAds && (
           <AdBanner
             locale={locale}
             token={auth.token}
@@ -751,7 +758,7 @@ export function ClientHome() {
             {renderView()}
           </Suspense>
         </ViewErrorBoundary>
-        {subscription.showAds && (
+        {FEATURES.ads && subscription.showAds && (
           <NativeFeedAd
             locale={locale}
             token={auth.token}
@@ -760,7 +767,7 @@ export function ClientHome() {
           />
         )}
         <ToastContainer toasts={toast.toasts} onDismiss={toast.dismiss} />
-        {showInterstitial && (
+        {FEATURES.ads && showInterstitial && (
           <InterstitialAd
             locale={locale}
             token={auth.token}
