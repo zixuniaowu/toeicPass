@@ -1,0 +1,35 @@
+.playbackRow { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.playBtn {
+  padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--color-primary);
+  background: transparent; color: var(--color-primary); font-weight: 600; font-size: var(--text-sm); cursor: pointer;
+}
+.playBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+.playBtnActive { background: var(--color-primary); color: #fff; }
+.notice { font-size: var(--text-sm); color: var(--color-muted); margin: 4px 0; }
+.words { display: flex; flex-wrap: wrap; gap: 6px; line-height: 1.9; font-size: var(--text-lg); }
+.wordsJa { gap: 2px; }
+.word {
+  border: none; background: transparent; padding: 0 3px; border-radius: 6px; cursor: pointer;
+  font: inherit; font-weight: 600; text-underline-offset: 4px;
+}
+.correct { color: #059669; background: rgba(16, 185, 129, 0.10); }
+.close { color: #b45309; background: rgba(245, 158, 11, 0.16); }
+.wrong { color: #dc2626; background: rgba(220, 38, 38, 0.10); text-decoration: underline wavy; }
+.missing { color: #dc2626; background: rgba(220, 38, 38, 0.06); text-decoration: underline dashed; opacity: 0.85; }
+.extra { color: var(--color-muted); text-decoration: line-through; font-weight: 400; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: var(--text-sm); margin-top: 6px; }
+.legend span { padding: 0 6px; border-radius: 4px; }
+.issues { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.issue {
+  display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; align-items: start;
+  padding: 8px 10px; border-radius: 10px; background: var(--color-surface); border: 1px solid rgba(0,0,0,0.06);
+  font-size: var(--text-sm);
+}
+.issueBadge { font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.issueBody { display: flex; flex-direction: column; gap: 2px; }
+.issueWords { font-weight: 600; }
+.issueTip { color: var(--color-muted); }
+.hearBtn { border: none; background: none; cursor: pointer; font-size: 16px; padding: 0 4px; }
+.score { font-size: 28px; font-weight: 800; }
+.scoreRow { display: flex; align-items: baseline; gap: 10px; }
+.transcript { font-size: var(--text-sm); color: var(--color-muted); margin-top: 4px; }

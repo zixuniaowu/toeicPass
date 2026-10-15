@@ -177,7 +177,7 @@ function ComparisonRow({ comparison }: { comparison: ShadowingComparisonFeedback
           <View
             key={`cmp-${i}`}
             style={{
-              backgroundColor: w.status === "correct" ? "#ccfbf1" : w.status === "wrong" ? "#fee2e2" : "#e2e8f0",
+              backgroundColor: w.status === "correct" ? "#ccfbf1" : w.status === "close" ? "#fef3c7" : w.status === "wrong" || w.status === "missing" ? "#fee2e2" : "#e2e8f0",
               borderRadius: 999,
               paddingHorizontal: 8,
               paddingVertical: 4,
@@ -185,7 +185,7 @@ function ComparisonRow({ comparison }: { comparison: ShadowingComparisonFeedback
           >
             <Text
               style={{
-                color: w.status === "correct" ? "#0f766e" : w.status === "wrong" ? "#b91c1c" : "#475569",
+                color: w.status === "correct" ? "#0f766e" : w.status === "close" ? "#b45309" : w.status === "wrong" || w.status === "missing" ? "#b91c1c" : "#475569",
                 fontWeight: "700",
                 fontSize: 14,
               }}
