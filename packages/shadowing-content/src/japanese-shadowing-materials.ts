@@ -83,8 +83,8 @@ export const JAPANESE_SHADOWING_MATERIALS: ShadowingMaterial[] = defineShadowing
   },
   {
     id: "jp-editorial-seasons",
-    title: "天声人語風・季節と暮らし",
-    titleCn: "天声人语风：季节与生活",
+    title: "コラム・季節と暮らし",
+    titleCn: "专栏：季节与生活",
     source: "Original Editorial Style",
     category: "ted",
     difficulty: 3,
@@ -109,8 +109,8 @@ export const JAPANESE_SHADOWING_MATERIALS: ShadowingMaterial[] = defineShadowing
   },
   {
     id: "jp-editorial-tech-life",
-    title: "天声人語風・技術と日常",
-    titleCn: "天声人语风：技术与日常",
+    title: "コラム・技術と日常",
+    titleCn: "专栏：技术与日常",
     source: "Original Editorial Style",
     category: "ted",
     difficulty: 3,
