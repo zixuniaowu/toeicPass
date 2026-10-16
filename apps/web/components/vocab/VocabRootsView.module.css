@@ -1,5 +1,6 @@
 .container { width: 100%; position: relative; }
-.header h2 { margin: 0 0 var(--space-2); font-size: var(--text-2xl); color: var(--color-text); }
+.header h2 { margin: 0 0 var(--space-2); font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(135deg, var(--color-primary), #a855f7, #ec4899); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header { margin-bottom: var(--space-2); }
 .subtitle { margin: 0; color: var(--color-muted); }
 .dayChips { display: flex; flex-wrap: wrap; gap: 8px; margin: var(--space-4) 0; }
 .dayChip { border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); border-radius: 999px; padding: 6px 14px; font-weight: 600; cursor: pointer; }
