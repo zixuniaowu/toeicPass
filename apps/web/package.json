@@ -8,7 +8,8 @@
     "start": "next start -p 8000",
     "lint": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "import:vocab": "node scripts/import-vocab-days.mjs"
   },
   "dependencies": {
     "@toeicpass/ad-system": "1.0.0",

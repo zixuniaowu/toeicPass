@@ -44,7 +44,15 @@ export function loadJaAudioManifest(): Promise<Record<string, string>> {
   return manifestPromise;
 }
 
+/** Extra pre-recorded audio (e.g. vocabulary words / example sentences), any language. */
+const extraAudio = new Map<string, string>();
+export function registerPrerecorded(entries: Record<string, string>): void {
+  for (const [text, url] of Object.entries(entries)) if (text && url) extraAudio.set(norm(text).toLowerCase(), url);
+}
+
 export function prerecordedUrl(text: string, lang: Lang): string | null {
+  const extra = extraAudio.get(norm(text).toLowerCase());
+  if (extra) return extra;
   if (lang !== "ja" || !manifest) return null;
   const file = manifest[norm(text)];
   return file ? `/audio/ja/${file}` : null;

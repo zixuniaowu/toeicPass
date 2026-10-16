@@ -28,6 +28,7 @@ import * as api from "../lib/api";
 
 const MistakesView = lazy(() => import("./mistakes/MistakesView").then(m => ({ default: m.MistakesView })));
 const VocabView = lazy(() => import("./vocab/VocabView").then(m => ({ default: m.VocabView })));
+const VocabRootsView = lazy(() => import("./vocab/VocabRootsView").then(m => ({ default: m.VocabRootsView })));
 const ShadowingView = lazy(() => import("./shadowing/ShadowingView").then(m => ({ default: m.ShadowingView })));
 const MockExamView = lazy(() => import("./mock/MockExamView").then(m => ({ default: m.MockExamView })));
 
@@ -558,6 +559,13 @@ export function ClientHome() {
           </ViewErrorBoundary>
         );
       case "vocab":
+        if (langConfig.targetLang === "en") {
+          return (
+            <ViewErrorBoundary locale={locale}>
+              <VocabRootsView uiLang={langConfig.uiLang} />
+            </ViewErrorBoundary>
+          );
+        }
         return (
           <VocabView
             locale={locale}
